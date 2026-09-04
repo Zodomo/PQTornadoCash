@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "study_id": "SP-00/v03-proof-length-frontiers",
+  "title": "Exact v0.3 proof-length and pruned-frontier audit",
+  "scope": "research/proof-length/** only; no production custody or verifier changes",
+  "baseline": {
+    "candidate_id": "C00/v03-baseline",
+    "source_commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+    "profile": "sepolia-v0.3",
+    "proof_corpus": "research/candidates/v03-baseline/proofs/v03-{fixed,corpus}-01..30",
+    "canonical_report_fixture": "test-vectors/verifier/v3"
+  },
+  "inputs": [
+    "crates/pqtc-stark/src/codec.rs",
+    "crates/pqtc-stark/src/query.rs",
+    "crates/pqtc-stark/src/lib.rs",
+    "contracts/src/libraries/PQTCProofCodec.sol",
+    "contracts/src/verifier/PQTCQueryVerifier.sol",
+    "research/candidates/v03-baseline/proofs/**",
+    "research/candidates/v03-baseline/gas/evm/*.trace.log",
+    "research/candidates/v03-baseline/gas/measured-summary.json",
+    "test-vectors/verifier/v3/part-{a,b}.pqtc",
+    "old_reports/ENGINEERING_REPORT.md"
+  ],
+  "outputs": [
+    "README.md",
+    "ADR.md",
+    "assumptions.md",
+    "manifest.json",
+    "check.py",
+    "negative-results.json",
+    "results.json",
+    "source-hashes.json",
+    "status.json"
+  ],
+  "executable": {
+    "path": "research/proof-length/check.py",
+    "command": "python3 research/proof-length/check.py",
+    "regenerate_command": "python3 research/proof-length/check.py --write",
+    "dependencies": "Python 3 standard library only"
+  },
+  "acceptance_contract": {
+    "retained_proofs": 60,
+    "canonical_report_fixture": 1,
+    "query_count": 32,
+    "split": [16, 16],
+    "input_batches": 3,
+    "fri_rounds": 9,
+    "mutation_checks": 5,
+    "part_a_active_cap_breaches": 9,
+    "part_b_active_cap_breaches": 0
+  }
+}

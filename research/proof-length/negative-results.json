@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "study": "v0.3-proof-length-frontiers",
+  "negative_results": [
+    {
+      "id": "report-fixture-not-maximum",
+      "status": "CONFIRMED_NEGATIVE",
+      "finding": "The canonical 210284-byte report proof is not a worst-case proof.",
+      "evidence": "Its A/B frontier totals are 851/949 digests; the exact per-half maximum is 1008. The exact pair maximum is 224108 raw bytes."
+    },
+    {
+      "id": "observed-corpus-not-exhaustive",
+      "status": "CONFIRMED_NEGATIVE",
+      "finding": "No retained half reaches either theoretical frontier extreme.",
+      "evidence": "Observed A range is 741..959 and B range is 722..978; theoretical range is 93..1008."
+    },
+    {
+      "id": "size-does-not-prove-transaction-gate",
+      "status": "NOT_EVALUATED",
+      "finding": "No full transaction was executed with a theoretical-maximum frontier proof.",
+      "evidence": "The 64/96 numbers at the theoretical maximum are floor-only projections; execution is intentionally not borrowed from another proof."
+    },
+    {
+      "id": "active-a-gate",
+      "status": "FAIL_MEASURED",
+      "finding": "The 60-proof active transaction corpus does not satisfy a universal A-call EIP-7825 gate.",
+      "evidence": "9/60 A calls exceed 16777216 gas; 0/60 B calls exceed it."
+    },
+    {
+      "id": "canonical-calldata-not-retained",
+      "status": "NOT_EVALUATED",
+      "finding": "The canonical report fixture's exact full ABI byte distribution cannot be reconstructed from this fixture directory.",
+      "evidence": "Only part-a.pqtc and part-b.pqtc are retained there. Reported transaction gas is preserved separately rather than inferred."
+    },
+    {
+      "id": "full-query-collisions-rare-not-absent",
+      "status": "CONFIRMED_NEGATIVE",
+      "finding": "The retained corpus does not support an assumption that all 32 transcript indices are unique.",
+      "evidence": "v03-corpus-22, v03-fixed-06, and v03-fixed-25 each have 31 unique indices."
+    }
+  ]
+}

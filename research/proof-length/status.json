@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "study": "v0.3-proof-length-frontiers",
+  "status": "COMPLETE_WITH_ACTIVE_GATE_FAILURE",
+  "checks": {
+    "retained_proofs_structurally_parsed": 60,
+    "retained_proofs_byte_ledgers_exact": 60,
+    "retained_metadata_native_verified": 60,
+    "retained_metadata_codec_roundtrip_verified": 60,
+    "canonical_report_fixture_parsed": true,
+    "frontiers_recomputed_from_query_indices": true,
+    "dynamic_program_extrema_cross_checked_with_witnesses": true,
+    "mutation_checks_passed": 5,
+    "unknown_raw_proof_byte_components": 0
+  },
+  "results": {
+    "theoretical_half_frontier_min_digests": 93,
+    "theoretical_half_frontier_max_digests": 1008,
+    "theoretical_pair_raw_proof_max_bytes": 224108,
+    "theoretical_max_part_abi_calldata_bytes": 112420,
+    "observed_pair_raw_proof_min_bytes": 198052,
+    "observed_pair_raw_proof_max_bytes": 213804,
+    "part_a_active_eip7825_breaches": "9/60",
+    "part_b_active_eip7825_breaches": "0/60"
+  },
+  "gates": {
+    "proof_size_bound": "PASS_EXACT",
+    "active_full_transaction": "FAIL_MEASURED_CORPUS",
+    "theoretical_maximum_full_transaction": "NOT_EVALUATED",
+    "uniform_64_96_full_transaction": "FLOOR_ONLY_PROJECTION"
+  }
+}
