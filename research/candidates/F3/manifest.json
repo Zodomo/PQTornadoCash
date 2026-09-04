@@ -1,0 +1,61 @@
+{
+  "candidateId": "F3",
+  "spikeId": "SP-40",
+  "status": "BENCHMARK_ONLY",
+  "noCode": false,
+  "completeProofClaimed": false,
+  "pinnedPlonky3Commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+  "field": {
+    "base": "Goldilocks",
+    "modulus": "18446744069414584321",
+    "modulusBitsCeil": 64,
+    "challengeDegree": 2,
+    "irreduciblePolynomial": "x^2 - 7",
+    "challengeSpaceBitsApprox": 127.999999999,
+    "challengeSpaceBitsFloor": 127,
+    "conservativeEntropyBudgetBits": 127,
+    "entropyQualification": "field-cardinality ceiling only; not a complete protocol soundness or QROM bound",
+    "baseTwoAdicity": 32,
+    "challengeTwoAdicity": 33
+  },
+  "encoding": {
+    "canonicalBaseBytes": 8,
+    "canonicalExtensionBytes": 16,
+    "raw": "canonical fixed-width big-endian coefficients, least-degree coefficient first",
+    "abi": "uint256 per canonical coefficient",
+    "abiBaseBytes": 32,
+    "abiExtensionBytes": 64,
+    "distributionEvidence": "vectors.json distribution over 4096 deterministic values",
+    "openedRowFloorEvidence": "../field-bakeoff-common/outputs/projection-latest.json (64 and 96 rows at 190 columns)"
+  },
+  "parameterAvailability": "Pinned default Goldilocks Poseidon2 width 8/12/16 constructors and known-answer tests are present.",
+  "compatibility": "Pinned p3-goldilocks supplies the quadratic extension, optimized DFT, and generic multiplicative p3-fri compatibility.",
+  "fieldSpecificAttackReview": "The pseudo-Mersenne reduction and redundant internal representations make canonical serialization checks security-critical. Goldilocks-specific algebraic analyses remain required; no candidate-specific break is asserted.",
+  "implementationMaturity": "HIGH_LIBRARY_MEDIUM_INTEGRATION: optimized upstream arithmetic exists; PQTornado's Solidity verifier and codec have not been ported.",
+  "paretoStatus": "UNRANKED_MEASUREMENTS_AND_COMPLETE_PROOF_REQUIRED",
+  "gate": {
+    "passed": false,
+    "reason": "No candidate may pass on microbench and byte floors alone; complete proof bytes, total EVM gas, prover time, soundness, and maturity are not all evidenced."
+  },
+  "artifacts": [
+    "ADR.md",
+    "assumptions.md",
+    "negative-results.md",
+    "status.json",
+    "vectors.json",
+    "source-evidence.json",
+    "../field-bakeoff-common/native/Cargo.lock",
+    "../field-bakeoff-common/native/src/main.rs",
+    "../field-bakeoff-common/solidity/src/FieldBakeoff.sol",
+    "../field-bakeoff-common/solidity/test/FieldBakeoff.t.sol",
+    "../field-bakeoff-common/outputs/native-latest.json",
+    "../field-bakeoff-common/outputs/solidity-latest.json",
+    "../field-bakeoff-common/outputs/projection-latest.json"
+  ],
+  "commands": {
+    "native": "cargo run --release --locked --manifest-path research/candidates/field-bakeoff-common/native/Cargo.toml -- --iterations 64 --rows 256 --columns 190 --out research/candidates/field-bakeoff-common/outputs/native-latest.json",
+    "solidity": "python3 research/candidates/field-bakeoff-common/solidity/run_bench.py --out research/candidates/field-bakeoff-common/outputs/solidity-latest.json"
+  },
+  "publicNetworkExecution": "PROHIBITED",
+  "productionSecrets": "PROHIBITED"
+}

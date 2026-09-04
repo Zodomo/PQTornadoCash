@@ -1,0 +1,61 @@
+{
+  "candidateId": "F0",
+  "spikeId": "SP-40",
+  "status": "BENCHMARK_ONLY",
+  "noCode": false,
+  "completeProofClaimed": false,
+  "pinnedPlonky3Commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+  "field": {
+    "base": "BabyBear",
+    "modulus": "2013265921",
+    "modulusBitsCeil": 31,
+    "challengeDegree": 4,
+    "irreduciblePolynomial": "x^4 - 11",
+    "challengeSpaceBitsApprox": 123.627562385,
+    "challengeSpaceBitsFloor": 123,
+    "conservativeEntropyBudgetBits": 123,
+    "entropyQualification": "field-cardinality ceiling only; not a complete protocol soundness or QROM bound",
+    "baseTwoAdicity": 27,
+    "challengeTwoAdicity": 29
+  },
+  "encoding": {
+    "canonicalBaseBytes": 4,
+    "canonicalExtensionBytes": 16,
+    "raw": "canonical fixed-width big-endian coefficients, least-degree coefficient first",
+    "abi": "uint256 per canonical coefficient",
+    "abiBaseBytes": 32,
+    "abiExtensionBytes": 128,
+    "distributionEvidence": "vectors.json distribution over 4096 deterministic values",
+    "openedRowFloorEvidence": "../field-bakeoff-common/outputs/projection-latest.json (64 and 96 rows at 190 columns)"
+  },
+  "parameterAvailability": "Pinned default BabyBear Poseidon2 width 16/24/32 constructors and known-answer tests are present.",
+  "compatibility": "Pinned p3-baby-bear implements the degree-four binomial extension and multiplicative two-adic DFT/FRI path used by the frozen UniSTARK baseline.",
+  "fieldSpecificAttackReview": "Small-characteristic and extension-field algebraic/subfield structure must be included in protocol soundness analysis; a challenge can lie in the base subfield. No candidate-specific break is asserted.",
+  "implementationMaturity": "HIGH_RELATIVE: this is the frozen baseline field stack, but the SP-40 Solidity harness remains research code.",
+  "paretoStatus": "UNRANKED_MEASUREMENTS_AND_COMPLETE_PROOF_REQUIRED",
+  "gate": {
+    "passed": false,
+    "reason": "No candidate may pass on microbench and byte floors alone; complete proof bytes, total EVM gas, prover time, soundness, and maturity are not all evidenced."
+  },
+  "artifacts": [
+    "ADR.md",
+    "assumptions.md",
+    "negative-results.md",
+    "status.json",
+    "vectors.json",
+    "source-evidence.json",
+    "../field-bakeoff-common/native/Cargo.lock",
+    "../field-bakeoff-common/native/src/main.rs",
+    "../field-bakeoff-common/solidity/src/FieldBakeoff.sol",
+    "../field-bakeoff-common/solidity/test/FieldBakeoff.t.sol",
+    "../field-bakeoff-common/outputs/native-latest.json",
+    "../field-bakeoff-common/outputs/solidity-latest.json",
+    "../field-bakeoff-common/outputs/projection-latest.json"
+  ],
+  "commands": {
+    "native": "cargo run --release --locked --manifest-path research/candidates/field-bakeoff-common/native/Cargo.toml -- --iterations 64 --rows 256 --columns 190 --out research/candidates/field-bakeoff-common/outputs/native-latest.json",
+    "solidity": "python3 research/candidates/field-bakeoff-common/solidity/run_bench.py --out research/candidates/field-bakeoff-common/outputs/solidity-latest.json"
+  },
+  "publicNetworkExecution": "PROHIBITED",
+  "productionSecrets": "PROHIBITED"
+}

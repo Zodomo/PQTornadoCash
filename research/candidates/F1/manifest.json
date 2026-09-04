@@ -1,0 +1,61 @@
+{
+  "candidateId": "F1",
+  "spikeId": "SP-40",
+  "status": "BENCHMARK_ONLY",
+  "noCode": false,
+  "completeProofClaimed": false,
+  "pinnedPlonky3Commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+  "field": {
+    "base": "KoalaBear",
+    "modulus": "2130706433",
+    "modulusBitsCeil": 31,
+    "challengeDegree": 4,
+    "irreduciblePolynomial": "x^4 - 3",
+    "challengeSpaceBitsApprox": 123.95473875,
+    "challengeSpaceBitsFloor": 123,
+    "conservativeEntropyBudgetBits": 123,
+    "entropyQualification": "field-cardinality ceiling only; not a complete protocol soundness or QROM bound",
+    "baseTwoAdicity": 24,
+    "challengeTwoAdicity": 26
+  },
+  "encoding": {
+    "canonicalBaseBytes": 4,
+    "canonicalExtensionBytes": 16,
+    "raw": "canonical fixed-width big-endian coefficients, least-degree coefficient first",
+    "abi": "uint256 per canonical coefficient",
+    "abiBaseBytes": 32,
+    "abiExtensionBytes": 128,
+    "distributionEvidence": "vectors.json distribution over 4096 deterministic values",
+    "openedRowFloorEvidence": "../field-bakeoff-common/outputs/projection-latest.json (64 and 96 rows at 190 columns)"
+  },
+  "parameterAvailability": "Pinned default KoalaBear Poseidon2 width 16/24/32 constructors and known-answer tests are present.",
+  "compatibility": "Pinned p3-koala-bear implements the degree-four binomial extension and the generic p3-dft/p3-fri multiplicative-domain interfaces.",
+  "fieldSpecificAttackReview": "The same small-characteristic, subfield-challenge, and algebraic-permutation analyses required for BabyBear remain required; no candidate-specific break is asserted.",
+  "implementationMaturity": "HIGH_LIBRARY_MEDIUM_INTEGRATION: optimized pinned field and permutation code exist; the frozen PQTornado relation has not been ported.",
+  "paretoStatus": "UNRANKED_MEASUREMENTS_AND_COMPLETE_PROOF_REQUIRED",
+  "gate": {
+    "passed": false,
+    "reason": "No candidate may pass on microbench and byte floors alone; complete proof bytes, total EVM gas, prover time, soundness, and maturity are not all evidenced."
+  },
+  "artifacts": [
+    "ADR.md",
+    "assumptions.md",
+    "negative-results.md",
+    "status.json",
+    "vectors.json",
+    "source-evidence.json",
+    "../field-bakeoff-common/native/Cargo.lock",
+    "../field-bakeoff-common/native/src/main.rs",
+    "../field-bakeoff-common/solidity/src/FieldBakeoff.sol",
+    "../field-bakeoff-common/solidity/test/FieldBakeoff.t.sol",
+    "../field-bakeoff-common/outputs/native-latest.json",
+    "../field-bakeoff-common/outputs/solidity-latest.json",
+    "../field-bakeoff-common/outputs/projection-latest.json"
+  ],
+  "commands": {
+    "native": "cargo run --release --locked --manifest-path research/candidates/field-bakeoff-common/native/Cargo.toml -- --iterations 64 --rows 256 --columns 190 --out research/candidates/field-bakeoff-common/outputs/native-latest.json",
+    "solidity": "python3 research/candidates/field-bakeoff-common/solidity/run_bench.py --out research/candidates/field-bakeoff-common/outputs/solidity-latest.json"
+  },
+  "publicNetworkExecution": "PROHIBITED",
+  "productionSecrets": "PROHIBITED"
+}

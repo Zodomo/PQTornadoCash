@@ -1,0 +1,61 @@
+{
+  "candidateId": "F2",
+  "spikeId": "SP-40",
+  "status": "BENCHMARK_ONLY",
+  "noCode": false,
+  "completeProofClaimed": false,
+  "pinnedPlonky3Commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+  "field": {
+    "base": "KoalaBear",
+    "modulus": "2130706433",
+    "modulusBitsCeil": 31,
+    "challengeDegree": 5,
+    "irreduciblePolynomial": "x^5 + x^2 - 1",
+    "challengeSpaceBitsApprox": 154.943423437,
+    "challengeSpaceBitsFloor": 154,
+    "conservativeEntropyBudgetBits": 154,
+    "entropyQualification": "field-cardinality ceiling only; not a complete protocol soundness or QROM bound",
+    "baseTwoAdicity": 24,
+    "challengeTwoAdicity": 24
+  },
+  "encoding": {
+    "canonicalBaseBytes": 4,
+    "canonicalExtensionBytes": 20,
+    "raw": "canonical fixed-width big-endian coefficients, least-degree coefficient first",
+    "abi": "uint256 per canonical coefficient",
+    "abiBaseBytes": 32,
+    "abiExtensionBytes": 160,
+    "distributionEvidence": "vectors.json distribution over 4096 deterministic values",
+    "openedRowFloorEvidence": "../field-bakeoff-common/outputs/projection-latest.json (64 and 96 rows at 190 columns)"
+  },
+  "parameterAvailability": "The application permutation remains the pinned KoalaBear base-field Poseidon2; no separate extension permutation is required by this microbench.",
+  "compatibility": "Pinned p3-field exports QuinticTrinomialExtensionField and pinned p3-koala-bear implements x^5+x^2-1 arithmetic, Frobenius data, and a two-adic extension generator; generic FRI traits can use it after a complete configuration is selected.",
+  "fieldSpecificAttackReview": "A larger challenge space does not replace FRI, DEEP, hiding, and QROM analyses. Quintic subfield events and algebraic structure remain explicit proof obligations; no candidate-specific break is asserted.",
+  "implementationMaturity": "MEDIUM: the specialized quintic is implemented and tested upstream, but it is not the frozen PQTornado challenge field and has no EVM integration history here.",
+  "paretoStatus": "UNRANKED_MEASUREMENTS_AND_COMPLETE_PROOF_REQUIRED",
+  "gate": {
+    "passed": false,
+    "reason": "No candidate may pass on microbench and byte floors alone; complete proof bytes, total EVM gas, prover time, soundness, and maturity are not all evidenced."
+  },
+  "artifacts": [
+    "ADR.md",
+    "assumptions.md",
+    "negative-results.md",
+    "status.json",
+    "vectors.json",
+    "source-evidence.json",
+    "../field-bakeoff-common/native/Cargo.lock",
+    "../field-bakeoff-common/native/src/main.rs",
+    "../field-bakeoff-common/solidity/src/FieldBakeoff.sol",
+    "../field-bakeoff-common/solidity/test/FieldBakeoff.t.sol",
+    "../field-bakeoff-common/outputs/native-latest.json",
+    "../field-bakeoff-common/outputs/solidity-latest.json",
+    "../field-bakeoff-common/outputs/projection-latest.json"
+  ],
+  "commands": {
+    "native": "cargo run --release --locked --manifest-path research/candidates/field-bakeoff-common/native/Cargo.toml -- --iterations 64 --rows 256 --columns 190 --out research/candidates/field-bakeoff-common/outputs/native-latest.json",
+    "solidity": "python3 research/candidates/field-bakeoff-common/solidity/run_bench.py --out research/candidates/field-bakeoff-common/outputs/solidity-latest.json"
+  },
+  "publicNetworkExecution": "PROHIBITED",
+  "productionSecrets": "PROHIBITED"
+}

@@ -1,0 +1,61 @@
+{
+  "candidateId": "F5",
+  "spikeId": "SP-40",
+  "status": "BENCHMARK_ONLY",
+  "noCode": false,
+  "completeProofClaimed": false,
+  "pinnedPlonky3Commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+  "field": {
+    "base": "BN254 scalar field",
+    "modulus": "21888242871839275222246405745257275088548364400416034343698204186575808495617",
+    "modulusBitsCeil": 254,
+    "challengeDegree": 1,
+    "irreduciblePolynomial": "none (base-field challenge)",
+    "challengeSpaceBitsApprox": 253.596691355,
+    "challengeSpaceBitsFloor": 253,
+    "conservativeEntropyBudgetBits": 253,
+    "entropyQualification": "field-cardinality ceiling only; not a complete protocol soundness or QROM bound",
+    "baseTwoAdicity": 28,
+    "challengeTwoAdicity": 28
+  },
+  "encoding": {
+    "canonicalBaseBytes": 32,
+    "canonicalExtensionBytes": 32,
+    "raw": "canonical fixed-width big-endian coefficients, least-degree coefficient first",
+    "abi": "uint256 per canonical coefficient",
+    "abiBaseBytes": 32,
+    "abiExtensionBytes": 32,
+    "distributionEvidence": "vectors.json distribution over 4096 deterministic values",
+    "openedRowFloorEvidence": "../field-bakeoff-common/outputs/projection-latest.json (64 and 96 rows at 190 columns)"
+  },
+  "parameterAvailability": "Pinned p3-bn254 exports a Poseidon2 type and round-count constants but no reviewed default-constant constructor, so permutation benchmarking stops rather than inventing constants.",
+  "compatibility": "Pinned p3-bn254 implements Field and TwoAdicField, so generic p3-dft/p3-fri arithmetic interfaces are available. A complete hash/MMCS/transcript/PCS instantiation is not frozen.",
+  "fieldSpecificAttackReview": "Large-prime arithmetic avoids extension subfields but does not remove Fiat-Shamir, FRI, grinding, hiding, or QROM obligations. Canonical 254-bit decoding is mandatory.",
+  "implementationMaturity": "MEDIUM_FIELD_LOW_STACK: pinned scalar arithmetic exists; no frozen PQTornado application permutation, PCS, Solidity codec, or complete proof uses this field.",
+  "paretoStatus": "UNRANKED_MEASUREMENTS_AND_COMPLETE_PROOF_REQUIRED",
+  "gate": {
+    "passed": false,
+    "reason": "No candidate may pass on microbench and byte floors alone; complete proof bytes, total EVM gas, prover time, soundness, and maturity are not all evidenced."
+  },
+  "artifacts": [
+    "ADR.md",
+    "assumptions.md",
+    "negative-results.md",
+    "status.json",
+    "vectors.json",
+    "source-evidence.json",
+    "../field-bakeoff-common/native/Cargo.lock",
+    "../field-bakeoff-common/native/src/main.rs",
+    "../field-bakeoff-common/solidity/src/FieldBakeoff.sol",
+    "../field-bakeoff-common/solidity/test/FieldBakeoff.t.sol",
+    "../field-bakeoff-common/outputs/native-latest.json",
+    "../field-bakeoff-common/outputs/solidity-latest.json",
+    "../field-bakeoff-common/outputs/projection-latest.json"
+  ],
+  "commands": {
+    "native": "cargo run --release --locked --manifest-path research/candidates/field-bakeoff-common/native/Cargo.toml -- --iterations 64 --rows 256 --columns 190 --out research/candidates/field-bakeoff-common/outputs/native-latest.json",
+    "solidity": "python3 research/candidates/field-bakeoff-common/solidity/run_bench.py --out research/candidates/field-bakeoff-common/outputs/solidity-latest.json"
+  },
+  "publicNetworkExecution": "PROHIBITED",
+  "productionSecrets": "PROHIBITED"
+}

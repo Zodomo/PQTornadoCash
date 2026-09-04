@@ -1,0 +1,23 @@
+{
+  "candidateId": "F4",
+  "status": "BENCHMARK_ONLY",
+  "gate": "NOT_PASSED",
+  "paretoStatus": "UNRANKED_MEASUREMENTS_AND_COMPLETE_PROOF_REQUIRED",
+  "completeProof": "NOT_ATTEMPTED_IN_SP40_MICROBENCH",
+  "evmCompleteVerification": "NOT_ATTEMPTED",
+  "nativeOutput": "../field-bakeoff-common/outputs/native-latest.json",
+  "solidityOutput": "../field-bakeoff-common/outputs/solidity-latest.json",
+  "measuredEvidence": [
+    "native arithmetic, FFT/LDE, permutation, scaling, and process RSS",
+    "Solidity arithmetic and canonicality gas",
+    "deterministic vectors",
+    "encoding and opened-row byte/gas floors"
+  ],
+  "unmeasuredGates": [
+    "complete proof bytes",
+    "complete EVM execution gas",
+    "prover time on a ported relation",
+    "complete protocol soundness",
+    "audited implementation maturity"
+  ]
+}

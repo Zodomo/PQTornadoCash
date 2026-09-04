@@ -1,0 +1,547 @@
+{
+  "schema_version": 1,
+  "research_cutoff": "2026-09-04",
+  "evidence_class": "SOURCE_RESEARCH",
+  "scope": {
+    "candidate_qualification": false,
+    "measured_evidence": false,
+    "source_research_only": true,
+    "commands_run_by_source_researcher": false,
+    "note": "No build, test, benchmark, formatter, or reproduction command was run by the source researcher. Commands elsewhere in this package are identified upstream entrypoints only. All quoted timing, size, and gas figures are upstream measurements, not PQTC measurements."
+  },
+  "status_vocabulary": [
+    "PASS",
+    "BENCHMARK_ONLY",
+    "DEFERRED",
+    "STOP"
+  ],
+  "status_semantics": {
+    "PASS": "A published construction and public implementation are sufficient to build the PQTC relation without designing a new hiding protocol; this does not mean an EVM verifier exists or has passed measurement.",
+    "BENCHMARK_ONLY": "Only a labeled non-hiding lower-bound measurement is permitted.",
+    "DEFERRED": "The theory is plausible, but a required implementation, composition, verifier, or theorem is absent.",
+    "STOP": "The named route cannot satisfy the PQTC spike as currently published."
+  },
+  "upstream_pins": [
+    {
+      "name": "Plonky3",
+      "version": "0.6.0",
+      "repository": "https://github.com/Plonky3/Plonky3",
+      "commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+      "source_ids": ["S2", "S3", "S4", "S5", "S7", "S11"]
+    },
+    {
+      "name": "WizardOfMenlo/stir",
+      "version": "0.1.0",
+      "repository": "https://github.com/WizardOfMenlo/stir",
+      "commit": "51064ebd45667dae3b499539f4476ba6d8527610",
+      "source_ids": ["S8"]
+    },
+    {
+      "name": "starkware-libs/stwo",
+      "version": null,
+      "repository": "https://github.com/starkware-libs/stwo",
+      "commit": "826591c",
+      "source_ids": []
+    },
+    {
+      "name": "starkware-libs/proving",
+      "version": "2.4.0",
+      "repository": "https://github.com/starkware-libs/proving",
+      "commit": "cd7bc5f4697fb188a27e09f9242f1dd76df8afdc",
+      "source_ids": []
+    },
+    {
+      "name": "ethereum/spartan-whir",
+      "version": "0.1.0",
+      "repository": "https://github.com/ethereum/spartan-whir",
+      "commit": "f525cddea38bb605304d3a8e6394dda10ac64b4a",
+      "source_ids": ["S12", "S13", "S14", "S33"]
+    },
+    {
+      "name": "ethereum/sol-spartan-whir",
+      "version": null,
+      "repository": "https://github.com/ethereum/sol-spartan-whir",
+      "commit": "b381a9091568d1a4a52b50d0b27488a767051faf",
+      "source_ids": ["S16", "S17"]
+    },
+    {
+      "name": "alxkzmn/spartan-whir-export",
+      "version": null,
+      "repository": "https://github.com/alxkzmn/spartan-whir-export",
+      "commit": "ec7c24f451f208debf86144d45bb3441e9d85cc4",
+      "source_ids": ["S15"]
+    },
+    {
+      "name": "privacy-ethereum/sol-whir",
+      "version": null,
+      "repository": "https://github.com/privacy-ethereum/sol-whir",
+      "commit": "b719b97b5961ac1c1679383b31e55439a26682f9",
+      "source_ids": []
+    },
+    {
+      "name": "Plonky3-recursion",
+      "version": "0.1.0",
+      "repository": "https://github.com/Plonky3/Plonky3-recursion",
+      "commit": "34e3a2c3837834a7bf98a0b65063e0180e7fbb7b",
+      "source_ids": ["S18", "S19", "S20", "S21"]
+    },
+    {
+      "name": "succinctlabs/flock",
+      "version": "0.1.0",
+      "repository": "https://github.com/succinctlabs/flock",
+      "commit": "43f0eee06d887d87ad25d72614cbc2b17fe91430",
+      "source_ids": ["S23"]
+    },
+    {
+      "name": "succinctlabs/flock historical Keccak parent",
+      "version": null,
+      "repository": "https://github.com/succinctlabs/flock",
+      "commit": "c2d0c2485a54f7b7694e19f4f59730ffde3405cf",
+      "source_ids": ["S24", "S25", "S26", "S27"]
+    },
+    {
+      "name": "succinctlabs/flock Keccak retirement",
+      "version": null,
+      "repository": "https://github.com/succinctlabs/flock",
+      "commit": "0f0d63268e1373c585251e95152b3a6943e2d818",
+      "source_ids": ["S24"]
+    },
+    {
+      "name": "succinctlabs/sp1 VEIL",
+      "version": "6.6.0",
+      "repository": "https://github.com/succinctlabs/sp1",
+      "commit": "6d7ee5c091ad19e957a5faa5869de8739a76aa78",
+      "source_ids": ["S31", "S32"]
+    }
+  ],
+  "papers": [
+    {"name": "HVZK-WHIR", "identifier": "ePrint 2026/391", "source_ids": ["S1"]},
+    {"name": "STIR", "identifier": "ePrint 2024/390", "source_ids": ["S6"]},
+    {"name": "Circle STARKs", "identifier": "ePrint 2024/278", "source_ids": ["S9", "S10"]},
+    {"name": "Flock", "identifier": "arXiv:2607.27491 v1", "source_ids": ["S22"]},
+    {"name": "VEIL", "identifier": "ePrint 2026/683", "source_ids": ["S28", "S29", "S30"]}
+  ],
+  "license_gates": [
+    {
+      "id": "L1",
+      "repositories": ["Plonky3 0.6.0", "Plonky3-recursion 0.1.0", "Flock 0.1.0", "SP1/VEIL 6.6.0"],
+      "finding": "Declared license is MIT OR Apache-2.0.",
+      "gate": "CLEAR_FOR_RESEARCH; recheck distribution obligations before integration.",
+      "source_ids": ["S5", "S21", "S23", "S31"]
+    },
+    {
+      "id": "L2",
+      "repositories": ["WizardOfMenlo/stir"],
+      "finding": "The inspected repository carries MIT and Apache-2.0 license files.",
+      "gate": "CLEAR_FOR_RESEARCH; implementation is separately marked unreviewed and not production-ready.",
+      "source_ids": ["S8"]
+    },
+    {
+      "id": "L3",
+      "repositories": ["starkware-libs/proving"],
+      "finding": "Declared license is Apache-2.0.",
+      "gate": "CLEAR_FOR_RESEARCH; recheck the current successor tree before integration.",
+      "source_ids": []
+    },
+    {
+      "id": "L4",
+      "repositories": ["privacy-ethereum/sol-whir"],
+      "finding": "Declared license is MIT; repository is archived.",
+      "gate": "ARCHIVED_REFERENCE_ONLY.",
+      "source_ids": []
+    },
+    {
+      "id": "L5",
+      "repositories": ["ethereum/spartan-whir", "ethereum/sol-spartan-whir"],
+      "finding": "No GitHub license was detected and no complete LICENSE file was found at the inspected commits; the Solidity README merely ends with 'MIT'.",
+      "gate": "BLOCKED_FOR_COPY_OR_REDISTRIBUTION until an explicit license grant is obtained.",
+      "source_ids": ["S12", "S17"]
+    }
+  ],
+  "breaking_changes": [
+    {
+      "id": "B1",
+      "finding": "Plonky3-recursion at the inspected commit uses Plonky3 0.7.0 and is not directly dependency-compatible with the mandated Plonky3 0.6.0 commit 3152b14a89067c83775a8076cc262ffc48a1fd7c.",
+      "source_ids": ["S5", "S21"]
+    },
+    {
+      "id": "B2",
+      "finding": "Flock commit 0f0d63268e1373c585251e95152b3a6943e2d818 removed both Keccak encoders, all Keccak benches, and their only consumers. Batch-44 is reproducible only at historical parent c2d0c2485a54f7b7694e19f4f59730ffde3405cf.",
+      "source_ids": ["S24", "S25", "S26", "S27"]
+    },
+    {
+      "id": "B3",
+      "finding": "The Stwo development repository states that development moved to starkware-libs/proving; conclusions must not rely only on the older starkware-libs/stwo tree.",
+      "source_ids": []
+    },
+    {
+      "id": "B4",
+      "finding": "spartan-whir-export intentionally does not depend on current client-side spartan-whir; its Spartan fixtures are schema placeholders around a real standalone plain-WHIR proof.",
+      "source_ids": ["S15", "S16"]
+    },
+    {
+      "id": "B5",
+      "finding": "privacy-ethereum/sol-whir is archived and remains tied to the older plain-WHIR proof format.",
+      "source_ids": []
+    }
+  ],
+  "negative_results": [
+    {
+      "finding": "No public hiding-WHIR Solidity verifier matching HidingWhirPcs was located.",
+      "bounded_scope": "Inspected official repositories, issues, and papers at the recorded commits and cutoff.",
+      "source_ids": ["S2", "S4", "S15", "S16", "S17"]
+    },
+    {
+      "finding": "No public generic hiding STIR PCS or generic Solidity verifier for TwoAdicStirPcs was located.",
+      "bounded_scope": "Inspected official repositories, issues, and papers at the recorded commits and cutoff.",
+      "source_ids": ["S6", "S7", "S8"]
+    },
+    {
+      "finding": "No implemented hiding CirclePcs or reusable public Circle-FRI Solidity verifier matching the inspected proof shape was located.",
+      "bounded_scope": "Inspected official repositories, issues, and papers at the recorded commits and cutoff.",
+      "source_ids": ["S9", "S10", "S11"]
+    },
+    {
+      "finding": "No full Spartan Solidity verifier exists in the inspected sol-spartan-whir line; checked fixtures contain placeholders around standalone plain WHIR.",
+      "bounded_scope": "Inspected exporter and Solidity repositories at the recorded commits.",
+      "source_ids": ["S15", "S16"]
+    },
+    {
+      "finding": "No EVM verifier or gas/calldata path was located for Plonky3 recursion.",
+      "bounded_scope": "Inspected official recursion repository and referenced paths at the recorded commit.",
+      "source_ids": ["S18", "S19", "S20", "S21"]
+    },
+    {
+      "finding": "Current Flock has no Keccak prover and the official tree has no Solidity, Yul, or EVM verifier; the paper states the implementation is not zero knowledge.",
+      "bounded_scope": "Inspected official Flock paper and repository at the recorded commits.",
+      "source_ids": ["S22", "S23", "S24"]
+    },
+    {
+      "finding": "No VEIL binary-field Flock adapter, Flock verifier compiler, transcript binding analysis, or EVM backend was located.",
+      "bounded_scope": "Inspected VEIL paper and PoC at the recorded commit.",
+      "source_ids": ["S28", "S29", "S30", "S31", "S32"]
+    },
+    {
+      "finding": "No concrete QROM reduction was located for any inspected implementation-specific Poseidon or Keccak Fiat-Shamir transcript, for recursion composition, for STIR, for CirclePcs, for Flock, or for VEIL's PoC.",
+      "bounded_scope": "Inspected official repositories, issues, and papers at the recorded commits and cutoff.",
+      "source_ids": ["S1", "S6", "S10", "S13", "S18", "S22", "S28", "S30"]
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "repository": "https://eprint.iacr.org/2026/391",
+      "commit": null,
+      "path": "2026/391",
+      "line_start": 1,
+      "line_end": 17,
+      "quotation": "We present an IOP of proximity for testing constrained interleaved linear codes that achieves (honest-verifier) zero-knowledge... our construction satisfies round-by-round knowledge soundness with a straightline extractor and negligible error... [and] a definition of (honest-verifier) zero-knowledge for interactive oracle reductions (IORs) that we prove is compatible with composition."
+    },
+    {
+      "id": "S2",
+      "repository": "https://github.com/Plonky3/Plonky3",
+      "commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+      "path": "whir/src/pcs/zk/mod.rs",
+      "line_start": 1,
+      "line_end": 43,
+      "quotation": "//! HVZK-WHIR: honest-verifier zero-knowledge WHIR pipeline.\n//!\n//! Composes eprint 2026/391 into a hiding multilinear commitment scheme:\n//!\n//!     commit   : interleaved ZK Reed-Solomon encoding of the witness\n//!     fold     : masked sumcheck batches\n//!     reduce   : HVZK code-switching rounds\n//!     finish   : non-succinct masked base case"
+    },
+    {
+      "id": "S3",
+      "repository": "https://github.com/Plonky3/Plonky3",
+      "commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+      "path": "whir/src/pcs/zk/security.rs",
+      "line_start": 25,
+      "line_end": 30,
+      "quotation": "/// Reports the heterogeneous hiding base case's ideal-IOP RBR terms.\n///\n/// This is diagnostic only: it neither rejects the configuration nor\n/// certifies the compiled PCS or the preceding hiding reductions."
+    },
+    {
+      "id": "S4",
+      "repository": "https://github.com/Plonky3/Plonky3",
+      "commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+      "path": "whir/src/pcs/zk/adapter.rs",
+      "line_start": 22,
+      "line_end": 66,
+      "quotation": "/// A hiding WHIR PCS, mirroring the hiding FRI adapter.\n///\n/// - Opening a set of evaluation claims reveals exactly those evaluations.\n/// - Nothing else about the committed polynomial leaks.\n/// - The guarantee is honest-verifier zero knowledge (eprint 2026/391).\n...\n/// Zero knowledge holds only if `rng` is a cryptographically secure\n/// generator; a predictable stream lets an observer strip every mask and\n/// recover the witness from the reveals."
+    },
+    {
+      "id": "S5",
+      "repository": "https://github.com/Plonky3/Plonky3",
+      "commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+      "path": "Cargo.toml",
+      "line_start": 152,
+      "line_end": 160,
+      "quotation": "p3-whir = { path = \"whir\", version = \"0.6.0\" }\n...\nversion = \"0.6.0\"\nedition = \"2024\"\nlicense = \"MIT OR Apache-2.0\""
+    },
+    {
+      "id": "S6",
+      "repository": "https://eprint.iacr.org/2024/390",
+      "commit": null,
+      "path": "2024/390",
+      "line_start": 1,
+      "line_end": 16,
+      "quotation": "We present STIR (Shift To Improve Rate), an interactive oracle proof of proximity (IOPP) for Reed-Solomon codes... For λ bits of security, STIR has query complexity O(log d + λ · log log d)... We provide an implementation of STIR compiled to a SNARK."
+    },
+    {
+      "id": "S7",
+      "repository": "https://github.com/Plonky3/Plonky3",
+      "commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+      "path": "stir/src/pcs.rs",
+      "line_start": 303,
+      "line_end": 345,
+      "quotation": "impl<Val, Dft, InputMmcs, StirMmcs, Challenge, Challenger> Pcs<Challenge, Challenger>\n    for TwoAdicStirPcs<Val, Dft, InputMmcs, StirMmcs, Challenge, Challenger>\nwhere\n    Val: TwoAdicField,\n...\n    Challenge: ExtensionField<Val> + TwoAdicField + BasedVectorSpace<Val>,\n...\n    const ZK: bool = false;"
+    },
+    {
+      "id": "S8",
+      "repository": "https://github.com/WizardOfMenlo/stir",
+      "commit": "51064ebd45667dae3b499539f4476ba6d8527610",
+      "path": "README.md",
+      "line_start": 1,
+      "line_end": 13,
+      "quotation": "This library was developed using the arkworks ecosystem to accompany STIR... WARNING: This is an academic prototype and has not received careful code review. This implementation is NOT ready for production use."
+    },
+    {
+      "id": "S9",
+      "repository": "https://eprint.iacr.org/2024/278.pdf",
+      "commit": null,
+      "path": "2024/278.pdf",
+      "line_start": 1047,
+      "line_end": 1065,
+      "quotation": "Zero-knowledge is obtained in the usual manner, by inserting sufficient randomness in the encoding of the trace polynomials, and using the [BSCR+19] randomization of FRI, which carries over to the circle without changes. We refer to [HK24] for a detailed description of the randomization, including the component polynomials of the quotient decomposition."
+    },
+    {
+      "id": "S10",
+      "repository": "https://eprint.iacr.org/2024/278.pdf",
+      "commit": null,
+      "path": "2024/278.pdf",
+      "line_start": 907,
+      "line_end": 909,
+      "quotation": "By means of the [BSCS16] transform, the interactive oracle proof can be turned into a SNARK in the random oracle model. We postpone an explicit treatment... to a future version of the paper."
+    },
+    {
+      "id": "S11",
+      "repository": "https://github.com/Plonky3/Plonky3",
+      "commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+      "path": "circle/src/pcs.rs",
+      "line_start": 117,
+      "line_end": 134,
+      "quotation": "impl<Val, InputMmcs, FriMmcs, Challenge, Challenger> Pcs<Challenge, Challenger>\n    for CirclePcs<Val, InputMmcs, FriMmcs>\nwhere\n    Val: ComplexExtendable,\n    Challenge: ExtensionField<Val>,\n...\n    const ZK: bool = false;"
+    },
+    {
+      "id": "S12",
+      "repository": "https://github.com/ethereum/spartan-whir",
+      "commit": "f525cddea38bb605304d3a8e6394dda10ac64b4a",
+      "path": "README.md",
+      "line_start": 177,
+      "line_end": 211,
+      "quotation": "Privacy and matrix closing are independent configuration choices:\n\n| Privacy | DirectSparse | Spark |\n| No ZK | Implemented | Implemented |\n| Full ZK | Implemented | Implemented |\n...\nThe full-ZK API uses `PoseidonZkProvingKey`, `PoseidonZkVerifyingKey`, `PoseidonZkProof`, and `PoseidonZkSpartanProtocol`."
+    },
+    {
+      "id": "S13",
+      "repository": "https://github.com/ethereum/spartan-whir",
+      "commit": "f525cddea38bb605304d3a8e6394dda10ac64b4a",
+      "path": "README.md",
+      "line_start": 292,
+      "line_end": 333,
+      "quotation": "`SecurityConfig` accepts targets from 80 through 123 bits because the eight-element KoalaBear Poseidon digest provides about 123.95 bits of collision security... `PoseidonZkProvingKey::prove` draws mask and WHIR randomness from an operating-system-seeded `StdRng`. `prove_with_rng` accepts a caller-supplied `Rng + CryptoRng`."
+    },
+    {
+      "id": "S14",
+      "repository": "https://github.com/ethereum/spartan-whir",
+      "commit": "f525cddea38bb605304d3a8e6394dda10ac64b4a",
+      "path": "src/poseidon.rs",
+      "line_start": 596,
+      "line_end": 668,
+      "quotation": "pub fn setup(\n    shape: R1csShape<F>,\n    config: PoseidonZkSetupConfig,\n) -> Result<(Self, PoseidonZkVerifyingKey<Ext>), SpartanWhirError>;\n...\npub fn prove(\n    &self,\n    witness: R1csWitness<F>,\n    public_inputs: Vec<F>,\n) -> Result<PoseidonZkProof<Ext>, SpartanWhirError>;\n...\npub fn verify(\n    &self,\n    expected_public_inputs: &[F],\n    proof: &PoseidonZkProof<Ext>,\n) -> Result<(), SpartanWhirError>"
+    },
+    {
+      "id": "S15",
+      "repository": "https://github.com/alxkzmn/spartan-whir-export",
+      "commit": "ec7c24f451f208debf86144d45bb3441e9d85cc4",
+      "path": "README.md",
+      "line_start": 1,
+      "line_end": 27,
+      "quotation": "This exporter belongs to the standalone WHIR Solidity line. It intentionally does not depend on the current client-side `spartan-whir` SNARK... `spartan_placeholder_instance.abi` | Empty Spartan instance for schema testing ... `spartan_placeholder_proof...` | Placeholder Spartan proof wrapping the current quartic PCS proof."
+    },
+    {
+      "id": "S16",
+      "repository": "https://github.com/ethereum/sol-spartan-whir",
+      "commit": "b381a9091568d1a4a52b50d0b27488a767051faf",
+      "path": "test/FixtureDecode_lir6_ff5_rsv1.t.sol",
+      "line_start": 121,
+      "line_end": 152,
+      "quotation": "/// @notice Decodes the Spartan placeholder proof (placeholder outer/inner\n///         sumcheck fields with a real WHIR PCS proof nested inside)...\n/// @notice Decodes the Spartan placeholder instance fixture... and confirms placeholder values (empty public inputs,\n///         zero witness commitment)."
+    },
+    {
+      "id": "S17",
+      "repository": "https://github.com/ethereum/sol-spartan-whir",
+      "commit": "b381a9091568d1a4a52b50d0b27488a767051faf",
+      "path": "README.md",
+      "line_start": 28,
+      "line_end": 68,
+      "quotation": "| achieved security bits | 100.0145 |\n| measured prover time | 274.163664792s |\n| native blob Foundry gas | 5,454,992 |\n| native blob transaction gas | 5,646,080 |\n| native blob execution gas | 4,768,744 |\n| native blob calldata bytes | 54,436 |\n...\nNone of the checked-in quintic native blob verifier variants is deployable as a single contract under EIP-170."
+    },
+    {
+      "id": "S18",
+      "repository": "https://github.com/Plonky3/Plonky3-recursion",
+      "commit": "34e3a2c3837834a7bf98a0b65063e0180e7fbb7b",
+      "path": "README.md",
+      "line_start": 1,
+      "line_end": 16,
+      "quotation": "This library provides a fixed recursive verifier for Plonky3 STARK (both `p3-uni-stark` and `p3-batch-stark` proofs)... ZK support: Full support for Zero-Knowledge.\n...\nThis codebase is under active development and hasn't been audited yet. As such, we do not recommend its use in any production software."
+    },
+    {
+      "id": "S19",
+      "repository": "https://github.com/Plonky3/Plonky3-recursion",
+      "commit": "34e3a2c3837834a7bf98a0b65063e0180e7fbb7b",
+      "path": "recursion/examples/recursive_keccak.rs",
+      "line_start": 691,
+      "line_end": 718,
+      "quotation": "// The base Keccak layer always uses non-ZK uni-stark (p3-uni-stark has no ZK support).\n...\n// all recursive layers here use ConfigWithFriParams. The --zk flag has no\n// effect for recursive_keccak; use recursive_fibonacci for full ZK recursion."
+    },
+    {
+      "id": "S20",
+      "repository": "https://github.com/Plonky3/Plonky3-recursion",
+      "commit": "34e3a2c3837834a7bf98a0b65063e0180e7fbb7b",
+      "path": "recursion/src/pcs/whir/verifier.rs",
+      "line_start": 1,
+      "line_end": 16,
+      "quotation": "//! In-circuit WHIR verifier — mirrors `WhirVerifier::verify`.\n...\n//! This function mirrors `WhirVerifier::verify` (not the full PCS adapter).\n//! The adapter's work — observing the initial commitment, sampling initial OOD\n//! points, processing opening claims, and sampling the batching challenge α —\n//! belongs in items G/H/I and is passed in by the caller."
+    },
+    {
+      "id": "S21",
+      "repository": "https://github.com/Plonky3/Plonky3-recursion",
+      "commit": "34e3a2c3837834a7bf98a0b65063e0180e7fbb7b",
+      "path": "Cargo.toml",
+      "line_start": 1,
+      "line_end": 50,
+      "quotation": "version = \"0.1.0\"\nedition = \"2024\"\nlicense = \"MIT OR Apache-2.0\"\n...\np3-air = \"0.7.0\"\np3-batch-stark = \"0.7.0\"\n...\np3-whir = \"0.7.0\""
+    },
+    {
+      "id": "S22",
+      "repository": "https://arxiv.org/pdf/2607.27491",
+      "commit": null,
+      "path": "2607.27491",
+      "line_start": 110,
+      "line_end": 124,
+      "quotation": "We design and implement Flock, a hash-based post-quantum SNARK for batch Boolean R1CS computations... Security. Flock targets 100 bits of soundness... the remaining soundness assumption is the security of SHA-256, used internally for both Merkle commitments and Fiat-Shamir. Limitations. Flock is a research prototype... the system currently only offers succinctness and not zero-knowledge."
+    },
+    {
+      "id": "S23",
+      "repository": "https://github.com/succinctlabs/flock",
+      "commit": "43f0eee06d887d87ad25d72614cbc2b17fe91430",
+      "path": "README.md",
+      "line_start": 1,
+      "line_end": 11,
+      "quotation": "A Rust implementation of the Flock proving system: a prover and verifier for R1CS-over-GF(2) statements... with a multilinear PCS (Ligerito) over the binary field F₂₁₂₈... It ships end-to-end provers for batched hash statements (BLAKE3 and SHA-256 compressions) and a recursion tower that folds proofs into proofs."
+    },
+    {
+      "id": "S24",
+      "repository": "https://github.com/succinctlabs/flock",
+      "commit": "0f0d63268e1373c585251e95152b3a6943e2d818",
+      "path": "commit/0f0d63268e1373c585251e95152b3a6943e2d818",
+      "line_start": 1,
+      "line_end": 13,
+      "quotation": "retire the Keccak encoders (keccak.rs, keccak3.rs) and everything only they used\n...\nParents: c2d0c2485a54\n...\nkeccak.rs ... and keccak3.rs ... had no production callers."
+    },
+    {
+      "id": "S25",
+      "repository": "https://github.com/succinctlabs/flock",
+      "commit": "c2d0c2485a54f7b7694e19f4f59730ffde3405cf",
+      "path": "crates/flock-prover/benches/keccak3_proof.rs",
+      "line_start": 279,
+      "line_end": 310,
+      "quotation": "if let Ok(s) = std::env::var(\"KECCAK3_KS\") {\n...\nlet counts: Vec<usize> = s.split([',', ' '])...map(|t| t.parse().expect(\"KECCAK3_KS: space/comma-separated integer keccak counts\"))...;\nfor k in counts {\n    bench_3wide_report(k, 3); // best-of-3 trials\n}"
+    },
+    {
+      "id": "S26",
+      "repository": "https://github.com/succinctlabs/flock",
+      "commit": "c2d0c2485a54f7b7694e19f4f59730ffde3405cf",
+      "path": "crates/flock-prover/src/r1cs_hashes/keccak3.rs",
+      "line_start": 142,
+      "line_end": 149,
+      "quotation": "pub fn min_n_blocks_log(n_keccaks: usize) -> usize {\n    assert!(n_keccaks >= 1, \"n_keccaks must be ≥ 1\");\n    let n_blocks = n_keccaks.div_ceil(N_SUB);\n    let n = n_blocks.max(8);\n    (n.next_power_of_two().trailing_zeros() as usize).max(3)\n}"
+    },
+    {
+      "id": "S27",
+      "repository": "https://github.com/succinctlabs/flock",
+      "commit": "c2d0c2485a54f7b7694e19f4f59730ffde3405cf",
+      "path": "crates/flock-prover/src/r1cs_hashes/keccak3.rs",
+      "line_start": 251,
+      "line_end": 278,
+      "quotation": "/// Group a flat list of keccak inputs into 3-wide blocks (padding the final\n/// block's missing sub-keccaks with the all-zero input state, whose witness\n/// is a valid keccak computation)...\n// Constant-wire pin... every block — padding included — must carry a valid keccak computation...\nlet padding: [State; N_SUB] = [zero; N_SUB];"
+    },
+    {
+      "id": "S28",
+      "repository": "https://eprint.iacr.org/2026/683",
+      "commit": null,
+      "path": "2026/683",
+      "line_start": 1,
+      "line_end": 15,
+      "quotation": "We introduce VEIL, a lightweight and non-intrusive compiler for hash-based multilinear proof systems... This results in a simple, plausibly post-quantum, protocol... Our proof-of-concept implementation demonstrates that, over a 31-bit base prime field..."
+    },
+    {
+      "id": "S29",
+      "repository": "https://eprint.iacr.org/2026/683.pdf",
+      "commit": null,
+      "path": "2026/683.pdf",
+      "line_start": 220,
+      "line_end": 236,
+      "quotation": "A Multilinear Interactive Oracle Proof (MIOP) is an IOP that satisfies the following: All messages sent by P are either elements of some finite field F or oracles for evaluations of multilinear polynomials... All messages sent by the verifier are random coin tosses... The verifier accepts or rejects by... only checking polynomial conditions..."
+    },
+    {
+      "id": "S30",
+      "repository": "https://eprint.iacr.org/2026/683.pdf",
+      "commit": null,
+      "path": "2026/683.pdf",
+      "line_start": 80,
+      "line_end": 92,
+      "quotation": "Throughout this work, by zero-knowledge we refer to the notion of honest-verifier zero-knowledge... We do so since honest-verifier zero-knowledge suffices for the Fiat-Shamir transformation."
+    },
+    {
+      "id": "S31",
+      "repository": "https://github.com/succinctlabs/sp1",
+      "commit": "6d7ee5c091ad19e957a5faa5869de8739a76aa78",
+      "path": "slop/crates/veil/README.md",
+      "line_start": 1,
+      "line_end": 18,
+      "quotation": "Warning: This is experimental, proof-of-concept code. It has not been audited and should not be used in production... VEIL is a zero-knowledge wrapper for multilinear interactive oracle proofs (MIOPs)."
+    },
+    {
+      "id": "S32",
+      "repository": "https://github.com/succinctlabs/sp1",
+      "commit": "6d7ee5c091ad19e957a5faa5869de8739a76aa78",
+      "path": "slop/crates/veil/src/zk/stacked_pcs/mod.rs",
+      "line_start": 11,
+      "line_end": 20,
+      "quotation": "use slop_koala_bear::KoalaBearDegree4Duplex;\n\nimpl ZkIopCtx for KoalaBearDegree4Duplex {\n    type PcsProof = ZkStackedPcsProof<KoalaBearDegree4Duplex>;\n    type PcsVerifier = ZkStackedPcsVerifier<Self>;\n}"
+    },
+    {
+      "id": "S33",
+      "repository": "https://github.com/ethereum/spartan-whir",
+      "commit": "f525cddea38bb605304d3a8e6394dda10ac64b4a",
+      "path": "README.md",
+      "line_start": 69,
+      "line_end": 110,
+      "quotation": "cargo run --release --features parallel --example end_to_end -- setup build/example.r1cs build/proving-key.bin build/verifying-key.bin\n...\ncargo run --release --features parallel --example end_to_end -- prove build/proving-key.bin build/example.wtns build/proof.bin build/public-inputs.bin\n...\ncargo run --release --features parallel --example end_to_end -- verify build/verifying-key.bin build/public-inputs.bin build/proof.bin"
+    }
+  ],
+  "research_caveats": [
+    {
+      "finding": "Absence claims are bounded to the inspected official repositories, issues, and papers at the listed commits and cutoff.",
+      "source_ids": ["S1", "S2", "S6", "S9", "S12", "S18", "S22", "S28"]
+    },
+    {
+      "finding": "HVZK is an interactive honest-verifier notion. Fiat-Shamir, malicious-verifier, and post-quantum/QROM claims must be tied to the exact transcript, hash, and composition theorem, not inferred from a ZK label.",
+      "source_ids": ["S1", "S4", "S10", "S30"]
+    },
+    {
+      "finding": "Plonky3's hiding base-case security helper is diagnostic only; a claimed 100-bit end-to-end configuration needs a separate composed soundness and binding budget.",
+      "source_ids": ["S3"]
+    },
+    {
+      "finding": "No CVE or GHSA affected/fixed range is relied upon. Cited issues and commits describe feature maturity and protocol cutovers, not vulnerability remediations.",
+      "source_ids": []
+    }
+  ]
+}

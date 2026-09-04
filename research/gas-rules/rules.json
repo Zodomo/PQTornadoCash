@@ -1,0 +1,387 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-04",
+  "units": {
+    "gas": "gas",
+    "size": "bytes"
+  },
+  "variables": {
+    "z": "number of zero bytes in tx.data",
+    "n": "number of non-zero bytes in tx.data",
+    "L": "z + n",
+    "T": "z + 4*n",
+    "W": "ceil(L / 32)",
+    "c": "1 for a top-level contract-creation transaction; 0 otherwise",
+    "E": "EVM execution gas used after refund; for creation it includes constructor execution and code-deposit work, but excludes separately displayed fixed creation and initcode-word charges",
+    "A": "number of access-list addresses",
+    "K": "number of access-list storage keys"
+  },
+  "calculator": {
+    "default_profile": "osaka-active",
+    "defaults": {
+      "runtime_code_limit_bytes": 24576,
+      "initcode_limit_bytes": 49152,
+      "zero_byte_floor_gas": 10,
+      "nonzero_byte_floor_gas": 40,
+      "transaction_gas_limit_max": 16777216,
+      "transaction_gas_limit_max_expression": "2^24",
+      "source_ids": [
+        "eip-170-spec",
+        "eip-3860-spec",
+        "eip-7623-spec",
+        "eip-7825-spec",
+        "geth-protocol-params-basic",
+        "geth-protocol-params-floor",
+        "geth-protocol-params-size"
+      ]
+    },
+    "calldata_floor_scenarios": [
+      {
+        "id": "eip-7976-standalone-64-64",
+        "activation_class": "scheduled_unactivated",
+        "zero_byte_floor_gas": 64,
+        "nonzero_byte_floor_gas": 64,
+        "may_be_labeled_active": false,
+        "source_ids": [
+          "eip-7976-spec",
+          "eip-7773-glamsterdam",
+          "eip-7773-no-activation",
+          "eels-amsterdam-unscheduled"
+        ]
+      },
+      {
+        "id": "eip-8311-standalone-96-96",
+        "activation_class": "unscheduled_draft",
+        "zero_byte_floor_gas": 96,
+        "nonzero_byte_floor_gas": 96,
+        "may_be_labeled_active": false,
+        "source_ids": [
+          "eip-8311-spec",
+          "eip-7773-glamsterdam"
+        ]
+      }
+    ],
+    "allowed_nondefault_calldata_floor_pairs": [
+      [64, 64],
+      [96, 96]
+    ]
+  },
+  "profiles": [
+    {
+      "id": "osaka-active",
+      "fork": "Osaka",
+      "network_status": "active_mainnet",
+      "as_of": "2026-09-04",
+      "rules": [
+        170,
+        3860,
+        7623,
+        7825
+      ],
+      "source_ids": [
+        "eels-spurious-dragon-activation",
+        "eels-shanghai-activation",
+        "eip-7600-pectra",
+        "eip-7607-fusaka",
+        "eels-osaka-validation"
+      ]
+    },
+    {
+      "id": "amsterdam-reference-only",
+      "fork": "Amsterdam/Glamsterdam",
+      "network_status": "scheduled_but_unactivated",
+      "as_of": "2026-09-04",
+      "may_be_labeled_active": false,
+      "rules": [
+        7954,
+        7976,
+        8037
+      ],
+      "source_ids": [
+        "eip-7773-glamsterdam",
+        "eip-7773-no-activation",
+        "eels-amsterdam-eips",
+        "eels-amsterdam-unscheduled"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "eip": 170,
+      "title": "Contract code size limit",
+      "lifecycle_status": "Final",
+      "network_status": "active",
+      "activation": {
+        "fork": "Spurious Dragon",
+        "mainnet_block": 2675000,
+        "date": "2016-11-22"
+      },
+      "created": "2016-11-04",
+      "runtime_code_limit_bytes": 24576,
+      "runtime_code_limit_hex": "0x6000",
+      "boundary": {
+        "allowed": "runtime_code_length <= 24576",
+        "failure": "runtime_code_length > 24576 causes contract creation to fail out of gas"
+      },
+      "scope": "returned/deployed runtime code, not transaction initcode",
+      "source_ids": [
+        "eip-170-spec",
+        "eels-spurious-dragon-activation"
+      ]
+    },
+    {
+      "eip": 3860,
+      "title": "Limit and meter initcode",
+      "lifecycle_status": "Final",
+      "network_status": "active",
+      "activation": {
+        "fork": "Shanghai",
+        "mainnet_timestamp": 1681338455,
+        "datetime_utc": "2023-04-12T22:27:35Z"
+      },
+      "created": "2021-07-16",
+      "initcode_limit_bytes": 49152,
+      "initcode_limit_expression": "2 * 24576",
+      "initcode_word_cost": {
+        "gas_per_word": 2,
+        "word_bytes": 32,
+        "equation": "2 * ceil(L / 32)"
+      },
+      "top_level_creation": {
+        "regular_intrinsic_equation": "21000 + 32000 + 4*z + 16*n + 2*W",
+        "typed_transaction_note": "Access-list and authorization additions, if applicable, are additional.",
+        "oversized_handling": "L > 49152 makes the transaction invalid."
+      },
+      "internal_creation": {
+        "CREATE": "Adds 2*W to pre-existing base and memory costs; oversized initcode exceptionally aborts as out of gas.",
+        "CREATE2": "Adds 2*W to the existing 6*W hash cost, for 8*W word-dependent cost before memory; oversized initcode exceptionally aborts as out of gas."
+      },
+      "source_ids": [
+        "eip-3860-spec",
+        "eels-shanghai-activation",
+        "eels-initcode-word-cost",
+        "geth-protocol-params-basic",
+        "geth-protocol-params-size"
+      ]
+    },
+    {
+      "eip": 7623,
+      "title": "Increase calldata cost",
+      "lifecycle_status": "Final",
+      "network_status": "active",
+      "activation": {
+        "fork": "Pectra/Prague",
+        "mainnet_timestamp": 1746612311,
+        "datetime_utc": "2025-05-07T10:05:11Z"
+      },
+      "created": "2024-02-13",
+      "tokens_equation": "T = z + 4*n",
+      "floor_equation": "G_floor = 21000 + 10*T = 21000 + 10*z + 40*n",
+      "gas_used_universal_equation": "tx.gasUsed = max(tx.gasUsed_after_refund_without_floor, G_floor)",
+      "displayed_base_shape_equation": "tx.gasUsed = 21000 + max(4*T + E + c*(32000 + 2*W), 10*T)",
+      "validity_equation": "tx.gasLimit >= max(G_intrinsic, G_floor)",
+      "creation_handling": {
+        "calldata": "For top-level creation, initcode is tx.data; all zero and non-zero initcode bytes contribute to T.",
+        "regular_arm": "The fixed 32000 creation charge and 2*W initcode charge occur only in the regular arm.",
+        "floor_arm": "Creation charges are not added to the floor arm.",
+        "independent_validity": "Creation charges must still be covered by the independent regular intrinsic-gas validity check.",
+        "execution": "Constructor execution and code-deposit work are included in E."
+      },
+      "settlement_order": [
+        "compute gas used before refund",
+        "subtract refund",
+        "raise gas used to G_floor"
+      ],
+      "typed_transaction_note": "Access-list and EIP-7702 authorization charges affect regular intrinsic/execution cost but not this Prague floor.",
+      "source_ids": [
+        "eip-7623-spec",
+        "eels-prague-intrinsic",
+        "eels-prague-settlement",
+        "eip-7600-pectra",
+        "geth-protocol-params-floor",
+        "geth-floor-composition"
+      ]
+    },
+    {
+      "eip": 7825,
+      "title": "Transaction Gas Limit Cap",
+      "lifecycle_status": "Final",
+      "network_status": "active_under_osaka",
+      "activation": {
+        "fork": "Fusaka/Osaka",
+        "mainnet_timestamp": 1764798551,
+        "datetime_utc": "2025-12-03T21:49:11Z"
+      },
+      "created": "2024-11-23",
+      "maximum_specified_transaction_gas_limit": 16777216,
+      "maximum_expression": "2^24",
+      "validity_equation": "tx.gasLimit <= 16777216",
+      "boundary": {
+        "allowed": "tx.gasLimit <= 16777216",
+        "invalid": "tx.gasLimit >= 16777217"
+      },
+      "scope": {
+        "applies_to": "transaction/block validation, including contract-creation transactions",
+        "does_not_apply_to": "an independently measured receipt value or a separate cap on every internal CALL/CREATE",
+        "block_gas_limit": "independent; this rule does not lower the block gas limit"
+      },
+      "source_ids": [
+        "eip-7825-spec",
+        "eels-osaka-max-gas",
+        "eels-osaka-validation",
+        "eip-7607-fusaka",
+        "geth-osaka-gas-cap"
+      ]
+    },
+    {
+      "eip": 7976,
+      "title": "Increase calldata floor cost",
+      "lifecycle_status": "Review",
+      "network_status": "scheduled_for_glamsterdam_but_unactivated",
+      "activation": null,
+      "created": "2025-06-18",
+      "status_changed_to_review": "2026-07-07",
+      "current_numeric_rule_since": "2026-02-15",
+      "standalone_rule": {
+        "standard_tokens_equation": "T = z + 4*n",
+        "standard_cost_equation": "4*T",
+        "floor_tokens_equation": "U = 4*L",
+        "floor_equation": "G_floor_7976 = 21000 + 16*U = 21000 + 64*L",
+        "displayed_base_shape_equation": "tx.gasUsed = 21000 + max(4*T + E + c*(32000 + 2*W), 64*L)",
+        "validity": "tx.gasLimit must cover both regular intrinsic cost and the floor",
+        "interpretation": "Zero and non-zero bytes both cost 64 gas only when the floor binds; execution-heavy transactions retain standard 4/16 calldata pricing."
+      },
+      "activation_guard": "Scenario only. Glamsterdam has no mainnet activation timestamp and Amsterdam is Unscheduled in EELS.",
+      "source_ids": [
+        "eip-7976-spec",
+        "eip-7976-64-change",
+        "eip-7773-glamsterdam",
+        "eip-7773-no-activation",
+        "eels-amsterdam-unscheduled",
+        "geth-protocol-params-floor"
+      ]
+    },
+    {
+      "eip": 8311,
+      "title": "Increase calldata floor cost to 96 gas",
+      "lifecycle_status": "Draft",
+      "network_status": "unscheduled_scenario",
+      "activation": null,
+      "created": "2026-06-20",
+      "standalone_rule": {
+        "change": "Change EIP-7976 TOTAL_COST_FLOOR_PER_TOKEN from 16 to 24 and nothing else.",
+        "floor_tokens_equation": "U = 4*L",
+        "floor_equation": "G_floor_8311 = 21000 + 24*U = 21000 + 96*L",
+        "displayed_base_shape_equation": "tx.gasUsed = 21000 + max(4*T + E + c*(32000 + 2*W), 96*L)",
+        "interpretation": "Zero and non-zero bytes both cost 96 gas only when the floor binds."
+      },
+      "activation_guard": "Scenario only. No activation fork is named; it is not in Glamsterdam's Scheduled for Inclusion list and has no integrated EELS/Geth implementation in the pinned snapshots.",
+      "access_list_guard": "Do not apply 96 gas to access-list bytes: EIP-8311 specifies only EIP-7976's calldata parameter change and has no composed-fork implementation.",
+      "source_ids": [
+        "eip-8311-spec",
+        "eip-7773-glamsterdam",
+        "eels-amsterdam-eips"
+      ]
+    },
+    {
+      "eip": 7954,
+      "title": "Increase Maximum Contract Size",
+      "lifecycle_status": "Review",
+      "network_status": "scheduled_for_glamsterdam_but_unactivated",
+      "activation": null,
+      "created": "2025-06-09",
+      "status_changed_to_review": "2026-07-07",
+      "current_numeric_rule_since": "2026-05-21",
+      "proposed_runtime_code_limit_bytes": 65536,
+      "proposed_runtime_code_limit_hex": "0x10000",
+      "proposed_initcode_limit_bytes": 131072,
+      "proposed_initcode_limit_hex": "0x20000",
+      "metering_change": "none; EIP-3860's 2*W initcode metering remains",
+      "client_gate": "EELS and Geth contain these constants behind the unscheduled Amsterdam fork gate while retaining 24576/49152 before Amsterdam.",
+      "activation_guard": "Scenario only; no mainnet activation timestamp is set.",
+      "source_ids": [
+        "eip-7954-spec",
+        "eip-7954-64k-change",
+        "eip-7773-glamsterdam",
+        "eip-7773-no-activation",
+        "eels-amsterdam-eips",
+        "eels-amsterdam-unscheduled",
+        "geth-protocol-params-size"
+      ]
+    }
+  ],
+  "amsterdam_composition": {
+    "status": "scheduled_reference_only_not_active",
+    "standalone_7976_warning": "The standalone 21000 + 64*L formula is not the complete current Glamsterdam reference calculation.",
+    "eip_2780_floor_base": {
+      "self_transfer": 12000,
+      "distinct_zero_value_call": 15000,
+      "distinct_value_transfer": 21000,
+      "creation": 24000
+    },
+    "eip_7981_composed_floor_equation": "floor_base + 64*(L + 20*A + 32*K)",
+    "eip_8037_distinction": {
+      "active_osaka": "tx.gasLimit <= 2^24",
+      "scheduled_amsterdam": "tx.gas may exceed 2^24; max(intrinsic_gas, calldata_floor) <= 2^24 and execution gas is capped at 2^24, with excess assigned to a state-gas reservoir",
+      "equations": {
+        "evm_gas": "tx.gas - intrinsic_gas",
+        "execution_budget": "2^24 - intrinsic_gas",
+        "gas_left": "min(execution_budget, evm_gas)",
+        "state_gas_reservoir": "evm_gas - gas_left"
+      }
+    },
+    "source_ids": [
+      "geth-floor-composition",
+      "geth-osaka-gas-cap",
+      "geth-amsterdam-gas-cap",
+      "eip-8037-cap-rule",
+      "eip-8037-reservoir",
+      "eip-7773-no-activation",
+      "eels-amsterdam-unscheduled"
+    ]
+  },
+  "evidence_classes": {
+    "deterministic_from_exact_bytes": {
+      "fields": [
+        "z",
+        "n",
+        "L",
+        "T",
+        "W",
+        "EIP-7623 floor",
+        "EIP-7976 standalone floor scenario",
+        "EIP-8311 standalone floor scenario",
+        "EIP-3860 initcode word charge",
+        "EIP-7825 signed-transaction gas-limit check",
+        "initcode-size compliance from exact creation input bytes",
+        "runtime-code compliance from exact deployed-runtime artifact bytes"
+      ],
+      "source_ids": [
+        "eip-170-spec",
+        "eip-3860-spec",
+        "eip-7623-spec",
+        "eip-7825-spec",
+        "eip-7976-spec",
+        "eip-8311-spec"
+      ]
+    },
+    "requires_pinned_state_client_execution_or_receipt": {
+      "fields": [
+        "E",
+        "total tx.gasUsed",
+        "constructor control flow",
+        "dynamic memory, storage, and account-access costs",
+        "refunds",
+        "reverts",
+        "dynamically generated returned runtime code",
+        "whether the regular arm or floor arm binds when execution is state-dependent"
+      ],
+      "source_ids": [
+        "eip-7623-spec",
+        "eels-prague-intrinsic",
+        "eels-prague-settlement"
+      ]
+    },
+    "measurement_classification": "Protocol formula results and client gas calculations are not PQTC timing or throughput measurements."
+  }
+}

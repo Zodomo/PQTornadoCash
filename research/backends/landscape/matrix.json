@@ -1,0 +1,402 @@
+{
+  "schema_version": 1,
+  "research_cutoff": "2026-09-04",
+  "evidence_class": "SOURCE_RESEARCH",
+  "qualification_scope": false,
+  "commands_run_by_source_researcher": false,
+  "status_vocabulary": [
+    "PASS",
+    "BENCHMARK_ONLY",
+    "DEFERRED",
+    "STOP"
+  ],
+  "candidates": [
+    {
+      "id": "SP-51",
+      "candidate": "HVZK-WHIR",
+      "status": "PASS",
+      "advance": "NATIVE_IMPLEMENTATION_ATTEMPT",
+      "hiding_and_theorem": {
+        "finding": "ePrint 2026/391 proves composable honest-verifier-zero-knowledge IOR/IOPP results with round-by-round knowledge soundness and a straight-line extractor. Pinned Plonky3 implements the full masking pipeline: ZK Reed-Solomon encoding, masked sumcheck, code switching, and a masked base case.",
+        "limits": "The proved object is interactive HVZK/RBR composition. It is not by itself a malicious-verifier, Fiat-Shamir, concrete-QROM, or end-to-end parameter certification.",
+        "source_ids": ["S1", "S2", "S3", "S4"]
+      },
+      "field_and_relation_constraints": {
+        "finding": "At Plonky3 commit 3152b14a89067c83775a8076cc262ffc48a1fd7c, HidingWhirPcs exposes a multilinear PCS surface and requires a two-adic base field, two-adic extension field, DFT, MMCS, challenger, and CryptoRng. It is not a drop-in univariate Pcs backend.",
+        "entropy_gate": "Every proving path must use cryptographically secure, unpredictable randomness; predictable mask randomness reveals the witness.",
+        "source_ids": ["S2", "S4", "S5"]
+      },
+      "evm_state": {
+        "finding": "No public hiding-WHIR Solidity verifier matching HidingWhirPcs was located. Archived sol-whir is plain WHIR on an older proof format, and sol-spartan-whir verifies plain standalone-WHIR fixtures. An EVM implementation must port the complete masked transcript and proof shape rather than reuse the old codec.",
+        "on_chain_pass": false,
+        "source_ids": ["S2", "S4", "S15", "S16", "S17"]
+      },
+      "qrom_obligations": {
+        "finding": "Do not inherit a QROM claim from the paper's post-quantum description. Establish a concrete reduction for the exact Poseidon or Keccak transcript, parameter set, Fiat-Shamir compilation, and all compositions used by PQTC.",
+        "satisfied": false,
+        "source_ids": ["S1", "S3", "S4"]
+      },
+      "completion_assessment": {
+        "finding": "The native hiding relation can be implemented without inventing a hiding protocol. EVM work is engineering, but remains gated on entropy, complete transcript conformance, and an independent composed soundness and binding calculation because the Plonky3 base-case report is diagnostic only.",
+        "source_ids": ["S2", "S3", "S4"]
+      },
+      "upstream_pin_names": ["Plonky3"],
+      "license_gate_ids": ["L1"],
+      "reproduction": {
+        "executed_by_source_researcher": false,
+        "result_class_if_run": "IMPLEMENTATION_SPIKE; not an on-chain qualification until the new verifier is measured",
+        "entrypoints": [
+          {
+            "command": "cargo test -p p3-whir",
+            "purpose": "Pinned upstream package tests",
+            "source_ids": ["S2", "S5"]
+          },
+          {
+            "command": "cargo bench -p p3-whir --bench zk_overhead",
+            "purpose": "Pinned upstream hiding-overhead harness",
+            "source_ids": ["S2", "S4", "S5"]
+          }
+        ]
+      },
+      "source_ids": ["S1", "S2", "S3", "S4", "S5", "S15", "S16", "S17"]
+    },
+    {
+      "id": "SP-52",
+      "candidate": "STIR",
+      "status": "BENCHMARK_ONLY",
+      "advance": "NON_HIDING_LOWER_BOUND_ONLY",
+      "hiding_and_theorem": {
+        "finding": "The STIR paper presents a lower-query Reed-Solomon IOPP/SNARK, not a hiding construction. The separate implementation is explicitly an unreviewed academic prototype.",
+        "limits": "A reviewed hiding STIR transformation is absent.",
+        "source_ids": ["S6", "S8"]
+      },
+      "field_and_relation_constraints": {
+        "finding": "Pinned Plonky3 exposes generic TwoAdicStirPcs over a two-adic base field and two-adic extension challenge field, but its Pcs implementation sets const ZK: bool = false.",
+        "source_ids": ["S7"]
+      },
+      "evm_state": {
+        "finding": "No generic Solidity verifier for TwoAdicStirPcs was located. STIR-like steps inside WHIR Solidity are not evidence of byte compatibility with Plonky3 STIR PCS.",
+        "source_ids": ["S7", "S15", "S16"]
+      },
+      "qrom_obligations": {
+        "finding": "No STIR-specific QROM theorem was located; the paper's concrete theorem is interactive and its SNARK implementation evidence is empirical.",
+        "satisfied": false,
+        "source_ids": ["S6"]
+      },
+      "completion_assessment": {
+        "finding": "A private PQTC proof cannot be completed without adding a reviewed hiding construction. Only a clearly labeled non-hiding lower-bound benchmark is permitted.",
+        "source_ids": ["S6", "S7", "S8"]
+      },
+      "upstream_pin_names": ["Plonky3", "WizardOfMenlo/stir"],
+      "license_gate_ids": ["L1", "L2"],
+      "reproduction": {
+        "executed_by_source_researcher": false,
+        "result_class_if_run": "BENCHMARK_ONLY non-hiding lower bound",
+        "entrypoints": [
+          {
+            "command": "cargo test -p p3-stir",
+            "purpose": "Pinned upstream package tests",
+            "source_ids": ["S5", "S7"]
+          },
+          {
+            "command": "cargo bench -p p3-stir --bench stir_pcs",
+            "purpose": "Pinned upstream non-hiding PCS benchmark",
+            "source_ids": ["S5", "S7"]
+          }
+        ]
+      },
+      "source_ids": ["S5", "S6", "S7", "S8", "S15", "S16"]
+    },
+    {
+      "id": "SP-53",
+      "candidate": "Circle-FRI",
+      "status": "DEFERRED",
+      "advance": "NONE",
+      "hiding_and_theorem": {
+        "finding": "The Circle STARK paper describes randomized trace encoding plus BSCR randomized FRI as the ZK route and says it carries to the circle without changes.",
+        "limits": "The paper explicitly postpones treatment of the non-interactive random-oracle transformation.",
+        "source_ids": ["S9", "S10"]
+      },
+      "field_and_relation_constraints": {
+        "finding": "Pinned Plonky3 CirclePcs requires Val: ComplexExtendable and an extension-field challenge. Its Pcs implementation sets const ZK: bool = false, so the candidate implementation does not expose a hiding Circle PCS.",
+        "source_ids": ["S11"]
+      },
+      "evm_state": {
+        "finding": "No reusable public Circle-FRI Solidity verifier matching this proof shape was located. Application-specific blinding in the current Starkware proving tree is not a generic replacement for Plonky3 CirclePcs.",
+        "source_ids": ["S9", "S10", "S11"]
+      },
+      "qrom_obligations": {
+        "finding": "The ordinary-ROM treatment is postponed in the cited paper, and no QROM theorem for the concrete implementation was located.",
+        "satisfied": false,
+        "source_ids": ["S10", "S11"]
+      },
+      "completion_assessment": {
+        "finding": "The published randomization route avoids inventing a theory from scratch, but the hiding implementation, EVM verifier, and transcript theorem are absent. Any current run is non-hiding and may only be reported as a lower bound.",
+        "source_ids": ["S9", "S10", "S11"]
+      },
+      "upstream_pin_names": ["Plonky3", "starkware-libs/stwo", "starkware-libs/proving"],
+      "license_gate_ids": ["L1", "L3"],
+      "reproduction": {
+        "executed_by_source_researcher": false,
+        "result_class_if_run": "NON_HIDING_LOWER_BOUND; candidate remains DEFERRED",
+        "entrypoints": [
+          {
+            "command": "cargo test -p p3-circle",
+            "purpose": "Pinned upstream tests; non-hiding because ZK is false",
+            "source_ids": ["S5", "S11"]
+          }
+        ]
+      },
+      "source_ids": ["S5", "S9", "S10", "S11"]
+    },
+    {
+      "id": "SP-60-NATIVE",
+      "candidate": "native full-ZK Spartan-WHIR",
+      "status": "PASS",
+      "advance": "NATIVE_SUB_SPIKE",
+      "hiding_and_theorem": {
+        "finding": "Pinned spartan-whir implements no-ZK and full-ZK modes for both DirectSparse and Spark using the HVZK-WHIR construction. The full-ZK setup, prove, prove_with_rng, and verify API is present.",
+        "limits": "The repository supplies an RBR/error budget, not an implementation-specific QROM reduction for its Poseidon Fiat-Shamir transcript.",
+        "source_ids": ["S12", "S13", "S14"]
+      },
+      "field_and_relation_constraints": {
+        "finding": "Generic KoalaBear R1CS is supported through the Circom fork. Quartic, quintic, and octic extensions are exposed. SecurityConfig accepts 80 through 123 bits because the eight-element KoalaBear Poseidon digest supplies about 123.95 collision-security bits. There is no special repeated-block PQTC API; the exact R1CS relation must be built and audited rather than assuming batch structure survives compilation.",
+        "entropy_gate": "The default prover draws mask and WHIR randomness from OS-seeded StdRng; injected entropy must implement Rng + CryptoRng.",
+        "source_ids": ["S12", "S13", "S14"]
+      },
+      "evm_state": {
+        "finding": "This disposition covers the native sub-spike only. It does not imply an EVM verifier.",
+        "source_ids": ["S12", "S14", "S15", "S16"]
+      },
+      "qrom_obligations": {
+        "finding": "Supply a concrete QROM analysis for the exact Poseidon Fiat-Shamir transcript and every composition; do not treat the RBR/error budget as that reduction.",
+        "satisfied": false,
+        "source_ids": ["S1", "S13", "S14"]
+      },
+      "completion_assessment": {
+        "finding": "The native full-ZK relation can be attempted without inventing a hiding protocol. The exact PQTC R1CS shape and public-input semantics still require implementation and audit.",
+        "source_ids": ["S12", "S13", "S14"]
+      },
+      "upstream_pin_names": ["ethereum/spartan-whir"],
+      "license_gate_ids": ["L5"],
+      "reproduction": {
+        "executed_by_source_researcher": false,
+        "result_class_if_run": "NATIVE_SUB_SPIKE; not EVM qualification",
+        "entrypoints": [
+          {
+            "command": "cargo run --release --features parallel --example end_to_end -- setup build/example.r1cs build/proving-key.bin build/verifying-key.bin",
+            "purpose": "Full-ZK setup using the PoseidonZk surface",
+            "source_ids": ["S12", "S14", "S33"]
+          },
+          {
+            "command": "cargo run --release --features parallel --example end_to_end -- prove build/proving-key.bin build/example.wtns build/proof.bin build/public-inputs.bin",
+            "purpose": "Full-ZK proof generation using the PoseidonZk surface",
+            "source_ids": ["S12", "S13", "S14", "S33"]
+          },
+          {
+            "command": "cargo run --release --features parallel --example end_to_end -- verify build/verifying-key.bin build/public-inputs.bin build/proof.bin",
+            "purpose": "Native verification",
+            "source_ids": ["S12", "S14", "S33"]
+          }
+        ]
+      },
+      "source_ids": ["S1", "S12", "S13", "S14", "S15", "S16", "S33"]
+    },
+    {
+      "id": "SP-60-EVM",
+      "candidate": "sol-spartan-whir",
+      "status": "DEFERRED",
+      "advance": "STANDALONE_WHIR_LOWER_BOUND_ONLY",
+      "hiding_and_theorem": {
+        "finding": "The checked-in Solidity line is not a full Spartan verifier and is not full ZK. The exporter intentionally excludes current spartan-whir and wraps a real plain-WHIR proof with placeholder outer and inner sumchecks and an empty Spartan instance.",
+        "limits": "There is no hiding or full-Spartan transcript in the inspected repository to analyze.",
+        "source_ids": ["S15", "S16"]
+      },
+      "field_and_relation_constraints": {
+        "finding": "The published 100-bit quintic schedule is a standalone WHIR PCS baseline with empty public inputs and a zero witness commitment. It is not the Spartan relation and not the PQTC R1CS relation.",
+        "mandatory_label": "standalone WHIR — not Spartan and not PQTC",
+        "source_ids": ["S15", "S16", "S17"]
+      },
+      "evm_state": {
+        "finding": "Upstream reports 54,436 calldata bytes, 5,646,080 transaction gas, 4,768,744 execution gas, 5,454,992 Foundry gas, and 274.163664792 seconds prover time. Every checked-in high-security monolithic native-blob verifier exceeds EIP-170. These figures are upstream standalone-WHIR baselines, never PQTC measurements.",
+        "deployable_under_eip_170_as_single_contract": false,
+        "source_ids": ["S17"]
+      },
+      "qrom_obligations": {
+        "finding": "A full hiding Spartan transcript does not exist in this line, so there is no candidate transcript for a PQTC QROM analysis.",
+        "satisfied": false,
+        "source_ids": ["S15", "S16"]
+      },
+      "completion_assessment": {
+        "finding": "End-to-end on-chain completion requires a full-ZK Spartan exporter, a corresponding Solidity verifier, deployability architecture, and conformance vectors. The headline figures cannot be promoted as Spartan or PQTC results.",
+        "source_ids": ["S15", "S16", "S17"]
+      },
+      "upstream_pin_names": ["ethereum/sol-spartan-whir", "alxkzmn/spartan-whir-export", "privacy-ethereum/sol-whir"],
+      "license_gate_ids": ["L4", "L5"],
+      "reproduction": {
+        "executed_by_source_researcher": false,
+        "result_class_if_run": "STANDALONE_WHIR_LOWER_BOUND; not Spartan/PQTC",
+        "entrypoints": [
+          {
+            "command": "forge build && forge test",
+            "purpose": "Pinned standalone-WHIR Solidity build and tests",
+            "source_ids": ["S15", "S16", "S17"]
+          },
+          {
+            "command": "bash .agents/skills/tx-gas-benchmarking/scripts/run_tx_gas_benchmark.sh script/WhirBlobNativeTxBenchmark_k22_jb100_ext5_lir4_ff4_rsv3_pow28.s.sol",
+            "purpose": "Exact upstream standalone-WHIR transaction-gas script",
+            "source_ids": ["S17"]
+          }
+        ]
+      },
+      "source_ids": ["S15", "S16", "S17"]
+    },
+    {
+      "id": "SP-61",
+      "candidate": "Plonky3 recursion",
+      "status": "DEFERRED",
+      "advance": "ARCHITECTURE_BENCHMARKS_ONLY",
+      "hiding_and_theorem": {
+        "finding": "The repository claims ZK-capable recursive STARK verification but is active, unaudited development. Hiding-FRI paths exist for a limited batch-STARK recursion demonstration.",
+        "limits": "The Keccak example's base uni-STARK and every recursion layer are non-ZK. In-circuit WHIR mirrors ordinary WhirVerifier, not HidingWhirPcs, and delegates PCS-adapter transcript work to its caller.",
+        "source_ids": ["S18", "S19", "S20"]
+      },
+      "field_and_relation_constraints": {
+        "finding": "The inspected recursion commit uses Plonky3 0.7.0 while the mandated HVZK pin is Plonky3 0.6.0. Aggregation is currently 2-to-1; arbitrary arity remains an open upstream item.",
+        "source_ids": ["S5", "S21"]
+      },
+      "evm_state": {
+        "finding": "No EVM verifier or gas/calldata path was located.",
+        "source_ids": ["S18", "S19", "S20", "S21"]
+      },
+      "qrom_obligations": {
+        "finding": "No recursion-specific QROM composition theorem or formal public-inner/hiding-outer privacy theorem was located.",
+        "satisfied": false,
+        "source_ids": ["S18", "S19", "S20"]
+      },
+      "completion_assessment": {
+        "finding": "Only a limited hiding-FRI batch demonstration is source-supported. Pinned HVZK-WHIR compatibility, a hiding recursive WHIR verifier, the PQTC Keccak relation, and a public-outer privacy argument are not integrated upstream. Recursion numbers are architecture benchmarks, not privacy-qualified finalist evidence.",
+        "source_ids": ["S18", "S19", "S20", "S21"]
+      },
+      "upstream_pin_names": ["Plonky3", "Plonky3-recursion"],
+      "license_gate_ids": ["L1"],
+      "reproduction": {
+        "executed_by_source_researcher": false,
+        "result_class_if_run": "LIMITED_HIDING_FRI_ARCHITECTURE_DEMONSTRATION",
+        "entrypoints": [
+          {
+            "command": "cargo run --profile optimized --example recursive_fibonacci -- --field baby-bear --hash poseidon1 --n 1000 --num-recursive-layers 5 --zk",
+            "purpose": "Source-identified full-ZK recursion example",
+            "source_ids": ["S18"]
+          },
+          {
+            "command": "cargo run --profile optimized --example recursive_keccak -- --zk",
+            "purpose": "Negative-control entrypoint: --zk has no effect and this remains non-ZK",
+            "source_ids": ["S19"]
+          }
+        ]
+      },
+      "source_ids": ["S5", "S18", "S19", "S20", "S21"]
+    },
+    {
+      "id": "SP-62-FLOCK",
+      "candidate": "Flock batch-44",
+      "status": "STOP",
+      "advance": "HISTORICAL_NON_HIDING_BASELINE_ONLY",
+      "hiding_and_theorem": {
+        "finding": "Flock targets 100-bit soundness for batch Boolean R1CS over F2/F2^128, but its paper explicitly states that the implementation provides succinctness and not zero knowledge and is a research prototype.",
+        "limits": "The paper's ideal-IOP RBR error is unconditional, then assumes SHA-256 collision resistance and Fiat-Shamir security; it calls the SNARK post-quantum without an explicit concrete QROM theorem.",
+        "source_ids": ["S22", "S23"]
+      },
+      "field_and_relation_constraints": {
+        "finding": "Current Flock ships end-to-end BLAKE3 and SHA-256 compression provers over Boolean R1CS with Ligerito over F2^128. It no longer contains Keccak. It also lacks the exact two-note, two-nullifier, forty-path PQTC glue.",
+        "source_ids": ["S22", "S23", "S24"]
+      },
+      "evm_state": {
+        "finding": "No Solidity, Yul, or EVM verifier was located in the official tree.",
+        "source_ids": ["S23", "S24"]
+      },
+      "qrom_obligations": {
+        "finding": "No explicit concrete QROM theorem for the implemented SHA-256 Fiat-Shamir transcript was located.",
+        "satisfied": false,
+        "source_ids": ["S22"]
+      },
+      "breaking_change": {
+        "finding": "Current Flock removed Keccak at exact commit 0f0d63268e1373c585251e95152b3a6943e2d818. The historical batch-44 entrypoint exists only at parent c2d0c2485a54f7b7694e19f4f59730ffde3405cf.",
+        "source_ids": ["S24", "S25", "S26", "S27"]
+      },
+      "completion_assessment": {
+        "finding": "The current code lacks Keccak, the complete PQTC relation, zero knowledge, and EVM verification. Flock stops as a PQTC privacy/EVM finalist. The historical batch-44 run is retained only as a labeled non-hiding baseline.",
+        "source_ids": ["S22", "S23", "S24"]
+      },
+      "upstream_pin_names": ["succinctlabs/flock", "succinctlabs/flock historical Keccak parent", "succinctlabs/flock Keccak retirement"],
+      "license_gate_ids": ["L1"],
+      "reproduction": {
+        "executed_by_source_researcher": false,
+        "result_class_if_run": "HISTORICAL_NON_HIDING_BATCH_CAPACITY_BASELINE; not a PQTC result",
+        "checkout_commit": "c2d0c2485a54f7b7694e19f4f59730ffde3405cf",
+        "entrypoints": [
+          {
+            "command": "KECCAK3_KS=44 cargo bench --bench keccak3_proof",
+            "purpose": "Historical best-of-three batch-44 baseline. The harness computes ceil(44/3)=15 three-wide blocks, rounds to 16 slots, and supplies four valid all-zero padded permutations, proving capacity 48.",
+            "source_ids": ["S25", "S26", "S27"]
+          }
+        ],
+        "published_batch_44_result_exists": false
+      },
+      "source_ids": ["S22", "S23", "S24", "S25", "S26", "S27"]
+    },
+    {
+      "id": "SP-62-VEIL",
+      "candidate": "VEIL over Flock",
+      "status": "DEFERRED",
+      "advance": "RESEARCH_ONLY",
+      "hiding_and_theorem": {
+        "finding": "VEIL is an HVZK compiler for a defined class of multilinear IOPs and describes the result as only plausibly post-quantum.",
+        "limits": "Its theorem uses honest-verifier or semi-malicious ZK, not a concrete QROM theorem for the PoC.",
+        "source_ids": ["S28", "S29", "S30"]
+      },
+      "field_and_relation_constraints": {
+        "finding": "The public PoC is experimental and unaudited. Its sole concrete ZkIopCtx adapter is KoalaBear degree-4 with stacked Basefold, not Flock's binary-field Ligerito/transcript. VEIL additionally requires the verifier to be expressed through its reading and constraint context.",
+        "source_ids": ["S29", "S31", "S32"]
+      },
+      "evm_state": {
+        "finding": "No VEIL EVM backend was located.",
+        "source_ids": ["S31", "S32"]
+      },
+      "qrom_obligations": {
+        "finding": "Supply a concrete QROM theorem for the exact PoC transcript and composition; the paper's 'plausibly post-quantum' description is not sufficient.",
+        "satisfied": false,
+        "source_ids": ["S28", "S30"]
+      },
+      "completion_assessment": {
+        "finding": "A binary-field zk-PCS adapter, Flock verifier compiler, transcript binding, and soundness analysis are missing. This is new cryptographic integration, so VEIL is deferred and cannot rescue Flock as SP-62.",
+        "source_ids": ["S22", "S23", "S28", "S29", "S30", "S31", "S32"]
+      },
+      "upstream_pin_names": ["succinctlabs/flock", "succinctlabs/sp1 VEIL"],
+      "license_gate_ids": ["L1"],
+      "reproduction": {
+        "executed_by_source_researcher": false,
+        "result_class_if_run": "EXPERIMENTAL_POC_ONLY; not Flock integration or PQTC qualification",
+        "entrypoints": [
+          {
+            "command": "cargo run --release -p slop-veil --example root",
+            "purpose": "Pinned VEIL PoC root example",
+            "source_ids": ["S31", "S32"]
+          },
+          {
+            "command": "cargo run --release -p slop-veil --example mle_eval",
+            "purpose": "Pinned VEIL PoC multilinear-evaluation example",
+            "source_ids": ["S31", "S32"]
+          },
+          {
+            "command": "cargo run --release -p slop-veil --example zerocheck",
+            "purpose": "Pinned VEIL PoC zerocheck example",
+            "source_ids": ["S31", "S32"]
+          }
+        ]
+      },
+      "source_ids": ["S22", "S23", "S28", "S29", "S30", "S31", "S32"]
+    }
+  ]
+}

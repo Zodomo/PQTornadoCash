@@ -1,0 +1,364 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-09-04",
+  "repositories": {
+    "eips": {
+      "commit": "9207c6011f526bd40abd79649484a1a342585bd4",
+      "commit_timestamp": "2026-09-04T09:24:45-06:00",
+      "repository": "https://github.com/ethereum/EIPs"
+    },
+    "eels": {
+      "commit": "903b48f152c932f6e47a615f0f7f009c56f1d92b",
+      "commit_timestamp": "2026-09-04T08:28:18-06:00",
+      "repository": "https://github.com/ethereum/execution-specs",
+      "tests_version": "v20.0.2-39-g903b48f"
+    },
+    "geth": {
+      "commit": "8a6b06fef836a84850711dfa3799851c4d331fdf",
+      "commit_timestamp": "2026-09-04T11:26:29+08:00",
+      "repository": "https://github.com/ethereum/go-ethereum"
+    }
+  },
+  "sources": [
+    {
+      "id": "eip-170-spec",
+      "repository": "eips",
+      "path": "EIPS/eip-170.md",
+      "lines": [14, 21],
+      "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-170.md#L14-L21",
+      "supports": [
+        "EIP-170 metadata and Final status",
+        "MAX_CODE_SIZE is 0x6000",
+        "creation returning more than MAX_CODE_SIZE bytes fails out of gas"
+      ]
+    },
+    {
+      "id": "eels-spurious-dragon-activation",
+      "repository": "eels",
+      "path": "src/ethereum/forks/spurious_dragon/__init__.py",
+      "lines": [8, 17],
+      "url": "https://github.com/ethereum/execution-specs/blob/903b48f152c932f6e47a615f0f7f009c56f1d92b/src/ethereum/forks/spurious_dragon/__init__.py#L8-L17",
+      "supports": [
+        "EIP-170 is in Spurious Dragon",
+        "Spurious Dragon activated on mainnet at block 2675000 on 2016-11-22"
+      ]
+    },
+    {
+      "id": "eip-3860-spec",
+      "repository": "eips",
+      "path": "EIPS/eip-3860.md",
+      "lines": [48, 60],
+      "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-3860.md#L48-L60",
+      "supports": [
+        "EIP-3860 metadata and Final status",
+        "MAX_INITCODE_SIZE is twice MAX_CODE_SIZE",
+        "INITCODE_WORD_COST is 2 gas per ceil(length/32)",
+        "oversized top-level initcode is invalid",
+        "oversized CREATE or CREATE2 exceptionally aborts",
+        "CREATE and CREATE2 pay the added initcode word charge"
+      ]
+    },
+    {
+      "id": "eels-shanghai-activation",
+      "repository": "eels",
+      "path": "src/ethereum/forks/shanghai/__init__.py",
+      "lines": [10, 22],
+      "url": "https://github.com/ethereum/execution-specs/blob/903b48f152c932f6e47a615f0f7f009c56f1d92b/src/ethereum/forks/shanghai/__init__.py#L10-L22",
+      "supports": [
+        "EIP-3860 is in Shanghai",
+        "Shanghai activated on mainnet at timestamp 1681338455, 2023-04-12T22:27:35Z"
+      ]
+    },
+    {
+      "id": "eels-initcode-word-cost",
+      "repository": "eels",
+      "path": "src/ethereum/forks/shanghai/vm/gas.py",
+      "lines": [349, 366],
+      "url": "https://github.com/ethereum/execution-specs/blob/903b48f152c932f6e47a615f0f7f009c56f1d92b/src/ethereum/forks/shanghai/vm/gas.py#L349-L366",
+      "supports": [
+        "EELS computes initcode cost as CODE_INIT_PER_WORD times ceil32(length)/32"
+      ]
+    },
+    {
+      "id": "eip-7623-spec",
+      "repository": "eips",
+      "path": "EIPS/eip-7623.md",
+      "lines": [30, 67],
+      "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-7623.md#L30-L67",
+      "supports": [
+        "EIP-7623 metadata and Final status",
+        "standard token cost is 4 and total floor cost per token is 10",
+        "T equals zero bytes plus four times non-zero bytes",
+        "the standalone transaction gas-used formula",
+        "creation charges appear only in the regular arm"
+      ]
+    },
+    {
+      "id": "eels-prague-intrinsic",
+      "repository": "eels",
+      "path": "src/ethereum/forks/prague/transactions.py",
+      "lines": [621, 656],
+      "url": "https://github.com/ethereum/execution-specs/blob/903b48f152c932f6e47a615f0f7f009c56f1d92b/src/ethereum/forks/prague/transactions.py#L621-L656",
+      "supports": [
+        "Prague computes regular intrinsic and calldata floor separately",
+        "top-level creation adds TX_CREATE and initcode word cost only to regular intrinsic",
+        "transaction validity must cover the greater of regular intrinsic and calldata floor"
+      ]
+    },
+    {
+      "id": "eels-prague-settlement",
+      "repository": "eels",
+      "path": "src/ethereum/forks/prague/fork.py",
+      "lines": [913, 924],
+      "url": "https://github.com/ethereum/execution-specs/blob/903b48f152c932f6e47a615f0f7f009c56f1d92b/src/ethereum/forks/prague/fork.py#L913-L924",
+      "supports": [
+        "Prague applies the refund before raising gas used to the calldata floor"
+      ]
+    },
+    {
+      "id": "eip-7600-pectra",
+      "repository": "eips",
+      "path": "EIPS/eip-7600.md",
+      "lines": [29, 57],
+      "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-7600.md#L29-L57",
+      "supports": [
+        "EIP-7623 is included in Pectra",
+        "Pectra activated on mainnet at timestamp 1746612311"
+      ]
+    },
+    {
+      "id": "eip-7825-spec",
+      "repository": "eips",
+      "path": "EIPS/eip-7825.md",
+      "lines": [35, 47],
+      "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-7825.md#L35-L47",
+      "supports": [
+        "EIP-7825 metadata and Final status",
+        "specified transaction gas limits above 16777216 are rejected",
+        "a block containing such a transaction is invalid",
+        "the cap is independent of the block gas limit"
+      ]
+    },
+    {
+      "id": "eels-osaka-max-gas",
+      "repository": "eels",
+      "path": "src/ethereum/forks/osaka/transactions.py",
+      "lines": [49, 49],
+      "url": "https://github.com/ethereum/execution-specs/blob/903b48f152c932f6e47a615f0f7f009c56f1d92b/src/ethereum/forks/osaka/transactions.py#L49",
+      "supports": [
+        "Osaka TX_MAX_GAS_LIMIT is 16777216"
+      ]
+    },
+    {
+      "id": "eels-osaka-validation",
+      "repository": "eels",
+      "path": "src/ethereum/forks/osaka/transactions.py",
+      "lines": [575, 586],
+      "url": "https://github.com/ethereum/execution-specs/blob/903b48f152c932f6e47a615f0f7f009c56f1d92b/src/ethereum/forks/osaka/transactions.py#L575-L586",
+      "supports": [
+        "Osaka validates intrinsic and floor coverage",
+        "Osaka rejects tx.gas above TX_MAX_GAS_LIMIT"
+      ]
+    },
+    {
+      "id": "eip-7607-fusaka",
+      "repository": "eips",
+      "path": "EIPS/eip-7607.md",
+      "lines": [25, 49],
+      "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-7607.md#L25-L49",
+      "supports": [
+        "EIP-7825 is included in Fusaka",
+        "Fusaka activated on mainnet at timestamp 1764798551, 2025-12-03T21:49:11Z"
+      ]
+    },
+    {
+      "id": "eip-7976-spec",
+      "repository": "eips",
+      "path": "EIPS/eip-7976.md",
+      "lines": [33, 63],
+      "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-7976.md#L33-L63",
+      "supports": [
+        "EIP-7976 metadata and Review status",
+        "floor tokens equal four times calldata length",
+        "total floor cost per token is 16",
+        "standalone floor is 64 gas per byte",
+        "standard calldata cost remains 4T"
+      ]
+    },
+    {
+      "id": "eip-7976-64-change",
+      "repository": "eips",
+      "path": "EIPS/eip-7976.md",
+      "commit": "137a1323c80fd69f87b39183e13efea2f9904ecd",
+      "lines": [1, 1],
+      "url": "https://github.com/ethereum/EIPs/commit/137a1323c80fd69f87b39183e13efea2f9904ecd",
+      "supports": [
+        "On 2026-02-15 EIP-7976 changed from the earlier 15/60 draft to uniform 64/64"
+      ]
+    },
+    {
+      "id": "eip-8311-spec",
+      "repository": "eips",
+      "path": "EIPS/eip-8311.md",
+      "lines": [33, 42],
+      "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-8311.md#L33-L42",
+      "supports": [
+        "EIP-8311 metadata and Draft status",
+        "the proposed floor is 96 gas per calldata byte",
+        "only EIP-7976 TOTAL_COST_FLOOR_PER_TOKEN changes from 16 to 24"
+      ]
+    },
+    {
+      "id": "eip-7954-spec",
+      "repository": "eips",
+      "path": "EIPS/eip-7954.md",
+      "lines": [1, 25],
+      "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-7954.md#L1-L25",
+      "supports": [
+        "EIP-7954 metadata and Review status",
+        "the proposed runtime-code limit is 65536 bytes",
+        "the proposed initcode limit is 131072 bytes"
+      ]
+    },
+    {
+      "id": "eip-7954-64k-change",
+      "repository": "eips",
+      "path": "EIPS/eip-7954.md",
+      "commit": "1dc9bc870f864d7ad1095fc73ba8ca098d02c732",
+      "lines": [1, 1],
+      "url": "https://github.com/ethereum/EIPs/commit/1dc9bc870f864d7ad1095fc73ba8ca098d02c732",
+      "supports": [
+        "On 2026-05-21 EIP-7954 changed from 32 KiB/64 KiB to 64 KiB/128 KiB"
+      ]
+    },
+    {
+      "id": "eip-7773-glamsterdam",
+      "repository": "eips",
+      "path": "EIPS/eip-7773.md",
+      "lines": [23, 31],
+      "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-7773.md#L23-L31",
+      "supports": [
+        "EIP-7954 and EIP-7976 are Scheduled for Inclusion in Glamsterdam",
+        "EIP-8311 is not in the Scheduled for Inclusion list"
+      ]
+    },
+    {
+      "id": "eip-7773-no-activation",
+      "repository": "eips",
+      "path": "EIPS/eip-7773.md",
+      "lines": [64, 70],
+      "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-7773.md#L64-L70",
+      "supports": [
+        "Glamsterdam mainnet activation epoch and timestamp are unset"
+      ]
+    },
+    {
+      "id": "eels-amsterdam-eips",
+      "repository": "eels",
+      "path": "src/ethereum/forks/amsterdam/__init__.py",
+      "lines": [11, 13],
+      "url": "https://github.com/ethereum/execution-specs/blob/903b48f152c932f6e47a615f0f7f009c56f1d92b/src/ethereum/forks/amsterdam/__init__.py#L11-L13",
+      "supports": [
+        "Amsterdam EELS includes EIP-7954 and EIP-7976"
+      ]
+    },
+    {
+      "id": "eels-amsterdam-unscheduled",
+      "repository": "eels",
+      "path": "src/ethereum/forks/amsterdam/__init__.py",
+      "lines": [40, 43],
+      "url": "https://github.com/ethereum/execution-specs/blob/903b48f152c932f6e47a615f0f7f009c56f1d92b/src/ethereum/forks/amsterdam/__init__.py#L40-L43",
+      "supports": [
+        "Amsterdam EELS fork criterion is Unscheduled"
+      ]
+    },
+    {
+      "id": "geth-protocol-params-basic",
+      "repository": "geth",
+      "path": "params/protocol_params.go",
+      "lines": [31, 45],
+      "url": "https://github.com/ethereum/go-ethereum/blob/8a6b06fef836a84850711dfa3799851c4d331fdf/params/protocol_params.go#L31-L45",
+      "supports": [
+        "Geth MaxTxGas is 1 shifted left 24",
+        "Geth InitCodeWordGas is 2"
+      ]
+    },
+    {
+      "id": "geth-protocol-params-floor",
+      "repository": "geth",
+      "path": "params/protocol_params.go",
+      "lines": [93, 95],
+      "url": "https://github.com/ethereum/go-ethereum/blob/8a6b06fef836a84850711dfa3799851c4d331fdf/params/protocol_params.go#L93-L95",
+      "supports": [
+        "Geth non-zero byte token multiplier is 4",
+        "Geth active floor cost per token is 10",
+        "Geth Amsterdam-gated EIP-7976 floor cost per token is 16"
+      ]
+    },
+    {
+      "id": "geth-protocol-params-size",
+      "repository": "geth",
+      "path": "params/protocol_params.go",
+      "lines": [160, 163],
+      "url": "https://github.com/ethereum/go-ethereum/blob/8a6b06fef836a84850711dfa3799851c4d331fdf/params/protocol_params.go#L160-L163",
+      "supports": [
+        "Geth current runtime/initcode limits are 24576/49152",
+        "Geth Amsterdam-gated runtime/initcode limits are 65536/131072"
+      ]
+    },
+    {
+      "id": "geth-floor-composition",
+      "repository": "geth",
+      "path": "core/state_transition.go",
+      "lines": [196, 254],
+      "url": "https://github.com/ethereum/go-ethereum/blob/8a6b06fef836a84850711dfa3799851c4d331fdf/core/state_transition.go#L196-L254",
+      "supports": [
+        "Pre-Amsterdam floor uses T=z+4n and token cost 10",
+        "Amsterdam floor uses four tokens per calldata byte and token cost 16",
+        "Amsterdam replaces the 21000 floor base with EIP-2780 intrinsicBaseGasEIP2780",
+        "Amsterdam includes access-list bytes through EIP-7981"
+      ]
+    },
+    {
+      "id": "geth-osaka-gas-cap",
+      "repository": "geth",
+      "path": "core/state_transition.go",
+      "lines": [562, 564],
+      "url": "https://github.com/ethereum/go-ethereum/blob/8a6b06fef836a84850711dfa3799851c4d331fdf/core/state_transition.go#L562-L564",
+      "supports": [
+        "Geth enforces MaxTxGas under Osaka only while Amsterdam is inactive"
+      ]
+    },
+    {
+      "id": "geth-amsterdam-gas-cap",
+      "repository": "geth",
+      "path": "core/state_transition.go",
+      "lines": [707, 711],
+      "url": "https://github.com/ethereum/go-ethereum/blob/8a6b06fef836a84850711dfa3799851c4d331fdf/core/state_transition.go#L707-L711",
+      "supports": [
+        "Amsterdam permits tx.gas above MaxTxGas while capping intrinsic and calldata floor"
+      ]
+    },
+    {
+      "id": "eip-8037-cap-rule",
+      "repository": "eips",
+      "path": "EIPS/eip-8037.md",
+      "lines": [66, 75],
+      "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-8037.md#L66-L75",
+      "supports": [
+        "Under proposed EIP-8037 EIP-7825 caps execution gas rather than the tx.gas field",
+        "max(intrinsic_gas, calldata_floor_gas_cost) must not exceed TX_MAX_GAS_LIMIT"
+      ]
+    },
+    {
+      "id": "eip-8037-reservoir",
+      "repository": "eips",
+      "path": "EIPS/eip-8037.md",
+      "lines": [92, 100],
+      "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-8037.md#L92-L100",
+      "supports": [
+        "EIP-8037 execution budget and state-gas reservoir equations"
+      ]
+    }
+  ]
+}

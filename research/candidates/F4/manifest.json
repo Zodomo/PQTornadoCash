@@ -1,0 +1,61 @@
+{
+  "candidateId": "F4",
+  "spikeId": "SP-40",
+  "status": "BENCHMARK_ONLY",
+  "noCode": false,
+  "completeProofClaimed": false,
+  "pinnedPlonky3Commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+  "field": {
+    "base": "Mersenne31",
+    "modulus": "2147483647",
+    "modulusBitsCeil": 31,
+    "challengeDegree": 4,
+    "irreduciblePolynomial": "i^2 + 1; u^2 - (2+i) (QM31 tower)",
+    "challengeSpaceBitsApprox": 123.999999997,
+    "challengeSpaceBitsFloor": 123,
+    "conservativeEntropyBudgetBits": 123,
+    "entropyQualification": "field-cardinality ceiling only; not a complete protocol soundness or QROM bound",
+    "baseTwoAdicity": 1,
+    "challengeTwoAdicity": 33
+  },
+  "encoding": {
+    "canonicalBaseBytes": 4,
+    "canonicalExtensionBytes": 16,
+    "raw": "canonical fixed-width big-endian coefficients, least-degree coefficient first",
+    "abi": "uint256 per canonical coefficient",
+    "abiBaseBytes": 32,
+    "abiExtensionBytes": 128,
+    "distributionEvidence": "vectors.json distribution over 4096 deterministic values",
+    "openedRowFloorEvidence": "../field-bakeoff-common/outputs/projection-latest.json (64 and 96 rows at 190 columns)"
+  },
+  "parameterAvailability": "Pinned default Mersenne31 Poseidon2 width 16/24/32 constructors exist; the circle PCS must be configured separately.",
+  "compatibility": "Mersenne31 base multiplicative domains have only two-adicity one. The pinned compatible route is the complex/circle backend; QM31 supplies a four-dimensional challenge field over Mersenne31.",
+  "fieldSpecificAttackReview": "Circle-domain soundness, complex conjugation/tower subfields, and Mersenne reduction canonicality require backend-specific analysis. A multiplicative-FRI argument cannot be reused unchanged.",
+  "implementationMaturity": "MEDIUM_BACKEND_SPECIFIC: pinned circle, complex DFT, QM31, and Poseidon2 code exist, but the frozen relation and EVM verifier are not circle ports.",
+  "paretoStatus": "UNRANKED_MEASUREMENTS_AND_COMPLETE_PROOF_REQUIRED",
+  "gate": {
+    "passed": false,
+    "reason": "No candidate may pass on microbench and byte floors alone; complete proof bytes, total EVM gas, prover time, soundness, and maturity are not all evidenced."
+  },
+  "artifacts": [
+    "ADR.md",
+    "assumptions.md",
+    "negative-results.md",
+    "status.json",
+    "vectors.json",
+    "source-evidence.json",
+    "../field-bakeoff-common/native/Cargo.lock",
+    "../field-bakeoff-common/native/src/main.rs",
+    "../field-bakeoff-common/solidity/src/FieldBakeoff.sol",
+    "../field-bakeoff-common/solidity/test/FieldBakeoff.t.sol",
+    "../field-bakeoff-common/outputs/native-latest.json",
+    "../field-bakeoff-common/outputs/solidity-latest.json",
+    "../field-bakeoff-common/outputs/projection-latest.json"
+  ],
+  "commands": {
+    "native": "cargo run --release --locked --manifest-path research/candidates/field-bakeoff-common/native/Cargo.toml -- --iterations 64 --rows 256 --columns 190 --out research/candidates/field-bakeoff-common/outputs/native-latest.json",
+    "solidity": "python3 research/candidates/field-bakeoff-common/solidity/run_bench.py --out research/candidates/field-bakeoff-common/outputs/solidity-latest.json"
+  },
+  "publicNetworkExecution": "PROHIBITED",
+  "productionSecrets": "PROHIBITED"
+}

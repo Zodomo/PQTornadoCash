@@ -1,0 +1,300 @@
+{
+  "schemaVersion": "sp40-relation-projection-v1",
+  "benchmarkOnly": true,
+  "completeProofProjection": false,
+  "geometrySource": "research/candidates/field-bakeoff-common/geometry-input.json",
+  "geometryKey": "frozenV03",
+  "geometry": {
+    "rows": 256,
+    "columns": 190,
+    "openedRowScenarios": [
+      64,
+      96
+    ]
+  },
+  "exclusions": [
+    "authentication paths and digests",
+    "FRI/PCS openings and commitments",
+    "proof envelope and transcript",
+    "EVM memory expansion and transaction intrinsic gas",
+    "constraint operation counts (not frozen for alternate fields)"
+  ],
+  "relationArithmeticProjection": {
+    "status": "SYMBOLIC_UNTIL_ALTERNATE_FIELD_PORT_IS_COUNTED",
+    "formula": "sum(operationCount[op] * measuredUnitCost[candidate][op])",
+    "requiredOperationCounts": [
+      "base_add",
+      "base_sub",
+      "base_mul",
+      "base_square",
+      "base_inverse",
+      "base_power",
+      "extension_add",
+      "extension_sub",
+      "extension_mul",
+      "extension_square",
+      "extension_inverse",
+      "extension_power",
+      "extension_mul_base",
+      "dot_product_by_length",
+      "batch_inverse_by_length",
+      "polynomial_evaluation",
+      "fold"
+    ],
+    "reason": "The frozen relation fixes 190 columns and 1186 constraints, not an implementation-independent arithmetic operation count. Reusing BabyBear verifier counts for another field would fabricate a projection."
+  },
+  "candidates": {
+    "F0": {
+      "canonicalBaseBytes": 4,
+      "canonicalExtensionBytes": 16,
+      "fullTraceRawBase": {
+        "bytes": 194560,
+        "allZeroCalldataGasFloor": 778240,
+        "allNonzeroCalldataGasCeiling": 3112960
+      },
+      "fullTraceAbiBase": {
+        "bytes": 1556480
+      },
+      "openedRows": {
+        "64": {
+          "rawBase": {
+            "bytes": 48640,
+            "allZeroCalldataGasFloor": 194560,
+            "allNonzeroCalldataGasCeiling": 778240
+          },
+          "rawExtension": {
+            "bytes": 194560,
+            "allZeroCalldataGasFloor": 778240,
+            "allNonzeroCalldataGasCeiling": 3112960
+          },
+          "abiBaseBytes": 389120,
+          "abiExtensionCoefficientBytes": 1556480
+        },
+        "96": {
+          "rawBase": {
+            "bytes": 72960,
+            "allZeroCalldataGasFloor": 291840,
+            "allNonzeroCalldataGasCeiling": 1167360
+          },
+          "rawExtension": {
+            "bytes": 291840,
+            "allZeroCalldataGasFloor": 1167360,
+            "allNonzeroCalldataGasCeiling": 4669440
+          },
+          "abiBaseBytes": 583680,
+          "abiExtensionCoefficientBytes": 2334720
+        }
+      }
+    },
+    "F1": {
+      "canonicalBaseBytes": 4,
+      "canonicalExtensionBytes": 16,
+      "fullTraceRawBase": {
+        "bytes": 194560,
+        "allZeroCalldataGasFloor": 778240,
+        "allNonzeroCalldataGasCeiling": 3112960
+      },
+      "fullTraceAbiBase": {
+        "bytes": 1556480
+      },
+      "openedRows": {
+        "64": {
+          "rawBase": {
+            "bytes": 48640,
+            "allZeroCalldataGasFloor": 194560,
+            "allNonzeroCalldataGasCeiling": 778240
+          },
+          "rawExtension": {
+            "bytes": 194560,
+            "allZeroCalldataGasFloor": 778240,
+            "allNonzeroCalldataGasCeiling": 3112960
+          },
+          "abiBaseBytes": 389120,
+          "abiExtensionCoefficientBytes": 1556480
+        },
+        "96": {
+          "rawBase": {
+            "bytes": 72960,
+            "allZeroCalldataGasFloor": 291840,
+            "allNonzeroCalldataGasCeiling": 1167360
+          },
+          "rawExtension": {
+            "bytes": 291840,
+            "allZeroCalldataGasFloor": 1167360,
+            "allNonzeroCalldataGasCeiling": 4669440
+          },
+          "abiBaseBytes": 583680,
+          "abiExtensionCoefficientBytes": 2334720
+        }
+      }
+    },
+    "F2": {
+      "canonicalBaseBytes": 4,
+      "canonicalExtensionBytes": 20,
+      "fullTraceRawBase": {
+        "bytes": 194560,
+        "allZeroCalldataGasFloor": 778240,
+        "allNonzeroCalldataGasCeiling": 3112960
+      },
+      "fullTraceAbiBase": {
+        "bytes": 1556480
+      },
+      "openedRows": {
+        "64": {
+          "rawBase": {
+            "bytes": 48640,
+            "allZeroCalldataGasFloor": 194560,
+            "allNonzeroCalldataGasCeiling": 778240
+          },
+          "rawExtension": {
+            "bytes": 243200,
+            "allZeroCalldataGasFloor": 972800,
+            "allNonzeroCalldataGasCeiling": 3891200
+          },
+          "abiBaseBytes": 389120,
+          "abiExtensionCoefficientBytes": 1945600
+        },
+        "96": {
+          "rawBase": {
+            "bytes": 72960,
+            "allZeroCalldataGasFloor": 291840,
+            "allNonzeroCalldataGasCeiling": 1167360
+          },
+          "rawExtension": {
+            "bytes": 364800,
+            "allZeroCalldataGasFloor": 1459200,
+            "allNonzeroCalldataGasCeiling": 5836800
+          },
+          "abiBaseBytes": 583680,
+          "abiExtensionCoefficientBytes": 2918400
+        }
+      }
+    },
+    "F3": {
+      "canonicalBaseBytes": 8,
+      "canonicalExtensionBytes": 16,
+      "fullTraceRawBase": {
+        "bytes": 389120,
+        "allZeroCalldataGasFloor": 1556480,
+        "allNonzeroCalldataGasCeiling": 6225920
+      },
+      "fullTraceAbiBase": {
+        "bytes": 1556480
+      },
+      "openedRows": {
+        "64": {
+          "rawBase": {
+            "bytes": 97280,
+            "allZeroCalldataGasFloor": 389120,
+            "allNonzeroCalldataGasCeiling": 1556480
+          },
+          "rawExtension": {
+            "bytes": 194560,
+            "allZeroCalldataGasFloor": 778240,
+            "allNonzeroCalldataGasCeiling": 3112960
+          },
+          "abiBaseBytes": 389120,
+          "abiExtensionCoefficientBytes": 778240
+        },
+        "96": {
+          "rawBase": {
+            "bytes": 145920,
+            "allZeroCalldataGasFloor": 583680,
+            "allNonzeroCalldataGasCeiling": 2334720
+          },
+          "rawExtension": {
+            "bytes": 291840,
+            "allZeroCalldataGasFloor": 1167360,
+            "allNonzeroCalldataGasCeiling": 4669440
+          },
+          "abiBaseBytes": 583680,
+          "abiExtensionCoefficientBytes": 1167360
+        }
+      }
+    },
+    "F4": {
+      "canonicalBaseBytes": 4,
+      "canonicalExtensionBytes": 16,
+      "fullTraceRawBase": {
+        "bytes": 194560,
+        "allZeroCalldataGasFloor": 778240,
+        "allNonzeroCalldataGasCeiling": 3112960
+      },
+      "fullTraceAbiBase": {
+        "bytes": 1556480
+      },
+      "openedRows": {
+        "64": {
+          "rawBase": {
+            "bytes": 48640,
+            "allZeroCalldataGasFloor": 194560,
+            "allNonzeroCalldataGasCeiling": 778240
+          },
+          "rawExtension": {
+            "bytes": 194560,
+            "allZeroCalldataGasFloor": 778240,
+            "allNonzeroCalldataGasCeiling": 3112960
+          },
+          "abiBaseBytes": 389120,
+          "abiExtensionCoefficientBytes": 1556480
+        },
+        "96": {
+          "rawBase": {
+            "bytes": 72960,
+            "allZeroCalldataGasFloor": 291840,
+            "allNonzeroCalldataGasCeiling": 1167360
+          },
+          "rawExtension": {
+            "bytes": 291840,
+            "allZeroCalldataGasFloor": 1167360,
+            "allNonzeroCalldataGasCeiling": 4669440
+          },
+          "abiBaseBytes": 583680,
+          "abiExtensionCoefficientBytes": 2334720
+        }
+      }
+    },
+    "F5": {
+      "canonicalBaseBytes": 32,
+      "canonicalExtensionBytes": 32,
+      "fullTraceRawBase": {
+        "bytes": 1556480,
+        "allZeroCalldataGasFloor": 6225920,
+        "allNonzeroCalldataGasCeiling": 24903680
+      },
+      "fullTraceAbiBase": {
+        "bytes": 1556480
+      },
+      "openedRows": {
+        "64": {
+          "rawBase": {
+            "bytes": 389120,
+            "allZeroCalldataGasFloor": 1556480,
+            "allNonzeroCalldataGasCeiling": 6225920
+          },
+          "rawExtension": {
+            "bytes": 389120,
+            "allZeroCalldataGasFloor": 1556480,
+            "allNonzeroCalldataGasCeiling": 6225920
+          },
+          "abiBaseBytes": 389120,
+          "abiExtensionCoefficientBytes": 389120
+        },
+        "96": {
+          "rawBase": {
+            "bytes": 583680,
+            "allZeroCalldataGasFloor": 2334720,
+            "allNonzeroCalldataGasCeiling": 9338880
+          },
+          "rawExtension": {
+            "bytes": 583680,
+            "allZeroCalldataGasFloor": 2334720,
+            "allNonzeroCalldataGasCeiling": 9338880
+          },
+          "abiBaseBytes": 583680,
+          "abiExtensionCoefficientBytes": 583680
+        }
+      }
+    }
+  }
+}

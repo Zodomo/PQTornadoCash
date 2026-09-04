@@ -1,0 +1,44 @@
+{
+  "pinnedCommit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+  "hashAlgorithm": "SHA-256",
+  "repository": "https://github.com/Plonky3/Plonky3",
+  "files": [
+    {
+      "path": "bn254/src/bn254.rs",
+      "sha256": "d9f6d16f262a260eaec12c7e685b5d47f63ec5484ff962952c1fba37bcf21768"
+    },
+    {
+      "path": "bn254/src/poseidon2.rs",
+      "sha256": "6f50741ea1763cc1749e116a3b124c7e939abf29f2e09668e1fa990d9f071b7a"
+    },
+    {
+      "path": "dft/src/traits.rs",
+      "sha256": "6eec343eef88e701f6cf11dc205a1cbaa0d6efcb3a6e947622a636f656eee142"
+    },
+    {
+      "path": "fri/src/lib.rs",
+      "sha256": "de8d645f19bbd37cb3f5b8c3b142001440a5fa9a36c4642d20f2b6aa184d9f2e"
+    },
+    {
+      "path": "circle/src/pcs.rs",
+      "sha256": "51e2140ab4f0840362a30f5a37fbac9ba598e7c31ddc2de01a7932b170dd7aff"
+    },
+    {
+      "path": "field/src/extension/mod.rs",
+      "sha256": "aac05a6fdcc6f309792680d356c00ee491b4ad79790f746a04119523fe68ec38"
+    },
+    {
+      "path": "field/src/extension/quintic_extension.rs",
+      "sha256": "47dda94a12d861afd41e85658e30cb0c132b83dc77455f32dddf721ac220e889"
+    },
+    {
+      "path": "monty-31/src/extension.rs",
+      "sha256": "248f0e353eca0620a9c7d8ae6612d74cc4cd4147a6487013cf184b8383d317f2"
+    }
+  ],
+  "generator": "research/candidates/field-bakeoff-common/generate_packages.py",
+  "claims": {
+    "compatibility": "Pinned p3-bn254 implements Field and TwoAdicField, so generic p3-dft/p3-fri arithmetic interfaces are available. A complete hash/MMCS/transcript/PCS instantiation is not frozen.",
+    "parameterAvailability": "Pinned p3-bn254 exports a Poseidon2 type and round-count constants but no reviewed default-constant constructor, so permutation benchmarking stops rather than inventing constants."
+  }
+}
