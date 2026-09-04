@@ -1,0 +1,42 @@
+{
+  "label": "trailing-b",
+  "command": [
+    "/Users/zodomo/code/PQTornado/research/r2/operations/target/release/verify-worker",
+    "--statement",
+    "/Users/zodomo/code/PQTornado/research/candidates/v03-baseline/proofs/v03-fixed-01/statement.json",
+    "--parameter",
+    "35adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62ab7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea07779",
+    "--part-a",
+    "/Users/zodomo/code/PQTornado/research/r2/operations/outputs/containment-01/trailing-b/part-a.pqtc",
+    "--part-b",
+    "/Users/zodomo/code/PQTornado/research/r2/operations/outputs/containment-01/trailing-b/part-b.pqtc",
+    "--mutation",
+    "none"
+  ],
+  "environment": {
+    "PATH": "/bin:/usr/bin",
+    "RAYON_NUM_THREADS": "1",
+    "RUST_BACKTRACE": "0",
+    "LC_ALL": "C"
+  },
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_seconds": 0.010020666988566518,
+  "worker": {
+    "contained": true,
+    "elapsed_ms": 0.38675,
+    "error": "trailing bytes",
+    "input_bytes": 212205,
+    "mutation": "none",
+    "mutation_boundary": "serialized-untrusted-input",
+    "panic_policy": "Unwind only; allocator abort and process termination require supervisor isolation",
+    "schema": "pqtc.r2.native-worker.v1",
+    "scope": "Native availability diagnostic, never a Solidity soundness bypass",
+    "status": "DECODE_OR_INPUT_REJECTED",
+    "valid_request_after_mutation": null
+  },
+  "rss_unit": "bytes",
+  "rss_source": "research/r2/operations/outputs/containment-01/trailing-b/stderr.log",
+  "part_a_sha256": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+  "part_b_sha256": "88bec873205781155c8fc418f92f0e6af3a0d7a1a51085e0bc5fdb21915f1d82"
+}

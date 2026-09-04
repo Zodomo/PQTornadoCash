@@ -1,0 +1,71 @@
+{
+  "schema": "pqtc.r2.backend-adapter.v1",
+  "pipeline_id": "R2-C4",
+  "specification_status": "EXACT_FROZEN_H0_FIRST",
+  "correctness_evidence": "EXECUTION_REQUIRED",
+  "privacy_evidence": "HIDING_OUTER_ARGUMENT_NOT_ESTABLISHED",
+  "security_status": "SECURITY_NOT_QUALIFIED",
+  "performance_evidence": "NOT_EVALUATED",
+  "implementation_stage": "EXECUTABLE_NATIVE_CONTROL_AND_BOUNDED_REPAIR_SOURCE",
+  "promotion_status": "NOT_READY_FOR_BUILD_SELECTION",
+  "relation": {
+    "source": "crates/pqtc-poseidon-air/src/air.rs",
+    "reference": "crates/pqtc-poseidon-air/src/lib.rs::check_witness",
+    "representation": "Unmodified WithdrawalAir instantiated against p3-multi-stark symbolic/prover/verifier AIR builders; no relation reimplementation or synthetic AIR",
+    "geometry": {"rows": 256, "columns": 190, "constraints_per_row": 1186, "maximum_degree": 7, "stacked_mle_variables": 16},
+    "public_values": "64 BabyBear values: scope, root, nullifier_hash, payout_digest, sixteen values each; payout_digest is the frozen recipient/relayer/fee binding, not raw addresses",
+    "canonical_inputs": "Deserialize existing WithdrawalStatement/WithdrawalWitness; check_witness before trace generation. No modulo remapping of corpus inputs.",
+    "constraint_closure": "Plain control uses upstream AIR metadata, beta-batched degree-generic zerocheck, repeat-last successor column opening, prescribed-point WHIR verification, and verifier evaluation of the identical AIR. No sparse matrices, unverified lookup claims, or client-supplied constraint evaluations. Frozen transitions are disabled at the last row, so the successor convention does not change H0."
+  },
+  "api_fit": [
+    {"stage": "frozen uni-stark", "required": "p3_commit::Pcs<EF, Challenger>", "available": "HidingWhirPcs implements MultilinearPcs only", "reproducer": "rust/src/uni_api_barrier.rs", "expected_result": "E0277 missing Pcs implementation"},
+    {"stage": "pinned multi-stark", "required": "PrescribedPointPcs plus Table/Witness layout and table access", "available": "plain WhirProver implements PrescribedPointPcs; HidingWhirPcs exposes Poly<F>, Vec<Point<EF>> and private message prover data", "reproducer": "rust/src/multi_api_barrier.rs", "expected_result": "E0277 missing PrescribedPointPcs implementation"},
+    {"stage": "bounded repair", "source": "rust/src/hiding_repair.rs", "implemented": "Pack all 48640 actual H0 trace cells column-major, zero-pad to 65536, commit with fresh OS randomness, open eight actual trace coordinates, serialize and verify twice, reject altered claims and truncated proofs.", "barrier_demonstration": "Eight public PCS evaluations equal all eight nullifier-secret limbs stored in row-zero WORK. This is the PCS's documented leakage of requested evaluations, not an attack on HVZK-WHIR. This repair solves the Poly interface mismatch but does not implement an outer hiding relation argument.", "scope": "ACTUAL_H0_TRACE_COMPONENT_NOT_COMPLETE_WITHDRAWAL_PROOF"}
+  ],
+  "hiding_inventory": [
+    {"oracle_or_message": "main H0 trace commitment", "plain_control": "non-hiding Merkle WHIR", "repair": "HVZK randomized encoding with CryptoRng; source oracle randomness budget derived upstream"},
+    {"oracle_or_message": "AIR zerocheck round polynomials", "plain_control": "unmasked GenericDegreeProof", "repair": "not consumed by Poly PCS; no outer masking or composition theorem implemented", "status": "HIDING_BARRIER"},
+    {"oracle_or_message": "current and successor column evaluations at zerocheck point", "plain_control": "public opening values", "repair": "PCS deliberately publishes requested evaluations; hiding commitment does not hide these values", "status": "HIDING_BARRIER"},
+    {"oracle_or_message": "WHIR folded source oracles", "repair": "per-oracle randomized encoding; randomness >= queries, checked against codeword slack by ZkWhirConfig"},
+    {"oracle_or_message": "WHIR sumcheck messages", "repair": "upstream HVZK sumcheck mask code with ell_zk >= 3"},
+    {"oracle_or_message": "WHIR code-switch/OOD answers", "repair": "upstream switch-mask polynomial includes folded randomness and OOD pad"},
+    {"oracle_or_message": "terminal source and base-case masks", "repair": "upstream occupancy-aware terminal query fixed point and masked base case; full diagnostic report retained"},
+    {"oracle_or_message": "public statement", "repair": "intentionally public; domain-bound on both sides"}
+  ],
+  "transcript": {
+    "plain_control": "Pinned WHIR DomainSeparator then explicit R2 mode and requested target; multi-stark binds instance/public metadata and trace commitment before zerocheck, opens at transcript-prescribed point. Uses upstream Poseidon2 duplex, not PQTC production transcript.",
+    "repair": "Pinned hiding PCS DomainSeparator, distinct R2 mode, security request, all 64 public values; PCS commit binds commitment, open binds each point and exposed value. PCS verify absorbs commitment itself, unlike PrescribedPointPcs::verify_at which must not reabsorb it. A future wrapper must preserve this boundary, not replay/omit commitments.",
+    "claim_limit": "No exact-transcript Fiat-Shamir/QROM composition theorem or quantum security claim. Native postcard only; no EVM codec equivalence claimed."
+  },
+  "parameters": {
+    "plain_control_source": "Plonky3 pin multi-stark/tests/whir_fibonacci.rs config_for_stacked: folding2, starting log inverse rate1, per-round rate += folding - 1, CapacityBound, pow0. Actual arity16, not Fibonacci relation.",
+    "repair_source": "Existing C20 adapter profile: folding4, initial log inverse rate2, no per-round overrides, CapacityBound, pow0, ell_zk4, mask log inverse rate1; actual arity16 replaces synthetic arity12.",
+    "requests": [32, 128],
+    "derivation": "Only upstream WhirConfig::new/ZkWhirConfig::new derive query counts, rates and randomness. Exact errors are retained, never replaced by guessed successful parameters.",
+    "mask_union": "mask_queries = assumption.queries(security_level + ceil(log2(2*n_rounds+2)), mask_log_inv_rate)",
+    "terminal_budget": "Upstream least fixed point accounts for message_len + final_queries randomized occupancy, with derived PoW gap.",
+    "security_terms": "Retain complete hiding_base_case_security_report, requested target and derived configuration. The report is explicitly diagnostic ideal-IOP RBR base-case scope, not end-to-end certification. Quartic BabyBear field and CapacityBound conditions remain visible; 128 input is not 128 established security.",
+    "comparison_limit": "32-bit runs are historical-profile controls only. 128-bit derivation requests do not establish security normalization. Do not rank either against a stronger qualified backend."
+  },
+  "spartan_branch": {
+    "source_pin": "f525cddea38bb605304d3a8e6394dda10ac64b4a",
+    "plonky3_fork_pin": "f64ae15da3807388b1a4e0a89a4fde8fdcdff515",
+    "observed_api": "PoseidonZkProvingKey/PoseidonZkSetupConfig and R1csShape; setup uses explicit DirectSparse or Spark matrix closing. engine::F is KoalaBear, not BabyBear.",
+    "fit": "H0 BabyBear AIR cannot be substituted as KoalaBear arithmetic. Exact non-native lowering needs canonical BabyBear residues, quotient/carry range constraints for each field operation, and multiplication gates reducing x^7; alternatively port engine/PCS to BabyBear and rederive security. Neither is a drop-in native exact H0 adapter.",
+    "closure": "Public API accepts explicit sparse A/B/C; DirectBindLayout/DirectMultiplyLayout are crate-private. Structured Kronecker/selector MLE evaluation would require an actual engine extension closing every matrix evaluation against a fixed relation, not dropping SPARK authentication or calling an unbound evaluator.",
+    "disposition": "Not chosen over existing BabyBear multi-stark path; source/API assessment, NOT measured architecture or gas failure. No generic sparse-matrix expansion by default."
+  },
+  "solidity": {
+    "gate": "Full hiding native proof gate not passed; do not build a misleading full EVM candidate.",
+    "needed_if_gate_passes": ["BabyBear quartic arithmetic", "matching Poseidon2 duplex and Merkle hashes", "generic-degree AIR zerocheck", "exact current/successor claim closure", "HVZK code-switch and mask commitment verification", "terminal hiding base case", "exact public-value codec and full relation binding"],
+    "historical_harness_defect": "C50 shell fails on empty target_contract array under bash nounset before any transaction. gas_control.py bypasses only the defective shell argv construction using a direct argv list; it never disables nounset globally or labels failure as gas.",
+    "control_class": "STANDALONE_PLAIN_WHIR_NOT_SPARTAN_NOT_H0_NOT_HIDING; completely separate from candidate native outputs"
+  },
+  "licenses": [
+    {"component": "Plonky3", "pin": "3152b14a89067c83775a8076cc262ffc48a1fd7c", "declaration": "MIT OR Apache-2.0", "evidence": "Cargo workspace metadata and license files; runtime cargo metadata inventory captures transitive package declarations", "qualification": "Declaration inventory, not legal clearance"},
+    {"component": "spartan-whir", "pin": "f525cddea38bb605304d3a8e6394dda10ac64b4a", "declaration": null, "uncertainty": "Pinned Cargo.toml has no license field; old tracked-file source check found no top-level license. No legal conclusion. Review before incorporation or redistribution."},
+    {"component": "sol-spartan-whir", "pin": "b381a9091568d1a4a52b50d0b27488a767051faf", "declaration": null, "uncertainty": "Old tracked-file source check found no top-level license. SPDX source notices, if any, are not assumed to settle all files. Review before incorporation or redistribution."},
+    {"component": "forge-std", "pin": "035de35f5e366c8d6ed142aec4ccb57fe2dd87d4", "declaration": "Inspect exact checkout if standalone control entered; no blanket legal conclusion"},
+    {"component": "solady", "pin": "513f581675374706dbe947284d6b12d19ce35a2a", "declaration": "Inspect exact checkout if standalone control entered; no blanket legal conclusion"}
+  ]
+}

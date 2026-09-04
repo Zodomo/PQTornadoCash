@@ -1,0 +1,1694 @@
+URL: https://eprint.iacr.org/2026/306.pdf
+Content-Type: text/markdown
+Method: iacr
+Notes: Fetching PDF for full content...; PDF converted via markit
+
+---
+
+# Skipping Class: Algebraic Attacks exploiting weak matrices and operation modes of Poseidon2(b)
+
+**Authors:** Simon-Philipp Merz, Àlex Rodríguez García
+**Date:** 2026
+**ePrint:** 2026/306
+**Keywords:** CryptanalysisPoseidonRound SkipsAlgebraic cryptanalysis
+
+---
+
+## Abstract
+
+We present new algebraic attacks on Poseidon2 and Poseidon2b. We exploit the specific structure of the matrices that define the linear layers in the hash function which allows us to improve round-skipping for the constrained-input constrained-output CICO problem. The security of many circuit-friendly hash functions has been measured by their resistance against attacks on the CICO problem. However, we show how to boost our round-skipping attack when directly modelling algebraic preimage attacks of Poseidon2(b) in compression and sponge mode. To the best of our knowledge, our attack provides the first examples where finding preimages is easier than solving the corresponding CICO problem in Poseidon2(b). Furthermore, we describe the first algebraic collision attack that outperforms its algebraic preimage counterpart. We improve over state-of-the-art algebraic attacks for a range of parameters, e.g. for one recommended $128$-bit parameter set we improve over previous state-of-the-art algebraic collision attacks by a factor of $2^{106}$. However, due to the algebraic security margin this does not mean the primitive falls short of its claimed security level. Finally, we discuss how our attacks can be mitigated without affecting the efficiency of Poseidon2(b).
+
+---
+
+## Full Paper
+
+<!-- Page 1 -->
+
+# Skipping Class: Algebraic Attacks exploiting weak matrices and operation modes of Poseidon2(b)
+
+2 Simon-Philipp Merz¹, Alex Rodr´ıguez Garc´ıa `
+
+1 ETH Zurich, Switzerland 2 Universitat Polit`ecnica de Catalunya, Spain
+
+**Abstract**We present new algebraic attacks onPoseidon2andPoseidon2b. We exploit the specific structure of the matrices that define the linear layers in the hash function which allows us to improve round-skipping for the constrained-input constrained-output (cico) problem. The security of many circuit-friendly hash functions has been measured by their resistance against attacks on thecicoproblem. However, we show how to boost our round-skipping attack when directly modelling algebraic preimage attacks ofPoseidon2(b)in compression and sponge mode. To the best of our knowledge, our attack provides the first examples where finding preimages is easier than solving the correspondingcicoproblem inPoseidon2(b). Furthermore, we describe the first algebraic collision attack that outperforms its algebraic preimage counterpart. We improve over state-of-the-art algebraic attacks for a range of parameters, e.g. for one recommended 128-bit parameter set we 106 improve over previous state-of-the-art algebraic collision attacks by a factor of 2. However, due to the algebraic security margin this does not mean the primitive falls short of its claimed security level. Finally, we discuss how our attacks can be mitigated without affecting the efficiency ofPoseidon2(b).
+
+## 1 Introduction
+
+Circuit-friendly hash functions are designed specifically to make zero-knowledge proof systems faster. Compared to traditional hash functions, this is achieved by prioritizing (a small number of) additions and multiplications over bitwise operations such as XOR or bit rotations. Poseidonis one of the first circuit-friendly hash functions. The work introducing it dates + back to 2019 [GKR 21], with updated versions forged in response to a progression of crypt- + analytic results, e.g. [BCD 20,KR21]. In 2023, an overhauled and more efficient version was published under the namePoseidon2[GKS23]. Most recently, another version was introduced asPoseidon(2)b. It works over binary fields, and is thus particularly suited for use in binary + proof systems [GKK 26]. + Despite a series of cryptanalytic results onPoseidonandPoseidon2[BCD 20,KR21, + BBLP22,BBB 25,ZSVD25], none of the recommended parameter sets have been broken to date, making it one of the more trusted circuit-friendly hash functions. At the time of writing, Poseidon2is being considered for adoption by Ethereum. As part of Polygon’s Plonky libraries, Poseidon2has been widely used in cryptographic research and elsewhere, e.g. in the Quantus network blockchain³,Poseidon2is already deployed.
+
+AllPoseidonvariants follow a classical SPN construction with the Partial SPN (PSPN) *tq* construction using an underlying permutation onF. It is recommended for use in sponge and
+
+The authors are listed in alphabetical order. This research was undertaken as part of the second author’s Bachelor’s thesis conducted at ETH Zurich. 3 [https://github.com/Quantus-Network/qp-poseidon/blob/main/core/src/lib.rs](https://github.com/Quantus-Network/qp-poseidon/blob/main/core/src/lib.rs)
+
+<!-- Page 2 -->
+
+S.P. Merz, A. Rodr´ıguez Garc´ıa `
+compression mode. The underlying permutation consists of rounds, each of which is made up of a linear layer and a non-linear S-box. Here, the linear layers can be described by matrix multiplications and the S-boxes consist of element-wise exponentiation by*α*, where*α*is typically the smallest odd integer coprime to*q−*1. In the*external*rounds, all*t*states are raised to the power*α*, whereas in the*internal*rounds the power map is only applied to a single state.
+
+In this work, we introduce new algebraic attacks that exploit the structure of the matrices defining the linear layers in both external and internal rounds ofPoseidon2andPoseidon2b. The hash function’s security has usually been studied by estimating the hardness of thecico (constraint input, constraint output) problem of its underlying permutation. This means finding an input to a permutation such that the input and the output satisfy certain constraints, e.g. certain input and output elements should equal 0. Our attacks use the*round skipping*technique. Consider the permutation underlyingPoseidon2(b)as split into two parts
+
+Poseidon *π* =*π₂ ◦π₁,*
+
+where*π₁* corresponds to the initial rounds that are “skipped” and*π₂* contains the remaining subsequent rounds. A round skip is a an algebraic variety*V*parametrized in certain variables in the image of*π₁* such that all points in*π₁* *−*1
+
+(*V*) satisfy the input constraints. Thus, to find a
+solution to thecicoproblem, it is sufficient to impose the output constraints on*π₂* given inputs from the parametrized space. If the equations describing the parametrization are of sufficiently low degree, this leads to an improvement over a more direct algebraic approach. Depending on the available degrees of freedom, we can give advantageous parametrizations for the initial rounds. We used our round-skipping attack to claim the largestcico-2 bounty available in Ethereum’s Poseidon initiative [Eth24] with less than 11 hours of computation on 64 cores. As a comparison, the second largest bounty, which is*≈*5 6 times easier to solve, was claimed using 40 hours of computation on 1000 cores [BBB + 26]. Theoretically, we anticipated a speed-up of approximately 5 9 for the same instance and in practice, we observed an even greater acceleration. If the inner permutation of the hash function is close to pseudorandom, then the security of a sponge mode hash function can be related to the hardness of thecicoproblem for the permutation instantiating the sponge [BDPVA08]. A priori, it is not clear whetherPoseidon’s underlying permutation indeed satisfies this condition, but no previous attack onPoseidonhas exploited a concrete mode of operation to achieve better results than when attacking thecico problem. We explore how our attack ideas can be modified when applied directly to algebraic preimage attacks onPoseidonin sponge and in compression mode. In both cases, we can further improve the round-skipping attack for some suggested parameter sets. This calls into question the implicit assumption made in previousPoseidoncryptanalysis that it is sufficient to study thecico-security of the underlying permutation alone. As such, we argue that the folklore belief that the security can be studied entirely through thecicoproblem should be abandoned. Finally, we adapt the algebraic modelling of the polynomial systems arising from sponge mode with round-skipping to algebraic collision search. This yields yet another speed-up and shows that this problem should be studied separately. We summarise the resulting speed-ups of our attack in different settings for two recommended parameter sets inTable 1.
+
+**Related Work.**Previous cryptanalysis ofPoseidonshowed how to bypass arbitrarily many internal rounds [BCD + 20,KR21], and how to choose the linear layer to prevent this from happen- ing [GRS21]. As a result, the internal linear layers ofPoseidonwere adapted. Further, certain parameter choices in previous iterations ofPoseidonsuch as raising all entries element-wise to
+
+<!-- Page 3 -->
+
+Skipping Class
+
+Type of attack, (*n,t,c,d*) Reference (mode of operation) (32*,*24*,*8*,*8) (64*,*12*,*4*,*4)
+
+7*ω* 3*ω*Section 3.3and cico-(*c,d*) problem *α α* Tables 2and3 Preimage attack4*ω ω*Lemma 4.5and (2-to-1 compression ) *†* *α α* Appendix A Preimage attack12*ω* 8*ω*Section 4.1and *α α* (3-to-1 compression) Tables 4and5 Preimage attack11*ω* 6*ω* *α α* Section 5.2 (sponge mode, single squeeze) Collision attack(35*−RP*)*ω* 19*ω* min(*α,α*) – Section 5.3 (sponge mode, single squeeze)
+
+**Table 1.**Speed-ups over previous algebraic attacks [BBB
+
++ 25] for thecicoproblem, different security notions and modes of operation modes for recommended parameter sets [GKS23,GKK + 25] with*RF* = 8 external rounds. The size of field elements is denoted by*n*,*t*the number of states,*c*the sponge capacity and*d*the digest size. Complexity of Gr¨obner basis attack assumed to be proportional to*d* *ω* *I*, where 2*≤ω <*3, and*dI* is the ideal degree. S-boxes are instantiated with the element-wise power map by*α*. In the binary case,*α*= 7.*RP* denotes the number of internal rounds. *†* In 2-to-1 compression, 2*d*=*n*. Speed-ups are for parameters (*n,t,d*) = (32*,*24*,*12) and (*n,t,d*) = (64*,*12*,*6).
+
+the power*−*1 in the non-linear layer and a binary version, calledStarkad, were abandoned. A first attack that observed how to skip two rounds in the originalPoseidon[BBLP22, Sect. 4.3] was countered by adding an additional linear layer at the beginning. Later, a different attack onPoseidon2allowed an attacker to skip two rounds in a single variable for thecico-1 problem [BBB + 25, Appendix D] exploiting the structure of the matrix defining the linear layers in Poseidon2. Further cryptanalytic research used resultants to compute solutions tocico-2 bounty instances in Ethereum’s competition [BBB + 26] or used refined root-finding techniques to solve cico-1 problems in the context ofPoseidon2[ZSVD25]. Solving generalcico-*k*problems for *k >*1 can further be done using Gr¨obner basis techniques to solve the arising polynomial systems as first done forPoseidonin [BCD + 20,KR21]. A more recent thorough analysis in the context ofPoseidon2was done in the “Algebraic CheapLunch” [BBB + 25]. There, a custom monomial ordering is computed that claims to compute the Gr¨obner bases forPoseidon(2) more efficiently. To estimate the complexity of finding solutions to thecico-*k*problem using Gr¨obner bases, the authors of [BBB + 25] further provided tighter bounds on the degree of the ideal generated by the polynomials.
+
+**Contributions.**We formalise round-skipping and introduce a notation that enables a better comparison of different round-skipping attacks in the literature. Then, we improve round-skipping forPoseidon2andPoseidon2(b)for a range of parameters that were suggested by its authors [GKS23,GKK + 25]. Hereby, we take advantage of the specific structure of the matrices used to define the linear layers ofPoseidon2(b)in both the external and internal rounds. We keep our treatment of round-skipping modular, so that it can be easily combined with previous cryptanalytic results such as resultant-based attacks and Gr¨obner basis attacks.
+
+<!-- Page 4 -->
+
+For some parameter sets we provide closed formulae for the parametrization describing the skipped rounds (for thecico-4 and thecico-8 problem). For other parameters we describe and list the possible round skips. Beyond thecico-*k*problem, we adapt our techniques to further improve the round skips in the setting of algebraic preimage attacks whenPoseidon2(b)is used in compression and sponge mode. This shows that there is a qualitative difference between studyingcicoproblems and evaluating the security of the hash function in different modes of operation directly. We show further that for some parameter ranges the algebraic collision attacks outperform algebraic preimage attack. For some parameter sets this leads to performance improvements by 2 106 over previous state-of-the-art algebraic attacks, namely in the collision attack onPoseidon2bwith parameters*α*= 7 and*RP* = 15 taken from [GKK + 25, Tbl. 1], seeTable 1, for which we show how to skip the first 10 rounds. Despite a significant speed-up over previous algebraic attacks, the generous algebraic security margin ofPoseidon2(b)prevents breaking the asserted security level of practical parameter sets. We discuss limits of our attack in full-roundPoseidonand possible countermeasures.
+
+**Technical Overview.**To find suitable parametrizations for our improved round skips, we take advantage of the specific structure of the matrices used to define the linear layers ofPoseidon2 andPoseidon2bin both the external and internal rounds. We use the available degrees of freedom on the input to force certain variables to propagate through invariant subspaces thus preventing the full diffusion of the variables intended by the designers. Forcing these subspaces is only possible because the matrix defining the linear layer has a tensor structure with the left matrix having low-weight eigenvectors with entries 1 and*−*1. This leads to invariant low-weight unconstrained subspaces. Invariance is with respect to both the linear layer and the S-box layer. The low-weight is used to bypass several variables at the expense of only few degrees of freedom. Unconstrained means that those subspaces do not have any constraints on their input. As such, we can model our parametrization using only few low-degree polynomials, hence reducing the degree of the final equations to ultimately decrease the complexity of solving the resulting polynomial system. A possible countermeasure of the described attack is changing the matrix design so that all these invariant low-weight subspaces have some constraints on their inputs. To solve thecicoproblem, we impose certain input values to be given constants. In sponge, we impose those input values to be the output of the previous permutation, which, with the appropriate modelling, gives us additional degrees of freedom that can be used for an improved round skip. This introduces another system of equations, namely the one arising from the round skip restrictions, which we justify to be cheaper than the second one. We can think about compression as having some inputs constrained to constants of our choice or low degree polynomials of our parametrizations, which ultimately also leads to additional degrees of freedom compared to fixing those values beforehand. Finally, for collisions, we can parametrize half of the variables and impose that the given outputs are equal to another similar parametrization. As such, since the propagated variety has a smaller dimension, we can skip even more rounds. Even though the system from this modelling ends up being asymptomatically more complex, the difference in the number of rounds skipped makes it a worth trade-off for some parameter sets.
+
+**Outline.**InSection 2we introduce notation that is used throughout the paper and we recall the relevant background including the details of thePoseidon2(b)permutation, and the modes of operation. InSection 3we formally define round-skipping and apply it to thecicoproblem for a range of parameters. We adapt the modelling for algebraic preimage attacks ofPoseidon in compression and sponge mode inSection 4. InSection 5we discuss the algebraic modelling
+
+<!-- Page 5 -->
+
+for the resulting polynomial system after applying round-skipping for our preimage attack, the modelling of sponge mode with two permutations as well as the algebraic modelling of our algebraic collision attack. We conclude inSection 6with the impact on full-roundPoseidon2 and potential countermeasures.
+
+## 2 Preliminaries
+
+We begin this section by recalling the relevant security definitions inSection 2.1. Then, we describe the permutation underlying bothPoseidon2andPoseidon2b. In particular, we recollect the matrices that define the linear layers of the external and the internal rounds. Using the tensor structure of these matrices and to simplify the nomenclature later, we present an equivalent way to view the underlying permutation inFig. 1. We conclude the preliminaries by describing the modes of operation of thePoseidon2(b)hash functions and setting some notation for the rest of the paper.
+
+### 2.1 Security definitions
+
+In this section we recall relevant security definitions for this paper as previously defined in Poseidon(2)b[GKK + 26]. For a meaningful treatment of unkeyed hash functions such asPoseidon2andPoseidon2b, we rule out non-uniform adversaries as is the convention in symmetric cryptography. A*unit of time*is a single evaluation of the hash function.
+
+**Definition 2.1(Preimage resistance).***LetH*:F *∗* *q→*F *d* *q* *. We callHλ*-bit preimage resistant*,* *if for any known algorithm with randomh∈*F *d* *qas input that runs in timeτ, the probability to* *outputxsuch thatH*(*x*) =*his at most* 2 <u>τ</u> *λ.*
+
+**Definition 2.2(Collision resistance).***LetH*:F *∗* *q→*F *d* *q* *. We sayHisλ*-bit collision resistant*,* *if for any known algorithm that runs in timeτthe probability to outputx,ysuch thatH*(*x*) =*H*(*y*) <u>τ²</u> *is at most* 2 *λ.*
+
+Further, we define thecicoproblem, which is used by the authors of bothPoseidonand previous cryptanalysis to be the fundamental problem to assess security.
+
+**Definition 2.3(**cico-(in,out)**Problem).***LetP*:F *tq* *→*F *tq* *be a function. The*cico-(in,out) problem of*Pis to find two vectors**x**∈*F *t−in* *×{*0*}* *in* *, and**y**∈*F *t−out* *×{*0*}* *out* *such thatP*(***x***) =***y**.* *By thecico-kproblem, we mean thecico-(k,k) problem.*
+
+**Definition 2.4(**cico-(in,out)**Security).***LetP*:F *tq* *→*F *tq* *be a function. We say thatP* *isλ*-bitcico-(in,out)secure*, if no algorithm that runs in time less than*2 *λ* *outputs a valid* *solution to thecico-(in,out)problem with probability*1*.*
+
+InSection 4, we will describe how to improve round-skipping attacks on thecico-*k*problem onPoseidon2(b)when used in the recommended modes of operation. In particular, this will contradict the widespread folklore belief that any attack onPoseidonis as hard as solving its cico-*k*problem.
+
+<!-- Page 6 -->
+
+### 2.2 The Poseidon2(b) permutation
+
+*π* ThePoseidon2(b) permutation is the permutation underlying thePoseidon2[GKS23] and + *π tq tq* Poseidon2b[GKK 25] hash functions. ThePoseidon2(b) permutation is a mapF *→*F, where*q*is an*n*-bit prime in the case ofPoseidon2and an*n*-bit binary field in the case of Poseidon2b. The permutation consists of a concatenation of*Rf*external (full) rounds at the beginning and end as well as*RP* internal (partial) rounds. Each round in turn consists of a linear layer and a non-linear layer, i.e. an affine transformation and an S-box. The S-box consists of an element-wise power map*S*(*x*) :=*x* *α* of all entries in full rounds, and only the first entry in partial rounds. The affine transformation is defined by a matrix and round constants. Hereby, the round constants are derived from the parameters*n*,*RF* (:= 2*·Rf*),*RP*,*t*and*α*using a PRNG.
+
+**Matrices defining the affine transformations.**In this work, we focus on parameter sets with*n*being 32 or 64,*t∈{*12*,*16*,*20*,*24*}*, i.e. including a subset of the parameter sets considered by the authors ofPoseidon2andPoseidon2b[GKS23, Tbl. 1], [GKK + 25, Tbl. 1]. For all of these parameters, the matrix that defines the affine transformation in the external :=
+
+(*b*) :=
+(*b*) (*b*)
+layer is of the form*MεPt/*4*⊗M₄* (resp.*MεP* *t/*4 *⊗M₄*), where*Pm*is an*m×m*matrix
+
+(*b*)
+with 2 (resp.*X*in the binary case) on all diagonal entries and 1 elsewhere, and*M₄* (resp.*M₄*) is the following MDS matrix.    2 2  5 7 1 3 *X* + 1*X* +*X*+ 1 1*X*+ 1 4 6 1 1
+
+(*b*)  *X² X²* +*X*1 1 
+*M₄* :=     *, M₄* :=  2 2   *.* 1 3 5 7 1*X*+ 1*X* + 1*X* +*X*+ 1 1 1 4 6 1 1*X² X²* +*X*
+
+For*t*= 16, for example, the 16*×*16 matrix*Mε*is given by     2 1 1 1 5 7 1 3 1 2 1 1 4 6 1 1 *Mε*:=*P₄ ⊗M₄* =     *⊗*     *.* 1 1 2 1 1 3 5 7 1 1 1 2 1 1 4 6
+
+The property that we will use later to improve round-skipping is that the matrices*Pm*have low-weight eigenvectors with entries 1 and*−*1 and thus*Mε*does also when viewed as acting on quadruples ofF*q*-elements. The matrices*MI* that define the affine layer in the internal rounds are of the form   *µ₀* 1*···*1  1*µ₁ ···*1   
+*MI* :=  .... *,*
+ ........ 
+1 1*···µt−*1
+
+where*µ₀,...,µt−*1*∈*F*q\{*0*,*1*}*are chosen such that*MI* is invertible and does not admit arbitrarily long subspace trails (see [GRS21,GKK + 26] for details). *π* The tensor structure of*Mε*enables us to interpret thePoseidon2(b) permutation as acting on*t/*4 quadruples ofF*q*-elements. For*t*= 16, we depict this action inFig. 1, where we represent the initial vector of 16F*q*-elements as 4 quadruples. For ease of exposition of our attack later, we further modify what we call an external round. Instead of considering an initial linear layer followed by the external rounds which alternate S- boxes and additional linear layers, we say that an external round starts with a linear layer followed
+
+<!-- Page 7 -->
+
+Input Input
+
+*Mε M₄ M₄ M₄ M₄* *Mε*
+
+*r*) *r*) *r*) *r*)*P* Repeat
++*C*0(+*C*1(+*C*2(+*C*3( *R* *f* times *XαXαXαXα* Repeat *R* times +*C*0(+*C*1(+*C*2(+*C*3(
+
+*r*) *r*) *r*) *r*)
+*f* *XαXαXαXα* *Mε* *Mε* +*C*0(
+
+*r*)
++*C₀*
+
+(*r*)
+*x* *α* 0 Repeat *RP* times *x* *α* 0 Repeat *RP* times *MI* *MI*
+
+[Showing lines 1-150 of 1672. Use :151 to continue]
+
++*C*0(
+
+*r*) +*C*1(
+*r*) +*C*2(
+*r*) +*C*3(
+*r*)
+(*r*) (*r*) (*r*) (*r*)
++*C₀* +*C₁* +*C₂* +*C₃* *XαXαXαXα* Repeat *R* times *XαXαXαXα* Repeat *fR* *f* times *MεM* *ε*
+
+Output Output
+
+**Figure 1.**Left: Original description ofPoseidon2(b)
+
+*π* for*t*= 16. Right: Equivalent description of the scheme using the structure of*Mε* and relabelling external rounds.
+
+by an S-box and one additional linear layer is applied after all the initial external rounds. This equivalent view is depicted on the right inFig. 1.
+
+### 2.3 Modes of operation in Poseidon2(b)
+
+Starting from a permutation, one can build hash functions using different modes of operation. Poseidon2(b)is recommended for use in compression and sponge mode which we will recall in this section. InSections 4.1and4.2, we adapt our ideas for round-skipping attacks targeting thecicoproblem to further improve round-skipping ofPoseidon2(b)when used in a specific mode of operation.
+
+**Compression Hash Functions**can be instantiated from permutations in multiple ways. In Poseidon2(b), the compression mode is obtained by combining the truncation function Tr*d*: F *tq* *→*F *d* *q*, which truncates after the first*d*elements, with a feed-forward operation. More precisely, the compression*C*:F *tq* *→*F *d* *q*is computed as
+
+*x∈*F *tq* *7→*Tr*d*(*P*(*x*) +*x*)*∈*F *d* *q* *.*
+
+Other compression modes in the literature such as Jive [BBC + 23] can be seen as variants of the compression function above with an additional multiplication by an invertible matrix *MC ∈GLt*(F*q*) such that*C* *′*
+
+(*x*) := Tr*d*(*P*(*x*) +*MC ·x*)*∈*F
+*d* *q*. To simplify the construction, the additional matrix multiplication was dismissed forPoseidon2[GKS23, p. 7] following an
+
+<!-- Page 8 -->
+
+argument made in [GHR + 23, Sect. 4], which says that dismissing the matrix multiplication has no impact on security if no conditions are imposed on the inputs to the compression functions. However, the round-skipping attack onPoseidon2(b)which we will describe inSection 4.1does impose conditions on the input and could have been prevented by adding a multiplication with an appropriately chosen matrix.
+
+**Sponge Hash Functions**are built using an internal permutation and can be used with inputs of arbitrary size to provide outputs of arbitrary size [BDPVA07,BDPVA08]. Let*P*:F *tq* *→*F *tq*
+
+be the internal permutation, and let*t*=*c*+*r*, where*t*are the number of states,*c*denotes the *capacity*and*r*is called the*rate*. The sponge construction works as follows.
+
+1.Given an input message*m∈*F
+*∗* *q*, it is padded such that it length is a multiple of*r*, i.e. we have *m*=*m₀∥m₁∥...∥mℓ−*1*∈*(F *r* *q* ) *ℓ* *.*
+
+2.The message blocks are absorbed sequentially, one at a time into anF
+*tq* state by computing
+
+*hi*:=*P*(*hi−*1+*mi∥*0 *c* )*,∀i∈{*0*,*1*,... ℓ−*1*},*
+
+where*h−*1:= 0 *r* *∥IV∈*F *tq* for some*IV∈*F *c* *q*as initial capacity.
+
+3.The output of the hash function of required length is then squeezed from the state*d*elements at a time by calculating Tr*d*(*hℓ−*1)*∥*Tr*d*(*hℓ*)*∥...*, where Tr*d*:F
+*tq* *→*F *d* *q*.
+
+*Remark 2.5.*When discussing round skips and and algebraic modellings for algebraic preimage and collision attacks onPoseidon2(b)in sponge mode, we restrict ourselves to the setting where the absorbing phase consists of at least two rounds and there is only a single squeeze. This is the settingPoseidon2is used for example in the leaf hashing of [DKKW25].
+
+### m₀ m₁ m₂ Trd(h₂) Trd(h₃) Trd(h₄)
+
+0 *r*
+
+### P P P h₂ P P
+
+*IV*
+
+### Absorbing phase Squeezing phase
+
+**Figure 2.**Sponge hash function with underlying permutation*P*, three absorptions and three squeezes.
+
+We will study the security of sponge mode with at least two absorptions and a single squeeze.
+
+**Notation.**For our round-skipping attack, we use the (*t/*4)*×*4 tensor structure of the matrix defining the linear layer in the external rounds. We simplify our exposition by denoting vectors where elements are vectors ofF*p*-elements of length 4 using square brackets [*...*] and vectors consisting of 4F*p*-elements using round parentheses (*...*). For simplicity, we denote the matrices *M₄* by*M*and*Pt/*4by*P*. For the remainder of the paper there is no need to distinguish between the binary and prime fields. Therefore, we useFto denote the base field. By modular reduction (mod*m*), we denote the map that sends integers to their residue in the interval*{*0*,...,m−*1*}*.
+
+<!-- Page 9 -->
+
+## 3 Improved round-skipping for the CICO problem
+
+In this section we study how to skip rounds when solving thecicoproblems for the permutation underlyingPoseidon2(b). We begin by formalising the meaning of a round skip and introduce the notation which allows us to also discuss and compare partial round skips. InSection 3.2, we discuss how to exploit the properties of the matrix that defines the affine transformations in Poseidon2(b)for round-skipping at the example of a round-reduced version corresponding to the biggest bounty challenge from Ethereum’s Poseidon initiative 2025 [Eth24]. InSection 3.3, we give closed formulas to skip one external round forcico-4 andcico-8 for some recommended parameter sets. Finally, by deriving more general rules for round skipping we extend our analysis to a range of parameters inSection 3.4and summarise the available round skips for different parameter sets from thePoseidon2(b)specifications inTables 2and3.
+
+### 3.1 Defining round-skipping or how to cut corners without missing the point(s)
+
+Recall that the general idea behind round skipping for thecico-*k*problem is to decompose a permutation consisting of many rounds into two parts.
+
+Poseidon *π* =*π₂ ◦π₁*
+
+Here,*π₁* corresponds to the initial rounds that are “skipped”, meaning one can find an efficiently computable parametrization of the space in the image of*π₁* that satisfies the input constraints when inverting*π₁* on it. The map*π₂* denotes the remainder of the permutation in terms of the sequential rounds. Thus, if one wishes to find a solution to thecico-*k*problem forPoseidon *π*, it is sufficient to impose the output constraints on*π₂* given inputs from the parametrized space. This leads to an improvement as long as the polynomials arising from*π₂* given inputs from the parametrized space will be of lower degree than the ones coming from the entire permutation. As such, depending on the parametrization, round skipping can be seen as a tool to lower the degrees of the equations that need to be solved in an algebraic attack, which in turn are used to estimate the cost of solving thecicoproblem. As prior work describing and citing round skips ofPoseidonhas a slightly inconsistent nomenclature, we suggest the following definition to describe round skips, which not only depends on the number of rounds described by*π₁*, but also the degree on each variable of the parametrization.
+
+**Definition 3.1(Round skip).***For acico-(in,out)problem of thePoseidonpermutation* *P*:F *t* *→*F *t* *, an* () (*rF,rP*)*,*[*δ₀,...,δout−*1]
+
+*round skip consist of an algebraic varietyV⊂*F *t* *with the following properties:*
+
+*1.Letπ₁ denote the firstrFexternal rounds andrPpartial rounds ofP. We have*
+*π₁* *−*1
+
+(*V*)*⊂*F *t−in*
+*×{*0*}* *in* *.*
+
+*2.Vcan be parametrized with variables*(*x₀,...,xout−*1)*over*F*such that the degree ofxiin* *this parametrization is upper bounded byδi.* *IfrP*= 0*, we write*(*rF,*[*δ₀,...,δout−*1])*instead. Whenever the bound on the degrees is repeated* *gtimes, we shorten to*[*δ*]
+*g* *and we concatenate the lists using*+*, e.g.*[1] 2 + [3] = [1*,*1*,*3]*.*
+
+<!-- Page 10 -->
+
+Definition 3.1can be adapted in a natural way to different settings such as compression and sponge mode. For example, we may require constraints to non-zero elements. *π* Note that for*π₁* coming from thePoseidon2(b) permutation, we have*rP*= 0 unless all initial external rounds are skipped. In this paper, we will investigate round skips for which we expect parametrizations (for a random choice of round constants and constraints). For some parameters, we will further give*closed formulae*for the round skip meaning the parametrization always exists and can be written down for any set of round constants and constraint constants. We can use this notation to describe previous round skips in the literature considering the cico-*k*problem, i.e.in=out=*k*. The round skip forPoseidondescribed in [BBLP22] is (2*,*[1]). Its generalization to further variables as described in [BBB + 25, Appendix D] is a (1*,*[1] *s* + [*α*] *k−s* ) round skip, where*s* :=*⌊t/k⌋−*2. ForPoseidon2, a (2*,*[1]) round skip has also been described there. The main advantage of this new notation is to give a more precise description of the round skip which can also be used to upper-bound the ideal degree of the equations that solve the resultingcico-*k*problem, which we discuss inTheorem 5.1. Further, note that additional rounds can be trivially absorbed into*π₁* by increasing the degrees of the parametrization in every variable. However, this change clearly does not reduce the complexity of solving the resulting algebraic system.
+
+### 3.2 Skipping rounds in round-reduced Poseidon2
+
+As a warm-up, we describe how to skip rounds in a round-reduced version ofPoseidon2. The parameters of the round-reducedPoseidon2we analyse are (*p,n,t,α,RF,RP*) = (2 31 *−* 1*,*31*,*16*,*5*,*6*,*4), which corresponds to the largestcico-2 bounty instance of Ethereum’sPo- seidoninitiative [Eth24]. In the following, we present a ((3*,*4)*,*[5*,*5]) round skip which is an improved version of the attack we ran to break the larger bounty instance in less than 11 hours on 64 cores as described inAppendix B. In the subsequent subsections, we generalise several ideas from the round-reduced example to further parameter sets and more generalcico-*k*problems.
+
+Recall that for*t*= 16, the matrix defining the linear layer in the external rounds is of the form*Mϵ*=*P⊗M*, where*P*has the low-weight eigenvector (0*,*1*,−*1*,*0). We view the 16 states of a solution as 4 vectors of length 4 consisting ofF*p*-elements. For vectors, exponentiation by*α* means element-wise exponentiation. The core idea behind our round skip is to find constants for our parametrization such that solutions to the remaining variables are of the form that the second and third components of vectors of length 4 will be additive inverses of each other after each of the initial rounds, while the remaining entries can be derived from various constants. This prevents “mixing” of the variables for the initial rounds and ultimately allows us to lower the degree of the remaining algebraic system.
+
+(0)
+**Skipping the first round.**Let*Ui*denote vectors ofF*p*constants of length 4, yet to be defined, and let*X*denote a vector ofF*p*variables of length 4. Consider the structure of the first round depicted inEq. (1). 
+
+(0)  
+(0) (0) (0) (0)
+   *U₀* ( 2*MU₀* +*MU₁* +*MU₃* +*C₀*) *α* *U*0(1)
+
+(1)
+ (0) (0) (0) (0) (0) (0) (0) *α*   *U₁* +*X*  *E₀* (*MX* +*MU₀* +2*MU₁* +*MU₃* +*C₁*)   *X*  
+
+(0)  *−−−−−→* 
+(0) (0) (0) (0) (0) *α*
+ =: (1) (1)  *−X*  (*−MX* +*MU₀* +*MU₁* +*MU₃* +*C₂*)  *−X* 
+
+(0) *α*
+*U*
+
+(1)
+*U₃* (*MU* 0(0)+*MU*1(0)+2*MU*3(0)+*C*3(0))3
+
+Note that we can explicitly write the first round in terms of the action of*M*on vectors of length 4. Furthermore, note that only the two middle vectors depend on*X*
+
+(0), so the first and
+
+<!-- Page 11 -->
+
+(1) (1)
+the last vector can be equal to two constant vectors*U₀*,*U₃*, yet to be defined. However, we impose that the second vector and the third vector of the evaluation are additive inverses of each other, e.g. they are vectors of variables*X*
+
+(1) and*−X*
+(1), respectively.
+Clearly, the latter is equivalent to
+
+(0) (0) (0) (0) (0) (0) (0) (0)
+*MU₀* + 2*MU₁* +*MU₃* +*C₁* =*−*(*MU₀* +*MU₁* +*MU₃* +*C₂*) =: *L,*(2)
+
+as in this case, one has
+
+(*MX*
+
+(0) +*L*) *α* =*X*
+(1)
+(*−MX*
+
+[Showing lines 151-300 of 1672. Use :301 to continue]
+
+(0) *−L*) *α* =*−X*
+(1) *.*
+Note that*α*is odd as it has to be coprime to*p−*1. Thus, there is a bijection between*X*
+
+(0)
+and*X*
+
+(1) and one can simply make a change of variables. Additionally, we need to consider the
+following equations which describe the constants in the first and fourth component vector of the output of the first external round.
+
+(0) (0) (0) (0) (1) 1*/α*
+2*MU₀* +*MU₁* +*MU₃* +*C₀* = (*U₀*)
+
+(0) (0) (0) (0) (1) 1*/α*
+*MU₀* +*MU₁* + 2*MU₃* +*C₃* = (*U₃*)
+
+Together withEq. (2)and some linear algebra, this leads to the following equations.
+
+(0) *−*1 (1) 1*/α* (1) 1*/α* (0) (0) (0) (0)
+5*U₀* =*M* (4(*U₀*) *−*(*U₃*) *−*4*C₀* +*C₁* +*C₂* +*C₃*)
+
+(0) *−*1 (1) 1*/α* (1) 1*/α* (0) (0) (0) (0)
+5*U₁* =*M* (*−*2(*U₀*) *−*2(*U₃*) + 2*C₀ −*3*C₁ −*3*C₂* + 2*C₃*)
+
+(0) *−*1 (1) 1*/α* (1) 1*/α* (0) (0) (0) (0)
+5*U₃* =*M* (4(*U₃*) *−*(*U₀*) *−*4*C₃* +*C₀* +*C₁* +*C₂*)
+
+(0) (1) (1)
+Thus, given the matrix*M*, the round constants*Ci*,*U₀*, and*U₃*, one can recover all of
+
+(0)
+the*Ui*. Moreover, to force the input constraints forcico-2 solution, the final two components
+
+(0) (1) (1)
+of*U₃* must be zero. As such, we impose two equations on the elements of*U₀* and*U₃* as a first step to construct our parametrization.
+
+**Skipping the second round.**Similarly, we can consider the second round as shown inEq. (3).   
+
+(1) (1) (1)
+  
+
+(1)
+( 2*MU* +*MU* +*C*) *α* (2) *U*0(1) 0 3 0*U*0(2)   (1) (1) (1) (1) *α*    *X*  *E₁* (*MX* +*MU₀* +*MU₃* +*C₁*)   *X*  (1) *−−−−−→* 
+
+(1) (1) (1) (1) *α*
+ =: (2) (3) *−X*  (*−MX* +*MU₀* +*MU₃* +*C₂*)  *−X* 
+
+(1)
+*α*
+
+(2)
+*U₃* (*MU* 0(1)+2*MU*3(1)+*C*3(1)) *U₃*
+
+As before, for the second and third components to be additive inverses of each other, we impose the following constraint.
+
+(1) (1) (1) (1) (1) (1)
+*MU₀* +*MU₃* +*C₁* =*−*(*MU₀* +*MU₃* +*C₂*)
+
+Note that this corresponds to four more equations in the 8 variables over the base fieldF*p*. Together with the constraints from the first round, we thus require 6 equations in the 8 variables
+
+(1) (1)
+of*U₀* and*U₃*, leaving us with two degrees of freedom, which can be used for another (partial) round skip.
+
+<!-- Page 12 -->
+
+**Skipping the third round.**For the third round, we consider
+
+  
+
+(2) (2) (2)
+ 
+
+(3) 
+(2)
+( 2*MU* +*MU* +*C*) *α* *U* *U*0(2) 0 3 0 0   (2) (2) (2) (2) *α* (3) (3)  *X*  *E₂* (*MX* +*MU₀* +*MU₃* +*C₁*)   *X* +*U₁*  (2) *−−−−−→* 
+
+(2) (2) (2) (2) *α*
+ =: 
+
+(3) (3) *.*(4)
+*−X*  (*−MX* +*MU₀* +*MU₃* +*C₂*)  *−X* +*U₂* 
+
+(2)
+*α* *U₃* (*MU* 0(2)+2*MU*3(2)+*C*3(2)) *U*3(3)
+
+To skip one extra round, we would like to impose the following analogous to previous rounds.
+
+(2) (2) (2) (2) (2) (2)
+*MU₀* +*MU₃* +*C₁* =*−*(*MU₀* +*MU₃* +*C₂*) (5)
+
+However, with only two degrees of freedom left, imposing another four equations would be too much to ask. As such, we could only impose constraints on two variables. If we find a solution for which the equation is satisfied for any twoF*p*-components, for example the first two, then we could use two degrees of freedom and impose*MX*
+
+(2) = (*x, y,*0*,*0), and consider the change
+of variables*x*= (*x*+*kx*) *α* ,*y*= (*y*+*ky*) *α* for some suitable constants*kx,ky*. In that case,*X*
+
+(3)
+would be a vector of two variables in the first two components and zeros in the last two. The
+
+(3) (3)
+constant corresponding to the third and fourth components is encapsulated in*U₁* and*U₂*,
+
+(2) (2) (2)
+which only depends on our choice of the last components of*MX*, the constants*U₀* and*U₃*, the round constants, and the power map*α*. Now that we have 8 equations in 8 variables, we can solve this polynomial system for which we expect a solution which provides us with a suitable parametrization. Notice that the existence of a solution depends on the round constants. If no solution exists, we could try to impose another two equations fromEq. (5)and retry.
+
+**Skipping two partial rounds.**Next, we show that with a solution to the system above giving rise to a parametrization we can skip the subsequent two partial rounds for free. After the initial three external rounds, we need to apply the remaining external matrix as shown inFig. 1followed by the two first partial rounds. To skip a partial round, it is sufficient to prove that the input at the first coordinate, the only one which is changed in the non-linear layer, is a constant. For the first partial round in this round-reduced version ofPoseidon2, the first coordinate is
+
+(3) (4)
+(*MU₀*)0+*c* which is a constant. For the second partial round, the input in the first coordinate is the sum of elements in all other components plus*µ₀*, the first diagonal entry of the matrix defining the internal layer as defined inSection 2.2, times the output of the first partial S-box. Clearly, the output of the first partial S-box is a constant as it is the power of a constant. Finally, since the sum adds the elements of*MX*
+
+(3) and*−MX*
+(3) it is independent of*X*
+(3).
+The structure of the internal matrix that allows us to skip the first two partial rounds was made to improve the performance ofPoseidon2as described in [GKS23, Sect. 5.2].
+
+**Skipping the remaining two partial rounds (partially).**If we set*X*
+
+(3) = (*x,y,*0*,*0), then
+the input to the third partial S-box depends on both*x*and*y*, but we could have parametrized this two dimensional space in a better way. More precisely, we could have set*X*
+
+(3) = (*x,y*+*a·x,*0*,*0)
+for some parameter*a∈*F*p*. It is still true that the input to the third S-box depends linearly on*x* and*y*, but now the coefficient of*x*further depends linearly on*a*. Thus, for an appropriate choice of*a*, we can force the third partial S-box to act only depending on*y*. Let*P*(*y*) be the output of that S-box, i.e. the*α*-th power of a linear function in*y*. Then, the input to the fourth partial S-box depends linearly on*x*,*y*,*P*(*y*). Looking back at the initial
+
+<!-- Page 13 -->
+
+parametrization, if we had chosen*X*
+
+(3) = (*x*+*Q*(*y*)*,y*+*a·*(*x*+*Q*(*y*))*,*0*,*0) for the appropriate
+polynomial*Q*(*y*), then the input will only depend linearly on*x*, and not on*y*. Each element of the state after the fourth partial round now depends linearly on*x*,*y*,*P*(*y*), and the output of the fourth partial S-box. Overall, each component can be expressed as a polynomial of degree*α* in*x*and*y*. To compute a solution to thecico-2 problem, all that remains to do is to propagate this state for the remaining three external rounds, set the last two components of the output to be zero and solve the polynomial system. That is, after round-skipping we only need to solve a system with two bivariate equations of degree*α⁴*.
+
+### 3.3 Closed formulae for round skips in full-round Poseidon2(b)
+
+Full-roundPoseidon2(b)has an additional external round, and thus we cannot skip the partial rounds as described in the previous example. However, an astute reader may have noticed that the attack on the round-reduced version ofPoseidon2can be further improved whenever there are fewer (in,out)-restrictions in thecicoproblem and more degrees of freedom, i.e. a larger number of states*t*. In this subsection, we give a closed formula for an immediate skip of one round of thecico-*k* problem for the two proposed parameter sets (*n,t,k*) = (32*,*24*,*8) and (*n,t,k*) = (64*,*12*,*4) which use a larger number of states*t*for a given prime size*n*. Note further, that for acico-*k*problem the parametrized algebraic variety will have to be of degree*k*to expect a solution.
+
+**Skipping one round for (*n, t, k*) = (32*,*24*,*8):** For thecico-8 problem we need to impose the final 8 inputs and outputs to be zero, leaving us with 8 degrees of freedom of the the*t*= 24 states. Similarly to the round-reduced example ofPoseidon2, we observe that the matrix*P*in this case has the eigenvectors (1*,−*1*,*0*,*0*,*0*,*0) and (0*,*0*,*1*,−*1*,*0*,*0). To force the output of the first round to be of the form
+
+  
+
+(0) (0) (0) (0) *α*
+ 
+
+(1) 
+(0) (0) (*MX* +2*MU₀* +*MU₂* +*C₀*)
+*X* *U₀* +*X*   (0) ( *−MX*
+
+(0) +*MU*
+(0) +*MU*
+(0) +*C*
+(0) ) *α*  *−X*
+(1)
+
+[Showing lines 301-450 of 1672. Use :451 to continue]
+ *−X*  0 2 1   (0)
+
+(0)  (0) (0) (0) (0) *α* 
+*Y*
+
+(1)
+*U₂*  *E₀* +*MU₀* +2*MU₂* +*C₂*)  
+
+| U₂  +Y|   −−−−−→ E₀| (MY|+MU₀|+2MU₂|+C₂|)   =:|  −Y Y|   ,(6)|
+|---|---|---|---|---|---|---|---|---|
+|  −Y| | (−MY|+MU₀|+MU₂|+C₃|)  | | |
+| 0|| (MU||+MU|+C|)  | U₄||
+|0||(MU||+MU|+C|)|U||
+
+(0) (0) (0) (0) (0) *α*
+(1)
+(0) (0) (0)
+(1)
+*α* 0 2 4
+
+(0) (0) (0) *α*
+5(1) 0 2 5
+
+we need to impose the two linear equations;
+
+(0) (0) (0) (0) (0) (0)
+2*MU₀* +*MU₂* +*C₀* =*−*(*MU₀* +*MU₂* +*C₁*)
+
+(0) (0) (0) (0) (0) (0)
+*MU₀* + 2*MU₂* +*C₂* =*−*(*MU₀* +*MU₂* +*C₃*)*.*
+
+We observe that this is a linear system of full rank consisting of 8 equations in 8 variables for which a unique solution always exists.
+
+**Skipping one round for (*n, t, k*) = (64*,*12*,*4):** In this case, we have analogously*t*= 12 states and we require the last 4 inputs and outputs to be zero. This leaves us four degrees of freedom that we can use to skip the first round. The details are provided inEq. (7)
+
+<!-- Page 14 -->
+
+
+
+(0)  
+(0) (0) (0) *α*
+ 
+
+(1) 
+*U₀* +*X*
+
+(0)(*MX* +2*MU₀* +*C₀*) *X*
+ *−X*
+
+(0) *−−−−−→* *E₀* 
+(*−MX*
+
+(0) +*MU*
+(0) +*C*
+(0) ) *α*  =: *−X*
+(1) *,*(7)
+0 1 0 (*MU* 0(0)+*C*2(0)) *αU* 2(1)
+
+### where we imposed
+
+(0) (0) (0) (0)
+2*MU₀* +*C₀* =*−*(*MU₀* +*C₁*)*.*
+
+Again, we are left with a linear system of full rank consisting of 4 equations in 4 variables which has a unique solution.
+
+### 3.4 Generalizing CICO round-skipping to further parameter sets
+
+In this section we generalize the methods described in the previous examples to skip rounds for more generalcico-(in,out)problems. Since we require sufficiently many degrees of freedom, *π* our attacks onPoseidon2(b) are limited to*t∈{*12*,*16*,*20*,*24*}*, whereas it has been designed to be applied for*t∈{*4*,*8*,*12*,*16*,*20*,*24*}*. To characterise different approaches, we consider the following parameters for thecico- (in,out)problems. Byinwe denote the number of input components that have to be zero, which must be either the first or last elements of the input vector. Similarly,outmeans the number of required zero entries of the output. As we would like to reuse some of our results inSection 4 when studying more general modes of operation, we further introducectto denote the number of input elements that are fixed to be constants not necessarily zero, chosen by an attacker. Again, these constants are either at the beginning or end of the input vector. In particular, we have in*≤*ctand for thecico-(in,out)problem equality holds. We also introduce*ν*, the number of degrees of freedom in the input. For thecico-(in,out)problem,*ν*=*t−*in. Since onlyct components are fixed to a constant,*ν≥t−*ctis true in general. Lemma 3.2characterises round-skipping wheneverout*≤*4. We distinguish several cases depending on the relation between the number of available degrees of freedom and the number of initial external rounds. In particular, we explore how partial rounds can be jumped whenever all of the initial*Rf*external rounds can be skipped. The caseout*>*4 is studied inLemma 3.6. Finally, we illustrate our findings by explicitly stating the round-skips for a range of parameters inTables 2and3.
+
+**Lemma 3.2.***Consider thePoseidon2(b)permutation. Lett∈{*12*,*16*,*20*,*24*},out≤*4*, and* 8*≤t−ct, wherectdenotes the number of input elements fixed to be a constant. Further, let* *the number of initial external roundsRf≥*3*, defineνto be the available degrees of freedom of* *the input, i.e. for acico-(in,out)problemν*=*t−in, and lets* :=*ν*(*mod*4)*.*
+
+*1.If⌊ν/*4*⌋< Rf, then there exists a*(*⌊ν/*4*⌋−*1*,*[1]
+4 )*round skip ifs*= 0*, or a*(*⌊ν/*4*⌋,*[1] *s* + [*α*] (4*−s*) )*round skip ifs >*0*.*
+
+*2.If⌊ν/*4*⌋*=*Rf: Fors*= 0*, there exists a*(*Rf−*1*,*[1]
+*out* )*round skip. Fors >*0*, there exist a* ((*Rf,s*+ 1)*,*[1])*and a*((*Rf,s*+ 2)*,*[*α*] *s* + [(*α−*1)*α²*] (4*−s*) )*round skip.*
+
+*3.If⌊ν/*4*⌋> Rf, then there exists a*((*Rf,*6)*,*[*α,α,α,α*])*round skip.* *Proof.*Suppose we are in the first case. Without loss of generality, we assume that the input constraints are at the end of the input vector. Then, we force a space of the form (*X,−X*) in the first 8F-elements through the outputs of the first rounds. Note that this is well-defined as
+(0) (0) (0)
+ct+ 8*≤t*. Let the initial 8 components of the input be (*U₀* +*X,−X*). Of the remaining *t−*8 components, since the first 8 were part of the available degrees of freedom, we have an
+
+<!-- Page 15 -->
+
+additional*ν−*8 freedom available. Together with the four degrees of freedom when choosing
+
+(0)
+*U₀*, we therefore have*ν−*4 available degrees of freedom in total. To force the relation (*X,−X*) within the output of a round, 4 equations per round are imposed on the input constants. Thus, we can skip*⌊*(*ν−*4)*/*4*⌋*=*⌊ν/*4*⌋−*1 rounds using 4*⌊ν/*4*⌋−*4 degrees of freedom. Consequently, we are left with*ν−*4*−*(4*⌊ν/*4*⌋−*4) =*s*degrees of freedom. We only impose*s*of the 4 equations required to skip the subsequent round. If*⌊ν/*4*⌋*=*Rf*and*s*= 0, then we have the same round skip as previously described. If*s >*0, then we partially skip some variables that will go through the first partial round. Notice that, by hypothesis,*ν≥*4*⌊ν/*4*⌋*= 4*Rf≥*12. Thus, we can choose to force the space (*X,−X*) in the outputs of the initial rounds to be placed after the initial fourF-elements instead. Using a similar argument as the one inSection 3.2, for those*s*dimensions the first 2 partial rounds can be skipped for free. For the next*s*partial rounds, we can apply the same trick as described inSection 3.2and partially skip them by increasing the degree of one variable from 1 to*α*. The remaining 4*−s*dimensions neither skip the last external round nor the first two partial rounds, so their degree at the end should be*α³*. However, one can notice that at the input of the first partial round, the top-most coefficients get cancelled out, so that the polynomial that will be raised to the power of*α*will be of degree*α−*1. Thus, those variables will have degree (*α−*1)*α²* after the two first partial rounds, matching the described degrees. For the third case, the argument is quite similar and the result matches if we set*s*= 4 in the previous formula. *⊓⊔*
+
+*Example 3.3.*In the round-reduced instance ofPoseidon2described inSection 3.2, we have out= 2*≤*4,*ν*=*t−*in= 16*−*2 = 14,*⌊ν/*4*⌋*= 3, and*Rf*= 3. This puts us in Case 1 ofLemma 3.2with*s*= 14 (mod 4) = 2. The Lemma tells us that a ((3*,*4)*,*[*α*] 2 + [(*α−*1)*α²*] 2 ) round skip exists. Evaluating at a fixed constant in the last two dimensions, we get a ((3*,*4)*,*[*α*] 2 ) round skip, which is the same as the one described inSection 3.2with*α*= 5.
+
+*Example 3.4.*Through the round skip for the parameters (*n,t,k*) = (64*,*12*,*4) described inSection 3.3we havein=out= 4 and we can applyLemma 3.2. More precisely, we have*ν*= 8 which allows us to skip*⌊*8*/*4*⌋−*1 = 1 external rounds with*s*= 8 (mod 4) = 0 extra degrees of freedom. As such,Lemma 3.2can be seen as a generalisation of the round skip inSection 3.3.
+
+*Remark 3.5.*A reader may notice that using some linear transformation in the given round skips ofLemma 3.2one may force the terms with the largest degree in the input to the next partial S-box to cancel out. However, this does not reduce the ideal degree. InAppendix B, we present a different modelling idea that can be used to cancel out the terms with the largest degree in the input to the first partial S-box and reduce the ideal degree.
+
+**Lemma 3.6.***Consider thePoseidon2(b)permutation. Lett∈ {*16*,*20*,*24*},*4*<out≤*8*,* *and assume that the number of initial external roundsRf≥*3*. Defineνas the input degrees of* *freedom. We distinguish the following cases:*
+
+*1.If*4 +*out< t−ct<*8 +*out, defines₁* := (*t−ct*)*−*(4 +*out*)*. Then there exists a* (1*,*[1] *s* 1+ [*α*](*out−s*1))*round skip with a closed formula.*
+*2.If*8 +*out≤t−ct<*16*, defines₂* := min(2((*t−ct*)*−*(8 +*out*)) + (*ν−*(*t−ct*))*,*4)*.*
+*(a)Ifs₂* = 0*, there exists a*(1*,*[1]
+4 + [*α*] (*out−*4) )*round skip.*
+
+*(b)Ifs₂ >*0*, then there exists a*(2*,*[1]
+*s* 2+ [*α*](4*−s*2)+ [*α²*](*out−*4))*round skip.*
+
+*3.If*16*≤t−ct, defines₃* := min(*ν−*(8 +*out*)*,*4)*.*
+*(a)Ifs₃* = 0*, there exists a*(1*,*[1]
+8 )*round skip with a closed formula.*
+
+*(b)Ifs₃ >*0*, there is a*(2*,*[1]
+*s* 3+ [*α*](8*−s*3))*round skip.*
+
+<!-- Page 16 -->
+
+The proof proceeds with a case-by-case analysis of the different parametrizations. For conciseness, we defer the proof toAppendix C.
+
+*Example 3.7.*The round skip with closed formula inSection 3.3for (*n,t,k*) = (32*,*24*,*8) satisfies the condition 16*≤t−*ctinLemma 3.6with*s₁* = 0.Lemma 3.6implies a (1*,*[1] 8 ) round skip corresponding to what we have seen inSection 3.3.
+
+*k* 1 2 3 4 Source *t* (2*,*[1]) (2*,*[1] 2
+
+) (2*,*[1] + [*α*]
+2
+
+) (1*,*[1]
+4 ) This work 12 2 2 3 + (1*,*[1]) (1*,*[1] ) (1*,*[1] + [*α*]) (1*,*[1] + [*α*] ) [BBB 25] (3*,*[1]) (3*,*[1] 2
+
+) (3*,*[1] + [*α*]
+2
+
+) (2*,*[1]
+4 ) This work 16 2 3 2 2 + (2*,*[1]) (1*,*[1] ) (1*,*[1] ) (1*,*[1] + [*α*] ) [BBB 25] ((4*,*4)*,*[1]) ((4*,*4)*,*[*α*] 2
+
+) ((4*,*3)*,*[*α*] + [*α³ −α²*]
+2]) (3*,*[1] 4 ) This work 20 2 3 3 + (2*,*[1]) (1*,*[1] ) (1*,*[1] ) (1*,*[1] + [*α*]) [BBB 25] ((4*,*5)*,*[1]) ((4*,*6)*,*[*α*] 2
+
+) ((4*,*6)*,*[*α*]
+3
+
+) ((4*,*6)*,*[*α*]
+4 ) This work 24 2 3 4 + (2*,*[1]) (1*,*[1] ) (1*,*[1] ) (1*,*[1] ) [BBB 25]
+
+**Table 2.**Poseidon2(b)round skips for thecico-*k*problem with*t*states, assuming*RF* = 8 and
+
+sufficiently large*RP* using our formulas fromLemma 3.2and notation fromDefinition 3.1. Previous best-known round skips from [BBB + 25] are for*Mε* or an MDS matrix.
+
+*k* 5 6 7 8 Source *t* (1*,*[1] 2 + [*α*] 3 ) – – – This work 16 4 + (1*,*[1] + [*α*] ) – – – [BBB 25] (2*,*[1] 4 + [*α²*]) (1*,*[1] 4 + [*α*] 2
+
+) (1*,*[1] 2 + [*α*]
+5 ) – This work 20 2 3 5 + (1*,*[1] + [*α*] ) (1*,*[1] + [*α*] ) – – [BBB 25] (2*,*[1] 4 + [*α*]) (2*,*[1] 4 + [*α*] 2
+
+) (2*,*[1] 2 + [*α*]
+
+[Showing lines 451-600 of 1672. Use :601 to continue]
+5
+
+) (1*,*[1]
+8 ) This work 24 2 3 2 4 6 7 + (1*,*[1] + [*α*] ) (1*,*[1] + [*α*] ) (1*,*[1] + [*α*] ) (1*,*[1] + [*α*] ) [BBB 25]
+
+**Table 3.**Poseidon2(b)round skips for thecico-*k*problem with*t*states, assuming*RF ≥*6 using
+
+Lemma 3.6with the notation fromDefinition 3.1. Round skips from [BBB + 25] are for*Mε* or an MDS matrix.
+
+## 4 Improved modelling for compression and sponge mode
+
+In this section we study round-skipping ofPoseidon2(b)when taking the concrete mode of operation into account. We begin with a few examples for compression mode inSection 4.1 and sponge mode inSection 4.2, before discussing the round skips for general parameters in Section 4.3.
+
+<!-- Page 17 -->
+
+In previous round skips in the literature [BBLP22,BBB + 25,GKR25] many input states depend on the parametrization describing the round skip. Yet, in our attacks on thecicoproblem forPoseidon2(b)many of the initial states are fixed to be constants. When consideringPo- seidon2(b)in compression mode, where both input and output of the permutation are added to form the output of the hash, this is a strong asset that can be exploited. Note that a lower degree on the input parameters helps to reduce the overall degree of the system that remains to be solved. We give round skips parametrized such that the first*d*elements of the input are going to be constants inCorollary 4.4. In cases where we have fewer degrees of freedom available, we describe round skips where the first*d*elements of the input are part of the parametrization, but of degree one. This idea can also be exploited if the external matrix is an MDS matrix, giving rise to the first partial round skip for some recommended parameter sets in compression mode, seeAppendix A. Our attacks in compression mode outperform the attacks on thecicoproblem because instead of having input constraints that force certain entries to be zero, the constraints are relaxed to only require inputs of ‘low degree’. A perhaps more surprising observation is that our particular modelling enables a more efficient attack in the sponge mode of operation compared to thecicoproblem. Instead of fixing all last components to 0, in sponge mode the last components are the output of the previous permutation. With the appropriate modelling, this can give us extra degrees of freedom at the expense of solving another system of equations. InSection 5we discuss the concrete speed-up, taking into account the additional system to solve.
+
+### 4.1 Compression mode: Round-skipping examples
+
+All constraints in thecicoproblem applied to the final elements of the input and output. In this section we study the preimage resistance ofPoseidon2(b)in compression mode directly. Recall that compression is defined as
+
+*t d*
+
+(*π*)
+*C*:F *→*F*, x7→*Tr*d*Poseidon2(b) (*x*) +*x ,*
+
+where Tr*d*denotes truncation after the initial*d*elements. The authors ofPoseidon2(b)recommend use of a 2-to-1 compression. For illustrative purposes, we first focus on a 3-to-1 compression as an example, before getting back to the recommended parameters inSection 4.3. Similarly to Section 3.3, we treat the cases (*n,t,d*) = (32*,*24*,*8) and (*n,t,d*) = (64*,*12*,*4) first.
+
+**Round skipping for (*n, t, d*) = (32*,*24*,*8) in compression mode.**For the first round skip, we consider the following diagram.
+
+
+
+(0)  (0)
+(0) (0) *α*  
+(1) 
+*U₀* (*MU₀* +*V* +*C₀*) *U* 0(1)  *U*
+
+(0)  
+(*MU*
+
+(0) +*V*
+(0) +*C*
+(0) ) *α*   
+1 1 1  *U₁*  (0)
+
+(0)  (0) (0) (0) (0) *α* 
+(1) 
+*U₂*  *E₀* +*MU₂* +*V* +*C₂*)  
+
+| U₂  +X|   −−−−−→ E₀| (MX|+MU₂|+V|+C₂|)   =:|   X|  |
+|---|---|---|---|---|---|---|---|---|
+|  −X| | (−MX||+V|+C₃|)  |−X | |
+|U +Y|| (MY|+MU|+V|+C|)  | Y||
+|−Y||(−MY||+V|+C|)|−Y||
+
+(0) (0) (0) (0) *α* (1)
+(0) (0) (0) (1)
+(0) (0) (0) *α*
+4 4 4
+
+(1)
+(0) (0) (0)
+5(0) *α*
+
+<!-- Page 18 -->
+
+(0) :=
+(0) (0) (0) (0)
+where*V MU₀* +*MU₁* +*MU₂* +*MU₄*. To force the output to be of the required form, we impose the following set of linear equations.
+
+(0) (0) (0) (1) 1*/α*
+*MU₀* +*V* +*C₀* = (*U₀*)
+
+(0) (0) (0) (1) 1*/α*
+*MU₁* +*V* +*C₁* = (*U₁*)
+
+(0) (0) (0) (0) (0)
+*MU₂* +*V* +*C₂* =*−*(*V* +*C₃*)
+
+(0) (0) (0) (0) (0)
+*MU₄* +*V* +*C₄* =*−*(*V* +*C₅*)
+
+(0) (1) (1)
+One can check that this linear system in*Ui*has full-rank, and thus for any*U₀* and*U₁* a unique solution can be found. To fully skip the second round in the same way as the first one, we would require a solution to the following system of equations
+
+(1) (1) (1) (1) (1) (1)
+*MU₀* +*MU₁* +*C₂* =*−*(*MU₀* +*MU₁* +*C₃*)
+
+(1) (1) (1) (1) (1) (1)
+*MU₀* +*MU₁* +*C₄* =*−*(*MU₀* +*MU₁* +*C₅*)*.*
+
+(1)
+However, this system is not of full-rank in the*Ui*and thus will not have solutions for general round constants. Instead, we only impose the first equation and 4 arbitrary restrictions leading to the second round 
+
+(1)  (1) (1) (1)
+*α*  
+
+(2) 
+*U*0(1)  ( 2*MU₀* +*MU₁* +*C₀*)  *U₀*   ( *MU*
+
+(1) +2*MU*
+(1) +*C*
+(1) ) *α*   *U*
+(2)
+ *U₁*  0 1 1 1 
+
+(1)  (1) (1) (1) (1) *α* (2)
+ *X*  *E₁* (*MX* +*MU₀* +*MU₁* +*C₂*)   *X*  
+
+(1)  *−−−−−→* 
+(1) (1) (1) (1) *α*
+=: (2) *−X*  (*−MX* +*MU₀* +*MU₁* +*C₃*)  *−X*  
+
+(1)  
+(1) (1) (1)
+(2)  *Y*  ( *MY*
+
+(1) +*MU* +*MU* +*C*)
+*α*   *Y₀* 
+
+(1)
+0 1 4 *−Y* (*−MY*
+
+(1) +*MU*
+(1) +*MU*
+(1) +*C*
+(1) ) *αY*
+1(2) 0 1 5
+
+Thus, we can partially skip the second round with four variables, i.e. a (2*,*[1] 4 + [*α*] 4 ) round
+
+(2) (2) (2) (1)
+skip since the*X* is linear and*Y₀*,*Y₁* are polynomials of degree*α*in the inputs of*MY*. In the literature, a solution to the compression problem with the given parameters would be modelled as acico-8 problem for which we could show a (1*,*[1] 8 ) round skip inSection 3.3. This shows that round-skipping can be improved when taking into account the concrete mode of operation.
+
+**Round skipping for (*n, t, d*) = (64*,*12*,*4) in compression mode.**In this case, we show a (2*,*[1] 4 ) round skip in compression mode, which previous literature would compare to acico-4 problem for which we previously found a (1*,*[1] 4 ) round skip inSection 3.3. Consider   
+
+(0) (0) (0)
+  
+
+(0)
+( 2*MU* +*MU* +*C*) *α* (1) *U*0(0) 0(0) 1(0) 0(0)*U* 0(1) 
+
+(0)  *E₀* (0) *α*
+  *U₁* +*X*  *−−−−−→* (*MX* +*MU₀* +2*MU₁* +*C₁*)  =: *X* *−X*
+
+(0)
+(*−MX*
+
+(0) +*MU*0(0)+*MU*1(0)+*C*2(0))
+*α−X*(1)
+
+[Showing lines 601-750 of 1672. Use :751 to continue]
+
+(0) (0)
+for which we only have to impose the following two linear equations in*U₀* and*U₁*.
+
+(0) (0) (0) (1) 1*/α*
+2*MU₀* +*MU₁* +*C₀* = (*U₀*)
+
+(0) (0) (0) (0) (0) (0)
+*MU₀* + 2*MU₁* +*C₁* =*−*(*MU₀* +*MU₁* +*C₂*)
+
+<!-- Page 19 -->
+
+The second round skip proceeds similarly with
+
+
+
+(1)  (1) (1)
+*α*  
+
+(2) 
+*U₀* ( 2*MU₀* +*C₀*) *U₀*  *X*
+
+(1) *−−−−−→* *E₁* 
+(*MX*
+
+(1) +*MU*
+(1) +*C*
+(1) ) *α*  =:  *X*
+(2)*,*
+0 1 *−X*
+
+(1)
+(*−MX*
+
+(1) +*MU*0(1)+*C*2(1))
+*α−X*(2)
+
+for which we impose we need to impose the following linear equation.
+
+(1) (1) (1) (1)
+*MU₀* +*C₁* =*−*(*MU₀* +*C₂*)
+
+Once again, this system always has a solution as the matrix has full rank.
+
+(1)
+We can use this round skip as follows. After solving for*U₀* in the last equation, we can
+
+(0) (0)
+recover*U₀* and*U₁* using the previous linear system. We have fully parametrized two external rounds. To find a preimage of some*y∈*F⁴ with respect to thePoseidon2(b)in compression mode, we are left to solve the following four equations   
+
+(0)
+*U₀*  
+
+(0)  (0) 4
+Tr₄ Poseidon2(b) *U* 1(0)+*X*  +*U₀* =*y∈*F*,* *−X*
+
+(0)
+(0)
+where*U₀* has already been computed and the equations are thus of lower degree than when trying to solve the system directly without round-skipping. In the case with*t*= 24 above, one can proceed analogously.
+
+### 4.2 Sponge mode: Round-skipping examples
+
+In this section we explain how to exploit the sponge mode when the absorbing phase has at least two permutations and the output consists only of one single squeezing phase. This setting is for example howPoseidon2is used in hash-based multi-signatures for post-quantum Ethereum [DKKW25]. First, we introduceLemmas 4.1and4.2for specific parameters, and then explain how to use them for an improved round skip in sponge mode. The parameters are determined by the field element size*n*, the number of states*t*, the capacity*c*and the digest size*d*.
+
+### Round skipping for (n, t, c, d) = (32,24,8,8) in sponge mode.
+
+**Lemma 4.1.***ConsiderPoseidon2(b)with parameters*(*n,t,c,d*) = (32*,*24*,*8*,*8)*in sponge mode*
+
+(0) (0)
+*with at least two absorptions and one squeeze and let*(*U₄,U₅*)*be the last*8*elements of the* *input to the last permutation. If the following equations hold, then we can run a*(2*,*[1] 4 + [*α*] 4 ) *round skip.*
+
+<u>1</u>(0) (0) (0) (0) (0) (0) (0) (0) (0) *α* (*−* (4*MU₄* + 4*MU₅* +*C₂* +*C₃* +*C₄* +*C₅*) + 2*MU₄* +*MU₅* +*C₄*) 5 <u>1</u>(0) (0) (0) (0) (0) (0) (0) (0) (0) *α* +(*−* (4*MU₄* + 4*MU₅* +*C₂* +*C₃* +*C₄* +*C₅*) +*MU₄* + 2*MU₅* +*C₅*) 5 <u>1</u>*−*1 (1) (1) =*− M* (*C₁* +*C₀*)*.* 2
+
+<!-- Page 20 -->
+
+*Proof.*Consider the following modelling with variables in the first 16 elements, followed by the
+
+(0) (0) (0)
+8 constants given by the input to the last permutation, where we let*V* :=*MU₀* +*MU₂* +
+
+(0) (0)
+*MU₄* +*MU₅*.      
+
+(0) (0) (0) (0) (0) (0) *α* (1)
+*U₀* +*X* (*MX* +*MU₀* +*V* +*C₀*) *X*  (0) (0) (0) (0) *α*(1)  *−X*  (  *−MX* +*V* +*C*1)  *−X*   (0) (0) (0) (0) (0) (0) *α*  (1) *U₂* +*Y*  *E₀* (*MY* +*MU₂* +*V* +*C₂*)   *Y*  (0) *−−−−−→*  =:  (1)  *−Y*  (*−MY*(0)+*V*(0)+*C₃*(0))*α* *−Y*  (0)  (1) *U₄*  ((0) (0) (0) *α* *U₄*  *MU*4+*V* +*C*4)  
+
+(0) (1)
+*U₅* (*MU*(0) *α U* 5 5(0)+*V* +*C*5(0))      
+
+(1) (1) (1) (1) (1) *α* (2)
+*X* (*MX* +*MU₄* +*MU₅* +*C₀*) *X*  (1) (1) (1) (1) (1) *α*(2) *−X*  (  *−MX* +*MU*4+*MU*5+*C*1)  *−X*   (1) (1) (1) (1) (1) *α* (2)  *Y*  *E₁* (*MY* +*MU₄* +*MU₅* +*C₂*)   *Y*0   (1) *−−−−−→*  =:  (2) *−Y*  (*−MY*(1)+*MU₄*(1)+*MU₅*(1)+*C₃*(1))*α*  *Y₁*  (1)  (2)  *U₄*  ((1) (1) (1) *α* 2*MU*4+*MU*5+*C*4)   *U₄* 
+
+(1)
+*U₅*(1) (1) (1) *α* (*MU*4+2*MU*5+*C*5) *U*5(2)
+
+For the claimed round skip to work, the following equations must be satisfied.
+
+(0) (0) (0) (0) (0) *α* (1)
+(*MU₀* +*MU₂* + 2*MU₄* +*MU₅* +*C₄*) =*U₄* (8)
+
+(0) (0) (0) (0) (0) *α* (1)
+(*MU₀* +*MU₂* +*MU₄* + 2*MU₅* +*C₅*) =*U₅* (9)
+
+(0) (0) (0) (0) (0)
+*MU₀* +*V* +*C₂* =*−*(*V* +*C₃*) (10)
+
+(0) (0) (0) (0) (0)
+*MU₂* +*V* +*C₄* =*−*(*V* +*C₅*) (11)
+
+(1) (1) (1) (1) (1) (1)
+*MU₄* +*MU₅* +*C₀* =*−*(*MU₄* +*MU₅* +*C₁*) (12)
+
+(0) (0) (0) (0)
+As*U₄*,*U₅* are given, a solution for*U₀* and*U₂* is uniquely determined byEqs. (10)
+
+(1) (1)
+and(11). Then,Eqs. (8)and(9)determine*U₄* and*U₅*. Finally,Eq. (12)is satisfied if and only if the hypothesis of the Lemma holds, finishing the proof. *⊓⊔*
+
+### Round skipping for (n, t, c, d) = (64,12,4,4) in sponge mode.
+
+**Lemma 4.2.***ConsiderPoseidon2(b)with parameters*(*n,t,c,d*) = (64*,*12*,*4*,*4)*in sponge mode*
+
+(0)
+*with at least two absorptions and one squeeze and letU₂ be the last*4*elements of the input of* 3 *the last permutation. If*3*of the following*4*equations hold, then there is a*(2*,*[1] + [*α*])*round* *skip.* <u>1</u>(0) (0) (0) (0) (0) *α* (1) (1) 2*M*(*−* (2*MU₂* +*C₀* +*C₁*) + 2*MU₂* +*C₀*) =*−*(*C₀* +*C₁*) 3
+
+*Proof.*The proof proceeds analogously to the one ofLemma 4.1. Consider      
+
+(0) (0) (0) (0) (0) (0) *α* (1)
+*U₀* +*X* (*MX* +2*MU*0(0)+*MU*2(0)+*C*0(0)) *X*
+
+| U₀ +X| E₀| (MX|+2MU|+MU|+C|) |X||
+|---|---|---|---|---|---|---|---|---|
+| −X| −−−−−→|(−MX|+MU₀|+MU₂|+C₁|)  =:|−X||
+|U₂||(MU||+2MU|+C|)|U||
+
+(0) (0) *α* (1)
+(0) *α* (1)
+0(0) 2(0) 2(0) 2
+
+<!-- Page 21 -->
+
+
+
+(1)  
+(1) (1) (1) *α*
+ 
+
+(2) 
+*X* (*MX* +*MU₂* +*C₀*) *X₀* *−X*(1) *−−−−−→* *E₁*  (*−MX*
+
+
+[Showing lines 751-900 of 1672. Use :901 to continue]
+(1) +*MU*
+(1) +*C*
+(1) ) *α*  =:  *X*
+(2) 
+(1)
+2 1 *α* 1 *U₂* ( 2*MU* 2(1)+*C*2(1)) *U*2(2)
+
+To obtain the claimed round skip, we need the following equations
+
+(0) (0) (0) *α* (1)
+(*MU₀* + 2*MU₂* +*C₂*) =*U₂* (13)
+
+(0) (0) (0) (0) (0) (0)
+2*MU₀* +*MU₂* +*C₀* =*−*(*MU₀* +*MU₂* +*C₁*) (14)
+
+as well as 3 out of the following 4 equations to hold
+
+(1) (1) (1) (1)
+*MU₂* +*C₀* =*−*(*MU₂* +*C₁*)*.*(15)
+
+(0) <u>1</u> (0) (0) (0)
+Eq. (14)is equivalent to*MU₀* =*−* 3 (2*MU₂* +*C₀* +*C₁*), which we can substitute into Eq. (13). Multiplying either side by 2*M*and usingEq. (15)for the second equality, we get
+
+<u>1</u>(0) (0) (0) (0) (0) *α* (1) (1) (1) 2*M*(*−* (2*MU₂* +*C₀* +*C₁*) + 2*MU₂* +*C₂*) = 2*MU₂* =*−*(*C₀* +*C₁*)*,* 3
+
+which is true in exactly three components by hypothesis. *⊓⊔*
+
+Similarly to seeing round-skipping as breaking a permutation into two parts, we can regard the improvements on the sponge mode as consisting of two parts. In the case of (*n,t,c*) = (64*,*12*,*4), we can model the first permutation using the round skip described inLemma 3.2forct= 4,out= 3,*ν*= 8. The last four outputs correspond
+
+(0)
+to*U₂* in the input to the second permutation for which we impose the necessary condition to applyLemma 4.2, corresponding to three equations. In the same way, for (*n,t,c*) = (32*,*24*,*8) to applyLemma 4.1we model the prior permutation using the round skip with parametersct= 8,out= 4,*ν*= 16 ofLemma 3.2, and for the last 8 components, we impose the 4 equations to fulfil the necessary condition ofLemma 4.1. In the following subsection, we discuss the general case.
+
+*Remark 4.3.*Note that similar to the round skips given in the case ofcico-*k*problems, solutions to the arising systems are generally not guaranteed. However, for all the systems we expect on average one solution to exist.
+
+### 4.3 Adapting round skips to preimage attacks using the mode of operation
+
+We can build on top of the results described for thecicoproblem inSection 3.4with additional degrees of freedom coming from the mode of operation.Corollary 4.4provides the details for both compression and sponge mode (with at least two absorptions and one squeeze). Concrete numbers for the resulting round skips for several parameters can be found inTables 4and5.
+
+**Corollary 4.4.***Suppose that we want to find preimages inPoseidon2(b).*
+
+*1.IfPoseidon2(b)is used in compression mode andddenotes the digest size, thenLemmas 3.2* *and3.6gives us a possible round skip withct*=*out*=*d,ν*=*t.*
+
+<!-- Page 22 -->
+
+*2.If we are in sponge mode (with at least two absorptions and one squeeze),cdenotes the* *capacity,dis the digest size, andois the dimension of the variety parametrized in the* *previous permutation, thenLemmas 3.2and3.6give us a possible round skip withct*=*c,* *out*=*d,ν*=*t−c*+*o.* *Proof.*As the output in the case of compression will be the output of the permutation plus the constants from the initial*d*components, the round skips follow immediately fromLemmas 3.2 and3.6withct=out=*d*,in= 0.
+(0)
+In sponge mode, we add the equations*Qi*(*x₀,...,xo−*1)*−ui*= 0, where*xi*are the variables
+
+(0)
+modelling the first permutation,*Qi*(*x₀,...,xo−*1) is the*i*-th output of the first permutation, and*ui*is the*i*-th input of the second permutation. Thus, we impose*c*equations in total, one for each constant in the capacity. As we have replaced the*c*variables of the capacity by*o*variables, we can apply the same modelling as inLemmas 3.2and3.6with*ν*=*t−c*+*o*, i.e. we have*o* additional degrees of freedom with respect to thecicomodeling. *⊓⊔*
+
+Note that the larger*o*is chosen inCorollary 4.4the more degrees of freedom we get to solve the system arising from the second permutation, but the harder it gets to solve the system arising from the first permutation. We will discuss more details inSection 5.2. Corollary 4.4generalizes the particular round skips explored inSections 4.1and4.2. In the examples for sponge mode, the modelling of the first permutation can be simplified since most equations are linear, giving rise toLemmas 4.1and4.2. In general, this is not true as we will see inExample 5.3. This more complex modelling will then be used inSection 5.3to describe an algebraic collision attack that outperforms the algebraic preimage attack for the same recommended parameters.
+
+As a final contribution in this section, we discuss round skips in compression mode where the first*d*elements of the input are part of the parametrization of degree one inLemma 4.5. The idea can be extended to the case where the external matrix is MDS as is the case in Poseidon(b), giving rise to the first partial round skip for some recommended parameter sets in compression mode. Details of the latter are provided inAppendix A. Note further, that the authors ofPoseidon2(b)recommend 2-to-1 compression, i.e. 2*d*=*t*, which is treated in the following lemma.
+
+**Lemma 4.5.***ConsiderPoseidon2(b)int-to-dcompression mode. Lett∈ {*16*,*20*,*24*}and* 2*d≤t.*
+
+*1.Ift*= 16*, then there exists a*(2*,*[1]
+(8*−d*) + [*α*] (*d−*4) + [*α²*] (*d−*4) )*round skip ifd <*8*, or a* (1*,*[1] 4 + [*α*] 4 )*round skip ifd*= 8*.*
+
+*2.Ift*= 20*, then there exists a*(2*,*[1]
+4 + [*α²*] 4 )*round skip ifd≤*8*and a*(1*,*[1] (12*−d*) + [*α*] 2*d−*12 ) *round skip otherwise.*
+
+*3.Ift*= 24*, then there exists a*(2*,*[1]
+(12*−d*) + [*α*] (*d−*8) + [*α²*] (*d−*4) )*round skip if*8*< d <*12*, or* *a*(1*,*[1] 4 + [*α*] 8 )*round skip ifd*= 12*. The cased≤*8*was covered inCorollary 4.4.*
+
+(0) (0) (0) (0) (0) (0)
+*Proof.*If*t*= 16,*d≤*8, we can model our input as (*U₀* +*X,−X,U₂* +*Y,−Y*). The
+
+(0) (0)
+first round skip is enforced by imposing 8 linear equations in*U₀* and*U₂*. However, we do not make any change of variables in the*X*
+
+(0) vector, since this would increase the degree of the input
+variables, and thus increase the degree of the equations. To further improve this attack if*d <*8, note that the vector*X*
+
+(0) can be modelled such that its weight satisfies*w*(*MX*
+(0)
+) = 8*−d*, and
+thus we only need to impose*d*equations. The additional 8*−d*degrees of freedom can be used for another partial round skip in the next round, justifying the claim.
+
+<!-- Page 23 -->
+
+If*t*= 20,*d≤*8, we can model the round skip in a similar way with an additional 4 inputs that are arbitrary constants. The additional degrees of freedom can be used to fully skip the
+
+(0) (0) (0)
+next round in the*Y* variables. If*d∈ {*9*,*10*,*11*}*, then we model the input as (*Z,U₁* + *X*
+
+(0) *,−X*
+(0) *,Y*
+(0) *,−Y*
+(0) ) in such a way that*w*(*MZ*
+(0) ) =*d−*8. Then we can skip 4*−*(*d−*8) =
+(0) (0)
+12*−d*variables from the*Y* vector using the degrees of freedom from*U₁*.
+
+(0) (0) (0) (0) (0) (0) (0)
+If*t*= 24, 8*< d≤*12, we model the input as (*U₀* +*X,−X,U₂* +*Y,−Y,U₄* + *Z*
+
+(0) *,−Z*
+(0) ). We can model*X*
+(0) such that*w*(*MX*
+(0) ) =*d−*8, and thus skip the first round
+(without any change of variables in*X*
+
+(0) nor*Y*
+(0) ) using*d*degrees of freedom, 4 in*Y*
+(0), 4 in
+*Z*
+
+(0) and*d−*8 in*X*
+(0). The 12*−d*remaining degrees of freedom can be used to partially skip
+the second round in the*Z*
+
+(0) variables.
+*⊓⊔*
+
+Considering bothCorollary 4.4andLemma 4.5together, we see that certain parameters are captured in both cases. However, a case-by-case comparison shows that the round skip described byLemma 4.5is always at least as strong as the one ofCorollary 4.4(seeTable 5).
+
+|k|1|2||3|||4||
+|---|---|---|---|---|---|---|---|---|
+|t|(2,[1])|(2,[1]|)|(2,[1] + [α]|)||(1,[1]|)|
+|12|(2,[1]) (2,[1]) (3,[1])|(2,[1] (2,[1] (3,[1]|) ) )|(2,[1] (2,[1] (3,[1] + [α]|) ) )||(2,[1] (2,[1] (2,[1]|) + [α]) )|
+|16|(3,[1]) (3,[1]) ((4,4),[1])|(3,[1] (3,[1] ((4,4),[α]|) ) ) ((4,3),[α] + [α³ −α²]|(3,[1] (3,[1]|) )|)|(3,[1] (3,[1] (3,[1]|) + [α]) )|
+|20|((4,5),[1]) ((4,4),[1]) ((4,5),[1])|((4,6),[α] ((4,5),[α] ((4,6),[α]|) ) )|((4,6),[α] ((4,5),[α] ((4,6),[α]|) ) )|((4,5),[α]|((4,6),[α] + [α³ −α²]) ((4,6),[α]|) )|
+|24|((4,5),[1]) ((4,5),[1])|((4,6),[α] ((4,6),[α]|) )|((4,6),[α] ((4,6),[α]|) )||((4,6),[α] ((4,6),[α]|) )|
+
+2 2 4 2 3 4 2 3 3 2 2 4 2 3 4 2 3 3 2 2 4 2 3 4 2 3 3 2 3 4 2 3 4 2 3 4
+
+**Table 4.**Round skips for thecico-*k*problem (above), compression mode (middle) and sponge (below)
+
+with*t*states, assuming*k*=*c*=*d*,*RF* = 8 and*RP ≥*6, with the notation fromDefinition 3.1.
+
+Comparing the entries inTables 4and5, we see that the round skips for the algebraic preimage attack onPoseidon2(b)in compression and sponge mode are always at least as strong as the round skips of thecicomodelling for the same parameters. This shows how the additional structure of the mode of operation can be exploited to improve algebraic preimage attacks. In particular, it casts doubt on studying the security ofPoseidon2(b)entirely through thecico problem.
+
+## 5 Algebraic modelling
+
+Recall that the round skipping technique splits the permutationPoseidon *π* =*π₂ ◦π₁* into two parts and uses a parametrization of low degree to describe an algebraic variety in the image of
+
+<!-- Page 24 -->
+
+*k* *t* (1*,*[1] 2 + [*α*] 3 ) – – – 16 (2*,*[1] 3 + [*α*] + [*α²*]) (2*,*[1] 2 + [*α*] 2 + [*α²*] 2
+
+) (2*,*[1] + [*α*]
+3 + [*α²*] 3
+
+) (1*,*[1] 4 + [*α*]
+4 ) (1*,*[1] 2 + [*α*] 3 ) – – – (2*,*[1] 4 + [*α²*]) (1*,*[1] 4 + [*α*] 2
+
+) (1*,*[1]
+2 + [*α*] 5 ) – 20 (2*,*[1] 4 + [*α²*]) (2*,*[1] 4 + [*α²*] 2
+
+[Showing lines 901-1050 of 1672. Use :1051 to continue]
+
+) (2*,*[1]
+4 + [*α²*] 3
+
+) (2*,*[1]
+4 + [*α²*] 4 ) (2*,*[1] 4 + [*α²*]) (2*,*[1] 4 + [*α²*] 2
+
+) (2*,*[1]
+3 + [*α*] + [*α²*] 3 ) – (2*,*[1] 4 + [*α*]) (2*,*[1] 4 + [*α*] 2
+
+) (2*,*[1]
+2 + [*α*] 5
+
+) (1*,*[1]
+8 ) 24 (2*,*[1] 4 + [*α*]) (2*,*[1] 4 + [*α*] 2
+
+) (2*,*[1]
+4 + [*α*] 3
+
+) (2*,*[1]
+4 + [*α*] 4 ) (2*,*[1] 4 + [*α*]) (2*,*[1] 4 + [*α*] 2
+
+) (2*,*[1]
+4 + [*α*] 3
+
+) (2*,*[1]
+4 + [*α*] 4 )
+
+**Table 5.**Round skips for thecico-*k*problem (above), compression mode (middle) and sponge (below)
+
+with*t*states, assuming*RF ≥*6, with the notation fromDefinition 3.1.
+
+*π₁* such that its preimage satisfies any input constraints. Using a low degree parametrization as input to*π₂* allows an attacker to simplify the algebraic system of equations to solve compared to modelling the entire permutation. Naturally, the complexity of the whole attack then depends on the algebraic attack to solve the remaining polynomial system.
+
+Previous*algebraic cryptanalysis*ofPoseidonrelies on the complexity of the Gr¨obner basis attack to solve the resulting polynomial system. Roughly speaking, its complexity can be upper bounded by*d* *ω* *I*, where*dI*is the degree of the ideal generated by the equations of the system, and 2*≤ω <*3 is the linear algebra constant. As a conservative choice, the designers consider*ω*= 2. Using B´ezout’s bound the ideal degree*dI*can be upper bounded. A recent work [BBB + 25] shows how to further tighten the bound using a better modelling and the weighted B´ezout bound [Mon21, Thm. VIII.2].
+
+As stipulated by the authors ofPoseidonand its variants, we assume throughout this section that the capacity and digest size are chosen to prevent the birthday attack with 128 bits of security, meaning that*c*=*d*=*k*= <u>256</u> *n*. However, a birthday attack is meant to find collisions, not solutions to thecicoproblem, which has a 256-bit complexity by brute force. The round parameters are set by the authors such that the permutation has 128 bits of security against thecico-*k* *′* problem for*k* *′* = <u>128</u> *n*, which also implies the 128-bit security ofcico-*k*[GKK + 26, Sect. 5.3.2]. This argument, together with the choice of*ω*= 2 for the linear algebra constant, intrinsically yields what we call an*algebraic security margin*. No algebraic attack has been able to break this huge security margin. Despite showing significant complexity improvements in this section over previous state-of-the-art, the algebraic security margin prevents us from breaking the hash function’s claimed security level.
+
+In this section, we adapt algebraic modellings of previous work to accommodate our round skips. First, we describe how to upper bound the degree of the ideal after a round skip, which is used to estimate the complexity of algebraic attacks. Further, we adapt the bound to the case wherePoseidon2(b)in sponge mode as described inCorollary 4.4is attacked. Finally, this will allow us to argue that running an algebraic collision attack onPoseidon2(b)will be cheaper than algebraic preimage attacks for a range of proposed parameters.
+
+<!-- Page 25 -->
+
+### 5.1 Bounding the degree of the generated ideal
+
+The following theorem adapts the modelling of [BBB + 25, Sect. 4.2] to incorporate our round skips. To avoid invalidating the following theorem by artificially lowering the degree as described inRemark 3.5, we restrict it to modellings that have been previously discussed in the paper.
+
+**Theorem 5.1.***For all modellings previously described in this work, a*((*rF,rP*)*,*[*δ₀,...,δd−*1]) *round skip induces a polynomial system of equations, whose ideal degree can be upper bounded by*
+
+*d* ∏ *−*1 *dI≤α* *d*(*RF −rF*)+(*RP −rP*) *· δi.* *i*=0
+
+*Proof.*Without loss of generality, assume*δi≤δj*for all*i≤j*. Define*wi*:= <u>δ</u> <u>d</u> *δ* <u>−</u> *i* <u>1</u>, which is an integer for all round skips described in this article. The proof consists of defining a system of equations where the degrees of the variables are weighted, and then apply the weighted B´ezout bound [Mon21, Thm. VIII.2] to obtain the desired result.
+Let (*x₀,...,xd−*1) be the variables parametrized by the round skip, with weights (*w₀,...,wd−*1).
+The weighted degree of each variable in the parametrization is*δd−*1. After evaluating the remaining*Rf−rF*initial external rounds on the parametrization, the degree of the corresponding variables in the resulting polynomials is*α* (*Rf−rF*) *·δd−*1. We impose the equation *s₀ −P₀*(*x₀,...,xd−*1) = 0, where*s₀* is an auxiliary variable and*P₀* is the input to the first S-box in*π₂*. Analogously, we add equations for the input of subsequent S-boxes, namely*si−*
+*Pi*(*x₀,...,xd−*1*,s₀,...,si−*1) = 0. We define the weights of every*si*to be*α*
+(*Rf−rF*)*−*1 *·δd−*1, so that each of the described*RP −rP*equations has weighted degree*α* (*Rf−rF*) *·δd−*1. Finally, the*d*equations corresponding to the*d*output components that we are modelling are of degree *α* (*Rf−rF*)+*Rf* *·δd−*1=*α* (*RF −rF*) *·δd−*1. In summary, we have:
+
+- *RP −rP*equations of degree at most*α*
+(*Rf−rF*) *·δd−*1.
+
+- *d*equations of degree*α*
+(*RF −rF*) *·δd−*1.
+
+- *RP −rP*variables of weight*α*
+(*Rf−rF*)*−*1 *·δd−*1.
+
+- *d*variables of weight*wi*.
+Thus, the weighted B´ezout bound provides the following upper bound for the ideal degree.
+
+(*RP −rP*)*·*(*Rf−rF*)+*d·*(*RF −rF*) *RP−rP*+*d d−*1 *d−*1
+
+|||δ|∏|∏|
+|---|---|---|---|---|
+|||d−1||)|
+|(R −r)·((R|−r)−1)|R −r d−1|i− i=0|i i=0|
+
+<u>αd−1</u> 1 *d*(*RF −r*
+
+*F*)+(*RP −rP*)
+*dI≤ ·* *RP−rP* *· wi−*=*α · δi* *αP P f Fδ*
+
+*⊓⊔*
+
+The best description of a round skip in previous work allowed the modelling to skip the first round in exactly one dimension for the two recommended parameters (e.g. (*n,t,c*) = (32*,*24*,*8) and (*n,t,c*) = (64*,*12*,*4)), seeTables 2and3. The best previous upper bound for the ideal degree *kRF*+*RP −*1 + <u>α</u> *kr*<u>F</u> +*r*<u>P</u> *−*1 was*dI≤α* [BBB 25]. As our upper bound is ∏*k−*1times smaller, our preimage ()*ωi*=0 *i* *δ*
+
+<u>α</u> *kr*<u>F</u> +*r*<u>P</u> *−*1 attack represents a speed-up of ∏*k−*1 with respect to the previous state-of-the-art. *i*=0 *δ* *i* Concrete examples for recommended parameters can be found inTable 1.
+
+**Lemma 5.2.***Consider any compression modelling for which eithert≥*12*ifd≤*4*ort≥*20*if* 4*< d≤*8*, or in the sponge modelling fort−c≥*12*ifd≤*4*ort−c≥*20*ifd≤*8*, when used* *with only one squeezing phase. If we are under the same conditions as inLemmas 3.2and3.6,* *then there exists a round skip for which the bound inTheorem 5.1is not tight.*
+
+<!-- Page 26 -->
+
+*Proof.*InLemmas 3.2and3.6we push the subspace (*X,−X*) if*d≤*4 or (*X,−X,Y,−Y*) if 4*< d≤*8. The conditions on*t*and*c*are the necessary ones to ensure that we can choose this subspace not to contain the first component. After every external round, the coefficient of the topmost multi-degree will propagate through the same 4-dimensional subspace as well. In particular, the input of the first partial round will not have any topmost multi-degree. Thus, the upper bound on the degree of the equation*s₀ −P₀*(*x₀,...,xd−*1) = 0 is not tight, which leads to a non-tight upper bound on the ideal degree. *⊓⊔*
+
+During this work we have applied a trick to activate a partial S-box with only one variable and thus skip one partial round at the expense of multiplying the degree of one variable by*α*. For example, inSection 3.2instead of writing a ((3*,*2)*,*[1] 2 ) round skip, we wrote ((3*,*4)*,*[*α*] 2 ) round skip. WhileTheorem 5.1gives us the same upper bound in both cases, we prefer the second representation as it allows us to write a more compact system of equations, since the equations have lower degree. For some attacks, e.g. the resultant-based attacks in [BBB + 26], the complexity depends on both the degree of the resultant and the degree of the equations. For example, the complexity of the resultant-based attack oncico-2 described in [BBB + 26] is *O*(*dres·dpoly*), where*dres*is the degree of the resultant (which is the same for both round skips given above), but*dpoly*is the degree of the polynomial, which is lowered in the second case. Thus, lowering the degree of the equations improves the overall complexity of the attack.
+
+### 5.2 Modelling the sponge mode with two permutations
+
+Before we give the general result for the algebraic modelling of sponge mode with at least two permutations in the absorbing phase and one squeeze, we discuss one concrete example using a recommended parameter set for illustrative purposes. Without loss of generality, we assume that
+
+(0)
+there are exactly two permutations. We use*dI*to denote the ideal degree of the system that
+
+(1)
+needs solving for the first permutation and*dI*for the second one.
+
+*Example 5.3.*In this example we describe the ((4*,*6)*,*[*α*] 4 ) round skip in sponge mode, with
+
+(0) :=
+(0) (0)
+parameters (*n,t,c*) = (32*,*24*,*8) and*RF* = 8. To save space, we define*V M*(*U₀* +*U₁* +
+
+(0) (0) (0) (*r*)
+:=
+
+(*r*) (*r*) (*r*) (*r*)
+*U₃* +*U₄* +*U₅*), and*V M*(*U₀* +*U₃* +*U₄* +*U₅*) for*r≥*1. Suppose the last eight components of the input to the second permutation are as described inEq. (16) (0) (0)
+
+(0) (0) *α*  
+(1) 
+*U₀* (*MU₀* +*V* +*C₀*) *U₀*  *U*
+
+(0) +*X*
+(0)
+ (*MX*
+
+(0) +*MU*
+(0) +*V*
+(0) +*C*
+(0) ) *α*   *X*
+(1)
+ 1  1 1    *−X*
+
+(0) (0) (0) (0) *α* *−X*(1)
+  *E₀* (*−MX* +*V* +*C₂*)    (0) *−−−−−→*  (0)
+
+(0) (0) *α*
+=:  (1)*,*(16) *U₃*  (*MU₃* +*V* +*C₃*)   *U₃*  
+
+(0)  
+(0) (0)
+(1) *U₄*  ( *MU* +*V*
+
+(0) +*C*) *α*   *U₄* 
+4 4
+
+(1)
+(0) (0) *α*
+*U* *U₅* (*MU* 5(0)+*V* +*C*5(0))5
+
+which requires the following five sets of equations to be satisfied
+
+
+[Showing lines 1051-1200 of 1672. Use :1201 to continue]
+(0) (0) (0) (0) (0)
+*MU₁* +*V* +*C₁* =*−*(*V* +*C₂*)
+
+(0) (0) (0) *α* (1)
+(*MU₀* +*V* +*C₀*) =*U₀*
+
+(0) (0) (0) *α* (1)
+(*MU₃* +*V* +*C₃*) =*U₃*
+
+(0) (0) (0) *α* (1)
+(*MU₄* +*V* +*C₄*) =*U₄*
+
+(0) (0) (0) *α* (1)
+(*MU₅* +*V* +*C₅*) =*U₅.*
+
+<!-- Page 27 -->
+
+The subsequent rounds of the second permutation are then described byEq. (17).
+
+
+
+(*r*)  (*r*)
+(*r*) (*r*) *α*  
+(*r*+1)  *U₀* (*MU₀* +*V* +*C₀*) *U₀*  *X*
+
+(*r*) 
+(*MX*
+
+(*r*) +*V*
+(*r*) +*C*
+(*r*) ) *α*   *X*
+(*r*+1)   1    *−X*
+
+(*r*) (*r*) (*r*) (*r*) *α* 
+*−X* (*r*+1)   *Er*(*−MX* +*V* +*C₂*)     (*r*) *−−−−−→*  (*r*)
+
+(*r*) (*r*) *α*
+=:  (*r*+1) (17)  *U₃*  (*MU₃* +*V* +*C₃*)   *U₃*  (*r*) 
+
+(*r*) (*r*)
+(*r*+1)  *U₄*  ( *MU* +*V*
+
+(*r*) +*C*) *α*   *U₄* 
+(*r*)
+4
+
+*r*) (*r*) 4
+*r*) *α* (*r*+1)
+*U₅* (*MU* 5(+*V* +*C*5() *U₅*
+
+In the second permutation, the rounds we skip require us to impose the equation 2*V*
+
+(*r*) +
+(*r*) (*r*) 2 3 (0)
+*C₁* +*C₂* = 0 for*r∈{*1*,*2*,*3*}*. These equations have degrees*α*,*α* and*α* in*Ui*, respectively. The modelling works as follows. The first permutation is modelled such that we impose the last 8 inputs to be zero and we model a 4-dimensional variety. The best round skip is described inLemma 3.2by settingct= 8,out= 4,*ν*= 16. In this case,*ν*= 4*·Rf*and*s*= 0, which gives us a (3*,*[1] 4 ) round skip. We then model the rest of the permutation in a similar way as described in the proof ofTheorem 5.1, which we recall here. Let*P₀*(*x₀,x₁,x₂,x₃*) be the input of the first partial S-box, whose degree is*α*. We then add a new variable,*s₀*, and a new equation, *s₀ −P₀*(*x₀,x₁,x₂,x₃*) = 0. We add one new variable and one new equation for each internal round, namely*si−Pi*(*x₀,x₁,x₂,x₃,s₀,...,si−*1) = 0. Since the output of the S-box will be*s* *α* *i*,
+
+(0)
+all equations are of degree*α*. Let*Qi*(*x₀,x₁,x₂,x₃,s₀,...,sRP −*1) be the*i*-th output of the first permutation, which is a polynomial of degree*α* *Rf*+1 =*α⁵*. Similarly to the model described in the proof ofCorollary 4.4, we add 8 variables*ui*corresponding to the input of the second
+
+(0)
+permutation, and 8 equations of the form*ui−Qi*(*x₀,x₁,x₂,x₃,s₀,...,sRP −*1) = 0. Those 5 (0) (0) variables*ui*have weight*α*, and correspond to the variables in*U₄* and*U₅*. We add 12 more 5 (0) (0) variables to our modeling, also with weight*α*, corresponding to the variables in*U₀*,*U₁* and
+
+(0)
+*U₃*. For the round skip in the second permutation, we consider the 16 equations coming from
+
+(0) 5 6
+Eqs. (16)and(17). 4 of them are linear in*Ui*, so of degree*α*. The next 4 are of degree*α*, then 4 more of degree*α⁷* and the last 4 ones of degree*α⁸*. In summary, we have:
+
+- *i*
+
+|RP equations involvingP||of degreeα.|
+|---|---|---|
+|8 equations involvingQ 16 equations of degreeα⁵,α⁶,α⁷ andα⁸, four each.||of degreeα.|
+|4 variables (x|) of weight 1.||
+|RP variables (s|) of weight 1.||
+|20 variables (u|) of weightα⁵.||
+
+(0) 5
+- *i* *•*
+- *i*
+- *i*
+- *i*
+This system of*RP* + 24 equations in*RP* + 24 variables incorporates our round skip. Using the weighted B´ezout bound, the ideal degree of the resulting polynomial system can be bounded by
+
+(0) *RP* +8*·*5+4*·*(5+6+7+8) 20*·*5 *RP* +44
+*dI≤α /α* =*α.*
+
+Next, we generalize the above example inLemma 5.4.
+
+**Lemma 5.4.***ConsiderPoseidon2(b)in sponge mode with two absorptions and a single squeeze.* *Suppose we parametrize the first permutation using a*((*rF,rP*)*,*[*δ₀,...,δo−*1])*round skip in order* *to haveν*=*t−c*+*odegrees of freedom to skip rounds in the second permutation, whereout≤*4*,* *s* :=*ν*(mod 4)*andrF* *′* := (*ν−s*)*/*4*−*1*. Suppose allνdegrees of freedom are used. Then, the*
+
+<!-- Page 28 -->
+
+*polynomial system whose solutions also satisfy the equations of our round skips has ideal degree* *upper bounded by* *o−* ∏1
+
+(0) *o*(*RF −rF*)+(*RP −rP*)+2(*r*
+*F* *′* *−*1)*rF* *′* +*s·rF* *′* *dI≤α · δi.* *i*=0 *Under the same conditions, if*4*<out≤*8*, lets*= max(*t−c*+*o−*16*,*0)*. Thens≤*4*and the* *ideal degree is upper bounded by*
+
+*o−* ∏1
+
+(0) *o*(*RF −rF*)+(*RP −rP*)+*s*
+*dI≤α · δi.* *i*=0
+
+*Proof.*Assume firstout*≤*4. Out of the*ν*degrees of freedom, we use 4 in the*X*subspace and*ν−*4 in constants, used to skip rounds. If not all*ν*degrees of freedom were used, we could decrease*ν*by decreasing the output constraints*o*in the first permutation simplifying its modelling. As such, we can assume that all*ν*degrees of freedom are used. We proceed using analogous notation toTheorem 5.1. Also note that*ui*will be in every component except the ones parametrized as*−X*, i.e.*t−*4 variables. We follow a similar modelling as the one described inExample 5.3. For the system of equations, the weight of*xi*will be*wi*= <u>δ</u> <u>o</u> *δ* <u>−</u> *i* <u>1</u>, in order to ensure that the weighted degree of the parametrization is*δo−*1. The weight of each*si*will then be*α* (*Rf−rF*)*−*1 *·δd−*1. The weight of each*ui*will be*α* (*RF −rF*) *·δd−*1. The*ν−*4 degrees of freedom will be used in groups of 4 to skip a round each up to (*ν−*4*−s*)*/*4 =*rF* *′* rounds. Those equations (*RF −rF*)+*r* *·δd−*1 *F* *′*
+
+|will be of weighted degreeα|for each round 0≤r≤r|
+|---|---|
+||(RF −r)+r d−1|
+|• P|(R −r) d−1|
+|•|(RF −r) d−1|
+|•|(RF −r)+r d−1|
+|• •|d−1|
+|• P|(R −r)−1 d−1|
+|•|(RF −r) d−1|
+
+*−*1. For the next one, *F F* *′* we only impose*s*equations of weighted degree*α ·δ*. We thus have
+
+*RP −r* equations (*si−Pi*) of degree*αf F·δ*.
+
+(0)*F*
+*c*equations (*ui−Qi*) of degree*α ·δ*. *ν−s−*4 equations of degree*αF·δ* for 0*≤r≤rF* *′* *−*1. (*RF −rF*)+*rF* *′* *s*equations of degree*α ·δ*. *o*variables (*xi*) of weight*wi*. *RP −r* variables (*si*) of weight*αf F·δ*. *t−*4 variables (*ui*) of weight*αF·δ*.
+
+Thus, we have described a system of (*RP −rP*) +*ν*+*c−*4 equations in (*RP −rP*) +*t*+*o−*4 = (*RP −rP*) +*ν*+*c−*4 variables whose solution will give us the claimed round skip. The ideal degree of this system can be computed using the weighted B´ezout bound.
+
+|−r)·(R −r|)+(c+f)·(R|−r)+2(r|−1)r +s·r|(RP −r)+c+f|o−1|
+|---|---|---|---|---|---|
+|||||o−1||
+|(R −r|)·(R −r|−1)+(t−4)·(R|−r) o− 1|(R −r)+t−4 o− 1|i− i=0|
+|)+(RP −r|)+2(r|−1)r +s·r|i|||
+||||i=0|||
+
+<u>α</u> (*RP P f F F F F* *′* *F* *′* *F* *′* <u>δ</u> *P*∏
+
+(0) 1
+*dI≤ · · w* *αP P f F F FδP P*
+
+∏ *o*(*RF −rF P F* *′* *F* *′* *F* *′* =*α · δ*
+
+In case 4*<*out*≤*8,Lemma 4.1gives an upper bound on the number of rounds that can be skipped, namely (2*,*[1] 4 + [*α*] 4 ). From the initial*ν*degrees of freedom, 8 are used to parametrize the subspaces*X*and*Y*, and 8 more in the first round skip, using linear equations that do not increase the degree of the ideal. In case*t−c*+*o−*16*>*0, we can skip at most 4 more dimensions in the second round, corresponding to equations of degree*α*. In total, we impose*s*such equations (*s≤*4 from the hypothesis that all degrees of freedom are used). Then, the degree obtained from Theorem 5.1should be increased by a factor of*α* *s*. *⊓⊔*
+
+<!-- Page 29 -->
+
+We can see thatLemma 5.4generalizesExample 5.3, which used the formula for*o*= 4, *ν*= 20,*s*= 0,*rF* *′* = 4,*rF*= 3 and*δi*= 1, so that the ideal degree is bounded by
+
+*o−* ∏1
+
+(0) 4(8*−*3)+*RP* +2(4*−*1)4+0*·*4 *RP* +44
+*dI≤α ·* 1 =*α.* *i*=0
+
+*Preimage attack in sponge, revisited.*InSection 4.2, we described two round skips for the sponge mode without providing concrete complexity estimates for the overall attack. In order to keep it modular, we now provide speed-ups over previous state-of-the-art. In the case (*n,t,c*) = (32*,*24*,*8),*RF* = 8, we useLemma 5.4without= 8,*o*= 4,*s*= 4, and a (3*,*[1] 4 ) round skip (Lemma 3.2forout= 4,ct= 8,*ν*= 16). The ideal degree can be
+
+[Showing lines 1201-1350 of 1672. Use :1351 to continue]
+
+(0) 4(8*−*3)+*RP* +4 *RP* +24 4 4
+upper bounded by*dI≤α* =*α*. Using the obtained (2*,*[1] + [*α*]) round skip
+
+(1) 8(8*−*2)+*RP* +4 *RP* +52
+(Lemma 3.2forout= 8,ct= 8,*ν*= 20),Theorem 5.1bounds*dI≤α* =*α*,
+
+i.e. the complexity of the attack is dominated by the cost of solving the system arising from the second permutation. Using the bound for thecicomodelling, the (1*,*[1]
+8 ) round skip provides the bound*dI≤α* *RP* +56. Thus, the sponge modelling leads to a speed-up of*α⁴* *ω* with respect to our cicomodelling, and an*α¹¹* *ω* speed-up with respect to the previous state-of-the-art (1*,*[1] + [*α*] 7 ) round skip also using acicomodelling. In the case (*n,t,c*) = (64*,*12*,*4), there is a (1*,*[1] 3 ) round skip for the first permutation (Lemma 3.2withct= 4,out= 3,*ν*= 8). Other parameters are*ν*= 11,*o*= 3,*s*= 3 and *′* (0) 3(8*−*1)+*RP* +3*·*1 *RP* +24 *r* *F*= 1, soLemma 5.4gives us the upper bound*dI≤α* =*α*, which could be also obtained fromLemma 4.2. Using these degress of freedom, we can obtain a (2*,*[1] 3 + [*α*]) round skip for the second permutation. Then, usingTheorem 5.1the ideal degree of the second
+
+(1) 4(8*−*2)+*RP* +1 *RP* +49
+system can be upper bounded by*dI≤α* =*α.*As in the first example, solving the second system dominates the complexity of the preimage attack. Compared to the (1*,*[1] 4 ) round skip for thecicomodelling, the sponge attack is*α³* *ω* times faster, while this speed-up is increased to*α⁶* *ω* if we compare it to the previous best (1*,*[1] + [*α*] 3 ) round skip.
+
+### 5.3 Improving algebraic collision attacks
+
+In this subsection, we want to touch on the security ofPoseidon2(b)with respect to collision resistance. A dedicated algebraic modelling for collision finding is missing from the literature. In fact, both algebraic collision and algebraic preimage attacks were solely studied via thecico modelling, e.g. [BBB + 25, Appendix A.3]. Together with the absence of improvements to the modelling for algebraic collision attacks in previous cryptanalysis, this gave rise to the assumption that algebraic collision attacks are more expensive than algebraic preimage attacks; see for example
+
+“Algebraic collision attacks are known to be even more expensive than preimage attacks due to twice the number of variables.” [GKK + 26]
+
+In this subsection, we provide a counterexample. More precisely, for some recommended parameter sets of bothPoseidon2andPoseidon2b, we give a modelling of the algebraic collision attack which is cheaper than the algebraic preimage attack. We use the same parameter sets as in previous sections. Consider the case (*n,t,c,d*) = (32*,*24*,*8*,*8) with*RF* = 8 in sponge mode. Suppose we want to skip rounds to parametrize a 4-dimensional variety. We can use the formula fromCorollary 4.4, which gives us a ((4*,*6)*,*[*α*] 4 ) round skip at the expense of solving a system of equations whose
+
+(0) *RP* +44
+ideal degree is bounded by*dI≤α* (seeExample 5.3). If we propagate this round skip, we
+
+<!-- Page 30 -->
+
+(1)
+can parametrize the first*d*= 8 outputs as polynomials*Qi*(*x₀,x₁,x₂,x₃*), for 0*≤i≤*7. Then,
+
+(1) (1)
+finding a solution (*x₀,...,x₃,y₀,...,y₃*) to the system*Qi*(*x₀,x₁,x₂,x₃*)*−Qi*(*y₀,y₁,y₂,y₃*) = 0
+of 8 equations in 8 variables will result in a collision as long as*xj̸*=*yj*for some*j*. To get rid of the last restriction, we could find another parametrization for the*yj*and impose the equations
+
+(1) (1)
+*Qi*(*x₀,x₁,x₂,x₃*)*− Qi*(*y₀,y₁,y₂,y₃*) = 0 instead.
+
+**Lemma 5.5.***Assumedis even. In the algebraic collision attack onPoseidon2(b)in sponge* *mode with at least two absorptions and one squeeze, a*((*rF,rP*)*,*[*δ₀,...,δd/*2*−*1])*round skip induces a polynomial system of equations, whose ideal degree can be upper bounded by*
+
+*d/* ∏ 2*−*1
+
+(1) *d*(*RF −rF*)+2(*RP −rP*) 2
+*dI≤α · δi.* *i*=0
+
+*Proof.*The proof consists of a very similar modelling to the one described in the proof ofTheorem 5.1. The difference is that we impose the equations for*si*twice, one per modelling. The variables all have the same weights as described in the previous proof. Assume one modelling is with respect to the variables*x*<u>i</u>and one with respect to the variables*yi*. Then, we require the*d*
+
+(1) (1)
+equations*Qi*(*x₀,...,xd/*2)*− Qi*(*y₀,...,yd/*2) = 0, of the same degree as before. In summary,
+we have:
+
+- ** 2(*RP −rP*) equations of degree at most*α*
+(*Rf−rF*) *·δd−*1.
+
+- *d*equations of degree*α*
+(*RF −rF*) *·δd−*1.
+
+- ** 2(*RP −rP*) variables of weight*α*
+(*Rf−rF*)*−*1 *·δd−*1.
+
+- *d/*2 variables (*xi*) of weights*wi*, and another*d/*2 variables (*yi*) with the same weights.
+Thus, the weighted B´ezout bound gives us the upper bound for the ideal degree
+
+|−r)(R −r|)+d(R|−r) 2(RP −r|)+d d/2−1|d/2−1|
+|---|---|---|---|---|
+|||d−1||)|
+|2(R −r)·((R|−r)−1)|2(R d−1|−r) i=0|i=0|
+
+<u>α</u> 2(*RP P f F F F*<u>δ</u>*P*∏ ∏
+
+(1) 2 *d*(*RF −rF*)+2(*RP −rP*2
+*dI≤ · · wi−*=*α · δi.* *αP P f FδP P*
+
+*⊓⊔*
+
+Lemma 5.5upper bounds the degree of the ideal that needs to be solved to find a solution to an algebraic collision attack. Comparing it to the upper bound given byTheorem 5.1, we note that it scales worse in the number of partial rounds. However, for a sufficiently small number of partial rounds, the bound above leads to improvements as we see in the following. For example, a preimage attack in the sponge mode for the parameters outlined above can 4 4 (1) *RP* +52 have a (2*,*[1] +[*α*]) round skip, so that the ideal degree can be upper bounded by*dI≤α* (seeSection 5.2). On the other hand, the collision attack described has an ideal degree that can be
+
+(1) 8*·*(8*−*4)+2(*RP −*6) 8 2*RP* +28 4
+upper bounded by*dI≤α ·α* =*α* using the ((6*,*4)*,*[*α*]) round skip from
+
+(0) *RP* +44 (2*RP* +28)*ω* (*RP* +44)*ω*
+Example 5.3. Given that*dI≤α*, the attack has complexity max(*α,α*). The recommended parameters in Plonky3 for the KoalaBear prime*p*KB= 2 31 *−*2 24 + 1 are
+
+(1)
+(*α,RP*) = (3*,*23), so*dI*dominates the complexity. In the case of binary fields of the same + (0) size, the recommended parameters are (*α,RP*) = (7*,*15) [GKK 25, Tbl. 1], in which case*dI* dominates the complexity. In particular, the speedup is about 7 19*ω* with respect to previous work, which is at least 2 106 given 2*≤ω <*3. To summarize, the collision attack is roughly min(*α* (24*−RP*)*ω* *,α⁸* *ω* ) times more efficient than the preimage attack previously described in this work, which itself was already faster than the previous state-of-the-art preimage attacks.
+
+<!-- Page 31 -->
+
+*Remark 5.6.*A more careful analysis of the round skips taking into account the phenomenon 2*RP* +28 *RP* +40 (0) described inLemma 5.2would lead to a complexity of max(*α,α ·*(*α−*1)). If*dI* significantly dominates the attack complexity and we can assume that there are at least 3 permutations in the absorbing phase of the sponge, we could even afford to compute a round skip for the penultimate permutation. While we do not delve into the details here, we have previously outlined all the necessary tools to calculate the corresponding complexity earlier in this article.
+
+## 6 Impact on full round Poseidon2 and countermeasures
+
+In this paper, we have described several new attack vectors onPoseidon2(b). Yet, despite improving the complexity of previous state-of-the-art algebraic attacks by a factor larger than 2 100 for a recommended parameter set, the 128-bit security ofPoseidon2(b)with respect to preimage and collision attacks does not appear to be compromised. If we establish a quadratic lower bound on the complexity of the Gr¨obner basis attack based on the ideal degree, as done in previous algebraic cryptanalysis, and assume the bounds specified inTheorem 5.1andLemma 5.4are tight, then the complexity of our attacks detailed inSection 5 surpasses 2 128 whenever*α≥*3 which is a condition that consistently holds true. As described at the beginning ofSection 5, the number of rounds inPoseidonwas chosen with a large algebraic security margin. Nonetheless, the number of external rounds in [GKK + 26] was increased after disclosing a preliminary report of our findings to Ethereum’s Poseidon initiative. To better understand the scope of the presented attacks, we explore various countermeasures that can mitigate them.
+
+*Increasing the round numbers.*The obvious countermeasure would be to increase the number of external rounds to mitigate the possible round skips. The downside would be a slowdown in evaluation and verification time.
+
+*Revert to MDS matrices defining the linear layers.*Instead of using the aggressive non-MDS matrices to define the linear layers which allowed us to execute our attacks, one could revert to more conservative MDS matrices as was the case in the originalPoseidon. However, note that the change in the linear layer to the non-MDS matrices came with a decrease in the number of up to 90% of multiplications [GKS23]. In fact, the originalPoseidonusing MDS matrices was not recommended due to its performance in the StarkWare security report [BSGL20].
+
+*Change the linear layer to an efficient and secure one.*The current matrix is defined as*Mε*= *Pt/*4*⊗M₄*. With a more careful analysis, one can observe that if*c≥t/*4 (in sponge) or*d≥t/*4 (in compression), which is the case for all recommended parameters, none of our attacks apply to the matrix *Mε*=*M₄ ⊗Pt/*4. Yet, for such an *Mε*the same fast matrix multiplication as the one described in [GKS23, Appendix B] can be applied up to a permutation of indices. All of our round skips require to force subspaces of the form (*X,−X*) in the output of rounds, which seems incompatible with the constraints on every fourth element of the vector that this matrix would enforce.
+
+### 6.1 Poseidon in the wild
+
+While certain parameter choices were given in allPoseidonpapers, the authors also provided formulas to compute further parameter sets. This has lead toPoseidonbeing implemented
+
+<!-- Page 32 -->
+
+with a wide range of parameters. For example, an implementation in arkworks⁴ uses a 64 bit prime with*t*= 24, which could be susceptible to an improved round skip, but an MDS matrix is implemented instead. In Plonky3 5, the main reference for manyPoseidonimplementations, there are recommended round numbers for (*n,t*) = (64*,*16), which were not considered by the designers ofPoseidonand are also more susceptible to improved round skips. However, for all Poseidoninstances we found no parameter set failed to meet its asserted 128-bit security level. Since some applications require an individual analysis for their parameter set, we finish with a systematic way of computing the best round skips with the tools presented in this paper. This should help to compute the ideal degree that dominates the attack complexity, and then the attack complexity will be proportional to*d* *ω*
+
+*I*.
+1.IfPoseidon2(b)is applied in sponge mode, letct=*c*,out=*d*,*ν*=*t−c*+*o*for some parameter*o*. If it is in compression mode, then letct=*d*,out=*d*,*ν*=*t*.
+2.Check if the parameters are under conditions ofLemmas 3.2and3.6. If in compression, then also checkLemma 4.5.
+3.For the given round skip, the degree of the ideal in the preimage attack modelling is given inTheorem 5.1. If in compression, the complexity can be estimated from that value. If in
+(1)
+sponge, call this value*dI*and go to Step 4.
+
+4.Check what is the best round skip for the first permutation inLemmas 3.2and3.6with ct=*c*,out=*o*,*ν*=*t−c*.
+5.Ifout*≤*4, compute the complexity of the round skip for the second permutation using the formula fromLemma 5.4with the round skip obtained for the first permutation. Ifout*>*4, useLemma 4.1andTheorem 5.1instead, as inSection 5.2. Assume tightness and call this
+(0)
+ideal degree*dI*.
+
+(0) (1)
+6.The complexity of the preimage attack can be derived from max(*dI,dI*), which depends
+(0) (1)
+on*o*. The best attack is obtained from min₀*≤o≤c*(max(*dI,dI*)).
+
+7.For collisions with*d*even, the best round skip for the second permutation can be obtained fromLemmas 3.2and3.6withct=*c*,in=*c−o*,out=*d/*2.
+(1)
+8.This round skip leads to a collision attack with*dI*bounded as inLemma 5.5, which
+(0)
+depends on*o*. With*dI*as defined in Step 4, the best collision attack is obtained from
+
+(0) (1)
+min₀*≤o≤c*(max(*dI,dI*)).
+
+### 6.2 Acknowledgements
+
+We would like to express our gratitude to Kenny Paterson for supporting this research, for insightful discussions and for valuable comments.
+
+4 [https://github.com/arkworks-rs/spongefish/blob/main/poseidon2/src/arkworks/f64.rs](https://github.com/arkworks-rs/spongefish/blob/main/poseidon2/src/arkworks/f64.rs) 5 [https://github.com/0xPolygonZero/Plonky3/blob/main/poseidon2/src/round](https://github.com/0xPolygonZero/Plonky3/blob/main/poseidon2/src/round) numbers.rs
+
+<!-- Page 33 -->
+
+# Bibliography
+
++ [BBB 25]Antoine Bak, Augustin Bariant, Aur´elien Boeuf, Pierre Briaud, Morten Øygarden, and Atharva Phanse. The algebraic CheapLunch: Extending FreeLunch attacks on arithmetization-oriented primitives beyond CICO-1. Cryptology ePrint Archive, Paper 2025/2040, 2025. + [BBB 26]Antoine Bak, Augustin Bariant, Aur´elien Boeuf, Ma¨el Hostettler, and Guilhem Jazeron. Claiming bounties on small scale Poseidon and Poseidon2 instances using resultant-based algebraic attacks. Cryptology ePrint Archive, Paper 2026/150,
+
+2026.
++ [BBC 23]Cl´emence Bouvier, Pierre Briaud, Pyrros Chaidos, L´eo Perrin, Robin Salen, Vesselin Velichkov, and Danny Willems. New design techniques for efficient arithmetization-oriented hash functions: Anemoi permutations and Jive compression mode. In*Annual International Cryptology Conference*, pages 507–539. Springer, 2023. [BBLP22]Augustin Bariant, Cl´emence Bouvier, Ga¨etan Leurent, and L´eo Perrin. Algebraic attacks against some arithmetization-oriented primitives.*IACR Transactions on* *Symmetric Cryptology*, 2022, Issue 3:73–101, 2022. + [BCD 20]Tim Beyne, Anne Canteaut, Itai Dinur, Maria Eichlseder, Gregor Leander, Ga¨etan Leurent, Mar´ıa Naya-Plasencia, L´eo Perrin, Yu Sasaki, Yosuke Todo, and Friedrich Wiemer. Out of oddity – new cryptanalytic techniques against symmetric primitives optimized for integrity proof systems. In Daniele Micciancio and Thomas Ristenpart, editors,*Advances in Cryptology – CRYPTO 2020*, pages 299–328, Cham, 2020. Springer International Publishing. [BDPVA07]Guido Bertoni, Joan Daemen, Micha¨el Peeters, and Gilles Van Assche. Sponge functions. In*ECRYPT hash workshop*, volume 2007, 2007. [BDPVA08]Guido Bertoni, Joan Daemen, Micha¨el Peeters, and Gilles Van Assche. On the indifferentiability of the sponge construction. In*Annual International Conference on* *the Theory and Applications of Cryptographic Techniques*, pages 181–197. Springer,
+
+2008.
+[BSGL20]Eli Ben-Sasson, Lior Goldberg, and David Levit. STARK friendly hash – survey and recommendation. Cryptology ePrint Archive, Paper 2020/948, 2020. [DKKW25]Justin Drake, Dmitry Khovratovich, Mikhail Kudinov, and Benedikt Wagner. Hash-based multi-signatures for post-quantum ethereum.*IACR Communications in* *Cryptology*, 2(1), 2025. [Eth24]Poseidon cryptanalysis initiative 2024–2026: Scrutinizing Poseidon for good. Technical report, Ethereum Foundation, 2024.url:https: //www.poseidon-initiative.info/. (visited on 03/02/2026). + [GHR 23]Lorenzo Grassi, Yonglin Hao, Christian Rechberger, Markus Schofnegger, Roman Walch, and Qingju Wang. Horst meets fluid-SPN: Griffin for zero-knowledge applications. In*Annual international cryptology conference*, pages 573–606. Springer,
+
+
+[Showing lines 1351-1500 of 1672. Use :1501 to continue]
+2023.
++ [GKK 25]Lorenzo Grassi, Dmitry Khovratovich, Katharina Koschatko, Christian Rechberger, Markus Schofnegger, and Verena Schr¨oppel. Poseidon2b: A binary field version of Poseidon2. Cryptology ePrint Archive, Paper 2025/1893, 2025.[https://eprint](https://eprint). iacr.org/archive/2025/1893/20251010:101323(Version from Oct/2025). + [GKK 26]Lorenzo Grassi, Dmitry Khovratovich, Katharina Koschatko, Christian Rechberger, Markus Schofnegger, Verena Schr¨oppel, and Zhuo Wu. Poseidon(2)b: Binary field versions of poseidon/poseidon2.*IACR Communications in Cryptology*, 2(4), 2026.
+
+<!-- Page 34 -->
+
+[GKR + 21]Lorenzo Grassi, Dmitry Khovratovich, Christian Rechberger, Arnab Roy, and Markus Schofnegger. Poseidon: A new hash function for zero-knowledge proof systems. In*30th USENIX Security Symposium (USENIX Security 21)*, pages 519–535,
+
+2021.
+[GKR25]Lorenzo Grassi, Katharina Koschatko, and Christian Rechberger. Poseidon and Neptune: Gr¨obner basis cryptanalysis exploiting subspace trails.*IACR Transactions* *on Symmetric Cryptology*, 2025(2):34–86, Jun. 2025. [GKS23]Lorenzo Grassi, Dmitry Khovratovich, and Markus Schofnegger. Poseidon2: A faster version of the Poseidon hash function. In*International Conference on Cryptology* *in Africa*, pages 177–203. Springer, 2023. [GRS21]Lorenzo Grassi, Christian Rechberger, and Markus Schofnegger. Proving resistance against infinitely long subspace trails: How to choose the linear layer.*IACR* *Transactions on Symmetric Cryptology*, 2021(2):314–352, Jun. 2021. [KR21]Nathan Keller and Asaf Rosemarin. Mind the middle layer: The HADES design strategy revisited. In Anne Canteaut and Fran¸cois-Xavier Standaert, editors,*Advances in Cryptology-EUROCRYPT 2021 - 40th Annual International Conference* *on the Theory and Applications of Cryptographic Techniques, Zagreb, Croatia, Oc-* *tober 17-21, 2021, Proceedings, Part II*, volume 12697 of*Lecture Notes in Computer* *Science*, pages 35–63. Springer, 2021. [Mon21]Pinaki Mondal.*How Many Zeroes?*CMS/CAIMS Books in Mathematics. Springer Cham, 2021. [ZSVD25]Ziyu Zhao, Antonio Sanso, Giuseppe Vitto, and Jintai Ding. Graeffe-based attacks on Poseidon and NTT lower bounds. Cryptology ePrint Archive, Paper 2025/1916,
+
+2025.
+
+<!-- Page 35 -->
+
+## A Partial round skip in the MDS case in compression mode
+
+In a 2-to-1 compression, we require*d*=*t/*2. The idea is very similar to that ofLemma 4.5 and [BBB + 26, Section 4.2]. We force the state before the first external S-box to be of the form 1*/α* 1*/α* (*a₀x₀,...,atx₀*) for the first*t/*2 + 1 components. The constants*ai*are chosen such that only the last*t/*2 components depend on*x₀*. This is always possible. The next*t/*2*−*1 components will be of the form*xk*for 1*≤k≤t/*2*−*1. In particular, every component of the input will depend linearly on every*xk*for*k≥*1. The output of the S-box will be of degree*α*for all variables but one, thus admitting a (1*,*[1] + [*α*] (*t/*2*−*1) round skip. The equations will then be the output of the permutation plus a linear combination of the*xk*, i.e. they have the same degree as the output of the permutation.
+
+## B Solving CICO-2 bounty instances for Poseidon2 in practice
+
+Here, we add a brief description how we solved the CICO-2 bounty instance ofPoseidon2in practice. The code to run the attack is publicly available⁶. Since we did not find a solution to the 8 equations of the system described inSection 3.2in a reasonable amount of time, we only imposed a subset of 7 equations and used a ((3*,*2)*,*[1*,*20]) round skip. The modelling strategy for the round skip works as follows. We define the input to
+
+(0) (0) (0) (0) (1)<u>1</u>
+5 be (*U₀,U₁* +*X,−X,U₃*) where*U₃* = (7*µ−*6*λ,*4*λ−*5*µ,*0*,*0). Then, we model (*U₀*) =
+
+(1) 5 <u>1</u>
+(*b₀,b₁,b₂,b₃*). The equation for the first round skip allow us to define the elements of (*U₃*) linearly in*b₀,b₁,b₂,b₃,λ,µ*, such that the first component only depends on*b₀* and*λ*. For the
+
+(1) (1) (1) (1)
+second round skip, we need to impose the equations 2*M*(*U₀* +*U₃*) +*C₁* +*C₂* = 0, which are of degree 5 in each component. Finally, for the third round skip there are 4 additional equations, as specified inSection 3.2, that could be satisfied. Our strategy was the following.
+
+(1) (1) <u>1</u> *−*1 (1) (1)
+We fix*b₀* (for this analysis,*b₀* = 1). Then, from (*U₀* +*U₃*) =*−* 2 *M* (*C₁* +*C₂*), the first equation is of the form ((*∗*)*λ*+ (*∗*)) 5 = (*∗*), such that there exists a unique solution. We then exhaustively try all possible values for*b₁*. Using a similar argument,*µ*is uniquely determined from the second equation. After determining*λ*and*µ*,*b₂* and*b₃* can be derived from the third and fourth equations. We then check if any of the four equations for the third round skip is satisfied. If so, a valid parametrization for*π₁* has been found. Assuming that we have found such a solution, without loss of generality for the first component, we can model*X*
+
+(2) as
+  *x*
+
+(2)  *y*+<u>k₁</u>
+*MX* =     *,* *ay*+<u>k₂</u> *by*+*k₃*
+
+(3)
+for suitable constants *ki*,*a*and*b*. Here, suitable means that *ki*are chosen such that*X₁* and
+
+(3)
+*X₂* are of the following form.  5   5  (*x*+*k₀*) (*−x−k₀*)
+
+(3)  (*y*+*k₁*)5
+(3)  (*−y*+*k₁*)5  *X₁* =  5 *, X₂* =  5 (*ay*+*k₂*) (*−ay*+*k₂*) (*by*+*k₃*) 5 (*−by*+*k₃*) 5
+
+6 [https://github.com/AlexRG03/Poseidon_m31_bounty](https://github.com/AlexRG03/Poseidon_m31_bounty)
+
+<!-- Page 36 -->
+
+Note that such constants must exist and that they have a closed form given the round
+
+(2)
+constants and the value of*Ui*, which in turn depends only on the round constants and our parametrization for*π₁*. For*x* := (*x*+*k₀*) 5 all terms that contain *x*can be eliminated. The constants*a*and*b*can be fixed as follows: Note that the next non-linear layer only affects the first component, as we have already moved through all of the external rounds. The input will
+
+(3) (3) (3) (3) (3) (3) (3)
+be (*M*(*X₁* +*X₂*))0+ (2*MU₀* +*MU₃*)0+*C₀* (seeFig. 1). The sum*X₁* +*X₂* has only terms of an even degree in*y*, thanks to the choice of *ki*. Consequently, the first component of
+
+(3) (3) 4 2
+*M*(*X₁* +*X₂*) will be a quartic with terms*y*,*y* and constant terms. The coefficients of the terms of degree 2 and 4 in*y*depend on*a*,*b*in a non-homogeneous way, which allows us to solve a system to force them to be zero. After this, the input of the first non-linear layer will be constant. For the following round, as argued inSection 3.2, the first component does not depend on
+
+*x*. The dependency on*y*is of degree 4 since it corresponds to the sum of all elements in the previous round, so the top-most coefficient is cancels out. After this partial round, the obtained round skip is the claimed ((3*,*2)*,*[1*,*20]). To solve the system, we proceed via the resultant approach, as described in [BBB
++ 26]. We interpolate the resultant*R*(*y*) with respect to*x*. Thus, every univariate resultant is of size 5 5, corresponding to the degree in*x*after the next 5 rounds. The degree of the resultant is 4*·*5 9. We have no theoretical explanation for this result, but it follows from experimental observations. The previous bounty instance was claimed computing a resultant of degree 5 11 by interpolation of univariate resultants of degree 5 6. Given that the complexity of the attack is*O*(*dres·dpoly*), our attack on the larger bounty instance is theoretically 25*/*4 times faster.
+
+*Time measurements.*We provide the sage code we used to break the bounty instance and the logs of the execution in a public git repository⁷. The exhaustive search for solutions for*π₁* runs in 5*.*5*h*on 64 physical cores in 128 threads, each one exploring 2 24 different values of*b₁*. We found six candidates. Out of them, four did not provide any solution (*a,b*), one gave rise to 4 solutions and another one 8 solutions. In total, we end the first part of the program with 12 distinct parametrizations*π₁*. For the second part, we interpolate 4*·*5 9 + 1 points in 128 threads, each of them computing*≈*61*.*000 univariate resultants during 43 minutes. The interpolation and root finding took an extra 11 minutes per iteration, single threaded. While some iterations found roots of*R*(*y*), it was not until the 6-th that we found a solution to the system, adding up to a total of 10h, 54 minutes of running time. The memory bottleneck was to store all pairs of points and values for the resultant to compute the interpolation. That is, we store 4*·*5 9 + 1 pairs of elements in*Fp*, where each element takes around 32 bits of representation. Theoretically the memory requirement is thus 2*·*32*·*(4*·*5 9 + 1) = 2
+
+28*.*9 bits. In practice, we have observed that
+the size of the database was 2
+
+26*.*8 bytes, or 118*.*7 MB, thus having very little overhead.
+## C Proof ofLemma 3.6
+
+*Proof(ofLemma 3.6).*Without loss of generality, we assume that the input constraints fix the final elements of the input. We first treat the case*t−*ct*≥*16. As 4*<*outwe need to parametrize a variety of dimension larger than 4, and therefore it is not sufficient to force a subspace of the form (*X,−X*) in the output of the initial rounds. Following the example inSection 3.3, we instead force a subspace of the form (*X,−X,Y,−Y*). To this end, we set the first 16 elements of the input
+
+(0) (0) (0) (0) (0) (0) (0) (0)
+to be (*U₀* +*X,−X,U₂* +*Y,−Y*), where both*X* and*Y* are vectors consisting
+
+(0) (0)
+of 4 variables each and*U₀*,*U₂* are vectors of 4 arbitrary constants each. This is well defined
+
+7 [https://github.com/AlexRG03/Poseidon_m31_bounty](https://github.com/AlexRG03/Poseidon_m31_bounty)
+
+<!-- Page 37 -->
+
+as*t−*ct*≥*16 and thus none of the first 16 elements has input constraints on it. The initial
+
+(0) (0)
+degrees of freedom for the constants are 8 coming from*U₀* and*U₂* of the first 16F-elements, and*ν−*16 =*≥*0 coming from the remaining inputs without constraints. As we only need to parametrize anout-dimensional variety, we can parametrize*Y*
+
+(0) such that*MY*
+(0) is zero in
+the last 8*−*outcomponents. Thus, instead of imposing the same 8 equations as inSection 3.3, we only impose the firstoutof them. In this way, we can bypass the first round, while having *ν−*8*−*outadditional degrees of freedom. For the second round, we can only impose 4 equations at most, corresponding to the ones necessary to enforce the (*X,−X*)-subspace, seeSection 4.1 for details. Using as many degrees of freedom as possible, we impose*s₃* equations, enabling us to push*s₃* variables through the second round. This gives the claimed (2*,*[1] *s* 3+ [*α*](8*−s*3)) round skip. If*s₃* = 0, then we are not skipping anything in the second round, which is equivalent to a (1*,*[1] 8 ) round skip. In the case 8+out*≤t−*ct*<*16, only the first*t−*ctinput components can be non-constant.
+
+(0) (0) (0) (0) (0) (0) (0)
+We parametrize the first 16 input components as (*U₀* +*X,−X,U₂* +*Y,U₃ −Y*), where*X*
+
+(0) is a vector of 4 variables,*Y*
+(0) is a vector ofout*−*4 variables with zeroes in the last
+(0) (0) (0)
+16*−*(*t−*ct) components,*U₀* and*U₂* are vectors of 4 arbitrary constants and*U₃* is a vector of constants in the orthogonal of theout*−*4-dimensional subspace parametrized by*Y*
+
+(0). The
+remaining*t−*16 components must all be constant as*t−*ct*<*16. Yet, if*ν−*16*>*0 we have an additional*ν−*16 degrees of freedom, corresponding to constants after the 16-th component. We thus have*ν−*outdegrees of freedom for the constants corresponding to the initial*ν*degrees of freedom, minus theoutused to parametrize the round skip. To maximise the round-skip, we aim to minimize the components on which*MY*
+
+(0) depends.
+We know*w*(*MY*
+
+(0) ) +*w*(*Y*
+(0)
+)*≥*4 + (out*−*4) =out, where*w*(*·*) is the weight of a vector
+and counts the number of non-zero entries, as*Y*
+
+(0) is parametrized byout*−*4 variables and
+*M*is MDS. Further, for any choice of*MY*
+
+(0) we can parametrize such that equality holds. As
+*w*(*Y*
+
+(0)
+)*≤*4*−*(16*−t−*ct), we have*w*(*MY*
+(0)
+)*≥*12 +out*−*(*t−*ct) where we can force the
+equality. Further,*MY*
+
+(0) is a vector of length 4, and therefore*w*(*MY*
+(0)
+)*≤*4. This implies the
+existence of such a parametrization when 4*≥*12 +out*−*(*t−*ct), which is guaranteed by the condition*t−*ct*≥*8 +out. In order to bypass the first round, we impose 4 equations to force the (*X,−X*) subspace in the output, and another 12 +out*−*(*t−*ct) equations to force parts of the (*Y,−Y*) subspace in those non-zero components of*MY*. We then have*ν−*out*−*4*−*(12 +out*−*(*t−*ct)) = 2((*t−*ct)*−*(8+out))+(*ν−*(*t−*ct)) remaining degrees of freedom, which can be used for a partial round-skip. We impose another*s₂* equations to the second round of the subspace corresponding to (*X,−X*) and, if*s₂ >*0, then this allows to push another*s₂* dimensions through the second round, where at most 4 equations can be imposed. Finally, we treat the case 4 +out*< t−*ctwhich we divide further into two subcases. Suppose first 4 +out*< t−*ct*≤*12. In this case, we impose the first 12 input components to be
+
+(0) (0) (0) (0) (0) (0)
+(*U₀* +*X,−X,Y*), where*X* is a vector of 4 variables,*U₀* is a vector of 4 constants, *Y*
+
+(0) is a vector modellingout*−*4 variables with 12*−*(*t−*ct) zeroes in the last components
+with weight*w*(*Y*
+
+(0) )*≤*(*t−*ct)*−*8. The vector*MY*
+(0) will also be (out*−*4)-dimensional. Yet,
+we want it to be zero in as many positions as possible as it will affect how to propagate the space (*X,−X*). We know*w*(*MY*
+
+(0) ))*≥*out*−*((*t−*ct)*−*8), where equality can be achieved.
+To push some variable from*X*
+
+(0) through additional rounds, we need to impose some equation
+that do not depend on*Y*
+
+(0), i.e. we can impose at most 4*−*(out*−*((*t−*ct)*−*8)) = (*t−*ct)*−*(4+
+(0)
+
+[Showing lines 1501-1650 of 1672. Use :1651 to continue]
+out) =*s₁* such equations. Given that those equations are linear in*MU₀*, we can assure that a solution for this round skip always exists. This solution is not unique, as not all the degrees of
+
+(0)
+freedom of*MU₀* were used.
+
+<!-- Page 38 -->
+
+For the remaining subcase let 12*< t−*ct*<*8+out*≤*16. We set the first 16 input components
+
+(0) (0) (0) (0) (0) (0) (0) (0)
+to (*U₀* +*X,−X,Y* +*Z,−Y*). Here,*X* is a vector of 4 variables,*Y* is a vector of (*t−*ct)*−*12 variables in the first components and zeroes in the last 16*−*(*t−*ct) components, and*Z*
+
+(0) is a vector containing the remaining (8 +out)*−*(*t−*ct) variables, modeled such that
+*w*(*MZ*
+
+(0) ) = (8 +out)*−*(*t−*ct). Then, of the 4 necessary equations to enforce a subspace
+of the form (*X,−X*), (8 +out)*−*(*t−*ct) depend on*MZ*. Therefore, we impose the other 4*−*(8 +out) + (*t−*ct) = (*t−*ct)*−*(4 +out) =*s₁* equations, which gives us a closed formula
+
+(0)
+in*U₀* for the claimed round skip. *⊓⊔*
+
+Text extraction is incomplete for PDF pages 19. Use the browser prelude to render those pages or OCR them.

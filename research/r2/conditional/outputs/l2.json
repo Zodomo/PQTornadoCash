@@ -1,0 +1,1593 @@
+{
+  "schema": "pqtc.r2.conditional-l2.v1",
+  "origin": "RETAINED_HISTORICAL_ANCHORS_NOT_R2_CANDIDATE",
+  "run_id": "v03-fixed-01",
+  "inputs": {
+    "schema": "pqtc.r2.conditional-inputs.v1",
+    "origin": "RETAINED_HISTORICAL_ANCHORS_NOT_R2_CANDIDATE",
+    "run_id": "v03-fixed-01",
+    "baseline_commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+    "files": {
+      "research/l2-economics/l2_model.py": "291ebc88d9bb10fe984bbb1f7b7427b56f381044945706fd78a6d18d7fa10778",
+      "research/l2-economics/sources.json": "73e9611f3c62fd63d849a827ada50cb36445b854dcef00079b7704aad7b047b6",
+      "research/l2-economics/scenarios.json": "61759a6ad639a65cc78043df1285280c9f174b8b55a0bd41c9d553828dba7b2e",
+      "research/l2-economics/matrix.json": "d8ecb82f020eb7096411a2d5fefe37f84418f806e4dd06feac52fbd95edce302",
+      "research/harness/report-generator/keccak.py": "a3e35cf9fd8ec97052d911e6eacf74511684e621926f08f5a2a5283c06912d56",
+      "research/summaries/v03-distribution.csv": "2b59508c9c6f874d1c2ba1ef3407febbf29bd9905d3b21b1c4e533887aa40898",
+      "research/candidates/v03-baseline/native/src/main.rs": "9184b05cf59f09affed4f8fd92962f95904009f5e8fa2a0d1ee2e9e5aa64c110",
+      "research/candidates/v03-baseline/proofs/v03-fixed-01/part-a.pqtc": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+      "research/candidates/v03-baseline/proofs/v03-fixed-01/part-b.pqtc": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701",
+      "research/candidates/v03-baseline/proofs/v03-fixed-01/part-a.calldata": "af6a132e60ed7879b36ed2ca79d671714475faf2555d499af74b57b01addf03e",
+      "research/candidates/v03-baseline/proofs/v03-fixed-01/part-b.calldata": "3b42e9cbe0af2c24a4eebf0fc381b4f31b0b4a58222fe951c5a3142c3bab11ad",
+      "research/candidates/v03-baseline/proofs/v03-fixed-01/proof-metadata.json": "2e934178870be90122560c6ed074fa6668354163a77ccd22415f524dfc8530ae"
+    }
+  },
+  "chain_source_pins": {
+    "schema": "pqtc-sp71-l2-source-pins-v1",
+    "snapshot_date": "2026-09-04",
+    "network_pins": {
+      "op-mainnet": {
+        "chain_id": 10,
+        "active_rules": "Karst with Fjord/Jovian/Isthmus rules",
+        "superchain_registry_commit": "9dce5d25fb6a3d4fb372ce92dc8eed3a4a17175c",
+        "specs_commit": "210825a4e97c3887654aefa692dc9edb63fabf21",
+        "optimism_commit": "9f7eb670dbcd579ec1bf873fb643649a9af8ef9d",
+        "fastlz_commit": "344eb4025f9ae866ebf7a2ec48850f7113a97a42",
+        "sources": [
+          {
+            "id": "op-registry",
+            "url": "https://github.com/ethereum-optimism/superchain-registry/blob/9dce5d25fb6a3d4fb372ce92dc8eed3a4a17175c/superchain/configs/mainnet/op.toml",
+            "lines": "1-29"
+          },
+          {
+            "id": "op-fjord-fee",
+            "url": "https://github.com/ethereum-optimism/specs/blob/210825a4e97c3887654aefa692dc9edb63fabf21/specs/protocol/fjord/exec-engine.md",
+            "lines": "20-53"
+          },
+          {
+            "id": "op-jovian-footprint",
+            "url": "https://github.com/ethereum-optimism/specs/blob/210825a4e97c3887654aefa692dc9edb63fabf21/specs/protocol/jovian/exec-engine.md",
+            "lines": "100-174"
+          },
+          {
+            "id": "op-jovian-scalar",
+            "url": "https://github.com/ethereum-optimism/specs/blob/210825a4e97c3887654aefa692dc9edb63fabf21/specs/protocol/jovian/l1-attributes.md",
+            "lines": "39-44"
+          },
+          {
+            "id": "op-size-test",
+            "url": "https://github.com/ethereum-optimism/optimism/blob/9f7eb670dbcd579ec1bf873fb643649a9af8ef9d/op-acceptance-tests/tests/osaka_on_l2_test.go",
+            "lines": "431-438"
+          },
+          {
+            "id": "op-karst-notice",
+            "url": "https://github.com/ethereum-optimism/optimism/blob/9f7eb670dbcd579ec1bf873fb643649a9af8ef9d/docs/public-docs/notices/archive/upgrade-19.mdx",
+            "lines": "13-48"
+          },
+          {
+            "id": "op-block-gas",
+            "url": "https://github.com/ethereum-optimism/optimism/blob/9f7eb670dbcd579ec1bf873fb643649a9af8ef9d/docs/public-docs/app-developers/guides/transactions/subblocks-and-gas-usage.mdx",
+            "lines": "13-23"
+          },
+          {
+            "id": "op-fastlz",
+            "url": "https://github.com/ariya/FastLZ/blob/344eb4025f9ae866ebf7a2ec48850f7113a97a42/fastlz.c",
+            "lines": "135-506"
+          },
+          {
+            "id": "op-withdrawal",
+            "url": "https://github.com/ethereum-optimism/optimism/blob/9f7eb670dbcd579ec1bf873fb643649a9af8ef9d/docs/public-docs/app-developers/guides/bridging/messaging.mdx",
+            "lines": "120-125"
+          }
+        ]
+      },
+      "arbitrum-one": {
+        "chain_id": 42161,
+        "active_rules": "ArbOS 61 Elara / Nitro v3.11.3",
+        "nitro_tag": "v3.11.3",
+        "nitro_commit": "4130f4c50d81209ff94aa63b51ed55d3739cdaba",
+        "nitro_image": "offchainlabs/nitro-node:v3.11.3-beb2108",
+        "consensus_v61_root": "0xc10cd7ec6acaf1c441a3f6bd0900ad20f15855ba775a96f1939118cbc629dc97",
+        "docs_commit": "aa64f3ec5817f429e8391265003c6fdcdd35c4c4",
+        "sources": [
+          {
+            "id": "arbos61",
+            "url": "https://github.com/OffchainLabs/arbitrum-docs/blob/aa64f3ec5817f429e8391265003c6fdcdd35c4c4/docs/run-arbitrum-node/arbos-releases/arbos61.mdx",
+            "lines": "18-97"
+          },
+          {
+            "id": "nitro-l1-pricing",
+            "url": "https://github.com/OffchainLabs/nitro/blob/4130f4c50d81209ff94aa63b51ed55d3739cdaba/arbos/l1pricing/l1pricing.go",
+            "lines": "518-552"
+          },
+          {
+            "id": "nitro-brotli-level",
+            "url": "https://github.com/OffchainLabs/nitro/blob/4130f4c50d81209ff94aa63b51ed55d3739cdaba/arbos/arbosState/arbosstate.go",
+            "lines": "302-304,436-438"
+          },
+          {
+            "id": "nitro-sequencer-size",
+            "url": "https://github.com/OffchainLabs/nitro/blob/4130f4c50d81209ff94aa63b51ed55d3739cdaba/execution/gethexec/sequencer.go",
+            "lines": "169-214,1364-1368"
+          },
+          {
+            "id": "nitro-gas-limits",
+            "url": "https://github.com/OffchainLabs/nitro/blob/4130f4c50d81209ff94aa63b51ed55d3739cdaba/arbos/l2pricing/model.go",
+            "lines": "18-25"
+          },
+          {
+            "id": "arbitrum-parameters",
+            "url": "https://github.com/OffchainLabs/arbitrum-docs/blob/aa64f3ec5817f429e8391265003c6fdcdd35c4c4/docs/partials/_reference-chain-parameters.mdx",
+            "lines": "1-27"
+          },
+          {
+            "id": "arbitrum-finality",
+            "url": "https://github.com/OffchainLabs/arbitrum-docs/blob/aa64f3ec5817f429e8391265003c6fdcdd35c4c4/docs/how-arbitrum-works/deep-dives/finality.mdx",
+            "lines": "29-55"
+          }
+        ]
+      },
+      "scroll-mainnet": {
+        "chain_id": 534352,
+        "active_rules": "Feynman; GalileoTime=nil",
+        "orchestrator_commit": "788fdf0555c5605ae493f6072a5f98b4492b2753",
+        "l2geth_tag": "scroll-v5.9.17",
+        "l2geth_commit": "8629f088d78f6feef5abb8a6c201dc3fd633251f",
+        "da_codec_tag": "v0.10.0",
+        "da_codec_commit": "afa161a4487fe3ba600bfdb792daeb3dcc21fa25",
+        "docs_commit": "762fb923680aaea700ced619a88483a7005c4f9b",
+        "sources": [
+          {
+            "id": "scroll-pin",
+            "url": "https://github.com/scroll-tech/scroll/blob/788fdf0555c5605ae493f6072a5f98b4492b2753/Makefile",
+            "lines": "7-20"
+          },
+          {
+            "id": "scroll-config",
+            "url": "https://github.com/scroll-tech/go-ethereum/blob/8629f088d78f6feef5abb8a6c201dc3fd633251f/params/config.go",
+            "lines": "268-270,366-405"
+          },
+          {
+            "id": "scroll-size",
+            "url": "https://github.com/scroll-tech/go-ethereum/blob/8629f088d78f6feef5abb8a6c201dc3fd633251f/params/config.go",
+            "lines": "787-798"
+          },
+          {
+            "id": "scroll-pool",
+            "url": "https://github.com/scroll-tech/go-ethereum/blob/8629f088d78f6feef5abb8a6c201dc3fd633251f/core/tx_pool.go",
+            "lines": "781-790"
+          },
+          {
+            "id": "scroll-fee",
+            "url": "https://github.com/scroll-tech/go-ethereum/blob/8629f088d78f6feef5abb8a6c201dc3fd633251f/rollup/fees/rollup_fee.go",
+            "lines": "177-207,272-321,397-431"
+          },
+          {
+            "id": "scroll-codec",
+            "url": "https://github.com/scroll-tech/da-codec/blob/afa161a4487fe3ba600bfdb792daeb3dcc21fa25/encoding/codecv8.go",
+            "lines": "14-18"
+          },
+          {
+            "id": "scroll-zstd",
+            "url": "https://github.com/scroll-tech/da-codec/blob/afa161a4487fe3ba600bfdb792daeb3dcc21fa25/encoding/zstd/zstd.go",
+            "lines": "38-45"
+          },
+          {
+            "id": "scroll-precompiles",
+            "url": "https://github.com/scroll-tech/go-ethereum/blob/8629f088d78f6feef5abb8a6c201dc3fd633251f/core/vm/contracts.go",
+            "lines": "147-158"
+          },
+          {
+            "id": "scroll-finality",
+            "url": "https://github.com/scroll-tech/scroll-documentation/blob/762fb923680aaea700ced619a88483a7005c4f9b/src/content/docs/en/technology/chain/transactions.mdx",
+            "lines": "52-77"
+          },
+          {
+            "id": "scroll-euclid",
+            "url": "https://github.com/scroll-tech/scroll-documentation/blob/762fb923680aaea700ced619a88483a7005c4f9b/src/content/docs/en/technology/overview/scroll-upgrades/euclid-upgrade.mdx",
+            "lines": "72-86"
+          }
+        ]
+      }
+    },
+    "shared_sources": [
+      {
+        "id": "eip-7623",
+        "commit": "9207c6011f526bd40abd79649484a1a342585bd4",
+        "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-7623.md"
+      },
+      {
+        "id": "eip-3860",
+        "commit": "9207c6011f526bd40abd79649484a1a342585bd4",
+        "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-3860.md"
+      },
+      {
+        "id": "eip-170",
+        "commit": "9207c6011f526bd40abd79649484a1a342585bd4",
+        "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-170.md"
+      },
+      {
+        "id": "gas-rules-local",
+        "path": "research/gas-rules/rules.json",
+        "snapshot_date": "2026-09-04"
+      },
+      {
+        "id": "baseline-local",
+        "path": "research/summaries/v03-distribution.csv",
+        "classification": "H1_LOCAL_APPLE_M4_MAX_MEASURED_SOURCE"
+      }
+    ]
+  },
+  "synthetic_fee_inputs": {
+    "schema": "pqtc-sp71-synthetic-scenarios-v1",
+    "snapshot_date": "2026-09-04",
+    "classification": "SYNTHETIC_OFFLINE_INPUTS_NOT_LIVE_PRICES",
+    "precision": 1000000,
+    "scenarios": [
+      {
+        "id": "l1-1gwei-blob-1wei",
+        "l1_base_fee_wei": 1000000000,
+        "l1_blob_base_fee_wei": 1
+      },
+      {
+        "id": "l1-1gwei-blob-10wei",
+        "l1_base_fee_wei": 1000000000,
+        "l1_blob_base_fee_wei": 10
+      },
+      {
+        "id": "l1-1gwei-blob-100wei",
+        "l1_base_fee_wei": 1000000000,
+        "l1_blob_base_fee_wei": 100
+      },
+      {
+        "id": "l1-10gwei-blob-1wei",
+        "l1_base_fee_wei": 10000000000,
+        "l1_blob_base_fee_wei": 1
+      },
+      {
+        "id": "l1-10gwei-blob-10wei",
+        "l1_base_fee_wei": 10000000000,
+        "l1_blob_base_fee_wei": 10
+      },
+      {
+        "id": "l1-10gwei-blob-100wei",
+        "l1_base_fee_wei": 10000000000,
+        "l1_blob_base_fee_wei": 100
+      },
+      {
+        "id": "l1-30gwei-blob-1wei",
+        "l1_base_fee_wei": 30000000000,
+        "l1_blob_base_fee_wei": 1
+      },
+      {
+        "id": "l1-30gwei-blob-10wei",
+        "l1_base_fee_wei": 30000000000,
+        "l1_blob_base_fee_wei": 10
+      },
+      {
+        "id": "l1-30gwei-blob-100wei",
+        "l1_base_fee_wei": 30000000000,
+        "l1_blob_base_fee_wei": 100
+      },
+      {
+        "id": "l1-100gwei-blob-1wei",
+        "l1_base_fee_wei": 100000000000,
+        "l1_blob_base_fee_wei": 1
+      },
+      {
+        "id": "l1-100gwei-blob-10wei",
+        "l1_base_fee_wei": 100000000000,
+        "l1_blob_base_fee_wei": 10
+      },
+      {
+        "id": "l1-100gwei-blob-100wei",
+        "l1_base_fee_wei": 100000000000,
+        "l1_blob_base_fee_wei": 100
+      }
+    ],
+    "shared_synthetic_parameters": {
+      "l2_base_fee_wei": 20000000,
+      "priority_fee_wei": 0,
+      "op_l1_base_fee_scalar": 1000000,
+      "op_l1_blob_fee_scalar": 1000000,
+      "op_da_footprint_gas_scalar": 400,
+      "op_operator_fee_scalar": 0,
+      "op_operator_fee_constant_wei": 0,
+      "arbitrum_price_per_unit_wei": 1000000000,
+      "arbitrum_brotli_level": 1,
+      "scroll_exec_scalar": 1000000000,
+      "scroll_blob_scalar": 1000000000,
+      "scroll_penalty_threshold": 1500000000,
+      "scroll_penalty_factor": 2000000000
+    },
+    "notes": [
+      "Every number is an explicit synthetic experiment input; none is observed chain state.",
+      "Arbitrum PricePerUnit and Scroll oracle scalars are retained even though their pinned compression executables are unavailable, so those fee totals remain NOT_EVALUATED.",
+      "The OP scalar choices are synthetic and must not be described as OP Mainnet state."
+    ]
+  },
+  "measurement_status": "MEASURED",
+  "measurement_scope": "local bytes and deterministic signatures only; source admission and all fees are projections",
+  "signer": {
+    "address": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+    "key": "universally public Anvil account 0, never funded",
+    "destination": "1111111111111111111111111111111111111111",
+    "value_wei": 0,
+    "priority_cap_wei": 1000000000,
+    "fee_cap_wei": 30000000000,
+    "access_list": [],
+    "network_calls": 0
+  },
+  "caveats": [
+    "Historical Ethereum gas is not an L2 receipt or L2 gas measurement.",
+    "Two separate transaction size tests; their total is never compared to one transaction cap.",
+    "Two calls incur two intrinsic floors and two fee rounding/compression operations.",
+    "Scroll same-block aggregate payload limit is separate; sequential blocks are allowed in this diagnostic.",
+    "Raw signed bytes are not persisted and no RPC/broadcast facility exists.",
+    "Missing pinned Nitro/Scroll compression leaves fee totals null; no substitute compressor.",
+    "Size admission alone does not establish affordable/private/sound withdrawals."
+  ],
+  "networks": [
+    {
+      "network": "op-mainnet",
+      "source_rules": {
+        "chain_id": 10,
+        "active_release": "Karst",
+        "ordinary_signed_tx_limit_bytes": 131072,
+        "per_tx_gas_limit": 16777216,
+        "documented_block_gas_limit": 40000000,
+        "admission_rule": "serialized type-2 transaction length <= 128 KiB and gasLimit <= 2^24; deposits exempt",
+        "l1_fee_formula": "floor(max(100000000, -42585600 + 836500*fastlzSize) * (16*l1BaseFeeScalar*l1BaseFee + l1BlobFeeScalar*l1BlobBaseFee) / 1e12)",
+        "da_footprint_formula": "max(100, floor((-42585600 + 836500*fastlzSize)/1e6)) * daFootprintGasScalar; zero configured scalar maps to 400",
+        "operator_fee_formula": "gasUsed * operatorFeeScalar * 100 + operatorFeeConstant",
+        "estimator": "FastLZ of complete signed serialized transaction",
+        "estimator_status": "IMPLEMENTED_FROM_PINNED_FASTLZ_SOURCE",
+        "finality": "Sequencer inclusion is provisional; safe/finalized follows Ethereum L1",
+        "withdrawal": "Approximately seven days through the respected CANNON_KONA type-8 fault-proof game",
+        "security_assumption": "At least one honest challenger responds to an invalid claim before game clocks expire",
+        "evm_notes": "24,576-byte runtime and 49,152-byte initcode limits; Karst MODEXP/P256VERIFY/BN256-pairing behavior must be audited for the verifier"
+      },
+      "parts": [
+        {
+          "part": "a",
+          "raw_proof_bytes": 108326,
+          "proof_sha256": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+          "abi_calldata_bytes": 108644,
+          "abi_sha256": "af6a132e60ed7879b36ed2ca79d671714475faf2555d499af74b57b01addf03e",
+          "abi_selector": "c2ed9605",
+          "historical_ethereum_total_gas": 16742112,
+          "calldata_zero_bytes": 798,
+          "calldata_nonzero_bytes": 107846,
+          "eip7623_tokens": 432182,
+          "regular_intrinsic_gas": 1749728,
+          "eip7623_floor_gas": 4342820,
+          "no_op_calldata_gas": 4342820,
+          "nonce": 7,
+          "signed_tx_bytes": 108761,
+          "signed_tx_sha256": "1ec226136de53638b9febb212bd38e8823b821cd9a016db651a8899ff6bb608c",
+          "signed_envelope_status": "MEASURED",
+          "tx_gas_limit": 16777216,
+          "source_size_admissible": true,
+          "source_no_op_gas_fits": true,
+          "historical_ethereum_gas_fits_chain_scenario": true,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 111407,
+              "op_estimated_size_scaled": 93149369900,
+              "op_da_footprint_gas": 37259600,
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": 1490389918493149,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 1577246318493149
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 111407,
+              "op_estimated_size_scaled": 93149369900,
+              "op_da_footprint_gas": 37259600,
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": 1490389919331493,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 1577246319331493
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 111407,
+              "op_estimated_size_scaled": 93149369900,
+              "op_da_footprint_gas": 37259600,
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": 1490389927714936,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 1577246327714936
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 111407,
+              "op_estimated_size_scaled": 93149369900,
+              "op_da_footprint_gas": 37259600,
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": 14903899184093149,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 14990755584093149
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 111407,
+              "op_estimated_size_scaled": 93149369900,
+              "op_da_footprint_gas": 37259600,
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": 14903899184931493,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 14990755584931493
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 111407,
+              "op_estimated_size_scaled": 93149369900,
+              "op_da_footprint_gas": 37259600,
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": 14903899193314936,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 14990755593314936
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 111407,
+              "op_estimated_size_scaled": 93149369900,
+              "op_da_footprint_gas": 37259600,
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": 44711697552093149,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 44798553952093149
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 111407,
+              "op_estimated_size_scaled": 93149369900,
+              "op_da_footprint_gas": 37259600,
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": 44711697552931493,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 44798553952931493
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 111407,
+              "op_estimated_size_scaled": 93149369900,
+              "op_da_footprint_gas": 37259600,
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": 44711697561314936,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 44798553961314936
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 111407,
+              "op_estimated_size_scaled": 93149369900,
+              "op_da_footprint_gas": 37259600,
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": 149038991840093149,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 149125848240093149
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 111407,
+              "op_estimated_size_scaled": 93149369900,
+              "op_da_footprint_gas": 37259600,
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": 149038991840931493,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 149125848240931493
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 111407,
+              "op_estimated_size_scaled": 93149369900,
+              "op_da_footprint_gas": 37259600,
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": 149038991849314936,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 149125848249314936
+            }
+          ]
+        },
+        {
+          "part": "b",
+          "raw_proof_bytes": 103878,
+          "proof_sha256": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701",
+          "abi_calldata_bytes": 104228,
+          "abi_sha256": "3b42e9cbe0af2c24a4eebf0fc381b4f31b0b4a58222fe951c5a3142c3bab11ad",
+          "abi_selector": "f7c137b5",
+          "historical_ethereum_total_gas": 13943756,
+          "calldata_zero_bytes": 807,
+          "calldata_nonzero_bytes": 103421,
+          "eip7623_tokens": 414491,
+          "regular_intrinsic_gas": 1678964,
+          "eip7623_floor_gas": 4165910,
+          "no_op_calldata_gas": 4165910,
+          "nonce": 8,
+          "signed_tx_bytes": 104345,
+          "signed_tx_sha256": "01e0d471e0b4881e3eb3f80d8cc3d212e39d61479fa7c1877ed7b2219b64e89c",
+          "signed_envelope_status": "MEASURED",
+          "tx_gas_limit": 16777216,
+          "source_size_admissible": true,
+          "source_no_op_gas_fits": true,
+          "historical_ethereum_gas_fits_chain_scenario": true,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 106537,
+              "op_estimated_size_scaled": 89075614900,
+              "op_da_footprint_gas": 35630000,
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": 1425209838489075,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 1508528038489075
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 106537,
+              "op_estimated_size_scaled": 89075614900,
+              "op_da_footprint_gas": 35630000,
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": 1425209839290756,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 1508528039290756
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 106537,
+              "op_estimated_size_scaled": 89075614900,
+              "op_da_footprint_gas": 35630000,
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": 1425209847307561,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 1508528047307561
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 106537,
+              "op_estimated_size_scaled": 89075614900,
+              "op_da_footprint_gas": 35630000,
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": 14252098384089075,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 14335416584089075
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 106537,
+              "op_estimated_size_scaled": 89075614900,
+              "op_da_footprint_gas": 35630000,
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": 14252098384890756,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 14335416584890756
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 106537,
+              "op_estimated_size_scaled": 89075614900,
+              "op_da_footprint_gas": 35630000,
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": 14252098392907561,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 14335416592907561
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 106537,
+              "op_estimated_size_scaled": 89075614900,
+              "op_da_footprint_gas": 35630000,
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": 42756295152089075,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 42839613352089075
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 106537,
+              "op_estimated_size_scaled": 89075614900,
+              "op_da_footprint_gas": 35630000,
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": 42756295152890756,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 42839613352890756
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 106537,
+              "op_estimated_size_scaled": 89075614900,
+              "op_da_footprint_gas": 35630000,
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": 42756295160907561,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 42839613360907561
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 106537,
+              "op_estimated_size_scaled": 89075614900,
+              "op_da_footprint_gas": 35630000,
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": 142520983840089075,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 142604302040089075
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 106537,
+              "op_estimated_size_scaled": 89075614900,
+              "op_da_footprint_gas": 35630000,
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": 142520983840890756,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 142604302040890756
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 106537,
+              "op_estimated_size_scaled": 89075614900,
+              "op_da_footprint_gas": 35630000,
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": 142520983848907561,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 142604302048907561
+            }
+          ]
+        }
+      ],
+      "split_totals": {
+        "raw_proof_bytes": 212204,
+        "abi_calldata_bytes": 212872,
+        "signed_tx_bytes_sum": 213106,
+        "both_transactions_source_size_admissible": true,
+        "both_historical_gas_totals_fit_per_tx_scenario": true,
+        "historical_ethereum_total_gas_sum": 30685868,
+        "same_block_admission": null
+      },
+      "combined_transport_control": {
+        "classification": "CONCATENATED_EXACT_A_B_CALLDATA_NOT_AN_EXECUTABLE_COMBINED_ABI",
+        "abi_bytes_concatenated": 212872,
+        "signed_tx_bytes": 212989,
+        "signed_tx_sha256": "0dec1435aedd74607b194b949d60f7d4b960f31f70b35994ac377229107a9028",
+        "source_size_admissible": false,
+        "complete_combined_verifier_gas": null
+      },
+      "fee_comparison": [
+        {
+          "scenario_id": "l1-1gwei-blob-1wei",
+          "split_no_op_total_fee_wei": 3085774356982224,
+          "combined_transport_only_no_op_total_fee_wei": 3084617022582178
+        },
+        {
+          "scenario_id": "l1-1gwei-blob-10wei",
+          "split_no_op_total_fee_wei": 3085774358622249,
+          "combined_transport_only_no_op_total_fee_wei": 3084617024221789
+        },
+        {
+          "scenario_id": "l1-1gwei-blob-100wei",
+          "split_no_op_total_fee_wei": 3085774375022497,
+          "combined_transport_only_no_op_total_fee_wei": 3084617040617890
+        },
+        {
+          "scenario_id": "l1-10gwei-blob-1wei",
+          "split_no_op_total_fee_wei": 29326172168182224,
+          "combined_transport_only_no_op_total_fee_wei": 29318378824182178
+        },
+        {
+          "scenario_id": "l1-10gwei-blob-10wei",
+          "split_no_op_total_fee_wei": 29326172169822249,
+          "combined_transport_only_no_op_total_fee_wei": 29318378825821789
+        },
+        {
+          "scenario_id": "l1-10gwei-blob-100wei",
+          "split_no_op_total_fee_wei": 29326172186222497,
+          "combined_transport_only_no_op_total_fee_wei": 29318378842217890
+        },
+        {
+          "scenario_id": "l1-30gwei-blob-1wei",
+          "split_no_op_total_fee_wei": 87638167304182224,
+          "combined_transport_only_no_op_total_fee_wei": 87615627272182178
+        },
+        {
+          "scenario_id": "l1-30gwei-blob-10wei",
+          "split_no_op_total_fee_wei": 87638167305822249,
+          "combined_transport_only_no_op_total_fee_wei": 87615627273821789
+        },
+        {
+          "scenario_id": "l1-30gwei-blob-100wei",
+          "split_no_op_total_fee_wei": 87638167322222497,
+          "combined_transport_only_no_op_total_fee_wei": 87615627290217890
+        },
+        {
+          "scenario_id": "l1-100gwei-blob-1wei",
+          "split_no_op_total_fee_wei": 291730150280182224,
+          "combined_transport_only_no_op_total_fee_wei": 291655996840182178
+        },
+        {
+          "scenario_id": "l1-100gwei-blob-10wei",
+          "split_no_op_total_fee_wei": 291730150281822249,
+          "combined_transport_only_no_op_total_fee_wei": 291655996841821789
+        },
+        {
+          "scenario_id": "l1-100gwei-blob-100wei",
+          "split_no_op_total_fee_wei": 291730150298222497,
+          "combined_transport_only_no_op_total_fee_wei": 291655996858217890
+        }
+      ]
+    },
+    {
+      "network": "arbitrum-one",
+      "source_rules": {
+        "chain_id": 42161,
+        "active_release": "ArbOS 61 Elara / Nitro v3.11.3",
+        "ordinary_signed_tx_limit_bytes": 95000,
+        "per_tx_gas_limit": 32000000,
+        "block_gas_limit": 32000000,
+        "effective_final_transaction_block_allowance": 64000000,
+        "admission_rule": "sequencer default tx.Size() <= 95000; delayed Inbox DataTooLarge boundary 117964 is a distinct route",
+        "l1_fee_formula": "compressedBytes=BrotliLevel1(signedTx); units=16*compressedBytes; posterCostWei=PricePerUnit*units; posterGas=floor(posterCostWei/L2BaseFee)",
+        "execution_fee_formula": "L2BaseFee * (executionGas + posterGas); ordinary priority fee collection inactive on One at ArbOS61 activation",
+        "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+        "finality": "Sub-second sequencer-trusting soft finality; parent-chain data finality roughly 12-15 minutes",
+        "withdrawal": "45,818 L1-block BoLD dispute window, approximately 6.4 days, then claim",
+        "security_assumption": "At least one validator checks and challenges; force inclusion period is 5,760 L1 blocks/about 24 hours",
+        "evm_notes": "Solidity runtime remains 24 KiB and initcode 49,152 bytes; 96 KiB Stylus fragments are not an ordinary Solidity-verifier escape hatch"
+      },
+      "parts": [
+        {
+          "part": "a",
+          "raw_proof_bytes": 108326,
+          "proof_sha256": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+          "abi_calldata_bytes": 108644,
+          "abi_sha256": "af6a132e60ed7879b36ed2ca79d671714475faf2555d499af74b57b01addf03e",
+          "abi_selector": "c2ed9605",
+          "historical_ethereum_total_gas": 16742112,
+          "calldata_zero_bytes": 798,
+          "calldata_nonzero_bytes": 107846,
+          "eip7623_tokens": 432182,
+          "regular_intrinsic_gas": 1749728,
+          "eip7623_floor_gas": 4342820,
+          "no_op_calldata_gas": 4342820,
+          "nonce": 7,
+          "signed_tx_bytes": 108763,
+          "signed_tx_sha256": "c3a9546d4addac9128a596d01dd9d918a251ab3862f7a6ae8ff8161a1c87115a",
+          "signed_envelope_status": "MEASURED",
+          "tx_gas_limit": 32000000,
+          "source_size_admissible": false,
+          "source_no_op_gas_fits": true,
+          "historical_ethereum_gas_fits_chain_scenario": true,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            }
+          ]
+        },
+        {
+          "part": "b",
+          "raw_proof_bytes": 103878,
+          "proof_sha256": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701",
+          "abi_calldata_bytes": 104228,
+          "abi_sha256": "3b42e9cbe0af2c24a4eebf0fc381b4f31b0b4a58222fe951c5a3142c3bab11ad",
+          "abi_selector": "f7c137b5",
+          "historical_ethereum_total_gas": 13943756,
+          "calldata_zero_bytes": 807,
+          "calldata_nonzero_bytes": 103421,
+          "eip7623_tokens": 414491,
+          "regular_intrinsic_gas": 1678964,
+          "eip7623_floor_gas": 4165910,
+          "no_op_calldata_gas": 4165910,
+          "nonce": 8,
+          "signed_tx_bytes": 104347,
+          "signed_tx_sha256": "1b680ce0a99f45e98cb0604afe8247352ebe2f55e9b487cc9d6d4ccf13def2ff",
+          "signed_envelope_status": "MEASURED",
+          "tx_gas_limit": 32000000,
+          "source_size_admissible": false,
+          "source_no_op_gas_fits": true,
+          "historical_ethereum_gas_fits_chain_scenario": true,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            }
+          ]
+        }
+      ],
+      "split_totals": {
+        "raw_proof_bytes": 212204,
+        "abi_calldata_bytes": 212872,
+        "signed_tx_bytes_sum": 213110,
+        "both_transactions_source_size_admissible": false,
+        "both_historical_gas_totals_fit_per_tx_scenario": true,
+        "historical_ethereum_total_gas_sum": 30685868,
+        "same_block_admission": null
+      },
+      "combined_transport_control": {
+        "classification": "CONCATENATED_EXACT_A_B_CALLDATA_NOT_AN_EXECUTABLE_COMBINED_ABI",
+        "abi_bytes_concatenated": 212872,
+        "signed_tx_bytes": 212991,
+        "signed_tx_sha256": "1bcc4c44f3a77154564434418f6abe41bc2148f56d9974ffdc0bede22a6faa95",
+        "source_size_admissible": false,
+        "complete_combined_verifier_gas": null
+      },
+      "fee_comparison": [
+        {
+          "scenario_id": "l1-1gwei-blob-1wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-1gwei-blob-10wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-1gwei-blob-100wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-10gwei-blob-1wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-10gwei-blob-10wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-10gwei-blob-100wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-30gwei-blob-1wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-30gwei-blob-10wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-30gwei-blob-100wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-100gwei-blob-1wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-100gwei-blob-10wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-100gwei-blob-100wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        }
+      ]
+    },
+    {
+      "network": "scroll-mainnet",
+      "source_rules": {
+        "chain_id": 534352,
+        "active_release": "Feynman; Galileo inactive (GalileoTime=nil)",
+        "ordinary_signed_tx_limit_bytes": 116736,
+        "pinned_genesis_gas_limit": 10000000,
+        "current_gas_limit_status": "EXTERNAL_LIVE_VALUE_NOT_QUERIED; experiments use explicit 10,000,000 scenario",
+        "max_regular_transactions_per_block": 100,
+        "aggregate_regular_payload_limit_bytes": 122880,
+        "admission_rule": "IsValidBlockSizeForMining(tx.Size()) applies 1/0.95 against 120 KiB, giving signed tx <= 116736; gas must fit header",
+        "l1_fee_formula": "feePerByte=execScalar*l1BaseFee+blobScalar*l1BlobBaseFee; ratio=max(1e9,len(tx.data)*1e9/len(codecV8Zstd(tx.data))); penalty=1e9 if ratio>=threshold else penaltyFactor; fee=floor(feePerByte*len(signedTx)*penalty/1e18)",
+        "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+        "finality": "Confirmed is sequencer inclusion; Committed is L1-finalized batch commit; Finalized is L1-finalized validity proof",
+        "withdrawal": "Executable with Merkle proof after validity finalization; no fixed seven-day fraud window; latency is external",
+        "security_assumption": "Validity proof plus L1; Euclid enforced inclusion/emergency submission; upgrades controlled by 9-of-12 Security Council",
+        "evm_notes": "24,576-byte runtime and 49,152-byte initcode limits; RIPEMD-160 and BLAKE2F disabled, MODEXP components limited to 32 bytes, no blob opcodes/EIP-4788"
+      },
+      "parts": [
+        {
+          "part": "a",
+          "raw_proof_bytes": 108326,
+          "proof_sha256": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+          "abi_calldata_bytes": 108644,
+          "abi_sha256": "af6a132e60ed7879b36ed2ca79d671714475faf2555d499af74b57b01addf03e",
+          "abi_selector": "c2ed9605",
+          "historical_ethereum_total_gas": 16742112,
+          "calldata_zero_bytes": 798,
+          "calldata_nonzero_bytes": 107846,
+          "eip7623_tokens": 432182,
+          "regular_intrinsic_gas": 1749728,
+          "eip7623_floor_gas": 4342820,
+          "no_op_calldata_gas": 4342820,
+          "nonce": 7,
+          "signed_tx_bytes": 108763,
+          "signed_tx_sha256": "1a1a49a142645acaa164a9b666afdec92c7b14506b7e2c458931f0efeeb5babe",
+          "signed_envelope_status": "MEASURED",
+          "tx_gas_limit": 10000000,
+          "source_size_admissible": true,
+          "source_no_op_gas_fits": true,
+          "historical_ethereum_gas_fits_chain_scenario": false,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 86856400000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            }
+          ]
+        },
+        {
+          "part": "b",
+          "raw_proof_bytes": 103878,
+          "proof_sha256": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701",
+          "abi_calldata_bytes": 104228,
+          "abi_sha256": "3b42e9cbe0af2c24a4eebf0fc381b4f31b0b4a58222fe951c5a3142c3bab11ad",
+          "abi_selector": "f7c137b5",
+          "historical_ethereum_total_gas": 13943756,
+          "calldata_zero_bytes": 807,
+          "calldata_nonzero_bytes": 103421,
+          "eip7623_tokens": 414491,
+          "regular_intrinsic_gas": 1678964,
+          "eip7623_floor_gas": 4165910,
+          "no_op_calldata_gas": 4165910,
+          "nonce": 8,
+          "signed_tx_bytes": 104347,
+          "signed_tx_sha256": "ca9ac62fcb1a6aa1c6da980fb29b1b744099e47ab7a58650a8a7c525fdec0d16",
+          "signed_envelope_status": "MEASURED",
+          "tx_gas_limit": 10000000,
+          "source_size_admissible": true,
+          "source_no_op_gas_fits": true,
+          "historical_ethereum_gas_fits_chain_scenario": false,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "no-code calldata sink, NOT verifier user cost",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 83318200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            }
+          ]
+        }
+      ],
+      "split_totals": {
+        "raw_proof_bytes": 212204,
+        "abi_calldata_bytes": 212872,
+        "signed_tx_bytes_sum": 213110,
+        "both_transactions_source_size_admissible": true,
+        "both_historical_gas_totals_fit_per_tx_scenario": false,
+        "historical_ethereum_total_gas_sum": 30685868,
+        "same_block_admission": null
+      },
+      "combined_transport_control": {
+        "classification": "CONCATENATED_EXACT_A_B_CALLDATA_NOT_AN_EXECUTABLE_COMBINED_ABI",
+        "abi_bytes_concatenated": 212872,
+        "signed_tx_bytes": 212991,
+        "signed_tx_sha256": "b685a52ad2e47ada4471e489757dde22db483af67f3a737f896304e7b71153f0",
+        "source_size_admissible": false,
+        "complete_combined_verifier_gas": null
+      },
+      "fee_comparison": [
+        {
+          "scenario_id": "l1-1gwei-blob-1wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-1gwei-blob-10wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-1gwei-blob-100wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-10gwei-blob-1wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-10gwei-blob-10wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-10gwei-blob-100wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-30gwei-blob-1wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-30gwei-blob-10wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-30gwei-blob-100wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-100gwei-blob-1wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-100gwei-blob-10wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        },
+        {
+          "scenario_id": "l1-100gwei-blob-100wei",
+          "split_no_op_total_fee_wei": null,
+          "combined_transport_only_no_op_total_fee_wei": null
+        }
+      ]
+    }
+  ]
+}

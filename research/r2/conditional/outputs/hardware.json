@@ -1,0 +1,118 @@
+{
+  "schema": "pqtc.r2.conditional-hardware.v1",
+  "measurement_status": "MEASURED",
+  "measurement_scope": "local capability inventory only; no proof measurements executed",
+  "host": {
+    "os": "Darwin",
+    "architecture": "arm64",
+    "cpu": "Apple M4 Max",
+    "memory_bytes": 51539607552,
+    "cpu_features": null,
+    "logical_cpus": 16,
+    "requested_threads": 1,
+    "kernel": "24.6.0"
+  },
+  "tools": {
+    "cargo": "/Users/zodomo/.cargo/bin/cargo",
+    "rustc": "/Users/zodomo/.cargo/bin/rustc",
+    "qemu-x86_64": null,
+    "qemu-system-x86_64": null,
+    "ssh": "/usr/bin/ssh"
+  },
+  "portable_h1_command": {
+    "classification": "PORTABLE_BUILD_ON_LOCAL_HARDWARE_NOT_NEW_MACHINE",
+    "build_argv": [
+      "/Users/zodomo/.cargo/bin/cargo",
+      "build",
+      "--locked",
+      "--offline",
+      "--release",
+      "--manifest-path",
+      "/Users/zodomo/code/PQTornado/research/r2/air/rust/Cargo.toml",
+      "--target-dir",
+      "/Users/zodomo/code/PQTornado/research/r2/conditional/build/portable"
+    ],
+    "env": {
+      "RUSTFLAGS": "-C target-cpu=generic",
+      "RAYON_NUM_THREADS": "1",
+      "CARGO_NET_OFFLINE": "true"
+    },
+    "run_commands": [
+      {
+        "label": "process-cold",
+        "argv": [
+          "/Users/zodomo/code/PQTornado/research/r2/conditional/build/portable/release/pqtc-r2-air",
+          "--candidate",
+          "C1",
+          "--profile",
+          "fixed",
+          "--queries",
+          "32",
+          "--log-blowup",
+          "2",
+          "--output",
+          "/Users/zodomo/code/PQTornado/research/r2/conditional/outputs/hardware/process-cold"
+        ]
+      },
+      {
+        "label": "warm-1",
+        "argv": [
+          "/Users/zodomo/code/PQTornado/research/r2/conditional/build/portable/release/pqtc-r2-air",
+          "--candidate",
+          "C1",
+          "--profile",
+          "fixed",
+          "--queries",
+          "32",
+          "--log-blowup",
+          "2",
+          "--output",
+          "/Users/zodomo/code/PQTornado/research/r2/conditional/outputs/hardware/warm-1"
+        ]
+      },
+      {
+        "label": "warm-2",
+        "argv": [
+          "/Users/zodomo/code/PQTornado/research/r2/conditional/build/portable/release/pqtc-r2-air",
+          "--candidate",
+          "C1",
+          "--profile",
+          "fixed",
+          "--queries",
+          "32",
+          "--log-blowup",
+          "2",
+          "--output",
+          "/Users/zodomo/code/PQTornado/research/r2/conditional/outputs/hardware/warm-2"
+        ]
+      }
+    ],
+    "execution_status": "NOT_EVALUATED",
+    "prover_ms": null,
+    "peak_rss_bytes": null
+  },
+  "x86_command": null,
+  "explicit_x86_binary_format": null,
+  "remote": {
+    "configured_hosts": [],
+    "evidence": "Main reports no configured SSH hosts; no private config was inspected",
+    "available": false,
+    "measurement_status": "NOT_EVALUATED"
+  },
+  "commodity_x86_measurements": null,
+  "unavailable_reason": "No compatible explicit x86 executable and local native/user-emulator pair; a qemu-system executable alone is not an available guest machine.",
+  "gate": "Full hardware expansion requires complete native candidate proof; command availability is not gate passage.",
+  "protocol": {
+    "execution_owner": "Main, serial benchmark processes",
+    "randomness_policy": "same candidate OS-entropy hiding policy; record each actual proof hash, never seed reuse",
+    "cold_definition": "first process invocation; OS cache/power state uncontrolled, not claimed cold hardware",
+    "warm_definition": "subsequent sequential process invocations",
+    "missing_measurements": [
+      "time",
+      "peak RSS",
+      "actual proof verification",
+      "power mode",
+      "commodity x86 cold/warm samples"
+    ]
+  }
+}

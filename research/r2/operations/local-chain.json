@@ -1,0 +1,17 @@
+{
+  "schema": "pqtc.r2.local-chain.v1",
+  "service": "pqtc-r2-osaka",
+  "client": "anvil 1.7.1",
+  "client_commit": "4072e48705af9d93e3c0f6e29e93b5e9a40caed8",
+  "rpc": "http://127.0.0.1:18545",
+  "chain_id": 31337,
+  "hardfork": "osaka",
+  "block_gas_limit": 16777216,
+  "transaction_gas_limit": 16777216,
+  "runtime_code_limit_disabled": false,
+  "initcode_limit_disabled": false,
+  "custody": "Disposable local balances only; default publicly known development accounts",
+  "launch": ["anvil", "--host", "127.0.0.1", "--port", "18545", "--chain-id", "31337", "--hardfork", "osaka", "--enable-tx-gas-limit", "--gas-limit", "16777216", "--steps-tracing", "--balance", "100000", "--silent"],
+  "readiness": "hub observed accepting port 18545",
+  "runtime_scope": "No public-chain deployment, signing, submission, or credential environment"
+}

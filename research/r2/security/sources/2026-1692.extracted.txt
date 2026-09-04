@@ -1,0 +1,730 @@
+URL: https://eprint.iacr.org/2026/1692.pdf
+Content-Type: text/markdown
+Method: iacr
+Notes: Fetching PDF for full content...; PDF converted via markit
+
+---
+
+# From Round Skipping to S-Box Skipping: Attacking Poseidon's Partial Layer via Subspace Restriction
+
+**Authors:** Amit Singh Bhati, Sundas Tariq, Tomer Ashur
+**Date:** 2026
+**ePrint:** 2026/1692
+**Keywords:** Poseidon Hash FunctionAlgebraic CryptanalysisS-Box SkippingCICO ProblemSylvester ResultantGSR
+
+---
+
+## Abstract
+
+Poseidon [Grassi, Khovratovich, Rechberger, Roy, and Schofnegger; USENIX'21] is an arithmetization-oriented (AO) hash function designed to be efficient in real-world zero-knowledge (ZK) applications. We present GSR, a generalized S-box skipping gadget that absorbs a single initial full round and $t-2k$ partial rounds without increasing the polynomial degree of the Poseidon polynomial system with state size $t$ and input-output constraints $2k$. By restricting the subspace of the total constraints satisfying solutions, independent of the rounds constants and MDS matrix selection, the distinguisher expends input degrees of freedom to linearize the internal state transitions where the dense algebraic mixing usually occurs. This maps a computationally infeasible polynomial system into a bounded, low-degree ideal parameterized by $k$ free variables. 
+
+We show how to use the gadget to construct a probability 1 distinguisher over $t-2k+1$ rounds of Poseidon. We then show how this distinguisher can be used as a basis for interpolation-based attacks. We go on to present experimental solutions to the CICO-1 problem over 28 out of 31 rounds and CICO-2 problem over 25 out of 31 rounds in the setting set by the Ethereum Poseidon initiative (i.e., using the KoalaBear field with $t=24$ and $\alpha=3$). Crucially, since the subspace restriction approach is tuned only by $t$ and $k$, our results apply to the Poseidon structure regardless of the choice of round constants, MDS matrix, S-box exponent $\alpha$, or field size $p$.
+
+---
+
+## Full Paper
+
+<!-- Page 1 -->
+
+# From Round Skipping to S-Box Skipping
+
+Attacking Poseidon’s Partial Layer via Subspace Restriction
+
+Amit Singh Bhati¹, Sundas Tariq 1,2, and Tomer Ashur¹
+
+1 3MI Labs, Leuven, Belgium 2 COSIC, KU Leuven, Belgium *{*amitsingh.bhati, sundas.tariq, tomer*}*@3milabs.tech
+
+Abstract Poseidon [Grassi, Khovratovich, Rechberger, Roy, and Schofnegger; USENIX’21] is an arithmetization-oriented (AO) hash function designed to be efficient in real-world zero-knowledge (ZK) applications. We present*GSR*, a generalized S-box skipping gadget that absorbs a single initial full round and*t−*2*k*partial rounds without increasing the polynomial degree of the Poseidon polynomial system with state size*t*and input-output constraints 2*k*. By restricting the subspace of the total constraints satisfying solutions, independent to the rounds-constants and MDS matrix selection, the distinguisher expends input degrees of freedom to linearize the internal state transitions where the dense algebraic mixing usu- ally occurs. This maps a computationally infeasible polynomial system into a bounded, low-degree ideal parameterized by*k*free variables. We show how to use the gadget to construct a probability 1 distinguisher over*t−*2*k*+ 1 rounds of Poseidon. We then show how this distinguisher can be used as a basis for interpolation-based attacks. We go on to present experimental solutions to the CICO-1 problem over 28 out of 31 rounds and CICO-2 problem over 25 out of 31 rounds in the setting set by the Ethereum Poseidon initiative (*i.e.,*using the KoalaBear field with*t*= 24 and*α*= 3). Crucially, since the subspace restriction approach is tuned only by*t*and*k*, our results apply to the Poseidon structure regardless of the choice of round constants, MDS matrix, S-box exponent*α*, or field size*p*.
+
+Keywords:Poseidon Hash Function*·*Algebraic Cryptanalysis*·*S-Box Skipping*·*Subspace Restriction*·*Arithmetization-Oriented*·*CICO Problem*·*Sylvester Resultant*·*GSR
+
+## 1 Introduction
+
+The algebraic security of Poseidon has been extensively studied through Gr¨obner bases anal- yses and ideal degree reduction techniques based on round skipping (which is a form of S-box skipping). Bariant, Bouvier, Leurent, and Perrin [6] introduced a reparametrization of the first two full rounds of Poseidon (excluding the second round’s MDS matrix) that eliminates their degree contribution, reducing the remaining Constrained-Input Constrained-Output (CICO-1) problem to univariate root finding on all remaining rounds. Reevaluating the initial security analysis given by the designers of Poseidon, Ashur, Buschman, and Mahzoun [3] refined the Gr¨obner bases complexity bounds for both Poseidon and Poseidon2. Subsequently, Grassi, Koschatko, and Rechberger [13] refined Gr¨obner basis attacks using finite subspace trails to linearize some partial rounds of fixed Poseidon, Poseidon2, and Neptune instances. Bak, Bariant, Boeuf, Briaud, Øygarden, and Phanse [4] presented the CheapLunch framework for multiple-output CICO-*k*systems, proving that the ideal degree for Poseidon is upper bounded by*α* *k·RF*+*RP* without round skipping. Recent efforts have further improved algebraic attacks on round-reduced instances. Reduced-round Poseidon and Poseidon2 bounty challenges were solved using resultants and univariate
+
+<!-- Page 2 -->
+
+root finding [5]. Additionally, Zhao, Sanso, Vitto, and Ding [19] enhanced Graeffe-based root-finding techniques over NTT-friendly fields, while Sanso and Vitto [17] proposed the degree annihilation attack, which linearizes the first two partial rounds for the round-reduced KoalaBear instance (*t,α,RF,RP*) = (16*,*3*,*6*,*8) in the CICO-2 setting. Most recently, Vitto [18] constructed a constrained input family alongside a round-constant- dependent MDS matrix¹ to establish a finite trail that holds the active S-box coordinate constant across partial rounds. By applying a controlled reparametrization over the initial full rounds, the author bypassed 18 out of 28 rounds for CICO-2 on the KoalaBear instance (*t,α,RF,RP*) = (16*,*3*,*8*,*20). Consequently, this approach reduces the effective algebraic degree from*α* *RF*+*RP* = 3 28 down to*α* *RF −*4+*RP −*14 = 3 10 = 59049.
+
+Our Contribution.We introduce*GSR*, a novel subspace restriction approach that general- izes S-box skipping for generic CICO-*k*configurations (*k≥*1). Unlike prior methods confined to initial full rounds, GSR explicitly targets the S-boxes inside the partial rounds, neutralizing the dense algebraic mixing in the middle of the permutation. Our core contributions are threefold:
+
+•We formulate a generalized S-box skipping gadget that deterministically absorbs 2*t−*2*k* total S-boxes across one initial full round and*t−*2*k*partial rounds, strictly bounding the polynomial degree and variable count of the resulting algebraic ideal.
+
+•For CICO-1 against Poseidon’s KoalaBear instance (*t*= 24) with (*Rf*0*,Rp,Rf*1) = (1*,*23*,*4),
+
+*i.e.,*28 out of the recommended 31 rounds, we show a simple recovery of multiple input-output states using optimized univariate solvers like the Cantor-Zassenhaus algorithm [15, 8].
+•For CICO-2 against Poseidon’s KoalaBear instance (*t*= 24) with (*Rf*0*,Rp,Rf*1) = (1*,*20*,*4),
+
+*i.e.,*25 out of the recommended 31 rounds, we show an optimized CICO solution recovery using Sylvester matrix-based resultants [9, 11], projecting the bivariate system into a single dimension and completely bypassing the expected exponential memory bottlenecks of traditional multivariate Gr¨obner bases [7, 10].
+•We extend this approach to*k >*2 via a trivial pairwise resultant sequence (Sylvester matrix), generalizing the attack vector without relying on Gr¨obner basis extraction bottlenecks.
+
+•We implemented the attack into an optimized C++ algebraic solver and successfully recovered valid input-output states of CICO-1 solutions over 28 out of 31 rounds, and the CICO-2 solutions over 25 out of 31 rounds, in negligible time for Poseidon’s KoalaBear instance (*t*= 24). We provide some of these verified solutions in Appendix A and B.
+
+## 2 Formal Specification of Poseidon
+
+LetF*p*be a prime field of size*p*. The Poseidon permutation [12] operates on a state vector *S∈*F *tp*, where the state size*t*=*c*+*r*is the sum of the*capacityc*and the*rater*. The non-linear layer utilizes the S-boxS(*x*) =*x* *α*, where gcd(*α,p−*1) = 1. The linear layer applies a Maximum Distance Separable (MDS) matrix*M∈*F *tp×t* generated according to the conditions in [1]. A single round function (*e.g.,*at position*i*)*R*
+
+(*i*) consists of the addition of round constants
+*C*
+
+(*i*) *∈*F *tp*, the S-box layer, and the matrix multiplication*M*. The permutation is structured in
+three consecutive phases:
+
+1.Initial Full Rounds (*Rf*0):The S-box is applied to all*t*elements of the state. Note that this attack does not utilize the standard fixed MDS matrix of Poseidon.
+
+<!-- Page 3 -->
+
+2.Partial Rounds (*Rp*):The S-box is applied solely to the first state element at the index 0; all other elements pass through the identity function.
+3.Final Full Rounds (*Rf*1): The S-box is again applied to all*t*elements of the state.
+## 3 Degrees of Freedom and Subspace Restriction
+
+CICO-*k*problem.A standard CICO-*k*problem requires finding an initial state*Sin∈*F *tp* such that some predetermined*k*input words and some*k*predetermined output words of the permutation match predefined constants (typically zero). Because*k*words of*Sin*are strictly constrained, the system possesses*t−k*free variables at the input, referred to as*input degrees* *of freedom*(DoF).
+
+Subspace Restriction.A generic polynomial system representing the full cipher possesses a high polynomial degree and therefore is expected to exhibit a large solution space over the algebraic closure. By actively consuming degrees of freedom,*i.e.,*fixing certain variables to strategically chosen constants (let’s say, ∆s), the global solution space can be artificially restricted, as a trade-off to easily find at least one valid solution. More specifically, fixing the input of non-linear components*i.e.,*S-boxes, allows us to evaluate them as lower-degree (*e.g.,*linear) transformations. The objective then is to expend available DoFs to linearize partial rounds S-boxes (and therefore the partial rounds themselves), ensuring the restricted system is uniquely equivalent to a smaller, low-degree polynomial ideal. Hence, it becomes relatively easy to solve and find at least one valid solution. Note that iterating over multiple ∆ tuples allows us to generate distinct CICO-*k*solutions each at the same order of cost, facilitating multi-target or collision attacks.
+
+## 4 State of the Art
+
+The application of subspace restriction in Poseidon cryptanalysis was formalized by Bariant, Bouvier, Leurent, and Perrin’s [6], who utilized all DoFs in the hash’s input to skip the first two full rounds of the cipher (excluding the second round’s MDS matrix) for CICO-1 (*k*= 1). In a CICO-1 instance, the attacker possesses*t−*1 input DoFs. Bariant, Bouvier, Leurent, and Perrin’s methodology imposes constraints that force specific intermediate S-box inputs or outputs to cancel out during the MDS mixing. Consequently, the non-linear transition*x7→x* *α* acts as an affine transformation, circumventing degree growth in the resulting polynomials. Mathematically, their technique expends*t−*2*k*of the available*t−k*input DoFs to bypass exactly 2*t−k*S-boxes across the initial full rounds. While 2*t−k*represents the theoretical maximum number of skipped S-boxes under this formulation, the attack remains structurally confined to the initial full round layers. Once the parameterization enters the partial layer, the MDS matrix densely mixes the remaining unconstrained variables, causing the polynomial degree to grow exponentially over all remaining unskipped rounds,*i.e.,*partial rounds still contribute exponentially to the overall polynomial degree.
+
+## 5 The GSR Gadget: Targeting S-Boxes in the Partial Layer
+
+We generalize round skipping into S-box skipping at two fronts: 1) we allow it to target the intermediate partial round S-boxes rather than exclusively the initial full rounds, and 2) in order to skip an S-box, we set the variable before it to a constant rather than introducing a new linear constraint among the variables of that round which depends not only on the MDS
+
+Poseidon instances in [12] are defined with*Rf*=*Rf*and a single notation*RF* is used to denote their sum. 0 1
+
+<!-- Page 4 -->
+
+matrix and round constants but also limits the choices of*k*to very small values. Consequently, we make the skipping free of these parameters and therefore applicable to arbitrary*k*values. For context, existing skipping results [6, 17] have been limited to*k∈{*1*,*2*}*. While [6] looks to maximize the absolute number of skipped S-boxes (2*t−k*) by skipping almost two full rounds, we reallocate the*t−*2*k*consumable DoFs to skip the first full round and*t−*2*k*partial rounds resulting in a polynomial system of much lower degree. Overall,*GSR*skips 2*t−*2*k*total S-boxes; exactly*k*fewer S-boxes than [6]’s theoretical bound. However, by projecting the constraints into the partial rounds, the dense algebraic mixing in the middle of the cipher is neutralized, where the degree growth per variable is otherwise harder to contain, strictly bounding the polynomial degree of the final system.
+
+5.1 Setup We start by shifting the geometric reference point. Rather than parameterizing*Sin*, we param- eterize*X₁ ∈*F
+*tp*, defined as the state*immediately before*the partial round.
+
+5.2 Forward Linearization of the Partial Round S-Boxes We expend*t−*2*k*of the*t−k*initial DoFs to trace*X₁* forward. Let*S*
+(*r*) denote the*r*
+*th* partial-round’s state before the addition of the round constant*C*
+
+(*r*) generated using a random seed in
+the SHAKE-256 hash function [16]. For each of the first*t−*2*k*partial rounds, let*δ*
+
+(*r*) *∈*F*p*be
+an arbitrary constant chosen by the attacker. We constrain the input to the single active S-box at index 0 to equal*δ*
+
+(*r*) :
+(*S*
+
+(*r*) +*C*
+(*r*)
+)[0] =*δ*
+(*r*) *.*
+Consequently, the S-box output is deterministically the field element (*δ*
+
+(*r*) ) *α*. The transition to
+round*r*+ 1 is given by the affine mapping:
+
+*S* (*r*+1) =*M· S*
+
+(*r*) +*C*
+(*r*) *−δ*
+(*r*) *·e₀* + (*δ*
+(*r*) ) *α* *·e₀*
+where*e₀* is the standard basis vector and*M*is the MDS matrix that satisfies the three criteria given in [14]. 3 Because the mapping is affine, every state*S*
+
+(*r*) with 1*≤r≤t−*2*k*remains an
+affine combination of the variables in*X₁*. Enforcing this condition for*t−*2*k*consecutive partial rounds generates exactly*t−*2*k*strictly linearconstraints on*X₁*. Varying the target tuple ∆ = (*δ*
+
+(1) *,...,δ* (*t−*2*k*)
+) generates distinct solution subspaces. The union of these disjoint affine subspaces spans the original, unconstrained solution space.
+
+5.3 Backward Linearization of the Initial Full Round To prepend*GSR*with an additional full round we consider the*t*variables of*X₁*. The*k* predefined input constraints of the CICO-*k*problem must be satisfied. Tracing backward, the state before the first MDS matrix is*M*
+*−*1 *X₁*. The state at the beginning of the round is:
+
+*Sin*[*j*] = (*M* *−*1 *X₁*)[*j*] 1*/α* *−C*
+
+(0) [*j*]*.*
+To enforce the constraint*Sin*[*j*] = 0 for*k*indices, we require:
+
+(*M* *−*1 *X₁*)[*j*] = (*C*
+
+(0) [*j*]) *α* *.*
+Evaluating the known constant (*C*
+
+
+[Showing lines 1-150 of 722. Use :151 to continue]
+(0) [*j*]) *α* circumvents the non-linear compositional inverse
+<u>1</u> power map*xα*of the S-box. This yields exactly*k*morestrictly linearequations in terms of *X₁*.
+
+In both CICO-1 and CICO-2 settings, our attack is also applicable on the standardized Poseidon MDS matrix and round constants.
+
+<!-- Page 5 -->
+
+In total, we consume*t−*2*k*DoFs in*X₁* and leave it reduced to a linear combination of*k* variables. Since there are exactly*k*output constraints to satisfy, the system becomes determined (*i.e.,*a zero-dimensional ideal) and is expected to have one valid solution.
+
+## 6 UsingGSRto Attack Poseidon
+
+By successfully bounding the polynomial degree through the*GSR*gadget, we translate the Poseidon’s CICO-*k*solution recovery problem into a highly constrained system of low-degree multivariate polynomials. This system only consists of the remaining unskipped partial and full rounds. Depending on the subspace dimension*k*, we deploy specific algebraic techniques to extract the roots, thereby recovering the complete initial state.
+
+6.1 A*k*-Dimensional Distinguishing Attack for*t−*2*k*+ 1Rounds We have imposed*t−*2*k*forward constraints and*k*backward constraints on*X₁*. The total number of linear constraints is:
+*k*+ (*t−*2*k*) =*t−k.*
+
+Subtracting these constraints from the*t*variables of*X₁* leaves*k*degrees of freedom. The solution space of*X₁* forms a*k*-dimensional affine subspace:
+
+X *k* *X₁*(*v₁,...,vk*) =*Zbase*+ *viBi* *i*=1
+
+where*Zbase∈*F *tp* is a particular solution to the linear system,*Bi∈*F *tp* are the basis vectors of the null space, and*vi*are the*k*free variables. This parameterization traverses one full round and*t−*2*k*partial rounds with a polynomial degree of exactly 1. Solving this system requires negligible effort and forms a distinguisher for the middle*t−*2*k*+ 1 rounds of Poseidon. To the best of our knowledge, this is the longest distinguisher found for Poseidon. 4
+
+6.2 Attacking More Rounds and with*k≥*1 The*GSR*gadget allows, in simple terms, to express the last few rounds of the permutation as a linear combination of the rounds preceding the gadget. Effectively, as virtually all real-world instances of Poseidon consist of eight full rounds with a variable number of partial rounds, the gadget shrinks the original polynomial system significantly. Formally, the degree of the polynomial system reduces from
+*α* *Rf* 0 +*Rp*+*Rf* 1
+
+to *α* *Rf* 0 +*Rp*+*Rf* 1 *−*1*−t*+2*k*
+
+using*GSR*.
+
+6.2.1 Univariate Interpolation (*k*= 1*,Rf*0= 1) For*k*= 1 and*Rf*0= 1, the target is parameterized by a single variable*v₁*, forming a univariate polynomial*f*(*v₁*) = 0. The forward cipher trajectory is evaluated from*Sin*over*d*+ 1 numeric points inF*p*, and*f*(*v₁*) is recovered via Lagrange interpolation. The roots are extracted using the Cantor-Zassenhaus algorithm. The degree of this univariate polynomial is strictly bounded by the remaining unskipped rounds*i.e.,d≤α*
+*Rp*+*Rf* 1 *−t*+2*k* *.*
+
+Antonio Sanso revealed to the authors in private communications that he had also identified a similar distinguisher a couple of months earlier but did not pursue it on account of the distinguisher being “not interesting”.
+
+<!-- Page 6 -->
+
+6.2.2 Bivariate Interpolation using Sylvester matrix (*k*= 2*,Rf*0= 1) For*k*= 2 and*Rf*0= 1, the CICO system is parameterized by exactly two free variables, yielding a bivariate polynomial system*g₁*(*v₁,v₂*) = 0 and*g₂*(*v₁,v₂*) = 0 representing the two output constraints. Both*g₁* and*g₂* have degree*d≤α*
+*Rp*+*Rf* 1 *−t*+2*k*. Such a system can be solved using determinant of the Sylvester matrix [9, 11]. By treating*g₁* and*g₂* as polynomials in*v₂* with coefficients inF*p*[*v₁*], we compute the determinant of their Sylvester matrix (denoted Res(*g₁,g₂,v₁*)), which by definition is equal to zero iff the two polynomials share common roots. This eliminates*v₂*, producing a univariate polynomial Res(*g₁,g₂,v₁*) = 0 of degree *≤d²*. Standard univariate root-finding algorithms (*e.g.,*Cantor-Zassenhaus) can then be used to extract the valid candidates for*v₁*. Back-substituting these roots into*g₁* yields a smaller *d*-degree univariate polynomial in*v₂* which can be similarly solved for the corresponding values of*v₂*, allowing us to perfectly recover the constrained initial state.
+
+6.2.3 Generalizing*k >*2via Trivial Pairwise Resultants For generalized instances where*k >*2 and*Rf*0= 1, we can iteratively apply the pairwise resultants over the output constraint equations. Let the*k*output equations be*g₁,g₂,...,gk* defined over*k*variables*v₁,...,vk*. We group them in pairs and compute the resultants to eliminate*vk*:
+*hi*= Res(*gi,gi*+1*,vk*) for*i∈{*1*,...,k−*1*}.*
+
+This yields*k−*1 equations in*k−*1 variables. Recursively applying this trivial pairwise elimina- tion collapses the system into a single univariate polynomial in*v₁*. The roots are then extracted using Cantor-Zassenhaus algorithm and iteratively back-substituted to solve the entire system. However, we note that this trivial approach, despite being simple and computationally stable, is far from being optimal. The expected degree of the*k*-variate system with each polynomial of degree*d≤α* *Rp*+*Rf* 1 *−t*+2*k* is*≤d* *k*, but this method will result in a univariate polynomial with 2 *k−*1 degree*d*. Therefore for a given multivariate system defining a CICO-*k*instance, one can find a threshold on*k*after which the required complexity exceeds that of exhaustive search.
+
+## 7 Complexity Analysis and Comparison
+
+We evaluate the computational advantage of the*GSR*gadget by analyzing the maximum algebraic degree of the polynomials in the reduced system. We contrast the complexity of solving the system naively (without partial round subspace restrictions) against our*GSR*-optimized approach.
+
+7.1 Theoretical Degree Bounds Let*d*denote the algebraic degree of the*k*many output state expressions, each*k*-variate, before equating them to the constants (*i.e.,*output constraints). Baseline (Naive):Without S-box skipping in the partial rounds, the dense MDS matrix mixing ensures the degree rises by a factor of*α*per round. For*Rf*0= 1, the maximum degree bounds strictly to*dnaive*=*α*
+1+*Rp*+*Rf*
+
+1.
+GSR:Applying the subspace restriction maintains a degree of exactly 1 through*Rf*0and the first*t−*2*k*partial rounds. Degree growth only activates in the remaining unskipped partial rounds and the final full rounds. Thus, the degree is strictly truncated to:
+
+*dopt*=*α* *Rp*+*Rf* 1 *−t*+2*k* *.*
+
+<!-- Page 7 -->
+
+7.2 Complexities of the Used Techniques
+7.2.1 Univariate Solving For the root extraction of a*d*-degree univariate polynomial with coefficients inF*p*, we use Cantor-Zassenhaus [8, 15] algorithm that has practical bit complexity of*O*(*d²* log*p*) in runtime and*O*(*d*log*p*) in memory.
+7.2.2 Sylvester Resultant Computation For two given*d*-degree multivariate polynomials over same set of variables, the cost of com- puting their Sylvester matrix and defining the determinant as another*d²*-degree multivariate polynomial (with strictly one less variable) is *O*˜(*d³*) bit operations in runtime and*O*(*d²* log*p*) bits in memory [11]. Further, if the resulting polynomials turns out to be a univariate polynomial, its root extraction cost using Cantor-Zassenhaus algorithm is*O*((*d²*)
+2 log*p*) bit operations in runtime and*O*((*d²*) log*p*) bits in memory. Which means the overall cost becomes, time: 2 22 *O*(*d* log*p*) and memory: *O*(*d* log*p*). Iteratively, if we nest Sylvester resultant computation from*k k*-variate polynomials to all the way down to one univariate polynomial, the degree of 2 *k−*12*k* the polynomial blows from*d*to*d* and cost of solving for a root becomes, time: *O*(*d* log*p*) 2 *k−*1 and memory: *O*(*d* log*p*).
+
+7.3 State-of-the-Art vs. GSR on KoalaBear We instantiate the bounds using Poseidon’s KoalaBear parameters adopted by the Ethereum ecosystem: *p≈*2
+31 ,*α*= 3, and*t*= 24. All complexities are converted to base-2 logarithm (log₂(3)*≈*1*.*585, log₂(log₂(*p*))*≈*log₂(31)*≈*4*.*95) to facilitate direct comparison.
+
+Table 1 contrasts the computational complexity of extracting valid CICO solutions between
+
+the state-of-the-art approaches (no partial layer subspace restriction) and our proposed GSR framework using the combination of Sylvester resultant (unless the polynomial is univariate already) and Cantor-Zassenhaus. We denote this combo by SyCZ. Paired entries (*x,y*) in the table denote the time and memory bit-complexities, respectively.
+
+|Target|(Rf,R|p,Rf)||SyCZ (Baseline)||SyCZ (with GSR)||
+|---|---|---|---|---|---|---|---|
+|CICO-1 (k= 1)|(1, 23, 4) = 28||231|(293.7|,249.3)|(220.8|,212.9)|
+|CICO-2 (k= 2)|(1, 23, 4) = 28||262|(2182.5|,293.7)|(249.3|,227.1)|
+|CICO-2 (k= 2)|(1, 20, 4) = 25||262|(2163.4|,284.2)|(230.3|,217.6)|
+|CICO-3 (k= 3)|(1, 18, 4) = 23||293|(2296.6|,2150.8)|(255.7|,230.3)|
+|CICO-4 (k= 4)|(1, 16, 4) = 21||2124|(2537.5|,2271.2)|(2106.4|,255.7)|
+|CICO-5 (k= 5)|(1, 14, 2) = 17||2155|(2867.2|,2436.1)|(2106.4|,255.7)|
+|CICO-6 (k= 6)|(1, 12, 1) = 14||2186|(21425.1|,2715.0)|(2106.4|,255.7)|
+|CICO-7 (k= 7)|(1, 10, 1) = 12||2217|(22439.4|,21222.2)|(2207.8|,2106.4)|
+
+0 1Brute-force time
+
+Table 1: Complexity comparison of CICO-*k*solution recovery on Poseidon’s KoalaBear instance
+
+(*t*= 24*,α*= 3). Paired values represent (Time, Memory) bit-complexities based on the SyCZ solver. Note that for*k≥*5,*Rf*1is successively reduced to 2 and then to 1 to show the *Rf*1threshold where the SyCZ (with GSR) time complexity remains actively faster than the respective 2 31*k* brute-force bound.*Rp*is first taken as 23 (the adopted parameter by Ethereum ecosystem) and is then reduced to*t−*2*k*to see the maximum impact of SyCZ solver.
+
+### Analysis fork= 1(with Cantor-Zassenhaus):
+
+<!-- Page 8 -->
+
+•State-of-the-Art (Baseline):The algebraic degree scales up to*dnaive*= 3 *≈*2 *.*. Using standard univariate root extraction, the time and memory complexities are bounded to (2 *.* *,*2 *.* ). This is heavily inferior to the simple 2 brute-force guessing cost.
+
+•GSR:We systematically skip*t−*2*k*= 22 partial rounds, leaving only 23*−*22 = 1 active partial round. The degree bounds sharply drops to*dopt*= 3
+
+(1)+4 = 3 5
+*≈*2
+
+7*.*9.
+Consequently, the extraction complexity drops to just (2
+
+20*.*8 *,*2
+12*.*9 ), executing entirely in
+milliseconds.
+
+•See Appendix A for our recovered CICO-1 input-output samples using this algorithm.
+
+### Analysis fork= 2(with SyCZ combo):
+
+•State-of-the-Art (Baseline):For the (1, 20, 4) instance, root finding without structural restriction projects a huge degree of (3 25 ) 2 = 3 50 *≈*2
+
+79*.*3 for the Sylvester resultant
+univariate polynomial. This dictates a time and memory cost of (2
+
+163*.*4 *,*2
+84*.*2 ) via the
+SyCZ approach. Against a 2 62 brute-force cost, the naive approach therefore provides no practical attack vector.
+
+•GSR:For the (1, 20, 4) configuration, we absorb exactly*t−*2*k*= 20 partial rounds, leaving 20*−*20 = 0 active partial rounds. The equation degree drops to*dopt*= 3 0+4 = 3 4 *≈*2
+
+6*.*3.
+The Sylvester matrix projection computes the roots with a final complexity of (2
+
+30*.*3 *,*2
+17*.*6 ).
+By shifting the bottleneck away from the initial permutation mixing, GSR successfully translates an otherwise impossible mathematical problem into a highly practical attack that can run within a minute and handily beats generic 2 62 brute-force.
+
+•See Appendix B for our recovered CICO-2 input-output samples using this algorithm combo.
+
+## 8 Conclusion
+
+In this paper, we introducedGeneralized S-Box Skipping viaSubspaceRestriction (GSR), a novel algebraic technique that significantly advances the cryptanalysis of the Poseidon hash function. By strategically targeting S-boxes within the partial layer rather than confining the restriction to the initial full rounds, GSR effectively neutralizes the dense MDS mixing that typically drives exponential polynomial degree growth. This structural exploitation allowed us to translate the mathematically challenging CICO-*k* problem into tractable, low-degree polynomial systems. We practically demonstrated the power of this approach by recovering valid CICO-1 and CICO-2 solutions over 28 and 25 rounds, respectively, (out of the recommended 31) of Poseidon’s KoalaBear instance in negligible time. In summary, GSR exposes a critical vulnerability in the partial layer of Poseidon (and related AO ciphers), emphasizing the need for a rigorous reevaluation of its algebraic security margins.
+
+Acknowledgement and Responsible Disclosure.This work was supported by the Ethereum Foundation Grant program through grant number*FY26-2457*and the VLAIO Baekeland man- date under project number HBC.2024.0256. The results were disclosed to the Ethereum Foundation prior to their public dissemination.
+
+## References
+
+### [1]Linear layer tool, 2021.[https://extgit.isec.tugraz.at/krypto/linear-layer-tool](https://extgit.isec.tugraz.at/krypto/linear-layer-tool).
+
+### [2]Poseidon-tools, 2026. [https://github.com/khovratovich/poseidon-tools](https://github.com/khovratovich/poseidon-tools).
+
+<!-- Page 9 -->
+
+[3]Tomer Ashur, Thomas Buschman, and Mohammad Mahzoun. Algebraic cryptanalysis of the HADES design strategy: Application to Poseidon and Poseidon2. In*Australasian* *Conference on Information Security and Privacy*, pages 225–244. Springer, 2024.
+
+[4]Antoine Bak, Augustin Bariant, Aur´elien Boeuf, Pierre Briaud, Morten Øygarden, and Atharva Phanse. The Algebraic CheapLunch: Extending FreeLunch Attacks on Arithmetization-Oriented Primitives Beyond CICO-1.*Cryptology ePrint Archive*, 2025.
+
+[5]Antoine Bak, Augustin Bariant, Aur´elien Boeuf, Ma¨el Hostettler, and Guilhem Jazeron. Claiming bounties on small scale Poseidon and Poseidon2 instances using resultant-based algebraic attacks. Cryptology ePrint Archive, Paper 2026/150, 2026.
+
+[6]Augustin Bariant, Cl´emence Bouvier, Ga¨etan Leurent, and L´eo Perrin. Algebraic attacks against some arithmetization-oriented primitives.*IACR Transactions on Symmetric Cryptology*, pages 73–101, 2022.
+
+[Showing lines 151-300 of 722. Use :301 to continue]
+
+[7]Bruno Buchberger. An algorithm for finding the basis elements in the residue class ring modulo a zero dimensional polynomial ideal.*Journal of Symbolic Computation*, 41(3–
+
+4):475–511, 2006. English translation of the 1965 PhD thesis.
+[8]David G. Cantor and Hans Zassenhaus. A new algorithm for factoring polynomials over finite fields.*Mathematics of Computation*, 36(154):587–592, 1981.
+
+[9]George E Collins. The calculation of multivariate polynomial resultants.*Journal of the* *ACM (JACM)*, 18(4):515–532, 1971.
+
+[10]Jean-Charles Faug`ere and Mohab Safey El Din. On the complexity of the F5 Gr¨obner basis algorithm.*arXiv preprint arXiv:1312.1655*, 2014.
+
+[11]Pascal Giorgi, Claude-Pierre Jeannerod, and Gilles Villard. On the complexity of polynomial matrix computations. In*Proceedings of the 2003 International Symposium on Symbolic* *and Algebraic Computation (ISSAC)*, pages 135–142. ACM, 2003.
+
+[12]Lorenzo Grassi, Dmitry Khovratovich, Christian Rechberger, Arnab Roy, and Markus Schofnegger. Poseidon: A new hash function for Zero-Knowledge proof systems. In*30th* *USENIX Security Symposium (USENIX Security 21)*, pages 519–535, 2021.
+
+[13]Lorenzo Grassi, Katharina Koschatko, and Christian Rechberger. Poseidon and Neptune: Gr¨obner Basis Cryptanalysis Exploiting Subspace Trails.*IACR Transactions on Symmetric* *Cryptology*, 2025(2):34–86, Jun. 2025.
+
+[14]Lorenzo Grassi, Christian Rechberger, and Markus Schofnegger. Proving resistance against infinitely long subspace trails: How to choose the linear layer.*IACR Transactions on* *Symmetric Cryptology*, pages 314–352, 2021.
+
+[15]Erich Kaltofen and Victor Shoup. Subquadratic-time factoring of polynomials over finite fields. In*Proceedings of the Twenty-Seventh Annual ACM Symposium on Theory of Com-* *puting*, pages 398–407, 1995.
+
+[16]National Institute of Standards and Technology. SHA-3 Standard: Permutation-Based Hash and Extendable-Output Functions. Technical Report Federal Information Processing Standards Publication (FIPS) 202, National Institute of Standards and Technology, 2015.
+
+[17]Antonio Sanso and Giuseppe Vitto. Top Gun: Degree Annihilation Attacks on Poseidon. Cryptology ePrint Archive, Paper 2026/1254, 2026.
+
+<!-- Page 10 -->
+
+[18]Giuseppe Vitto. Slipway: Accessing Finite Subspace Trails in Poseidon. Cryptology ePrint Archive, Paper 2026/1579, 2026.
+
+[19]Ziyu Zhao, Antonio Sanso, Giuseppe Vitto, and Jintai Ding. Graeffe-Based Attacks on Poseidon and NTT Lower Bounds. Cryptology ePrint Archive, Paper 2025/1916, 2025.
+
+## A CICO-1 Attack Parameters
+
+In this section, we present four fully verifiable CICO-1 solutions for Poseidon operating over the KoalaBear prime field*p*= 2130706433 with state size*t*= 24,*α*= 3, and (*Rf*0*,Rp,Rf*1) = (1*,*23*,*4)*i.e.,*28 out of recommended 31 rounds for KoalaBear setting. The MDS matrix used here is a verified secure circulant matrix derived using official poseidon-tools-main repository [2], and the pseudo-random round constants are generated via SHAKE-256 hash derivations [16]. By targeting constraints[0]at both the input and output boundaries, our solver successfully extracted multiple solutions satisfying an instance of one full round, 23 partial rounds, and four full rounds (*i.e.,*(1,23,4) rounds) of Poseidon.
+
+" mds ": [ [1065186607, 131208511, 428720827, 1207080596, 1738166676, 1988175222,
+
+|[1065186607,||131208511,|428720827,||1207080596,||1738166676,||1988175222,||
+|---|---|---|---|---|---|---|---|---|---|---|
+||81239933, 1604493419, 1409080307,|70865233, 1758837349, 610426990,|918233319,|309831590, 873018199,|807502311, 1492781856,|673013262,|552595000,|192605313, 1942555555,|168534697,|1106785377, 2096981614],|
+|[2096981614,|1988175222, 168534697, 1106785377,|1065186607, 81239933, 1604493419, 1409080307,|131208511, 70865233,|1758837349, 610426990,|428720827, 918233319,|309831590, 873018199,|1207080596, 807502311,|673013262, 1492781856,|1738166676, 552595000,|192605313, 1942555555],|
+|[1942555555,|1738166676, 552595000, 192605313,|2096981614, 1988175222, 168534697, 1106785377,|1065186607, 1604493419,|81239933, 1409080307,|131208511, 70865233, 1758837349,|610426990,|428720827, 918233319,|309831590, 873018199,|1207080596, 807502311,|673013262, 1492781856],|
+|[1492781856,|1207080596, 807502311, 673013262,|1942555555, 1738166676, 552595000, 192605313,|2096981614, 168534697, 1106785377,|1988175222,|1065186607, 1604493419, 1409080307,|81239933,|1758837349,|131208511, 70865233, 610426990,|918233319,|428720827, 309831590, 873018199],|
+|[873018199,|428720827, 918233319, 309831590,|1492781856, 1207080596, 807502311, 673013262,|1942555555, 552595000, 192605313,|1738166676,|2096981614, 168534697, 1106785377,|1988175222,|1065186607, 1604493419, 1409080307,|81239933,|1758837349,|131208511, 70865233, 610426990],|
+|[610426990,|131208511, 70865233, 1758837349,|873018199, 428720827, 918233319, 309831590,|1492781856, 1207080596, 807502311,|673013262,|1942555555, 1738166676, 552595000, 192605313,||2096981614, 168534697, 1106785377,|1988175222,|1065186607, 1604493419,|81239933, 1409080307],|
+|[1409080307,|1065186607, 81239933, 1604493419,|610426990, 131208511, 70865233, 1758837349,|873018199, 918233319,|428720827, 309831590,|1492781856, 1207080596, 807502311,|673013262,|1942555555, 552595000,|1738166676, 192605313,|2096981614, 168534697,|1988175222, 1106785377],|
+|[1106785377,|2096981614, 1988175222, 168534697,|1409080307, 1065186607, 81239933, 1604493419,|610426990, 70865233,|131208511, 1758837349,|873018199, 918233319,|428720827, 309831590,|1492781856, 807502311,|1207080596, 673013262,|1942555555, 552595000,|1738166676, 192605313],|
+|[192605313,|1942555555, 1738166676, 552595000,|1106785377, 2096981614, 1988175222, 168534697,|1409080307, 1604493419,|1065186607, 81239933,|610426990, 70865233, 1758837349,|131208511,|873018199, 918233319,|428720827, 309831590,|1492781856, 807502311,|1207080596, 673013262],|
+|[673013262,|1492781856, 1207080596, 807502311,|192605313, 1942555555, 1738166676, 552595000,|1106785377, 168534697,|2096981614, 1988175222,|1409080307, 1604493419,|1065186607, 81239933,|610426990, 1758837349,|131208511, 70865233,|873018199, 918233319,|428720827, 309831590],|
+|[309831590,|873018199,|673013262, 1492781856,|192605313,|1942555555,|1106785377,|2096981614,|1409080307,|1065186607,|610426990,|131208511,|
+
+<!-- Page 11 -->
+
+|428720827,|1207080596,|1738166676,|1988175222,|81239933,|70865233,|
+|---|---|---|---|---|---|
+|918233319,|807502311,|552595000,|168534697,|1604493419,|1758837349],|
+|[1758837349,|309831590,|673013262,|192605313,|1106785377,|1409080307,|
+|610426990,|873018199,|1492781856,|1942555555,|2096981614,|1065186607,|
+|131208511,|428720827,|1207080596,|1738166676,|1988175222,|81239933,|
+|70865233,|918233319,|807502311,|552595000,|168534697,|1604493419],|
+|[1604493419,|1758837349,|309831590,|673013262,|192605313,|1106785377,|
+|1409080307,|610426990,|873018199,|1492781856,|1942555555,|2096981614,|
+|1065186607,|131208511,|428720827,|1207080596,|1738166676,|1988175222,|
+|81239933,|70865233,|918233319,|807502311,|552595000,|168534697],|
+|[168534697,|1604493419,|1758837349,|309831590,|673013262,|192605313,|
+|1106785377,|1409080307,|610426990,|873018199,|1492781856,|1942555555,|
+|2096981614,|1065186607,|131208511,|428720827,|1207080596,|1738166676,|
+|1988175222,|81239933,|70865233,|918233319,|807502311,|552595000],|
+|[552595000,|168534697,|1604493419,|1758837349,|309831590,|673013262,|
+|192605313,|1106785377,|1409080307,|610426990,|873018199,|1492781856,|
+|1942555555,|2096981614,|1065186607,|131208511,|428720827,|1207080596,|
+|1738166676,|1988175222,|81239933,|70865233,|918233319,|807502311],|
+|[807502311,|552595000,|168534697,|1604493419,|1758837349,|309831590,|
+|673013262,|192605313,|1106785377,|1409080307,|610426990,|873018199,|
+|1492781856,|1942555555,|2096981614,|1065186607,|131208511,|428720827,|
+|1207080596,|1738166676,|1988175222,|81239933,|70865233,|918233319],|
+|[918233319,|807502311,|552595000,|168534697,|1604493419,|1758837349,|
+|309831590,|673013262,|192605313,|1106785377,|1409080307,|610426990,|
+|873018199,|1492781856,|1942555555,|2096981614,|1065186607,|131208511,|
+|428720827,|1207080596,|1738166676,|1988175222,|81239933,|70865233],|
+|[70865233,|918233319,|807502311,|552595000,|168534697,|1604493419,|
+|1758837349,|309831590,|673013262,|192605313,|1106785377,|1409080307,|
+|610426990,|873018199,|1492781856,|1942555555,|2096981614,|1065186607,|
+|131208511,|428720827,|1207080596,|1738166676,|1988175222,|81239933],|
+|[81239933,|70865233,|918233319,|807502311,|552595000,|168534697,|
+|1604493419,|1758837349,|309831590,|673013262,|192605313,|1106785377,|
+|1409080307,|610426990,|873018199,|1492781856,|1942555555,|2096981614,|
+|1065186607,|131208511,|428720827,|1207080596,|1738166676,|1988175222],|
+|[1988175222,|81239933,|70865233,|918233319,|807502311,|552595000,|
+|168534697,|1604493419,|1758837349,|309831590,|673013262,|192605313,|
+|1106785377,|1409080307,|610426990,|873018199,|1492781856,|1942555555,|
+|2096981614,|1065186607,|131208511,|428720827,|1207080596,|1738166676],|
+|[1738166676,|1988175222,|81239933,|70865233,|918233319,|807502311,|
+|552595000,|168534697,|1604493419,|1758837349,|309831590,|673013262,|
+|192605313,|1106785377,|1409080307,|610426990,|873018199,|1492781856,|
+|1942555555,|2096981614,|1065186607,|131208511,|428720827,|1207080596],|
+|[1207080596,|1738166676,|1988175222,|81239933,|70865233,|918233319,|
+|807502311,|552595000,|168534697,|1604493419,|1758837349,|309831590,|
+|673013262,|192605313,|1106785377,|1409080307,|610426990,|873018199,|
+|1492781856,|1942555555,|2096981614,|1065186607,|131208511,|428720827],|
+|[428720827,|1207080596,|1738166676,|1988175222,|81239933,|70865233,|
+|918233319,|807502311,|552595000,|168534697,|1604493419,|1758837349,|
+|309831590,|673013262,|192605313,|1106785377,|1409080307,|610426990,|
+|873018199,|1492781856,|1942555555,|2096981614,|1065186607,|131208511],|
+|[131208511,|428720827,|1207080596,|1738166676,|1988175222,|81239933,|
+|70865233,|918233319,|807502311,|552595000,|168534697,|1604493419,|
+|1758837349,|309831590,|673013262,|192605313,|1106785377,|1409080307,|
+|610426990,|873018199,|1492781856,|1942555555,|2096981614,|1065186607]|
+||[|||||
+|1137173758,|1158021119,|2090848577,|1073741823,|2115911463,|2049454079,|
+|1206189706,|100663295,|533807487,|507455476,|674234367,|1694403083,|
+|1894906175,|1363247103,|1059583056,|805306367,|2122976255,|1912160162,|
+|1098907647,|670322783,|126863869,|168558591,|2034213506,|2084339279,|
+|1951424511,|264895764,|201326591,|1067614975,|1014910952,|1348468735,|
+|1241322519,|1642328703,|579010559,|2119166112,|1610612735,|2098468863,|
+|1676836677,|50331647,|1340645567,|253727738,|337117183,|1920943365,|
+
+], " round_constants ":
+
+|2021194911,|1755365375,|529791528,|402653183,|2029821905,|549453823,|
+|---|---|---|---|---|---|
+|335161391,|1137173758,|1158021119,|2090848577,|1073741823,|2115911463,|
+|2049454079,|1206189706,|100663295,|533807487,|507455476,|674234367,|
+|1694403083,|1894906175,|1363247103,|1059583056,|805306367,|2122976255,|
+|1912160162,|1098907647,|670322783,|126863869,|168558591,|2034213506,|
+|2084339279,|1951424511,|264895764,|201326591,|1067614975,|1014910952,|
+|1348468735,|1241322519,|1642328703,|579010559,|2119166112,|1610612735,|
+|2098468863,|1676836677,|50331647,|1340645567,|253727738,|337117183,|
+|1920943365,|2021194911,|1755365375,|529791528,|402653183,|2029821905,|
+|549453823,|335161391,|1137173758,|1158021119,|2090848577,|1073741823,|
+|2115911463,|2049454079,|1206189706,|100663295,|533807487,|507455476,|
+|674234367,|1694403083,|1894906175,|1363247103,|1059583056,|805306367,|
+|2122976255,|1912160162,|1098907647,|670322783,|126863869,|168558591,|
+|2034213506,|2084339279,|1951424511,|264895764,|201326591,|1067614975,|
+|1014910952,|1348468735,|1241322519,|1642328703,|579010559,|2119166112,|
+|1610612735,|2098468863,|1676836677,|50331647,|1340645567,|253727738,|
+|337117183,|1920943365,|2021194911,|1755365375,|529791528,|402653183,|
+|2029821905,|549453823,|335161391,|1137173758,|1158021119,|2090848577,|
+|1073741823,|2115911463,|2049454079,|1206189706,|100663295,|533807487,|
+|507455476,|674234367,|1694403083,|1894906175,|1363247103,|1059583056,|
+|805306367,|2122976255,|1912160162,|1098907647,|670322783,|126863869,|
+|168558591,|2034213506,|2084339279,|1951424511,|264895764,|201326591,|
+|1067614975,|1014910952,|1348468735,|1241322519,|1642328703,|579010559,|
+|2119166112,|1610612735,|2098468863,|1676836677,|50331647,|1340645567,|
+|253727738,|337117183,|1920943365,|2021194911,|1755365375,|529791528,|
+|402653183,|2029821905,|549453823,|335161391,|1137173758,|1158021119,|
+|2090848577,|1073741823,|2115911463,|2049454079,|1206189706,|100663295,|
+|533807487,|507455476,|674234367,|1694403083,|1894906175,|1363247103,|
+|1059583056,|805306367,|2122976255,|1912160162,|1098907647,|670322783,|
+|126863869,|168558591,|2034213506,|2084339279,|1951424511,|264895764,|
+|201326591,|1067614975,|1014910952,|1348468735,|1241322519,|1642328703,|
+
+[Showing lines 301-450 of 722. Use :451 to continue]
+|579010559,|2119166112,|1610612735,|2098468863,|1676836677,|50331647,|
+|1340645567,|253727738,|337117183,|1920943365,|2021194911,|1755365375,|
+|529791528,|402653183,|2029821905,|549453823,|335161391,|1137173758,|
+|1158021119,|2090848577,|1073741823,|2115911463,|2049454079,|1206189706,|
+|100663295,|533807487,|507455476,|674234367,|1694403083,|1894906175,|
+|1363247103,|1059583056,|805306367,|2122976255,|1912160162,|1098907647,|
+|670322783,|126863869,|168558591,|2034213506,|2084339279,|1951424511,|
+|264895764,|201326591,|1067614975,|1014910952,|1348468735,|1241322519,|
+|1642328703,|579010559,|2119166112,|1610612735,|2098468863,|1676836677,|
+|50331647,|1340645567,|253727738,|337117183,|1920943365,|2021194911,|
+|1755365375,|529791528,|402653183,|2029821905,|549453823,|335161391,|
+|1137173758,|1158021119,|2090848577,|1073741823,|2115911463,|2049454079,|
+|1206189706,|100663295,|533807487,|507455476,|674234367,|1694403083,|
+|1894906175,|1363247103,|1059583056,|805306367,|2122976255,|1912160162,|
+|1098907647,|670322783,|126863869,|168558591,|2034213506,|2084339279,|
+|1951424511,|264895764,|201326591,|1067614975,|1014910952,|1348468735,|
+|1241322519,|1642328703,|579010559,|2119166112,|1610612735,|2098468863,|
+|1676836677,|50331647,|1340645567,|253727738,|337117183,|1920943365,|
+|2021194911,|1755365375,|529791528,|402653183,|2029821905,|549453823,|
+|335161391,|1137173758,|1158021119,|2090848577,|1073741823,|2115911463,|
+|2049454079,|1206189706,|100663295,|533807487,|507455476,|674234367,|
+|1694403083,|1894906175,|1363247103,|1059583056,|805306367,|2122976255,|
+|1912160162,|1098907647,|670322783,|126863869,|168558591,|2034213506,|
+|2084339279,|1951424511,|264895764,|201326591,|1067614975,|1014910952,|
+|1348468735,|1241322519,|1642328703,|579010559,|2119166112,|1610612735,|
+|2098468863,|1676836677,|50331647,|1340645567,|253727738,|337117183,|
+|1920943365,|2021194911,|1755365375,|529791528,|402653183,|2029821905,|
+|549453823,|335161391,|1137173758,|1158021119,|2090848577,|1073741823,|
+|2115911463,|2049454079,|1206189706,|100663295,|533807487,|507455476,|
+|674234367,|1694403083,|1894906175,|1363247103,|1059583056,|805306367,|
+|2122976255,|1912160162,|1098907647,|670322783,|126863869,|168558591,|
+|2034213506,|2084339279,|1951424511,|264895764,|201326591,|1067614975,|
+
+<!-- Page 13 -->
+
+|1014910952,|1348468735,|1241322519,|1642328703,|579010559,|2119166112,|
+|---|---|---|---|---|---|
+|1610612735,|2098468863,|1676836677,|50331647,|1340645567,|253727738,|
+|337117183,|1920943365,|2021194911,|1755365375,|529791528,|402653183,|
+|2029821905,|549453823,|335161391,|1137173758,|1158021119,|2090848577,|
+|1073741823,|2115911463,|2049454079,|1206189706,|100663295,|533807487,|
+|507455476,|674234367,|1694403083,|1894906175,|1363247103,|1059583056,|
+|805306367,|2122976255,|1912160162,|1098907647,|670322783,|126863869,|
+|168558591,|2034213506,|2084339279,|1951424511,|264895764,|201326591,|
+|1067614975,|1014910952,|1348468735,|1241322519,|1642328703,|579010559,|
+|2119166112,|1610612735,|2098468863,|1676836677,|50331647,|1340645567,|
+|253727738,|337117183,|1920943365,|2021194911,|1755365375,|529791528,|
+|402653183,|2029821905,|549453823,|335161391,|1137173758,|1158021119,|
+|2090848577,|1073741823,|2115911463,|2049454079,|1206189706,|100663295,|
+|533807487,|507455476,|674234367,|1694403083,|1894906175,|1363247103,|
+|1059583056,|805306367,|2122976255,|1912160162,|1098907647,|670322783,|
+|126863869,|168558591,|2034213506,|2084339279,|1951424511,|264895764,|
+|201326591,|1067614975,|1014910952,|1348468735,|1241322519,|1642328703,|
+|579010559,|2119166112,|1610612735,|2098468863,|1676836677,|50331647,|
+|1340645567,|253727738,|337117183,|1920943365,|2021194911,|1755365375,|
+|529791528,|402653183,|2029821905,|549453823,|335161391,|1137173758,|
+|1158021119,|2090848577,|1073741823,|2115911463,|2049454079,|1206189706,|
+|100663295,|533807487,|507455476,|674234367,|1694403083,|1894906175,|
+|1363247103,|1059583056,|805306367,|2122976255,|1912160162,|1098907647,|
+|670322783,|126863869,|168558591,|2034213506,|2084339279,|1951424511,|
+|264895764,|201326591,|1067614975,|1014910952,|1348468735,|1241322519,|
+|1642328703,|579010559,|2119166112,|1610612735,|2098468863,|1676836677,|
+|50331647,|1340645567,|253727738,|337117183,|1920943365,|2021194911,|
+|1755365375,|529791528,|402653183,|2029821905,|549453823,|335161391,|
+|1137173758,|1158021119,|2090848577,|1073741823,|2115911463,|2049454079,|
+|1206189706,|100663295,|533807487,|507455476,|674234367,|1694403083,|
+|1894906175,|1363247103,|1059583056,|805306367,|2122976255,|1912160162,|
+|1098907647,|670322783,|126863869,|168558591,|2034213506,|2084339279,|
+|1951424511,|264895764,|201326591,|1067614975,|1014910952,|1348468735,|
+|1241322519,|1642328703,|579010559,|2119166112,|1610612735,|2098468863,|
+|1676836677,|50331647,|1340645567,|253727738,|337117183,|1920943365,|
+|2021194911,|1755365375,|529791528,|402653183,|2029821905,|549453823,|
+|335161391,|1137173758,|1158021119,|2090848577,|1073741823,|2115911463,|
+|2049454079,|1206189706,|100663295,|533807487,|507455476,|674234367,|
+|1694403083,|1894906175,|1363247103,|1059583056,|805306367,|2122976255,|
+|1912160162,|1098907647,|670322783,|126863869,|168558591,|2034213506,|
+|2084339279,|1951424511,|264895764,|201326591,|1067614975,|1014910952,|
+|1348468735 ,],|1241322519,|1642328703,|579010559,|2119166112,|1610612735|
+|" solutions ": {|[|||||
+|" input_state_1 ":],|0, 1589364078, 1384987356, 1163438003, 337130899, 605359254, 744064511,|[ 1896430845, 571290314, 1120934139, 136779467,|875661494, 330532031, 1044017398, 1310164241,|1347204565, 1770159316, 1544907671, 780342668,|458155487, 1420433581, 886524037, 789268467,|
+|" output_state_1 ":] }, {|0, 1597060746, 2091129989, 263448336, 1618326804, 1214958415,|[ 1364711247, 806642337, 811620658, 1478995146,|2024085809, 1844843578, 690866717, 222650518,|1512940021, 1440263009, 933217052, 953822748,|639813075, 756609248, 378688250, 1832066125,|
+|" input_state_2 ":||[||||
+
+1840097141
+
+1799766079, 854422796
+
+<!-- Page 14 -->
+
+0, 1379788884, 1164672055, 1191892707, 532821958, 461674733, 1413084694, 822997674, 741936930, 457154561, 2018368438, 131208049, 1011428151, 1251905695, 1061341129, 1974638428, 1250553775, 1354810513, 752495316, 599296425, 1371731441, 412465195, 1768055340, 465027489], " output_state_2 ": [ 0, 1008747893, 1419899900, 521561470, 185111988, 528848150, 1922979060, 253468514, 1353778182, 769215756, 1272714572, 55194805, 1791994868, 313734210, 222115939, 1618161927, 1750950112, 1898860391, 1735545169, 1131269616, 1707218116, 78404225, 354584698, 1992700870] }, { " input_state_3 ": [ 0, 1192173019, 2043837185, 1184509588, 1362931591, 824908447, 1288338852, 335401995, 8741120, 1941566821, 1849825894, 1630091427, 289382118, 2048304857, 1752306838, 387944395, 377511001, 1316881134, 1645715643, 1061611602, 243851999, 1749172782, 1273017419, 511139102], " output_state_3 ": [ 0, 496724098, 581343189, 448783366, 1958178900, 1487404312, 463366279, 285055731, 682583592, 1845363571, 465657558, 1074455959, 275076066, 1954497979, 1949185051, 557858070, 936141974, 306893588, 1525066889, 1648361248, 1344575339, 1625371935, 1961167704, 856000905] }, { " input_state_4 ": [ 0, 1221687458, 142017802, 170800535, 1703008619, 477515941, 1643535378, 1274866856, 206044471, 1587794015, 1143959450, 1300562349, 1560159219, 657354945, 584529588, 1593984937, 596667400, 1316480087, 66852599, 1986668902, 990307644, 1909187780, 1966059188, 239791987], " output_state_4 ": [ 0, 1651826367, 470722407, 967325238, 948366201, 1212345581, 629845574, 302533854, 1805852539, 509050066, 886610095, 372933298, 1662560570, 992763186, 1448826727, 1884229999, 1642795887, 1733990605, 712258464, 1835007496, 254582648, 1864356433, 783573503, 946578381] }]
+
+## B CICO-2 Attack Parameters
+
+CICO-2 attack is a harder attack than CICO-1, and our recovered CICO-2 solution exhibit a vulnerability in 25 rounds out of Poseidon’s recommended 31 rounds in the KoalaBear (*t*= 24) setting. More specifically, we present four fully verifiable CICO-2 solutions mapping for Poseidon operating over the KoalaBear prime field*p*= 2130706433 with state size*t*= 24,*α*= 3, (*Rf*0*,Rp,Rf*1) = (1*,*20*,*4). The MDS matrix used here is also a verified secure circulant matrix derived using official poseidon-tools-main repository [2], and the pseudo-random round constants
+
+<!-- Page 15 -->
+
+are generated via SHAKE-256 hash derivations [16]. By targeting constraints[0, 0]at both the input and output boundaries, our solver successfully extracted multiple solutions satisfying resulting constraints for this parameter set.
+
+" mds ": [ [182029519, 812174379, 799647766, 1902072930, 1646926355, 473881174,
+
+|[182029519,||812174379,||799647766,||1902072930,||1646926355,||473881174,||
+|---|---|---|---|---|---|---|---|---|---|---|---|
+||1583631138, 233273648, 836843832,||677760056, 55471811, 14387358,|929516509, 1396572830,|838789176,|2062955645, 1966472522,|827331457,|1322308383, 1362536314, 1119098349,||1239059097, 218724220, 1443459654],||
+|[1443459654,|473881174, 1239059097, 218724220,|182029519,|1583631138, 233273648, 836843832,|812174379, 14387358,|677760056, 55471811,|799647766, 929516509, 1396572830,|838789176,|1902072930, 827331457, 2062955645, 1966472522,||1646926355, 1322308383, 1362536314, 1119098349],||
+|[1119098349,|1646926355, 1322308383, 1362536314,|1443459654,|473881174, 1239059097, 218724220,|182029519,|1583631138, 233273648, 836843832,|812174379,|677760056, 55471811, 14387358,|799647766, 929516509, 1396572830,|838789176,|1902072930, 827331457, 2062955645, 1966472522],||
+|[1966472522,|1902072930, 827331457, 2062955645,|1119098349,|1646926355, 1322308383, 1362536314,|1443459654,|473881174, 1239059097, 218724220,|182029519,|1583631138, 233273648, 836843832,|812174379,|677760056, 55471811, 14387358,|799647766, 929516509, 1396572830],|838789176,|
+|[1396572830,|799647766, 838789176, 929516509,|1966472522,|1902072930, 827331457, 2062955645,|1119098349, 1322308383,|1646926355, 1362536314,|1443459654,|473881174, 1239059097, 218724220,||182029519, 1583631138, 233273648, 836843832,|812174379, 55471811, 14387358],|677760056,|
+|[14387358,|812174379, 677760056, 55471811,|1396572830, 929516509,|799647766, 838789176,|1966472522, 1902072930, 827331457, 2062955645,||1119098349, 1322308383, 1362536314,|1646926355,|1443459654, 1239059097, 218724220,|473881174,|182029519, 1583631138, 233273648, 836843832],||
+|[836843832,|182029519, 1583631138, 233273648,|14387358,|812174379, 677760056, 55471811,|1396572830, 799647766, 929516509,|838789176,|1966472522, 1902072930, 2062955645,|827331457,|1119098349, 1646926355, 1322308383, 1362536314,||1443459654, 473881174, 1239059097, 218724220],||
+|[218724220,|1443459654, 473881174, 1239059097,|836843832,|182029519, 1583631138, 233273648,|14387358,|812174379, 677760056, 55471811,|1396572830, 929516509,|799647766, 838789176,|1966472522, 1902072930, 827331457, 2062955645,||1119098349, 1646926355, 1322308383, 1362536314],||
+|[1362536314,|1119098349, 1646926355, 1322308383,|218724220,|1443459654, 473881174, 1239059097,|836843832,|182029519, 1583631138, 233273648,|14387358,|812174379, 677760056, 55471811,|1396572830, 929516509,|799647766, 838789176,|1966472522, 1902072930, 827331457, 2062955645],||
+|[2062955645,|1966472522, 1902072930, 827331457,|1362536314,|1119098349, 1646926355, 1322308383,|218724220,|1443459654, 473881174, 1239059097,|836843832,|182029519, 1583631138, 233273648,|14387358,|812174379, 677760056, 55471811,|1396572830, 929516509],|799647766, 838789176,|
+|[929516509,|1396572830, 799647766, 838789176,|2062955645,|1966472522, 1902072930, 827331457,|1362536314, 1322308383,|1119098349, 1646926355,|218724220,|1443459654, 473881174, 1239059097,|836843832,|182029519, 1583631138, 233273648,|14387358, 55471811],|812174379, 677760056,|
+|[55471811,|14387358, 812174379, 677760056,|929516509, 1396572830,|799647766, 838789176,|2062955645, 1966472522, 1902072930, 827331457,||1362536314, 1322308383,|1119098349, 1646926355,|218724220, 1239059097,|1443459654, 473881174,|836843832, 1583631138, 233273648],|182029519,|
+|[233273648,|836843832, 182029519, 1583631138,|55471811,|14387358, 812174379, 677760056,|929516509, 1396572830, 799647766,|838789176,|2062955645, 1966472522, 1902072930,|827331457,|1362536314, 1119098349, 1646926355, 1322308383,||218724220, 1443459654, 473881174, 1239059097],||
+|[1239059097,|218724220, 1443459654, 473881174,|233273648,|836843832, 182029519, 1583631138,|55471811, 14387358,|812174379, 677760056,|929516509, 1396572830,|799647766, 838789176,|2062955645, 1966472522, 1902072930, 827331457,||1362536314, 1119098349, 1646926355, 1322308383],||
+|[1322308383,|1362536314,|1239059097,|218724220,|233273648,|836843832,|55471811,|14387358,|929516509, 1396572830,||2062955645, 1966472522,||
+
+||1119098349,||1443459654,||182029519,||812174379,||799647766,|||1902072930,|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+||1646926355,||473881174,||1583631138,||677760056,||838789176,|||827331457],|
+|[827331457,|2062955645, 1966472522, 1902072930,|1322308383,|1362536314, 1119098349, 1646926355,|1239059097,|218724220, 1443459654, 473881174,|233273648,|836843832, 182029519, 1583631138,|55471811,|14387358,|812174379, 677760056,|929516509, 1396572830,|799647766, 838789176],|
+|[838789176,|929516509, 1396572830, 799647766,|827331457,|2062955645, 1966472522, 1902072930,|1322308383,|1362536314, 1119098349, 1646926355,|1239059097,|218724220, 1443459654, 473881174,|233273648,|836843832, 1583631138,|182029519,|55471811,|14387358, 812174379, 677760056],|
+|[677760056,|55471811, 14387358, 812174379,|838789176,|929516509, 1396572830, 799647766,|827331457, 2062955645,|1966472522, 1902072930,|1322308383, 1362536314,|1119098349, 1646926355,|1239059097,|218724220, 1443459654, 473881174,||233273648, 836843832,|182029519, 1583631138],|
+|[1583631138,|233273648, 836843832, 182029519,|677760056,|55471811, 14387358, 812174379,|838789176, 929516509, 1396572830,|799647766,|827331457, 2062955645, 1966472522, 1902072930,||1322308383, 1362536314,|1119098349, 1646926355,||1239059097, 218724220,|1443459654, 473881174],|
+|[473881174,|1239059097, 218724220, 1443459654,|1583631138,|233273648, 836843832, 182029519,|677760056,|55471811, 14387358, 812174379,|838789176, 929516509, 1396572830,|799647766,|827331457, 2062955645, 1966472522,|1902072930,||1322308383, 1362536314, 1119098349,|1646926355],|
+|[1646926355,|1322308383, 1362536314, 1119098349,|473881174,|1239059097, 218724220, 1443459654,|1583631138,|233273648, 836843832, 182029519,|677760056,|55471811, 14387358, 812174379,|838789176, 1396572830,|929516509, 799647766,||827331457, 2062955645, 1966472522,|1902072930],|
+|[1902072930,|827331457, 2062955645, 1966472522,|1646926355,|1322308383, 1362536314, 1119098349,||473881174, 1239059097, 218724220, 1443459654,|1583631138,|233273648, 836843832, 182029519,||677760056, 55471811, 14387358,|812174379,|838789176, 929516509, 1396572830,|799647766],|
+|[799647766,|838789176, 929516509, 1396572830,|1902072930,|827331457, 2062955645, 1966472522,|1646926355,|1322308383, 1362536314, 1119098349,|473881174,|1239059097, 218724220, 1443459654,|1583631138,|233273648, 836843832,|182029519,|677760056,|55471811, 14387358, 812174379],|
+|[812174379 ,],|677760056, 55471811, 14387358,|799647766,|838789176, 929516509, 1396572830,|1902072930, 2062955645,|827331457, 1966472522,|1646926355, 1322308383, 1362536314,|1119098349,|473881174,|1239059097, 218724220, 1443459654,||1583631138, 836843832,|233273648, 182029519]|
+|" round_constants ":|||[||||||||||
+|1375440650,||2006515628,||1307113356,||2061079059,|||829381244,||2043791910,||
+|737050957,||1716865126,||65313788,||1835882285,||1830670823,|||824712244,||
+|1734845741,||683800643,||1922270414,||1731540232,||343232192,|||92890539,||
+|1580935014,||1583575646,||613256790,||879354417,||240732658,|||1444904268,||
+|467888043,||2010814686,||1440032228,||1176112725,||352034784,|||814573440,||
+|450694358,||1362701228,||1534880589,||107285413,||1947419414,|||2005577384,||
+|237833663,||822690442,||126334699,||1031058193,||2107440271,|||761070095,||
+|1070662913,||1984467229,||2088826276,||325622001,||1898397332,|||1332515663,||
+|920820281,||1677726488,||1114792620,||1081151082,||620603566,|||808461350,||
+|1509814615,||287758160,||720789559,||1419973571,||1996429723,|||36719816,||
+|717539722,||931940531,||1071096065,||1095595880,||98305972,|||981638424,||
+|2007838239,||730373743,||430004662,||46985655,||357474420,|||821573088,||
+|693263375,||708985213,||208599033,||1175368835,||10508391,|||950292472,||
+|596069772,||443085597,||923381666,||1282977294,||1424291578,|||488920964,||
+|574250972,||1776957247,||1076408408,||1621356654,||1157544555,|||590288075,||
+|325860241,||432417979,||941200143,||1657354181,||910551236,|||1275638028,||
+|1371360015,||1362106565,||1680335838,||1364440033,|||505233334,||1293343700,||
+|627276923,||402859153,||1695790778,||682549161,||321338381,|||1539763154,||
+
+[Showing lines 451-600 of 722. Use :601 to continue]
+|1764823365,||306396243,||180691448,||885515620,||1129179406,|||993762752,||
+|146459656,||1155570785,||606245313,||1662214755,||1860343269,|||2017974904,||
+|2070326376,||1377633836,||1517972258,||1929086552,|||1414558365,|||589013796,|
+|1236908192,||998558234,||743004231,||2111405240,||629623168,|||996162474,||
+
+|211862180,|345661928,|253626003,|2039999680,|2105392940,|872384229,|
+|---|---|---|---|---|---|
+|471913542,|2110957082,|130108089,|1824547067,|1347908457,|1991761319,|
+|1692527235,|1764500136,|275000619,|2032830522,|1329714789,|190791201,|
+|511694953,|1135573488,|1203386287,|1877649206,|1274316507,|1220435904,|
+|1955715157,|2081830053,|1777628021,|231655987,|913935311,|678467935,|
+|1440237105,|1215616240,|249147289,|25907082,|395409231,|1754816108,|
+|1848825488,|108161224,|1127654043,|11339609,|37478131,|727168338,|
+|926995068,|1310216028,|1095330553,|1988363527,|669165917,|12469358,|
+|1047404280,|1248230267,|901950508,|1484443862,|1672374637,|652485505,|
+|2113858549,|906249491,|1403459234,|892620539,|99968009,|420493463,|
+|2023585028,|1877272890,|964797184,|8595434,|305063999,|1327428287,|
+|1751443201,|1445983929,|2079988979,|407304094,|378561405,|676222850,|
+|676803779,|1325826764,|1764629096,|1124614894,|1680282674,|1554746382,|
+|2006589267,|1618902148,|36411953,|814619374,|947990061,|1311185440,|
+|1404942956,|216453746,|1501181937,|533539981,|443913418,|1748605094,|
+|11482849,|1894477904,|2102306526,|1490782527,|2073456856,|114400667,|
+|1497402479,|1495978443,|218234611,|494314761,|405188137,|942530856,|
+|1253066212,|1162654937,|362378118,|109564743,|420406686,|1782971115,|
+|148628368,|519191204,|234387588,|1886520298,|1640958398,|1249164509,|
+|1999771584,|102585347,|1217737970,|1167194973,|1348906627,|2130034015,|
+|881184819,|321211653,|1018313300,|2011368674,|828176348,|2100982384,|
+|81805248,|2032435089,|84018003,|231473643,|1772527487,|1582071992,|
+|92105546,|1469174772,|251837818,|554432516,|651850171,|1254258715,|
+|1254860762,|641920399,|1094671081,|1657576435,|1921195356,|54626259,|
+|1689633176,|744090968,|2083439999,|804721851,|1361845900,|1474891367,|
+|1061154393,|722232637,|516655453,|550091387,|10305708,|281690027,|
+|1190922736,|1638056084,|2010514454,|1627336277,|1446427699,|1852221049,|
+|1539630548,|1075052118,|1749060219,|434471592,|1558818829,|773646847,|
+|706598390,|1305523254,|1568147305,|1822448013,|742433648,|238685717,|
+|2020376837,|60012576,|1921742053,|1358172156,|697004195,|1365666929,|
+|1139828836,|159880438,|660411841,|1562029037,|1024080620,|178739176,|
+|796107648,|349773919,|1788806713,|548709606,|2103812072,|458408978,|
+|1754148496,|1605938887,|3298629,|1445719214,|2129883753,|1175148922,|
+|1301741306,|2000376032,|1791198614,|113054932,|1345627296,|1713978880,|
+|65509615,|1308720311,|1111942061,|324275240,|1331690460,|48432528,|
+|520018454,|716593084,|1054159915,|1925970212,|387095363,|1292696544,|
+|314127324,|771914575,|40532818,|1702299875,|2123077605,|621470000,|
+|1169140545,|911666495,|454335736,|372845031,|1907769840,|613599248,|
+|1479857277,|1611952666,|1419223255,|1760539472,|783952320,|2088665843,|
+|1576079773,|868737497,|174133596,|963588053,|1103831901,|1612317056,|
+|1736180226,|965154870,|42789145,|757051103,|985625319,|854097174,|
+|898969063,|206236596,|1451715271,|1015830025,|195566940,|749520872,|
+|605309623,|13981821,|947792113,|1825231464,|930257988,|870724375,|
+|1478055724,|1160384837,|1069586057,|1141537369,|406729809,|912249570,|
+|1249480558,|2128618080,|907881272,|218889889,|1042544559,|136147037,|
+|1255454138,|2032652291,|1207678284,|821806785,|1689794697,|565958525,|
+|476980311,|1468526601,|1722570174,|2052232893,|1825326926,|1798489061,|
+|1013184006,|1693498661,|636203913,|1216067890,|1370241538,|228546411,|
+|1956505242,|618402883,|782884991,|216700420,|1012556063,|3643448,|
+|709301117,|2116542810,|1776043605,|1802777563,|1645980560,|1907855712,|
+|669166925,|1546285702,|1701061417,|1604297602,|1097511123,|989149709,|
+|311364994,|1312076463,|882544017,|75048958,|1420512927,|1579241323,|
+|1939921351,|1880031112,|1910481233,|1321072638,|1452938924,|45492890,|
+|843210927,|146754154,|634142020,|1367707073,|1509994810,|128697645,|
+|47469873,|1480950334,|343105918,|1523876070,|707650115,|1458820982,|
+|1240120374,|1807749801,|1942884119,|1352548065,|685009928,|1281646668,|
+|621186234,|1646785313,|547850798,|1069019293,|1304155729,|2075833097,|
+|1653613623,|1947973011,|1188240372,|2035988797,|1877337004,|199007455,|
+|1523326776,|1385483299,|345208431,|1297649191,|1158762927,|666828462,|
+|1981587139,|1100153662,|769987809,|156844742,|1720092270,|1799725859,|
+|472097656,|905025350,|1851338145,|1129260141,|1360456412,|361810061,|
+|306736169,|1402527689,|1938706968,|551959222,|686109020,|425275558,|
+|1409610888,|959383538,|1894712763,|1184756353,|1225177246,|103664933,|
+
+|809257319,|1896928540,|1664257053,|943399262,|1258020770,|1725179027,|
+|---|---|---|---|---|---|
+|619305449,|1273537183,|1910903253,|1277881484,|662522103,|1831420635,|
+|276870919,|705678512,|1964371725,|1760667213,|543338949,|195573550,|
+|1412127106,|2115287651,|1310648071,|1626673627,|192110421,|114547034,|
+|893378778,|1491429020,|2006168100,|1270089369,|559087702,|508235099,|
+|1381839369,|1259767241,|417697784,|1815283603,|1199316140,|866345115,|
+|689084659,|948284217,|2068734572,|478429979,|1740694864,|1580514451,|
+|621447509,|351797563,|1031725855,|547523025,|542433454,|895845170,|
+|1907517130,|808478325,|1829646990,|1986050017,|502312932,|769240818,|
+|1358629449,|1915261593,|509078963,|783301797,|1513995405,|1945663361,|
+|1597856784,|1349258375,|1854446343,|96450788,|509938789,|1860257441,|
+|2118310526,|579341490,|1261393803,|2118081247,|1161594066,|729489583,|
+|910069621,|893899107,|1175481257,|800258287,|1834117446,|684418230,|
+|300158745,|1075001136,|531291773,|870477804,|920834289,|760149702,|
+|1155933929 ,],|226992181,|1957867554,|1473584116,|1274358644,|334156855|
+|" solutions ": {|[|||||
+|" input_state_1 ":|[0,|0, 1457795403,|691853604,|652846219,|972492827,|
+|54730415,|1033489081,|1057487049,|55332218,|2008831162,|803391250,|
+|60120468,|1877141981,|1101310796,|1015008570,|2118294146,|350967989,|
+|1805506356 ,],|1978491379,|1050641144,|1321122138,|2061189515,|792705724|
+|" output_state_1 ":|[0,|0, 261851485,|1271016679,|794917173,|1945908895,|
+|1771553859,|1256786360,|2032727456,|1970456320,|1792835212,|1291679903,|
+|1087102302,|1976454217,|118112817,|39907320,|575450740,|439309906,|
+|817024562 ,] }, {|447250730,|1723355579,|1728055708,|2101636512,|416863670|
+|" input_state_2 ":|[0,|0, 1735314245,|1841352588,|1079178731,|1449777892,|
+|1830693190,|519455216,|1141715241,|1761495728,|534241941,|988816726,|
+|1032938004,|481855515,|1852367678,|2014031206,|1116881964,|825418428,|
+|588224898 ,],|901960092,|1562923937,|568780707,|2074165747,|662978623|
+|" output_state_2 ":|[0,|0, 1305529411,|1982269961,|606831843,|1348257348,|
+|1513694667,|966533932,|1346936940,|686267266,|1049888163,|1639374355,|
+|1812747808,|763239598,|117202136,|1878699937,|26650871,|802062188,|
+|2027995774 ,] }, {|1428085040,|1999265276,|30557785,|1201092072,|220358831|
+|" input_state_3 ":|[0,|0, 2058781021,|853366124,|888172973,|1990114849,|
+|390842797,|697717536,|1726573462,|1056007407,|1294542897,|1677343919,|
+|61747403,|1363254340,|473218111,|2068308516,|1547465630,|732655583,|
+|688164922 ,],|54801640,|396092569,|1252126150,|1816585639,|1243034690|
+|" output_state_3 ":|[0,|0, 1930039217,|1552856035,|2034048381,|1788949406,|
+|676840371,|77317022,|1270121892,|329514189,|1362912084,|1646626772,|
+|1312187768,|37355629,|495440028,|691511502,|1462575672,|1670616428,|
+|909975655 ,] }, {|1340346915,|1342699598,|1163776715,|2015885502,|2008245875|
+|" input_state_4 ":|[0,|0, 56566861,|1176088222,|1183329990,|1302601453,|
+|1381433739,|634021088,|101079865,|903260014,|1805536288,|1515839611,|
+|1466319052,|1007921967,|134480078,|1831918734,|497050818,|1335120547,|
+|456112231 ,],|1404183782,|627671124,|1700489335,|672315599,|577291986|
+|" output_state_4 ":|[0,|0, 2015846302,|1202134334,|1841379149,|1626676516,|
+|1611882641,|1190521662,|1871170171,|2034915643,|1182082188,|1843739253,|
+|1733199620,|1798918715,|891106801,|1839398893,|197910175,|525776976,|
+
+<!-- Page 19 -->
+
+535306888, 1417632967, 114754208, 895888103, 99623796, 1592597732] }]

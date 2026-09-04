@@ -1,0 +1,11 @@
+[workspace]
+
+[package]
+name = "pqtc-r2-security-pinned"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+p3-security = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3152b14a89067c83775a8076cc262ffc48a1fd7c" }
+p3-uni-stark = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3152b14a89067c83775a8076cc262ffc48a1fd7c" }
+serde_json = "=1.0.145"

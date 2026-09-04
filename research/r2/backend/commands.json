@@ -1,0 +1,42 @@
+{
+  "execution_owner": "Main; serialize timed runs after stable implementation handoff",
+  "execution_performed_by_backend_agent": false,
+  "commands": [
+    {
+      "purpose": "Establish both concrete hiding API boundaries without requiring corpus inputs",
+      "command": "python3 research/r2/backend/run.py --stage api --output research/r2/backend/outputs/api",
+      "outputs": ["research/r2/backend/outputs/api/results.json", "research/r2/backend/outputs/api/uni-api-barrier.stderr.log", "research/r2/backend/outputs/api/multi-api-barrier.stderr.log", "research/r2/backend/outputs/api/license-inventory.json", "research/r2/backend/outputs/api/Cargo.lock"],
+      "expected": "Two E0277 missing-trait diagnostics, not a qualified-hash gate. Wrapper records whether exact expected diagnostics occur; unrelated compiler failure is not counted as demonstrated API barrier."
+    },
+    {
+      "purpose": "Execute exact H0 native relation control and bounded hiding Poly repair, historical target",
+      "command": "python3 research/r2/backend/run.py --stage all --security-level 32 --output research/r2/backend/outputs/h0-32",
+      "prerequisite": "Main runs baseline prepare-corpus: research/r2/corpus/h0/fixed/statement.json and witness.json",
+      "outputs": ["research/r2/backend/outputs/h0-32/results.json", "research/r2/backend/outputs/h0-32/non-hiding-control/proof.postcard", "research/r2/backend/outputs/h0-32/non-hiding-control/result.json", "research/r2/backend/outputs/h0-32/hiding-repair/opening-0.postcard", "research/r2/backend/outputs/h0-32/hiding-repair/opening-1.postcard", "research/r2/backend/outputs/h0-32/hiding-repair/commitment-0.postcard", "research/r2/backend/outputs/h0-32/hiding-repair/security-terms.json", "research/r2/backend/outputs/h0-32/hiding-repair/result.json"],
+      "expected": "Actual unmodified WithdrawalAir proof/verify if upstream generic AIR fit succeeds; separate exact-trace PCS openings recover all synthetic nullifier-secret limbs, demonstrating why the bounded interface repair is not an outer hiding proof. No complete hiding candidate is claimed."
+    },
+    {
+      "purpose": "Request actual upstream 128-bit derivation instead of guessing a successful preset",
+      "command": "python3 research/r2/backend/run.py --security-level 128 --output research/r2/backend/outputs/h0-128",
+      "outputs": ["research/r2/backend/outputs/h0-128/results.json", "research/r2/backend/outputs/h0-128/commands.json"],
+      "expected": "Derived profiles and diagnostics, or exact typed configuration failure. A successful construction does not certify end-to-end security; retain conditional CapacityBound and quartic-field ceilings."
+    },
+    {
+      "purpose": "Fallback ONLY for input availability, still exact frozen H0 not synthetic proxy",
+      "command": "python3 research/r2/backend/run.py --statement research/candidates/v03-baseline/vectors/derived/fixed/statement.json --witness research/candidates/v03-baseline/vectors/derived/fixed/witness.json --output research/r2/backend/outputs/frozen-fixture",
+      "outputs": ["research/r2/backend/outputs/frozen-fixture/results.json"]
+    },
+    {
+      "purpose": "Optional isolated repair of old standalone Solidity gas control, NOT an H0/hiding candidate",
+      "command": "python3 research/r2/backend/gas_control.py --rpc-url http://127.0.0.1:18545 --output research/r2/backend/outputs/standalone-solidity-control",
+      "prerequisite": "Main-owned capped Osaka Anvil chain31337 already running. Script does not start services, read .env, or relax code/initcode/transaction limits.",
+      "outputs": ["research/r2/backend/outputs/standalone-solidity-control/results.json", "research/r2/backend/outputs/standalone-solidity-control/forge.stdout.log", "research/r2/backend/outputs/standalone-solidity-control/forge.stderr.log"],
+      "expected": "Bypass bash empty-array nounset defect with direct argv; retain exact execution outcome and any broadcast transactions/receipts. Failure before a receipt remains execution barrier, not a gas measurement."
+    }
+  ],
+  "minimal_direct_reproducers": [
+    "env CARGO_TARGET_DIR=research/r2/backend/target cargo check --manifest-path research/r2/backend/rust/Cargo.toml --features uni-api-barrier --bin uni-api-barrier",
+    "env CARGO_TARGET_DIR=research/r2/backend/target cargo check --manifest-path research/r2/backend/rust/Cargo.toml --features multi-api-barrier --bin multi-api-barrier"
+  ],
+  "environment_note": "Use run.py for normal execution: it strips inherited environment to an explicit toolchain/thread allowlist and logs commands. Direct cargo examples assume Main has already sanitized the environment."
+}

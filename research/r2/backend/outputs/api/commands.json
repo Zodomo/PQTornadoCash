@@ -1,0 +1,109 @@
+[
+  {
+    "label": "build",
+    "argv": [
+      "cargo",
+      "build",
+      "--release",
+      "--manifest-path",
+      "/Users/zodomo/code/PQTornado/research/r2/backend/rust/Cargo.toml",
+      "--lib"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado",
+    "environment_keys": [
+      "CARGO_BUILD_JOBS",
+      "CARGO_TARGET_DIR",
+      "CARGO_TERM_COLOR",
+      "HOME",
+      "PATH",
+      "PYTHONDONTWRITEBYTECODE",
+      "RAYON_NUM_THREADS",
+      "TMPDIR"
+    ],
+    "exit_code": 0,
+    "elapsed_wall_ns": 9993717000,
+    "measurement_class": "EXECUTION_LOG_NOT_BENCHMARK"
+  },
+  {
+    "label": "dependency-graph",
+    "argv": [
+      "cargo",
+      "metadata",
+      "--locked",
+      "--format-version",
+      "1",
+      "--manifest-path",
+      "/Users/zodomo/code/PQTornado/research/r2/backend/rust/Cargo.toml"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado",
+    "environment_keys": [
+      "CARGO_BUILD_JOBS",
+      "CARGO_TARGET_DIR",
+      "CARGO_TERM_COLOR",
+      "HOME",
+      "PATH",
+      "PYTHONDONTWRITEBYTECODE",
+      "RAYON_NUM_THREADS",
+      "TMPDIR"
+    ],
+    "exit_code": 0,
+    "elapsed_wall_ns": 77447000,
+    "measurement_class": "EXECUTION_LOG_NOT_BENCHMARK"
+  },
+  {
+    "label": "uni-api-barrier",
+    "argv": [
+      "cargo",
+      "check",
+      "--locked",
+      "--manifest-path",
+      "/Users/zodomo/code/PQTornado/research/r2/backend/rust/Cargo.toml",
+      "--features",
+      "uni-api-barrier",
+      "--bin",
+      "uni-api-barrier"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado",
+    "environment_keys": [
+      "CARGO_BUILD_JOBS",
+      "CARGO_TARGET_DIR",
+      "CARGO_TERM_COLOR",
+      "HOME",
+      "PATH",
+      "PYTHONDONTWRITEBYTECODE",
+      "RAYON_NUM_THREADS",
+      "TMPDIR"
+    ],
+    "exit_code": 101,
+    "elapsed_wall_ns": 5975655000,
+    "measurement_class": "EXECUTION_LOG_NOT_BENCHMARK"
+  },
+  {
+    "label": "multi-api-barrier",
+    "argv": [
+      "cargo",
+      "check",
+      "--locked",
+      "--manifest-path",
+      "/Users/zodomo/code/PQTornado/research/r2/backend/rust/Cargo.toml",
+      "--features",
+      "multi-api-barrier",
+      "--bin",
+      "multi-api-barrier"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado",
+    "environment_keys": [
+      "CARGO_BUILD_JOBS",
+      "CARGO_TARGET_DIR",
+      "CARGO_TERM_COLOR",
+      "HOME",
+      "PATH",
+      "PYTHONDONTWRITEBYTECODE",
+      "RAYON_NUM_THREADS",
+      "TMPDIR"
+    ],
+    "exit_code": 101,
+    "elapsed_wall_ns": 179784000,
+    "measurement_class": "EXECUTION_LOG_NOT_BENCHMARK"
+  }
+]

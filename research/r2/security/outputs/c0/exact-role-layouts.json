@@ -1,0 +1,400 @@
+[
+  {
+    "candidate": "H0",
+    "config_id": "R2-H0-v03",
+    "digest_fields": 16,
+    "domain_controls": "tag=16; version1; bytes=129; count=65; aux=level only for node",
+    "feed_forward": "none",
+    "full_rounds": 8,
+    "output_lanes": "0..3 of final absorption state then 0..3 after each of three further permutations",
+    "partial_rounds": 13,
+    "role": "scope",
+    "role_scope": "exact frozen typed role",
+    "variable_fixed_lanes": "initial[0..3]=0; initial[4..8]=[1,16,129,65,aux]; initial[9..15]=0; then payload 65 BE16 words of exact 129-byte ScopeInput absorbed additively in rate4",
+    "width": 16
+  },
+  {
+    "candidate": "H0",
+    "config_id": "R2-H0-v03",
+    "digest_fields": 16,
+    "domain_controls": "tag=17; version1; bytes=128; count=32; aux=level only for node",
+    "feed_forward": "none",
+    "full_rounds": 8,
+    "output_lanes": "0..3 of final absorption state then 0..3 after each of three further permutations",
+    "partial_rounds": 13,
+    "role": "note",
+    "role_scope": "exact frozen typed role",
+    "variable_fixed_lanes": "initial[0..3]=0; initial[4..8]=[1,17,128,32,aux]; initial[9..15]=0; then payload scope16 || secret8 || trapdoor8 absorbed additively in rate4",
+    "width": 16
+  },
+  {
+    "candidate": "H0",
+    "config_id": "R2-H0-v03",
+    "digest_fields": 16,
+    "domain_controls": "tag=18; version1; bytes=96; count=24; aux=level only for node",
+    "feed_forward": "none",
+    "full_rounds": 8,
+    "output_lanes": "0..3 of final absorption state then 0..3 after each of three further permutations",
+    "partial_rounds": 13,
+    "role": "nullifier",
+    "role_scope": "exact frozen typed role",
+    "variable_fixed_lanes": "initial[0..3]=0; initial[4..8]=[1,18,96,24,aux]; initial[9..15]=0; then payload scope16 || secret8 absorbed additively in rate4",
+    "width": 16
+  },
+  {
+    "candidate": "H0",
+    "config_id": "R2-H0-v03",
+    "digest_fields": 16,
+    "domain_controls": "tag=19; version1; bytes=64; count=16; aux=level only for node",
+    "feed_forward": "none",
+    "full_rounds": 8,
+    "output_lanes": "0..3 of final absorption state then 0..3 after each of three further permutations",
+    "partial_rounds": 13,
+    "role": "empty",
+    "role_scope": "exact frozen typed role",
+    "variable_fixed_lanes": "initial[0..3]=0; initial[4..8]=[1,19,64,16,aux]; initial[9..15]=0; then payload scope16 absorbed additively in rate4",
+    "width": 16
+  },
+  {
+    "candidate": "H0",
+    "config_id": "R2-H0-v03",
+    "digest_fields": 16,
+    "domain_controls": "tag=32; version1; bytes=128; count=32; aux=level only for node",
+    "feed_forward": "none",
+    "full_rounds": 8,
+    "output_lanes": "0..3 of final absorption state then 0..3 after each of three further permutations",
+    "partial_rounds": 13,
+    "role": "node",
+    "role_scope": "exact frozen typed role",
+    "variable_fixed_lanes": "initial[0..3]=0; initial[4..8]=[1,32,128,32,aux]; initial[9..15]=0; then payload left16 || right16; aux=level0..19 absorbed additively in rate4",
+    "width": 16
+  },
+  {
+    "candidate": "H0",
+    "config_id": "R2-H0-v03",
+    "digest_fields": 16,
+    "domain_controls": "tag=20; version1; bytes=72; count=36; aux=level only for node",
+    "feed_forward": "none",
+    "full_rounds": 8,
+    "output_lanes": "0..3 of final absorption state then 0..3 after each of three further permutations",
+    "partial_rounds": 13,
+    "role": "payout",
+    "role_scope": "exact frozen typed role",
+    "variable_fixed_lanes": "initial[0..3]=0; initial[4..8]=[1,20,72,36,aux]; initial[9..15]=0; then payload BE16(recipient20 || relayer20 || fee32) absorbed additively in rate4",
+    "width": 16
+  },
+  {
+    "candidate": "H0",
+    "config_id": "R2-H0-v03",
+    "digest_fields": 16,
+    "domain_controls": "tag=21; version1; bytes=256; count=64; aux=level only for node",
+    "feed_forward": "none",
+    "full_rounds": 8,
+    "output_lanes": "0..3 of final absorption state then 0..3 after each of three further permutations",
+    "partial_rounds": 13,
+    "role": "statement",
+    "role_scope": "exact frozen typed role",
+    "variable_fixed_lanes": "initial[0..3]=0; initial[4..8]=[1,21,256,64,aux]; initial[9..15]=0; then payload scope16 || root16 || nullifier16 || payout16 absorbed additively in rate4",
+    "width": 16
+  },
+  {
+    "candidate": "H5",
+    "config_id": "R2-H5-complete-v1",
+    "digest_fields": 12,
+    "domain_controls": {
+      "domain": 2,
+      "format": "[domain,2001,payload_count_or_public_byte_length,level_or_chunk_index]",
+      "version": 2001
+    },
+    "feed_forward": "input[i] added to permutation[i] for all retained i=0..11",
+    "full_rounds": 8,
+    "output_lanes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "partial_rounds": 30,
+    "role": "note",
+    "role_scope": "exact complete R2 role; public byte/field stream constraints retained",
+    "variable_fixed_lanes": {
+      "0..11": "scope",
+      "12..19": "secret",
+      "20..27": "trapdoor",
+      "28..31": [
+        2,
+        2001,
+        28,
+        0
+      ]
+    },
+    "width": 32
+  },
+  {
+    "candidate": "H5",
+    "config_id": "R2-H5-complete-v1",
+    "digest_fields": 12,
+    "domain_controls": {
+      "domain": 3,
+      "format": "[domain,2001,payload_count_or_public_byte_length,level_or_chunk_index]",
+      "version": 2001
+    },
+    "feed_forward": "input[i] added to permutation[i] for all retained i=0..11",
+    "full_rounds": 8,
+    "output_lanes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "partial_rounds": 30,
+    "role": "nullifier",
+    "role_scope": "exact complete R2 role; public byte/field stream constraints retained",
+    "variable_fixed_lanes": {
+      "0..11": "scope",
+      "12..19": "secret",
+      "20..23": [
+        3,
+        2001,
+        20,
+        0
+      ],
+      "24..31": "fixed zero"
+    },
+    "width": 32
+  },
+  {
+    "candidate": "H5",
+    "config_id": "R2-H5-complete-v1",
+    "digest_fields": 12,
+    "domain_controls": {
+      "domain": 5,
+      "format": "[domain,2001,payload_count_or_public_byte_length,level_or_chunk_index]",
+      "version": 2001
+    },
+    "feed_forward": "input[i] added to permutation[i] for all retained i=0..11",
+    "full_rounds": 8,
+    "output_lanes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "partial_rounds": 30,
+    "role": "node",
+    "role_scope": "exact complete R2 role; public byte/field stream constraints retained",
+    "variable_fixed_lanes": {
+      "0..11": "left",
+      "12..23": "right",
+      "24..27": [
+        5,
+        2001,
+        24,
+        "level 0..19"
+      ],
+      "28..31": "fixed zero"
+    },
+    "width": 32
+  },
+  {
+    "candidate": "H5",
+    "config_id": "R2-H5-complete-v1",
+    "digest_fields": 12,
+    "domain_controls": {
+      "domain": 4,
+      "format": "[domain,2001,payload_count_or_public_byte_length,level_or_chunk_index]",
+      "version": 2001
+    },
+    "feed_forward": "input[i] added to permutation[i] for all retained i=0..11",
+    "full_rounds": 8,
+    "output_lanes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "partial_rounds": 30,
+    "role": "empty",
+    "role_scope": "exact complete R2 role; public byte/field stream constraints retained",
+    "variable_fixed_lanes": {
+      "0..11": "scope",
+      "12..27": "fixed zero",
+      "28..31": [
+        4,
+        2001,
+        12,
+        0
+      ]
+    },
+    "width": 32
+  },
+  {
+    "candidate": "H5",
+    "config_id": "R2-H5-complete-v1",
+    "digest_fields": 12,
+    "domain_controls": {
+      "domain": 1,
+      "format": "[domain,2001,payload_count_or_public_byte_length,level_or_chunk_index]",
+      "version": 2001
+    },
+    "feed_forward": "input[i] added to permutation[i] for all retained i=0..11",
+    "full_rounds": 8,
+    "output_lanes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "partial_rounds": 30,
+    "role": "scope",
+    "role_scope": "exact complete R2 role; public byte/field stream constraints retained",
+    "variable_fixed_lanes": {
+      "0..11": "previous digest, initially zero",
+      "12..27": "16 payload fields per chunk, mandatory trailing field 1 then zero padding",
+      "28..31": "[domain,2001,length,zero-based chunk index]",
+      "encoding": "129 bytes: chain_id u64 BE | pool20 | denomination u256 BE | depth u8 | protocol_version u32 BE | parameter_id64 raw bytes. Pair BE u16 fields, final odd byte shifted left8 with low8 zero. 65 fields, controls length129; 5 permutations."
+    },
+    "width": 32
+  },
+  {
+    "candidate": "H5",
+    "config_id": "R2-H5-complete-v1",
+    "digest_fields": 12,
+    "domain_controls": {
+      "domain": 6,
+      "format": "[domain,2001,payload_count_or_public_byte_length,level_or_chunk_index]",
+      "version": 2001
+    },
+    "feed_forward": "input[i] added to permutation[i] for all retained i=0..11",
+    "full_rounds": 8,
+    "output_lanes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "partial_rounds": 30,
+    "role": "payout",
+    "role_scope": "exact complete R2 role; public byte/field stream constraints retained",
+    "variable_fixed_lanes": {
+      "0..11": "previous digest, initially zero",
+      "12..27": "16 payload fields per chunk, mandatory trailing field 1 then zero padding",
+      "28..31": "[domain,2001,length,zero-based chunk index]",
+      "encoding": "recipient20 | relayer20 | fee u256 BE =72 bytes,36 BE u16 fields; controls length72;3 permutations."
+    },
+    "width": 32
+  },
+  {
+    "candidate": "H5",
+    "config_id": "R2-H5-complete-v1",
+    "digest_fields": 12,
+    "domain_controls": {
+      "domain": 7,
+      "format": "[domain,2001,payload_count_or_public_byte_length,level_or_chunk_index]",
+      "version": 2001
+    },
+    "feed_forward": "input[i] added to permutation[i] for all retained i=0..11",
+    "full_rounds": 8,
+    "output_lanes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "partial_rounds": 30,
+    "role": "statement",
+    "role_scope": "exact complete R2 role; public byte/field stream constraints retained",
+    "variable_fixed_lanes": {
+      "0..11": "previous digest, initially zero",
+      "12..27": "16 payload fields per chunk, mandatory trailing field 1 then zero padding",
+      "28..31": "[domain,2001,length,zero-based chunk index]",
+      "encoding": "scope12 | root12 | nullifier12 | payout12 canonical fields,controls length48;4 permutations. Parameter context is carried by scope."
+    },
+    "width": 32
+  },
+  {
+    "candidate": "H6",
+    "config_id": "H6-frozen-node-only",
+    "digest_fields": 14,
+    "domain_controls": "[4,1,28,level]",
+    "feed_forward": "input[i] added to permutation[i] for retained i=0..13",
+    "full_rounds": 8,
+    "output_lanes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "partial_rounds": 30,
+    "role": "node",
+    "role_scope": "frozen node-shaped comparator only; no complete H6 note/nullifier/scope relation",
+    "variable_fixed_lanes": "left[0..13] || right[14..27] || [role4,version1,shape28,level0..19]",
+    "width": 32
+  }
+]

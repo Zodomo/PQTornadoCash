@@ -1,0 +1,18 @@
+{
+  "schema": "pqtc.r2.conditional-commands.v1",
+  "execution_owner": "Main; all commands below are unexecuted at implementation handoff",
+  "working_directory": "repository root",
+  "serial_local_diagnostics": [
+    ["python3", "-B", "research/r2/conditional/gates.py", "--output", "research/r2/conditional/outputs/gates.json"],
+    ["python3", "-B", "research/r2/conditional/l2_payload.py", "--output", "research/r2/conditional/outputs/l2.json"],
+    ["python3", "-B", "research/r2/conditional/hardware.py", "--threads", "1", "--output", "research/r2/conditional/outputs/hardware.json"],
+    ["python3", "-B", "research/r2/conditional/flock_search.py", "--source", "/tmp/pqtc-c70-work/sources/flock-c2d0", "--max-commits", "64", "--output", "research/r2/conditional/outputs/flock.json"],
+    ["python3", "-B", "research/r2/conditional/check.py"]
+  ],
+  "optional_exact_historical_barrier_staging": ["python3", "-B", "research/r2/conditional/flock_search.py", "--source", "/tmp/pqtc-c70-work/sources/flock-c2d0", "--max-commits", "64", "--prepare", "c2d0c2485a54f7b7694e19f4f59730ffde3405cf", "--output", "research/r2/conditional/outputs/flock-staged.json"],
+  "bounded_repair": "flock_search accepts at most four explicit --tip FULL_COMMIT inputs already present locally, inspects at most 128 commits, and --prepare FULL_COMMIT only stages source-supported same-commit config+registry+Keccak candidates (or the exact historical failure control). Prepared source remains under research/r2/conditional/work; it emits but never executes the control command. No network fetch or derivation of unreviewed m21 presets.",
+  "explicit_gate_input": "gates.py --evidence PATH accepts {branch: {prerequisite: {satisfied: true|false|null, artifact: repository-relative research file, sha256: exact file digest, scope: nonempty claim scope}}}. Names are emitted in the default matrix. Missing facts are null and never an architecture failure.",
+  "hardware_execution": "hardware.py emits portable generic-CPU build plus process-cold/warm commands for the real local machine. --x86-binary accepts an existing public executable; x86 commands exist only for compatible native execution or Linux static ELF plus qemu-x86_64, with emulation explicitly labeled. A qemu-system executable without a guest is not an available machine. No SSH hosts/private config discovery.",
+  "l2_scope": "Exact frozen v03-fixed-01 proof A/B and ABI bytes, pinned existing public-key signer and fee functions. Nonces 7 and 8, zero value, fixed public sink. Signatures are computed locally only and only hashes/sizes retained. No RPC or broadcast interface. Concatenated A/B is a transport-only control, never a combined ABI verifier path.",
+  "approval_boundary": "No production/testnet/network signing, no notes in outer witness, no fake complete verifier, no architecture rejection from a missing measurement. Final benchmark and local-node execution remains Main-owned."
+}

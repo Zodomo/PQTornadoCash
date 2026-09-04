@@ -1,0 +1,42 @@
+{
+  "label": "noncanonical-public",
+  "command": [
+    "/Users/zodomo/code/PQTornado/research/r2/operations/target/release/verify-worker",
+    "--statement",
+    "/Users/zodomo/code/PQTornado/research/candidates/v03-baseline/proofs/v03-fixed-01/statement.json",
+    "--parameter",
+    "35adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62ab7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea07779",
+    "--part-a",
+    "/Users/zodomo/code/PQTornado/research/r2/operations/outputs/containment-01/noncanonical-public/part-a.pqtc",
+    "--part-b",
+    "/Users/zodomo/code/PQTornado/research/r2/operations/outputs/containment-01/noncanonical-public/part-b.pqtc",
+    "--mutation",
+    "none"
+  ],
+  "environment": {
+    "PATH": "/bin:/usr/bin",
+    "RAYON_NUM_THREADS": "1",
+    "RUST_BACKTRACE": "0",
+    "LC_ALL": "C"
+  },
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_seconds": 0.005242375016678125,
+  "worker": {
+    "contained": true,
+    "elapsed_ms": 0.008792,
+    "error": "field element 2013265921 is noncanonical",
+    "input_bytes": 212204,
+    "mutation": "none",
+    "mutation_boundary": "serialized-untrusted-input",
+    "panic_policy": "Unwind only; allocator abort and process termination require supervisor isolation",
+    "schema": "pqtc.r2.native-worker.v1",
+    "scope": "Native availability diagnostic, never a Solidity soundness bypass",
+    "status": "DECODE_OR_INPUT_REJECTED",
+    "valid_request_after_mutation": null
+  },
+  "rss_unit": "bytes",
+  "rss_source": "research/r2/operations/outputs/containment-01/noncanonical-public/stderr.log",
+  "part_a_sha256": "73a3866266bfa9fc3dd4d896ec5df125c01ffe7e1fe2f3b9b21b9767336b9283",
+  "part_b_sha256": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701"
+}

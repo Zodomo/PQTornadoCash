@@ -1,0 +1,26 @@
+{
+  "schema": "pqtc.r2.backend-results.v1",
+  "pipeline_id": "R2-C4",
+  "specification_status": "EXACT_H0",
+  "correctness_evidence": "NOT_EVALUATED",
+  "privacy_evidence": "HIDING_APPLICATION_NOT_ESTABLISHED",
+  "security_status": "SECURITY_NOT_QUALIFIED",
+  "performance_evidence": "NOT_EVALUATED",
+  "implementation_stage": "API_AND_BOUNDED_REPAIR",
+  "promotion_status": "NOT_READY_FOR_BUILD_SELECTION",
+  "requested_security_bits": 32,
+  "independent_outputs": {},
+  "api_barriers": {
+    "uni-api-barrier": {
+      "expected_trait": "Pcs",
+      "missing_trait_demonstrated": true,
+      "status": "CONCRETE_API_BARRIER"
+    },
+    "multi-api-barrier": {
+      "expected_trait": "PrescribedPointPcs",
+      "missing_trait_demonstrated": true,
+      "status": "CONCRETE_API_BARRIER"
+    }
+  },
+  "full_evm": "NOT_EVALUATED_NO_COMPLETE_HIDING_NATIVE_PROOF"
+}

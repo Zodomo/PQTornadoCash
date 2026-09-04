@@ -1,0 +1,1952 @@
+URL: https://eprint.iacr.org/2025/2055.pdf
+Content-Type: text/markdown
+Method: iacr
+Notes: Fetching PDF for full content...; PDF converted via markit
+
+---
+
+# On Proximity Gaps for Reed–Solomon Codes
+
+**Authors:** Eli Ben-Sasson, Dan Carmon, Ulrich Haböck, Swastik Kopparty, Shubhangi Saraf
+**Date:** 2025
+**ePrint:** 2025/2055
+**Keywords:** Reed-Solomon codesProximity gaps
+
+---
+
+## Abstract
+
+This paper is about the proximity gaps phenomenon for Reed-Solomon codes. 
+Very roughly, the proximity gaps phenomenon for a code $\mathcal C \subseteq \mathbb F_q^n$ says that for two vectors $f,g \in \mathbb F_q^n$, if  sufficiently many linear combinations $f + z \cdot g$ (with $z \in \mathbb F_q$) are close to $\mathcal C$ in Hamming distance, then so are both $f$ and $g$, up to a proximity loss of $\varepsilon^*$. 
+
+Determining the optimal quantitative form of proximity gaps for Reed--Solomon codes has recently become of great interest because of applications to interactive proofs and cryptography, and in particular, to scalable transparent arguments of knowledge (STARKs) and other modern hash based argument systems used on blockchains today.
+
+Our main results show improved positive and negative results for proximity gaps for Reed-Solomon codes of constant relative distance $\delta \in (0,1)$.
+
+1. For proximity gaps up to the unique decoding radius $\delta/2$, we show that arbitrarily small proximity loss $\varepsilon^* > 0$ can be achieved with only $O_{\varepsilon^*}(1)$ exceptional $z$'s (improving the previous bound of $O(n)$ exceptions). 
+ 
+2. For proximity gaps up to the Johnson radius $J(\delta)$, we show that proximity loss $\varepsilon^* = 0$ can be achieved with only $O(n)$ exceptional $z$'s (improving the previous bound of $O(n^2)$ exceptions).
+This significantly reduces the soundness error in the aforementioned arguments systems.
+
+3. In the other direction, we show that for some Reed--Solomon codes and some $\delta$, proximity gaps at or beyond the Johnson radius $J(\delta)$ with arbitrarily small proximity loss $\varepsilon^*$ needs to have at least $\Omega(n^{1.99})$ exceptional $z$'s.
+
+4. More generally, for all constants $\tau$, we show that for some Reed-Solomon codes and some $\delta = \delta(\tau)$, proximity gaps at radius $\delta - \Omega_{\tau}(1)$ with arbitrarily small proximity loss $\varepsilon^*$ needs to have $n^{\tau}$ exceptional $z$'s.
+
+5. Finally, for all Reed-Solomon codes, we show that improved proximity gaps imply improved bounds for their list-decodability. This shows that improved bounds on the list-decoding radius of Reed-Solomon codes is a prerequisite for any new proximity gaps results beyond the Johnson radius.
+
+---
+
+## Full Paper
+
+<!-- Page 1 -->
+
+# On Proximity Gaps for Reed–Solomon Codes
+
+### Eli Ben-Sasson
+
+∗
+
+### Dan Carmon
+
+∗
+
+### Ulrich Hab¨ock
+
+∗
+
+### Swastik Kopparty
+
+†
+
+### Shubhangi Saraf
+
+‡
+
+### November 6, 2025
+
+Abstract
+
+This paper is about the proximity gaps phenomenon for Reed-Solomon codes. Very roughly, the proximity gaps phenomenon for a code*C⊆*F *n* *q*says that for two vectors*f,g∈*F *n* *q*, if sufficiently many linear combinations*f*+*z·g*(with*z∈*F*q*) are close to*C*in Hamming distance, then so are both*f* and*g*, up to a proximity loss of*ε* *∗*. Determining the optimal quantitative form of proximity gaps for Reed–Solomon codes has recently become of great interest because of applications to interactive proofs and cryptography, and in particular, to scalable transparent arguments of knowledge (STARKs) and other modern hash based argument systems used on blockchains today. Our main results show improved positive and negative results for proximity gaps for Reed–Solomon codes of constant relative distance*δ∈*(0*,*1). •For proximity gaps up to the unique decoding radius*δ/*2, we show that arbitrarily small proximity loss*ε* *∗* *>*0 can be achieved with only*Oε∗* (1) exceptional*z*’s (improving the previous bound of *O*(*n*) exceptions). •For proximity gaps up to the Johnson radius*J*(*δ*), we show that proximity loss*ε* *∗* = 0 can be achieved with only*O*(*n*) exceptional*z*’s (improving the previous bound of*O*(*n²*) exceptions). This significantly reduces the soundness error in the aforementioned arguments systems. •In the other direction, we show that for some Reed–Solomon codes and some*δ*, proximity gaps at or beyond the Johnson radius*J*(*δ*) with arbitrarily small proximity loss*ε* *∗* needs to have at least Ω(*n¹*
+
+*.*99 ) exceptional*z*’s.
+•More generally, for all constants*τ*, we show that for some Reed–Solomon codes and some*δ*= *δ*(*τ*), proximity gaps at radius*δ−*Ω*τ*(1) with arbitrarily small proximity loss*ε* *∗* needs to have*n* *τ* exceptional*z*’s. •Finally, for all Reed–Solomon codes, we show that improved proximity gaps imply improved bounds for their list-decodability. This shows that improved bounds on the list-decoding radius of Reed– Solomon codes is a prerequisite for any new proximity gaps results beyond the Johnson radius.
+
+∗ StarkWare Industries Ltd.*{*eli,dancar,ulrich*}*@starkware.co † Department of Mathematics and Department of Computer Science, University of Toronto, Toronto, Canada.
+
+|Department|of Mathematics|and Department|of Computer|Science,|University|of Toronto,|Toronto,|Canada.|
+|---|---|---|---|---|---|---|---|---|
+|swastik.kopparty@utoronto.ca. Research supported by an NSERC grant.|||||||||
+|Department shubhangi.saraf@utoronto.ca. Research supported by an NSERC grant.|of Mathematics|and Department|of Computer|Science, University|of Toronto,|Toronto,|Canada.|Email:|
+
+‡
+
+<!-- Page 2 -->
+
+## Contents
+
+1 Introduction 3
+
+1.1 Error-Correcting Codes and Proximity Gaps. .. ........................ .4
+1.2 Overview of Results........ .. .. .. .. .........................6
+1.3 Statements of Positive Results ... .. .. .. .. ........................ .8
+1.4 Statements of Negative Results. .. .. .. .. .. ........................10
+1.5 Other Related Work........ .. .. .. .. .........................16
+2 Improved proximity gaps up to half the minimum distance 17
+
+2.1 Non-standard Berlekamp–Welch interpolant overK........................18
+2.2 Dividing*B*(*X,Z*) by*A*(*X,Z*). ................................. ..19
+2.3 From Claim 2.3 to Theorem 1.3. .. .. .. .. .. ........................20
+3 Improved proximity gaps up to the Johnson bound 21
+
+3.1 Improved Guruswami–Sudan interpolant overK..........................22
+3.2 Improved bound on*a*in terms of*DX,DY,DZ*..........................24
+4 Generalizations 26
+
+4.1 More general linear combinations..................................26
+4.2 Constrained agreement..... .. .. .. .. .. .........................27
+4.3 List correlated agreement......................................28
+5 The failure of*n* *τ* -bounded proximity gaps 29
+
+5.1 Finding a subspace with large diversity.............................. .30
+5.2 Preparations for the proof of the Λ-collisions lemma.......................32
+5.3 Proof of Λ-collisions lemma.....................................33
+5.4 Proof of Lemma 5.6........ .. .. .............................33
+6 Limitations on the proximity gaps at the list-decoding radius 35
+
+6.1 Structural lemma: Many values at a random point........................35
+6.2 Proximity gaps stop at the list decoding radius. .........................36
+7 Limits to proximity gaps over prime fields 37
+
+7.1 Proof of Theorem 1.15....... .. .. .. .. .........................38
+7.2 Proof of Theorem 1.16....... .. .. .. .. .........................38
+7.3 Limits on proximity gaps over prime fields in the*δ*= Ω(1) regime?....... .. .. .. ..40
+8 Attacks on STARKs near the list decoding radius 40
+
+8.1 The basic STARK..........................................41
+8.2 STARK with DEEP queries..... .. .. .. .. ........................42
+8.3 Attack on the Ethstark Toy Problem. .. .. .. .........................45
+
+<!-- Page 3 -->
+
+## 1 Introduction
+
+Reed–Solomon codes are classical error-correcting codes based on univariate polynomial evaluation, and are of central importance in both the theory and practice of coding theory. In the past few decades, they have also played a very important role in complexity theory and cryptography, utilizing their strong error-correcting properties combined with the universal expressive power of polynomials.
+
+This paper is about the*proximity gaps*phenomenon for Reed–Solomon codes. Very roughly, the proximity gaps phenomenon for a code*C⊆*F *n* *q*says that for two vectors*f,g∈*F *n* *q*, if many linear combinations*f*+*z·g* (with*z∈*F*q*) are close to*C*in Hamming distance, then so are both*f*and*g*. The crucial quantitative aspects of this are: how close is “close”, and how many is “many”? The question of understanding the optimal quantiative form of proximity gaps for Reed–Solomon codes is of great interest, has many potential applications, and is wide open.
+
+Proximity gaps for linear codes in general, and Reed–Solomon codes in particular, have been very actively studied in recent years, especially in connection to STARKs and other modern hash based argument systems that are currently in use in blockchains. They capture interesting geometry of how the code*C*sits in the Hamming spaceF *n* *q*: *C*has proximity gaps if for every line*ℓ*in the spaceF *n* *q*, either all the points of*ℓ*are close to*C*, or else most points of*ℓ*are far from*C*. Consequently, a nominal one million dollar prize has been recently announce by the Ethereum Foundation to resolve these very questions.
+
+Proximity gaps are also closely related to another fundamental geometric property of a code: list-decodability. A code*C⊆*F *n* *q*has good list-decodability if for any point*f*inF *n* *q*, there cannot be too many codewords of*C* close to it. Again the same quantitative aspects arise: how close is “close”, and how many is “many”? The question of determining the optimal quantitative form of list decodability of Reed–Solomon codes is also of great interest, is much older, has been very well studied, and is wide open.
+
+The study of proximity gaps originated in the works of Rothblum, Vadhan and Wigderson [RVW13] and Ames, Hazay, Ishai and Venkitasubramanian [AHIV17], who used it for delegating computation in sublinear time. The results of [RZ18, BKS18, BGKS20] further explored the quantitative aspects of proximity gaps for general linear codes. The work of Ben-Sasson, Carmon, Ishai, Kopparty and Saraf [BCI + 20] gave the state of the art proximity gaps for Reed–Solomon codes. These results were proved using*algorithms*for decoding Reed–Solomon codes: the proof of proximity gaps, which is a purely combinatorial result, used the Berlekamp–Welch unique decoding and Guruswami–Sudan list-decoding algorithms for Reed–Solomon codes. These results enabled new applications in interactive proofs, distributed storage, and cryptography. In particular, they led to the strongest known soundness analysis of the FRI protocol [BBHR18] for proving proximity to Reed–Solomon codes, a widely used protocol in modern argument systems, such as STARKs [BSBHR18], and validity proofs for blockchains.
+
+Since [BCI + 20], several further applications of proximity gaps for Reed–Solomon codes have been discovered.
+
+•In [ACY23], Arnon, Chiesa and Yogev used proximity gaps for Reed–Solomon codes to give interactive protocols for NP in the IOP model with linear proof size and inverse polynomial soundness.
+
+•The STIR [ACFY24] and WHIR [ACFY25] protocols of Arnon, Chiesa, Fenzi and Yogev give improved theoretical and practical (1) protocols for proving proximity to (constrained) Reed–Solomon codes, and
+
+(2) polynomial commitment schemes.
+•In [MZ25], Minzer and Zheng gave stronger round-by-round soundness for languages in NP, as well as a new protocol for further improved soundness for proving proximity to Reed–Solomon codes.
+
+[Showing lines 1-150 of 1928. Use :151 to continue]
+
+•In [Hab24], Hab¨ock used proximity gaps for Reed–Solomon codes to give a strong soundness analysis for Basefold [ZCF23], a polynomial commitment scheme.
+
+•Finally, the FRI protocol, first used in the Stone STARK prover of StarkWare as a scaling solution for Ethereum, has been widely adopted as the proximity proving protocol for a number of active
+
+<!-- Page 4 -->
+
+or upcoming blockchain “ZKVMs”, such as S-two, SP1, Risc-0, Miden, Polygon Hermez, Plonky3, OpenVM, Matterlabs, Lita, Miden, Brevis, Linea and Zisk.
+
+Given all these applications, and the strong connections to basic questions about list-decoding of Reed– Solomon codes, it is thus of great interest to prove quantitatively stronger proximity gaps for Reed–Solomon codes, as well as to understand the limits of what kind of proximity gaps are possible.
+
+### 1.1 Error-Correcting Codes and Proximity Gaps
+
+For an alphabet Σ and strings*f,g∈*Σ *n*, we define the relative Hamming distance ∆(*f,g*) to be the fraction of*i∈*[*n*] for which*fi̸*=*gi*. A linear code*C*overF*q*of length*n*is a linear subspace ofF *n* *q*, and the minimum distance of*C*is the smallest value of ∆(*x,y*) as*x,y*vary over distinct elements of*C*.
+
+Let*C⊆*F *n* *q*be a linear code with minimum distance*δ*. The minimum distance property immediately implies that for any*γ < δ/*2 (the*unique decoding radius*), any Hamming ball of radius*γ*inF *n* *q*contains at most 1 codeword of*C*.
+
+One can also say something about Hamming balls of larger radii – this is related to list-decoding. *√* Define *the Johnson radiusJ*(*δ*) = 1*−* 1*−δ*(and note that*δ/*2*< J*(*δ*)*< δ*). Then for any*η >*0, the Johnson bound [Joh62] implies that any Hamming ball inF *n* *q*of radius*γ*=*J*(*δ*)*−η*contains at most*Oη*(1) codewords of*C*.
+
+For Reed–Solomon codes of minimum distance*δ*, it is an extremely interesting question whether all Hamming balls inF *n* *q*of radius*γ*(for some*γ*larger than*J*(*δ*)) are guaranteed to contain at mostpoly(*n*) codewords. This is the problem of determining the list-decoding radius of Reed–Solomon codes. For some Reed–Solomon codes, it is known that one can take*γ*arbitrarily close to*δ*; that this may be true for all Reed–Solomon codes is a tantalizing possibility.
+
+For a general linear code*C*, if*f,g∈*F *n* *q*are both in*C*, then of course every linear combination*f*+*z·g*(with*z∈* F*q*) also lies in*C*. The proximity gaps phenomenon [BCI + 20] (see also [RVW13, AHIV17, BKS18, BGKS20]) provides a robust converse to this – it says that if for many*z*we have that*f*+*z·g*is close to*C*, then*f*and *g*are themselves both close to*C*in a certain correlated manner.
+
+Before the formal definition, we quickly introduce a little bit of notation. For two strings*f,g∈*Σ *n*, we let [*f,g*] denote the interleaved/correlated vector*h∈*(Σ²) *n* with*hi*= (*fi,gi*). In the Hamming metric space (Σ²) *n*, the alphabet is Σ²: thus ∆([*f,g*]*,*[*u,v*])*≤λ*if and only if there exists some subset*S⊆*[*n*], with *|S|≥*(1*−λ*)*n*, such that*f|S*=*u|S*and*g|S*=*v|S*. Finally, for a code*C ⊆*Σ *n*, we define the interleaved code*C² ⊆*(Σ²) *n*, given by: *{*[*u,v*]*∈*(Σ²) *n* *|u,v∈C}.*
+
+It is easy to see that if ∆([*f,g*]*,C²*)*≤γ*, then for all*z∈*F*q*, we have ∆(*f*+*z·g,C*)*≤γ*.
+
+Definition 1.1(Proximity gaps).*We say the linear codeC⊆*F *n* *qhas*proximity gaps*up to radiusγ∈*[0*,*1]*,* *with parametersa∈*N*andε* *∗* *∈*[0*,*1]*, if, for everyf,g∈*F *n* *qand everyγ* *′* *∈*[0*,γ*]*we have the following:*
+
+•*Whenever* *|{z∈*F*q|*∆(*f*+*z·g,C*)*≤γ* *′* *}|≥a,*
+
+*then* ∆([*f,g*]*,C²*)*≤γ* *′* +*ε* *∗* *.*
+
+*The quantity* <u>a</u> *q* *is called the*soundness error*. The quantityε* *∗* *is called the*proximity loss*.*
+
+In applications, we will usually need*γ*to be a constant in (0*,*1), and proximity loss to tend to 0. Some applications need proximity loss equal to 0. There have been many results on proximity gaps, for both
+
+<!-- Page 5 -->
+
+general linear codes and Reed–Solomon codes. We give a quick summary of the prior work before we state our results.
+
+Arbitrary linear codesThe first result of a proximity gap flavor was a very influential lemma of Rothblum, Vadhan, Wigderson [RVW13]. They showed that that for any linear code*C*(with no assumption about the distance), proximity gaps holds with arbitrary*γ*,*a*= 2 and proximity loss*ε* *∗* =*γ*. This was used in their results on delegating computation in sublinear time. A generalization of the [RVW13] lemma was given in [BKS18], using ideas from list-decoding and the Johnson bound. This again holds for every linear code*C* and arbitrary*γ*: the result said that proximity gaps holds with any*a*and proximity loss*ε* *∗* = *a−* <u>1</u> 1 (*γ−γ²*). Qualitatively, this gives a nontrivial proximity gap result even for very large radii*γ*close to 1. Notice that both these results do not have vanishing proximity loss when*γ*is a fixed constant in (0*,*1).
+
+Linear codes with good distanceA different line of work extending [RVW13] showed proximity gap results for linear codes with good distance*δ*, provided the radius*γ*is small enough in terms of*δ*. The main new feature was that these results could achieve vanishing proximity loss, and this feature enables many more applications.
+
+Ames, Hazay, Ishai and Venkitasubramaniam [AHIV17], in their work on sublinear time delegation (Ligero), showed that for any linear code*C*of minimum distance*δ*,*C*has proximity gaps at any radius*γ < δ/*4 with proximity loss*ε* *∗* = 0 and any*a*=*γn*+ 2. The same argument shows shows that*C*has proximity gaps at radius*γ < δ/*4 with arbitrarily small proximity loss*ε* *∗* and*a*= 1 + *ε* <u>γ</u> *∗*. The*δ/*4 threshold was improved to *δ/*3 by Roth–Zemor [RZ18] and Ben-Sasson–Kopparty–Saraf [BKS18].
+
+This latter work [BKS18] also showed a proximity gap result at a radius*γ*that could get close to 1: for any linear code of minimum distance*δ*, for*γ*=*J₂*(*δ*)*−η*(where*J₂*(*δ*) =*J*(*J*(*δ*)) = 1*−*(1*−δ*) 1*/*4 is the “double Johnson” radius, and*η >*0 is arbitrary), there are proximity gaps with proximity loss*ε* *∗* and¹ *a*=*Oη*(1*/ε* *∗* )*·γ*. This result is incomparable to the above mentioned result on proximity gaps up to radius *δ/*3: for small*δ*we have*δ/*3*> J₂*(*δ*), while for large*δ*we have*δ/*3*< J₂*(*δ*).
+
+Both these bounds got a common improvement in the paper of Ben-Sasson, Goldberg, Kopparty and Saraf [BGKS20]. That paper showed that proximity gaps hold at radius*γ*=*J₁.*5(*δ*)*−η*(where*J₁.*5(*δ*) = 1*−*(1*−δ*) 1*/*3 is the “one-and-a-half Johnson radius”), with proximity loss*ε* *∗* and*a*=*Oη*(1*/ε* *∗* )*·γ*.
+
+[BGKS20] also gave a matching lower bound. They gave instances of infinitely many Reed Solomon codes with distance*δ*= 7*/*8, such that when*γ*is equal to the one-and-a-half Johnson radius*J₁.*5(*δ*), a*o*(1) proximity loss cannot be guaranteed even if*a*is taken as large as Ω(*n*).
+
+Reed–Solomon codes with good distanceMany of the cryptographic applications where the above mentioned results were used took*C*to be a Reed–Solomon code. It was thus of interest to obtain proximity gaps results for just Reed–Solomon codes.
+
+In [BCI + 20], Ben-Sasson, Carmon, Ishai, Kopparty and Saraf showed proximity gaps results for Reed– Solomon codes going beyond what was known for general linear codes. The crucial ingredient that enabled these results was the well developed theory of*decoding algorithms*for Reed–Solomon codes. Specifically, they used the Berlekamp–Welch algorithm [WB86] (for unique decoding) and the Guruswami–Sudan algorithm [GS99] (for list decoding up to the Johnson radius) as a tool (within the proof) to get a criterion for a given string to be close to the code, and used this to analyze proximity gaps. There were two kinds of proximity gaps that they showed:
+
+•up to the unique decoding radius,*γ < δ/*2, proximity gaps holds with*a*=*n*and proximity loss*ε* *∗* = 0,
+
+•up to the Johnson radius*γ < J*(*δ*), proximity gaps holds with*a*=*Oγ,δ*(*n²*) and proximity loss*ε* *∗* = 0. 1 Here*OK*(*·*) means that the constant in the*O*(*·*) may depend on*K*.
+
+<!-- Page 6 -->
+
+Improving the radius up to which these proximity gap results holds is of is of great importance for the above mentioned practical hash-based arguments of knowledge.
+
+Conjectured proximity gaps for Reed–Solomon codesA central guiding conjecture for the area has been that proximity gaps should hold all the way to radius*δ*with*o*(1) proximity loss and*a*being polynomial in*n*. The conjecture is parametrized by a constant*τ >*0, the exponent of the polynomial bound.
+
+Conjecture 1.2(*n* *τ* -bounded proximity gaps).*Letδ∈*(0*,*1)*be a constant.*
+
+*For every Reed Solomon codeC*=RS[F*q,D,k*]*with length|D|*=*nand distanceδ, and for everyη >*0*,*
+
+*Chas proximity gaps up to radiusγ*=*δ−η, with proximity lossε* *∗* =*oη*(1)*anda*=*Oη*(*n* *τ* )*.*
+
+A stronger form of the conjecture, which is needed for some applications, asks for*ε* *∗* = 0.
+
+If the above conjecture holds with a certain value of*τ*, then in applications of proximity gaps one would <u>n</u> *τ* choose the field size*q*to be Ω*η*( *β* ), where*β*is the target soundness error.
+
+The negative result of [BGKS20] showed that the conjecture is false for*τ <*1. Diamond and Gruen [DG25b] showed that a strengthened form of the conjecture is false for*τ <*1 and certain*δ*= 1*−o*(1). We also just learned of an elegant new result of Diamond and Gruen [DG25a] who disproved a stronger version of the above conjecture (made explicitly in [BCI + 20]) for*allτ*: the stronger version asked for*a*to also be polynomially bounded in*η*.
+
+To compare the conjecture with the positive results that are known, we list below how the strongest results in this direction fall short of this.
+
+•For proximity gaps with*a*=poly(*n*), the previously best known results required*γ*to be bounded below*J*(*δ*), and achieved*a*=*O*(*n²*) and 0-proximity loss.
+
+•For proximity gaps with*a*=*O*(*n*), the previously best known results required*γ*to be bounded below max*{δ/*2*,J₁.*5(*δ*)*}*and achieved 0-proximity loss.
+
+With this state of affairs, we now describe our results.
+
+### 1.2 Overview of Results
+
+Our paper is motivated by Conjecture 1.2. On the one hand, we prove positive results establishing proximity gaps for general Reed–Solomon codes with much stronger quantitative behavior than previously known. In particular, these results reduce the*a*parameter (and thus the needed field size for the same target soundness error) in known results by a factor*n*. On the other hand, we show negative results establishing the limits of proximity gaps: there are instances where any proximity gap result must have a proximity loss of Ω(1) unless the*a*parameter is chosen very large. In particular, we refute Conjecture 1.2 for all*τ*=*O*(1).
+
+We give a brief summary of our main results:
+
+•For*γ < δ/*2, we show that proximity gaps up to radius*γ*holds with proximity loss*ε* *∗* and*a*= max*{*Ω( *δ/*2 <u>1</u> *−γ*
+
+)*,*1 + *ε* <u>γ</u> *∗}*. Notably, this bound on*a*is*O*(1) if*ε*
+*∗* and*δ/*2*−γ*are positive constants. The previous result in this range of*γ*, of [BCI + 20], could not give any proximity gaps with this small an*a*: it needed*a*=*n*to conclude anything in this range of*γ*(and then it gave proximity gaps with*ε* *∗* = 0).
+
+Our method also gives the optimal bound on*a*for the*ε* *∗* = 0 case. If*δ/*2*−γ*is a positive constant, then proximity gaps up to radius*γ*holds with proximity loss*ε* *∗* = 0 with*a*=*γn*+ 2, matching the exact (and tight) bound on*a*that was proven by [AHIV17, RZ18] for*γ < δ/*3.
+
+<!-- Page 7 -->
+
+•For*γ < J*(*δ*)*−η*, we show that proximity gaps up to radius*γ*holds with 0 proximity loss and *a*=*Oη,δ*(*n*), The previous result in this range of*γ*, of [BCI + 20], needed*a*= Ω*η,δ*(*n²*). This significantly reduces the soundness error in the practical argument systems where these results are used.
+
+•On the negative side, we show that for any constant*τ*, the*n* *τ* -bounded proximity gaps conjecture (Conjecture 1.2) is false. Specifically for each integer*τ*, letting*λτ*= 2 *−*(*τ*+2), for an infinite family of Reed–Solomon codes with distance*δ*= 1*−λτ*, we show that proximity gaps at radius*γ*= 1*−*4*λτ* must have a proximity loss of at least 2*λτ*if*a*is smaller than*n* *τ−o*(1). The main qualitative feature is that for every constant*τ*, there are Reed-Solomon codes with some constant distance*δ*=*δτ*, such that proximity gaps at radius*δ−*Ω*τ*(1) and*a*=*O*(*n* *τ* ) must have a proximity loss of Ω*τ*(1).
+
+•An instantiation of the above negative result for*τ*= 2 gives us a tight negative result for proximity gaps at the Johnson radius: for an infinite family of Reed–Solomon codes with distance*δ*= 15*/*16, we get that proximity gaps at radius*γ*=*J*(*δ*) must have a proximity loss of at least Ω(1) if*a*is smaller than*n²* *−o*(1). Thus*a*must jump from*O*(*n*) to Ω(*n²* *−o*(1) ) as*γ*increases past*J*(*δ*).
+
+•Finally, we show that proximity gaps for a Reed–Solomon code at the list decoding radius (for list size
+
+*q*) and*o*(1) proximity loss needs*a*at least
+2 <u>q</u> *n* (and so the soundness error is at least 2 <u>1</u> *n*, independent of*q*). This means that improving the proximity gap radius beyond the Johnson radius with*a <* 2 <u>q</u> *n* for any Reed–Solomon code implies that the list-decoding radius of that code is larger than the Johnson radius.
+
+Additional results include: some weaker limitations to proximity gaps over prime fields, a sharp threshold behavior for proximity gaps at radius*δ/*3 (in the*δ*=*o*(1) regime), and some attacks on STARKs for some simple constraint satisfaction problems, showing that the bound from [BGKS20] on their soundness error cannot be improved much.
+
+The following tables show our new results on proximity gaps alongside what was known before.
+
+Table 1: Proximity gaps for Reed–Solomon codes of distance*δ*. The shaded rows hold for arbitrary linear
+
+codes of distance*δ*.
+
+<u>requirement on</u> *∗* Reference *ε* Notes *γ a*
+
+|[RVW13]|arbitrary|a≥ 2|γ||
+|---|---|---|---|---|
+|[BKS18]|arbitrary|a≥ 2|a · (γ−γ²) a− 1|∗ − 1 ε →J (γ) −γ as a→∞|
+|Trivial|< δ|Ω (n) δ a≥ 2|0||
+|[AHIV17]|< δ/ 4|a≥ 2|1 1 ·γ a−|∗ ε = 0 for a > γn + 1|
+|[RZ18, BKS18]|< δ/ 3|a≥ 2|1 1 ·γ a−|∗ ε = 0 for a > γn + 1|
+
+[BCI + 20] *< δ/*2 *a > n* 0
+
+This work *< δ/*2 *a≥* *δ/*21*−γ a−* 1 1 *·γ ε* *∗* = 0 for*a > γn*+ 1, 2 *δ* *−γ≥*Ω(*√* 1 *n* )
+
+[BKS18] *<*1*−*(1*−δ*) 1*/*4 *−η a≥*Θ*δ* *η* 12 *Oδ* *η* 2 1 *a* *·γ ε* *∗* = 0 for*a*= Ω*δ* *ηn* 2
+
+[BGKS20] *<*1*−*(1*−δ*) 1*/*3 *−η a≥*Θ*δ* *η* 1 *Oδ* *ηa* 1 *·γ ε* *∗* = 0 for*a*= Ω*δ* *n* *η* + 1*/*2 *n*2 [BCI 20] *<*1*−*(1*−δ*) *−η a≥*Θ*δ* *η* 70
+
+This work *<*1*−*(1*−δ*) 1*/*2 *−η a≥*Θ*δ* *ηn* 50
+
+<!-- Page 8 -->
+
+Table 2: Parameters where large proximity losses are unavoidable, for Reed–Solomon codes of distance*δ*.
+
+LDRis the list-decoding radius, see Definition 1.8.
+
+Reference *δ γ a ε* *∗* Notes
+
+[BGKS20] 7/8 1*−*(1*−δ*) 1*/*3 = 1*/*2 *n−*1 =*q−*1 1*/*4 *q*even
+
+
+[Showing lines 151-300 of 1928. Use :301 to continue]
+This work 15/16 1*−*(1*−δ*) 1*/*2 = 3*/*4 *n²* *−o*(1) = (1*−o*(1))*q* 1*/*8 *q*even
+
+This work 1*−λτ* 1*−*4*λτ n* *τ−o*(1) = (1*−o*(1))*q* 2*λτ* any*τ*,*λτ* = 2 *−*(*τ*+2) ,*q*even
+
+This work any*δ γ*=LDRF*q,n,q*(*δ*) + *n* 2 2 *qn* *δ−γ−* *n* 1
+
+This work *≈*1*/*2 *γ*=*δ−* log <u>1</u> 2*n* *n*=*q* 2 log <u>1</u> 2*n* Mersenne prime*q*
+
+[DG25b] 1*−*1*/n δ/*2*−* 2 <u>1</u> *n* *n* *n* <u>1</u>
+
+[DG25a] 1*−n* *−ϵ* *δ−n* *−ϵ* *n* *τ* = *n* <u>q</u> *n* *−ϵ* any*τ*, some*ϵ >*1*/*2
+
+This work *c/n δ/*3 *n/c*= (*q−*1)*/c δ/*3 prime*q*, any*c*=*O*(1)
+
+This work *n* *ϵ* */n δ/*2 *n²* */*(1*−*4*ϵ*) =*q−*1 *δ/*4 prime*q*, any*ϵ∈*(0*,*1*/*4)
+
+### 1.3 Statements of Positive Results
+
+We summarize our concrete improvements over [BCI + 20].
+
+1.3.1 Up to half minimum distance Up to the unique decoding radius of the Reed–Solomon code, we obtain the following main result: Theorem 1.3.*LetCbe the code*RS[F*q,D,k*]*of block-lengthn*=*|D|and minimum distanceδ*= 1*−*
+*n* <u>k</u> *. Let* *γ∈* 3 <u>δ</u> *,* 2 <u>δ</u> *−* *n* <u>1</u> *. Supposeu₀,u₁* : *D→*F*qare functions such thatS*=*{z∈*F*q|*∆(*u₀* +*z·u₁,C*)*≤γ}is of* *size*
+
+<u>δ 1</u> *a≥ −*1 *·* *γ δ−*2*γ*
+
+*Then* 2<u>1</u> ∆([*u₀,u₁*]*,C*)*≤* 1 + *·γ.* *a−*1
+
+*In other words, for distance lossε* *∗* *, it suffices to take*
+
+*δ* 1 *γ* *a≥*max *−*1 *·,*1 + *∗* *.* *γ δ−*2*γ ε*
+
+Using that *γ* <u>δ</u> *≤*3, one obtains the coarser bound *δ/*2 <u>1</u> *−γ* on*a*, as cited in Table 1.
+
+The most notable feature of this theorem is that for*ε* *∗* and*δ/*2*−γ*being positive constants, the*a*needed for the proximity gap result is just a constant. This saves a factor of Θ(*n*) in soundness error compared to the previous best result for this range, in [BCI + 20], at the cost of introducing some arbitrarily small constant proximity loss.
+
+Choosing*ε* *∗* *<* *n* <u>1</u> in Theorem 1.3 yields the following lossless result, for not too small distances.
+
+<!-- Page 9 -->
+
+*√* Corollary 1.4.*Forδ≥* 3 *√* *· n*2 *andγ∈* 3 *δ* *,* 2 *δ* *−* *δn* 3 *. IfS*=*{z∈*F*q|*∆(*u₀* +*z·u₁,C*)*≤γ}is of size*
+
+*a > γ·n*+ 1*,*
+
+*then*∆([*u₀,u₁*]*,C²*)*≤γ.*
+
+For practical parameters, with*δ*= Ω(1) and not too small word lengths*n*, the corollary improves [BCI + 20, Theorem 4.1] from*a > n*down to the [AHIV17, RZ18] bound*a > γ·n*+ 1. Moreover, since that bound is tight, the result is optimal on its range of validity.
+
+1.3.2 Up to the Johnson radius
+*√* Up to the Johnson radius*J*(*δ*) = 1*−* 1*−δ*, our main result is:
+
+Theorem 1.5.*LetCbe the code*RS[F*q,D,k*]*with block-lengthn*=*|D|and minimum distance* l m *δ*= 1*−* *n* <u>k</u> *.* <u>k</u>*√ √* *√* <u>ρ</u> *Denoteρ*= *n* = 1*−δ. Forγ∈* 0*,*1*− ρ, letη*= 1*− ρ−γ, andm*= max 2*η* *,*3*. Suppose* *u₀,u₁* : *D→*F*qare functions such thatS*=*{z∈*F*q|*∆(*u₀* +*z·u₁,C*)*≤γ}is of size*
+
+2(*m*+ 1*/*2) 5 + 3(*m*+ 1*/*2)*γρ m*+ 1*/*2 *n* *a >* 3*/*2 *·n*+ *√* =*Oρ* 5
+
+*.*(1)
+3*ρ ρ η*
+
+*Then* ∆([*u₀,u₁*]*,C²*)*≤γ.*
+
+Note that*ρ*= 1*−δ*= *n* <u>k</u> defined above is not the rate of the code, but off-by- *n* <u>1</u> from it. Also note that *√* <u>n</u> for*η≪* 1*−δ*, the asymptotics of the right-hand side of (1) is*Oδ* *η* 5, as quoted in Table 2, with leading constant equal to 48(1*−* <u>1</u> *δ*)3*/*2. The theorem improves over [BCI + 20, Theorem 5.1] by more than a factor*n*.
+
+The newly achieved linear dependence on*n*is substantial for soundness proofs in certain real-world applications. In systems with parameters such that a soundness error of*O*(*n/q*) yields reasonable security, but *O*(*n²/q*) error is too large, previously proven security could only be claimed for distances up to half the code’s distance (via [BCI + 20]), or the 1*.*5 Johnson bound (via [BGKS20]). The new result unlocks proven security with distances near the Johnson bound in such systems, possibly leading to significant improvements in performance.
+
+1.3.3 Overview of techniques The proofs of our positive results are based on the same approach as [BCI
++ 20], which studies the Berlekamp– Welch and Guruswami–Sudan decoding algorithms in the rational function fieldK=F*q*(*Z*): Given that *u₀* +*z·u₁* is*γ*-close to*C*for many*z∈*F*q*, the aim is to say something useful about the decodability of *w*=*u₀* +*Zu₁*, to a word of the Reed–Solomon code extended by symbols in the rational function field K=F*q*(*Z*). By relating the decoding algorithm on*w*to the executions on*u₀*+*z·u₁* for several substitutions *Z*=*z*, we show that it succeeds in finding a codeword*P*(*X*)*∈*K[*X*] that is*γ*-close to*w*. This*P*(*X*) turns out to be of the form*v₀*(*X*) +*Zv₁*(*X*), where*v₀,v₁ ∈C*, and this gives us the desired [*v₀,v₁*]*∈C²* that is *γ*-close to [*u₀,u₁*]. Note that there is 0 proximity loss in this argument.
+
+However, showing that the codeword*P*(*X*) is of this specific form requires to keep track of the “algebraic complexity” of*P*’s coefficients in the course of the algorithm, that is, their degree in*Z*. Our improvement comes from increasing the freedom in the first step of the algorithm, which solves a homogeneous linear system overKfor a bivariate polynomial*Q*(*X,Y*)*∈*K[*X,Y*] that vanishes on the given word*w*.
+
+To demonstrate the source of the improvement, we discuss a key idea in a simple situation. Suppose are given an*n×*(*n*+ 1) matrix*A*whose entries are all (at most) degree 1 polynomials inF*q*[*Z*]. We want to
+
+<!-- Page 10 -->
+
+find a vector*v∈*(F*q*[*Z*]) *n*+1 in the right kernel with all entries having low degree. How small can we take this degree? In general the kernel is only guaranteed to be at least 1 dimensional, and the formula for the vector in this kernel is given by Cramer’s formula. Since it involves*n×n*determinants, we get that*v*can be taken to have all entries with degree at most*n*(and this happens to be the best upper bound on the degree that one can get).
+
+Now suppose instead we are given an*n×*(*n*+*λn*) matrix*A*whose entries are all degree 1 polynomials in*Z*. Again, we want to find a vector*v∈*(F*q*[*Z*]) *n*+*λn* in the kernel. How small can we take the degree? It turns out that now there is a vector*v*in the kernel with all entries having degree*Oλ*(1)! The proof is simple (dimension counting overF*q*). This is the phenomenon that we use – by making our linear systems have more slack than the bare minimum needed (which comes at a manageable cost to other parameters), we get solutions of much lower degree in*Z*. It can be viewed as a polynomial analogue of Siegel’s Lemma from number theory, which is used in Diophantine approximation and transcendence.
+
+Now we return to describing our proximity gap analysis.
+
+1.In the case of Berlekamp-Welch decoding, we change the linear system from barely under-determined to significantly under-determined, by increasing the*X*-degree of*Q*(*X,Y*) =*A*(*X*)*Y*+*B*(*X*). (That is, we increase the degree of what would have been the error-locator polynomial,*A*(*X*).) However, a generously oversized error-locator polynomial yields a large distance loss for correlated agreement. We restore the distance afterwards, by applying a standard lemma for collinear proximates.
+2.In the case of Guruswami–Sudan decoding, we discover that the linear system as set up in [BCI
++ 20] was already sufficiently under-determined. (This was a fluke: for the argument in [BCI + 20], it just needed to be barely under-determined.) Utilizing this slack, we find an interpolating polynomial *Q*(*X,Y*)*∈*K[*X,Y*] of*Z*-degree*O*(1), compared to*O*(*n*) as obtained therein. The smaller*Z*-degree directly translates to the improved bounds in the Guruswami–Sudan analysis of [BCI + 20].
+
+### 1.4 Statements of Negative Results
+
+1.4.1 The failure of*n*
+*τ* -bounded proximity gaps
+
+Our main negative result shows that the*n* *τ* -bounded proximity gaps conjecture does not hold for any*τ*.
+
+Theorem 1.6.*Letτbe a fixed positive integer, andλτ*= 2 *−*(*τ*+2) *. Letϵ >*0*be an arbitrary constant, and* *chooseδ*= 1*−λτandγ*= 1*−*4*λτ.*
+
+*Then for all*F*qof characteristic*2*, there are Reed-Solomon codesC*=RS[F*q,D,*(1*−δ*)*n*]*over*F*q, domain* <u>1</u> (1+*ϵ*) *Dwithn*=*|D|*=*O qτ, distanceδand wordsf,g*: *D→*F*qsuch that:*
+
+*{z∈*F*q|*∆(*f*+*zg,C*)*≤γ} ≥*(1*−o*(1))*·q≥n* *τ*(1*−ϵ*) *,*
+
+*forqlarge enough, and yet*∆([*f,g*]*,C²*)*≥*1*−*2*λτ*= <u>2</u> 3 *δ*+ <u>1</u> 3 *γ.*
+
+It seems plausible to us that analogues of this statement hold over anyF*q*with constant characteristic, but we have not checked this.
+
+Versions of Conjecture 1.2 may still be true. For example, the conjecture may hold, even with*τ*= 1, for fields of prime cardinality, or for well chosen evaluation domains*D*over fields of characteristic 2. We think this is a very exciting direction for future research.
+
+The*τ*= 2 case of the above theorem is particularly interesting: it shows that Theorem 1.5, on proximity gaps up to the Johnson radius, is tight for a particular value of*δ*. That theorem showed that proximity gaps hold for*γ < J*(*δ*) and with*a*=*O*(*n*), with 0 proximity loss. What if we want to go to larger*γ*? The
+
+<!-- Page 11 -->
+
+following theorem shows that we cannot have proximity gaps at*γ*=*J*(*δ*), even with*ε* *∗* =*o*(1), unless*a*is nearly quadratic,*≥n²* *−ϵ*. <u>15</u> *√* <u>3</u> Corollary 1.7.*Letϵ >*0*be an arbitrary constant. Letδ*= 16 *. Letγ*= 1*−* 1*−δ*= 4 *. Then for all*F*q* <u>1</u> (1+*ϵ*) *of characteristic*2*, there are RS codesC*=RS[F*q,D,*(1*−δ*)*n*]*over*F*q, domainDwithn*=*|D|*=*q²,* *distanceδand functionsf,g*: *D→*F*qsuch that:*
+
+*|{z∈*F*q|*∆(*f*+*zg,C*)*≤γ}|≥*(1*−o*(1))*q*=*n* 2(1*−ϵ*) *,*
+
+*and yet*∆([*f,g*]*,C²*)*≥* <u>7</u> 8 =*γ*+ 8 <u>1</u> *.*
+
+The proof of Theorem 1.6 is based on theF₂-linear algebraic structure ofF*q*. The evaluation domain*D*is essentially a uniformly randomF₂-subspace ofF*q*of size*≈q* (1+*ϵ*)*/τ*. The functions*f,g*: *D →* F*q*will be the evaluation maps of well chosen monomials*X* *u* *,X* *v* (with*u > v > k*). Then*f*+*z·g*will be close to a polynomial*Pz*(*X*) of degree at most*k*if the polynomial:
+
+*H*(*X*) =*X* *u* +*zX* *v* *−Pz*(*X*)
+
+#### has many roots inD.
+
+To create bad examples for proximity gaps using this framework, we need a special family of polynomials. Specifically, we need for many*z∈*F*q*a polynomial*Hz*(*X*) of the above form, with many roots in the small set
+
+*D*. We find this special family through a combination of ideas from algebra and probability: using structural properties of the coefficients of*subspace polynomials*, and the second moment method to understand the distribution of these coefficients.
+1.4.2 Limitations on proximity gaps at the list decoding radius Our next result shows a strong connection with the extremely well studied question of list decoding Reed– Solomon codes. To talk concretely about these, we define: Definition 1.8(LDRF*q,D,L*(*δ*)).*LetCbe the Reed–Solomon code*RS[F*q,D,*(1*−δ*)*|D|*]*. We define*LDRF*q,D,L*(*δ*) *to be the largestγsuch that for all functionsc*: *D→*F*q, we have:*
+*|{v∈C|*∆(*c,v*)*≤γ}|≤L.*
+
+*Further, forn≤q, we define*LDRF*q,n,L*(*δ*)*to be the minimum, over all choices ofD⊆*F*qwith|D|*=*n, of* LDRF*q,D,L*(*δ*)*.*
+
+*√* The Johnson bound applied to Reed–Solomon codes implies thatLDRF*q,D,n*(*δ*)*≥J*(*δ*) = 1*−* 1*−δ*. It is a well-known and easy fact that for*L≤*2 min(*δn,n−δn*), we haveLDRF*q,D,L*(*δ*)*≤δ*.
+
+DeterminingLDRF*q,n,*poly(*n*)(*δ*) is a very basic and well-studied problem in coding theory. In one direction, it is known [JH01, BSKR06] that some Reed–Solomon codes require large polynomial list size at radii strictly between*J*(*δ*) and*δ*in the*δ*= Θ(1) regime. In the other direction, an exciting line of recent works [RW13, ST20, GLS + 24, BGM23, GZ23, AGL24] showed that Reed–Solomon codes with randomly chosen evaluation domains are list-decodable almost all the way to radius*δ*with constant list size.
+
+We show that the proximity gaps phenomenon with*o*(1) proximity loss starts requiring large*a*once*γ*goes beyond the list-decoding radius for list size*q*:
+
+Theorem 1.9.*LetCbe the Reed–Solomon code*RS[F*q,D,k*]*, with|D|*=*nandk*= (1*−δ*)*n. Letγ*= LDRF*q,D,q*(*δ*) + *n* <u>2</u> *. Then there exist functionsf,g*: *D→*F*qsuch that:*
+
+<u>q</u> *|{z∈*F*q|*∆(*f*+*z·g,C*)*≤γ}|≥,* 2*n*
+
+*but with*∆([*f,g*]*,C²*)*≥δ−* *n* <u>1</u> *.*
+
+<!-- Page 12 -->
+
+The value of*a*here means that the soundness error <u>a</u> *q* is at least 2 <u>1</u> *n*, and thus cannot be reduced by increasing
+
+*q*. The proof of the above theorem is quite roundabout: we stumbled across it while studying the soundness of STARKs and the so called “ETHSTARK toy problem” [Sta23]. It involves a clever choice of*f*and*g*based on the center of any bad list-decoding configuration and a well chosen rational function of the form
+*X−* <u>1</u> *α*. In particular, we do not know how to show any analogous theorem for general linear codes of distance*δ*.
+
+Along the way, we prove a structural property of any bad list-decoding configuration, Lemma 6.1, which is also useful in our results on the limitations on the soundness of STARKs, discussed in 1.4.5.
+
+1.4.3 Limitations on proximity gaps at radius near*δ*over prime fields? Our next result gives mild limitations of proximity gaps over prime fields, which are of particular interest for practice. They are based on multiplicative subgroups, and they creates instances of proximity gaps with mild proximity loss. However, the existence of infinitely many of these instances is conjectural. It depends on a very clean and basic conjecture in additive number theory, which we now state.
+#### Definition 1.10.ForE⊆Fq, we define:
+
+*E* (+*ℓ*)
+
+[Showing lines 301-450 of 1928. Use :451 to continue]
+=*{e₁* +*...*+*eℓ|e₁,...,eℓ∈Eand distinct}.*
+
+Definition 1.11.*For a prime powerqand integersa,b≤q, we say*(*q,a,b*)*is admissible if there exists a* *multiplicative subgroupG⊆*F *∗* *qwith:*
+
+•*|G|*=*b,*
+
+•*Forℓ*= 2 <u>b</u> *, we have that|G* (+*ℓ*) *|≥a.*
+
+Conjecture 1.12.*For infinitely many primesq, there existsb≤*10 log*qsuch that*(*q,q/*10*,b*)*is admissible.*
+
+Heuristically, if*|G|*=*b*, there are *bℓ* sums in*G* (+*ℓ*), and if they are pseudorandomly distributed, we may very optimistically expect*|G* (+*ℓ*) *| ≥*Ω(min(*q,* *bℓ* ). The above conjecture expresses a milder form of this heuristic.
+
+If*q*is a Mersenne prime 2 *p* *−*1, we can take*G*to be the subgroup generated by*−*2: *G*=*{±*1*,±*2*,...,±*2 *p−*1 *}*. Using binary expansions, every element ofF*q*turns out to be representable as a sum of exactly*p*elements of *G*(see Remark 7.3): this means that (*q,q,*2 log₂(*q*+ 1)) is admissible. Thus Conjecture 1.12 is weaker than the well-known conjecture asserting the infinitude of Mersenne primes.
+
+Sumsets of multiplicative groups inF*q*have been extensively studied in additive combinatorics, especially recently in the context of the sum-product phenomeonon. However, existing results fall far short of the conjecture. The strongest unconditional result in this direction, of Glibichuk and Konyagin [GK07], implies that the*ℓ*-wise sumset of*G*(which includes nondistinct sums) has size at least*|G|* Ω(log*ℓ*), which is far short of what the conjecture asks for.
+
+The conjecture then gives infinitely many nontrivially bad instances for proximity gaps over prime fields, via the following theorem.
+
+Theorem 1.13.*Suppose*(*q,a,b*)*is admissible withbeven. LetGbe the corresponding subgroup of*F *∗* *qof* *cardinalityb, and letH⊆*F *∗* *qbe any multiplicative subgroup containingG. Consider the Reed–Solomon code* *C*=RS[F*q,D,k*]*, withD*=*H,n*=*|D|,k*= 1 2 *−* 2 *b* *n, and relative distanceδ*= 2 1 + 2 *b* *.*
+
+#### Then there exist functionsf,g: D→Fqsuch that:
+
+<u>2</u> *z∈*F*q|*∆(*f*+*z·g,C*)*≤δ− ≥a,* *b*
+
+*but*∆([*f,g*]*,C²*)*≥δ−* <u>1</u> *b* *.*
+
+<!-- Page 13 -->
+
+Note that*n*, the size of the evaluation domain, might be chosen as small as*b*or as large as*q−*1 (it just needs to satisfy*b|n*and*n|*(*q−*1)).
+
+With the latter choice, the conjecture implies that for Reed–Solomon codes over prime fields, for infinitely many*n*, when*γ*=*δ−*Θ log <u>1</u> *n* and*a≥q/*10*≥n/*10, we must have a proximity loss of Θ log <u>1</u> *n*.
+
+When instantiated with*q*being a Mersenne prime, the constants in the Θs above are explicit and small. So for*q*=*M₃₁* (the Mersenne prime 2 31 *−*1) and*C*=RS[F*q,*F *∗* *q* *,* <u>q−</u> 2 <u>1</u> + log <u>2</u> *q*], this gives us functions *f,g*:F *∗* *→*F such that for all values of*z∈*F we have 2 *q q q*
+
+<u>1</u> ∆(*f*+*z·g,C*)*≤,* 2 and yet 2<u>1 1</u> ∆([*f,g*]*,C*)*≥* + *≈*0*.*516*.* 2 62
+
+Another instantiation, closer to practice, is when*q*= (*M₃₁*) 4 *≈*2 124. It turns out that (*q,q,b*) is admissible, where*b*= 8*·*31*≈*2 log₂ *q*, and we get an example of a Reed–Solomon code of any length*n*satisfying*b*and *n−*1, distance*δ*= 1 2 + 2 *b* *≈*0*.*508, such that proximity gaps at radius*γ*=*δ−* 2 *b* = 1 2 *≈δ−*0*.*008 have proximity loss*ε* *∗* = <u>1</u> *b* *≈*0*.*004 with*a*=*q*.
+
+For other specific*q*that are used in practical applications, it is sometimes possible to experimentally check admissibility of a tuple (*q,a,b*) either by brute force or estimating collision probability of sums of random *ℓ*-tuples from a subgroup*G*of size*b*.
+
+1.4.4 Some proximity gap phase transitions when*δ*=*o*(1) We now give some instances showing that for Reed–Solomon codes with vanishingly small relative distance, there are some sharp transitions in the behavior of proximity gaps. We view them as explaining why the simpler proof techniques from [AHIV17, RZ18, BKS18] for the*γ < δ/*3 do not extend to*γ≥δ/*3, and that things will get tougher the closer we get to*δ*. At*δ/*3 Recall the basic proximity gap phenomenon at distance strictly less than*δ/*3. Theorem 1.14([AHIV17], [RZ18],[BKS18]).*LetD⊆*F*qwith|D|*=*n. Letϵ∈*[0*,*1]*. LetC*=RS[F*q,D,k*]*,* *and letf,g*: *D→*F*q. Letδ*= 1*−k/nbe the distance ofC. Letγ < δ/*3*.* *Suppose:*
+*|{z∈*F*q|*∆(*f*+*zg,C*)*≤γ}|≥a.*
+
+*Then*∆([*f,g*]*,C²*)*≤* *a−* <u>a</u> 1 *·γ.*
+
+In particular, for*a > γn*+ 1, this theorem gives us ∆([*f,g*]*,C²*)*≤γ*, that is correlated agreement with 0 proximity loss. The following theorem shows that there are Reed-Solomon codes where the behavior exactly at*γ*=*δ/*3 changes drastically: even when*a≫γn*, there is a substantial proximity loss.
+
+Theorem 1.15.*Letc >*0*be an integer. There exist infinitely manyq, RS codesC*=RS[F*q,D,k*]*over*F*q,* *domainD*=F*qwithn*=*|D|*=*q,k*=*n−c(so that the relative distanceδofCequals* *n* <u>c</u> *), and functions* *f,g*: *D→*F*qsuch that:*
+
+*q−*1 *n* 1 *|{z∈*F*q|*∆(*f*+*zg,C*)*≤δ/*3*}|≥* = =*O,* *c c δ*
+
+*and yet*∆([*f,g*]*,C*)*≥*2*δ/*3*.*
+
+<!-- Page 14 -->
+
+How is this consistent with our Theorem 1.3, which shows proximity gaps almost all the way up to*δ/*2? Theorem 1.3 requires*a*at least as large as Ω( *δ−* <u>1</u> 2*γ* ). Thus when*δ*=*O*(1*/n*) and*γ*=*δ/*3 as in the above theorem, Theorem 1.3 needs*a≥*Ω( <u>1</u> *δ* ) = Ω(*n*), which is consistent with Theorem 1.15.
+
+The above example shows that there truly is a behavioral transition at*δ/*3: the unrestricted proximity gap phenomonon that holds for*γ < δ/*3 (which did not care about whether*δ*=*o*(1)), does not hold in this form beyond*δ/*3.
+
+At*δ/*2
+
+We also see an interesting threshold occurring at radius*γ*=*δ/*2. The following theorem shows that there are Reed-Solomon codes with prime field size*q*nearly quadratic in the block length*n*(but with vanishingly small relative distance*δ*=*O*(1*/n¹* *−κ* )), where proximity gaps at radius*γ*=*δ/*2 with*ε* *∗* =*o*(*γ*) needs*a* being nearly quadratic in*n*.
+
+Theorem 1.16.*Let*0*< ϵ <*1*/*4*be fixed. There are infinitely many primesq, RS codesC*=RS[F*q,D,k*] *over*F*q, domainDwithn*=*|D|*=*O*(*q⁰*
+
+*.*5+2*ϵ* )*,k*=*n−*Θ(*n*
+*ϵ* )*(so that the relative distance isδ*= Θ(*n* *−*(1*−ϵ*) )*),* *and functionsf,g*: *D→*F*qsuch that:*
+
+*|{z∈*F*q|*∆(*f*+*zg,C*)*≤δ/*2*}|≥q−*1 = Ω(*n²* */*(1+4*ϵ*) ) = Ω(*n²* *−*8*ϵ* )*,*
+
+*and yet*∆([*f,g*]*,C²*)*≥*3*δ/*4*.*
+
+We remark that both the negative results of this section in the*δ*=*o*(1) regime, about thresholds at*δ/*3 and*δ/*2,*cannot*hold for*δ*being Ω(1). This is because we do know positive proximity gaps results at radius *J₁.*5(*δ*)*−η*and*J*(*δ*)*−η*with*a*equal to*Oη*(1) and*Oη*(*n*) respectively, and when*δ*= Ω(1) we have that *δ/*3*< J₁.*5(*δ*)*−*Ω*δ*(1) and*δ/*2*< J*(*δ*)*−*Ω*δ*(1).
+
+1.4.5 Limits to the soundness of STARKs Our final contribution is devoted to the soundness of STARKs. The main theorem about STARKs [BSBHR18, BGKS20] shows how to interactively prove (in the IOPP model) the satisfiability of a constraint satisfaction problem presented in*Algebraic Intermediate Representation (AIR)*. The soundess of the resulting interactive protocol is a function of the complexity of the AIR. There are two parts to this protocol.
+1.The first part reduces the the satisfiablilty of the AIR to a statement of proximity to a Reed–Solomon code. Specifically, given an AIR*A*which the prover claims is satisfiable, the prover and verifier first interact and if the verifier does not reject, will end up with the prover writing down some functions
+*h₁,...,hc*: *D→*F*q*, where*D⊆*F*q*with*|D|*=*n*. The prover now has to prove that*h₁,...,hc*has
+high correlated agreement with the code*C*=RS[F*q,D,k*].
+
+2.The second part now checks this claim of the prover – this is done using proximity gaps, to combine the*c*functions into one, and an IOPP protocol for Reed–Solomon codes, such as FRI, STIR or WHIR (which typically also rely on some form of proximity gaps).
+In practical STARKs, this protocol is typically instantiated with the Reed–Solomon code*C*having distance *δ*some large constant like 0*.*75. Furthermore,*q*is typically very very large (eg. 2 120, for cryptographic security), and*n*is moderate (eg. 2 20 ). This will help interpret our results below: we view <u>1</u> *q* as negligible probability and *n* <u>1</u> as noticeable probability.
+
+<!-- Page 15 -->
+
+The first part of the protocol is based on a number of ideas: low-degree extension of the satisfying assignment, arithmetization of the constraints, checking that a polynomial vanishes on the set*S*using the vanishing polynomial of*S*, and the DEEP quotienting method. This protocol has the following completeness and soundness properties, expressed in terms of the list-decodability of*C*:
+
+•If the AIR is satisfiable, then there is a prover strategy for the protocol that will end with the prover
+writing down*h₁,...,hc*, such that (*h₁,...,hc*)*∈C*
+*c*.
+
+•If the AIR is not satisfiable, then for any prover strategy, the probability that it will end with the prover writing down some (*h₁,...,hc*) with
+
+*c*<u>L² ·k</u> Pr ∆([*h₁,...,hc*]*,C*)*≤γL≤O,* *q*
+
+where*γL*=LDRF*q,D,L*(*δ*).
+
+How are the parameters set? Note that for*δ*being a large constant near 1, and*L*being a large integer which is*O*(1), then*γL*is also a large constant near 1, by the Johnson bound. In this case, the above “cheating probability” is bounded by*O*(*n/q*), and this is made smaller than the tolerable soundness error by making *q*large enough.
+
+We give an attack showing that the soundness analysis of this reduction cannot be improved much: it is truly governed by the list-decodability of*C*(for list size*q*).
+
+Specifically, we give a simple unsatisfiable constraint satisfaction problem (specified by a simple AIR) and a prover strategy that makes the first part of the protocol produce (*h₁,...,hc*) such that:
+
+*c*<u>1 +γq</u> Pr ∆([*h₁,...,hc*]*,C*)*≤ ≥*Ω(1*/n*)*,* 2
+
+where*γq*=LDRF*q,D,q*(*δ*). In more detail, given a “bad list decoding center” for*C*, we find a prover strategy that uses it to get a probability Ω(1*/n*) of finding (*h₁,...,hc*) that are much closer than trivial to*C* *c*.
+
+The constraint satisfaction problem itself is very easy to describe:
+
+CYCLE-SUM:
+
+•Let*a*divide*q−*1. Let*g∈*F *∗* *q*have order*a*. Let*G*=*{*1*,g,g²,...,g* *a−*1 *}*be the subgroup generated by*g*.
+
+•We want a function*f*: *G→*F*q*such that for each*x∈G*,
+
+#### f(gx) =f(x) + 1.
+
+Observe that no such*f*exists. If there was such a function, we would have
+
+*f*(1) =*f*(*g* *a* ) =*f*(*g* *a−*1
+
+) + 1 =*f*(*g* *a−*2
+) + 2 =*...*=*f*(1) +*a.*
+But*a*is relatively prime to*q*, and is thus nonzero inF*q*.
+
+The prover strategy we give is based on bad list-decoding configurations for Reed–Solomon codes. We prove some structural statements about any such configuration. The structural statements enable us to handle the DEEP-quotienting challenge from the verifier – they tell us which nearby Reed–Solomon codeword to answer according to.
+
+Theorem 1.17.*Consider the IOP protocol for the CYCLE-SUM constraint satisfaction problem given by* *the DEEP-ALI reduction, using the Reed–Solomon codeC*=RS[F*q,D,k*]*, where:*
+
+<!-- Page 16 -->
+
+#### •Dis a union oftcosets ofG
+
+•*|D|*=*a·t*=*nandk*=*a*= <u>1</u> *t*
+
+*n.*
+•*δ*= 1*−* <u>1</u> *t* *is the distance ofC.*
+
+*Then there is a prover strategy that does not make the verifier reject, and produces*(*h₁,...,hc*)*such that:*
+
+*c*<u>1 +γq</u> Pr ∆([*h₁,...,hc*]*,C*)*≤ ≥*Ω(1*/n*)*,* 2
+
+*whereγq*=LDRF*q,D,q*(*δ*) + *n* <u>1</u> *.*
+
+To understand *√* the implication, it is good to think about settings where*γq*equals the Johnson radius *J*(*δ*) = 1*−* 1*−δ*. (We know that this occurs for some Reed–Solomon codes [JH01, BSKR06], and does not happen for some Reed–Solomon codes [ST20, GLS + 24, BGM23, GZ23, AGL24]). <u>1</u> *√*
+In this case, with noticeable probability the prover is producing*h₁,...,hc*such that [*h₁,...,hc*] is 1*−*
+2 1*−δ*- close to*C* *c*. When*δ*is large enough (*>*0*.*75), this proximity is a smaller than*δ*by a constant, and translates into noticeably larger success probability for a cheating prover in the final STARK proof. (For example, if *δ*= 0*.*84 and*γq*=*J*(*δ*), then we have (1 +*γq*)*/*2 = 0*.*8).
+
+### 1.5 Other Related Work
+
+As mentioned earlier, the STIR [ACFY24] and WHIR [ACFY25] protocols improved the state of the art for theoretical and practial IOPP protocols for Reed–Solomon codes. The latter work introduced a key new notion, mutually correlated agreement, which is a strengthening of the property of having proximity gaps with 0 proximity loss.
+
+[Showing lines 451-600 of 1928. Use :601 to continue]
+
+Recently, Hab¨ock [Hab25] showed that Reed–Solomon codes have the mutually correlated agreement property up to the Johnson radius, and gave a general method for establishing this property in any code whenever there is an underlying collinearity version of proximity gaps.
+
+The results of [Zei24] and [GKL24] showed versions of the proximity gaps results of [BKS18] and [BGKS20] in the stronger mutual correlated agreement form.
+
+The work of [GCXK25] gave a black box reduction showing that every code of distance*δ*has proximity gaps up to radius*J*(LDR(*δ*)), and observed that this gave interesting new proximity gaps results for some codes where we know very good bounds on the list decoding radius. Furthermore, they also achieved the stronger mutually correlated agreement form². The results of [GCXK25] gave new proximity gaps for random Reed– Solomon codes up to the Johnson radius with*a*=*O*(*n*). Our results now show the same for all Reed–Solomon codes.
+
+Our Theorem 1.9 which gives a connection in the other direction (good proximity gaps results imply good list-decodability – but only for Reed–Solomon codes) arose while we were studying the ETHSTARK [Sta23] toy problem, and our methods can be used to give an attack on that problem. A different attack on the ETHSTARK toy problem, in a different setting of parameters, was given by Garreta, Gruen, and Manzur [GGM25] in upcoming work, using a more direct strategy studying the rank of an associated matrix.
+
+### Organization of this paper
+
+The first part of the paper focuses on the positive results. In Section 2 we elaborate the aforementioned <u>improved Berlekamp–Welch analysis and</u> prove Theorem 1.3 as well as its lossless variant Corollary 1.4. 2 We remark the the weaker form without mutually correlated agreement can also be proved by inspecting the double-Johnson radius proximity gap result of [BKS18], and noticing that one of the “Johnsons” could be replaced with the list-decoding radius.
+
+<!-- Page 17 -->
+
+Section 3 shows Theorem 1.5, using more careful analysis of the Guruswami–Sudan interpolant polynomial, as well as improved bookkeeping in other parts of the original proof from [BCI + 20]. In Section 4 we then discuss how our improvements translate to more general proximity gaps statements, which are used in practice. We treat linear combinations of several words, the so-called weighted correlated agreement theorem, and we outline how our improvements impact the mutual correlated agreement theorem proven in [Hab25].
+
+The rest of the paper is devoted to the negative results. In Section 5 we prove Theorem 1.6 and provide the aforementioned examples which falsify*n* *τ* -bounded proximity gaps, Conjecture 1.2, for fields of characteristic
+
+2. In Section 6 we prove Theorem 1.9 about the failure of proximity gaps beyond the list decoding radius of the code. Section 7 investigates the limits of Conjecture 1.2 in prime fields. We prove Theorem 1.13 which is the underlying tool for our counter examples over Mersenne primes, as well as the*δ*=*o*(1) phase transition Theorems 1.15 (at*δ/*3) and 1.16 (at*δ/*2). Finally, in Section 8 the attack on the elementary STARK for CYCLE-SUM is discussed and Theorem 1.17 is proven.
+### Concurrent Work
+
+We just learnt about two concurrent and independent works that also address proximity gaps for Reed-Solomon codes. In [CS25], Crites and Stewart disproved the stronger form of Conjecture 1.2 written in [BCI + 20] asking that*a*have a polynomial dependence on*η*(this result was also independently discovered by [DG25a] already mentioned above). [CS25] also independently discovered the reduction between list-decoding and proximity gaps (our Theorem 1.9). In [GG25], Goyal and Guruswami showed that random Reed-Solomon codes do have proximity gaps all the way to radius*δ−η*, with*a*being*Oη*(*n*). Random Reed-Solomon codes are the only family of Reed-Solomon codes known to have list decoding radius as large as*δ−η*for any*η >*0, and because of Theorem 1.9, we would have suggested them as a natural candidate for improved proximity gaps.
+
+### Acknowledgements
+
+We thank David Levit for valuable discussions and encouragement. We also thank Antonio Sanso for valuable discussions that motivated the improvements in Section 3.2.
+
+## 2 Improved proximity gaps up to half the minimum distance
+
+In this section we show the following improvement of [BCI + 20, Theorem 4.1], together with its lossless variant, Corollary 1.4.
+
+Theorem 1.3.*LetCbe the code*RS[F*q,D,k*]*of block-lengthn*=*|D|and minimum distanceδ*= 1*−* *n* <u>k</u> *. Let* *γ∈* 3 <u>δ</u> *,* 2 <u>δ</u> *−* *n* <u>1</u> *. Supposeu₀,u₁* : *D→*F*qare functions such thatS*=*{z∈*F*q|*∆(*u₀* +*z·u₁,C*)*≤γ}is of* *size*
+
+<u>δ 1</u> *a≥ −*1 *·* *γ δ−*2*γ*
+
+*Then* 2<u>1</u> ∆([*u₀,u₁*]*,C*)*≤* 1 + *·γ.* *a−*1
+
+*In other words, for distance lossε* *∗* *, it suffices to take*
+
+*δ* 1 *γ* *a≥*max *−*1 *·,*1 + *∗* *.* *γ δ−*2*γ ε*
+
+<!-- Page 18 -->
+
+Let us give a quick outline of the proof, and hence the section. The proof goes along the lines of [BCI + 20], which studies the Berlekamp–Welch decoder in the rational function fieldK=F*q*(*Z*) on the “received” word
+
+*u₀*(*x*) +*Z·u₁*(*x*)*.*
+
+In the first step, we search for polynomials*A*(*X,Z*)*,B*(*X,Z*)*∈*F*q*[*X,Z*] satisfying the interpolation constraints *A*(*x,Z*)*·*(*u₀*(*x*) +*Z·u₁*(*x*)) =*B*(*x,Z*)*, x∈D,*
+
+a homogeneous linear system with*n*equations, and the coefficients of the polynomials as unknowns. See Lemma 2.1 below. The crucial difference to [BCI + 20] is that we consider the decoder in an unusual setting. Given*e*=*⌊γ·n⌋*we drastically oversize the error-locator polynomial,
+
+deg*XA*=*e*+*h,*
+
+with*h >*0 chosen maximal so that divisibility is still assured, i.e. deg*XA*=*n−e−*1. In this setting, the distance of the decoded word is only assured*< δ−γ*and typically beyond the unique decoding radius. In return, it allows us to find a solution of significantly lower*Z*-degree than in [BCI + 20], see Lemma 2.1.
+
+As a consequence of the smaller*Z*-degree, the divisibility step, which proves that
+
+#### P(X,Z) =B(X,Z)/A(X,Z)
+
+is again a polynomial with deg*XP≤k*and deg*ZP≤*1, goes through with a smaller bound for*a*=*|S|*. As in [BCI + 20], this step uses the Polishchuk–Spielman lemma, concluding the desired divisibility from that
+
+*B*(*X,z*)*/A*(*X,z*) =*Pz*(*X*)*,*
+
+for every*z∈S*, the promised proximate polynomial of degree at most*k*. A sensible choice of*h*achieves the bound on*|S|*as stated in Theorem 1.3. We refer to Section 2.2 for the elaboration of this step.
+
+Divisibilit the oversized*A*polynomial implies correlated agreement with a potientially huge distance loss. Nevertheless, the loss is bounded enough to show*collinearity*: With only few exceptions (where*P*(*X,z*) = 0) the*γ*-proximate polynomial*Pz*(*X*) lies on the line spanned by the polynomials*P*(0*,X*) and*P*(1*,X*), that is
+
+#### Pz(X) =P(X,z) =P(0,X) +z·P(1,X).
+
+It turns out that collinearity extends to all*z∈S*, and we may apply a well-known argument, Lemma 2.4, that proves the claimed distance of [*u₀,u₁*] to the interleaved code*C²* from collinearity, see Section 2.3.
+
+### 2.1 Non-standard Berlekamp–Welch interpolant overK
+
+Let*u₀,u₁ ∈*F *D* *q*, and let*e <* <u>n−</u> 2 <u>k</u> be an integer. For integer*h≥*0, which we call slack, we search for polynomials *e* X +*h k*+X*e*+*h* *A*(*X,Z*) = *ai*(*Z*)*·X* *i* *, B*(*X,Z*) = *bj*(*Z*)*·X* *j* *,*(2) *i*=0 *j*=0
+
+#### with allai(Z),bj(Z)∈Fq[Z], satisfying the interpolation constraints
+
+#### A(x,Z)·(u₀(x) +Z·u₁(x)) =B(x,Z), x∈D(3)
+
+as polynomials, or in other words as elements ofK=F*q*(*Z*). This is a homogeneous linear system of*n* equations with the polynomials*ai*(*Z*),*bj*(*Z*) as unknowns. We consider the decoder with very large slack*h*, so that *k*+*e*+*h*= deg*X*(*B*) =*n−e−*1*,*(4)
+
+or*h*=*n−k−*2*e−*1. This is always non-negative, even in the edge case*e*= <u>n−</u> 2 <u>k−1</u>, where*h*= 0. In the following, we abbreviate statements such as “for bivariate polynomial*P*(*X,Z*), its individual degrees are bounded as deg*XP≤dX*and deg*ZP≤dZ*” by using the vector notation deg(*P*)*≤*(*dX,dZ*).
+
+<!-- Page 19 -->
+
+Lemma 2.1.*For any integere∈* 0*,* <u>n−</u> 2 <u>k</u> *, letDX* =*k*+*e*+*h, withh*=*n−k−*2*e−*1*, and*
+
+<u>e+ 1</u> *DZ ≥.* *h*+ 1
+
+*Then there areA*(*X,Z*)*,B*(*X,Z*)*with*deg(*A*)*≤*(*DX −k,DZ −*1)*,*deg(*B*)*≤*(*DX,DZ*)*,Anon-zero, and* *so that the equations*(3)*holds at everyx∈D, as an identity in*F*q*[*Z*]*.*
+
+*Proof.*For any integer*DZ ≥*1, roll out (3) as a homogeneousF*q*-linear system in the coefficients of the polynomials*ai*(*Z*),*bj*(*Z*) with degree bounds deg*ai*(*Z*)*≤DZ −*1, deg*bj*(*Z*)*≤DZ*. The number of unknowns is
+
+(*k*+*e*+*h*+ 1)*·*(*DZ* + 1) + (*e*+*h*+ 1)*·DZ* =*n·*(*DZ* + 1) + (*h*+ 1)*·DZ −e,*
+
+whereas the number of equations is*n·*(*DZ* + 1), one for each coefficient and each*x∈ D*. Therefore, if (*h*+ 1)*·DZ −e≥*1, then the linear system has a non-trivial solution, regardless of the size of*S*. For such a non-trivial solution,*A*(*X,Z*) must be a non-zero polynomial: Triviality of*A*(*x,Z*) implies triviality of *B*(*x,Z*) at more points than its degree in*X*hence if*A*= 0 then also*B*= 0, contradicting non-triviality.
+
+### 2.2 DividingB(X,Z)byA(X,Z)
+
+Given two polynomials*A*(*X,Z*),*B*(*X,Z*) over an arbitrary field*F*, the Polishchuk–Spielman Lemma argues divisibility in*F*[*X,Z*] from divisibility of sufficiently many univariate restrictions. Its original proof in [PS94] has a subtle gap noted and fixed by Ronald Cramer and Jade Nardi, and a fixed version appears in [BCI + 20, Lemma 4.3].
+
+Lemma 2.2(Polishchuk–Spielman [PS94], see statement in [BCI + 20]).*LetA*(*X,Z*)*,B*(*X,Z*)*∈F*[*X,Z*] *be polynomials of degrees*deg(*A*)*≤*(*aX,aZ*)*and*deg(*B*)*≤*(*bX,bZ*)*, and suppose thatB*(*X,z*)*/A*(*X,z*)*∈* *F*[*X*] *≤bX−aX* *for at leastnZ>*0*different values ofz, as well asB*(*x,Z*)*/A*(*x,Z*)*∈F*[*Z*] *≤bZ−aZ* *for at least* *nX>*0*different values ofx, where* <u>b</u> <u>XbZ</u> + *<*1*.*(5) *nXnZ* *ThenP*(*X,Z*) =*B*(*X,Z*)*/A*(*X,Z*)*∈F*[*X,Y*]*and its degrees satisfy*deg(*P*)*≤*(*bX−aX,bZ−aZ*)*.*
+
+Let us demonstrate how to use Lemma 2.1 in combination with Lemma 2.2 to obtain the following intermediate claim.
+
+Claim 2.3.*For*0*< γ <* 2 <u>δ</u> *. IfS*=*{x∈*F*q*: ∆(*u₀* +*z·u₁,C*)*≤γ}is of size*
+
+<u>1 δ−γ</u> *a≥ ·* *γ δ−*2*γ*
+
+*then there exist polynomialsp₀*(*X*)*,p₁*(*X*)*∈*F*q*[*X*]*of degree at mostkso that*∆([*u₀,u₁*]*,*[*p₀,p₁*])*< δ−γ.*
+
+l m *Proof.*Let*e*=*γn*,*h*=*n−k−*2*e−*1, and choose*DX* =*k*+*e*+*h*and*DZ* = *h* <u>e+1</u> +1. Lemma 2.1 states the existence of nontrivial polynomials*A*(*X,Z*)*,B*(*X,Z*) with deg(*A*)*≤*(*DX −k,DZ −*1) and deg(*B*)*≤* (*DX,DZ*), which satisfy the Berlekamp–Welch equations (3).
+
+We claim that this solution satisfies the conditions of Lemma 2.2. First, for every*z∈S*the promised proximate*Pz*(*X*)*∈*F*q*[*X*] of degree at most*k*agrees with*u₀* +*u₁ ·z*on a set of at least*n−e*=*DX* + 1 points, and for these points*A*(*x,z*)*·Pz*(*x*) =*B*(*x,z*). Thus, by degree,
+
+#### A(X,z)·Pz(X) =B(X,z), z∈S.
+
+<!-- Page 20 -->
+
+On the other hand, by the definition of the linear system we have
+
+#### A(x,Z)·(u₀(x) +Z·u₁(x)) =B(x,Z), x∈D.
+
+Second, for that inequality (5) holds with*bX*=*DX*,*nX*=*n*and*bZ*=*DZ*,*nZ*=*|S|*, we must have
+
+*DZ DX* 1 *<*1*−* =*γ*+*,* *|S| n n*
+
+since*n−DX* =*e*+ 1 =*γn*+ 1. Using*DZ ≤* <u>e+</u> *h*+1 <u>h+1</u> = *δ* <u>δ</u> *−* <u>−</u> 2 <u>γ</u> *γ* *,*we see that by our assumption on*|S|*=*a*, we even have <u>DZ</u> *≤γ.* *|S|*
+
+We thus can apply Lemma 2.2 and obtain a polynomial*P*(*X,Z*)*∈*F*q*[*X,Z*] with deg*P≤*(*k,*1) which satisfies
+
+*B*(*X,Z*) =*A*(*X,Z*)*·P*(*X,Z*)*,* =*A*(*X,Z*)*·*(*p₀*(*X*) +*Z·p₁*(*X*))
+
+with polynomials*p₁*(*X*)*,p₂*(*X*) of degree at most*k*. In particular,
+
+*A*(*x,Z*)*·*(*u₀*(*x*) +*Z·u₁*(*x*)) =*A*(*x,Z*)*·*(*p₀*(*x*) +*Z·p₁*(*x*))*,*
+
+for all*x∈D*. Dividing by*A*(*x,Z*) inKwhenever*A*(*x,Z*)*̸*= 0, we conclude that
+
+#### u₀(x) +Z·u₁(x) =p₀(x) +Z·p₁(x)
+
+for every*x∈D*, except of a set of at most*e*+*h*points (for the potential zeros of*A*). Since <u>e+</u> *n* <u>h</u> =*δ−γ−* *n* <u>1</u> <u>,</u> the proof of the claim is complete.
+
+### 2.3 From Claim 2.3 to Theorem 1.3
+
+Despite the distance loss in Claim 2.3, all proximates*Pz*(*X*),*z∈S*, lie on the line spanned by*p₀*(*X*),*p₁*(*X*). In fact, by the triangle equality
+
+∆(*Pz,p₀* +*z·p₁*)*≤*∆(*Pz,u₀* +*z·u₁*) + ∆(*u₀* +*z·u₁,p₀* +*z·p₁*) *< γ*+*δ−γ*=*δ,*
+
+
+[Showing lines 601-750 of 1928. Use :751 to continue]
+and we conclude equality*Pz*(*X*) =*p₀*(*X*) +*z·p₁*(*X*), for every*z∈S*. With this in place, Theorem 1.3 follows from the following well-known lemma.
+
+Lemma 2.4.*Assumep₀,p₁ ∈Csatisfy*∆(*u₀* +*z·u₁,p₀* +*z·p₁*)*≤γfora≥*2*many valuesz∈*F*q. Then* ∆([*u₀,u₁*]*,*[*p₀,p₁*])*≤* *a−* <u>a</u> 1 *·⌊n·γ⌋.*
+
+*Proof.*Let*d*=*n·*∆([*u₀,u₁*]*,*[*p₀,p₁*]). We show that*d >* *a−* <u>a</u> 1 *·e*, with*e*=*⌊γ·n⌋*, leads to a contradiction.
+
+#### Consider the set of disagreement
+
+#### E={x∈D: (p₀(x),p₁(x))̸= (u₀(x),u₁(x))}.
+
+Note that for each point*x∈E*there is at most one*z∈*F*q*so that (*p₀*(*x*)*−u₀*(*x*)) +*z·*(*p₁*(*x*)*−u₁*(*x*)) = 0, removing the disagreement at the point. By our assumption*d > e*, each of the claimed*z*with ∆(*u₀* +*z·* *u₁,p₀* +*z·p₁*)*≤γ*needs to remove at least*d−e*disagreements, i.e.
+
+#### Az={x∈E: p₀(x) +z·p₁(x) =u₀(x) +z·u₁(x)}
+
+<!-- Page 21 -->
+
+has size*|Az|≥d−e*. By the previous observation, different*z*produce disjoint*Az*, and therefore
+
+*a·*(*d−e*)*≤|E|,*
+
+In other words*d·*(*a−*1)*≤a·e*, contradicting the assumption. This proves the claim of the lemma.
+
+Remark 2.5.The bound in Lemma 2.4 is tight whenever*d*=*a·e/*(*a−*1) is an integer. Too see this, start with arbitrary codewords*p₀,p₁ ∈C*, choose a set*E⊂D*of size*d*, and partition it into*a≥*2 disjoint subsets
+*E₁,...Ea*, each of size*d−e*. (By assumption,*a·*(*d−e*) =*d*.) Choose distinct roots*z₁,...,za∈F*, and
+perturb [*p₀,p₁*] on*E*via the piecewise defined function (*v₀*(*x*)*,v₁*(*x*)) = (*zi,*1) for*x∈Ei*, while leaving it unperturbed outside*E*, where we set (*v₀*(*x*)*,v₁*(*x*)) = (0*,*0). By construction, the obtained word
+
+#### (u₀,u₁) = [p₀,p₁] + (v₀,v₁)
+
+has distance ∆([*u₀,u₁*]*,*[*p₀,p₁*]) =*d*, and ( *z−zix∈Ei,* *u₀*(*x*) +*z·u₁*(*x*)*−*(*p₀*(*x*) +*z·p₁*(*x*)) =*z·v₁*(*x*)*−v₀*(*x*) = S 0*x∈D\iEi*.
+
+Thus*z*=*zi*removes disagreement only on*Ei*, and nowhere else on*E*, meaning that ∆(*u₀*+*zi·u₁,p₀*+*zi·p₁*) = *d−*(*d−e*) =*e*.
+
+2.3.1 Proof of Corollary 1.4
+*√* We show that if*δ≥* 3 *√n*2and 3 *δ* *≤γ≤* 2 *δ* *−* *nδ* 3, then*a≤* *δ/*21*−γ* *≤γ·n*in Theorem 1.3, proving the corollary.
+
+In terms of*η*=*δ/*2*−γ*the desired inequality is *η* <u>1</u> *≤n·*( 2 <u>δ</u> *−η*)*,*or
+
+<u>δ</u> 1*≤n·η· −η,* 2
+
+which we wish to show for *δn* <u>3</u> *≤η <* <u>2</u> 3 <u>δ</u>. By concavity of the right-hand side on the interval (0*,δ/*2), it is p 2 sufficient to show the inequality at the boundaries of the interval. We have*δ≥*3 2*/n*, that is*δ ≥*18*/n*. At*η*= *δn* <u>3</u> we obtain 2 3 3 3 9 *−n· ≥ −* = 1*,* 2 *δn* 2 18 23*δ δ δ nδ²* and at*η*= we simply get*n·* 3 *·* 6 = 18 *≥*1. This completes the proof.
+
+2.3.2 Further discussion about the statement of Theorem 1.3 In the edge case*γ*=
+2 <u>δ</u> *−* *n* <u>1</u>, the coarser bound yields zero distance loss for*a≥n*, independent of*δ*, reproducing [BCI + 20, Theorem 4.1]. In the other edge case*γ*=*δ/*3, we obtain*a≥*6*/δ*for distance loss *ε* *∗* = 6*−* <u>δ</u> *δ* *·γ≤* <u>1</u> 5 *·γ*, whereas the example from Theorem 1.15 below has already loss*ε* *∗* =*γ*(the common gap, in the light of [RVW13]) with*a*= 1*/δ*. This indicates that the bound in Theorem 1.3 is not far from optimal.
+
+## 3 Improved proximity gaps up to the Johnson bound
+
+In this section we prove the following sharpening of [BCI + 20, Theorem 5.1]. Recall that*ρ*= 1*−δ*= *n* <u>k</u> is the slightly reduced rate of the code.
+
+<!-- Page 22 -->
+
+Theorem 1.5.*LetCbe the code*RS[F*q,D,k*]*with block-lengthn*=*|D|and minimum distance* l m *δ*= 1*−* *n* <u>k</u> *.* <u>k</u>*√ √* *√* <u>ρ</u> *Denoteρ*= *n* = 1*−δ. Forγ∈* 0*,*1*− ρ, letη*= 1*− ρ−γ, andm*= max 2*η* *,*3*. Suppose* *u₀,u₁* : *D→*F*qare functions such thatS*=*{z∈*F*q|*∆(*u₀* +*z·u₁,C*)*≤γ}is of size*
+
+2(*m*+ 1*/*2) 5 + 3(*m*+ 1*/*2)*γρ m*+ 1*/*2 *n* *a >* 3*/*2 *·n*+ *√* =*Oρ* 5
+
+*.*(1)
+3*ρ ρ η*
+
+*Then* ∆([*u₀,u₁*]*,C²*)*≤γ.*
+
+The proof of Theorem 1.5 studies the Guruswami–Sudan [GS99] list decoder on the word
+
+#### u(x) =u₀(x) +Z·u₁(x)
+
+with values in the field of rational functionsK=F*q*(*Z*). However, unlike in [BCI + 20, Section 5], we consider the system of equations overF*q*explicitly to get a low effective bound on the necessary degree*DZ*, rather than considering equations overKand trying to investigate the degrees of the arbitrary solutions obtained. It turns out that the gap between the number of variables and equations is sufficient to ensure*DZ* much smaller than previously obtained, see Section 3.1. This is the major source of our improvement. A further refinement on the final bound in Theorem 1.5, in terms of the degrees of the interpolant, is then discussed in Section 3.2. This part is independent of our choice of the interpolant, and applies to the regular one used in [BCI + 20] as well.
+
+### 3.1 Improved Guruswami–Sudan interpolant overK
+
+Given two functions*u₀,u₁* : *D −→*F*q*we consider the Guruswami–Sudan list decoder with input*u*= *u₀*(*x*) +*Z·u₁*(*x*), a word with values in the field of rational functionsK=F*q*(*Z*). In the ordinary setting, and for integer*m≥*1, the decoder looks for a bivariate polynomial*Q*(*X,Y*)*∈*K[*X,Y*] of (1*,k*)-weighted degree p *DX* = *m·*(*m*+ 1)*·kn*
+
+so that*Q*(*x,u*(*x*)) = 0 with multiplicity*m*,
+
+#### mult(Q,(x,u(x))) =m, x∈D.(6)
+
+With this setting, [BCI + 20] argue a solution*Q*(*X,Y*) with*polynomial*coefficients in*Z*, their degree bounded as*Oδ*(*n*), see e.g. Claim 5.4 therein. However, a more careful analysis of the system of equations allows for a significantly smaller*Z*-degree, as the following lemma shows.
+
+Lemma 3.1.*Letm≥*3*be an integer and set* *√* *DX* = (*m*+ <u>1</u> 2 )*· nk,*(7) q *DY* = (*m*+ <u>1</u> 2 )*·* <u>n</u> *k* *,*(8)
+
+*DZ* = 1 3 (*m*+ 1 2 ) 2 *·* *n* *k*
+
+*.*(9)
+*There exists non-zeroQ*(*X,Y,Z*)*∈*F*q*[*X,Y,Z*]*such that*(6)*holds for allx∈D, and:*
+
+•*the*(1*,k,*0)*-weighted degree ofQ*(*X,Y,Z*)*is less thanDX,*
+
+•*theY-degree ofQ*(*X,Y,Z*)*is less thanDY, and*
+
+#### •the(0,1,1)-weighted degree ofQ(X,Y,Z)is less thanDZ.
+
+<!-- Page 23 -->
+
+Note that the notation*DZ* used here replaces the notation*DYZ* used in [BCI + 20]. The parameters chosen here are not fully optimized, but simplified to provide cleaner expressions. The 2 <u>1</u> in*m*+ <u>1</u> 2 and the value of *DZ* can be adjusted to obtain finer results. The condition*m≥*3 is only required to ensure*DZ ≥DY*; the result can be generalized to smaller*m*by setting*DZ* as the maximum between*DY* and the value given in Equation (9).
+
+*Proof.*Given the degree bounds above, our polynomial has the form X *Q*(*X,Y,Z*) = *Qi,j,hX* *i* *Y* *j* *Z* *h*
+
+*i*+*kj < DX* *j*+*h < DZ*
+
+with variables*Qi,j,h∈*F*q*. Throughout the computations below we will make implicit use of the facts that *DX ≥kDY* (in fact equal in our choice),*DZ ≥DY* and*DY ≥m−*1, which ensure all enumerations made are of non-negative amounts. The Guruswami–Sudan equations (6) say that for each*x∈D*and integers *r,s≥*0 with*r*+*s < m*, we have the constraint
+
+*Q* (*r,s*) (*x,u*(*x,Z*)*,Z*) = 0*,*
+
+which can be explicitly written as
+
+X *i j* *Qi,j,h· ·x* *i−r* *·*(*u₀*(*x*) +*Z·u₁*(*x*)) *j−s* *·Z* *h* = 0*.*(10) *r s* *i*+*kj < DX* *j*+*h < DZ*
+
+This is a polynomial equation in*Z*of degree at most*⌈DZ ⌉−*1*−s*, and therefore corresponds to*⌈DZ ⌉−s* linear equations in the*Qi,j,h*. For each 0*≤s < m*we have*m−s*corresponding choices of 0*≤r < m−s* and*n*choices of*x∈D*, thus the total number of equations is 3
+
+*m* X*−*1 3 <u>m(m+ 1) m −m</u> neqs=*n·* (*⌈DZ ⌉−s*)(*m−s*) =*n· ⌈DZ ⌉−.*(11) *s*=0 2 6
+
+We now count the number of variables*Qi,j,h*. For each coefficient*Y* *j* with*j <⌈DY ⌉*, we have*⌈DX ⌉−kj* corresponding*X*monomials and*⌈DZ ⌉−j*corresponding*Z*monomials, so the number of variables*Qi,j,h* with fixed*j*is equal to (*⌈DX ⌉−kj*)(*⌈DZ ⌉−j*), and in total we have⁴
+
+*⌈D* X *Y⌉−*1 nvars= (*⌈DX ⌉−kj*)(*⌈DZ ⌉−j*) *j*=0 *⌈DY ⌉*(*⌈DY ⌉−*1) *⌈DX ⌉⌈DY ⌉*(*⌈DY ⌉*+ 1) *⌈DY ⌉*(*⌈DY ⌉−*1)(2*⌈DY ⌉−*1) = *⌈DX ⌉⌈DY ⌉−k ⌈DZ ⌉− −k.* 2 2 6
+
+Noting that the expression for nvarsis monotone increasing in both*⌈DX ⌉*and*⌈DY ⌉*(as long as the necessary inequalities are maintained), replacing them by the slightly smaller*DX* and*DY* yields a lower bound on nvars, which can then be much simplified using*DX* =*kDY*, yielding:
+
+<u>DY (DY + 1) DY</u> 3 <u>−DY</u> nvars*≥k· ⌈DZ ⌉−.*(12) 2 6
+
+3 *t* <u>t(t+1)</u> *tj*(*t−j*) =<u>t³−t</u>.
+
+|Using the identities P||j=|and P|
+|---|---|---|---|
+|Using P|j =|.||
+
+4 *t* 2 <u>t(t+1)(2</u> *j*=1 <u>t+1)</u> 2 *j*=1 6 *j*=1 6
+
+<!-- Page 24 -->
+
+Comparing equations (11) and (12), we find that nvars*>*neqsis satisfied if:
+
+*DY* (*DY* + 1) *DY* 3 *−DY m*(*m*+ 1) *m³ −m* *k· ⌈DZ ⌉− > n· ⌈DZ ⌉−* 2 6 2 6
+
+which is equivalent to
+
+<u>DY</u> 3 <u>−DY m³ −m</u> (*ρDY* (*DY* + 1)*−m*(*m*+ 1))*⌈DZ ⌉> ρ· −.* 3 3
+
+<u>1</u> p <u>m+1/2</u> Recalling now our choice of*DY* = (*m*+ 2 ) *n/k*= *√ρ*, the last inequality becomes
+
+1 1*√* 1 (*m*+ 2 <u>1</u> ) 3 1*√*3 (*m*+ 2 )(*m*+ 2 + *ρ*)*−m*(*m*+ 1) *⌈DZ ⌉> √ −*(*m*+ 2 ) *ρ−*(*m −m*) 3 *ρ*
+
+which is equivalent to
+
+1*√*1 (*m*+ <u>1</u> <u>2</u> ) 3 11*√*3 ((*m*+ 2 ) *ρ*+ 4 )*⌈DZ ⌉> √ −* (*m*+ 2 ) *ρ*+ (*m −m*)*,* 3 *ρ* 3
+
+<u>(m+1/2)</u> 2 <u>n (m+1/2)</u> 2 which is clearly satisfied for our choice of*DZ* = 3 *k* = 3*ρ*.
+
+Thus our choice of parameters guarantees nvars*>*neqs, which ensures the homogeneous system of neqs equations (10) in the nvarsvariables*Qi,j,h*has a non-trivial solution, i.e. a non-zero polynomial*Q*with the properties claimed exists.
+
+### 3.2 Improved bound onain terms ofDX,DY,DZ
+
+Given a polynomial*Q*(*X,Y,Z*) corresponding to the word*u₀* +*Zu₁* as in Lemma 3.1, the proof in [BCI + 20, Section 5] establishes the proximity gap assuming*DX ≤*(1*−γ*)*mn*and*a >*2*DX DY* 3 *DZ* (see e.g. [BCI + 20, Equation (5.8)]). In this section we show that the same methods, with slightly improved bookkeeping, actually yield the result assuming an improved bound of
+
+
+[Showing lines 751-900 of 1928. Use :901 to continue]
+*a >*2*DX DY* 2 *DZ* + (*γn*+ 1)*DY.*(13)
+
+The condition*DX ≤*(1*−γ*)*mn*simplifies as
+
+*DX ≤*(1*−γ*)*mn⇔* *√ √ √* (*m*+ 2 <u>1</u> ) *kn*= (*m*+ <u>1</u> 2 )*n ρ≤*( *ρ*+*η*)*mn⇔* <u>1 η</u> 1 + *≤*1 + <s>√</s> *⇔* 2*m ρ* *√* <u>ρ</u> *m≥.* 2*η* l*√*m <u>ρ</u> We can thus take*m*= 2*η*, for which the degrees provided by Lemma 3.1 plugged into (13) yield Theorem 1.5.
+
+Let*S*=*{z∈*F*q|*∆(*u₀* +*z·u₁,C*)*≤γ}*. The following is a brief summary of the steps from [BCI + 20, Section 5] involving the manipulations on the bound*|S|≥*2*DX DY* 3 *DZ* and the proof of its sufficiency. These steps are along the lines of the well-known procedure of factoring bivariate polynomials over finite fields via Hensel lifts. However, the underlying field is the field of rational functionsK=F*q*(*Z*), and the required finite extension is an algebraic function field, which makes concrete computations quite technical.
+
+<!-- Page 25 -->
+
+1.*Decomposition into irreducible and separable factors.*The polynomial*Q*(*X,Y,Z*) is decomposed as
+Q *p* *fi* *e* *i* *C*(*X,Z*)*iRi*(*X,Y,Z*) where each*Ri*is irreducible and separable in the*Y*variable. For simplicity we assume all*fi*= 0; the case that some*fi>*0 was dealt within [BCI + 20, Appendix C] and the arguments there remain applicable.
+
+2.*Finding a uniform starting point for the Hensel lift.*An*x₀ ∈*F*q*is chosen such that all*Ri*(*x₀,Y,Z*) remain separable in Q
+*Y*after the substitution. They are decomnposed inF*q*[*Y,Z*] as*Ri*(*x₀,Y,Z*) = *Ci*(*Z*)*jHij*(*Y,Z*) where*Hij*are irreducible, non-constant in*Y*and separable in*Y*.
+
+3.*Focusing on a single “useful” factor.*For each*z∈S*(except maybe*DZ* values)
+5 the polynomial*Pz*(*X*) satisfies*Ri*(*X,Pz*(*X*)*,z*) = 0 and*Hij*(*x₀,Pz*(*x₀*)*,z*) = 0 for some pair*i,j*. The number of such pairs is at most*DY*, so for some pair (*R,H*) = (*Ri,Hij*) the set
+
+#### Sx0,R,H={z∈S: R(X,Pz(X),z)≡0 andH(Pz(x₀),z) = 0}
+
+#### must have size at least|Sx0,R,H|≥|S|/DY.
+
+(*R*) (*H*) (*R*)
+4.*Determining a smooth solution via Hensel lift.*Let*DY,DY,DZ* denote the*Y*degree of*R*, the*Y*degree of*H*, and the (1*,*1)-weighted (*Y,Z*) degree of*R*, respectively. Suppose*|Sx*0*,R,H|>*
+(*R*) (*H*) (*R*)
+2*DX DY DY DZ*. Then*R*(*X,Y,Z*) =*Y−P*(*X,Z*) with a polynomial*P*(*X,Z*) =*v₀*(*X*) +*Z·v₁*(*X*) with deg*XP≤k*, deg*ZP≤*1 and a subset*S* *′* *⊂S*with
+
+*′* (*R*) (*H*) (*R*) (*R*) (*H*) (*R*) *|S |≥|Sx*0*,R,H|−DY DY DZ >*(2*DX −*1)*DY DY DZ*
+
+such that*P*(*X,z*) =*Pz*(*X*) for each*z∈S* *′*. Reaching this conclusion is the major part of the proof, comprising sections 5.2.5 – 5.2.7 as well as Appendix A of [BCI + 20]. This part computes an approximate solution*Y*=*P*(*X*) of*R*(*X,Y*) = 0 inK[*X,Y*]*/H*(*X,Y*), a finite extension ofK, via Hensel lift. The approximate solution is subsequently shown to be exact from the fact that substitution by*z∈S* *′* leads to the promised proximate polynomial*Pz*(*X*).
+
+5.*Correlated agreement from collinearity of the proximates.*This is the standard argument using Lemma
+2.4. If*|S* *′* *|*above is greater than*γn*+ 1, then ∆([*u₀,u₁*]*,*[*v₀,v₁*])*≤γ*.
+The sufficient bound*|S|≥*2*DX DY* 3 *DZ* is thus established by combining the obtained bound*|Sx*0*,R,H|≥*
+
+(*R*) (*H*) (*R*) (*R*) (*H*)
+*|S|/DY* with the sufficient condition*|Sx*0*,R,H|≥*2*DX DY DY DZ*, using the naive bounds*DY,DY ≤*
+
+(*R*)
+*DY* and*DZ ≤DZ*. This naive approach to the bounds introduced an unnecessary extra factor of*DY*, which we now observe can be saved. (*Ri*) We tweak the definition of*DZ* to be the (1*,*1) weighted (*Y,Z*) degree of the content-free part of*R*(*x₀,Y,Z*) (i.e. not including*Ci*(*Z*)), rather than all of*Ri*. This degree enters play in the Hensel lifting and in bounds
+
+(*C*)
+related directly to*Hij*-s, and all appearances are unaffected by the content Q *Ci*(*Z*). We also denote by*DZ* the*Z*degree of*C*(*X,Z*)*iCi*(*Z*).
+
+Our aim is to show that there exist some (*Ri,Hij*) for which both inequalities
+
+(*Ri*) (*Hij*) (*Ri*)
+
+||S |≥2DX DY||DY DZ||
+|---|---|---|---|
+|x ,R ,H|(R) (H|) (R)||
+
+*x* 0 *,Ri,Hij*(14) (*Ri*) (*Hij*) (*Ri*) *|S*0 *i ij|> DY DY DZ* +*γn*+ 1 (15)
+
+hold; the latter is required so that the final*S* *′* is not smaller than*γn*+ 1. 5 This appears to be a previously unnoticed minor omission in [BCI+20]: some roots (*X, Pz* (*X*)*, z*) of*Q*(*X, Y, Z*) could be due to*C*(*X, z*) vanishing rather than any*Ri*, and similarly*Ci*(*z*) might vanish instead of any*Hij*, and so not every*z∈S*is necessarily accounted for in the*Sx₀,R,H*-s. This can be accounted for without affecting the necessary bound on*S*, as will be described below. For the purpose of describing the proof in [BCI+20] we ignore this issue.
+
+<!-- Page 26 -->
+
+(*Ri*) (*Hij*) (*Ri*) Suppose not; then for each*i,j*we have*|Sx*0*,Ri,Hij|≤*2*DX DY DY DZ* +*γn*+ 1. We take the sum of
+
+(*C*)Q
+this expression over all*i,j*, noting that each element of*S*(except at most*DZ* roots of*C*(*X,Z*)*iCi*(*Z*)) must belong to some*Sx*0*,Ri,Hij*, and using the simple identities X
+
+(*H*) (*R*)
+X
+
+(*R*) (*R*) (*C*)
+*DY* *ij* =*DY* *i*; *DY* *i* =*DY*;*DZ* *i* *≤DZ −DZ* *j i*
+
+we get
+
+(*C*) X X
+*|S|≤DZ* + *|Sx*0*,Ri,Hij|* *i j*
+
+(*C*) X X
+(*Ri*) (*Hij*) (*Ri*) *≤DZ* + 2*DX DY DY DZ* +*γn*+ 1 *i j*
+
+(*C*) (*C*)
+X (*Ri*) *≤DZ* + (*γn*+ 1)*DY* + 2*DX DY* (*DZ −DZ*) *DY* *i*
+
+(*C*) 2 (*C*)
+=*DZ* + (*γn*+ 1)*DY* + 2*DX DY* (*DZ −DZ*)
+
+*≤*2*DX DY* 2 *DZ* + (*γn*+ 1)*DY.*
+
+Thus, taking*|S|>*2*DX DY* 2 *DZ* + (*γn*+ 1)*DY* indeed suffices for Theorem 1.5, as claimed.
+
+## 4 Generalizations
+
+In this section we state generalizations of the positive Theorems 1.3 and 1.5.
+
+### 4.1 More general linear combinations
+
+In practice one desires proximity gaps for the interleaved code*CM* +1, often with large integer*M*. Given
+functions*u₀,...,uM*: *D−→*F*q*, where*M≥*1, one wishes to infer ∆([*u₀,...,uM*]*,CM*
++1 )*≤γ*from the fact that sufficiently many linear combinations of*u₀,...,uM*are close to*C*. The multilinear case,
+
+X *M* *i* *uz*1*,...,zm*= *z₀* *i* 0 *···zm* *m* *−* *−* 1 1 *·ui,* *i*=0
+
+where*i₀,...,im−*1are the*m*=*⌈*log*M⌉*bits of*i*, can be derived from elementary line case covered by Theorem 1.3 and 1.5, with a factor*l*larger bounds [DG25b]. However, of particular importance in practice is the case *uz*=*u₀* +*u₁ ·z*+*...*+*uL·z* *M* *,*
+
+since it requires only a single randomness*z*. Both Section 2 and Section 3 can be generalized to this case, by considering the word*u*(*x*) =*u₀*(*x*) +*u₁*(*x*)*·Z*+*...*+*uM*(*x*)*·ZM* as input of the decoder.
+
+#### We only state the lossless results.
+
+Theorem 4.1(Correlated agreement for curves, up to*δ/*2) *√* <u>.</u>*LetCbe the code*RS[F*q,D,k*]*with block-length* *n*=*|D|, dimensionk*+ 1*, and minimum distanceδ≥* 3 *√* *· n*2 *. Then for anyγ∈* 3 *δ* *,* 2 *δ* *−* *δn* 3 *and functions* *u₀,...,uM*: *D→*F*qthe following holds. If*
+
+*{z∈*F*q|*∆(*u₀* +*z·u₁* +*...*+*z* *M* *·uM,C*)*≤γ} > M·*(*γn*+ 1)*,*
+
+*then* ∆([*u₀,...,uM*]*,CM* +1 )*≤γ.*
+
+<!-- Page 27 -->
+
+*In words, there exist polynomialsp₀*(*X*)*,...,pM*(*X*)*∈*F*q*[*X*]*of degree at mostk, which agree withu₀,...,uM*
+*on a joint setAof density|A|/n≥*1*−γ.*
+
+In a nutshell, the proof of Theorem 4.1 adapts the interpolant Lemma 2.1 to the*M*times higher*Z*-degree, which translates to the same blow-up of the bound for*a*in Claim 2.3. The collinearity argument from Lemma 2.4 extends to degree*M*curves with distance loss *a−* <u>M</u> *M* *·γ*instead of *a−* <u>1</u> 1 *·γ*. Zero distance loss is obtained by requiring *a−* <u>M</u> *M* *·γ <* *n* <u>1</u>, that is*a > M·*(*γn*+ 1).
+
+Likewise, the oversized Guruswami–Sudan interpolant from Lemma 3.1 requires an*M*times larger bound for*DZ*, which is now the (0*,M,*1)-weighted degree of*Q*, and the final bound for*a*again scales by the same factor.
+
+Theorem 4.2(Correlated agreement for curves, up to Johnson bound).*LetCbe the code*RS[F*q,D,k*]*with* *block-lengthn*=*|D|, dimensionk*+ 1*and minimum distanceδ. Denoteρ*= 1*−δ, the slightly reduced rate* *√* *of the code. Then for anyγ∈* 0*,*1*− ρ and functionsu₀,...,uM*: *D→*F*qthe following holds. If*
+
+*M*<u>2(m+ 1/2)</u> 5 <u>+ 3(m+ 1/2)γρ m+ 1/2</u> *{z∈*F*q|*∆(*u₀* +*z·u₁* +*...*+*z ·uM,C*)*≤γ} > M·* 3*/*2 *·n*+ *√,* 3*ρ ρ* l*√*m <u>ρ</u> *wherem*= max 1*−√ρ−γ* *,*3*, then*
+
+∆([*u₀,...,uM*]*,CM* +1 )*≤γ.*
+
+*In words, there exist polynomialsp₀*(*X*)*,...,pM*(*X*)*∈*F*q*[*X*]*of degree at mostk, which agree withu₀,...,uM*
+*on a joint setAof density|A|/n≥*1*−γ.*
+
+### 4.2 Constrained agreement
+
+The following strengthened statements on correlated agreement are useful in the soundness analysis of interactive proofs of proximity such as FRI [BBHR18, BCI + 20], Basefold [ZCF23], FRI-Binius [DP24] and WHIR [ACFY25]. These refined properties are a direct consequence of collinearity (or, in the light of Section
+
+4.1, co-curvilinearity) of proximate polynomials, the core property behind correlated agreement, and they are obtained by minor strengthenings of Lemma 2.4. For brevity, we restrict to the curve case. Theorem 4.3(Correlated agreement with given sets, up to Johnson bound).*ForC*=RS[F*q,D,k*]*andδ,* *ρ,γas in Theorem 4.2, and wordsu₀,...,uM*: *D−→*F*q. Suppose that*
+*S*=*{z∈*F*q|*∆(*u₀* +*z·u₁* +*...*+*z* *M* *·uM,C*)*≤γ}*
+
+*is as large as in Theorem 4.2, and let* *{Az}z∈S*
+
+*be any choice of agreement sets with density*1*−γ. (That is, for eachz∈Sthere exists a proximatepz∈C* *such thatu₀* +*z·u₁* +*...*+*z* *M* *·uM*=*pzonAz, and|Az|/|D|≥*1*−γ.) Then there existsz₀ ∈Sand* [*p₀,...,pM*]*∈CM* +1 *such that* [*u₀,...,uM*] *Az* = [*p₀,...,pM*] *Az* *.* 0 0
+
+The theorem is obtained by plugging in the improved bounds in the proof of [Sta25, Theorem 22]. Notably, the theorem immediately implies the*weighted correlated agreement theorem*in a simpler form than stated by [BCI + 20, Theorem 7.2], and with no restriction on the weights. Assume a sub-probability measure on*D* of the form <u>w(x)</u> *µ*(*{x}*) =*,* *|D|* for some function*w*with values in [0*,*1].
+
+<!-- Page 28 -->
+
+Corollary 4.4(Weighted correlated agreement, up to Johnson bound).*GivenC*=RS[F*q,D,k*]*andδ,ρ,* *γas in Theorem 4.2, and wordsu₀,...,uM*: *D −→*F*q, and letµbe a sub-probability measure as above.* *Suppose that* *S*= *z∈F*:*∃pz∈C,µ*(*{x*: *uz*(*x*) =*pz*(*x*)*}*)*≥*1*−γ*
+
+*is as large as in Theorem 4.2, whereuz*=*u₀* +*u₁ ·z*+*...*+*uL·z* *M* *. Then there exists*[*p₀,...,pM*]*∈CM* +1 *,*
+*and a setAof weightµ*(*A*)*≥*1*−γsuch that*[*p₀,...,pM*] = [*u₀,...,uM*]*onA.*
+
+
+[Showing lines 901-1050 of 1928. Use :1051 to continue]
+*Proof.*Since*µ*is dominated by the regular density, the agreement sets*Az*for the scalars*z∈S*of weight *µ*(*Az*)*≥*1*−γ*are also of regular density*|Az|/|D|≥*1*−γ*. We thus may apply Theorem 4.3 to see that, over one of these agreement sets we have correlated agreement.
+
+The error bound of Corollary 4.4 replaces the*O*(*n²*)-bound from [BCI + 20], used in any round-by-round analysis of FRI in the list-decoding regime ([BCI + 20], see also [HLP24] or [Sta25]) yielding significantly smaller soundness errors.
+
+Of similar importance is the following agreement theorem where the proximate polynomials are subject to given linear constraints. This is the situation met in Basefold [ZCF23], and a non-linear generalization which we do not cite here is useful for WHIR and FRI-Binius, see [Hab24]. Again, its proof is obtained by plugging in the improved bounds in the proof of [Hab24, Theorem 3].
+
+Theorem 4.5.*(Weighted correlated agreement for subspaces) ForC*=RS[F*q,D,k*]*andδ,ρ,γas in Theorem*
+
+*4.2, and wordsu₀,...,uM*: *D−→*F*q, andµa sub-probability measure as above. Suppose thatC*
+*′* *is a linear* *subspace ofC, and that*
+
+*S*= *z∈F*:*∃pz∈C* *′* *,µ*(*{x*: *uz*(*x*) =*pz*(*x*)*}*)*≥*1*−γ,*
+
+*withuz*=*u₀* +*u₁ ·z*+*...*+*uL·z* *M* *, is of size*
+
+<u>2(m+ 1/2)</u> 5 <u>+ 3(m+ 1/2)γρ m+ 1/2</u> *a > M·* 3*/*2 *·n*+ *√.* 3*ρ ρ*
+
+*Then there exists*[*p₀,...,pM*]*∈*(*C* *′* ) *M*+1 *and a setAof weightµ*(*A*)*≥*1*−γ, such that*[*p₀,...,pM*] = [*u₀,...,uM*]*onA.*
+
+### 4.3 List correlated agreement
+
+List correlated agreement, also called*strong correlated agreement*in [Zei24] or*mutual correlated agreement* in [ACFY25], is a “global” variant of regular correlated agreement. Given two functions*u₀,u₁* : *D−→*F*q* and proximity parameter*γ*, the list correlated agreement property claims that, except for few scalars*z*, every*γ*-proximate*pz∈C*of*u₀* +*zu₁* stems from a*γ*-proximate [*p₀,p₁*]*∈C²* of [*u₀,u₁*]. The property has been shown for general linear codes up to the double-Johnson bound in [Zei24], and up to one-and-a-half Johnson bound in [GKL24]. For Reed–Solomon codes it has been conjectured to hold up to the Johnson bound [ACFY25, Conjecture 4.12]; a proof of it, which generalizes the decoder analysis from [BCI + 20] is discussed in [Hab25].
+
+We state the result with the improved bounds.
+
+Theorem 4.6(List correlated agreement, up to Johson bound).*LetC*=RS*k*[F*q,D,k*]*be the Reed–Solomon* *code over*F*qwith domain of definitionDof size|D|*=*n, and dimensionk*+ 1*. Denoteρ*=*k/n, the slightly* *reduced rate of the code.* *√* *Then for anyu₀,...,uM*: *D−→*F*q, andγ∈*(0*,*1*− ρ*)*, the size of*    *∃A⊂D,* (*u* +*zu* +*...*+*z* *M*
+
+*u*) *∈C,but*
+ 0 1 *M A A* *E*= *z∈*F*q*: *s.t.*  *|A|≥*(1*−γ*)*·n,* [*u ,...,u*] */∈CM* +1  0 *M A A*
+
+<!-- Page 29 -->
+
+*is bounded as* <u>2(m+ 1/2)</u> 5 <u>+ 3(m+ 1/2)γρ m+ 1/2</u> *|E|≤M·* 3*/*2 *·n*+ *√,* 3*ρ ρ* l*√*m <u>ρ</u> *wherem*= max 1*−√ρ−γ* *,*3*.*
+
+The proof of Theorem 4.6 generalizes Section 3.2 as follows. Instead focusing on a*single*“useful” factor of Y *Q*(*X,Y,Z*) =*C*(*X,Z*)*· Ri*(*X,Y,Z*) *i*
+
+(for simplicity we restrict to the separable case) one looks at*all*such useful factors*Ri*(*X,Y,Z*), where useful means that*Ri*(*X,pz*(*X*)*,Z*) = 0 for sufficiently many of the claimed*γ*-proximate*pz*(*X*). (Again, each useful Q factor is decomposed into irreducible and separable components*Ri*(*x₀,Y,Z*) =*Ci*(*Z*)*·jHi,j*(*Y,Z*).) Each such good factor can only cause few proximates which correct an error of [*u₀,...,uM*] (since most of their proximates are co-curvilinear), and the remaining non-useful factors cover few proximates by definition.
+
+*τ*
+
+## 5 The failure ofn-bounded proximity gaps
+
+In this section we prove Theorem 1.6 showing that*a*has to be superpolynomial if we want proximity gaps at radius*δ−o*(1). This also immediately gives us Corollary 1.7, showing that*a*has to be nearly quadratic in*n*if we want proximity gaps at the Johnson radius.
+
+#### Recall the statement of theorem:
+
+Theorem 1.6.*Letτbe a fixed positive integer, andλτ*= 2 *−*(*τ*+2) *. Letϵ >*0*be an arbitrary constant, and* *chooseδ*= 1*−λτandγ*= 1*−*4*λτ.*
+
+*Then for all*F*qof characteristic*2*, there are Reed-Solomon codesC*=RS[F*q,D,*(1*−δ*)*n*]*over*F*q, domain* <u>1</u> (1+*ϵ*) *Dwithn*=*|D|*=*O qτ, distanceδand wordsf,g*: *D→*F*qsuch that:*
+
+*{z∈*F*q|*∆(*f*+*zg,C*)*≤γ} ≥*(1*−o*(1))*·q≥n* *τ*(1*−ϵ*) *,*
+
+*forqlarge enough, and yet*∆([*f,g*]*,C²*)*≥*1*−*2*λτ*= <u>2</u> 3 *δ*+ <u>1</u> 3 *γ.*
+
+We will need a special family of polynomials with many roots and well-behaved coefficients. We will find this special family through a combination of ideas from algebra and probability: using structural properties of the coefficients of*subspace polynomials*, and the second moment method to understand the distribution of these coefficients. This is done in Theorem 5.1 below.
+
+Throughout this section, we assume that*q*= 2 *m*, for some integer*m≥*1. We will work withF*q*and the F₂-linear structure of it. For anyF₂-linear subspace*W⊆*F*q*of dimension*b*, recall that the monic vanishing polynomial*PW*(*X*) of*W*, called the*subspace polynomial*of*W*, is a linearized polynomial of degree 2 *b* :
+
+2 *b* 2 *b−*1 2 *b−*2 *PW*(*X*) =*X* +*c₁X* +*c₂X* +*...*+*cbX.*
+
+2 *b−*1 Define Λ(*W*) to be the coefficient*c₁* of*X* in*PW*(*X*).
+
+For anF₂-linear subspace (in shortF₂-subspace)*V⊆*F*q*, we definesupp*b*(*V*) by:
+
+supp*b*(*V*) = *{λ∈*F*q|∃*F₂-subspace*W⊆V*with dimF2(*W*) =*b,*Λ(*W*) =*λ*)*} .*
+
+#### We will informally callsuppb(V) thediversityofV.
+
+<!-- Page 30 -->
+
+Theorem 5.1(Subspaces with large diversity).*Leta,b∈*[*m*]*withb·*(*a−b*)*≥*(1 +*ϵ*)*m. Then there exists* *ana-dimensional*F₂*-subspaceV⊆*F*qwith*
+
+supp*b*(*V*)*≥* 1*−Oϵ*(*q* *−ϵ* ) *·q.*
+
+Heuristically: there are about 2 *b·*(*a−b*) *≥*2 (1+*ϵ*)*m* =*q* 1+*ϵ* different*b*-dimensionalF₂-subspaces*W*of*V*. (In Q*b−*1 *a i* *V*, the number of ordered linear independent sets of*b*vectors is*i*=0(2 *−*2), and each*b*-dimensional Q*b−*1 *b i* F₂-subspace has*i*=0(2 *−*2) ordered bases.) If the values of Λ(*W*) as*W*varies over*b*-dimensionalF₂- subspaces of*V*are roughly uniformly distributed overF*q*, then all values inF*q*ought to appear as Λ(*W*) for some subspace*W*of*V*.
+
+Note that if*V*is contained in a subfield*K*ofF*q*, then for any subspace*W*of*V*, Λ(*W*) also lies in*K*. So not every*V*satisfies the conclusion of Theorem 5.1 (but most*V*do, as our proof will show).
+
+#### Using this theorem, we can proceed.
+
+l m *Proof.*Proof of Theorem 1.6. Let*q*= 2 *m* be an arbitrary power of 2. Choose*b*= <u>(1+</u> *τ* <u>ϵ)m</u>, where*ϵ >*0 is the arbitrary small constant in the statement of the theorem, and let*a*=*b*+*τ*. By Theorem 5.1, there exists an*a*-dimensionalF₂-subspace*V⊆*F*q*withsupp*b*(*V*)*≥*(1*−q* *−ϵ* )*·q*. Let*C*=RS[F*q,D,k*], where*D*=*V*and *k*= 2 *b−*2. Then*C*has blocklength *a* <u>1+ϵ</u> *n*=*|V|*= 2 =*O*(*qτ*)*,*
+
+*τ*(1*−ϵ*) *−ϵ²* so that*n* =*q·*(1 +*O*(*q*)) which smaller than any*q·*(1*−o*(1)) for*q*large enough. The minimum distance of the code is <u>k 2</u> *b−*2 *−*(*τ*+2) *δ*= 1*−* = 1*−* *a* = 1*−*2 = 1*−λτ.* *n* 2
+
+2 *b* 2 *b−*1 Take*f*: *V→*F*q*to be the function*f*(*x*) =*x*. Take*g*: *V→*F*q*to be the function*g*(*x*) =*x*. By Theorem 5.1, for least (1*−o*(1))*q*choices of*λ∈*F*q*, there exists someF₂-subspace*W⊆V*of dimension *b*=*a−τ*with a subspace polynomial*PW*(*X*) of the form:
+
+2 *b* 2 *b−*1 *b−*2 *PW*(*X*) =*X* +*λX* + ( some polynomial of degree*≤*2)*.*
+
+This means that*f*+*λg*agrees with some polynomial of degree at most 2 *b−*2 =*k*on all the points of*W*, in particular on at least 2 *b* points. Thus for such*λ∈*F*q*, we have
+
+<u>2</u> *b* *−τ* ∆(*f*+*λg,C*)*≤*1*−* *a* = 1*−*2 = 1*−*4*λτ.* 2
+
+On the other hand, since*g*is a polynomial of degree at most 2 *b−*1, it has at most 2 *b−*1 = 2*·λτ·n*agreement evaluation points with polynomials of degree at most*k*= 2 *b−*2 – which proves that ∆(*g,C*)*≥*1*−*2*·λτ*, and thus ∆([*f,g*]*,C²*)*≥*1*−*2*·λτ*. This completes the proof of Theorem 1.6.
+
+The rest of this section is devoted to proving Theorem 5.1.
+
+### 5.1 Finding a subspace with large diversity
+
+For anF₂-subspace*V⊆*F*q*of dimension dim(*V*) =*a*and an integer*b∈*[0*,a*], we let *Vb* denote the set of all*b*-dimensional subspaces of*V*.
+
+<!-- Page 31 -->
+
+*Proof of Theorem 5.1.*For anF₂-subspace*V⊆*F*q*, we introduce a parameterscore*b*(*V*). Let*W*be a uniformly random*b*-dimensionalF₂-subspace of*V*. Then we define: X 2 score*b*(*V*) = Pr[Λ(*W*) =*λ*]*.* *W* *λ∈*F*q*
+
+This measures how well spread the values of Λ(*W*) are as*W*varies over all*b*-dimensionalF₂-subspaces of
+
+*V*. Observe that we also have an alternative interpretation ofscore*b*(*V*) as follows:
+score*b*(*V*) = Pr *′* [Λ(*W*) = Λ(*W* *′* )]*,* *W,W*
+
+where*W*and*W* *′* are independent, uniformly chosen*b*-dimensionalF₂-subspaces of*V*. By the Cauchy– Schwarz inequality, we get a simple relation betweensupp*b*(*V*) andscore*b*(*V*):
+
+P2 <u>λ∈F</u>*q*Pr*W*[Λ(*W*) =*λ*] <u>1</u> supp*b*(*V*)*≥* =*.* score*b*(*V*) score*b*(*V*)
+
+Thus to prove the theorem, we need to find a*V*with smallscore*b*(*V*). We do this by averaging. Pick*V* uniformly at random from amongst all*a*-dimensionalF₂-subspaces ofF*q*. " #
+
+E*V*[score*b*(*V*)] =E*V*Pr [Λ(*W*) = Λ(*W* *′* )] = Pr *′* [Λ(*W*) = Λ(*W* *′* )]*,* *W,W′∈*[ *V* *b*](*W,W*)*∈µ*
+
+where*W*and*W* *′* are chosen uniformly and independent from all*b*-dimensional subspaces of the randomly selected*V*, and*µ*is the distribution of (*W,W* *′* ) created by the process.
+
+Let us a closer look at the distribution*µ*. Let*τ*=*a−b*, and*K*be the random variable*b−*dim(*W∩W* *′* ). Observe that*K*takes values between 0 and*τ*. By symmetry, it is clear that the distribution of (*W,W* *′* ) can be equivalently generated by first choosing*K∈*[0*,τ*], then picking a uniformly random*b−K*dimensional F₂-subspace*U*ofF*q*, and then picking a pair ofF₂-subspaces (*W,W* *′* ) ofF*q*, each of dimension*b*, with *W∩W* *′* =*U*, uniformly random amongst all such pairs.
+
+The following lemma, proved in the next subsection, shows that conditioned on*K*being nonzero, the probability of Λ(*W*) = Λ(*W* *′* ) is very small:
+
+*′*<u>1 2</u> 2*τ* Pr[Λ(*W*) = Λ(*W*)*|K̸*= 0]*≤* +*O* 2 *.* *q q*
+
+Lemma 5.2(Λ-collisions lemma).*Let*0*≤c < b≤m. Consider the following experiment. LetUbe a* *uniformly randomc-dimensional*F₂*-linear subspace of*F*q. Let*(*W,W* *′* )*be a pair of*F₂*-linear subspaces of* *dimensionb, picked uniformly at random amongst all pairs ofb-dimensional*F₂*-subspaces, the intersection* *of which is exactlyU. Then* *′*<u>1 2</u> 2(*b−c*) Pr[Λ(*W*) = Λ(*W*)]*≤* +*O* 2 *.* *q q*
+
+Furthermore, the probability that*K*= 0 is simply the probability that*W*=*W* *′*, and this is also small: *Vb* Q*b−*1 <u>2</u> *a* <u>−2</u> *i* *b·*(*a−b*) Since =*i*=0 2 *b* *−*2*i* *≥*2, we obtain
+
+*′*<u>1 1</u> Pr[*K*= 0] = Pr[*W*=*W*]*≤ ≤* *τ·*(*a−τ*) *.* *V*2 *b*
+
+#### Putting these together, we get:
+
+E*V*[score*b*(*V*)] = Pr[Λ(*W*) = Λ(*W* *′* )]*≤*Pr[*K*= 0] + Pr[Λ(*W*) = Λ(*W* *′* )*|K̸*= 0]
+
+<!-- Page 32 -->
+
+1 1 2 2*τ* *≤* *τ·*(*a−τ*) + +*O* 2 *.* 2 *q q*
+
+By our assumptions on*τ,a*, the right hand side is at most (1 +*O*(*q* *−ϵ* ))*·* <u>1</u> *q*. Therefore, by the probabilistic method, there exists a*V*withscore*b*(*V*)*≤*(1 +*O*(*q* *−ϵ* ))*·* <u>1</u> *q*. For any such*V*, we have
+
+<u>1</u>*−ϵ* supp*b*(*V*)*≥ ≥* 1*−O q ·q,* score*b*(*V*)
+
+as desired.
+
+### 5.2 Preparations for the proof of theΛ-collisions lemma
+
+We will need two ingredients: Berlekamp duality, and the relationship between Λ(*U*) and Λ(*W*) forF₂-linear subspaces*U⊆W*.
+
+Definition 5.3(Berlekamp Dual).*LetUbe an*F₂*-linear subspace of*F*q, andPU*(*X*)*the vanishing polynomial* *ofU. The Berlekamp dual ofUis defined as*
+
+[Showing lines 1051-1200 of 1928. Use :1201 to continue]
+
+*U* *∗* =*PU*(F*q*)*.*
+
+Lemma 5.4(Berlekamp Duality).*LetUbe an*F₂*-linear subspace of*F*qwith*dim(*U*) =*c. Then:*
+
+*1.U* *∗* *is an*F₂*-linear subspace of*F*qwith*dim(*U*
+*∗* ) =*m−c.*
+
+*2.*(*U* *∗* ) *∗* =*U.*
+The proof of the lemma can be found in [Ber15] (Theorem 11.35). For another (totally unrelated) application of this machinery, see [BSK12] (the above lemma is also reproved there).
+
+Lemma 5.5(Λ(*W*) and Λ(*U*)).*SupposeU⊆Ware*F₂*-linear subspaces of*F*qwith dimensionc,brespec-* *tively. Then* 2 *b−c* Λ(*W*) = Λ(*U*) + Λ(*L*)*,*
+
+*whereL*=*PU*(*W*)*.*
+
+*Proof.*Note that the quotient*W/U*has dimension*b−c*. Thus, since*PU* isF₂-linear with kernel*U*, we get that*L*=*PU*(*W*) has dimension exactly*b−c*, and that*PU* *−*1
+
+(*L*) =*W*. Therefore the monic polynomial
+Y *PL*(*PU*(*X*)) = (*PU*(*X*)*−α*)*,* *α∈L*
+
+which has degree*|L|·*deg(*PU*(*X*)) = 2 *b*, vanishes at all points of*W*. Thus it must equal*PW*(*X*). Expanding *PL*(*PU*(*X*)), we obtain:
+
+2 *b−c* 2 *b−c−*1 *b−*2 *PL*(*PU*(*X*)) =*PU*(*X*) + Λ(*L*)*PU*(*X*) + deg*≤*2
+
+2 *c* 2 *c−*1 *c−*2 2 *b−c* 2 *c* *c−*1 2 *b−c−*1 *b−*2 = *X* + Λ(*U*)*X* + (deg*≤*2) + Λ(*L*) *X* + (deg*≤*2) + deg*≤*2
+
+2 *b* 2 *b−c* 2 *b−*1 *b−*2 =*X* + Λ(*U*) + Λ(*L*) *X* + deg*≤*2*,*
+
+where (deg*≤*2 *r* ) is short for a polynomial of degree at most 2 *r*. This proves the claimed formula for Λ(*W*).
+
+<!-- Page 33 -->
+
+### 5.3 Proof ofΛ-collisions lemma
+
+#### We can now prove Lemma 5.2.
+
+*Proof.*Our proof relies on an alternate way to generate the distribution of (*U,W,W* *′* ). The key point is that specifying*U*is equivalent to specifying*U* *∗*, and that specifying a superspace*W⊇U*is equivalent to specifying the subspace*PU*(*W*) of*U* *∗* =*PU*(F*q*).
+
+First pick a uniformly random (*m−c*)-dimensional subspace *U*e. Then pick a pair of (*b−c*)-dimensional subspaces (*L,L* *′* ) of *U*ewith*L∩L* *′* =*{*0*}*, uniformly random among all such pairs. We then set
+
+*U*= (*U*e) *∗* *,*
+
+*W*=*PU* *−*1
+
+(*L*)*,*
+*W* *′* =*PU* *−*1 (*L* *′* )*.*
+
+Note that the distribution of (*U,W,W* *′* ) generated in this manner is exactly as in the hypothesis. Indeed, from (*U,W,W* *′* ) we can recover (*U,L,L* e *′* ) as (*U* *∗* *,PU*(*W*)*,PU*(*W* *′* )).
+
+Now by Lemma 5.5, 2 *b−c* Λ(*W*) = Λ(*U*) + Λ(*L*)*,*
+
+*′* 2 *b−c* *′* Λ(*W*) = Λ(*U*) + Λ(*L*)*.*
+
+Thus Λ(*W*) = Λ(*W* *′* ) if and only if Λ(*L*) = Λ(*L* *′* ). Thus, the probability that we want to bound, Pr(*U,W,W′*)[Λ(*W*) = Λ(*W* *′* )], is given by the exact expression:
+
+Pr *′* [Λ(*W*) = Λ(*W* *′* )] = Pr [Λ(*L*) = Λ(*L* *′* )]*.* (*U,W,W*) (*U,L,L* e *′*)
+
+This right hand side only depends on the marginal distribution of (*L,L* *′* ), which we now investigate.
+
+By symmetry, picking the uniformly random (*m−c*)-dimensionalF₂-subspace *U*eand then picking*L,L* *′* of dimension*b−c*contained in *U*ewith*L∩L* *′* =*{*0*}*is exactly the same as*first*pickingF₂-subspaces*L,L* *′* of the entire spaceF*q*of dimension*b−c*with*L∩L* *′* =*{*0*}*, uniformly at random from among all such pairs, and*then* picking *U*eto be a (*m−c*)-dimensional space uniformly at random from among all such spaces that contain both*L*and*L* *′*. Thus the marginal distribution of (*L,L* *′* ) is uniform over all pairs of (*b−c*)-dimensional subspaces ofF*q*with intersection*{*0*}*.
+
+The following lemma, proved next, gives a strong bound on the probability that Λ(*L*) = Λ(*L* *′* ) under this distribution.
+
+Lemma 5.6.*Let*(*L,L* *′* )*be a pair ofe-dimensional subspaces of*F*qwith intersection{*0*}, picked uniformly* *at random from amongst all such pairs.*
+
+*Then:* *′*<u>1 2</u> 2*e* Pr[Λ(*L*) = Λ(*L*)]*≤* +*O* 2 *.* *q q*
+
+This completes the proof of Lemma 5.2.
+
+### 5.4 Proof of Lemma 5.6
+
+#### We now prove Lemma 5.6.
+
+<!-- Page 34 -->
+
+*Proof.*We can equivalently generate the distribution (*L,L* *′* ) as follows. Pick*α₁,...,αe*,*α₁* *′* *,...,αe* *′* *∈*F*q* independently and uniformly at random. In the sequel we condition on the event*I*, that all these 2*e* elements areF₂-linearly independent. Then define*L*=span(*α₁,...,αe*) and*L* *′* =span(*α₁* *′* *,...,αe* *′* ). The event*I*implies that*L*and*L* *′* both have dimension*e*, while*L∩L* *′* =*{*0*}*. By symmetry, the distribution of (*L,L* *′* ) is uniform over all such pairs, matching the distribution in the hypothesis of the lemma.
+
+Notice that Λ(*L*) can be expressed as the 2 P *e−*1 -th elementary symmetric polynomial of all the elements of
+
+*L*. Since the elements of*L*are precisely*{i∈Sαi|S⊆*[*e*]*}*, we get that
+Λ(*L*) =*He*(*α₁,...,αe*)*,*
+
+and likewise Λ(*L* *′* ) =*He*(*α₁* *′* *,...,αe* *′* )*,*
+
+where! X Y X *He*(*Z₁,...,Ze*) = *Zi.* *J⊆P*([*e*])*,|J|*=2*e−*1*S∈J i∈S*
+
+Note that*He*(*Z₁,...,Ze*) is a non-zero, homogeneous polynomial of degree 2 *e−*1. The latter is obvious from *e−*1 its explicit form, and the first fact follows from that the coefficient of*Z₁₂* equals 1: this coefficient comes from the unique subset*J⊆P*([*e*]) of size 2 *e−*1 that contains all subsets*S*of [*e*] with 1*∈S*.
+
+#### Thus we want to bound:
+
+Pr *′ ′* [*He*(*α₁,...,αe*) =*He*(*α₁* *′* *,...,αe* *′* )*|I*]*.*
+*α₁,...,αe,α₁,...,αe∈*F*q*
+
+#### For that, we first bound
+
+Pr *′ ′* [*He*(*α₁,...,αe*) =*He*(*α₁* *′* *,...,αe* *′* )]*,*
+*α₁,...,αe,α₁,...,αe∈*F*q*
+
+that is the collision probability of the distribution*ν*of*He*(*α₁,...,αe*) for uniformly random (*α₁,...,αe*)*∈*F
+*e* *q*. From the properties of*He*, we see that:
+
+2 *e−*1 2 *e−*1
+
+1.*He*(*tZ₁,...,tZe*) =*t He*(*Z₁,...,Ze*) for all*t∈*F*q*. Since*t7→t* is a bijection onF*q*, we get that all non-zero elements ofF*q*have equal probability under*ν*.
+<u>2</u> *e*
+
+2.Pr*α*1*,...,αe ∈*F*q*[*He*(*α₁,...,αe*) = 0]*≤*
+*q*. This is by the Schwartz–Zippel lemma. Thus 0 has probability <u>2</u> *e* at most *q* under*ν*.
+
+Putting these together, we get that
+
+|||||′|2e|
+|---|---|---|---|---|---|
+|α ,...,α|,α ,...,α|∈F e|e|e|2|
+||||2|||
+||||q|||
+|||||′|2 q|
+|α ,...,α|,α ,...,α ∈F|e|e|e|2|
+||||||q|
+
+*′*1 2 1 2 2*e* Pr *′ ′*
+[*H* (*α₁,...,α*) =*H* (*α₁,...,αe*)]*≤* + = +*O*
+2 *.* 1 *e* 1 *e q q−*1 *q q q*
+
+2*e* Finally, using the fact that Pr[*I*]*≥*1*−O*, we get that:
+
+<u>1</u> +*O* 2*e* 2*e* *′ q* 21 2 Pr *′ ′*
+[*H* (*α₁,...,α*) =*H* (*α₁,...,αe*)*|I*]*≤*
+<u>2e</u> *≤* +*O* 2 *.* 1 *e* 1 *e q*1*−O q q*
+
+This completes the proof of Lemma 5.6.
+
+<!-- Page 35 -->
+
+## 6 Limitations on the proximity gaps at the list-decoding radius
+
+In this section we prove Theorem 1.9.
+
+### 6.1 Structural lemma: Many values at a random point
+
+The basic phenomenon that we will use is that any large collection of far-apart functions take many different values at a random point. Namely, at a random point*α*, there are many different*β*for which some function in the collection has*f*(*α*) =*β*.
+
+Formally, let*L*be a set of functions from*S*toF*q*. For*α∈S*, define:
+
+#### L(α) ={h(α)|h∈L}.
+
+Lemma 6.1.*LetLbe a set of functions fromSto*F*q. Suppose any two elements ofLhave at mostA* *agreements. Then:* <u>1 |S|</u> E*α∈S*[*|L*(*α*)*|*]*≥* min *|L|,.* 2 *A*
+
+#### Proof.LetL=|L|. Forα∈S,y∈Fq, define
+
+
+[Showing lines 1201-1350 of 1928. Use :1351 to continue]
+<u>1</u> *W*(*α,y*) = *·|{h∈L|h*(*α*) =*y}|.* *L*
+
+Then*W*(*α,·*) is the probability distribution of*h*(*α*) when*h*is chosen uniformly at random from*L*.
+
+Observe that*L*(*α*) =*{y|W*(*α,y*)*>*0*}*is the support of the distribution*W*(*α,·*).
+
+We bound the size of*L*(*α*) from below using the second moment by Cauchy–Schwarz:
+
+P2 <u>y</u>*W*(*α,y*) <u>1</u> *|L*(*α*)*|≥* P 2 = P 2 *.* *yW*(*α,y*)*yW*(*α,y*)
+
+By definition, X <u>1</u> *W*(*α,y*) 2 = 2 *·|{*(*h₁,h₂*)*∈L|h₁*(*α*) =*h₂*(*α*)*}|.* *y* *L*
+
+By linearity of expectation,
+
+" # X 1 E*α∈SW*(*α,y*) 2 = 2 *·*E*α*[*|{*(*h₁,h₂*)*∈L|h₁*(*α*) =*h₂*(*α*)*}|*] *y* *L*   1  X = 2 *· L*+ agree(*h₁,h₂*) *L* *h₁̸*=*h₂* 1 <u>A</u> *≤* 2 *· L*+*L·*(*L−*1)*·.* *L |S|*
+
+Thus, " # <u>1</u> E*α*[*|L*(*α*)]*≥*E*α*P 2 *yW*(*α,y*)
+
+<!-- Page 36 -->
+
+11 *≥* hP i sinceE *X* *≥* E[1*X*] for nonnegative r.v.s*X* E*α yW*(*α,y*)2
+
+<u>L²</u> *≥* <u>A</u> *L*+*L*(*L−*1) *|S|* 1 2 1 *|S|* *≥ ·* <u>1 A</u> *≥* min *|L|,,* 2 *L* + *|S|* 2 *A*
+
+where the last inequality is just the fact that the harmonic mean of*L,* <u>|</u> *A* <u>S|</u> is at least the minimal value. This completes the proof.
+
+In general, the term <u>|</u> *A* <u>S|</u> cannot be improved (for example, if*L*consists of perfect*A*’th powers of degree 1 polynomials evaluated on*S*=F*q*, and*A*divides*q−*1).
+
+### 6.2 Proximity gaps stop at the list decoding radius
+
+#### We now prove Theorem 1.9:
+
+Theorem 1.9.*LetCbe the Reed–Solomon code*RS[F*q,D,k*]*, with|D|*=*nandk*= (1*−δ*)*n. Letγ*= LDRF*q,D,q*(*δ*) + *n* <u>2</u> *. Then there exist functionsf,g*: *D→*F*qsuch that:*
+
+<u>q</u> *|{z∈*F*q|*∆(*f*+*z·g,C*)*≤γ}|≥,* 2*n*
+
+*but with*∆([*f,g*]*,C²*)*≥δ−* *n* <u>1</u> *.*
+
+SinceLDRF*q,D,q*(*δ*) =*γ−* *n* <u>2</u>, we know that there is some Hamming ball of radius*γ−* *n* <u>1</u> which contains*> q* elements of*C*. Let*c*: *D→*F*q*be the center of this ball, and let*L*be the set of polynomials*H*(*X*)*∈*F*q*[*X*] of degree at most*k*with ∆(*c,H*)*≤γ−* *n* <u>1</u>. We know that*|L|≥q*.
+
+We will now view*L*as a set of functions fromF*q→*F*q*(*L*was defined based only on the values in*D*). By Lemma 6.1 applied with domainF*q*, we get that there exists*α∈*F*q*, for which the set of values
+
+#### L(α) ={H(α) : H(X)∈L}
+
+has size at least min( 2 <u>q</u> *,* 2 <u>q</u> *k* )*≥* 2 <u>q</u> *n*. Define*f*: *D→*F*q*and*g*: *D→*F*q*by
+
+<u>c(x)</u> *f*(*x*) =*,* *x−α* *−*1 *g*(*x*) =*,* *x−α*
+
+#### for eachx∈D. Then the functionf+z·g: D→Fqsatisfies
+
+<u>c(x)−z</u> (*f*+*z·g*)(*x*) =*.* *x−α*
+
+Claim 6.2.*Ifz∈L*(*α*)*, then there exists a polynomialP*(*X*)*of degree at mostk−*1*with:*
+
+∆(*f*+*z·g,P*)*≤γ.*
+
+*Proof.*Let*z∈ L*(*α*), and let*H*(*X*)*∈ L*be a polynomial in*L*of degree*≤k*with*H*(*α*) =*z*. We have that the quotient*Hα,z*(*X*) = <u>H</u> *X* <u>(X</u> *−* <u>)</u> *α* <u>−z</u> is in fact a polynomial of degree*≤k−*1. For any*x∈D\{α}*with *H*(*x*) =*c*(*x*), we have <u>H(x)−z c(x)−z</u> *Hα,z*(*x*) = = =*f*(*x*) +*z·g*(*x*)*.* *x−α x−α*
+
+<!-- Page 37 -->
+
+Thus ∆(*f*+*z·g,Hα,z*)*≤*∆(*H,c*) + *n* <u>1</u> *≤γ*, which proves the claim.
+
+Finally, we note that ∆(*g,C*)*≥δ−* *n* <u>1</u>. Indeed, if*P*(*X*)*∈*F*q*[*X*] is of degree*≤k*, then whenever*x∈D\{α}* satisfies*g*(*x*) =*P*(*x*)*,*we also have: *P*(*x*)*·*(*x−α*) + 1 = 0*.*
+
+Since the polynomial*P*(*X*)*·*(*X−α*) + 1 has degree at most*k*+ 1, there can be at most*k*+ 1 such*x*. Thus ∆(*g,P*)*≥*1*−* *k*+1 *n* =*δ−* *n* 1, and so ∆([*f,g*]*,C²*)*≥δ−* *n* 1, as desired.
+
+## 7 Limits to proximity gaps over prime fields
+
+In this section, we develop some machinery to show limitations to proximity gaps over prime fields. We use this machinery to prove Theorem 1.15 and Theorem 1.16, which exhibit proximity gap thresholds and*δ/*3 and*δ/*2 in the regime*δ*=*o*(1). We also show limitations on proximity gaps over prime fields in the setting *δ*= Ω(1) for primes with a certain special number theoretic property. For specific primes of interest, this hypothesis could be checked experimentally, and it seems plausible to us that there are infinitely many such primes (see Conjecture 1.12).
+
+We begin with a general construction based on multiplicative subgroups*G*ofF*q*, which we will instantiate with a good choice of*E⊆G*. For the sake of a wider range of evaluation domains, we directly state construction lifted to a larger subgroup*H⊇G*.
+
+Theorem 7.1.*LetG⊆H⊆*F *∗* *qbe multiplicative subgroups, and denote*Φ : *H→Gthe (onto) map sending* *x7→x* *c* *, wherec*=*|H|/|G|. Given a subsetE⊆Gand integersℓ,a≥*1*, so that* ( *ℓ* ) X *|E* (+*ℓ*) *|*= *ei|e₁,...,eℓ∈Eare distinct ≥a,* *i*=1
+
+*letC*=RS[F*q,D,n−*(*ℓ*+ 2)*c*]*be the Reed–Solomon code with evaluation domainD*= Φ *−*1
+
+(*E*)*of sizen, and*
+*minimum distanceδ*= (*ℓ*+2) *n* *c* *. Then, forγ*= *ℓc* *n* = *ℓ*+2 *ℓ* *·δ, there existf,g*: *D→*F*qsuch that*
+
+*|{z∈*F*q|*∆(*f*+*zg,C*)*≤γ}|≥a,*
+
+*and yet*∆([*f,g*]*,C²*)*≥* (*ℓ*+1) *n* *c* = *ℓℓ*+1 +2 *δ*= *ℓ*+1 *ℓ* *γ.*
+
+*Proof.*Take*f,g*: *D→*F*q*defined as
+
+*f*(*x*) =*x* *n−ℓ·c* *,*
+
+*g*(*x*) =*x* *n−*(*ℓ*+1)*·c* *.*
+
+Since*g*is the evaluation of a polynomial of degree*n−*(*ℓ*+ 1)*c*, we have ∆(*g,C*)*≥* <u>(ℓ+1)</u> *n* <u>c</u> = <u>ℓ+1</u> *ℓ* *γ*, and therefore 2<u>ℓ+ 1</u> ∆([*f,g*]*,C*)*≥ γ.* *ℓ*
+
+We want to show that for at least*a*choices of*z∈*F*q*, there is a polynomial*Pz*(*X*)*∈*F*q*[*X*] of degree at most*n−*(*ℓ*+ 2)*·c*such that*f*+*zg−Pz*has*n−ℓ·c*zero evaluations in*D*. This will hold if the polynomial
+
+*X* *n−ℓ·c* +*zX* (*n−ℓ*+1)*c* *−Pz*(*X*) P is the vanishing polynomial of some subset of*D*. Let*s*=*α∈Eα*. For every*z∈*F*q*of the form
+
+X*ℓ* *z*=*s− ei* *i*=1
+
+<!-- Page 38 -->
+
+with*e₁,...,eℓ*distinct elements of*E*, consider the vanishing polynomial of*S*= Φ *−*1 (*S* *′* ), where*S* *′* = *E\{e₁,...,eℓ}*. The size of*S* *′* is <u>n</u> *c* *−ℓ*, and Y *PS*(*X*) = (*X* *c* *−α*)*.* *α∈S′*
+
+Expanding: ! X *PS*(*X*) =*X* *n−ℓc* *− α X* *n−*(*ℓ*+1)*c* + Some polynomial of deg*≤n−*(*ℓ*+ 2)*c* *α∈S′*
+
+=*X* *n−ℓc* +*zX* *n−*(*ℓ*+1)*c* + Some polynomial of deg*≤n−*(*ℓ*+ 2)*c.*
+
+Thus*PS*(*X*) has the desired form. By our hypothesis on*D*, there are at least*a*choices of*z*for which*f*+*zg* has agreement*n−ℓc*with some*Pz*(*X*)*∈C*. This proves the theorem.
+
+### 7.1 Proof of Theorem 1.15
+
+#### Recall the theorem statement:
+
+Theorem 1.15.*Letc >*0*be an integer. There exist infinitely manyq, RS codesC*=RS[F*q,D,k*]*over*F*q,* *domainD*=F*qwithn*=*|D|*=*q,k*=*n−c(so that the relative distanceδofCequals* *n* <u>c</u> *), and functions* *f,g*: *D→*F*qsuch that:*
+
+*q−*1 *n* 1 *|{z∈*F*q|*∆(*f*+*zg,C*)*≤δ/*3*}|≥* = =*O,* *c c δ*
+
+*and yet*∆([*f,g*]*,C*)*≥*2*δ/*3*.*
+
+*Proof.*Fix*c*. Let*q*be a prime with*q−*1 divisible by*c*. (By Dirichlet’s theorem on primes in arithmetic progressions, there are infinitely many such*q*.) Instantiating Theorem 7.1 with*ℓ*= 1,*E*=*G*,*H*=F *∗* *q*, and*a*=*|E|*=*|G|*= <u>q−</u> *c* <u>1</u>, exactly gives us the content of Theorem 1.15: examples with constant absolute distance showing that proximity gaps behavior for*γ < δ/*3 changes drastically at*γ*=*δ/*3.
+
+To state the difference starkly, when*δ*=*O*(1*/n*) and*γ*=*δ/*3, even when*a*is as large as Ω(1*/δ*) = Ω(*n*), we must have distance loss*ε* *∗* *≥γ*. While if*δ*=*O*(1*/n*) and*γ < δ/*3, already when*a*=*γn*+ 1 =*O*(1), we have*ε* *∗* = 0.
+
+Observe that the evaluation domain*D*of these examples equalsF *∗* *q*, and thus has*n*=*q−*1.
+
+### 7.2 Proof of Theorem 1.16
+
+#### Recall the theorem statement:
+
+Theorem 1.16.*Let*0*< ϵ <*1*/*4*be fixed. There are infinitely many primesq, RS codesC*=RS[F*q,D,k*] *over*F*q, domainDwithn*=*|D|*=*O*(*q⁰*
+
+*.*5+2*ϵ* )*,k*=*n−*Θ(*n*
+*ϵ* )*(so that the relative distance isδ*= Θ(*n* *−*(1*−ϵ*) )*),* *and functionsf,g*: *D→*F*qsuch that:*
+
+*|{z∈*F*q|*∆(*f*+*zg,C*)*≤δ/*2*}|≥q−*1 = Ω(*n²* */*(1+4*ϵ*) ) = Ω(*n²* *−*8*ϵ* )*,*
+
+*and yet*∆([*f,g*]*,C²*)*≥*3*δ/*4*.*
+
+<!-- Page 39 -->
+
+The theorem is obtained by instantiating Theorem 7.1 with*ℓ*= 2 and a suitable choice of*E*, supported by the following lemma.
+
+Lemma 7.2.*Letθ,βbe constants withβ <*1*/*4*,θ >*1*/*2*andθ*+*β <*1*. Suppose*F*qis a prime field, and* *G⊆*F *∗* *qis a multiplicative subgroup of size* <u>q−</u> *c* <u>1</u> *, wherec∈*Θ(*q* *β* )*. Then there exists a subsetEofGof size* *O*(*q* *θ* )*such that* *|{e₁* +*e₂* : *e₁,e₂ ∈Edistinct}|≥q−*1*.*
+
+*Proof.*We use the probabilistic method. <u>q</u> *θ* Set*p*= *|G|* (this is at most 1 since*θ*+*β <*1). Pick a random set*E*in Bernoulli manner, by independently deciding for each element in*G*whether to be included (probability*p*) or not (probability 1*−p*). We will show that with overwhelming probability the sampled set*E*has the desired property.
+
+The expected size of*E*is*p|G|*, thus by the Chernoff bound,*|E|≤*2*p|G|*= 2*q* *θ* with probability at least
+
+#### 1−exp(−p|G|) = 1−o(1).
+
+In this case*|E|*=*O*(*q* *θ* ), as required.
+
+
+[Showing lines 1351-1500 of 1928. Use :1501 to continue]
+Let us investigate the second property. By the finite field Waring theorem (e.g., see [LN96]) every nonzero 2 2*√*1*−*2*β* element ofF*q*can be written as*x*+*y*for (*x,y*)*∈G* in*|G| /q±O*( *q*) = Ω(*q*) ways. Moreover, asking for*x,y*to be distinct can change this quantity by at most 1. Fix a nonzero*α∈G*. The probability that none of the (*x,y*)*∈G²* with*x*+*y*=*α*are such that*{x,y}⊆E*is at most:
+
+2 Ω(*q¹* *−*2*β* ) *−*Ω(*p²q¹* *−*2*β* ) (1*−p*) =*e,*
+
+since the events*{x,y}⊆E*for different unordered pairs*{x,y}⊆G*with*x*+*y*=*α*are independent. Taking a union bound over all*α∈*F *∗* *q*, the probability that there exists some*α∈*F *∗* *q*which cannot be written as *e₁* +*e₂* for some distinct*e₁,e₂ ∈E*is at most:
+
+*−*Ω(*p²q¹* *−*2*β* ) *−q²* *θ−*1 *q·e* =*q·e ≤o*(1)*,*
+
+where the last inequality holds because*θ >*1*/*2.
+
+Taking the intersection of the two events of large probability yields the claim of the lemma.
+
+*Proof of Theorem 1.16.*Let*ϵ∈*(0*,*1*/*4) be arbitrary. Choose constants*β*=*ϵ*and*θ*= 1*/*2 +*ϵ*.
+
+By a standard application of the Bombieri–Vinogradov theorem [Dav00], there are infinitely many primes *q*for which*q−*1 has a factor*c*in the range (*q* *β* *,*2*q* *β* ). (In other words, we seek infinitely many integers*c* such that the arithmetic progression*{n|n≡*1 mod*c}*contains a prime between (*c/*2) 1*/β* and*c¹* */β*. It is known that the Generalized Riemann Hypothesis implies this for all large enough*c*.)
+
+Take such a*q*. Let*G*be the set of*c*-th powers inF *∗* *q*, and let*E⊆G*be a subset of*G*given by the above lemma. Using*ℓ*= 2,*c*,*E*as above, and applying Theorem 7.1, we get proximity loss*ε* *∗* = <u>1</u> 4 *δ*at radius *γ*=*δ/*2 for the Reed–Solomon codeRS[F*q,D,k*], with domain*D*satisfying:
+
+*n*=*|D|*=*c·|E|*=*O*(*q* *β* *·q* *θ* ) =*O*(*q¹* */*2+2*ϵ* )*,*
+
+*k*=*n−*4*c*=*n−*Θ(*q* *β* ) =*n−*Θ(*n* *ϵ* ), and the number of exceptional*z*’s:
+
+*a*=*q−*1*.*
+
+This completes the proof of Theorem 1.16.
+
+<!-- Page 40 -->
+
+### 7.3 Limits on proximity gaps over prime fields in theδ= Ω(1)regime?
+
+#### We now prove Theorem 1.13:
+
+Theorem 1.13.*Suppose*(*q,a,b*)*is admissible withbeven. LetGbe the corresponding subgroup of*F *∗* *qof* *cardinalityb, and letH⊆*F *∗* *qbe any multiplicative subgroup containingG. Consider the Reed–Solomon code* *C*=RS[F*q,D,k*]*, withD*=*H,n*=*|D|,k*= 2 1 *−* 2 *b* *n, and relative distanceδ*= 2 1 + 2 *b* *.*
+
+#### Then there exist functionsf,g: D→Fqsuch that:
+
+<u>2</u> *z∈*F*q|*∆(*f*+*z·g,C*)*≤δ− ≥a,* *b*
+
+*but*∆([*f,g*]*,C²*)*≥δ−* <u>1</u> *b* *.*
+
+*Proof.*As mentioned in Section 1.4.3, this combined with Conjecture 1.12 provides infinitely many*n*for which there are Reed–Solomon codes over prime fieldsF*q*with length*n*=*q−*1 and relative distance *δ*= 1*/*2, such that any proximity gaps result with*γ*=*δ−*Θ(1*/*log*n*) and*a≥n*has a proximity loss of Θ(1*/*log*n*).
+
+Let (*q,a,b*) be admissible. Let*G*be the subgroup ofF *∗* *q*of size*b*. Let*D*be a multiplicative subgroup ofF *∗* *q* containing*G*. Set*c*=*|D|/b*. Then the*c*-th power map Φ : *D→G*is*c*-to-1 and onto. We apply Theorem 7.1 with this*c*,*G*=*E*,*H*=*D*, and*ℓ*=*b/*2. By our admissibility assumption, we have*|E* (+*ℓ*) *|≥a*. We get that for parameters*δ*= (*ℓ*+2) *n* *c* = 1 2 + 2 *b* ,*γ*= *ℓc* *n* = 1 2 and code*C*=RS[F*q,D,n−*(*ℓ*+ 2)*c*] (which has distance *δ*), there are functions*f,g*: *D→*F*q*such that:
+
+*|{z∈*F*q|*∆(*f*+*z·g,C*)*≤γ}|≥a,*
+
+and yet ∆([*f,g*]*,C²*)*≥γ*+ <u>1</u> *b*. This completes the proof of Theorem 1.13.
+
+Remark 7.3.Let*q*= 2 *p* *−*1 be a Mersenne prime, with*p*an odd prime. Then (*q,q,*2*p*) is admissible. Indeed, let*G*be the subgroup ofF *∗* *q*generated by*−*2. Then*G*=*{±*1*,±*2*,±*2 2 *,...,±*2 *p−*1 *}*, and*|G|*= 2*p*. P*p−*1 *i* For any*u∈*F*q*, consider the binary representation of*u/*2 =*i*=0*bi*2 with*bi∈{*0*,*1*}*. Note that for each *i*, 2*bi−*1 =*±*1 and consider the*p*distinct elements*ei*= (2*bi−*1)*·*2 *i* *∈G*. We get
+
+X *p−*1 X *p−*1 X *p−*1 *e* *i*= 2 *bi*2 *i* *−* 2 *i* *≡u*(mod*q*)*,* *i*=0 *i*=0 *i*=0
+
+which shows that*u∈G* (+*p*). This proves the claim about admissibility and Mersenne primes.
+
+## 8 Attacks on STARKs near the list decoding radius
+
+In this section, we prove Theorem 1.17:
+
+Theorem 1.17.*Consider the IOP protocol for the CYCLE-SUM constraint satisfaction problem given by* *the DEEP-ALI reduction, using the Reed–Solomon codeC*=RS[F*q,D,k*]*, where:*
+
+#### •Dis a union oftcosets ofG
+
+•*|D|*=*a·t*=*nandk*=*a*= <u>1</u> *t*
+
+*n.*
+•*δ*= 1*−* <u>1</u> *t* *is the distance ofC.*
+
+<!-- Page 41 -->
+
+*Then there is a prover strategy that does not make the verifier reject, and produces*(*h₁,...,hc*)*such that:*
+
+*c*<u>1 +γq</u> Pr ∆([*h₁,...,hc*]*,C*)*≤ ≥*Ω(1*/n*)*,* 2
+
+*whereγq*=LDRF*q,D,q*(*δ*) + *n* <u>1</u> *.*
+
+We begin by recalling the basic STARKs IOP protocol, instantiated for the CYCLE-SUM CSP.
+
+### 8.1 The basic STARK
+
+The basic STARK IOPP, from [BSBHR18], is as follows.
+
+1.We first pick an evaluation domain*D⊆*F*q*which is a union of*t*cosets of*G*. So*n*=*|D|*=*a·t*.
+2.We ask the prover to write down a function*f*: *D→*F*q*(which is supposed to be evaluations of a low degree polynomial*F*(*X*) interpolating the satisfying assignment*f*: *G→*F*q*).
+The key observation: if*F*is truly as intended, then the polynomial*F*(*gX*)*−F*(*X*)*−*1 will vanish on*G*, and thus be divisible by the vanishing polynomial of*G*, namely*X* *a* *−*1. Thus we expect*B* *f* : *D→*F*q*to be a low degree polynomial, where for a general function*h*: *D→*F*q*, the function*B* *h* : *D→*F*q*is defined to be: *h*<u>h(gx)−h(x)−1</u> *B* (*x*) = *a* *,* *x −*1 where*f*and*B* *f* are the output of this first phase of the protocol. Observe that there was no interaction in this protocol after the prover wrote down*f*, and that oracle access to*B* *f* can be simulated from oracle access to*f*. The next phase is:
+
+3.Check the low-degreeness of*f*and*B*
+*f* by running a low-degree test such as FRI, to confirm that they are both of degree at most*k*=*a*.
+
+This is the problem of checking proximity to*C*=RS[F*q,D,k*]. Let*ρ*=*k/n*, and note that the distance*δ*of *C*equals 1*−ρ*= 1*−* <u>1</u> *t*.
+
+8.1.1 Attack on the basic STARK We now show that it is possible to choose*f*so that both*f*and*B*
+*f* have distance*≤δ/*2 from*C*, and furthermore it can be correlated: ∆([*f,B* *f*]*,C²*)*≤δ/*2. (This is the unique decoding radius of*C*.)
+
+The idea is that the value of*B* *f* at a single element of*D*can be set to any desired value by modifying a single value of*f*. Thus taking half the values of*f*consistent with some low degree polynomial*F*(*X*) and the other half of the values of*f*so that*B* *f* is consistent with some low degree polynomial*C*(*X*), we get that both*f*and*B* *f* have agreement at least 1*/*2 with low degree polynomials.
+
+Explicitly, let*F*(*X*)*,C*(*X*)*∈*F*q*[*X*] be arbitrary polynomials of degree at most*k*. For each coset*yG⊆D*, define:
+
+*f*(*y·g²* *i* ) =*F*(*y·g²* *i* )
+
+*f*(*y·g²* *i*+1 ) =*C*(*y·g²* *i* ) (*y·g²* *i* ) *a* *−*1 + 1 +*f*(*y·g²* *i* )*.*
+
+This ensures that for all*i*,
+
+*f*(*y·g²* *i* ) =*F*(*y·g²* *i* )*,*
+
+<!-- Page 42 -->
+
+*B* *f* (*y·g²* *i* ) =*C*(*y·g²* *i* )*.*
+
+This gives us a correlated agreement of at least 1*/*2.
+
+By choosing*F*(*X*) arbitrarily and*C*(*X*) to be the low degree extension of*BF* on some*k*=*ρ·n*points, we can get some extra agreements. It is easy to check that this lets us increase the agreement to <u>1+</u> 2 <u>ρ</u> = 2 <u>δ</u> *.*
+
+### 8.2 STARK with DEEP queries
+
+Now we consider the STARK protocol with DEEP⁶ queries [BGKS20]. This is the version of the protocol with the best known soundness, and our main result about attacking STARKs is for this.
+
+Again we have an evaluation domain*D⊆*F*q*which is a union of*t*cosets of*G*. So*n*=*|D|*=*a·t*.
+
+We ask the prover to write down a function*f*: *D→*F*q*(which is supposed to be evaluations of a low degree polynomial*F*(*X*) interpolating the satisfying assignment*f*: *G→*F*q*). Thus*f*is supposed to be an element of*C*=RS[F*q,D,k*], where*k*=*a*. Let*ρ*=*k/n*and*δ*= 1*−ρ*, the distance of*C*.
+
+The main technical notion we need is the quotient of a function*h*: *D →* F*q*by some*claims*: “*h*(*α₁*) = *β₁*”*,...,*“*h*(*αr*) =*βr*”. This is a function*h* *′* : *D→*F*q*given by:
+
+*′*<u>h(x)−V(x)</u> *h* (*x*) = *Z*(*x*)
+
+where:
+
+•*V*(*X*)*∈*F*q*[*X*] is the unique polynomial of degree at most*r−*1 with*V*(*αi*) =*βi*for each*i*,
+
+#### •Z(X) is the vanishing polynomial of{α₁,...,αr}.
+
+The definition has the following property: suppose*h*is the evaluation table of some polynomial*H*(*X*) of degree at most*d*such that*H*(*αi*) =*βi*– then*h* *′* is the evaluation table of some polynomial*H* *′*
+
+(*X*) of degree
+at most*d−t*.
+
+In this protocol, after the prover has committed to values of*f*on*D*, the verifier then asks for values of (the polynomial underlying)*f*at values*α,gα*outside the domain*D*, for a uniformly random*α∈*F*q*. If the prover responds with values*u,v*, the verifier then*quotientsf*by the claims “*f*(*α*) =*u*” and “*f*(*gα*) =*v*”, and quotients*B* *f* by the claim “*B* *f*
+
+(*α*) = <u>v</u> *α* <u>−</u> *a* <u>u</u> *−* <u>−</u> 1
+<u>1</u> ”. These quotiented functions are then checked for low-degreeness using a low degree test like FRI.
+
+8.2.1 Attack on the DEEP STARK The main lemma from [BGKS20] about quotienting is below. Lemma 8.1.*Given a functionh*: *D→*F*q, and some claimed valuesh*(*αi*) =*βifor someα₁,...,αr∈*F*q\D,* *leth* *′* *be the quotient ofhby these claimed values. Then the following are equivalent:* •*There existsH*
+*′*
+
+(*X*)*of degree at mostd−rsuch that*∆*D*(*h*
+*′* *,H* *′* )*≤δ.*
+
+•*There existsH*(*X*)*of degree at mostdsuch that*∆*D*(*h,H*)*≤δandH*(*αi*) =*βifor eachi.*
+
+Let us first see why the previous attack does not work. 6 DEEP is short for Domain Extension for Eliminating Pretenders, and the main idea is to make queries outside the domain of definition of what the prover has sent.
+
+[Showing lines 1501-1650 of 1928. Use :1651 to continue]
+
+<!-- Page 43 -->
+
+Suppose we (the attacking provers) chose*f*so that*f*is close to*F*and*B* *f* is close to*C*. Now when the verifier asks us for the values of*f*at*α*and*gα*, we can either answer consistent with*F*or not. If we do not answer consistent with*F*, then by the quotienting lemma there will not exist a low degree polynomial close to the quotient of*f*, and the low degree test will catch us. If we do answer consistent with*F*, then we will quotient*B* *f* by the claim “*B* *f*
+
+(*α*) = <u>F(gα</u> *α* <u>)−</u>
+*a* *−* <u>F(</u> 1 <u>α)−1</u> ”, which is very unlikely to be consistent with*C*(*α*) (since*C*(*X*) and <u>F(gX</u> *X* <u>)−</u> *a* <u>F</u> *−* <u>(</u> 1
+
+<u>X)−1</u> are distinct low-degree rational functions). This means, by the quotienting
+lemma again, that the quotiented*B* *f* will be very far from low degree polynomials, and the low degree test will catch us.
+
+Thus, the previous attack does not work as is. This is for a good reason, since the analysis in [BGKS20] proves soundness upto the list-decoding radius of Reed–Solomon codes.
+
+Instead we need to use bad list-decoding configurations, which only exist for radii beyond the list-decoding radius of Reed–Solomon codes.
+
+Let*γ*=LDRF*q,D,q*(*δ*) + *n* <u>1</u>. By definition, there exists a function*c*: *D→*F*q*such that
+
+*L*=*{H*(*X*)*∈*F*q*[*X*]*|*deg(*H*)*≤k,*∆(*c,H*)*≤γ}*(16)
+
+has*|L|≥q*. *√* We know that*γ≥*1*−* 1*−δ*and*γ≤δ*.
+
+Theorem 8.2.*There is a functionfwhich the prover can write down such that probability at least*Ω( *n* <u>1</u> ) *over the choice ofα∈*F*q, the prover can answer values forf*(*α*)*andf*(*gα*)*so that the quotiented versions* *offandB* *f* *, denoteh₁ andh₂, satisfy:*
+
+2<u>1 +γ</u> ∆([*h₁,h₂*]*,C*)*≤.* 2
+
+*Proof.*The idea is to use the bad list-decoding center*c*in place of the polynomial*C*(*X*) in the original attack on the STARK without DEEP.
+
+Before we describe the prover’s strategy, we first some preliminary adjustments to*c*and*L*.
+
+Suppose*Y*is a set of representatives for the cosets of*G*that make up*D*. (Thus*D*is a disjoint union of *yG*for*y∈Y*). 2 2*i ∗* S 2 *∗* Let*G* =*{g |i∈*N*}*. Define*D* =*y∈Y*(*yG*). Note that*|D |*=*|D|/*2.
+
+Each*H*(*X*) in*L*has ∆*D*(*c,H*)*≤γ*. This means that either ∆*D∗* (*c,H*)*≤γ*or ∆*D\D∗* (*c,H*)*≤γ*. In the latter case, defining*c* *′*
+
+(*x*) =*c*(*gx*) and*H*
+*′*
+
+(*X*) =*H*(*gX*), we have ∆*D∗* (*c*
+*′* *,H* *′* )*≤γ*.
+
+Thus, by replacing*c*with*c* *′* if needed, we may assume that there is a large number of polynomials*H*(*X*) that are close to*c*on*D* *∗*. Concretely, define:
+
+*L* *∗* =*{H*(*X*)*∈*F*q*[*X*]*|*deg(*H*)*≤k,*∆*D∗* (*c,H*)*≤γ},*
+
+and we have: *|L* *∗* *|≥q/*2*.*
+
+Let*F*(*X*) be a low degree polynomial that will be chosen carefully later. For each coset*yG⊆D*, define as before for each*i*:
+
+*f*(*y·g²* *i* ) =*F*(*y·g²* *i* )
+
+*f*(*y·g²* *i*+1 ) =*c*(*y·g²* *i* ) (*y·g²* *i* ) *a* *−*1 + 1 +*f*(*y·g²* *i* )*.*
+
+This will be the*f*that the prover writes down.
+
+<!-- Page 44 -->
+
+Our definition of*f*ensures that for all*x∈D* *∗* :
+
+*f*(*x*) =*F*(*x*)
+
+*B* *f*
+
+(*x*) =*c*(*x*)
+This gives us perfect agreement between [*f,B* *f*] and [*F,c*] on*D* *∗*, (and thus correlated agreement at least 1*/*2 between (*f,B* *f* ) and (*F,c*) on*D*).
+
+Now when the verifier asks for*f*(*α*) and*f*(*gα*), the prover answers*F*(*α*) and*F*(*gα*). By the quotienting lemma, this ensures that the quotiented*F*, which is a low degree polynomial of degree at most*k−*2, has perfect agreement with the quotiented*f*on*D* *∗*, (and agreement*≥*1*/*2 with the quotiented*f*on*D*).
+
+What about the quotiented*B* *f* ?*B* *f* was quotiented by the claim “*B* *f*
+
+(*α*) = <u>F(gα</u> *α* <u>)−</u>
+*a* *−* <u>F(</u> 1 <u>α)−1</u> ”. Does there exist a polynomial of degree at most*k−*1 that is close to the quotiented*B* *f* on*D* *∗* ? By the quotienting lemma, this will be true if and only if there is a polynomial of degree at most*k*that is close to*B* *f* on*D* *∗*
+
+(recall that*B* *f* =*c*on*D* *∗* ), such that*H*(*α*) = <u>F(gα</u> *α* <u>)−</u> *a* *−* <u>F(</u> 1 <u>α)−1</u>.
+
+We can now choose the univariate polynomial*F*(*X*); it will be so that the probability (over*α*) of such an *H*existing is noticeable. First, a lemma.
+
+Lemma 8.3.*LetLbe the set of polynomials close tocas given by*(16)*.* n *a* o *DefineL* *′* = <u>H(X</u> ( <u>)</u> *g* <u>·(</u> *−* <u>X</u>
+
+1)*X* <u>−1)+1</u> : *H*(*X*)*∈L*
+*∗* *. Then there exists someλ∈*F*qsuch that:*
+
+*′*<u>1</u> 1 Pr [*λ∈L* (*α*)]*≥.* *α∈*F*q* 2 *k*+*a*
+
+*Proof.*Observe that any two elements of*L* *′* have agreement at most*k*+*a*. Lemma 6.1 tells us that the average*L* *′*
+
+(*α*) is big:
+*′*<u>1 q</u> E*α∈*F*q*[*|L* (*α*)*|*]*≥.* 2 *k*+*a*
+
+|||1 1 a|
+|---|---|---|
+||q|2 k+|
+|F(gαα)− F(1α)−1|λ(gα − 1)|∗|
+|−|−α 1−1||
+
+Thus by the probabilistic method, there exists*λ∈*F that lies in fraction of all the*L* *′*
+
+(*α*). This*λ*
+satisfies the requirements of the lemma.
+
+Define*F*(*X*) =*λX*. Then*a*=*a.*Thus*H*(*X*)*∈L* will have
+
+<u>F(gα)−F(α)−1</u> *H*(*α*) = *αa−*1
+
+if and only if: <u>H(α)·(α</u> *a* <u>−1) + 1</u> =*λ.* (*g−*1)*·α* By choice of*λ*, such an*H*(*X*)*∈L*will exist with probability at least <u>1</u> 2 *k*+ <u>1</u> *a* over the choice of*α*.
+
+If this happens, we get that [*f,B* *f*] is close to the pair of low degree polynomials [*F,H*]:
+
+*f*<u>1 +γ</u> ∆*D*([*f,B*]*,*[*F,H*])*≤.*(17) 2 Indeed, by our choice of*f*, we already know that for all*x∈D* *∗*,
+
+*f*(*x*) =*F*(*x*)*.*
+
+We also know that*H*(*X*)*∈L* *∗* : thus ∆*D∗* (*H,c*)*≤γ*. This means that ∆*D∗* ([*f,B* *f*]*,*[*F,H*])*≤γ*. Taking into account the fact that*|D* *∗* *|*=*|D|/*2, we get Equation (17) above. Thus
+
+*f* 2<u>1 +γ 1</u> Pr ∆([*f,B*]*,C*)*≤ ≥,* 2 2(*k*+*a*)
+
+as desired.
+
+<!-- Page 45 -->
+
+### 8.3 Attack on the Ethstark Toy Problem
+
+The Ethstark Toy Problem [Sta23] asked what is the best prover success probability that one could have for the following protocol. We fix a Reed-Solomon code*C*=RS[F*q,D,k*], and let*n*=*|D|*, and its distance *δ*= 1*−* *n* <u>k</u>.
+
+#### •The prover writes downf: D→Fq
+
+•The verifier picks*α,β*uniformly at random, and sends them to the prover.
+
+•The prover will try to convince the verifier that*f*is in*C*, and the polynomial*F*(*X*) underlying it has *F*(*α*) =*β*. Concretely, define the function*h*[*f,α,β*] : *D→*F*q*by:
+
+*f,α,β*<u>f(x)−β</u> *h* (*x*) =*.* *x−α*
+
+(Access to*h*can be simulated using access to*f*).
+
+The prover and verifier now run the FRI protocol with repetition parameter*t*to prove that*h*lies in *C* *′* =RS[F*q,D,k−*1].
+
+1 *k t* 1 *t* In [Sta23], it was noted that the best known success probability for the prover was *q* + *n* = *q* + (1*−δ*).
+
+#### We prove:
+
+Lemma 8.4.*Letγq*=LDRF*q,D,q*(*δ*) + *n* <u>1</u> *. Then there is a functionf*: *D→*F*qsuch that:*
+
+*f,α,β ′*<u>1</u> Pr [∆(*h,C*)*≤γq*]*≥.* *α,β* 2*n*
+
+Using the fact that the FRI protocol accepts functions that are*β*-close to*C* *′* with probability (1*−β*) *t*, this lemma translates into a prover strategy with success probability
+
+<u>1</u>*t* + (1*−γq*)*.* 2*n*
+
+If the Reed-Solomon code*C*has a small list decoding radius for list size*q*, then this is potentially a much larger success probability. Examples of (infinite families of) Reed-Solomon codes with*γq< δ−*Ω(1) are known, for example in [BSKR06].
+
+#### Proof of Lemma 8.4
+
+
+[Showing lines 1651-1800 of 1928. Use :1801 to continue]
+We take*f*: *D→*F*q*to be a function with many nearby codewords of*C*. Specifically, we take*f*such that:
+
+*L*:=*{P*(*X*)*∈C|*∆*D*(*f,P*)*≤γq}*
+
+satisfies: *|L|≥q.*
+
+Such an*f*is guaranteed to exist by definition of*γq*.
+
+We now view*L*as a collection of functions fromF*q→*F*q*, and apply Lemma 6.1 (with*S*=F*q*) to it. We get that for random*α∈*F*q*: 1 *q q* E*α∈*F*q*[*|L*(*α*)*|*]*≥* min(*q,*)*≥.* 2 *k* 2*n*
+
+<!-- Page 46 -->
+
+Thus for uniformly random*β∈*F*q*, <u>1</u> Pr [*β∈L*(*α*)]*≥.* *α,β* 2*n*
+
+In other words, with probability at least 2 <u>1</u> *n* over the choice of*α,β∈*F*q*, there exists some polynomial *F*(*X*)*∈L*such that*F*(*α*) =*β*.
+
+If this happens, we show that*h* *f,α,β* ) is close to*C* *′*. For this, we use the main fact about quotienting: Suppose*F*(*X*) is a polynomial such that:
+
+•∆*D*(*f,F*)*≤γq*
+
+#### •F(α) =β
+
+Then defining*H*(*X*) to be the degree*≤*(*k−*1)*polynomial* <u>F(</u> *X* <u>X</u> *−* <u>)</u> *α* <u>−β</u>, we have:
+
+∆*D*(*h* *f,α,β* *,H*)*≤γq.*
+
+This completes the proof of Lemma 8.4.
+
+## References
+
+[ACFY24]Gal Arnon, Alessandro Chiesa, Giacomo Fenzi, and Eylon Yogev. STIR: Reed–Solomon proximity testing with fewer queries. In Leonid Reyzin and Douglas Stebila, editors,*Advances in* *Cryptology – CRYPTO 2024*, 2024. Full paper:[https://eprint.iacr.org/2024/390](https://eprint.iacr.org/2024/390).
+
+[ACFY25]Gal Arnon, Alessandro Chiesa, Giacomo Fenzi, and Eylon Yogev. WHIR: Reed–Solomon proximity testing with super-fast verification. In Serge Fehr and Pierre-Alain Fouque, editors,*Advances in Cryptology – EUROCRYPT 2025*, 2025. Full paper:[https://eprint.iacr.org/](https://eprint.iacr.org/) 2024/1586.
+
+[ACY23]Gal Arnon, Alessandro Chiesa, and Eylon Yogev. IOPs with inverse polynomial soundness error. In*2023 IEEE 64th Annual Symposium on Foundations of Computer Science (FOCS)*, 2023. full paper[https://eprint.iacr.org/2023/1062](https://eprint.iacr.org/2023/1062).
+
+[AGL24]Omar Alrabiah, Venkatesan Guruswami, and Ray Li. Randomly punctured Reed–Solomon codes achieve list-decoding capacity over linear-sized fields. In*Proceedings of the 56th Annual ACM* *Symposium on Theory of Computing*, STOC 2024, 2024.
+
+[AHIV17]Scott Ames, Carmit Hazay, Yuval Ishai, and Muthuramakrishnan Venkitasubramaniam. Ligero: Lightweight sublinear arguments without a trusted setup. In*Proceedings of the 2017 ACM* *SIGSAC Conference on Computer and Communications Security*, CCS ’17, New York, NY, USA, 2017. Full paper:[https://eprint.iacr.org/2022/1608](https://eprint.iacr.org/2022/1608).
+
+[BBHR18]Eli Ben-Sasson, Iddo Bentov, Yinon Horesh, and Michael Riabzev. Fast Reed–Solomon interactive oracle proofs of proximity. In*45th International Colloquium on Automata, Languages,* *and Programming (ICALP 2018)*, 2018. Full paper:[https://eccc.weizmann.ac.il/report/](https://eccc.weizmann.ac.il/report/) 2017/134/.
+
+[BCI + 20]Eli Ben-Sasson, Dan Carmon, Yuval Ishai, Swastik Kopparty, and Shubhangi Saraf. Proximity gaps for Reed–Solomon codes. In*2020 IEEE 61st Annual Symposium on Foundations of* *Computer Science (FOCS)*, 2020. Full paper:[https://eprint.iacr.org/2020/654](https://eprint.iacr.org/2020/654).
+
+[Ber15]Elwyn R. Berlekamp. Algebraic coding theory. 2015.[https://doi.org/10.1142/9407](https://doi.org/10.1142/9407).
+
+<!-- Page 47 -->
+
+[BGKS20]Eli Ben-Sasson, Lior Goldberg, Swastik Kopparty, and Shubhangi Saraf. DEEP-FRI: Sampling outside the box improves soundness. In*11th Innovations in Theoretical Computer Science* *Conference (ITCS 2020)*, 2020. Full paper:[https://eprint.iacr.org/2019/336](https://eprint.iacr.org/2019/336).
+
+[BGM23]Joshua Brakensiek, Sivakanth Gopi, and Visu Makam. Generic Reed–Solomon codes achieve list-decoding capacity. In*Proceedings of the 55th Annual ACM Symposium on Theory of Computing*, STOC 2023, page 1488–1501, 2023.
+
+[BKS18]Eli Ben-Sasson, Swastik Kopparty, and Shubhangi Saraf. Worst-case to average case reductions for the distance to a code. In*Proceedings of the 33rd Computational Complexity Conference*, CCC ’18, 2018. Full paper:[https://eccc.weizmann.ac.il/report/2018/090/](https://eccc.weizmann.ac.il/report/2018/090/).
+
+[BSBHR18]Eli Ben-Sasson, Iddo Bentov, Yinon Horesh, and Michael Riabzev. Scalable, transparent, and post-quantum secure computational integrity. Cryptology ePrint Archive, Paper 2018/046, 2018. [https://eprint.iacr.org/2018/046](https://eprint.iacr.org/2018/046).
+
+[BSK12]Eli Ben-Sasson and Swastik Kopparty. Affine dispersers from subspace polynomials.*SIAM* *Journal on Computing*, 41(4), 2012.[https://doi.org/10.1137/110826254](https://doi.org/10.1137/110826254).
+
+[BSKR06]Eli Ben-Sasson, Swastik Kopparty, and Jaikumar Radhakrishnan. Subspace polynomials and list decoding of Reed–Solomon codes. In*2006 47th Annual IEEE Symposium on Foundations* *of Computer Science (FOCS’06)*, pages 207–216, 2006.
+
+[CS25]Elizabeth Crites and Alistair Stewart. On reed–solomon proximity gaps conjectures. Cryptology ePrint Archive, Paper 2025/2046, 2025.[https://eprint.iacr.org/2025/2046](https://eprint.iacr.org/2025/2046).
+
+[Dav00]Harold Davenport.*Multiplicative Number Theory*, volume 74 of*Graduate Texts in Mathematics*. Springer-Verlag, New York, third edition, 2000.
+
+[DG25a]Benjamin E. Diamond and Angus Gruen. On the distribution of the distances of random words. Cryptology ePrint Archive, Paper 2025/2010, 2025.[https://eprint.iacr.org/2025/2010](https://eprint.iacr.org/2025/2010).
+
+[DG25b]Benjamin E. Diamond and Angus Gruen. Proximity gaps in interleaved codes.*IACR Communications in Cryptology*, 1(4), 2025.[https://cic.iacr.org/p/1/4/8/pdf](https://cic.iacr.org/p/1/4/8/pdf).
+
+[DP24]Benjamin E. Diamond and Jim Posen. Polylogarithmic proofs for multilinears over binary towers. In*IACR preprint archive 2024/504*, 2024.[https://eprint.iacr.org/2024/504](https://eprint.iacr.org/2024/504).
+
+[GCXK25]Yiwen Gao, Dongliang Cai, Yang Xu, and Haibin Kan. From list-decodability to proximity gaps. Cryptology ePrint Archive, Paper 2025/870, 2025.[https://eprint.iacr.org/2025/870](https://eprint.iacr.org/2025/870).
+
+[GG25]Rohan Goyal and Venkatesan Guruswami. Optimal proximity gaps for subspace-design codes and (random) Reed-Solomon codes, 2025. (Personal communication).
+
+[GGM25]Albert Garreta, Angus Gruen, and Igancio Manzur. Attacking FRI and the STARK toy problem.
+
+2025. (Personal communication).
+[GK07]A. A. Glibichuk and S. V. Konyagin. Additive properties of product sets in fields of prime order.
+
+2007.[https://arxiv.org/abs/math/0702729](https://arxiv.org/abs/math/0702729).
+[GKL24]Yiwen Gao, Haibin Kan, and Yuan Li. Linear proximity gap for linear codes within the 1.5 Johnson bound. Cryptology ePrint Archive, Paper 2024/1810, 2024.[https://eprint.iacr](https://eprint.iacr). org/2024/1810.
+
+[GLS + 24]Zeyu Guo, Ray Li, Chong Shangguan, Itzhak Tamo, and Mary Wootters. Improved list-decodability and list-recoverability of Reed–Solomon codes via tree packings.*SIAM Journal* *on Computing*, 53(2):389–430, 2024.
+
+<!-- Page 48 -->
+
+[GS99]Venkatesan Guruswami and Madhu Sudan. Improved decoding of Reed–Solomon and algebraic-geometry codes. In*IEEE Trans. on Information Theory*, volume 45(6), 1999.
+
+[GZ23]Zeyu Guo and Zihan Zhang. Randomly punctured Reed–Solomon codes achieve the list decoding capacity over polynomial-size alphabets. In*2023 IEEE 64th Annual Symposium on Foundations* *of Computer Science (FOCS)*, pages 164–176, 2023.
+
+[Hab24]Ulrich Hab¨ock. Basefold in the list decoding regime. Cryptology ePrint Archive, Paper 2024/1571, 2024.[https://eprint.iacr.org/2024/1571](https://eprint.iacr.org/2024/1571).
+
+[Hab25]Ulrich Hab¨ock. A note on mutual correlated agreement. 2025. (Personal communication).
+
+[HLP24]Ulrich Hab¨ock, David Levit, and Shahar Papini. Circle STARKs. In*IACR preprint archive*,
+
+2024.[https://eprint.iacr.org/2024/278](https://eprint.iacr.org/2024/278).
+[JH01]J. Justesen and T. Hoholdt. Bounds on list decoding of MDS codes.*IEEE Transactions on* *Information Theory*, 47(4):1604–1609, 2001.
+
+[Joh62]Selmer M. Johnson. A new upper bound for error-correcting codes. In*IRE Transactions on* *Information Theory*, volume 8, pages 203–207, 1962.
+
+[LN96]Rudolf Lidl and Harald Niederreiter.*Finite Fields*. Encyclopedia of Mathematics and its Applications. Cambridge University Press, 2 edition, 1996.
+
+[MZ25]Dor Minzer and Kai Zhe Zheng. Improved round-by-round soundness IOPs via Reed–Muller codes. Cryptology ePrint Archive, Paper 2025/600, 2025.[https://eprint.iacr.org/2025/](https://eprint.iacr.org/2025/)
+
+600.
+[PS94]Alexander Polishchuk and Daniel A. Spielman. Nearly-linear size holographic proofs. In*Proceedings of the Twenty-Sixth Annual ACM Symposium on Theory of Computing*, STOC ’94, page 194–203. Association for Computing Machinery, 1994.[https://doi.org/10.1145/195058](https://doi.org/10.1145/195058). 195132.
+
+[RVW13]Guy N. Rothblum, Salil Vadhan, and Avi Wigderson. Interactive proofs of proximity: delegating computation in sublinear time. In*Proceedings of the Forty-Fifth Annual ACM Symposium on* *Theory of Computing*, STOC ’13, page 793–802, 2013.
+
+[RW13]Atri Rudra and Mary Wootters. Every list-decodable code for high noise has abundant near-optimal rate puncturings.*CoRR*, abs/1310.1891, 2013.
+
+[RZ18]Ron Roth and Gilles Z´emor. Personal communcation to the authors of [AHIV17]. 2018. Cited in the full version of [AHIV17],[https://eprint.iacr.org/2022/1608](https://eprint.iacr.org/2022/1608).
+
+[ST20]Chong Shangguan and Itzhak Tamo. Combinatorial list-decoding of Reed–Solomon codes beyond the Johnson radius. In*Proceedings of the 52nd Annual ACM SIGACT Symposium on* *Theory of Computing*, STOC 2020, page 538–551, New York, NY, USA, 2020. Association for Computing Machinery.
+
+[Sta23]StarkWare Team. ethSTARK documentation – version 1.2. In*IACR preprint archive 2021/582*,
+
+2023.[https://eprint.iacr.org/2021/582](https://eprint.iacr.org/2021/582).
+[Sta25]StarkWare Team. S-two whitepaper. 2025. (Personal communication).
+
+[WB86]Lloyd R. Welch and Elwyn R. Berlekamp. Error correction for algebraic block codes. US Patent 4633470, 1986.[https://patents.google.com/patent/US4633470A](https://patents.google.com/patent/US4633470A).
+
+<!-- Page 49 -->
+
+[ZCF23]Hadas Zeilberger, Binyi Chen, and Ben Fisch. BaseFold: efficient field-agnostic polynomial commitment schemes from foldable codes. In*IACR preprint archive 2023/1705*, 2023.https: //eprint.iacr.org/2023/1705.
+
+[Zei24]Hadas Zeilberger. Khatam: Reducing the communication complexity of code-based SNARKs. In*IACR preprint archive 2024/1843*, 2024.[https://eprint.iacr.org/2024/1843](https://eprint.iacr.org/2024/1843).
