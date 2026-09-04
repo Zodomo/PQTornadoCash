@@ -1,0 +1,266 @@
+{
+  "review_commit": "e51a5c5ccc4f50e0beb07cdf04d7f8dd258c7997",
+  "classification": "RESEARCH_REVIEW_NOT_SECURITY_AUDIT",
+  "severity_meaning": "Priority for evidence and next-build decisions; not a CVSS rating or assertion of an exploitable vulnerability.",
+  "findings": [
+    {
+      "id": "F01",
+      "priority": "HIGH",
+      "category": "RESEARCH_PROCESS",
+      "evidence_status": "SUPPORTED",
+      "finding": "Qualification dependencies prevented central AIR and relation experiments",
+      "requested_resolution": "Separate local research eligibility from build/deployment approval; implement H0 vertical control",
+      "work_package": "R2-03",
+      "sources": [
+        "S02",
+        "S08"
+      ]
+    },
+    {
+      "id": "F02",
+      "priority": "HIGH",
+      "category": "MEASUREMENT_METHOD",
+      "evidence_status": "SUPPORTED",
+      "finding": "Generic hash harness and optimized baseline are not equivalent implementation tiers",
+      "requested_resolution": "Calibrate H0 and optimize selected compressors under matched envelopes",
+      "work_package": "R2-02",
+      "sources": [
+        "S17",
+        "S18",
+        "S19"
+      ]
+    },
+    {
+      "id": "F03",
+      "priority": "HIGH",
+      "category": "RELATION_COMPLETENESS",
+      "evidence_status": "SUPPORTED",
+      "finding": "New compression note/nullifier roles do not yet implement the actual scope and secret layouts",
+      "requested_resolution": "Finish exact lane schemas, constants, cross-language parity and misuse tests",
+      "work_package": "R2-02",
+      "sources": [
+        "S10",
+        "S11",
+        "S18"
+      ]
+    },
+    {
+      "id": "F04",
+      "priority": "HIGH",
+      "category": "SECURITY_ANALYSIS",
+      "evidence_status": "INDEPENDENT_SENSITIVITY",
+      "finding": "FRI-only choice of m is not the optimum of the complete modeled conditional bound",
+      "requested_resolution": "Review and reproduce full-objective m sensitivity without claiming new system security",
+      "work_package": "R2-01",
+      "sources": [
+        "S12",
+        "S13",
+        "S14"
+      ]
+    },
+    {
+      "id": "F05",
+      "priority": "HIGH",
+      "category": "RESULT_CLASSIFICATION",
+      "evidence_status": "SUPPORTED",
+      "finding": "Unmeasured complete transaction is forced to TWO_TX_FAIL",
+      "requested_resolution": "Separate measurement status, model result, physical feasibility and qualification",
+      "work_package": "R2-06",
+      "sources": [
+        "S21"
+      ]
+    },
+    {
+      "id": "F06",
+      "priority": "HIGH",
+      "category": "COST_MODEL",
+      "evidence_status": "SUPPORTED_SOURCE_CONCERN",
+      "finding": "Exponential LDE factor and simplified folding/cap terms are not justified verifier bounds",
+      "requested_resolution": "Build codec-derived models and calibrate on actual anchors",
+      "work_package": "R2-06",
+      "sources": [
+        "S21",
+        "S22"
+      ]
+    },
+    {
+      "id": "F07",
+      "priority": "HIGH",
+      "category": "BASELINE_FEASIBILITY",
+      "evidence_status": "RETAINED_MEASUREMENT",
+      "finding": "Nine of sixty Part A modeled transactions exceed the cap",
+      "requested_resolution": "Reject robust baseline claim; retain distribution and derive valid worst-case envelope",
+      "work_package": "R2-00",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "F08",
+      "priority": "HIGH",
+      "category": "DEPLOYMENT",
+      "evidence_status": "RETAINED_MEASUREMENT",
+      "finding": "Internal pool CREATE costs 18.87363M gas; top-level deployment remains unmeasured",
+      "requested_resolution": "Measure capped top-level CREATE and decompose initialization",
+      "work_package": "R2-00",
+      "sources": [
+        "S02",
+        "S27"
+      ]
+    },
+    {
+      "id": "F09",
+      "priority": "HIGH",
+      "category": "SECURITY_PARAMETER_MAPPING",
+      "evidence_status": "OPEN_QUESTION",
+      "finding": "Nominal 210 functions must be mapped to actual committed matrices, masks and 524 reduction terms",
+      "requested_resolution": "Derive theorem-specific count; do not substitute a raw code-array count",
+      "work_package": "R2-01",
+      "sources": [
+        "S13",
+        "S16"
+      ]
+    },
+    {
+      "id": "F10",
+      "priority": "HIGH",
+      "category": "TRANSCRIPT_INTEGRATION",
+      "evidence_status": "SUPPORTED_REPORT",
+      "finding": "Typed framing and full-width continuation are not yet a complete enforced path",
+      "requested_resolution": "Implement phase state machine and actual cross-language proof verification",
+      "work_package": "R2-05",
+      "sources": [
+        "S10",
+        "S23"
+      ]
+    },
+    {
+      "id": "F11",
+      "priority": "MEDIUM",
+      "category": "CRYPTANALYSIS_CLASSIFICATION",
+      "evidence_status": "SUPPORTED",
+      "finding": "Attack applicability is sometimes labeled failure without a concrete below-target cost",
+      "requested_resolution": "Retain exact-instance applicability and attack-cost statuses separately",
+      "work_package": "R2-01",
+      "sources": [
+        "S10",
+        "S17",
+        "S29"
+      ]
+    },
+    {
+      "id": "F12",
+      "priority": "MEDIUM",
+      "category": "REPRODUCIBILITY",
+      "evidence_status": "SUPPORTED",
+      "finding": "all-safe validates evidence consistency rather than executing proofs or EVM verification",
+      "requested_resolution": "Publish distinct check/build/fresh-proof/full-EVM records",
+      "work_package": "R2-00",
+      "sources": [
+        "S07",
+        "S09"
+      ]
+    },
+    {
+      "id": "F13",
+      "priority": "MEDIUM",
+      "category": "EVIDENCE_COMPLETENESS",
+      "evidence_status": "SUPPORTED_REPORT",
+      "finding": "Baseline byte and gas section ledgers remain incomplete",
+      "requested_resolution": "Instrument existing parser and verifier; require exact ledger sums",
+      "work_package": "R2-00",
+      "sources": [
+        "S02",
+        "S16"
+      ]
+    },
+    {
+      "id": "F14",
+      "priority": "MEDIUM",
+      "category": "CANDIDATE_IDENTITY",
+      "evidence_status": "SUPPORTED_REPORT",
+      "finding": "Candidate IDs are reused across minimum-plan and backend-smoke namespaces",
+      "requested_resolution": "Use stable pipeline/configuration/run identities and an opportunity matrix",
+      "work_package": "R2-10",
+      "sources": [
+        "S02",
+        "S03"
+      ]
+    },
+    {
+      "id": "F15",
+      "priority": "MEDIUM",
+      "category": "NATIVE_AVAILABILITY",
+      "evidence_status": "SUPPORTED_SOURCE_CHECK",
+      "finding": "Missing native panic boundary is an availability finding, not a demonstrated Solidity bypass",
+      "requested_resolution": "Test actual malformed objects and containment; do not rely solely on a grep",
+      "work_package": "R2-08",
+      "sources": [
+        "S25"
+      ]
+    },
+    {
+      "id": "F16",
+      "priority": "MEDIUM",
+      "category": "BACKEND_COVERAGE",
+      "evidence_status": "SUPPORTED_REPORT",
+      "finding": "Hiding WHIR has a synthetic smoke but no same-relation proof",
+      "requested_resolution": "Implement exact adapter/lowering and complete hiding relation",
+      "work_package": "R2-07",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "F17",
+      "priority": "MEDIUM",
+      "category": "L2_INTERPRETATION",
+      "evidence_status": "SUPPORTED_REPORT_INFERENCE",
+      "finding": "A rejected combined 210KiB envelope does not rule out split or smaller payloads",
+      "requested_resolution": "Test exact candidate envelope and source-pinned rules separately",
+      "work_package": "R2-09",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "F18",
+      "priority": "MEDIUM",
+      "category": "FLOCK_DISPOSITION",
+      "evidence_status": "SUPPORTED",
+      "finding": "Historical batch attempt failed due to missing M21_FAST_SECURITY_CONFIG",
+      "requested_resolution": "Use a bounded upstream/configuration repair, not a guessed security preset",
+      "work_package": "R2-09",
+      "sources": [
+        "S24"
+      ]
+    },
+    {
+      "id": "F19",
+      "priority": "MEDIUM",
+      "category": "STATE_MACHINE",
+      "evidence_status": "REVIEW_REQUIREMENT",
+      "finding": "An accepted Part A prefix is not a full ownership proof",
+      "requested_resolution": "Prevent indefinite reservation/censorship under per-nullifier checkpoint bounds",
+      "work_package": "R2-08",
+      "sources": [
+        "S16",
+        "S23"
+      ]
+    },
+    {
+      "id": "F20",
+      "priority": "LOW",
+      "category": "PROVENANCE",
+      "evidence_status": "CHECKED_NO_DEFECT_FOUND",
+      "finding": "Latest cleanup removes excluded historical files while governing plan remains",
+      "requested_resolution": "Publish commit/evidence mapping; do not assert cleanup broke reproduction without running checks",
+      "work_package": "R2-00",
+      "sources": [
+        "S01",
+        "S08",
+        "S09"
+      ]
+    }
+  ]
+}
