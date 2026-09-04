@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "study": "runtime-binding",
+  "baseline": {
+    "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+    "tag": "pqtc-v0.3-research-baseline"
+  },
+  "proofSystemId": "0x35adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62ab7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea07779",
+  "expectedDeploymentManifestId": "0x58be54c792f8d46e132326e7d9edf18a9bbd26f488b18d42a5930f55d86f252b",
+  "frozenV03": {
+    "manifestPath": "parameters/sepolia-v0.3/manifest.json",
+    "manifestSha256": "0d891caaddfc6d954655e15cf86e90ed99825c9f060df907c3afabab695b1c42",
+    "parameterIdPath": "parameters/sepolia-v0.3/parameter-id.txt",
+    "parameterIdSha256": "dc13595b449af2270a79cc8c95d7454f32788e8ca9c0e9aab0f28c1b577521c1",
+    "observedExpectedRuntimeCodeHashes": []
+  },
+  "compilerProfile": {
+    "path": "foundry.toml",
+    "sha256": "04c59dc1a416c14a3c77c5035c8ddaf1d09c70de840287ef7235abb71971abf0",
+    "artifactSettings": {
+      "compilerVersion": "0.8.30+commit.73712a01",
+      "optimizer": { "enabled": true, "runs": 200 },
+      "viaIR": true,
+      "evmVersion": "prague",
+      "bytecodeHash": "none",
+      "remappings": [
+        "forge-std/=lib/forge-std/src/"
+      ],
+      "libraries": {}
+    }
+  },
+  "projection": {
+    "classification": "PROJECTED_NOT_DEPLOYED",
+    "chainId": 11155111,
+    "denominationWei": "1000000000000000000",
+    "addresses": {
+      "airVerifier": "0x1000000000000000000000000000000000000001",
+      "queryVerifier": "0x2000000000000000000000000000000000000002",
+      "registry": "0x3000000000000000000000000000000000000003",
+      "pool": "0x4000000000000000000000000000000000000004"
+    },
+    "create2": null
+  },
+  "contractOrder": [
+    "PQTCAirStageVerifier",
+    "PQTCQueryVerifier",
+    "PQTCVerificationRegistry",
+    "PQTCClassicPool"
+  ],
+  "contracts": [
+    {
+      "name": "PQTCAirStageVerifier",
+      "artifact": "out/PQTCAirStageVerifier.sol/PQTCAirStageVerifier.json",
+      "source": "contracts/src/verifier/PQTCAirStageVerifier.sol",
+      "compilationTarget": { "contracts/src/verifier/PQTCAirStageVerifier.sol": "PQTCAirStageVerifier" },
+      "constructorArgsHex": "0x",
+      "immutableBindings": {},
+      "immutableRoles": {},
+      "expected": {
+        "artifactSha256": "04ae82b3e734af5788019ecb1b89962fe241edbd997fe903a74d868991ef5cac",
+        "sourceSha256": "4f810d9fe141236e5f19219c31dc225dba37e0f9657b20364bbb21ece7d16202",
+        "creationCodeBytes": 17831,
+        "constructorArgsBytes": 0,
+        "fullInitcodeBytes": 17831,
+        "runtimeBytes": 17805,
+        "creationCodeKeccak256": "0x37915c35be7e18b69fdf9ce79054282b7a8e083a1d54539c0f43d22a3245db6b",
+        "fullInitcodeKeccak256": "0x37915c35be7e18b69fdf9ce79054282b7a8e083a1d54539c0f43d22a3245db6b",
+        "runtimeTemplateKeccak256": "0xa7102ce1827cd3aa56517a5e0e68d5e7e19501580bf3c21a3085b2a55833a4a6",
+        "runtimeKeccak256": "0xa7102ce1827cd3aa56517a5e0e68d5e7e19501580bf3c21a3085b2a55833a4a6"
+      }
+    },
+    {
+      "name": "PQTCQueryVerifier",
+      "artifact": "out/PQTCQueryVerifier.sol/PQTCQueryVerifier.json",
+      "source": "contracts/src/verifier/PQTCQueryVerifier.sol",
+      "compilationTarget": { "contracts/src/verifier/PQTCQueryVerifier.sol": "PQTCQueryVerifier" },
+      "constructorArgsHex": "0x",
+      "immutableBindings": {},
+      "immutableRoles": {},
+      "expected": {
+        "artifactSha256": "df981baa64da35ef919e19ba9b203e38537d77ee43e49d20f15540fbb70e780d",
+        "sourceSha256": "8c6316f1132875dc647cba0d51c4779c8b14d97cf904acea67f01577efffa92f",
+        "creationCodeBytes": 12982,
+        "constructorArgsBytes": 0,
+        "fullInitcodeBytes": 12982,
+        "runtimeBytes": 12956,
+        "creationCodeKeccak256": "0x2e8eb0896ddd0579783af4b81ecff5956bc3fffb81c84357b5047701b07d63bd",
+        "fullInitcodeKeccak256": "0x2e8eb0896ddd0579783af4b81ecff5956bc3fffb81c84357b5047701b07d63bd",
+        "runtimeTemplateKeccak256": "0x87d61698f9756e4bea73afdb15b1bf877b550a421ea9a9a4306a3c7776a874ae",
+        "runtimeKeccak256": "0x87d61698f9756e4bea73afdb15b1bf877b550a421ea9a9a4306a3c7776a874ae"
+      }
+    },
+    {
+      "name": "PQTCVerificationRegistry",
+      "artifact": "out/PQTCVerificationRegistry.sol/PQTCVerificationRegistry.json",
+      "source": "contracts/src/PQTCVerificationRegistry.sol",
+      "compilationTarget": { "contracts/src/PQTCVerificationRegistry.sol": "PQTCVerificationRegistry" },
+      "constructorArgsHex": "0x0000000000000000000000001000000000000000000000000000000000000001000000000000000000000000200000000000000000000000000000000000000235adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62ab7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea07779",
+      "immutableBindings": {
+        "1033": "0x35adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62a",
+        "1035": "0xb7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea07779",
+        "1038": "0x0000000000000000000000001000000000000000000000000000000000000001",
+        "1041": "0x0000000000000000000000002000000000000000000000000000000000000002"
+      },
+      "immutableRoles": {
+        "parameterLeft": "1033",
+        "parameterRight": "1035",
+        "airVerifier": "1038",
+        "queryVerifier": "1041"
+      },
+      "expected": {
+        "artifactSha256": "b3ef8ed3c30de17377e3bac27217a593ff3663bfaf8077964ce5579f5c5f54c1",
+        "sourceSha256": "8553941eb44998dca5bd18cc6eeb7d016bb8cccfa334efb7f693a4a1575a4722",
+        "creationCodeBytes": 13517,
+        "constructorArgsBytes": 128,
+        "fullInitcodeBytes": 13645,
+        "runtimeBytes": 13123,
+        "creationCodeKeccak256": "0x793cbe675ad2a27f74172de8a268407d3f63b3d54db5b5ee5cba22058ab7de2e",
+        "fullInitcodeKeccak256": "0x6dbb50bf5409e2abd975821607a45e09036871e602e831e59387be53715439cc",
+        "runtimeTemplateKeccak256": "0xe8664c8e2ccec662bb7134e1ab8ed602b3f19234b79fb28da397e5fb46b04f45",
+        "runtimeKeccak256": "0xbdfc33817e83d249367a1e0351ecebec47763afe9708383d9f07a0cc137beb60"
+      }
+    },
+    {
+      "name": "PQTCClassicPool",
+      "artifact": "out/PQTCClassicPool.sol/PQTCClassicPool.json",
+      "source": "contracts/src/PQTCClassicPool.sol",
+      "compilationTarget": { "contracts/src/PQTCClassicPool.sol": "PQTCClassicPool" },
+      "constructorArgsHex": "0x0000000000000000000000000000000000000000000000000de0b6b3a764000035adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62ab7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea077790000000000000000000000003000000000000000000000000000000000000003",
+      "immutableBindings": {
+        "60": "0x0000000000000000000000000000000000000000000000000de0b6b3a7640000",
+        "63": "0x0000000000000000000000003000000000000000000000000000000000000003"
+      },
+      "immutableRoles": {
+        "denomination": "60",
+        "verificationRegistry": "63"
+      },
+      "expected": {
+        "artifactSha256": "dcab5eda184549c0e44f1d1ee1620e9d7750ffcef5efdfd7f5faf26195e51837",
+        "sourceSha256": "5ce4f94692e87922efd0584e543afc43937ad8647161dd4e3e16bb8a442c0fd0",
+        "creationCodeBytes": 12872,
+        "constructorArgsBytes": 128,
+        "fullInitcodeBytes": 13000,
+        "runtimeBytes": 7548,
+        "creationCodeKeccak256": "0x9e46b300a782bc55f966b284d267f4a85853a33bbbf88196518ae64daf9d919a",
+        "fullInitcodeKeccak256": "0xa1e60c4d18c788eecdfeb98d1752114277f5bbe10182e4185add554e457dbe89",
+        "runtimeTemplateKeccak256": "0x003a583d03da067fe66a84e9c56da57204efb1d4bf09167dcc825a5f204b34fa",
+        "runtimeKeccak256": "0xa6cd9d3a47850a451ecf79e6ad2d6f46dd8d3b56f4ea7f252e2759da89d5e4a2"
+      }
+    }
+  ],
+  "researchCandidates": [
+    { "id": "T0", "source": "research/candidates/T0/solidity/Candidate.sol", "sourceSha256": "64c18d325a6ff2e24b048484084d3a138307234e3604f59bb09a3a80bdcfa087", "canonicalFoundryArtifact": null },
+    { "id": "T1", "source": "research/candidates/T1/solidity/Candidate.sol", "sourceSha256": "2da94b6d7329158a6d39c8c77701f87a2dbbaebf063a4d6c07c65e805ca2ccfe", "canonicalFoundryArtifact": null },
+    { "id": "T2", "source": "research/candidates/T2/solidity/Candidate.sol", "sourceSha256": "403bf6646d697396df2b90e47fb292d31e8bc4ef1b8ea3a24cfe3db7c7caca3e", "canonicalFoundryArtifact": null },
+    { "id": "T3", "source": "research/candidates/T3/solidity/Candidate.sol", "sourceSha256": "01e4b6224d4cb17d96637405f98b4b60c15785092bad065d80955b193c3bb3ea", "canonicalFoundryArtifact": null },
+    { "id": "F-common", "source": "research/candidates/field-bakeoff-common/solidity/src/FieldBakeoff.sol", "sourceSha256": "e88b7f9eaa68fa4bbc2189dd00d92d74f87a4ba328d7b8761ed54269e283a82e", "canonicalFoundryArtifact": null },
+    { "id": "H0-common", "source": "research/candidates/hash-compression-common/solidity/src/H0Sponge.sol", "sourceSha256": "c2bef7f8db8d6ade4ba937246f10fbdfd329f122084c2d83048afabe489b1bfe", "canonicalFoundryArtifact": null },
+    { "id": "H-poseidon2-kernel", "source": "research/candidates/hash-compression-common/solidity/src/Poseidon2Kernel.sol", "sourceSha256": "94dd066e830bc881b074981cb71cd4323877662b77ea656a0f75787957d26cf7", "canonicalFoundryArtifact": null },
+    { "id": "H-rpo-m31", "source": "research/candidates/hash-compression-common/solidity/src/H7RpoM31.sol", "sourceSha256": "2497292f8ce789656b468b3b4b54e63b7c8a516840a2e40cc37b11b6c11db427", "canonicalFoundryArtifact": null },
+    { "id": "H-poseidon24", "source": "research/candidates/hash-compression-common/solidity/src/Poseidon24Candidates.sol", "sourceSha256": "848ad6d9fba1a83a4e40ba04ef9e5834583706da2a61f2eec8476794e268233f", "canonicalFoundryArtifact": null },
+    { "id": "H-poseidon32", "source": "research/candidates/hash-compression-common/solidity/src/Poseidon32Candidates.sol", "sourceSha256": "6ed913d5d3f80b8e36e26061892029cd75563ae36402d8c39bd829ea459c2278", "canonicalFoundryArtifact": null },
+    { "id": "H-poseidon16", "source": "research/candidates/hash-compression-common/solidity/src/Poseidon16Candidates.sol", "sourceSha256": "f9fa6336613d37ea5cbcd6af08c63752aa5288fe196bf43988096b58787a9e94", "canonicalFoundryArtifact": null },
+    { "id": "merkle-shape-common", "source": "research/candidates/merkle-shape/solidity/src/ResearchAccumulators.sol", "sourceSha256": "74aaabdf4d30c61136ba862dcf8997a78fc7aa7780e92edd30f0e1950f475034", "canonicalFoundryArtifact": null },
+    { "id": "V-common", "source": "research/candidates/verifier-optimization-common/solidity/src/VerifierOptimizationBench.sol", "sourceSha256": "49f8d9401a3f7c4aa0bfd680c0e46343b46aa5b59e4d2161145cf57e033d72d2", "canonicalFoundryArtifact": null },
+    { "id": "transcript-cryptanalysis", "source": "research/cryptanalysis/transcript/solidity/TranscriptResearch.sol", "sourceSha256": "df396796d1f3c43bbb762a233ab14a1ffa1184e5e771c2e354f8114dd989e9cf", "canonicalFoundryArtifact": null }
+  ]
+}

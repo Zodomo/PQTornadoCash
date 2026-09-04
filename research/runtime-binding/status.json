@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "study": "runtime-binding",
+  "status": "COMPLETE_RESEARCH_NOT_DEPLOYMENT_READY",
+  "baseline": "pqtc-v0.3-research-baseline",
+  "deploymentReady": false,
+  "deploymentAuthorization": "PROHIBITED",
+  "checker": "research/runtime-binding/binding.py",
+  "checkerResult": "PASS_RESEARCH_BINDING_CHECK",
+  "negativeRegressionResult": "PASS",
+  "measuredContracts": 4,
+  "sourceOnlyResearchCandidateUnits": 14,
+  "frozenRuntimeHashCount": 0,
+  "projectedDeploymentManifestId": "0x58be54c792f8d46e132326e7d9edf18a9bbd26f488b18d42a5930f55d86f252b",
+  "blockers": [
+    "the frozen v0.3 expected_runtime_code_hashes list is empty",
+    "registry and pool final hashes use synthetic addresses rather than deployed accounts",
+    "no deployment receipts or post-deployment state/code observations are in scope",
+    "research candidate Solidity units lack canonical deployable Foundry artifacts",
+    "the study does not supply audit or cryptographic approval"
+  ],
+  "requiredCleanCutover": "new non-empty two-layer manifest binding proof-system identity, ordered exact artifacts, full initcode, resolved runtime, build/link settings, constructor arguments, chain, addresses, consumer/state invariants, and upgrade policy"
+}

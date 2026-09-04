@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "hashAlgorithm": "sha256",
+  "exactInputs": [
+    {
+      "path": "parameters/sepolia-v0.3/manifest.json",
+      "sha256": "0d891caaddfc6d954655e15cf86e90ed99825c9f060df907c3afabab695b1c42",
+      "role": "frozen-v0.3-parameter-manifest"
+    },
+    {
+      "path": "parameters/sepolia-v0.3/manifest.bin",
+      "sha256": "3c4233b4e316d6725abb416eb78fa543ca987c4dc487ada7e67c463e5ad0d21e",
+      "role": "canonical-frozen-manifest-encoding"
+    },
+    {
+      "path": "parameters/sepolia-v0.3/parameter-id.txt",
+      "sha256": "dc13595b449af2270a79cc8c95d7454f32788e8ca9c0e9aab0f28c1b577521c1",
+      "role": "frozen-proof-system-identity"
+    },
+    {
+      "path": "foundry.toml",
+      "sha256": "04c59dc1a416c14a3c77c5035c8ddaf1d09c70de840287ef7235abb71971abf0",
+      "role": "compiler-profile"
+    },
+    {
+      "path": "contracts/src/verifier/PQTCAirStageVerifier.sol",
+      "sha256": "4f810d9fe141236e5f19219c31dc225dba37e0f9657b20364bbb21ece7d16202",
+      "role": "air-verifier-source"
+    },
+    {
+      "path": "contracts/src/verifier/PQTCQueryVerifier.sol",
+      "sha256": "8c6316f1132875dc647cba0d51c4779c8b14d97cf904acea67f01577efffa92f",
+      "role": "query-verifier-source"
+    },
+    {
+      "path": "contracts/src/PQTCVerificationRegistry.sol",
+      "sha256": "8553941eb44998dca5bd18cc6eeb7d016bb8cccfa334efb7f693a4a1575a4722",
+      "role": "registry-source"
+    },
+    {
+      "path": "contracts/src/PQTCClassicPool.sol",
+      "sha256": "5ce4f94692e87922efd0584e543afc43937ad8647161dd4e3e16bb8a442c0fd0",
+      "role": "pool-source"
+    }
+  ],
+  "canonicalFoundryArtifacts": [
+    {
+      "path": "out/PQTCAirStageVerifier.sol/PQTCAirStageVerifier.json",
+      "sha256": "04ae82b3e734af5788019ecb1b89962fe241edbd997fe903a74d868991ef5cac"
+    },
+    {
+      "path": "out/PQTCQueryVerifier.sol/PQTCQueryVerifier.json",
+      "sha256": "df981baa64da35ef919e19ba9b203e38537d77ee43e49d20f15540fbb70e780d"
+    },
+    {
+      "path": "out/PQTCVerificationRegistry.sol/PQTCVerificationRegistry.json",
+      "sha256": "b3ef8ed3c30de17377e3bac27217a593ff3663bfaf8077964ce5579f5c5f54c1"
+    },
+    {
+      "path": "out/PQTCClassicPool.sol/PQTCClassicPool.json",
+      "sha256": "dcab5eda184549c0e44f1d1ee1620e9d7750ffcef5efdfd7f5faf26195e51837"
+    }
+  ],
+  "researchCandidateSourceHashes": "Recorded individually in manifest.json and rechecked into results.json; no candidate has a canonical deployable Foundry artifact in this study."
+}

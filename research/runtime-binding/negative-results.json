@@ -1,0 +1,55 @@
+{
+  "cases": [
+    {
+      "actualFailureCode": "HASH_MISMATCH",
+      "case": "byte_change",
+      "expectedFailureCode": "HASH_MISMATCH",
+      "passed": true
+    },
+    {
+      "actualFailureCode": "CONTRACT_ORDER_MISMATCH",
+      "case": "reordered_contracts",
+      "expectedFailureCode": "CONTRACT_ORDER_MISMATCH",
+      "passed": true
+    },
+    {
+      "actualFailureCode": "PROFILE_MISMATCH",
+      "case": "wrong_compiler",
+      "expectedFailureCode": "PROFILE_MISMATCH",
+      "passed": true
+    },
+    {
+      "actualFailureCode": "PROFILE_MISMATCH",
+      "case": "wrong_profile",
+      "expectedFailureCode": "PROFILE_MISMATCH",
+      "passed": true
+    },
+    {
+      "actualFailureCode": "UNRESOLVED_LINKS",
+      "case": "unresolved_link_reference",
+      "expectedFailureCode": "UNRESOLVED_LINKS",
+      "passed": true
+    },
+    {
+      "actualFailureCode": "UNRESOLVED_IMMUTABLES",
+      "case": "unresolved_immutable_reference",
+      "expectedFailureCode": "UNRESOLVED_IMMUTABLES",
+      "passed": true
+    },
+    {
+      "actualFailureCode": "EMPTY_EXPECTED_HASH",
+      "case": "empty_hashes",
+      "expectedFailureCode": "EMPTY_EXPECTED_HASH",
+      "passed": true
+    },
+    {
+      "actualFailureCode": "PARAMETER_ID_MISMATCH",
+      "case": "wrong_parameter_id",
+      "expectedFailureCode": "PARAMETER_ID_MISMATCH",
+      "passed": true
+    }
+  ],
+  "result": "PASS",
+  "schemaVersion": 1,
+  "study": "runtime-binding-negative-regressions"
+}
