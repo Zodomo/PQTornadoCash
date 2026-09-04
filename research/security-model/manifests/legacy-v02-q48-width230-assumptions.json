@@ -1,0 +1,33 @@
+{
+  "model_version": 1,
+  "profile_id": "legacy-v02-q48-width230-assumptions-not-equivalent",
+  "plonky3_commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+  "logical_trace_height": 256,
+  "proof_degree_bits": 9,
+  "hiding_degree_padding_bits": 1,
+  "is_zk": true,
+  "extension_field_bits": 124,
+  "challenge_field_bits": 120,
+  "mmcs_construction": "assumed KeccakPair512-style 128-bit binding cap",
+  "mmcs_binding_bits_classical": 128,
+  "mmcs_binding_bits_quantum": 128,
+  "relation_width": 230,
+  "num_constraints": 1186,
+  "max_constraint_degree": 7,
+  "max_combo": 2,
+  "quotient_chunks": 16,
+  "hiding_random_functions": 4,
+  "batch_count_derivation": "relation_plus_quotient_plus_hiding",
+  "num_batched_functions": 250,
+  "fri_log_blowup": 4,
+  "fri_num_queries": 48,
+  "fri_log_final_poly_len": 0,
+  "fri_max_log_arity": 1,
+  "commit_grinding_bits": 16,
+  "query_grinding_bits": 16,
+  "omissions": [
+    "NOT AN EQUIVALENT v0.2 REPRODUCTION: the exact removed width-230 AIR constraint count, maximum degree, quotient chunk count, batching count, proof degree after hiding, and security manifest are unavailable in the frozen tree.",
+    "Values other than documented width=230, logical height=256, and q=48 are explicit v0.3-style assumptions solely to show calculator sensitivity.",
+    "The custom transcript and full Fiat-Shamir transform have no complete QROM proof."
+  ]
+}

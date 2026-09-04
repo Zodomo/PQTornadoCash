@@ -1,0 +1,254 @@
+{
+  "classification": "UNREVIEWED_RESEARCH_RESULT",
+  "profile_id": "v03-q32-width190-batch210",
+  "random_words_eligible_for_target_recommendation": false,
+  "review_status": "two-method-reviews-rejected-six-findings-corrected-pending-re-review",
+  "search_bounds": {
+    "fri_log_blowup": [
+      1,
+      12
+    ],
+    "fri_num_queries": [
+      1,
+      512
+    ]
+  },
+  "search_objective": "minimize fri_num_queries, then fri_log_blowup",
+  "targets": [
+    {
+      "regimes": {
+        "best_proven": {
+          "attainable": true,
+          "batching_omission": null,
+          "profile": {
+            "assumptions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "fri_log_blowup": 5,
+            "fri_num_queries": 38,
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 80.527978361,
+            "target_recommendation": "pending-independent-re-review"
+          },
+          "proof_status": "conditional-theorem-johnson-correlated-agreement",
+          "reason": null,
+          "target_recommendation": "pending-independent-re-review"
+        },
+        "ldr": {
+          "attainable": true,
+          "batching_omission": null,
+          "profile": {
+            "assumptions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "fri_log_blowup": 5,
+            "fri_num_queries": 38,
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 80.527978361,
+            "target_recommendation": "pending-independent-re-review"
+          },
+          "proof_status": "conditional-theorem-johnson-correlated-agreement",
+          "reason": null,
+          "target_recommendation": "pending-independent-re-review"
+        },
+        "random_words": {
+          "attainable": true,
+          "batching_omission": {
+            "modeled": false,
+            "num_batched_functions": 210,
+            "omission": "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path."
+          },
+          "profile": {
+            "assumptions": [
+              "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path. Actual num_batched_functions is recorded per term."
+            ],
+            "batching": {
+              "modeled": false,
+              "num_batched_functions": 210,
+              "omission": "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path."
+            },
+            "fri_log_blowup": 11,
+            "fri_num_queries": 7,
+            "proof_status": "conjectural-random-words",
+            "quantum_bits": 84.003662929,
+            "target_recommendation": "excluded-conjectural-and-batched-opening-unmodeled"
+          },
+          "proof_status": "conjectural-random-words",
+          "reason": null,
+          "target_recommendation": "excluded-conjectural-and-batched-opening-unmodeled"
+        },
+        "udr": {
+          "attainable": true,
+          "batching_omission": null,
+          "profile": {
+            "assumptions": [],
+            "fri_log_blowup": 7,
+            "fri_num_queries": 73,
+            "proof_status": "proven-no-decoding-conjecture",
+            "quantum_bits": 80.177221305,
+            "target_recommendation": "pending-independent-re-review"
+          },
+          "proof_status": "proven-no-decoding-conjecture",
+          "reason": null,
+          "target_recommendation": "pending-independent-re-review"
+        }
+      },
+      "security_qualified_candidate": false,
+      "target_quantum_bits": 80
+    },
+    {
+      "regimes": {
+        "best_proven": {
+          "attainable": true,
+          "batching_omission": null,
+          "profile": {
+            "assumptions": [],
+            "fri_log_blowup": 3,
+            "fri_num_queries": 111,
+            "proof_status": "proven-no-decoding-conjecture",
+            "quantum_bits": 100.06883508,
+            "target_recommendation": "pending-independent-re-review"
+          },
+          "proof_status": "proven-no-decoding-conjecture",
+          "reason": null,
+          "target_recommendation": "pending-independent-re-review"
+        },
+        "ldr": {
+          "attainable": false,
+          "batching_omission": null,
+          "profile": null,
+          "proof_status": "conditional-theorem-johnson-correlated-agreement",
+          "reason": "not attained for log_blowup 1..12 and queries 1..512; a non-query term, buildability constraint, or cap binds",
+          "target_recommendation": "pending-independent-re-review"
+        },
+        "random_words": {
+          "attainable": true,
+          "batching_omission": {
+            "modeled": false,
+            "num_batched_functions": 210,
+            "omission": "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path."
+          },
+          "profile": {
+            "assumptions": [
+              "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path. Actual num_batched_functions is recorded per term."
+            ],
+            "batching": {
+              "modeled": false,
+              "num_batched_functions": 210,
+              "omission": "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path."
+            },
+            "fri_log_blowup": 12,
+            "fri_num_queries": 8,
+            "proof_status": "conjectural-random-words",
+            "quantum_bits": 102.774512597,
+            "target_recommendation": "excluded-conjectural-and-batched-opening-unmodeled"
+          },
+          "proof_status": "conjectural-random-words",
+          "reason": null,
+          "target_recommendation": "excluded-conjectural-and-batched-opening-unmodeled"
+        },
+        "udr": {
+          "attainable": true,
+          "batching_omission": null,
+          "profile": {
+            "assumptions": [],
+            "fri_log_blowup": 3,
+            "fri_num_queries": 111,
+            "proof_status": "proven-no-decoding-conjecture",
+            "quantum_bits": 100.06883508,
+            "target_recommendation": "pending-independent-re-review"
+          },
+          "proof_status": "proven-no-decoding-conjecture",
+          "reason": null,
+          "target_recommendation": "pending-independent-re-review"
+        }
+      },
+      "security_qualified_candidate": false,
+      "target_quantum_bits": 100
+    },
+    {
+      "regimes": {
+        "best_proven": {
+          "attainable": false,
+          "batching_omission": null,
+          "profile": null,
+          "proof_status": "selected-regime-status-recorded-in-profile",
+          "reason": "not attained for log_blowup 1..12 and queries 1..512; a non-query term, buildability constraint, or cap binds",
+          "target_recommendation": "pending-independent-re-review"
+        },
+        "ldr": {
+          "attainable": false,
+          "batching_omission": null,
+          "profile": null,
+          "proof_status": "conditional-theorem-johnson-correlated-agreement",
+          "reason": "not attained for log_blowup 1..12 and queries 1..512; a non-query term, buildability constraint, or cap binds",
+          "target_recommendation": "pending-independent-re-review"
+        },
+        "random_words": {
+          "attainable": false,
+          "batching_omission": {
+            "modeled": false,
+            "num_batched_functions": 210,
+            "omission": "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path."
+          },
+          "profile": null,
+          "proof_status": "conjectural-random-words",
+          "reason": "not attained for log_blowup 1..12 and queries 1..512; a non-query term, buildability constraint, or cap binds",
+          "target_recommendation": "excluded-conjectural-and-batched-opening-unmodeled"
+        },
+        "udr": {
+          "attainable": false,
+          "batching_omission": null,
+          "profile": null,
+          "proof_status": "proven-no-decoding-conjecture",
+          "reason": "not attained for log_blowup 1..12 and queries 1..512; a non-query term, buildability constraint, or cap binds",
+          "target_recommendation": "pending-independent-re-review"
+        }
+      },
+      "security_qualified_candidate": false,
+      "target_quantum_bits": 112
+    },
+    {
+      "regimes": {
+        "best_proven": {
+          "attainable": false,
+          "batching_omission": null,
+          "profile": null,
+          "proof_status": "selected-regime-status-recorded-in-profile",
+          "reason": "not attained for log_blowup 1..12 and queries 1..512; a non-query term, buildability constraint, or cap binds",
+          "target_recommendation": "pending-independent-re-review"
+        },
+        "ldr": {
+          "attainable": false,
+          "batching_omission": null,
+          "profile": null,
+          "proof_status": "conditional-theorem-johnson-correlated-agreement",
+          "reason": "not attained for log_blowup 1..12 and queries 1..512; a non-query term, buildability constraint, or cap binds",
+          "target_recommendation": "pending-independent-re-review"
+        },
+        "random_words": {
+          "attainable": false,
+          "batching_omission": {
+            "modeled": false,
+            "num_batched_functions": 210,
+            "omission": "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path."
+          },
+          "profile": null,
+          "proof_status": "conjectural-random-words",
+          "reason": "not attained for log_blowup 1..12 and queries 1..512; a non-query term, buildability constraint, or cap binds",
+          "target_recommendation": "excluded-conjectural-and-batched-opening-unmodeled"
+        },
+        "udr": {
+          "attainable": false,
+          "batching_omission": null,
+          "profile": null,
+          "proof_status": "proven-no-decoding-conjecture",
+          "reason": "not attained for log_blowup 1..12 and queries 1..512; a non-query term, buildability constraint, or cap binds",
+          "target_recommendation": "pending-independent-re-review"
+        }
+      },
+      "security_qualified_candidate": false,
+      "target_quantum_bits": 128
+    }
+  ]
+}

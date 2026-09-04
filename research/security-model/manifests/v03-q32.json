@@ -1,0 +1,33 @@
+{
+  "model_version": 1,
+  "profile_id": "v03-q32-width190-batch210",
+  "plonky3_commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+  "logical_trace_height": 256,
+  "proof_degree_bits": 9,
+  "hiding_degree_padding_bits": 1,
+  "is_zk": true,
+  "extension_field_bits": 124,
+  "challenge_field_bits": 120,
+  "mmcs_construction": "KeccakPair512 manifest-assumed binding cap",
+  "mmcs_binding_bits_classical": 128,
+  "mmcs_binding_bits_quantum": 128,
+  "relation_width": 190,
+  "num_constraints": 1186,
+  "max_constraint_degree": 7,
+  "max_combo": 2,
+  "quotient_chunks": 16,
+  "hiding_random_functions": 4,
+  "batch_count_derivation": "relation_plus_quotient_plus_hiding",
+  "num_batched_functions": 210,
+  "fri_log_blowup": 4,
+  "fri_num_queries": 32,
+  "fri_log_final_poly_len": 0,
+  "fri_max_log_arity": 1,
+  "commit_grinding_bits": 16,
+  "query_grinding_bits": 16,
+  "omissions": [
+    "The custom KeccakPair512 transcript and full Fiat-Shamir transform have no complete QROM proof.",
+    "The MMCS cap is a supplied assumption, not structural cryptanalysis.",
+    "Zero knowledge is not graded; padding is recorded only for soundness-domain accounting."
+  ]
+}

@@ -1,0 +1,187 @@
+Profile: counterfactual-v02-style-q48-width190-batch210  targets: 2^0  status: UNREVIEWED
+
+[random_words] classical=107.998 quantum=107.998
+Proof status: conjectural-random-words
+Assumptions: Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path. Actual num_batched_functions is recorded per term.
+Term                             Classical  Quantum  Status                          Binding
+-------------------------------- --------- --------- ------------------------------- -------
+air-random-linear-combination      109.788   109.788 conjectural-random-words        -
+  formula: b = log2(|F|) - log2(L+) - log2(num_constraints)
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16
+  inputs: {"field_bits":120.0,"list_size":1.0,"num_constraints":1186}
+  omissions: -
+deep-ali                           107.998   107.998 conjectural-random-words        classical/quantum
+  formula: b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28
+  inputs: {"field_bits":120.0,"k":512,"list_size":1.0,"max_combo":2,"max_constraint_degree":7}
+  omissions: -
+fri-query-phase                    204.928   196.928 conjectural-random-words        -
+  formula: b = num_queries*(-log2(rho+eta)) + grinding; eta=((log2(e)+log_blowup)*rho)/field_bits
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:80-99; ePrint 2025/2010 sec. 1.5
+  inputs: {"configured_grinding_bits":16,"eta":0.002834737000463002,"field_bits":120,"num_queries":48,"rho":0.0625}
+  omissions: -
+fri-commit-phase                   123.000   115.000 proven-within-conjectural-compo -
+  formula: b = log2(|F|) - log2((folding-1)*(n+1)) + grinding
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:101-143
+  inputs: {"configured_grinding_bits":16,"field_bits":120,"folding_factor":2,"n":8192,"pinned_security_num_layers_guard":13}
+  omissions: -
+batched-opening-proximity              n/a       n/a omitted-unmodeled               -
+  formula: no accepted random-words analogue in pinned implementation
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/stark.rs:28-101,147-231,279-340
+  inputs: {"num_batched_functions":210}
+  omissions: Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path. Actual num_batched_functions=210; this result is optimistic.
+fri-final-phase                        n/a       n/a deterministic-check             -
+  formula: deterministic final-polynomial degree/length check; no probabilistic error term
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349
+  inputs: {"declared_bound":1,"fri_log_final_poly_len":0}
+  omissions: -
+commit-grinding-adjustment          16.000     8.000 cost-model-adjustment           -
+  formula: commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54
+  inputs: {"configured_grinding_bits":16,"site":"FRI commit challenge"}
+  omissions: Already included in fri-commit-phase; informational row, not an independent binding term.
+query-grinding-adjustment           16.000     8.000 cost-model-adjustment           -
+  formula: query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54
+  inputs: {"configured_grinding_bits":16,"site":"FRI query challenge"}
+  omissions: Already included in fri-query-phase; informational row, not an independent binding term.
+challenge-field-ceiling            120.000   120.000 assumption                      -
+  formula: b <= conservative challenge-field budget
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349
+  inputs: {"challenge_field_bits":120,"extension_field_bits":124}
+  omissions: -
+mmcs-binding                       128.000   128.000 assumption-unreviewed           -
+  formula: b <= stated MMCS binding security
+  source: Manifest assumption; not derived by p3-security
+  inputs: {"construction":"KeccakPair512 manifest-assumed binding cap"}
+  omissions: This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem.
+hiding-degree-padding                  n/a       n/a accounting-input                -
+  formula: proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits
+  source: Plonky3 pinned uni-stark/src/security.rs:249-251,326-330
+  inputs: {"hiding_degree_padding_bits":1,"is_zk":true,"logical_degree_bits":8,"logical_trace_height":256,"proof_degree_bits":9}
+  omissions: -
+Bottlenecks (low to high): deep-ali(107.998c/107.998q), air-random-linear-combination(109.788c/109.788q), fri-commit-phase(123.000c/115.000q), challenge-field-ceiling(120.000c/120.000q), mmcs-binding(128.000c/128.000q), fri-query-phase(204.928c/196.928q)
+
+[udr] classical=59.786 quantum=51.786
+Proof status: proven-no-decoding-conjecture
+Assumptions: -
+Term                             Classical  Quantum  Status                          Binding
+-------------------------------- --------- --------- ------------------------------- -------
+air-random-linear-combination      109.788   109.788 proven                          -
+  formula: b = log2(|F|) - log2(L+) - log2(num_constraints)
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16
+  inputs: {"field_bits":120.0,"list_size":1.0,"num_constraints":1186}
+  omissions: -
+deep-ali                           107.998   107.998 proven                          -
+  formula: b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28
+  inputs: {"field_bits":120.0,"k":512,"list_size":1.0,"max_combo":2,"max_constraint_degree":7}
+  omissions: -
+fri-query-phase                     59.786    51.786 proven                          classical/quantum
+  formula: b = -num_queries*log2(alpha) + grinding
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:196-202
+  inputs: {"alpha":0.5313720703125,"configured_grinding_bits":16,"num_queries":48}
+  omissions: -
+fri-commit-phase                   123.000   115.000 proven                          -
+  formula: b = log2(|F|) - log2((folding-1)*(n+1)) + grinding
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:101-143
+  inputs: {"configured_grinding_bits":16,"field_bits":120,"folding_factor":2,"n":8192,"pinned_security_num_layers_guard":13}
+  omissions: -
+batched-opening-proximity           99.293    99.293 proven                          -
+  formula: b = log2(|F|) - (log_degree + log_inv_rate + log2(num_functions-1))
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/assumption.rs:126-245; security/src/stark.rs:104-145
+  inputs: {"field_bits":120,"log_degree":9,"log_inv_rate":4,"num_batched_functions":210}
+  omissions: -
+fri-final-phase                        n/a       n/a deterministic-check             -
+  formula: deterministic final-polynomial degree/length check; no probabilistic error term
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349
+  inputs: {"declared_bound":1,"fri_log_final_poly_len":0}
+  omissions: -
+commit-grinding-adjustment          16.000     8.000 cost-model-adjustment           -
+  formula: commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54
+  inputs: {"configured_grinding_bits":16,"site":"FRI commit challenge"}
+  omissions: Already included in fri-commit-phase; informational row, not an independent binding term.
+query-grinding-adjustment           16.000     8.000 cost-model-adjustment           -
+  formula: query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54
+  inputs: {"configured_grinding_bits":16,"site":"FRI query challenge"}
+  omissions: Already included in fri-query-phase; informational row, not an independent binding term.
+challenge-field-ceiling            120.000   120.000 assumption                      -
+  formula: b <= conservative challenge-field budget
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349
+  inputs: {"challenge_field_bits":120,"extension_field_bits":124}
+  omissions: -
+mmcs-binding                       128.000   128.000 assumption-unreviewed           -
+  formula: b <= stated MMCS binding security
+  source: Manifest assumption; not derived by p3-security
+  inputs: {"construction":"KeccakPair512 manifest-assumed binding cap"}
+  omissions: This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem.
+hiding-degree-padding                  n/a       n/a accounting-input                -
+  formula: proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits
+  source: Plonky3 pinned uni-stark/src/security.rs:249-251,326-330
+  inputs: {"hiding_degree_padding_bits":1,"is_zk":true,"logical_degree_bits":8,"logical_trace_height":256,"proof_degree_bits":9}
+  omissions: -
+Bottlenecks (low to high): fri-query-phase(59.786c/51.786q), batched-opening-proximity(99.293c/99.293q), deep-ali(107.998c/107.998q), air-random-linear-combination(109.788c/109.788q), fri-commit-phase(123.000c/115.000q), challenge-field-ceiling(120.000c/120.000q), mmcs-binding(128.000c/128.000q)
+
+[ldr] classical=81.580 quantum=81.580
+Proof status: conditional-theorem-johnson-correlated-agreement
+Assumptions: Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50.
+Term                             Classical  Quantum  Status                          Binding
+-------------------------------- --------- --------- ------------------------------- -------
+air-random-linear-combination      105.329   105.329 conditional-theorem-johnson-cor -
+  formula: b = log2(|F|) - log2(L+) - log2(num_constraints)
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16
+  inputs: {"field_bits":120.0,"list_size":22.0,"num_constraints":1186}
+  omissions: Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50.
+deep-ali                           103.538   103.538 conditional-theorem-johnson-cor -
+  formula: b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28
+  inputs: {"field_bits":120.0,"k":512,"list_size":22.0,"max_combo":2,"max_constraint_degree":7}
+  omissions: Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50.
+fri-query-phase                    105.400    97.400 conditional-theorem-johnson-cor -
+  formula: b = -num_queries*log2(alpha) + grinding
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:196-202
+  inputs: {"alpha":0.275,"configured_grinding_bits":16,"num_queries":48}
+  omissions: Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50.
+fri-commit-phase                   105.288    97.288 conditional-theorem-johnson-cor -
+  formula: b = min(BCHKS25 linear bound, 2024/1553 n/q bound) + grinding
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:145-193; ePrint 2025/2055 Thm. 4.2
+  inputs: {"alpha":0.275,"bchks25_base_bits":89.287697233,"configured_grinding_bits":16,"gamma":0.725,"m":5,"n":8192,"n_over_q_base_bits":100.540392282,"rho":0.0625}
+  omissions: Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50.
+batched-opening-proximity           81.580    81.580 conditional-theorem-johnson-cor classical/quantum
+  formula: b = log2(|F|) - log2(2*(m+1/2)^5*n/(3*rho^(3/2))) - log2(num_functions-1)
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/assumption.rs:126-245; security/src/stark.rs:104-145
+  inputs: {"dominant_term_only":true,"field_bits":120,"m":5,"n_log2":13,"num_batched_functions":210,"rho":0.0625}
+  omissions: Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50. | Pinned implementation keeps only the BCHKS25 dominant term; documented subdominant terms are omitted as negligible.
+fri-final-phase                        n/a       n/a deterministic-check             -
+  formula: deterministic final-polynomial degree/length check; no probabilistic error term
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349
+  inputs: {"declared_bound":1,"fri_log_final_poly_len":0}
+  omissions: -
+commit-grinding-adjustment          16.000     8.000 cost-model-adjustment           -
+  formula: commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54
+  inputs: {"configured_grinding_bits":16,"site":"FRI commit challenge"}
+  omissions: Already included in fri-commit-phase; informational row, not an independent binding term.
+query-grinding-adjustment           16.000     8.000 cost-model-adjustment           -
+  formula: query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54
+  inputs: {"configured_grinding_bits":16,"site":"FRI query challenge"}
+  omissions: Already included in fri-query-phase; informational row, not an independent binding term.
+challenge-field-ceiling            120.000   120.000 assumption                      -
+  formula: b <= conservative challenge-field budget
+  source: Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349
+  inputs: {"challenge_field_bits":120,"extension_field_bits":124}
+  omissions: -
+mmcs-binding                       128.000   128.000 assumption-unreviewed           -
+  formula: b <= stated MMCS binding security
+  source: Manifest assumption; not derived by p3-security
+  inputs: {"construction":"KeccakPair512 manifest-assumed binding cap"}
+  omissions: This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem.
+hiding-degree-padding                  n/a       n/a accounting-input                -
+  formula: proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits
+  source: Plonky3 pinned uni-stark/src/security.rs:249-251,326-330
+  inputs: {"hiding_degree_padding_bits":1,"is_zk":true,"logical_degree_bits":8,"logical_trace_height":256,"proof_degree_bits":9}
+  omissions: -
+Bottlenecks (low to high): batched-opening-proximity(81.580c/81.580q), fri-commit-phase(105.288c/97.288q), fri-query-phase(105.400c/97.400q), deep-ali(103.538c/103.538q), air-random-linear-combination(105.329c/105.329q), challenge-field-ceiling(120.000c/120.000q), mmcs-binding(128.000c/128.000q)

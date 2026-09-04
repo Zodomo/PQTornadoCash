@@ -1,0 +1,45 @@
+{
+  "classification": "UNREVIEWED_RESEARCH_RESULT",
+  "external_human_cryptographic_review": "OPEN",
+  "independent_cryptographic_acceptance": false,
+  "internal_methodology_review": {
+    "final": {
+      "findings": 0,
+      "limitations": [
+        "This is internal code/methodology review, not external human cryptographic acceptance.",
+        "Conjectural random-words and conditional Johnson-bound labels remain binding limitations.",
+        "No protocol or candidate qualification follows from methodology acceptance."
+      ],
+      "reviewer": "SecurityModelReview",
+      "verdict": "ACCEPT_METHOD_WITH_LIMITATIONS"
+    },
+    "history": [
+      {
+        "findings": 5,
+        "round": "initial",
+        "verdict": "REJECT_METHOD"
+      },
+      {
+        "findings": 1,
+        "round": "corrective-1",
+        "verdict": "REJECT_METHOD"
+      },
+      {
+        "findings": 0,
+        "round": "corrective-2",
+        "verdict": "ACCEPT_METHOD_WITH_LIMITATIONS"
+      }
+    ],
+    "historical_findings_resolved": 6,
+    "status": "ACCEPTED_WITH_LIMITATIONS"
+  },
+  "security_qualified_candidate_awarded": false,
+  "spike": "SP-01",
+  "spike_gate": "INTERNAL_METHODOLOGY_ACCEPTED_WITH_LIMITATIONS_EXTERNAL_CRYPTOGRAPHIC_REVIEW_OPEN",
+  "verification": {
+    "checked_in_calculator_artifacts_unchanged_after_final_review": true,
+    "focused_test_command": "python3 -m unittest discover -s research/security-model/calculator/tests -p 'test_*.py' -v",
+    "focused_tests_passed": 17,
+    "project_wide_validation_run": false
+  }
+}
