@@ -1,0 +1,31 @@
+{
+  "schema": "pqtc-sp10-gas-plan-v2",
+  "tool": "Foundry forge test --match-contract GasResults --threads 1",
+  "compilerProfile": {
+    "solcVersion": "0.8.30",
+    "evmRevision": "prague",
+    "optimizer": true,
+    "optimizerRuns": 200,
+    "viaIR": true
+  },
+  "measurements": [
+    "permutation",
+    "feed-forward compression where defined (H1/H3/H4/H5/H6; never H0)",
+    "note and nullifier where defined",
+    "node where defined",
+    "depth-20 compute-only insertion",
+    "synthetic depth-20 root update (not a direct deposit)",
+    "complete direct deposit: frozen H0 baseline only; non-H0 NOT_EVALUATED",
+    "zero-tree constructor",
+    "runtime bytecode size",
+    "initcode size"
+  ],
+  "resultPolicy": "Measured candidate-named values and explicit NOT_EVALUATED fields are retained in results.json. Raw Forge gas-report stdout/stderr is retained verbatim in forge-gas-report.txt; its inherited H0 compression and fullStorageDeposit labels are superseded by results.json.",
+  "resultArtifact": "research/candidates/hash-compression-common/gas/results.json",
+  "measurementMethod": "gasleft delta around a low-level external call to a freshly deployed target; ABI encoding precedes measurement and return-data copying is included",
+  "syntheticHarnessLimitation": "ResearchTree measures 20 hashes plus a dynamic uint256[] root update. It omits real deposit/state work and contradicts the protocol's two-slot digest representation, so it cannot satisfy the complete direct-deposit gate.",
+  "gateSemantics": {
+    "fiveXNodeReduction": "Compare node permutation counts from native/operation-counts.json; do not compare node gas.",
+    "completeDirectDeposit": "Compare complete protocol direct-deposit gas only; syntheticDepth20RootUpdateGas is excluded."
+  }
+}

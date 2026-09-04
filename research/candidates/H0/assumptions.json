@@ -1,0 +1,16 @@
+{
+  "schema": "pqtc-sp10-assumptions-v1",
+  "candidateId": "H0",
+  "assumptions": [
+    "All field inputs are canonical; modular reduction is never used as byte-to-field mapping.",
+    "Roles, protocol version, shape, and level are distinct control fields whenever an application layout is defined.",
+    "BHT/Grover numbers are ideal black-box ceilings only, not security proofs.",
+    "No multi-target margin is assigned because target populations and lifetimes are not fixed."
+  ],
+  "layout": "The frozen v0.3 P2BB512 framing is version, role tag, payload byte length, payload element count, and aux/level in capacity lanes 4..8.",
+  "nonAssumptions": [
+    "CICO resistance does not imply compression-mode security.",
+    "Pinned constants do not imply cryptographic approval.",
+    "Benchmark performance does not imply deployment eligibility."
+  ]
+}

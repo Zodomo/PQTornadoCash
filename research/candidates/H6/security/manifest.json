@@ -1,0 +1,16 @@
+{
+  "schema": "pqtc-sp10-security-manifest-v1",
+  "candidateId": "H6",
+  "securityQualified": false,
+  "blockers": [
+    "Generic 128-bit width checks are ceilings, not a quantum proof.",
+    "Width 32 is outside the original paper and exact 2026 attack tables.",
+    "Exact width-32 mode analysis and independent review are absent.",
+    "Full three-language parity is not established: Solidity covers 8 suite-wide anchor vectors only.",
+    "Required misuse-suite coverage is NOT_EVALUATED.",
+    "Constant-comparison result is NOT_RETAINED.",
+    "Application labels are primitive/layout-incomplete: protocol scope and frozen semantic secret/trapdoor widths are omitted; scope, empty-leaf, and statement roles are NOT_EVALUATED.",
+    "Complete non-H0 direct-deposit gas is NOT_EVALUATED; synthetic root-update gas is not direct-deposit evidence."
+  ],
+  "internalReviewVerdict": "NO_AIR_CANDIDATE"
+}

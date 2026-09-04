@@ -1,0 +1,15 @@
+{
+  "schema": "pqtc-sp10-common-assumptions-v1",
+  "assumptions": [
+    "All lane inputs are canonical unsigned field values.",
+    "Source bytes are mapped by recorded SHA-256 counter rejection sampling; modular reduction is prohibited.",
+    "Digest serialization is four-byte big-endian per canonical field lane.",
+    "Role, version, shape, and level occupy distinct lanes for fixed compression layouts.",
+    "The H7 application frame is part of the absorbed message and the published final-block-length domain remains in capacity lane 16."
+  ],
+  "limits": [
+    "No benchmark result is a security claim.",
+    "No generic black-box ceiling is a proof for an instantiated permutation.",
+    "No independent cryptanalysis has been completed by this package."
+  ]
+}

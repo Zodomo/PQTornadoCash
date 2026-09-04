@@ -1,0 +1,77 @@
+{
+  "schema": "pqtc-candidate-status-v1",
+  "candidateId": "H0",
+  "status": "BENCHMARK_ONLY",
+  "stageAResult": "PASS_BASELINE_ONLY",
+  "custodyEligibility": "PROHIBITED",
+  "securityQualified": false,
+  "independentCryptanalysis": "MISSING",
+  "blockers": [
+    "No new security claim is made.",
+    "Replacement qualification is outside SP-10.",
+    "Full three-language parity is not established; Solidity covers 8 suite-wide anchor vectors only.",
+    "The required misuse suite was not evaluated.",
+    "The prior constant-comparison run was not retained as an artifact."
+  ],
+  "measurementProfile": {
+    "solcVersion": "0.8.30",
+    "evmRevision": "prague",
+    "optimizer": true,
+    "optimizerRuns": 200,
+    "viaIR": true
+  },
+  "measuredEvidence": "research/candidates/hash-compression-common/measurement-hashes.json",
+  "gasEvidence": "research/candidates/hash-compression-common/gas/results.json",
+  "gateComparison": {
+    "airDisposition": "STOPPED",
+    "allPass": false,
+    "completeDirectDepositUnder4000000": {
+      "candidateGas": 13991021,
+      "limitExclusive": 4000000,
+      "passes": false,
+      "status": "FROZEN_V03_BASELINE_REPRODUCTION"
+    },
+    "externalReview": {
+      "passes": false,
+      "status": "NOT_REVIEWED"
+    },
+    "fiveXNodePermutationReduction": {
+      "baselinePermutationCount": 11,
+      "candidatePermutationCount": 11,
+      "passes": false,
+      "ratio": 1.0
+    },
+    "genericSecurityAtLeast100Bits": {
+      "idealHiddenPartGroverCeilingBits": null,
+      "idealQuantumCollisionCeilingBits": null,
+      "minimumGenericCeilingBits": null,
+      "passes": false,
+      "status": "NO_APPLICABLE_COMPRESSION_CEILING"
+    },
+    "noStructuralAttack": {
+      "passes": false,
+      "status": "BASELINE_ONLY_NO_REPLACEMENT_CLAIM"
+    }
+  },
+  "airEligibility": "STOPPED_UNLESS_ALL_FIVE_GATES_PASS",
+  "verificationCoverage": {
+    "rustTypeScriptParity": {
+      "status": "PASS",
+      "vectors": 18146
+    },
+    "solidityParity": {
+      "status": "ANCHOR_ONLY",
+      "vectors": 8,
+      "fullBundleCovered": false
+    },
+    "fullThreeLanguageParity": "NOT_EVALUATED",
+    "requiredMisuseSuite": "NOT_EVALUATED",
+    "constantComparison": "NOT_RETAINED"
+  },
+  "applicationCoverage": {
+    "status": "BASELINE_FRAMING_ONLY_NOT_FULL_ROLE_PARITY",
+    "scopeFraming": "EVALUATED_IN_BASELINE_NOTE_NULLIFIER_LAYOUT",
+    "emptyLeafRole": "NOT_EVALUATED",
+    "statementRole": "NOT_EVALUATED"
+  }
+}

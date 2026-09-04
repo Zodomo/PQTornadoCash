@@ -1,0 +1,11 @@
+{
+  "schema": "pqtc-sp10-vector-plan-v1",
+  "minimumCount": 10000,
+  "primitiveVectorsPerExecutableCandidate": 2048,
+  "requiredMutations": ["zero", "one", "p-minus-one", "domain-role", "level", "left-right", "version", "shape"],
+  "applicationCandidates": ["H0", "H3", "H5", "H6", "H7"],
+  "treeDepth": 20,
+  "parityImplementations": ["iterative", "direct-recursive"],
+  "languages": ["Rust", "TypeScript", "Solidity"],
+  "mappingEvidence": "Every rejection and acceptance is emitted alongside explicit supplied-draw failures."
+}

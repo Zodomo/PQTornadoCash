@@ -1,0 +1,17 @@
+{
+  "schema": "pqtc-sp10-measurement-package-v1",
+  "package": "sp10-hash-research",
+  "version": "0.1.0",
+  "researchOnly": true,
+  "securityQualified": false,
+  "sourceCorpus": "research/common-corpus/semantic-cases.json",
+  "sourceCorpusMutationPolicy": "read-only",
+  "minimumVectorCount": 10000,
+  "languages": ["Rust", "Solidity", "TypeScript"],
+  "commands": {
+    "vectorsAndParity": "python3 research/candidates/hash-compression-common/run.py vectors-parity",
+    "measuredBenchmarks": "python3 research/candidates/hash-compression-common/run.py benchmark --samples 1000",
+    "constantCompare": "python3 research/candidates/hash-compression-common/scripts/compare-constants.py --plonky3 /path/to/pinned/Plonky3"
+  },
+  "outputPolicy": "Generated measurements are retained only when commands actually run; this manifest contains no fabricated timing or gas values."
+}

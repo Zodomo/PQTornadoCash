@@ -1,0 +1,20 @@
+{
+  "schema": "pqtc-sp10-candidate-manifest-v1",
+  "candidateId": "H1",
+  "title": "Width-16 d=7 feed-forward negative control",
+  "immutableDefinition": "Trunc_7(Poseidon2_BabyBear_16(x)+x), first seven lanes",
+  "outputFields": 7,
+  "status": "BENCHMARK_ONLY",
+  "stageAResult": "FAIL",
+  "researchOnly": true,
+  "securityQualified": false,
+  "implementation": {
+    "rust": "research/candidates/hash-compression-common",
+    "typescript": "research/candidates/hash-compression-common/reference/reference.ts",
+    "solidity": "research/candidates/hash-compression-common/solidity"
+  },
+  "commands": {
+    "vectorsAndParity": "python3 research/candidates/hash-compression-common/run.py vectors-parity",
+    "measuredBenchmarks": "python3 research/candidates/hash-compression-common/run.py benchmark --samples 1000"
+  }
+}

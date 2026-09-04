@@ -1,0 +1,41 @@
+{
+  "schema": "pqtc-sp10-package-status-v1",
+  "status": "BENCHMARK_ONLY",
+  "custodyEligibility": "PROHIBITED",
+  "securityQualified": false,
+  "measurementProfile": {
+    "solcVersion": "0.8.30",
+    "evmRevision": "prague",
+    "optimizer": true,
+    "optimizerRuns": 200,
+    "viaIR": true
+  },
+  "candidateStageA": {
+    "H0": "BASELINE_ONLY",
+    "H1": "FAIL_NEGATIVE_CONTROL",
+    "H2": "STOPPED_NO_REVIEWED_MODE",
+    "H3": "BENCHMARK_ONLY",
+    "H4": "PRIMITIVE_ONLY_LAYOUT_FAIL",
+    "H5": "BENCHMARK_ONLY",
+    "H6": "BENCHMARK_ONLY",
+    "H7": "PUBLISHED_SPONGE_COMPARATOR_ONLY"
+  },
+  "measuredEvidence": "research/candidates/hash-compression-common/measurement-hashes.json",
+  "verdict": "NO_AIR_CANDIDATE",
+  "verificationCoverage": {
+    "constantComparison": "NOT_RETAINED",
+    "fullThreeLanguageParity": "NOT_EVALUATED",
+    "requiredMisuseSuite": "NOT_EVALUATED",
+    "rustTypeScriptParity": {
+      "status": "PASS",
+      "vectors": 18146
+    },
+    "solidityParity": {
+      "fullBundleCovered": false,
+      "status": "ANCHOR_ONLY",
+      "vectors": 8
+    }
+  },
+  "internalReview": "research/candidates/hash-compression-common/internal-review.json",
+  "vectorArtifact": "research/candidates/hash-compression-common/vectors/cross-language.json.zst"
+}

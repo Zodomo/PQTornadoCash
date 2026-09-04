@@ -1,0 +1,83 @@
+{
+  "schema": "pqtc-candidate-status-v1",
+  "candidateId": "H7",
+  "status": "BENCHMARK_ONLY",
+  "stageAResult": "PASS_STAGE_A_BENCHMARK_ONLY",
+  "custodyEligibility": "PROHIBITED",
+  "securityQualified": false,
+  "independentCryptanalysis": "MISSING",
+  "blockers": [
+    "Different field and sponge mode are explicit performance confounds.",
+    "It is not a BabyBear drop-in compressor.",
+    "No PQTC-specific independent application/transcript review exists.",
+    "Full three-language parity is not established; Solidity covers 8 suite-wide anchor vectors only.",
+    "The required misuse suite was not evaluated.",
+    "The prior constant-comparison run was not retained as an artifact."
+  ],
+  "measurementProfile": {
+    "solcVersion": "0.8.30",
+    "evmRevision": "prague",
+    "optimizer": true,
+    "optimizerRuns": 200,
+    "viaIR": true
+  },
+  "measuredEvidence": "research/candidates/hash-compression-common/measurement-hashes.json",
+  "gasEvidence": "research/candidates/hash-compression-common/gas/results.json",
+  "gateComparison": {
+    "airDisposition": "STOPPED",
+    "allPass": false,
+    "completeDirectDepositUnder4000000": {
+      "candidateGas": null,
+      "limitExclusive": 4000000,
+      "passes": false,
+      "status": "NOT_EVALUATED"
+    },
+    "externalReview": {
+      "passes": false,
+      "status": "NOT_REVIEWED"
+    },
+    "fiveXNodePermutationReduction": {
+      "baselinePermutationCount": 11,
+      "candidatePermutationCount": 3,
+      "passes": false,
+      "ratio": 3.6666666666666665
+    },
+    "genericSecurityAtLeast100Bits": {
+      "idealHiddenPartGroverCeilingBits": null,
+      "idealQuantumCollisionCeilingBits": null,
+      "minimumGenericCeilingBits": null,
+      "passes": false,
+      "status": "NO_APPLICABLE_COMPRESSION_CEILING"
+    },
+    "noStructuralAttack": {
+      "passes": false,
+      "status": "NOT_PASSED_EXACT_APPLICATION_STRUCTURAL_ANALYSIS_MISSING"
+    }
+  },
+  "airEligibility": "STOPPED_UNLESS_ALL_FIVE_GATES_PASS",
+  "verificationCoverage": {
+    "rustTypeScriptParity": {
+      "status": "PASS",
+      "vectors": 18146
+    },
+    "solidityParity": {
+      "status": "ANCHOR_ONLY",
+      "vectors": 8,
+      "fullBundleCovered": false
+    },
+    "fullThreeLanguageParity": "NOT_EVALUATED",
+    "requiredMisuseSuite": "NOT_EVALUATED",
+    "constantComparison": "NOT_RETAINED"
+  },
+  "applicationCoverage": {
+    "status": "PRIMITIVE_LAYOUT_INCOMPLETE",
+    "completeApplicationRoleParity": false,
+    "knownOmissions": [
+      "protocol scope",
+      "frozen semantic secret/trapdoor widths"
+    ],
+    "scopeRole": "NOT_EVALUATED",
+    "emptyLeafRole": "NOT_EVALUATED",
+    "statementRole": "NOT_EVALUATED"
+  }
+}

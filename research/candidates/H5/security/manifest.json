@@ -1,0 +1,17 @@
+{
+  "schema": "pqtc-sp10-security-manifest-v1",
+  "candidateId": "H5",
+  "securityQualified": false,
+  "blockers": [
+    "Width 32 is outside the Poseidon2 paper specification through width 24.",
+    "Width 32 is outside the exact investigated widths in ePrint 2026/306.",
+    "Exact mode-aware cryptanalysis and independent review are absent.",
+    "The ideal quantum-collision ceiling does not reach 128 bits.",
+    "Full three-language parity is not established: Solidity covers 8 suite-wide anchor vectors only.",
+    "Required misuse-suite coverage is NOT_EVALUATED.",
+    "Constant-comparison result is NOT_RETAINED.",
+    "Application labels are primitive/layout-incomplete: protocol scope and frozen semantic secret/trapdoor widths are omitted; scope, empty-leaf, and statement roles are NOT_EVALUATED.",
+    "Complete non-H0 direct-deposit gas is NOT_EVALUATED; synthetic root-update gas is not direct-deposit evidence."
+  ],
+  "internalReviewVerdict": "NO_AIR_CANDIDATE"
+}

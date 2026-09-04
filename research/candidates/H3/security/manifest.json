@@ -1,0 +1,16 @@
+{
+  "schema": "pqtc-sp10-security-manifest-v1",
+  "candidateId": "H3",
+  "securityQualified": false,
+  "blockers": [
+    "Only about 3 bits of ideal quantum-collision width margin above 100 bits before multi-target effects.",
+    "ePrint 2026/306 Lemma 4.5 applies exactly: two-round skip [1]^2 + [7]^2 + [49]^6.",
+    "Independent exact constrained-input mode review is absent.",
+    "Full three-language parity is not established: Solidity covers 8 suite-wide anchor vectors only.",
+    "Required misuse-suite coverage is NOT_EVALUATED.",
+    "Constant-comparison result is NOT_RETAINED.",
+    "Application labels are primitive/layout-incomplete: protocol scope and frozen semantic secret/trapdoor widths are omitted; scope, empty-leaf, and statement roles are NOT_EVALUATED.",
+    "Complete non-H0 direct-deposit gas is NOT_EVALUATED; synthetic root-update gas is not direct-deposit evidence."
+  ],
+  "internalReviewVerdict": "NO_AIR_CANDIDATE"
+}

@@ -1,0 +1,83 @@
+{
+  "schema": "pqtc-candidate-status-v1",
+  "candidateId": "H3",
+  "status": "BENCHMARK_ONLY",
+  "stageAResult": "PASS_STAGE_A_BENCHMARK_ONLY",
+  "custodyEligibility": "PROHIBITED",
+  "securityQualified": false,
+  "independentCryptanalysis": "MISSING",
+  "blockers": [
+    "Only about 3 bits of ideal quantum-collision width margin above 100 bits before multi-target effects.",
+    "ePrint 2026/306 Lemma 4.5 applies exactly: two-round skip [1]^2 + [7]^2 + [49]^6.",
+    "Independent exact constrained-input mode review is absent.",
+    "Full three-language parity is not established; Solidity covers 8 suite-wide anchor vectors only.",
+    "The required misuse suite was not evaluated.",
+    "The prior constant-comparison run was not retained as an artifact."
+  ],
+  "measurementProfile": {
+    "solcVersion": "0.8.30",
+    "evmRevision": "prague",
+    "optimizer": true,
+    "optimizerRuns": 200,
+    "viaIR": true
+  },
+  "measuredEvidence": "research/candidates/hash-compression-common/measurement-hashes.json",
+  "gasEvidence": "research/candidates/hash-compression-common/gas/results.json",
+  "gateComparison": {
+    "airDisposition": "STOPPED",
+    "allPass": false,
+    "completeDirectDepositUnder4000000": {
+      "candidateGas": null,
+      "limitExclusive": 4000000,
+      "passes": false,
+      "status": "NOT_EVALUATED"
+    },
+    "externalReview": {
+      "passes": false,
+      "status": "NOT_REVIEWED"
+    },
+    "fiveXNodePermutationReduction": {
+      "baselinePermutationCount": 11,
+      "candidatePermutationCount": 1,
+      "passes": true,
+      "ratio": 11.0
+    },
+    "genericSecurityAtLeast100Bits": {
+      "idealHiddenPartGroverCeilingBits": 216.34823417427577,
+      "idealQuantumCollisionCeilingBits": 103.02296865441706,
+      "minimumGenericCeilingBits": 103.02296865441706,
+      "passes": true,
+      "status": "IDEAL_WIDTH_CEILING_ONLY_NOT_QUALIFICATION"
+    },
+    "noStructuralAttack": {
+      "passes": false,
+      "status": "FAIL_EXACT_2026_ROUND_SKIP_APPLIES"
+    }
+  },
+  "airEligibility": "STOPPED_UNLESS_ALL_FIVE_GATES_PASS",
+  "verificationCoverage": {
+    "rustTypeScriptParity": {
+      "status": "PASS",
+      "vectors": 18146
+    },
+    "solidityParity": {
+      "status": "ANCHOR_ONLY",
+      "vectors": 8,
+      "fullBundleCovered": false
+    },
+    "fullThreeLanguageParity": "NOT_EVALUATED",
+    "requiredMisuseSuite": "NOT_EVALUATED",
+    "constantComparison": "NOT_RETAINED"
+  },
+  "applicationCoverage": {
+    "status": "PRIMITIVE_LAYOUT_INCOMPLETE",
+    "completeApplicationRoleParity": false,
+    "knownOmissions": [
+      "protocol scope",
+      "frozen semantic secret/trapdoor widths"
+    ],
+    "scopeRole": "NOT_EVALUATED",
+    "emptyLeafRole": "NOT_EVALUATED",
+    "statementRole": "NOT_EVALUATED"
+  }
+}

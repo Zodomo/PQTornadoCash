@@ -1,0 +1,16 @@
+{
+  "schema": "pqtc-sp10-assumptions-v1",
+  "candidateId": "H4",
+  "assumptions": [
+    "All field inputs are canonical; modular reduction is never used as byte-to-field mapping.",
+    "Roles, protocol version, shape, and level are distinct control fields whenever an application layout is defined.",
+    "BHT/Grover numbers are ideal black-box ceilings only, not security proofs.",
+    "No multi-target margin is assigned because target populations and lifetimes are not fixed."
+  ],
+  "layout": "Primitive only. There is no application layout.",
+  "nonAssumptions": [
+    "CICO resistance does not imply compression-mode security.",
+    "Pinned constants do not imply cryptographic approval.",
+    "Benchmark performance does not imply deployment eligibility."
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "schema": "pqtc-sp10-operation-counts-v1",
+  "countingConvention": "field operations; external Poseidon additions count doubles as additions; optimized internal diagonal multiplies are architecture-dependent and retained as layer counts",
+  "primitive": {
+    "H0": {
+      "perPermutation": {
+        "sboxes": 141,
+        "sboxFieldMultiplicationsAtX7Chain": 564,
+        "externalLinearLayers": 9,
+        "externalLinearLayerFieldAdditions": 576,
+        "internalLinearLayers": 13
+      },
+      "spongePermutationFormula": "max(1, ceil(payloadFields / 4)) + 3 squeeze permutations"
+    },
+    "H1": {
+      "perPermutation": {
+        "sboxes": 141,
+        "sboxFieldMultiplicationsAtX7Chain": 564,
+        "externalLinearLayers": 9,
+        "externalLinearLayerFieldAdditions": 576,
+        "internalLinearLayers": 13
+      },
+      "compressorFeedForwardAdditions": 7
+    },
+    "H3": {
+      "perPermutation": {
+        "sboxes": 213,
+        "sboxFieldMultiplicationsAtX7Chain": 852,
+        "externalLinearLayers": 9,
+        "externalLinearLayerFieldAdditions": 882,
+        "internalLinearLayers": 21
+      },
+      "compressorFeedForwardAdditions": 10
+    },
+    "H4": {
+      "perPermutation": {
+        "sboxes": 213,
+        "sboxFieldMultiplicationsAtX7Chain": 852,
+        "externalLinearLayers": 9,
+        "externalLinearLayerFieldAdditions": 882,
+        "internalLinearLayers": 21
+      },
+      "compressorFeedForwardAdditions": 11
+    },
+    "H5": {
+      "perPermutation": {
+        "sboxes": 286,
+        "sboxFieldMultiplicationsAtX7Chain": 1144,
+        "externalLinearLayers": 9,
+        "externalLinearLayerFieldAdditions": 1188,
+        "internalLinearLayers": 30
+      },
+      "compressorFeedForwardAdditions": 12
+    },
+    "H6": {
+      "perPermutation": {
+        "sboxes": 286,
+        "sboxFieldMultiplicationsAtX7Chain": 1144,
+        "externalLinearLayers": 9,
+        "externalLinearLayerFieldAdditions": 1188,
+        "internalLinearLayers": 30
+      },
+      "compressorFeedForwardAdditions": 14
+    },
+    "H7": {
+      "perPermutation": {
+        "forwardSboxes": 168,
+        "inverseSboxes": 168,
+        "sboxFieldMultiplications": 6720,
+        "denseMdsLayers": 15,
+        "denseMdsFieldMultiplications": 8640,
+        "denseMdsFieldAdditions": 8280,
+        "arkAdditions": 360
+      }
+    }
+  },
+  "applicationPermutationCounts": {
+    "H0": {
+      "note": 11,
+      "nullifier": 9,
+      "node": 11,
+      "withdrawalNoteNullifierDepth20": 240
+    },
+    "H3": {
+      "note": 1,
+      "nullifier": 1,
+      "node": 1,
+      "withdrawalNoteNullifierDepth20": 22
+    },
+    "H5": {
+      "note": 1,
+      "nullifier": 1,
+      "node": 1,
+      "withdrawalNoteNullifierDepth20": 22
+    },
+    "H6": {
+      "note": 1,
+      "nullifier": 1,
+      "node": 1,
+      "withdrawalNoteNullifierDepth20": 22
+    },
+    "H7": {
+      "note": 3,
+      "nullifier": 3,
+      "node": 3,
+      "withdrawalNoteNullifierDepth20": 66
+    }
+  },
+  "stoppedApplications": {
+    "H1": "14 payload + 4 controls > 16",
+    "H2": "no reviewed mode",
+    "H4": "22 payload + 4 controls > 24"
+  },
+  "applicationPermutationCountCaveat": "For non-H0, note/nullifier/node are primitive/layout microbenchmarks, not complete protocol application roles. The 5x gate compares node permutation counts only."
+}

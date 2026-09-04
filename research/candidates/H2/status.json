@@ -1,0 +1,78 @@
+{
+  "schema": "pqtc-candidate-status-v1",
+  "candidateId": "H2",
+  "status": "DEFERRED",
+  "stageAResult": "STOPPED_NO_REVIEWED_MODE",
+  "custodyEligibility": "PROHIBITED",
+  "securityQualified": false,
+  "independentCryptanalysis": "MISSING",
+  "blockers": [
+    "Two 10\u201312-field children cannot fit one width-16 state.",
+    "No reviewed composition/security theorem or exact mode exists.",
+    "Full three-language parity is not established; Solidity covers 8 suite-wide anchor vectors only.",
+    "The required misuse suite was not evaluated.",
+    "The prior constant-comparison run was not retained as an artifact."
+  ],
+  "measurementProfile": {
+    "solcVersion": "0.8.30",
+    "evmRevision": "prague",
+    "optimizer": true,
+    "optimizerRuns": 200,
+    "viaIR": true
+  },
+  "measuredEvidence": "research/candidates/hash-compression-common/measurement-hashes.json",
+  "gasEvidence": "research/candidates/hash-compression-common/gas/results.json",
+  "gateComparison": {
+    "airDisposition": "STOPPED",
+    "allPass": false,
+    "completeDirectDepositUnder4000000": {
+      "candidateGas": null,
+      "limitExclusive": 4000000,
+      "passes": false,
+      "status": "NOT_EVALUATED"
+    },
+    "externalReview": {
+      "passes": false,
+      "status": "NOT_REVIEWED"
+    },
+    "fiveXNodePermutationReduction": {
+      "baselinePermutationCount": 11,
+      "candidatePermutationCount": null,
+      "passes": false,
+      "ratio": null
+    },
+    "genericSecurityAtLeast100Bits": {
+      "idealHiddenPartGroverCeilingBits": null,
+      "idealQuantumCollisionCeilingBits": null,
+      "minimumGenericCeilingBits": null,
+      "passes": false,
+      "status": "NO_APPLICABLE_COMPRESSION_CEILING"
+    },
+    "noStructuralAttack": {
+      "passes": false,
+      "status": "NO_CONSTRUCTION_TO_ANALYZE"
+    }
+  },
+  "airEligibility": "STOPPED_UNLESS_ALL_FIVE_GATES_PASS",
+  "verificationCoverage": {
+    "rustTypeScriptParity": {
+      "status": "PASS",
+      "vectors": 18146
+    },
+    "solidityParity": {
+      "status": "ANCHOR_ONLY",
+      "vectors": 8,
+      "fullBundleCovered": false
+    },
+    "fullThreeLanguageParity": "NOT_EVALUATED",
+    "requiredMisuseSuite": "NOT_EVALUATED",
+    "constantComparison": "NOT_RETAINED"
+  },
+  "applicationCoverage": {
+    "status": "NOT_IMPLEMENTED",
+    "completeApplicationRoleParity": false,
+    "scopeRole": "NOT_EVALUATED",
+    "emptyLeafRole": "NOT_EVALUATED",
+    "statementRole": "NOT_EVALUATED"
+  }
+}

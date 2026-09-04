@@ -1,0 +1,16 @@
+{
+  "schema": "pqtc-sp10-security-manifest-v1",
+  "candidateId": "H1",
+  "securityQualified": false,
+  "blockers": [
+    "Ideal BHT output ceiling is about 72.1 bits, below 100 bits.",
+    "ePrint 2026/306 Lemma 4.5 applies exactly: two-round skip [1]^1 + [7]^3 + [49]^3.",
+    "Binary application layout does not fit.",
+    "Full three-language parity is not established: Solidity covers 8 suite-wide anchor vectors only.",
+    "Required misuse-suite coverage is NOT_EVALUATED.",
+    "Constant-comparison result is NOT_RETAINED.",
+    "Application-role behavior, including scope, empty-leaf, and statement roles, is NOT_EVALUATED.",
+    "Complete non-H0 direct-deposit gas is NOT_EVALUATED; synthetic root-update gas is not direct-deposit evidence."
+  ],
+  "internalReviewVerdict": "NO_AIR_CANDIDATE"
+}

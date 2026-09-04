@@ -1,0 +1,46 @@
+{
+  "schema": "sp10-compression-internal-review-v1",
+  "verdict": "NO_AIR_CANDIDATE",
+  "airDisposition": "STOPPED",
+  "evidence": "research/candidates/hash-compression-common/gas/results.json",
+  "findings": [
+    {
+      "id": "gate-node-count",
+      "resolution": "5x gate uses node permutation count, not gas",
+      "result": {
+        "H3": "PASS_11X",
+        "H5": "PASS_11X",
+        "H6": "PASS_11X",
+        "H7": "FAIL_3.667X"
+      }
+    },
+    {
+      "id": "direct-deposit",
+      "resolution": "synthetic root update relabeled; complete non-H0 direct deposit NOT_EVALUATED",
+      "h0FrozenDirectDepositGas": 13991021
+    },
+    {
+      "id": "application-layout",
+      "resolution": "non-H0 application labels reclassified primitive/layout-incomplete",
+      "notEvaluated": [
+        "scope",
+        "empty-leaf",
+        "statement"
+      ]
+    },
+    {
+      "id": "parity-coverage",
+      "resolution": "Solidity is 8 anchor vectors only; full three-language parity and misuse suite NOT_EVALUATED",
+      "rustTypeScriptVectors": 18146
+    },
+    {
+      "id": "constants",
+      "resolution": "constant-comparison result NOT_RETAINED"
+    },
+    {
+      "id": "h0-compression",
+      "resolution": "H0 compression is null; inherited d=7 feed-forward measurement belongs to H1 negative control"
+    }
+  ],
+  "promotionRule": "All five gates must pass; no candidate passes every gate."
+}

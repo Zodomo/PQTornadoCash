@@ -1,0 +1,99 @@
+{
+  "schema": "pqtc-sp10-analytical-v1",
+  "qualification": "none; ceilings are necessary generic black-box arithmetic only",
+  "candidates": [
+    {
+      "candidate": "H0",
+      "fieldModulus": 2013265921,
+      "width": 16,
+      "outputFields": 16,
+      "digestBytes": 64,
+      "evmStorageSlots": 2,
+      "mode": "sponge"
+    },
+    {
+      "candidate": "H1",
+      "fieldModulus": 2013265921,
+      "width": 16,
+      "outputFields": 7,
+      "digestBytes": 28,
+      "evmStorageSlots": 1,
+      "mode": "compression",
+      "idealClassicalCollisionBits": 108.17411708713789,
+      "idealClassicalHiddenPartBits": 278.162015366926,
+      "genericQuantumCollisionCeilingBits": 72.11607805809193,
+      "genericQuantumHiddenPartGroverCeilingBits": 139.081007683463
+    },
+    {
+      "candidate": "H2",
+      "fieldModulus": 2013265921,
+      "width": 16,
+      "outputFields": null,
+      "proposedOutputRange": [10, 12],
+      "digestBytes": null,
+      "evmStorageSlots": null,
+      "mode": "stopped-no-reviewed-construction"
+    },
+    {
+      "candidate": "H3",
+      "fieldModulus": 2013265921,
+      "width": 24,
+      "outputFields": 10,
+      "digestBytes": 40,
+      "evmStorageSlots": 2,
+      "mode": "compression",
+      "idealClassicalCollisionBits": 154.53445298162558,
+      "idealClassicalHiddenPartBits": 432.69646834855155,
+      "genericQuantumCollisionCeilingBits": 103.02296865441706,
+      "genericQuantumHiddenPartGroverCeilingBits": 216.34823417427577
+    },
+    {
+      "candidate": "H4",
+      "fieldModulus": 2013265921,
+      "width": 24,
+      "outputFields": 11,
+      "digestBytes": 44,
+      "evmStorageSlots": 2,
+      "mode": "compression",
+      "idealClassicalCollisionBits": 169.9878982797881,
+      "idealClassicalHiddenPartBits": 401.7895777522265,
+      "genericQuantumCollisionCeilingBits": 113.32526551985875,
+      "genericQuantumHiddenPartGroverCeilingBits": 200.89478887611324
+    },
+    {
+      "candidate": "H5",
+      "fieldModulus": 2013265921,
+      "width": 32,
+      "outputFields": 12,
+      "digestBytes": 48,
+      "evmStorageSlots": 2,
+      "mode": "compression",
+      "idealClassicalCollisionBits": 185.44134357795068,
+      "idealClassicalHiddenPartBits": 618.1378119265023,
+      "genericQuantumCollisionCeilingBits": 123.62756238530045,
+      "genericQuantumHiddenPartGroverCeilingBits": 309.06890596325115
+    },
+    {
+      "candidate": "H6",
+      "fieldModulus": 2013265921,
+      "width": 32,
+      "outputFields": 14,
+      "digestBytes": 56,
+      "evmStorageSlots": 2,
+      "mode": "compression",
+      "idealClassicalCollisionBits": 216.34823417427577,
+      "idealClassicalHiddenPartBits": 556.324030733852,
+      "genericQuantumCollisionCeilingBits": 144.23215611618386,
+      "genericQuantumHiddenPartGroverCeilingBits": 278.162015366926
+    },
+    {
+      "candidate": "H7",
+      "fieldModulus": 2147483647,
+      "width": 24,
+      "outputFields": 16,
+      "digestBytes": 64,
+      "evmStorageSlots": 2,
+      "mode": "sponge"
+    }
+  ]
+}

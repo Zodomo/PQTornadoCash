@@ -1,0 +1,76 @@
+{
+  "outputs": [
+    {
+      "bytes": 267824,
+      "ethereumKeccak256": "1002bac939e297baa33ca6bdb42a49da2dde9ee8a65a941a99e78b7408e87fe0",
+      "path": "research/candidates/hash-compression-common/native/distributions.json",
+      "sha256": "bc8da9fab918b055776939b334f47546fcc7771b6578c3172229319a5a476ab9"
+    },
+    {
+      "bytes": 17040,
+      "ethereumKeccak256": "7fc7b6e63980defa5b336a881f915b6fdccf85b70fe98712420870fac936f7ba",
+      "path": "research/candidates/hash-compression-common/gas/forge-gas-report.txt",
+      "sha256": "ca194786d41d213670ed0cfc2658f71910ed609ae559837846b4183f4356ed27"
+    },
+    {
+      "bytes": 12619,
+      "ethereumKeccak256": "d330aa0a358f3796c50dce84fbc1295b493a3e5750b13a3a99a1974aeeae7ea2",
+      "path": "research/candidates/hash-compression-common/gas/results.json",
+      "sha256": "3e7150ec8cd90ba5d9365ddfb81692d2c50a70b8a33cb0bb60b77a5adc9cf9e6"
+    }
+  ],
+  "schema": "sp10-measurement-hashes-v2",
+  "vectors": {
+    "applicationCoverage": {
+      "H0": "BASELINE_FRAMING_ONLY_NOT_FULL_ROLE_PARITY",
+      "H1": "NOT_IMPLEMENTED",
+      "H2": "NOT_IMPLEMENTED",
+      "H3": "PRIMITIVE_LAYOUT_INCOMPLETE",
+      "H4": "NOT_IMPLEMENTED",
+      "H5": "PRIMITIVE_LAYOUT_INCOMPLETE",
+      "H6": "PRIMITIVE_LAYOUT_INCOMPLETE",
+      "H7": "PRIMITIVE_LAYOUT_INCOMPLETE",
+      "nonH0KnownOmissions": [
+        "protocol scope",
+        "frozen semantic secret/trapdoor widths",
+        "empty-leaf role",
+        "statement role"
+      ]
+    },
+    "artifact": "research/candidates/hash-compression-common/vectors/cross-language.json.zst",
+    "codec": {
+      "checksum": false,
+      "level": 19,
+      "name": "zstd",
+      "originalFilenameEmbedded": false,
+      "threads": 1
+    },
+    "compressed": {
+      "bytes": 39038254,
+      "ethereumKeccak256": "5ed5cc11f73ed47b8b2df6fa0510a507558c9b01e21058f6298079f5c7669e26",
+      "sha256": "d439dfcaf7ff1874528fe37f8a0a66fbb18425d45bda4aad41c8c1cd3d1d64e2"
+    },
+    "decompressionVerifiedByteForByte": true,
+    "logicalUncompressedPath": "research/candidates/hash-compression-common/vectors/cross-language.json",
+    "schema": "sp10-vector-package-v2",
+    "uncompressed": {
+      "bytes": 223404794,
+      "ethereumKeccak256": "c71476c127f77809e0066565e64fc6cb1a936c3f190254e5a0b7df537ecb0775",
+      "sha256": "b128eb4684a0e59e5b7bbd8be2c58595aa4cd0cb727e4715ac56fe405e070aea"
+    },
+    "verificationCoverage": {
+      "constantComparison": "NOT_RETAINED",
+      "fullThreeLanguageParity": "NOT_EVALUATED",
+      "requiredMisuseSuite": "NOT_EVALUATED",
+      "rustTypeScriptParity": {
+        "status": "PASS",
+        "vectors": 18146
+      },
+      "solidityParity": {
+        "fullBundleCovered": false,
+        "status": "ANCHOR_ONLY",
+        "vectors": 8
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "pqtc-sp10-gas-manifest-v1",
+  "candidateId": "H0",
+  "measuredBy": "solidity/test/GasBench.t.sol",
+  "operations": [
+    "permutation",
+    "sponge",
+    "note",
+    "nullifier",
+    "node",
+    "compute-only insertion",
+    "synthetic depth-20 root update (not complete direct deposit)",
+    "zero-tree constructor",
+    "runtime size",
+    "initcode size"
+  ],
+  "applicable": true,
+  "completeDirectDepositGas": 13991021,
+  "completeDirectDepositStatus": "FROZEN_V03_BASELINE_REPRODUCTION",
+  "syntheticHarnessLimitation": "20 hashes plus dynamic uint256[] root only; omits real deposit/state and does not model two digest slots",
+  "machineReadableResults": "research/candidates/hash-compression-common/gas/results.json",
+  "rawReportCaveat": "forge-gas-report.txt historical labels are superseded by gas/results.json"
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "pqtc-sp10-candidate-manifest-v1",
+  "candidateId": "H6",
+  "title": "Width-32 d=14 conservative comparator",
+  "immutableDefinition": "Trunc_14(Poseidon2_BabyBear_32(x)+x), first fourteen lanes",
+  "outputFields": 14,
+  "status": "BENCHMARK_ONLY",
+  "stageAResult": "PASS_STAGE_A_BENCHMARK_ONLY",
+  "researchOnly": true,
+  "securityQualified": false,
+  "implementation": {
+    "rust": "research/candidates/hash-compression-common",
+    "typescript": "research/candidates/hash-compression-common/reference/reference.ts",
+    "solidity": "research/candidates/hash-compression-common/solidity"
+  },
+  "commands": {
+    "vectorsAndParity": "python3 research/candidates/hash-compression-common/run.py vectors-parity",
+    "measuredBenchmarks": "python3 research/candidates/hash-compression-common/run.py benchmark --samples 1000"
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "schema": "pqtc-candidate-status-v1",
+  "candidateId": "H1",
+  "status": "BENCHMARK_ONLY",
+  "stageAResult": "FAIL",
+  "custodyEligibility": "PROHIBITED",
+  "securityQualified": false,
+  "independentCryptanalysis": "MISSING",
+  "blockers": [
+    "Ideal BHT output ceiling is about 72.1 bits, below 100 bits.",
+    "ePrint 2026/306 Lemma 4.5 applies exactly: two-round skip [1]^1 + [7]^3 + [49]^3.",
+    "Binary application layout does not fit.",
+    "Full three-language parity is not established; Solidity covers 8 suite-wide anchor vectors only.",
+    "The required misuse suite was not evaluated.",
+    "The prior constant-comparison run was not retained as an artifact."
+  ],
+  "measurementProfile": {
+    "solcVersion": "0.8.30",
+    "evmRevision": "prague",
+    "optimizer": true,
+    "optimizerRuns": 200,
+    "viaIR": true
+  },
+  "measuredEvidence": "research/candidates/hash-compression-common/measurement-hashes.json",
+  "gasEvidence": "research/candidates/hash-compression-common/gas/results.json",
+  "gateComparison": {
+    "airDisposition": "STOPPED",
+    "allPass": false,
+    "completeDirectDepositUnder4000000": {
+      "candidateGas": null,
+      "limitExclusive": 4000000,
+      "passes": false,
+      "status": "NOT_EVALUATED"
+    },
+    "externalReview": {
+      "passes": false,
+      "status": "NOT_REVIEWED"
+    },
+    "fiveXNodePermutationReduction": {
+      "baselinePermutationCount": 11,
+      "candidatePermutationCount": null,
+      "passes": false,
+      "ratio": null
+    },
+    "genericSecurityAtLeast100Bits": {
+      "idealHiddenPartGroverCeilingBits": 139.081007683463,
+      "idealQuantumCollisionCeilingBits": 72.11607805809193,
+      "minimumGenericCeilingBits": 72.11607805809193,
+      "passes": false,
+      "status": "IDEAL_WIDTH_CEILING_ONLY_NOT_QUALIFICATION"
+    },
+    "noStructuralAttack": {
+      "passes": false,
+      "status": "FAIL_EXACT_2026_ROUND_SKIP_APPLIES"
+    }
+  },
+  "airEligibility": "STOPPED_UNLESS_ALL_FIVE_GATES_PASS",
+  "verificationCoverage": {
+    "rustTypeScriptParity": {
+      "status": "PASS",
+      "vectors": 18146
+    },
+    "solidityParity": {
+      "status": "ANCHOR_ONLY",
+      "vectors": 8,
+      "fullBundleCovered": false
+    },
+    "fullThreeLanguageParity": "NOT_EVALUATED",
+    "requiredMisuseSuite": "NOT_EVALUATED",
+    "constantComparison": "NOT_RETAINED"
+  },
+  "applicationCoverage": {
+    "status": "NOT_IMPLEMENTED",
+    "completeApplicationRoleParity": false,
+    "scopeRole": "NOT_EVALUATED",
+    "emptyLeafRole": "NOT_EVALUATED",
+    "statementRole": "NOT_EVALUATED"
+  }
+}

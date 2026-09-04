@@ -1,0 +1,17 @@
+{
+  "schema": "pqtc-sp10-candidate-manifest-v1",
+  "candidateId": "H2",
+  "title": "Width-16 wide-output construction stop",
+  "immutableDefinition": "No executable primitive: no published/reviewed multi-permutation width-16 Poseidon2 wide-output mode was found.",
+  "outputFields": null,
+  "proposedOutputRange": [10, 12],
+  "status": "DEFERRED",
+  "stageAResult": "STOPPED_NO_REVIEWED_MODE",
+  "researchOnly": true,
+  "securityQualified": false,
+  "implementation": null,
+  "commands": {
+    "vectorsAndParity": "python3 research/candidates/hash-compression-common/run.py vectors-parity",
+    "measuredBenchmarks": "python3 research/candidates/hash-compression-common/run.py benchmark --samples 1000"
+  }
+}

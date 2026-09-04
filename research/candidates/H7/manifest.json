@@ -1,0 +1,20 @@
+{
+  "schema": "pqtc-sp10-candidate-manifest-v1",
+  "candidateId": "H7",
+  "title": "Published RPO-M31 sponge comparator",
+  "immutableDefinition": "RPO-M31 over p=2^31-1, width 24, rate 16, capacity 8, alpha 5/inverse, seven rounds and concluding linear/constants step",
+  "outputFields": 16,
+  "status": "BENCHMARK_ONLY",
+  "stageAResult": "PASS_STAGE_A_BENCHMARK_ONLY",
+  "researchOnly": true,
+  "securityQualified": false,
+  "implementation": {
+    "rust": "research/candidates/hash-compression-common",
+    "typescript": "research/candidates/hash-compression-common/reference/reference.ts",
+    "solidity": "research/candidates/hash-compression-common/solidity"
+  },
+  "commands": {
+    "vectorsAndParity": "python3 research/candidates/hash-compression-common/run.py vectors-parity",
+    "measuredBenchmarks": "python3 research/candidates/hash-compression-common/run.py benchmark --samples 1000"
+  }
+}

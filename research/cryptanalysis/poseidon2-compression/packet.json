@@ -1,0 +1,65 @@
+{
+  "schema": "pqtc-cryptanalysis-packet-v1",
+  "packetId": "poseidon2-compression-sp10-2026-09-04",
+  "status": "READY_FOR_INDEPENDENT_REVIEW",
+  "qualification": "NONE",
+  "construction": "C_{t,d}(x)=Trunc_d(P(x)+x), where Trunc_d is the first d lanes",
+  "reviewScope": [
+    "BabyBear p=2013265921",
+    "x^7 S-box",
+    "pinned Plonky3 external tensor and optimized internal matrices",
+    "pinned width-specific constants and RF/RP schedules",
+    "first-lane feed-forward compression",
+    "every fixed and variable application lane",
+    "collision, second-preimage, preimage, target-collision, and multi-target models",
+    "classical and explicitly stated quantum assumptions"
+  ],
+  "exactAttacks": [
+    {
+      "citation": "Poseidon2, ePrint 2023/323 section 3.1",
+      "relevance": "Defines the reviewed fixed-length mode as Trunc_d(P(x)+x); feed-forward is crucial to its ideal-permutation one-wayness argument. The M_C=I equivalence assumes unconstrained input."
+    },
+    {
+      "citation": "ToSC 2025(2), DOI 10.46586/tosc.v2025.i2.34-86; ePrint 2025/954 sections 4-5",
+      "relevance": "Corrects the original subspace-trail/Groebner model. Compression is modeled with c=0; feed-forward changes equations but not their number or degree. No full recommended instance is reported broken. Conjecture 1 remains unproved and experiments can be non-regular."
+    },
+    {
+      "citation": "Skipping Class, ePrint 2026/306 Lemma 4.5",
+      "relevance": "Uses operation-mode constraints and the P_{t/4} tensor M4 external structure. H1 t=16,d=7 has a two-round skip [1]^1+[7]^3+[49]^3. H3 t=24,d=10 has [1]^2+[7]^2+[49]^6. H4 t=24,d=11 has [1]^1+[7]^3+[49]^7."
+    },
+    {
+      "citation": "Skipping Class, ePrint 2026/306 sections 4 and 6",
+      "relevance": "Compression/sponge attacks can outperform CICO analysis. Its greater-than-2^100 statement is a speedup over prior algebraic complexity, not a 106-bit attack and not a break. Its full-round conclusion depends on a quadratic ideal-degree lower bound and tightness assumptions."
+    },
+    {
+      "citation": "Skipping Class, ePrint 2026/306 section 6",
+      "relevance": "Proposed mitigations are more external rounds, an MDS external layer, or swapped M4 tensor P_{t/4}. None may be adopted silently: each defines a new exact permutation and constants/vector/review packet."
+    }
+  ],
+  "candidateFindings": {
+    "H1": "Exact Lemma 4.5 coverage and about 72.1-bit ideal BHT output ceiling; negative control only.",
+    "H2": "No exact target exists because no reviewed multi-permutation mode was located; no construction is implemented.",
+    "H3": "Exact Lemma 4.5 coverage and only about three ideal bits over a 100-bit BHT target before multi-target accounting.",
+    "H4": "Exact Lemma 4.5 coverage; one-call node layout separately fails because 22 payload plus four controls exceeds width 24.",
+    "H5": "Width 32 lies outside the original Poseidon2 width-through-24 specification and the exact 2026 investigated set; structural applicability is plausible but unproved.",
+    "H6": "Same width-32 blocker as H5. d=14 passes generic 128-bit width arithmetic only; that is not a theorem.",
+    "H7": "Out of Poseidon2 scope. It remains the published RPO-M31 sponge and is not converted into a compressor."
+  },
+  "requiredReviewerDeliverables": [
+    "exact constrained-lane algebraic systems for every enabled role",
+    "round-skip applicability and complexity for width 32",
+    "collision and second-preimage analysis of first-lane feed-forward",
+    "multi-target accounting using protocol target populations and lifetimes",
+    "quantum model and bounds beyond generic BHT/Grover ceilings",
+    "signed review outcome tied to the source and constant hashes"
+  ],
+  "citations": [
+    "https://eprint.iacr.org/2023/323",
+    "https://doi.org/10.46586/tosc.v2025.i2.34-86",
+    "https://eprint.iacr.org/2025/954",
+    "https://eprint.iacr.org/2026/306",
+    "https://www.poseidon-initiative.info/home",
+    "https://arxiv.org/abs/quant-ph/9705002",
+    "https://arxiv.org/abs/quant-ph/9605043"
+  ]
+}
