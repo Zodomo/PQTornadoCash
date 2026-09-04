@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "1",
+  "studyId": "SP-73",
+  "status": "REVIEWED_WITH_OPEN_PRODUCTION_GAPS",
+  "scope": "Operational data flow only; no cryptographic security acceptance is granted.",
+  "evidence": [
+    {
+      "path": "research/candidates/v03-baseline/README.md",
+      "supports": "The baseline generation and local t8n reproduction are local workflows; the retained t8n route does not contact RPC or read .env."
+    },
+    {
+      "path": "research/candidates/v03-baseline/scripts/generate-all.py",
+      "supports": "The generator invokes a local native prover with local input/output paths and retains synthetic witness/proof artifacts."
+    },
+    {
+      "path": "research/runs/v03-{corpus,fixed}-01..30.json",
+      "supports": "All analyzed witnesses are explicitly synthetic benchmark material; the records do not document a production service, RPC, telemetry, path provider, isolation boundary, or attestation."
+    }
+  ],
+  "dataFlowFindings": [
+    {
+      "topic": "witnessService",
+      "baselineStatus": "NOT_REQUIRED_BY_RETAINED_LOCAL_RESEARCH_WORKFLOW",
+      "productionStatus": "NOT_PROPOSED",
+      "finding": "The research prover reads local witness files. This is not evidence for a remote witness service. A cross-user aggregator must never receive witnesses."
+    },
+    {
+      "topic": "remoteMemoryOrCompute",
+      "baselineStatus": "NOT_REQUIRED_BY_RETAINED_LOCAL_RESEARCH_WORKFLOW",
+      "productionStatus": "NOT_EVALUATED",
+      "finding": "No remote proving execution or remote-memory protocol is retained. Do not infer confidentiality, availability, or performance for one."
+    },
+    {
+      "topic": "telemetry",
+      "baselineStatus": "NOT_EVALUATED",
+      "productionStatus": "NOT_EVALUATED",
+      "finding": "No telemetry inventory, packet capture, opt-in state, redaction test, or disablement proof is retained. A production CLI must default to no telemetry."
+    },
+    {
+      "topic": "rpcCommitmentInterestLinkage",
+      "baselineStatus": "NO_RPC_STEP_IN_RETAINED_LOCAL_PROVING_COMMAND",
+      "productionStatus": "NOT_EVALUATED",
+      "finding": "The local baseline command does not need RPC, but no production root/history lookup is implemented. Querying a public RPC for a particular commitment, leaf index, root, or path can link network identity and timing to withdrawal interest."
+    },
+    {
+      "topic": "pathProvider",
+      "baselineStatus": "LOCAL_SYNTHETIC_PATH_INPUT",
+      "productionStatus": "NOT_EVALUATED",
+      "finding": "Synthetic paths are local fixtures. No centralized production path provider is evaluated. A provider can learn commitment interest even without the secret and can deny, equivocate, or fingerprint responses."
+    },
+    {
+      "topic": "proofUpload",
+      "baselineStatus": "BYTES_MEASURED_NETWORK_NOT_USED",
+      "productionStatus": "NOT_EVALUATED",
+      "finding": "Raw proof and ABI calldata bytes are measured. There is no retained upload transport, destination, timing, retry, proxy, or metadata-leakage test."
+    },
+    {
+      "topic": "localFallback",
+      "baselineStatus": "RESEARCH_SCRIPT_EXISTS",
+      "productionStatus": "NOT_EVALUATED",
+      "finding": "The pinned research binary proves locally, but no supported, packaged, portable production fallback exists and H2/H3 are unmeasured."
+    }
+  ],
+  "serviceAcceptanceRequirements": {
+    "status": "OPEN_NO_SERVICE_ACCEPTED",
+    "witnessPolicy": "A cross-user aggregation service receives proofs and public statements only, never witnesses. A separately proposed single-user witness service would require explicit user consent and all controls below; it is not accepted by this review.",
+    "secureWitnessIsolation": [
+      "Document the precise trust boundary, process/container/VM/TEE isolation mechanism, host administrator capability, memory lifetime, swap/core-dump policy, and destruction evidence.",
+      "Encrypt witness material in transit and at rest with per-job keys; do not log request bodies, filesystem paths, commitment interests, or derived secrets.",
+      "Prevent cross-tenant filesystem, cache, IPC, scheduler, and accelerator-memory reuse leaks; retain adversarial isolation tests.",
+      "Bind returned proof and public statement to the user's request and verify locally before submission.",
+      "Define incident response, retention, backup, subpoena/operator access, and deletion semantics."
+    ],
+    "attestationAssumptions": [
+      "Pin measured code, parameters, CLI policy, and isolation configuration to reviewable digests.",
+      "Specify hardware/firmware vendor roots, verifier freshness, revocation, rollback resistance, debug state, and who operates the attestation verifier.",
+      "Treat attestation as evidence of measured software state, not proof that hardware, firmware, side channels, host I/O, or operator policy is trustworthy.",
+      "Provide an explicit non-attested local fallback; attestation failure must not silently downgrade."
+    ],
+    "telemetryPolicy": [
+      "Disabled by default and provably absent from proof generation.",
+      "Never collect witness-derived data, note identifiers, commitment/path/root interests, addresses, RPC URLs, proof bytes, filenames, stable device identifiers, or fine-grained progress timing.",
+      "Any opt-in event schema, endpoint, retention period, and deletion procedure must be published and packet-capture tested."
+    ],
+    "rpcAndPathPolicy": [
+      "Support user-selected RPC and locally synchronized history; do not silently contact a default provider.",
+      "Prefer batch/range history acquisition that does not single out one commitment and verify roots/paths locally.",
+      "Authenticate source and chain/fork identity, detect equivocation, and permit multiple providers or a local node.",
+      "Do not send a private witness or nullifier secret to an RPC or path provider."
+    ],
+    "localFallback": [
+      "Same proof system and statement as the service path, with no service-only transcript or format.",
+      "Offline proving after explicit user-supplied public history/path input.",
+      "Supported on measured H2 hardware with documented resource checks and no >8 GiB claim unless measured.",
+      "Locally verify proof and public-statement binding before any upload."
+    ]
+  },
+  "residualRisks": [
+    "A proof or public statement may still reveal transaction intent and timing when uploaded or submitted.",
+    "An RPC/path provider may correlate broad history requests by network metadata even when no witness is sent.",
+    "Local proving may leak via OS telemetry, swap, crash dumps, other users, malware, or backups; none was tested.",
+    "Fresh hiding randomness in the baseline prevents byte-identical proof comparison and is not a crash-recovery design.",
+    "No service isolation, attestation, deployed RPC/path workflow, packet capture, or production fallback has been evaluated."
+  ],
+  "gateEffect": "No privacy item repairs the mandatory absence of H2/H3 measurements or a practical CLI; SP-73 remains FAIL."
+}

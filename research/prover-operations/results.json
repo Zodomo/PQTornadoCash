@@ -1,0 +1,895 @@
+{
+  "candidateId": "C00/v03-baseline",
+  "cliWorkflow": {
+    "gateCredit": false,
+    "reason": "The baseline research generator is reproducible but destructive and batch-oriented; no packaged end-user CLI demonstrates prepare/prove/cancel/resume/progress/upload.",
+    "specification": "research/prover-operations/cli-workflow.json",
+    "status": "SPECIFICATION_ONLY_NOT_IMPLEMENTED"
+  },
+  "evidenceDisposition": "BASELINE_OPERATIONS_ONLY_NO_FINALIST",
+  "gate": {
+    "blockingIds": [
+      "H1_COLD_MISSING",
+      "H2_COMPLETE_MEASUREMENTS_MISSING",
+      "H3_COMPLETE_MEASUREMENTS_MISSING",
+      "PRACTICAL_CLI_NOT_IMPLEMENTED",
+      "SETUP_PRECOMPUTATION_MISSING",
+      "CANCELLATION_MISSING",
+      "PROGRESS_MISSING",
+      "MEMORY_PRESSURE_MISSING",
+      "CRASH_RECOVERY_MISSING"
+    ],
+    "finalistSelected": false,
+    "rule": "A finalist must have complete H1/H2/H3 measurements and a practical CLI workflow.",
+    "securityQualified": false,
+    "status": "FAIL"
+  },
+  "h1": {
+    "arm64NeonHardwareCapability": "MEASURED_BY_HARDWARE_PROFILE",
+    "cold": {
+      "count": 0,
+      "reason": "No committed run is classified COLD.",
+      "status": "NOT_EVALUATED"
+    },
+    "hardwareClass": "H1_CONTINUITY",
+    "neonCodePathExecution": "NOT_EVALUATED",
+    "profileAndRecordsMatchOn": [
+      "architecture",
+      "cpu_model",
+      "physical_cores",
+      "logical_cores",
+      "ram_bytes"
+    ],
+    "profileHardwareId": "H1-MAC16-5-M4MAX-48G",
+    "runRecordHardwareId": "macnch33z3.local-arm64",
+    "status": "PARTIALLY_MEASURED",
+    "warm": {
+      "count": 60,
+      "nativeVerifyMs": {
+        "count": 60,
+        "maximum": "2.532458",
+        "mean_rounded_12_places": "2.182668033333",
+        "median": "2.16087499999999985",
+        "minimum": "2.054208",
+        "p90_nearest_rank": "2.3104169999999997",
+        "p95_nearest_rank": "2.325333",
+        "p99_nearest_rank": "2.532458",
+        "population_standard_deviation_rounded_12_places": "0.082676527652"
+      },
+      "peakRssBytes": {
+        "count": 60,
+        "maximum": 31653888,
+        "mean_rounded_12_places": "29462528.000000000000",
+        "median": 29483008,
+        "minimum": 26771456,
+        "p90_nearest_rank": 30605312,
+        "p95_nearest_rank": 30851072,
+        "p99_nearest_rank": 31653888,
+        "population_standard_deviation_rounded_12_places": "987420.356277642610"
+      },
+      "proofOnlyMs": {
+        "count": 60,
+        "maximum": "1095.41825",
+        "mean_rounded_12_places": "582.813682650000",
+        "median": "584.9313545000000",
+        "minimum": "253.408375",
+        "p90_nearest_rank": "781.190583",
+        "p95_nearest_rank": "804.0041249999999",
+        "p99_nearest_rank": "1095.41825",
+        "population_standard_deviation_rounded_12_places": "179.934012449048"
+      },
+      "status": "MEASURED",
+      "wallMs": {
+        "count": 60,
+        "maximum": "1115.2789169864263",
+        "mean_rounded_12_places": "603.736411700083",
+        "median": "604.9685000180034",
+        "minimum": "272.52025000052527",
+        "p90_nearest_rank": "800.632583006518",
+        "p95_nearest_rank": "824.8314580123406",
+        "p99_nearest_rank": "1115.2789169864263",
+        "population_standard_deviation_rounded_12_places": "180.216130728066"
+      }
+    }
+  },
+  "inputValidation": {
+    "artifactBytesValidated": 29351521,
+    "artifactsSizeAndSha256Validated": 480,
+    "baselineCommitUniform": "00f829001999ee66da6fd5161c4c205c07d0b937",
+    "benchmarkRunSchema": "benchmark-run.schema.json",
+    "expectedSourceRecords": 60,
+    "hardwareProfile": "research/harness/hardware-detect/h1-m4-max.json",
+    "runIdsUniqueAndComplete": true,
+    "sourceRecordsValidated": 60,
+    "status": "PASS"
+  },
+  "operationalPrivacy": {
+    "attestation": "NOT_EVALUATED",
+    "crossUserAggregatorWitnessPolicy": "PROOFS_AND_PUBLIC_STATEMENTS_ONLY_NEVER_WITNESSES",
+    "productionLocalFallback": "NOT_EVALUATED",
+    "productionWitnessService": "NOT_PROPOSED",
+    "review": "research/prover-operations/privacy-review.json",
+    "secureWitnessIsolation": "NOT_EVALUATED",
+    "status": "REVIEWED_WITH_OPEN_PRODUCTION_GAPS"
+  },
+  "perRun": [
+    {
+      "abiCalldataBytes": 213000,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.1607499999999997",
+      "peakRssBytes": 29769728,
+      "proofOnlyMs": "581.1871669999999",
+      "rawProofBytes": 212332,
+      "retainedArtifactBytes": 546113,
+      "runId": "v03-corpus-01",
+      "wallMs": "601.7720000236295"
+    },
+    {
+      "abiCalldataBytes": 203080,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.17275",
+      "peakRssBytes": 29933568,
+      "proofOnlyMs": "804.0041249999999",
+      "rawProofBytes": 202412,
+      "retainedArtifactBytes": 533042,
+      "runId": "v03-corpus-02",
+      "wallMs": "824.8314580123406"
+    },
+    {
+      "abiCalldataBytes": 209928,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.123125",
+      "peakRssBytes": 30654464,
+      "proofOnlyMs": "458.67249999999996",
+      "rawProofBytes": 209260,
+      "retainedArtifactBytes": 539240,
+      "runId": "v03-corpus-03",
+      "wallMs": "479.79350000969134"
+    },
+    {
+      "abiCalldataBytes": 208648,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.1321660000000002",
+      "peakRssBytes": 30081024,
+      "proofOnlyMs": "748.258375",
+      "rawProofBytes": 207980,
+      "retainedArtifactBytes": 540168,
+      "runId": "v03-corpus-04",
+      "wallMs": "767.5857080030255"
+    },
+    {
+      "abiCalldataBytes": 209608,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.171958",
+      "peakRssBytes": 30851072,
+      "proofOnlyMs": "654.192709",
+      "rawProofBytes": 208940,
+      "retainedArtifactBytes": 534884,
+      "runId": "v03-corpus-05",
+      "wallMs": "675.4227500059642"
+    },
+    {
+      "abiCalldataBytes": 213704,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.120458",
+      "peakRssBytes": 28983296,
+      "proofOnlyMs": "507.304333",
+      "rawProofBytes": 213036,
+      "retainedArtifactBytes": 554344,
+      "runId": "v03-corpus-06",
+      "wallMs": "528.4982919984031"
+    },
+    {
+      "abiCalldataBytes": 206856,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.1450839999999998",
+      "peakRssBytes": 29212672,
+      "proofOnlyMs": "388.89516699999996",
+      "rawProofBytes": 206188,
+      "retainedArtifactBytes": 534718,
+      "runId": "v03-corpus-07",
+      "wallMs": "409.10966700175777"
+    },
+    {
+      "abiCalldataBytes": 214472,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.22725",
+      "peakRssBytes": 29376512,
+      "proofOnlyMs": "665.1939169999999",
+      "rawProofBytes": 213804,
+      "retainedArtifactBytes": 548231,
+      "runId": "v03-corpus-08",
+      "wallMs": "686.4378330064937"
+    },
+    {
+      "abiCalldataBytes": 206728,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.309833",
+      "peakRssBytes": 30523392,
+      "proofOnlyMs": "491.88520800000003",
+      "rawProofBytes": 206060,
+      "retainedArtifactBytes": 537700,
+      "runId": "v03-corpus-09",
+      "wallMs": "514.3474169890396"
+    },
+    {
+      "abiCalldataBytes": 209544,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.173",
+      "peakRssBytes": 29163520,
+      "proofOnlyMs": "466.282209",
+      "rawProofBytes": 208876,
+      "retainedArtifactBytes": 541704,
+      "runId": "v03-corpus-10",
+      "wallMs": "487.2614159830846"
+    },
+    {
+      "abiCalldataBytes": 209288,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.115916",
+      "peakRssBytes": 29245440,
+      "proofOnlyMs": "993.309208",
+      "rawProofBytes": 208620,
+      "retainedArtifactBytes": 541994,
+      "runId": "v03-corpus-11",
+      "wallMs": "1013.3327500079758"
+    },
+    {
+      "abiCalldataBytes": 203784,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.1146670000000003",
+      "peakRssBytes": 29818880,
+      "proofOnlyMs": "360.4895",
+      "rawProofBytes": 203116,
+      "retainedArtifactBytes": 531696,
+      "runId": "v03-corpus-12",
+      "wallMs": "381.1275000043679"
+    },
+    {
+      "abiCalldataBytes": 212552,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.3714589999999998",
+      "peakRssBytes": 29884416,
+      "proofOnlyMs": "631.753875",
+      "rawProofBytes": 211884,
+      "retainedArtifactBytes": 542518,
+      "runId": "v03-corpus-13",
+      "wallMs": "653.4976660041139"
+    },
+    {
+      "abiCalldataBytes": 208072,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.103625",
+      "peakRssBytes": 30179328,
+      "proofOnlyMs": "342.94075000000004",
+      "rawProofBytes": 207404,
+      "retainedArtifactBytes": 534400,
+      "runId": "v03-corpus-14",
+      "wallMs": "364.11733299610205"
+    },
+    {
+      "abiCalldataBytes": 209608,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.088875",
+      "peakRssBytes": 29851648,
+      "proofOnlyMs": "495.941375",
+      "rawProofBytes": 208940,
+      "retainedArtifactBytes": 535635,
+      "runId": "v03-corpus-15",
+      "wallMs": "516.9437079748604"
+    },
+    {
+      "abiCalldataBytes": 212360,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.325333",
+      "peakRssBytes": 29868032,
+      "proofOnlyMs": "539.275833",
+      "rawProofBytes": 211692,
+      "retainedArtifactBytes": 545699,
+      "runId": "v03-corpus-16",
+      "wallMs": "560.3130829986185"
+    },
+    {
+      "abiCalldataBytes": 204488,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.1982500000000003",
+      "peakRssBytes": 29949952,
+      "proofOnlyMs": "461.650083",
+      "rawProofBytes": 203820,
+      "retainedArtifactBytes": 529483,
+      "runId": "v03-corpus-17",
+      "wallMs": "487.4853329965845"
+    },
+    {
+      "abiCalldataBytes": 212040,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.213375",
+      "peakRssBytes": 28917760,
+      "proofOnlyMs": "409.949166",
+      "rawProofBytes": 211372,
+      "retainedArtifactBytes": 543858,
+      "runId": "v03-corpus-18",
+      "wallMs": "430.87029200978577"
+    },
+    {
+      "abiCalldataBytes": 207816,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.165625",
+      "peakRssBytes": 30228480,
+      "proofOnlyMs": "469.359833",
+      "rawProofBytes": 207148,
+      "retainedArtifactBytes": 534594,
+      "runId": "v03-corpus-19",
+      "wallMs": "489.01262498111464"
+    },
+    {
+      "abiCalldataBytes": 213768,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.144292",
+      "peakRssBytes": 27213824,
+      "proofOnlyMs": "452.09808400000003",
+      "rawProofBytes": 213100,
+      "retainedArtifactBytes": 550414,
+      "runId": "v03-corpus-20",
+      "wallMs": "471.72883298480883"
+    },
+    {
+      "abiCalldataBytes": 206024,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.3104169999999997",
+      "peakRssBytes": 31408128,
+      "proofOnlyMs": "606.99025",
+      "rawProofBytes": 205356,
+      "retainedArtifactBytes": 535728,
+      "runId": "v03-corpus-21",
+      "wallMs": "630.5501250026282"
+    },
+    {
+      "abiCalldataBytes": 207048,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.116083",
+      "peakRssBytes": 29360128,
+      "proofOnlyMs": "696.3372909999999",
+      "rawProofBytes": 206372,
+      "retainedArtifactBytes": 534770,
+      "runId": "v03-corpus-22",
+      "wallMs": "716.5569170028903"
+    },
+    {
+      "abiCalldataBytes": 207368,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.142958",
+      "peakRssBytes": 28459008,
+      "proofOnlyMs": "704.171292",
+      "rawProofBytes": 206700,
+      "retainedArtifactBytes": 535632,
+      "runId": "v03-corpus-23",
+      "wallMs": "724.2943329911213"
+    },
+    {
+      "abiCalldataBytes": 210824,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.1180830000000004",
+      "peakRssBytes": 28901376,
+      "proofOnlyMs": "678.084875",
+      "rawProofBytes": 210156,
+      "retainedArtifactBytes": 546375,
+      "runId": "v03-corpus-24",
+      "wallMs": "701.5989590145182"
+    },
+    {
+      "abiCalldataBytes": 210696,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.1797079999999998",
+      "peakRssBytes": 28917760,
+      "proofOnlyMs": "781.190583",
+      "rawProofBytes": 210028,
+      "retainedArtifactBytes": 542059,
+      "runId": "v03-corpus-25",
+      "wallMs": "800.632583006518"
+    },
+    {
+      "abiCalldataBytes": 214024,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.2095000000000002",
+      "peakRssBytes": 27688960,
+      "proofOnlyMs": "346.399458",
+      "rawProofBytes": 213356,
+      "retainedArtifactBytes": 549507,
+      "runId": "v03-corpus-26",
+      "wallMs": "366.1298750084825"
+    },
+    {
+      "abiCalldataBytes": 211912,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.15275",
+      "peakRssBytes": 30605312,
+      "proofOnlyMs": "603.772208",
+      "rawProofBytes": 211244,
+      "retainedArtifactBytes": 548559,
+      "runId": "v03-corpus-27",
+      "wallMs": "624.2321669997182"
+    },
+    {
+      "abiCalldataBytes": 211656,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.169791",
+      "peakRssBytes": 29409280,
+      "proofOnlyMs": "376.9955",
+      "rawProofBytes": 210988,
+      "retainedArtifactBytes": 540675,
+      "runId": "v03-corpus-28",
+      "wallMs": "397.7153749729041"
+    },
+    {
+      "abiCalldataBytes": 211464,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.235167",
+      "peakRssBytes": 30326784,
+      "proofOnlyMs": "782.630458",
+      "rawProofBytes": 210796,
+      "retainedArtifactBytes": 542041,
+      "runId": "v03-corpus-29",
+      "wallMs": "806.4680829993449"
+    },
+    {
+      "abiCalldataBytes": 213192,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.187875",
+      "peakRssBytes": 29622272,
+      "proofOnlyMs": "794.275625",
+      "rawProofBytes": 212524,
+      "retainedArtifactBytes": 547750,
+      "runId": "v03-corpus-30",
+      "wallMs": "815.091875003418"
+    },
+    {
+      "abiCalldataBytes": 212872,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.3137079999999997",
+      "peakRssBytes": 29491200,
+      "proofOnlyMs": "658.422625",
+      "rawProofBytes": 212204,
+      "retainedArtifactBytes": 445741,
+      "runId": "v03-fixed-01",
+      "wallMs": "680.0621660077013"
+    },
+    {
+      "abiCalldataBytes": 209032,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.14325",
+      "peakRssBytes": 29196288,
+      "proofOnlyMs": "552.600959",
+      "rawProofBytes": 208364,
+      "retainedArtifactBytes": 438061,
+      "runId": "v03-fixed-02",
+      "wallMs": "572.3174579907209"
+    },
+    {
+      "abiCalldataBytes": 212936,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.188916",
+      "peakRssBytes": 29474816,
+      "proofOnlyMs": "339.012708",
+      "rawProofBytes": 212268,
+      "retainedArtifactBytes": 445869,
+      "runId": "v03-fixed-03",
+      "wallMs": "358.7581249885261"
+    },
+    {
+      "abiCalldataBytes": 212680,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.149959",
+      "peakRssBytes": 27492352,
+      "proofOnlyMs": "253.408375",
+      "rawProofBytes": 212012,
+      "retainedArtifactBytes": 445357,
+      "runId": "v03-fixed-04",
+      "wallMs": "272.52025000052527"
+    },
+    {
+      "abiCalldataBytes": 210440,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.156542",
+      "peakRssBytes": 26771456,
+      "proofOnlyMs": "470.719583",
+      "rawProofBytes": 209772,
+      "retainedArtifactBytes": 440877,
+      "runId": "v03-fixed-05",
+      "wallMs": "489.9004999897443"
+    },
+    {
+      "abiCalldataBytes": 198728,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.054208",
+      "peakRssBytes": 27639808,
+      "proofOnlyMs": "780.558625",
+      "rawProofBytes": 198052,
+      "retainedArtifactBytes": 417445,
+      "runId": "v03-fixed-06",
+      "wallMs": "799.1530830040574"
+    },
+    {
+      "abiCalldataBytes": 210312,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.161",
+      "peakRssBytes": 29081600,
+      "proofOnlyMs": "745.284209",
+      "rawProofBytes": 209644,
+      "retainedArtifactBytes": 440621,
+      "runId": "v03-fixed-07",
+      "wallMs": "768.5762499750126"
+    },
+    {
+      "abiCalldataBytes": 208456,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.113209",
+      "peakRssBytes": 28082176,
+      "proofOnlyMs": "589.4732499999999",
+      "rawProofBytes": 207788,
+      "retainedArtifactBytes": 436909,
+      "runId": "v03-fixed-08",
+      "wallMs": "608.178249996854"
+    },
+    {
+      "abiCalldataBytes": 207752,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.316",
+      "peakRssBytes": 31293440,
+      "proofOnlyMs": "654.2117499999999",
+      "rawProofBytes": 207084,
+      "retainedArtifactBytes": 435501,
+      "runId": "v03-fixed-09",
+      "wallMs": "682.6057079888415"
+    },
+    {
+      "abiCalldataBytes": 213000,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.2374169999999998",
+      "peakRssBytes": 29360128,
+      "proofOnlyMs": "588.6755420000001",
+      "rawProofBytes": 212332,
+      "retainedArtifactBytes": 445997,
+      "runId": "v03-fixed-10",
+      "wallMs": "608.1650000123773"
+    },
+    {
+      "abiCalldataBytes": 208200,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.268416",
+      "peakRssBytes": 30572544,
+      "proofOnlyMs": "1095.41825",
+      "rawProofBytes": 207532,
+      "retainedArtifactBytes": 436397,
+      "runId": "v03-fixed-11",
+      "wallMs": "1115.2789169864263"
+    },
+    {
+      "abiCalldataBytes": 209928,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.1514580000000003",
+      "peakRssBytes": 29294592,
+      "proofOnlyMs": "609.030916",
+      "rawProofBytes": 209260,
+      "retainedArtifactBytes": 439853,
+      "runId": "v03-fixed-12",
+      "wallMs": "628.9151660166681"
+    },
+    {
+      "abiCalldataBytes": 211336,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.12025",
+      "peakRssBytes": 28508160,
+      "proofOnlyMs": "458.723125",
+      "rawProofBytes": 210668,
+      "retainedArtifactBytes": 442669,
+      "runId": "v03-fixed-13",
+      "wallMs": "478.36979100247845"
+    },
+    {
+      "abiCalldataBytes": 204808,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.130458",
+      "peakRssBytes": 28360704,
+      "proofOnlyMs": "378.68154100000004",
+      "rawProofBytes": 204140,
+      "retainedArtifactBytes": 429613,
+      "runId": "v03-fixed-14",
+      "wallMs": "397.3851249902509"
+    },
+    {
+      "abiCalldataBytes": 208456,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.121458",
+      "peakRssBytes": 29229056,
+      "proofOnlyMs": "634.9839579999999",
+      "rawProofBytes": 207788,
+      "retainedArtifactBytes": 436909,
+      "runId": "v03-fixed-15",
+      "wallMs": "654.6709170215763"
+    },
+    {
+      "abiCalldataBytes": 211656,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.1555",
+      "peakRssBytes": 30851072,
+      "proofOnlyMs": "774.571167",
+      "rawProofBytes": 210988,
+      "retainedArtifactBytes": 443309,
+      "runId": "v03-fixed-16",
+      "wallMs": "794.0170830115676"
+    },
+    {
+      "abiCalldataBytes": 207752,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.2039590000000002",
+      "peakRssBytes": 29900800,
+      "proofOnlyMs": "472.12175",
+      "rawProofBytes": 207084,
+      "retainedArtifactBytes": 435501,
+      "runId": "v03-fixed-17",
+      "wallMs": "491.80920800426975"
+    },
+    {
+      "abiCalldataBytes": 212360,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.177292",
+      "peakRssBytes": 29999104,
+      "proofOnlyMs": "562.482042",
+      "rawProofBytes": 211692,
+      "retainedArtifactBytes": 444717,
+      "runId": "v03-fixed-18",
+      "wallMs": "581.7908750032075"
+    },
+    {
+      "abiCalldataBytes": 202504,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.115709",
+      "peakRssBytes": 28639232,
+      "proofOnlyMs": "477.41116700000003",
+      "rawProofBytes": 201836,
+      "retainedArtifactBytes": 425005,
+      "runId": "v03-fixed-19",
+      "wallMs": "496.1828750092536"
+    },
+    {
+      "abiCalldataBytes": 201864,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.532458",
+      "peakRssBytes": 31653888,
+      "proofOnlyMs": "657.347667",
+      "rawProofBytes": 201196,
+      "retainedArtifactBytes": 423725,
+      "runId": "v03-fixed-20",
+      "wallMs": "687.9920829960611"
+    },
+    {
+      "abiCalldataBytes": 214408,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.356917",
+      "peakRssBytes": 28508160,
+      "proofOnlyMs": "698.4645",
+      "rawProofBytes": 213740,
+      "retainedArtifactBytes": 448813,
+      "runId": "v03-fixed-21",
+      "wallMs": "718.2954160089139"
+    },
+    {
+      "abiCalldataBytes": 210120,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.1244169999999998",
+      "peakRssBytes": 28459008,
+      "proofOnlyMs": "714.937584",
+      "rawProofBytes": 209452,
+      "retainedArtifactBytes": 440237,
+      "runId": "v03-fixed-22",
+      "wallMs": "743.8496249960735"
+    },
+    {
+      "abiCalldataBytes": 207688,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.1112499999999996",
+      "peakRssBytes": 28983296,
+      "proofOnlyMs": "744.761291",
+      "rawProofBytes": 207020,
+      "retainedArtifactBytes": 435373,
+      "runId": "v03-fixed-23",
+      "wallMs": "763.9330000092741"
+    },
+    {
+      "abiCalldataBytes": 203592,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.154625",
+      "peakRssBytes": 29884416,
+      "proofOnlyMs": "763.408",
+      "rawProofBytes": 202924,
+      "retainedArtifactBytes": 427181,
+      "runId": "v03-fixed-24",
+      "wallMs": "783.8042920047883"
+    },
+    {
+      "abiCalldataBytes": 208648,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.162",
+      "peakRssBytes": 29523968,
+      "proofOnlyMs": "448.515042",
+      "rawProofBytes": 207972,
+      "retainedArtifactBytes": 437285,
+      "runId": "v03-fixed-25",
+      "wallMs": "468.240957998205"
+    },
+    {
+      "abiCalldataBytes": 211464,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.1888340000000004",
+      "peakRssBytes": 29425664,
+      "proofOnlyMs": "348.913542",
+      "rawProofBytes": 210796,
+      "retainedArtifactBytes": 442925,
+      "runId": "v03-fixed-26",
+      "wallMs": "369.18120802147314"
+    },
+    {
+      "abiCalldataBytes": 205192,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.117916",
+      "peakRssBytes": 30130176,
+      "proofOnlyMs": "466.872958",
+      "rawProofBytes": 204524,
+      "retainedArtifactBytes": 430381,
+      "runId": "v03-fixed-27",
+      "wallMs": "485.9876249975059"
+    },
+    {
+      "abiCalldataBytes": 213256,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.251333",
+      "peakRssBytes": 29491200,
+      "proofOnlyMs": "1046.665542",
+      "rawProofBytes": 212588,
+      "retainedArtifactBytes": 446509,
+      "runId": "v03-fixed-28",
+      "wallMs": "1066.4500839775428"
+    },
+    {
+      "abiCalldataBytes": 207112,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.1002080000000003",
+      "peakRssBytes": 30392320,
+      "proofOnlyMs": "361.798042",
+      "rawProofBytes": 206444,
+      "retainedArtifactBytes": 434221,
+      "runId": "v03-fixed-29",
+      "wallMs": "382.58362500346266"
+    },
+    {
+      "abiCalldataBytes": 207496,
+      "classification": "WARM",
+      "nativeVerifyMs": "2.181292",
+      "peakRssBytes": 29655040,
+      "proofOnlyMs": "327.854292",
+      "rawProofBytes": 206828,
+      "retainedArtifactBytes": 434989,
+      "runId": "v03-fixed-30",
+      "wallMs": "348.4505829983391"
+    }
+  ],
+  "platformsAndBuilds": [
+    {
+      "id": "H1_APPLE_ARM64_NEON",
+      "reason": "Sixty warm runs match the H1 Apple M4 Max profile; cold timing and explicit NEON code-path selection are absent.",
+      "status": "PARTIALLY_MEASURED"
+    },
+    {
+      "id": "H2_COMMODITY_X86_64_AVX2",
+      "reason": "The committed hardware profile marks H2 unavailable and no H2 run record exists.",
+      "status": "NOT_EVALUATED"
+    },
+    {
+      "id": "H3_HIGH_END_X86_64_AVX512",
+      "reason": "The committed hardware profile marks H3 unavailable and no H3 run record exists.",
+      "status": "NOT_EVALUATED"
+    },
+    {
+      "id": "SCALAR_PORTABLE",
+      "reason": "No scalar/portable build record or feature-selection evidence exists.",
+      "status": "NOT_EVALUATED"
+    },
+    {
+      "id": "AVX2_CODE_PATH",
+      "reason": "No x86-64/AVX2 build or run record exists.",
+      "status": "NOT_EVALUATED"
+    },
+    {
+      "id": "AVX512_CODE_PATH",
+      "reason": "No x86-64/AVX-512 build or run record exists.",
+      "status": "NOT_EVALUATED"
+    },
+    {
+      "id": "WASM_BROWSER",
+      "reason": "No WASM/browser proof or witness-generation evidence exists; this platform is optional for the SP-73 gate.",
+      "status": "NOT_EVALUATED"
+    }
+  ],
+  "schemaVersion": "1",
+  "studyId": "SP-73",
+  "workflows": {
+    "cancellation": {
+      "reason": "No cancellation attempt, latency, cleanup, or partial-output record exists.",
+      "status": "NOT_EVALUATED"
+    },
+    "cpuTime": {
+      "reason": "All 60 prover.cpu_ms fields are null.",
+      "status": "NOT_EVALUATED"
+    },
+    "crashRecovery": {
+      "reason": "No checkpoint format, fault injection, resume run, or deterministic resumed-output comparison exists.",
+      "status": "NOT_EVALUATED"
+    },
+    "diskUsage": {
+      "perRunBytes": {
+        "count": 60,
+        "maximum": 554344,
+        "mean_rounded_12_places": "489192.016666666667",
+        "median": 489148,
+        "minimum": 417445,
+        "p90_nearest_rank": 546375,
+        "p95_nearest_rank": 548559,
+        "p99_nearest_rank": 554344,
+        "population_standard_deviation_rounded_12_places": "52046.346348388269"
+      },
+      "retainedArtifactBytes": 29351521,
+      "retainedArtifacts": 480,
+      "status": "PARTIALLY_MEASURED",
+      "unmeasured": [
+        "temporary prover files",
+        "build cache",
+        "precomputation cache",
+        "peak free-space requirement"
+      ]
+    },
+    "memoryPressure": {
+      "reason": "Peak RSS is measured, but no constrained-memory, swap, OOM, or pressure test exists.",
+      "status": "NOT_EVALUATED"
+    },
+    "progress": {
+      "reason": "No machine-readable or human progress event stream is retained.",
+      "status": "NOT_EVALUATED"
+    },
+    "serializationAndUpload": {
+      "abiCalldataBytes": {
+        "count": 60,
+        "maximum": 214472,
+        "mean_rounded_12_places": "209293.333333333333",
+        "median": 209608,
+        "minimum": 198728,
+        "p90_nearest_rank": 213192,
+        "p95_nearest_rank": 213768,
+        "p99_nearest_rank": 214472,
+        "population_standard_deviation_rounded_12_places": "3455.966254979287"
+      },
+      "networkTransport": "NOT_EVALUATED",
+      "rawProofBytes": {
+        "count": 60,
+        "maximum": 213804,
+        "mean_rounded_12_places": "208624.933333333333",
+        "median": 208940,
+        "minimum": 198052,
+        "p90_nearest_rank": 212524,
+        "p95_nearest_rank": 213100,
+        "p99_nearest_rank": 213804,
+        "population_standard_deviation_rounded_12_places": "3456.485796618036"
+      },
+      "serializationTime": "NOT_EVALUATED",
+      "status": "MEASURED_BYTES_ONLY",
+      "totalAbiCalldataBytes": 12557600,
+      "totalRawProofBytes": 12517496,
+      "uploadTime": "NOT_EVALUATED"
+    },
+    "setupAndPrecomputation": {
+      "reason": "The proof system records trusted_setup=false, but setup/precomputation duration and retained cache bytes were not measured.",
+      "status": "NOT_EVALUATED",
+      "trustedSetupRequired": false
+    }
+  }
+}

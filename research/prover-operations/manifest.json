@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1",
+  "studyId": "SP-73",
+  "title": "Prover UX, portability, and operational privacy baseline audit",
+  "scope": "research/prover-operations/** only; frozen v0.3 inputs are read but never changed",
+  "disposition": "BASELINE_OPERATIONS_ONLY_NO_FINALIST",
+  "inputs": [
+    "PQTC_NEXT_GENERATION_RESEARCH_PLAN.md",
+    "benchmark-run.schema.json",
+    "research/harness/report-generator/schema_validator.py",
+    "research/harness/hardware-detect/h1-m4-max.json",
+    "research/runs/v03-{corpus,fixed}-01..30.json",
+    "research/candidates/v03-baseline/README.md",
+    "research/candidates/v03-baseline/scripts/generate-all.py",
+    "the 480 artifact paths and SHA-256 values declared by the 60 run records"
+  ],
+  "outputs": [
+    "README.md",
+    "ADR.md",
+    "assumptions.md",
+    "manifest.json",
+    "analyze.py",
+    "result.schema.json",
+    "results.json",
+    "source-hashes.json",
+    "cli-workflow.json",
+    "privacy-review.json",
+    "status.json",
+    "negative-results.json"
+  ],
+  "executable": {
+    "path": "research/prover-operations/analyze.py",
+    "checkCommand": "python3 research/prover-operations/analyze.py",
+    "regenerateCommand": "python3 research/prover-operations/analyze.py --write",
+    "dependencies": "Python 3 standard library plus the committed focused schema validator"
+  },
+  "inputContract": {
+    "sourceRecords": 60,
+    "sourceRecordSchema": "benchmark-run.schema.json",
+    "candidateId": "C00/v03-baseline",
+    "sourceSpikeId": "SP-00",
+    "recordedBaselineCommit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+    "artifactCount": 480,
+    "hardwareProfile": "H1_CONTINUITY"
+  },
+  "outputContract": {
+    "resultSchema": "research/prover-operations/result.schema.json",
+    "retainedResult": "research/prover-operations/results.json",
+    "sourcePins": "research/prover-operations/source-hashes.json",
+    "deterministic": true,
+    "timestampsExcluded": true,
+    "decimalPolicy": "Source decimal spellings are retained; mean and population standard deviation use Decimal arithmetic and round half-even to 12 decimal places; p90/p95/p99 use nearest rank."
+  },
+  "gateContract": {
+    "required": "Complete H1/H2/H3 measurements and a practical CLI workflow",
+    "expectedStatusFromCommittedEvidence": "FAIL",
+    "reason": "No H1 cold runs, no H2/H3 runs, and no implemented practical end-user CLI are committed."
+  },
+  "solidityMeasurementProfile": {
+    "solc": "0.8.30",
+    "evmRevision": "Prague",
+    "optimizerRuns": 200,
+    "viaIR": true,
+    "applicability": "No Solidity is compiled or measured by SP-73; this is the required profile for any future Solidity-side measurement."
+  }
+}

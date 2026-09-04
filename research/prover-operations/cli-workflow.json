@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "1",
+  "studyId": "SP-73",
+  "status": "SPECIFICATION_ONLY_NOT_IMPLEMENTED",
+  "gateCredit": false,
+  "executableName": "pqtc-prove",
+  "principles": [
+    "Offline and local by default.",
+    "Never accept a witness through argv or an environment variable.",
+    "Write only to a newly created mode-0700 workspace.",
+    "Emit progress on a separate JSONL file descriptor; never include witness values, commitment interests, paths, RPC URLs, or filesystem paths in progress or telemetry.",
+    "Cross-user aggregation accepts proofs and public statements only, never witnesses.",
+    "Cancellation and crash recovery must leave no valid-looking partial proof."
+  ],
+  "commands": [
+    {
+      "command": "pqtc-prove prepare --statement statement.json --witness-fd 3 --workspace ./proof-work 3<witness.json",
+      "purpose": "Validate public input and witness locally; create a private workspace and immutable job manifest.",
+      "requiredOutputs": ["proof-work/job.json", "proof-work/input.commitment"],
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "command": "pqtc-prove prove --workspace ./proof-work --output ./proof.pqtc --progress-fd 4 4>progress.jsonl",
+      "purpose": "Generate one proof atomically; write progress events separately from stdout/stderr.",
+      "requiredOutputs": ["proof.pqtc", "proof-work/receipt.json"],
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "command": "pqtc-prove cancel --workspace ./proof-work",
+      "purpose": "Request bounded-latency cancellation; remove temporary proof bytes but preserve a resumable authenticated checkpoint when supported.",
+      "requiredOutputs": ["proof-work/cancel-receipt.json"],
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "command": "pqtc-prove resume --workspace ./proof-work --output ./proof.pqtc --progress-fd 4 4>progress.jsonl",
+      "purpose": "Authenticate and resume a checkpoint; reject parameter/input/build mismatches; prove that resumed public output verifies under the same statement.",
+      "requiredOutputs": ["proof.pqtc", "proof-work/resume-receipt.json"],
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "command": "pqtc-prove inspect --proof ./proof.pqtc --json",
+      "purpose": "Report only public proof metadata and hashes without opening a witness or contacting a network.",
+      "requiredOutputs": ["JSON on stdout"],
+      "status": "NOT_IMPLEMENTED"
+    },
+    {
+      "command": "pqtc-prove package --proof ./proof.pqtc --statement statement.json --output ./submission.json",
+      "purpose": "Create an offline upload package containing only proof and public statement material.",
+      "requiredOutputs": ["submission.json"],
+      "status": "NOT_IMPLEMENTED"
+    }
+  ],
+  "progressEventContract": {
+    "encoding": "one JSON object per line",
+    "requiredFields": ["schemaVersion", "jobId", "sequence", "phase", "completedUnits", "totalUnits", "monotonicMilliseconds"],
+    "forbiddenFields": ["witness", "secret", "note", "pathElements", "commitmentInterest", "rpcUrl", "absolutePath"],
+    "requirements": [
+      "sequence is strictly increasing",
+      "completedUnits never decreases within a phase",
+      "unknown totalUnits is null rather than fabricated",
+      "events are safe to disable without changing the proof transcript"
+    ]
+  },
+  "checkpointContract": {
+    "status": "NOT_IMPLEMENTED",
+    "mustBind": ["public statement digest", "witness commitment", "proof-system parameter digest", "binary/build digest", "phase", "transcript state", "checkpoint sequence"],
+    "mustProvide": ["authenticated integrity", "atomic replace", "version rejection", "replay rejection across jobs", "deterministic state restoration"],
+    "determinismMeaning": "A resumed run restores the same authenticated prover state and produces a valid proof for the same public statement; byte-identical final proofs are required only if all prover randomness is retained and replayed by the checkpoint design.",
+    "forbidden": ["plaintext witness in shared storage", "trusting filename or mtime", "accepting a checkpoint from another statement or build"]
+  },
+  "exitCodes": {
+    "0": "success",
+    "2": "invalid invocation or input",
+    "3": "proof generation or local verification failed",
+    "4": "checkpoint rejected",
+    "5": "cancelled cleanly",
+    "6": "privacy policy or unsafe workspace violation"
+  },
+  "currentlyRunnableCommands": [
+    {
+      "command": "python3 research/prover-operations/analyze.py",
+      "effect": "Validate all 60 retained source records, 480 declared artifacts, source pins, and the retained SP-73 output."
+    },
+    {
+      "command": "python3 research/candidates/v03-baseline/scripts/generate-all.py",
+      "effect": "Regenerate the 60-run baseline in an isolated clean worktree; this is destructive, batch-oriented research plumbing and does not measure cold/cancel/progress/recovery."
+    }
+  ],
+  "nextMeasurementCommands": [
+    {
+      "id": "H1_WARM_REPRODUCTION",
+      "host": "H1 Apple M4 Max profile",
+      "precondition": "Use an isolated clean worktree because generate-all.py deletes and replaces v03 proofs and run records.",
+      "command": "python3 research/candidates/v03-baseline/scripts/generate-all.py && python3 research/prover-operations/analyze.py --write",
+      "captures": "Thirty corpus plus thirty fixed warm runs, wall/proof/native-verify time, peak RSS, and proof/artifact bytes.",
+      "doesNotCapture": "Cold classification, CPU time, setup/precomputation split, cancellation, progress, memory pressure, peak disk, recovery, or network upload."
+    },
+    {
+      "id": "H2_WARM_ACQUISITION",
+      "host": "A documented 6-12 physical-core commodity x86-64 host with 16-32 GiB RAM and AVX2; AVX-512 need not be present.",
+      "precondition": "Use an isolated clean worktree; first fix the generator to retain CPU features, microcode, target features, thread count, allocator, affinity, thermal state where observable, and other jobs instead of hard-coding empty rustflags/features.",
+      "command": "RUSTFLAGS='-C target-cpu=native' python3 research/candidates/v03-baseline/scripts/generate-all.py",
+      "captures": "A new 60-run warm distribution after the precondition is implemented and the resulting records are archived outside the H1 v03 namespace.",
+      "doesNotCapture": "Cold/cancel/progress/recovery or AVX2-path confirmation unless separate build/runtime evidence is retained."
+    },
+    {
+      "id": "H3_WARM_ACQUISITION",
+      "host": "A documented 24-or-more physical-core, 64-or-more-GiB x86-64 host with AVX-512 available.",
+      "precondition": "Use an isolated clean worktree; implement the same metadata retention and a distinct H3 output namespace before running.",
+      "command": "RUSTFLAGS='-C target-cpu=native' python3 research/candidates/v03-baseline/scripts/generate-all.py",
+      "captures": "A new warm distribution after the precondition is implemented.",
+      "doesNotCapture": "Cold/cancel/progress/recovery or AVX-512-path confirmation unless separate build/runtime evidence is retained."
+    },
+    {
+      "id": "CURRENT_NATIVE_SINGLE_PROOF_SMOKE",
+      "host": "Any supported host after building the pinned baseline native crate",
+      "precondition": "Prepare inputs into /tmp/pqtc-sp73-inputs and use a new output directory; this is not a qualified cold measurement.",
+      "command": "cargo build --locked --offline --release --manifest-path research/candidates/v03-baseline/native/Cargo.toml && research/candidates/v03-baseline/native/target/release/v03-baseline-reproducer prepare --corpus research/common-corpus/semantic-cases.json --out /tmp/pqtc-sp73-inputs && research/candidates/v03-baseline/native/target/release/v03-baseline-reproducer prove --input /tmp/pqtc-sp73-inputs/fixed --out /tmp/pqtc-sp73-proof",
+      "captures": "One local proof artifact set using the existing research binary.",
+      "doesNotCapture": "A practical CLI, cold cache state, cancellation, progress, crash recovery, or upload."
+    }
+  ]
+}

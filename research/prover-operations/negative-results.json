@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "1",
+  "studyId": "SP-73",
+  "gateStatus": "FAIL",
+  "results": [
+    {
+      "id": "H1_COLD_MISSING",
+      "status": "NOT_EVALUATED",
+      "evidence": "All 60 committed prover.cold_or_warm values are WARM; none is COLD.",
+      "nextAction": "Implement an explicit cold-state definition and acquisition runner, then retain first-proof records separately from warm repetitions."
+    },
+    {
+      "id": "H2_COMPLETE_MEASUREMENTS_MISSING",
+      "status": "NOT_EVALUATED",
+      "evidence": "The H1 profile marks H2 unavailable; no H2 record exists.",
+      "nextAction": "On a documented 6-12 physical-core commodity x86-64/AVX2 host with 16-32 GiB RAM, run the command and metadata preconditions in cli-workflow.json and retain at least 30 complete-proof runs."
+    },
+    {
+      "id": "H3_COMPLETE_MEASUREMENTS_MISSING",
+      "status": "NOT_EVALUATED",
+      "evidence": "The H1 profile marks H3 unavailable; no H3 record exists.",
+      "nextAction": "On a documented 24+ physical-core, 64+ GiB x86-64/AVX-512 host, run the command and metadata preconditions in cli-workflow.json and retain complete-proof runs."
+    },
+    {
+      "id": "PORTABLE_AND_X86_CODE_PATHS_MISSING",
+      "status": "NOT_EVALUATED",
+      "evidence": "No scalar, AVX2, AVX-512, or WASM build/run record or executed-feature proof is committed.",
+      "nextAction": "Add explicit build feature selection and runtime reporting before executing separate scalar/AVX2/AVX-512 matrices; treat WASM as optional."
+    },
+    {
+      "id": "SETUP_PRECOMPUTATION_MISSING",
+      "status": "NOT_EVALUATED",
+      "evidence": "trusted_setup=false is recorded, but setup/precomputation time and cache bytes are not.",
+      "nextAction": "Instrument setup and reusable precomputation as separately timed phases and retain cold/warm cache sizes."
+    },
+    {
+      "id": "CANCELLATION_MISSING",
+      "status": "NOT_EVALUATED",
+      "evidence": "No interrupt/cancel experiment, latency, cleanup result, or partial-output check is retained.",
+      "nextAction": "Implement the cancel contract in cli-workflow.json and inject cancellation in every major proving phase."
+    },
+    {
+      "id": "PROGRESS_MISSING",
+      "status": "NOT_EVALUATED",
+      "evidence": "No progress event stream is retained.",
+      "nextAction": "Implement and test the redacted JSONL event contract in cli-workflow.json."
+    },
+    {
+      "id": "MEMORY_PRESSURE_MISSING",
+      "status": "NOT_EVALUATED",
+      "evidence": "Peak RSS exists for H1, but no constrained-memory, swap, OOM, or resource-preflight evidence exists.",
+      "nextAction": "Run bounded-memory experiments on H2 and H3, retaining limits, swap state, failure mode, and cleanup."
+    },
+    {
+      "id": "PEAK_DISK_AND_NETWORK_UPLOAD_MISSING",
+      "status": "PARTIALLY_MEASURED",
+      "evidence": "Retained artifact and proof/calldata bytes are verified; temp/cache/peak disk and actual network upload behavior are absent.",
+      "nextAction": "Instrument workspace high-water bytes and separately measure serialization and upload transport without sending witnesses."
+    },
+    {
+      "id": "CRASH_RECOVERY_MISSING",
+      "status": "NOT_EVALUATED",
+      "evidence": "No authenticated checkpoint, fault injection, resume, mismatch rejection, or resumed-proof check is retained.",
+      "nextAction": "Implement the checkpoint contract in cli-workflow.json; crash after each durable phase and verify safe deterministic state restoration."
+    },
+    {
+      "id": "PRACTICAL_CLI_NOT_IMPLEMENTED",
+      "status": "FAIL",
+      "evidence": "The existing generator is destructive and batch-oriented. The pqtc-prove workflow is specification-only.",
+      "nextAction": "Implement the specified prepare/prove/cancel/resume/inspect/package workflow and retain end-to-end H1/H2 evidence."
+    },
+    {
+      "id": "PRODUCTION_PRIVACY_CONTROLS_OPEN",
+      "status": "NOT_EVALUATED",
+      "evidence": "No witness service is proposed and no isolation, attestation, telemetry, deployed RPC/path, or production local-fallback test exists.",
+      "nextAction": "Satisfy privacy-review.json before proposing a service; cross-user aggregators must receive proofs/public statements only and never witnesses."
+    },
+    {
+      "id": "EXTERNAL_CRYPTOGRAPHIC_ACCEPTANCE_OPEN",
+      "status": "OPEN",
+      "evidence": "SP-73 is an operations study and contains no external cryptographic review.",
+      "nextAction": "Do not promote any candidate based on this package."
+    }
+  ]
+}
