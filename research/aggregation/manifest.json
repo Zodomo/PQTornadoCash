@@ -1,0 +1,37 @@
+{
+  "schema": "research-package-manifest-v1",
+  "candidate": "SP-70",
+  "title": "Proof-only aggregation and batched withdrawal settlement",
+  "disposition": "STOP_BY_DEPENDENCY",
+  "entrypoint": "python3 research/aggregation/run.py",
+  "machine_output": "research/aggregation/outputs/results.json",
+  "result_schema": "research/aggregation/result.schema.json",
+  "focused_foundry_command": "cd research/aggregation/solidity && ./run-gas.sh",
+  "foundry_output": "research/aggregation/outputs/foundry-components.json",
+  "batch_sizes": [1, 2, 4, 8, 16, 32, 64],
+  "proof_designs": [
+    "recursive binary proof tree",
+    "flat outer proof",
+    "PQ-oriented hiding folding"
+  ],
+  "user_topologies": ["same-user multi-note", "unrelated-user proof aggregation"],
+  "scheduling": ["fixed window", "threshold triggered", "permissionless multiple aggregators"],
+  "privacy_boundary": "Aggregators receive opaque individual proofs and public statements only; raw note witnesses are forbidden.",
+  "payout_policy": "Atomic verification/nullifier/credit settlement followed by independent pull claims.",
+  "active_transaction_gas_cap": 16777216,
+  "product_gate": "settlement <=14000000 and <=1000000 gas/withdrawal at N>=16 or >=70% improvement",
+  "individual_path": "REQUIRED; aggregation cannot replace it",
+  "cryptographic_acceptance": "OPEN",
+  "source_pins": {
+    "solc": "0.8.30",
+    "evm_version": "prague",
+    "optimizer": true,
+    "optimizer_runs": 200,
+    "via_ir": true,
+    "gas_schedules": ["active EIP-7623 10/40", "uniform 64/64 scenario", "uniform 96/96 scenario"]
+  },
+  "frozen_dependencies": [
+    "PQTC_NEXT_GENERATION_RESEARCH_PLAN.md",
+    "research/candidates/v03-baseline/gas/measured-summary.json"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "sp70-assumptions-v1",
+  "assumptions": [
+    {
+      "id": "A1",
+      "claim": "Each user creates a hiding individual proof locally; an aggregator receives only that opaque proof and its public root/nullifier/recipient/relayer/fee statement.",
+      "status": "REQUIRED_ARCHITECTURE_NOT_CRYPTOGRAPHICALLY_EVALUATED"
+    },
+    {
+      "id": "A2",
+      "claim": "A future accepted outer relation verifies every individual proof and binds the exact canonical statement hash chain passed by the settlement contract.",
+      "status": "OPEN_DEPENDENCY"
+    },
+    {
+      "id": "A3",
+      "claim": "Known-root membership is supplied by the integrating pool root registry; the research harness uses a conspicuously permissive model registry only for component tests.",
+      "status": "INTEGRATION_ASSUMPTION"
+    },
+    {
+      "id": "A4",
+      "claim": "Pull-payment recipients can retry claims after receiver failure; failed calls revert the credit deletion.",
+      "status": "EXECUTABLE_MODEL_AND_SOLIDITY_SEMANTICS"
+    },
+    {
+      "id": "A5",
+      "claim": "Threshold latency rows use stationary independent Poisson arrivals; fixed-window rows are policy bounds, not observed timing.",
+      "status": "ANALYTIC_MODEL_ASSUMPTION"
+    },
+    {
+      "id": "A6",
+      "claim": "Proof submissions are noncustodial and nonexclusive, so a user may resubmit to another aggregator or use the required individual withdrawal path.",
+      "status": "PRODUCT_LIVENESS_REQUIREMENT"
+    },
+    {
+      "id": "A7",
+      "claim": "The SHA-256 model proof tokens and mutable Foundry binding verifier are relation test oracles only.",
+      "status": "MODEL_BOUNDARY_NOT_A_SECURITY_CLAIM"
+    },
+    {
+      "id": "A8",
+      "claim": "The 2^24 active gas cap and SP-70 14M/1M-or-70-percent gates are evaluated only against complete transaction metrics.",
+      "status": "GATE_RULE"
+    }
+  ]
+}

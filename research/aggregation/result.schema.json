@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pqtornado.invalid/research/aggregation/result.schema.json",
+  "title": "SP-70 aggregation retained result",
+  "type": "object",
+  "required": [
+    "schema",
+    "candidate",
+    "status",
+    "batch_sizes",
+    "privacy_architecture",
+    "safety",
+    "scheduling_results",
+    "measurements",
+    "decision"
+  ],
+  "properties": {
+    "schema": {"const": "sp70-aggregation-results-v1"},
+    "candidate": {"const": "SP-70"},
+    "status": {"const": "STOP_BY_DEPENDENCY"},
+    "batch_sizes": {
+      "const": [1, 2, 4, 8, 16, 32, 64]
+    },
+    "safety": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14
+    },
+    "scheduling_results": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7
+    },
+    "measurements": {
+      "type": "array",
+      "minItems": 42,
+      "maxItems": 42,
+      "items": {"$ref": "#/$defs/measurement"}
+    },
+    "decision": {
+      "type": "object",
+      "required": ["gate", "individual_path_requirement", "external_cryptographic_acceptance"],
+      "properties": {
+        "gate": {"const": "STOP_BY_DEPENDENCY"},
+        "individual_path_requirement": {"const": "REQUIRED; AGGREGATION_CANNOT_REPLACE_IT"},
+        "external_cryptographic_acceptance": {"const": "OPEN"}
+      }
+    }
+  },
+  "$defs": {
+    "nullableMetric": {"type": ["integer", "null"], "minimum": 0},
+    "nullTotals": {
+      "type": "object",
+      "required": ["active_eip7623_10_40", "uniform_64", "uniform_96"],
+      "additionalProperties": false,
+      "properties": {
+        "active_eip7623_10_40": {"type": "null"},
+        "uniform_64": {"type": "null"},
+        "uniform_96": {"type": "null"}
+      }
+    },
+    "integerTotals": {
+      "type": "object",
+      "required": ["active_eip7623_10_40", "uniform_64", "uniform_96"],
+      "additionalProperties": false,
+      "properties": {
+        "active_eip7623_10_40": {"type": "integer", "minimum": 0},
+        "uniform_64": {"type": "integer", "minimum": 0},
+        "uniform_96": {"type": "integer", "minimum": 0}
+      }
+    },
+    "measurement": {
+      "type": "object",
+      "required": [
+        "N",
+        "proof_design",
+        "user_topology",
+        "outer_proof_bytes",
+        "aggregate_proving_time_ms",
+        "aggregate_peak_rss_bytes",
+        "aggregate_verification_time_ms",
+        "verifier_gas",
+        "settlement_execution_gas",
+        "full_calldata_bytes",
+        "full_calldata_zero_bytes",
+        "full_calldata_nonzero_bytes",
+        "payout_component_gas",
+        "nullifier_component_gas",
+        "public_only_calldata_bytes",
+        "successful_pull_claim_gas",
+        "total_gas",
+        "total_reason",
+        "gas_per_withdrawal",
+        "failure_recovery_gas",
+        "minimum_economical_N",
+        "gate"
+      ],
+      "properties": {
+        "N": {"enum": [1, 2, 4, 8, 16, 32, 64]},
+        "proof_design": {"enum": ["RECURSIVE_BINARY_TREE", "FLAT_OUTER_PROOF", "PQ_HIDING_FOLDING"]},
+        "user_topology": {"enum": ["SAME_USER_MULTI_NOTE", "UNRELATED_USERS"]},
+        "outer_proof_bytes": {"$ref": "#/$defs/nullableMetric"},
+        "aggregate_proving_time_ms": {"$ref": "#/$defs/nullableMetric"},
+        "aggregate_peak_rss_bytes": {"$ref": "#/$defs/nullableMetric"},
+        "aggregate_verification_time_ms": {"$ref": "#/$defs/nullableMetric"},
+        "verifier_gas": {"$ref": "#/$defs/nullableMetric"},
+        "settlement_execution_gas": {"$ref": "#/$defs/nullableMetric"},
+        "full_calldata_bytes": {"$ref": "#/$defs/nullableMetric"},
+        "full_calldata_zero_bytes": {"$ref": "#/$defs/nullableMetric"},
+        "full_calldata_nonzero_bytes": {"$ref": "#/$defs/nullableMetric"},
+        "payout_component_gas": {"$ref": "#/$defs/nullableMetric"},
+        "nullifier_component_gas": {"$ref": "#/$defs/nullableMetric"},
+        "public_only_calldata_bytes": {"$ref": "#/$defs/nullableMetric"},
+        "successful_pull_claim_gas": {"$ref": "#/$defs/nullableMetric"},
+        "failure_recovery_gas": {"$ref": "#/$defs/nullableMetric"},
+        "minimum_economical_N": {"type": ["integer", "null"], "enum": [null, 1, 2, 4, 8, 16, 32, 64]},
+        "gate": {"const": "STOP_BY_DEPENDENCY"}
+      },
+      "oneOf": [
+        {
+          "properties": {
+            "total_gas": {"$ref": "#/$defs/nullTotals"},
+            "gas_per_withdrawal": {"type": "null"},
+            "total_reason": {"const": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT"}
+          }
+        },
+        {
+          "properties": {
+            "outer_proof_bytes": {"type": "integer", "minimum": 1},
+            "aggregate_proving_time_ms": {"type": "integer", "minimum": 0},
+            "aggregate_peak_rss_bytes": {"type": "integer", "minimum": 1},
+            "aggregate_verification_time_ms": {"type": "integer", "minimum": 0},
+            "verifier_gas": {"type": "integer", "minimum": 1},
+            "settlement_execution_gas": {"type": "integer", "minimum": 1},
+            "full_calldata_bytes": {"type": "integer", "minimum": 1},
+            "full_calldata_zero_bytes": {"type": "integer", "minimum": 0},
+            "full_calldata_nonzero_bytes": {"type": "integer", "minimum": 1},
+            "total_gas": {"$ref": "#/$defs/integerTotals"},
+            "gas_per_withdrawal": {"type": "integer", "minimum": 1},
+            "total_reason": {"type": "null"}
+          },
+          "required": [
+            "outer_proof_bytes",
+            "aggregate_proving_time_ms",
+            "aggregate_peak_rss_bytes",
+            "aggregate_verification_time_ms",
+            "verifier_gas",
+            "settlement_execution_gas",
+            "full_calldata_bytes",
+            "full_calldata_zero_bytes",
+            "full_calldata_nonzero_bytes"
+          ]
+        }
+      ]
+    }
+  }
+}

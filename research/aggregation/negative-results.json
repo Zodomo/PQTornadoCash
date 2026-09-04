@@ -1,0 +1,45 @@
+{
+  "schema": "sp70-negative-results-v1",
+  "results": [
+    {
+      "id": "NO_ACCEPTED_HIDING_INNER_PROOF",
+      "result": "STOP_BY_DEPENDENCY",
+      "reason": "No individual proof candidate has accepted security and zero knowledge, so recursion, flat aggregation, and folding cannot be promoted or fully benchmarked."
+    },
+    {
+      "id": "NO_OUTER_METRICS",
+      "result": "NOT_EVALUATED",
+      "reason": "Outer proof bytes, proving latency/RSS, verifier time/gas, and full proof calldata remain null; a missing proof is never encoded as zero."
+    },
+    {
+      "id": "NO_TOTALS_FROM_COMPONENTS",
+      "result": "NOT_EVALUATED",
+      "reason": "Isolated nullifier, pull-credit, claim, and empty-proof calldata components are not additive substitutes for a complete verifier transaction. Active/64/96 totals and gas per withdrawal remain null with a dependency reason."
+    },
+    {
+      "id": "CENTRALIZED_WITNESS_COLLECTION",
+      "result": "REJECTED_PRIVACY_MODEL",
+      "reason": "An aggregator that receives note secrets, trapdoors, Merkle paths, or raw witnesses fails SP-70 even if its gas is attractive."
+    },
+    {
+      "id": "ATOMIC_EXTERNAL_PUSH_PAYOUTS",
+      "result": "REJECTED_LIVENESS_MODEL",
+      "reason": "A rejecting recipient could invalidate unrelated users. The retained design atomically creates pull credits; each payee claims independently and a failed claim retains credit."
+    },
+    {
+      "id": "EXCLUSIVE_BATCH_QUEUE",
+      "result": "REJECTED_CENSORSHIP_MODEL",
+      "reason": "Submitting an individual proof must not lock it to one aggregator. The same proof package remains usable by another permissionless aggregator or the required individual path."
+    },
+    {
+      "id": "MODEL_ORACLES",
+      "result": "NOT_A_PROOF",
+      "reason": "SHA-256 tokens and the Foundry model binding verifier test statement binding and state semantics only; they establish no recursion, folding, soundness, post-quantum security, or zero knowledge."
+    },
+    {
+      "id": "NO_PRODUCT_GATE",
+      "result": "STOP",
+      "reason": "Without complete settlement totals, neither the <=14M transaction gate nor <=1M at N>=16 / >=70% improvement gate can be evaluated. Aggregation cannot replace an individual withdrawal path."
+    }
+  ]
+}

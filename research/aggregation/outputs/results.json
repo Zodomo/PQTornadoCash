@@ -1,0 +1,2834 @@
+{
+  "batch_sizes": [
+    1,
+    2,
+    4,
+    8,
+    16,
+    32,
+    64
+  ],
+  "candidate": "SP-70",
+  "canonicalization": "STRICT_ASCENDING_UNIQUE_PUBLIC_STATEMENT_HASH; DOMAIN_SEPARATED_BATCH_HASH_CHAIN_BINDS_CHAIN_POOL_DENOMINATION_IN_SOLIDITY",
+  "decision": {
+    "active_transaction_cap": 16777216,
+    "blockers": [
+      "accepted hiding individual proof",
+      "accepted PQ-oriented outer aggregation/folding proof",
+      "measured outer prover and verifier",
+      "complete full-transaction calldata and execution"
+    ],
+    "external_cryptographic_acceptance": "OPEN",
+    "gate": "STOP_BY_DEPENDENCY",
+    "individual_path_requirement": "REQUIRED; AGGREGATION_CANNOT_REPLACE_IT",
+    "product_gate": "TOTAL_SETTLEMENT_LE_14M_AND_GAS_PER_WITHDRAWAL_LE_1M_AT_N_GE_16_OR_GE_70_PERCENT_IMPROVEMENT"
+  },
+  "foundry_harness": {
+    "command": "cd research/aggregation/solidity && ./run-gas.sh",
+    "compiler": {
+      "evm": "prague",
+      "optimizer": true,
+      "optimizer_runs": 200,
+      "solc": "0.8.30",
+      "via_ir": true
+    },
+    "measurement_scope": "EXACT NULLIFIER, PULL-CREDIT PAYOUT, SUCCESSFUL CLAIM, AND EMPTY-OUTER-PROOF PUBLIC CALLDATA COMPONENTS; NEVER A FULL AGGREGATION BENCHMARK",
+    "retained_raw_output": "research/aggregation/outputs/foundry-components.json",
+    "status": "PASS_EXACT_ISOLATED_COMPONENTS_NOT_FULL_BENCHMARK"
+  },
+  "individual_comparator": {
+    "candidate": "C00/v03-baseline",
+    "part_a_total_gas_p50": 16664641.5,
+    "part_b_total_gas_p50": 13959759.5,
+    "role": "FROZEN_COMPARATOR_ONLY_NOT_AGGREGATION_INPUT",
+    "source": "research/candidates/v03-baseline/gas/measured-summary.json"
+  },
+  "latency_models": [
+    {
+      "N": 1,
+      "arrival_rate_per_second": 0.01,
+      "average_member_fill_wait_seconds": 0.0,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 0.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 1,
+      "arrival_rate_per_second": 0.01,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 3.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 1,
+      "arrival_rate_per_second": 0.1,
+      "average_member_fill_wait_seconds": 0.0,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 0.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 1,
+      "arrival_rate_per_second": 0.1,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 30.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 1,
+      "arrival_rate_per_second": 1.0,
+      "average_member_fill_wait_seconds": 0.0,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 0.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 1,
+      "arrival_rate_per_second": 1.0,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 300.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 1,
+      "arrival_rate_per_second": 10.0,
+      "average_member_fill_wait_seconds": 0.0,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 0.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 1,
+      "arrival_rate_per_second": 10.0,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 3000.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 2,
+      "arrival_rate_per_second": 0.01,
+      "average_member_fill_wait_seconds": 50.0,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 100.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 2,
+      "arrival_rate_per_second": 0.01,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 3.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 2,
+      "arrival_rate_per_second": 0.1,
+      "average_member_fill_wait_seconds": 5.0,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 10.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 2,
+      "arrival_rate_per_second": 0.1,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 30.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 2,
+      "arrival_rate_per_second": 1.0,
+      "average_member_fill_wait_seconds": 0.5,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 1.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 2,
+      "arrival_rate_per_second": 1.0,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 300.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 2,
+      "arrival_rate_per_second": 10.0,
+      "average_member_fill_wait_seconds": 0.05,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 0.1,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 2,
+      "arrival_rate_per_second": 10.0,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 3000.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 4,
+      "arrival_rate_per_second": 0.01,
+      "average_member_fill_wait_seconds": 150.0,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 300.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 4,
+      "arrival_rate_per_second": 0.01,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 3.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 4,
+      "arrival_rate_per_second": 0.1,
+      "average_member_fill_wait_seconds": 15.0,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 30.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 4,
+      "arrival_rate_per_second": 0.1,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 30.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 4,
+      "arrival_rate_per_second": 1.0,
+      "average_member_fill_wait_seconds": 1.5,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 3.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 4,
+      "arrival_rate_per_second": 1.0,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 300.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 4,
+      "arrival_rate_per_second": 10.0,
+      "average_member_fill_wait_seconds": 0.15,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 0.3,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 4,
+      "arrival_rate_per_second": 10.0,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 3000.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 8,
+      "arrival_rate_per_second": 0.01,
+      "average_member_fill_wait_seconds": 350.0,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 700.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 8,
+      "arrival_rate_per_second": 0.01,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 3.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 8,
+      "arrival_rate_per_second": 0.1,
+      "average_member_fill_wait_seconds": 35.0,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 70.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 8,
+      "arrival_rate_per_second": 0.1,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 30.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 8,
+      "arrival_rate_per_second": 1.0,
+      "average_member_fill_wait_seconds": 3.5,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 7.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 8,
+      "arrival_rate_per_second": 1.0,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 300.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 8,
+      "arrival_rate_per_second": 10.0,
+      "average_member_fill_wait_seconds": 0.35,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 0.7,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 8,
+      "arrival_rate_per_second": 10.0,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 3000.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 16,
+      "arrival_rate_per_second": 0.01,
+      "average_member_fill_wait_seconds": 750.0,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 1500.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 16,
+      "arrival_rate_per_second": 0.01,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 3.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 16,
+      "arrival_rate_per_second": 0.1,
+      "average_member_fill_wait_seconds": 75.0,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 150.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 16,
+      "arrival_rate_per_second": 0.1,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 30.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 16,
+      "arrival_rate_per_second": 1.0,
+      "average_member_fill_wait_seconds": 7.5,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 15.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 16,
+      "arrival_rate_per_second": 1.0,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 300.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 16,
+      "arrival_rate_per_second": 10.0,
+      "average_member_fill_wait_seconds": 0.75,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 1.5,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 16,
+      "arrival_rate_per_second": 10.0,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 3000.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 32,
+      "arrival_rate_per_second": 0.01,
+      "average_member_fill_wait_seconds": 1550.0,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 3100.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 32,
+      "arrival_rate_per_second": 0.01,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 3.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 32,
+      "arrival_rate_per_second": 0.1,
+      "average_member_fill_wait_seconds": 155.0,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 310.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 32,
+      "arrival_rate_per_second": 0.1,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 30.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 32,
+      "arrival_rate_per_second": 1.0,
+      "average_member_fill_wait_seconds": 15.5,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 31.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 32,
+      "arrival_rate_per_second": 1.0,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 300.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 32,
+      "arrival_rate_per_second": 10.0,
+      "average_member_fill_wait_seconds": 1.55,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 3.1,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 32,
+      "arrival_rate_per_second": 10.0,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 3000.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 64,
+      "arrival_rate_per_second": 0.01,
+      "average_member_fill_wait_seconds": 3150.0,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 6300.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 64,
+      "arrival_rate_per_second": 0.01,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 3.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 64,
+      "arrival_rate_per_second": 0.1,
+      "average_member_fill_wait_seconds": 315.0,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 630.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 64,
+      "arrival_rate_per_second": 0.1,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 30.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 64,
+      "arrival_rate_per_second": 1.0,
+      "average_member_fill_wait_seconds": 31.5,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 63.0,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 64,
+      "arrival_rate_per_second": 1.0,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 300.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    },
+    {
+      "N": 64,
+      "arrival_rate_per_second": 10.0,
+      "average_member_fill_wait_seconds": 3.15,
+      "class": "ANALYTIC_POISSON_EXPECTATION_NOT_MEASUREMENT",
+      "oldest_fill_wait_seconds": 6.3,
+      "policy": "THRESHOLD_TRIGGERED"
+    },
+    {
+      "N": 64,
+      "arrival_rate_per_second": 10.0,
+      "class": "POLICY_BOUND_AND_ARRIVAL_MODEL_NOT_MEASUREMENT",
+      "expected_arrivals_per_window": 3000.0,
+      "maximum_policy_wait_seconds": 300,
+      "policy": "FIXED_WINDOW",
+      "window_seconds": 300
+    }
+  ],
+  "measurements": [
+    {
+      "N": 1,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "internal_aggregation_nodes": 0,
+        "leaf_individual_proofs": 1,
+        "tree_depth": 0
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 23581,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 45807,
+      "proof_design": "RECURSIVE_BINARY_TREE",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 356,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 25190,
+        "uniform_64": 43784,
+        "uniform_96": 55176
+      },
+      "public_only_calldata_nonzero_bytes": 21,
+      "public_only_calldata_zero_bytes": 335,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 1,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "internal_aggregation_nodes": 0,
+        "leaf_individual_proofs": 1,
+        "tree_depth": 0
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 23581,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 45807,
+      "proof_design": "RECURSIVE_BINARY_TREE",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 356,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 25190,
+        "uniform_64": 43784,
+        "uniform_96": 55176
+      },
+      "public_only_calldata_nonzero_bytes": 21,
+      "public_only_calldata_zero_bytes": 335,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 1,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "outer_relation_depth": 1,
+        "outer_relation_individual_verifications": 1
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 23581,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 45807,
+      "proof_design": "FLAT_OUTER_PROOF",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 356,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 25190,
+        "uniform_64": 43784,
+        "uniform_96": 55176
+      },
+      "public_only_calldata_nonzero_bytes": 21,
+      "public_only_calldata_zero_bytes": 335,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 1,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "outer_relation_depth": 1,
+        "outer_relation_individual_verifications": 1
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 23581,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 45807,
+      "proof_design": "FLAT_OUTER_PROOF",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 356,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 25190,
+        "uniform_64": 43784,
+        "uniform_96": 55176
+      },
+      "public_only_calldata_nonzero_bytes": 21,
+      "public_only_calldata_zero_bytes": 335,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 1,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "individual_instances_absorbed": 1,
+        "initial_accumulators": 1,
+        "sequential_fold_steps": 0
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 23581,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 45807,
+      "proof_design": "PQ_HIDING_FOLDING",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 356,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 25190,
+        "uniform_64": 43784,
+        "uniform_96": 55176
+      },
+      "public_only_calldata_nonzero_bytes": 21,
+      "public_only_calldata_zero_bytes": 335,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 1,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "individual_instances_absorbed": 1,
+        "initial_accumulators": 1,
+        "sequential_fold_steps": 0
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 23581,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 45807,
+      "proof_design": "PQ_HIDING_FOLDING",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 356,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 25190,
+        "uniform_64": 43784,
+        "uniform_96": 55176
+      },
+      "public_only_calldata_nonzero_bytes": 21,
+      "public_only_calldata_zero_bytes": 335,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 2,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "internal_aggregation_nodes": 1,
+        "leaf_individual_proofs": 2,
+        "tree_depth": 1
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 46682,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 47170,
+      "proof_design": "RECURSIVE_BINARY_TREE",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 580,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 27880,
+        "uniform_64": 58120,
+        "uniform_96": 76680
+      },
+      "public_only_calldata_nonzero_bytes": 36,
+      "public_only_calldata_zero_bytes": 544,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 2,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "internal_aggregation_nodes": 1,
+        "leaf_individual_proofs": 2,
+        "tree_depth": 1
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 46682,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 90970,
+      "proof_design": "RECURSIVE_BINARY_TREE",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 580,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 27880,
+        "uniform_64": 58120,
+        "uniform_96": 76680
+      },
+      "public_only_calldata_nonzero_bytes": 36,
+      "public_only_calldata_zero_bytes": 544,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 2,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "outer_relation_depth": 1,
+        "outer_relation_individual_verifications": 2
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 46682,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 47170,
+      "proof_design": "FLAT_OUTER_PROOF",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 580,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 27880,
+        "uniform_64": 58120,
+        "uniform_96": 76680
+      },
+      "public_only_calldata_nonzero_bytes": 36,
+      "public_only_calldata_zero_bytes": 544,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 2,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "outer_relation_depth": 1,
+        "outer_relation_individual_verifications": 2
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 46682,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 90970,
+      "proof_design": "FLAT_OUTER_PROOF",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 580,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 27880,
+        "uniform_64": 58120,
+        "uniform_96": 76680
+      },
+      "public_only_calldata_nonzero_bytes": 36,
+      "public_only_calldata_zero_bytes": 544,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 2,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "individual_instances_absorbed": 2,
+        "initial_accumulators": 1,
+        "sequential_fold_steps": 1
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 46682,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 47170,
+      "proof_design": "PQ_HIDING_FOLDING",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 580,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 27880,
+        "uniform_64": 58120,
+        "uniform_96": 76680
+      },
+      "public_only_calldata_nonzero_bytes": 36,
+      "public_only_calldata_zero_bytes": 544,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 2,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "individual_instances_absorbed": 2,
+        "initial_accumulators": 1,
+        "sequential_fold_steps": 1
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 46682,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 90970,
+      "proof_design": "PQ_HIDING_FOLDING",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 580,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 27880,
+        "uniform_64": 58120,
+        "uniform_96": 76680
+      },
+      "public_only_calldata_nonzero_bytes": 36,
+      "public_only_calldata_zero_bytes": 544,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 4,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "internal_aggregation_nodes": 3,
+        "leaf_individual_proofs": 4,
+        "tree_depth": 2
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 93374,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 49873,
+      "proof_design": "RECURSIVE_BINARY_TREE",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 1028,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 33260,
+        "uniform_64": 86792,
+        "uniform_96": 119688
+      },
+      "public_only_calldata_nonzero_bytes": 66,
+      "public_only_calldata_zero_bytes": 962,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 4,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "internal_aggregation_nodes": 3,
+        "leaf_individual_proofs": 4,
+        "tree_depth": 2
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 93374,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 181273,
+      "proof_design": "RECURSIVE_BINARY_TREE",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 1028,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 33260,
+        "uniform_64": 86792,
+        "uniform_96": 119688
+      },
+      "public_only_calldata_nonzero_bytes": 66,
+      "public_only_calldata_zero_bytes": 962,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 4,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "outer_relation_depth": 1,
+        "outer_relation_individual_verifications": 4
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 93374,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 49873,
+      "proof_design": "FLAT_OUTER_PROOF",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 1028,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 33260,
+        "uniform_64": 86792,
+        "uniform_96": 119688
+      },
+      "public_only_calldata_nonzero_bytes": 66,
+      "public_only_calldata_zero_bytes": 962,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 4,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "outer_relation_depth": 1,
+        "outer_relation_individual_verifications": 4
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 93374,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 181273,
+      "proof_design": "FLAT_OUTER_PROOF",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 1028,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 33260,
+        "uniform_64": 86792,
+        "uniform_96": 119688
+      },
+      "public_only_calldata_nonzero_bytes": 66,
+      "public_only_calldata_zero_bytes": 962,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 4,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "individual_instances_absorbed": 4,
+        "initial_accumulators": 1,
+        "sequential_fold_steps": 3
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 93374,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 49873,
+      "proof_design": "PQ_HIDING_FOLDING",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 1028,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 33260,
+        "uniform_64": 86792,
+        "uniform_96": 119688
+      },
+      "public_only_calldata_nonzero_bytes": 66,
+      "public_only_calldata_zero_bytes": 962,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 4,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "individual_instances_absorbed": 4,
+        "initial_accumulators": 1,
+        "sequential_fold_steps": 3
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 93374,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 181273,
+      "proof_design": "PQ_HIDING_FOLDING",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 1028,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 33260,
+        "uniform_64": 86792,
+        "uniform_96": 119688
+      },
+      "public_only_calldata_nonzero_bytes": 66,
+      "public_only_calldata_zero_bytes": 962,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 8,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "internal_aggregation_nodes": 7,
+        "leaf_individual_proofs": 8,
+        "tree_depth": 3
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 188787,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 55256,
+      "proof_design": "RECURSIVE_BINARY_TREE",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 1924,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 44020,
+        "uniform_64": 144136,
+        "uniform_96": 205704
+      },
+      "public_only_calldata_nonzero_bytes": 126,
+      "public_only_calldata_zero_bytes": 1798,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 8,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "internal_aggregation_nodes": 7,
+        "leaf_individual_proofs": 8,
+        "tree_depth": 3
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 188787,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 361856,
+      "proof_design": "RECURSIVE_BINARY_TREE",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 1924,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 44020,
+        "uniform_64": 144136,
+        "uniform_96": 205704
+      },
+      "public_only_calldata_nonzero_bytes": 126,
+      "public_only_calldata_zero_bytes": 1798,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 8,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "outer_relation_depth": 1,
+        "outer_relation_individual_verifications": 8
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 188787,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 55256,
+      "proof_design": "FLAT_OUTER_PROOF",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 1924,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 44020,
+        "uniform_64": 144136,
+        "uniform_96": 205704
+      },
+      "public_only_calldata_nonzero_bytes": 126,
+      "public_only_calldata_zero_bytes": 1798,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 8,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "outer_relation_depth": 1,
+        "outer_relation_individual_verifications": 8
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 188787,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 361856,
+      "proof_design": "FLAT_OUTER_PROOF",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 1924,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 44020,
+        "uniform_64": 144136,
+        "uniform_96": 205704
+      },
+      "public_only_calldata_nonzero_bytes": 126,
+      "public_only_calldata_zero_bytes": 1798,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 8,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "individual_instances_absorbed": 8,
+        "initial_accumulators": 1,
+        "sequential_fold_steps": 7
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 188787,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 55256,
+      "proof_design": "PQ_HIDING_FOLDING",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 1924,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 44020,
+        "uniform_64": 144136,
+        "uniform_96": 205704
+      },
+      "public_only_calldata_nonzero_bytes": 126,
+      "public_only_calldata_zero_bytes": 1798,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 8,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "individual_instances_absorbed": 8,
+        "initial_accumulators": 1,
+        "sequential_fold_steps": 7
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 188787,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 361856,
+      "proof_design": "PQ_HIDING_FOLDING",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 1924,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 44020,
+        "uniform_64": 144136,
+        "uniform_96": 205704
+      },
+      "public_only_calldata_nonzero_bytes": 126,
+      "public_only_calldata_zero_bytes": 1798,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 16,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "internal_aggregation_nodes": 15,
+        "leaf_individual_proofs": 16,
+        "tree_depth": 4
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 387798,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 65999,
+      "proof_design": "RECURSIVE_BINARY_TREE",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 3716,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 65540,
+        "uniform_64": 258824,
+        "uniform_96": 377736
+      },
+      "public_only_calldata_nonzero_bytes": 246,
+      "public_only_calldata_zero_bytes": 3470,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 16,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "internal_aggregation_nodes": 15,
+        "leaf_individual_proofs": 16,
+        "tree_depth": 4
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 387798,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 722999,
+      "proof_design": "RECURSIVE_BINARY_TREE",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 3716,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 65540,
+        "uniform_64": 258824,
+        "uniform_96": 377736
+      },
+      "public_only_calldata_nonzero_bytes": 246,
+      "public_only_calldata_zero_bytes": 3470,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 16,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "outer_relation_depth": 1,
+        "outer_relation_individual_verifications": 16
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 387798,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 65999,
+      "proof_design": "FLAT_OUTER_PROOF",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 3716,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 65540,
+        "uniform_64": 258824,
+        "uniform_96": 377736
+      },
+      "public_only_calldata_nonzero_bytes": 246,
+      "public_only_calldata_zero_bytes": 3470,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 16,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "outer_relation_depth": 1,
+        "outer_relation_individual_verifications": 16
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 387798,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 722999,
+      "proof_design": "FLAT_OUTER_PROOF",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 3716,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 65540,
+        "uniform_64": 258824,
+        "uniform_96": 377736
+      },
+      "public_only_calldata_nonzero_bytes": 246,
+      "public_only_calldata_zero_bytes": 3470,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 16,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "individual_instances_absorbed": 16,
+        "initial_accumulators": 1,
+        "sequential_fold_steps": 15
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 387798,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 65999,
+      "proof_design": "PQ_HIDING_FOLDING",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 3716,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 65540,
+        "uniform_64": 258824,
+        "uniform_96": 377736
+      },
+      "public_only_calldata_nonzero_bytes": 246,
+      "public_only_calldata_zero_bytes": 3470,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 16,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "individual_instances_absorbed": 16,
+        "initial_accumulators": 1,
+        "sequential_fold_steps": 15
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 387798,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 722999,
+      "proof_design": "PQ_HIDING_FOLDING",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 3716,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 65540,
+        "uniform_64": 258824,
+        "uniform_96": 377736
+      },
+      "public_only_calldata_nonzero_bytes": 246,
+      "public_only_calldata_zero_bytes": 3470,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 32,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "internal_aggregation_nodes": 31,
+        "leaf_individual_proofs": 32,
+        "tree_depth": 5
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 818629,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 87462,
+      "proof_design": "RECURSIVE_BINARY_TREE",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 7300,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 108580,
+        "uniform_64": 488200,
+        "uniform_96": 721800
+      },
+      "public_only_calldata_nonzero_bytes": 486,
+      "public_only_calldata_zero_bytes": 6814,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 32,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "internal_aggregation_nodes": 31,
+        "leaf_individual_proofs": 32,
+        "tree_depth": 5
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 818629,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 1445262,
+      "proof_design": "RECURSIVE_BINARY_TREE",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 7300,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 108580,
+        "uniform_64": 488200,
+        "uniform_96": 721800
+      },
+      "public_only_calldata_nonzero_bytes": 486,
+      "public_only_calldata_zero_bytes": 6814,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 32,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "outer_relation_depth": 1,
+        "outer_relation_individual_verifications": 32
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 818629,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 87462,
+      "proof_design": "FLAT_OUTER_PROOF",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 7300,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 108580,
+        "uniform_64": 488200,
+        "uniform_96": 721800
+      },
+      "public_only_calldata_nonzero_bytes": 486,
+      "public_only_calldata_zero_bytes": 6814,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 32,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "outer_relation_depth": 1,
+        "outer_relation_individual_verifications": 32
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 818629,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 1445262,
+      "proof_design": "FLAT_OUTER_PROOF",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 7300,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 108580,
+        "uniform_64": 488200,
+        "uniform_96": 721800
+      },
+      "public_only_calldata_nonzero_bytes": 486,
+      "public_only_calldata_zero_bytes": 6814,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 32,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "individual_instances_absorbed": 32,
+        "initial_accumulators": 1,
+        "sequential_fold_steps": 31
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 818629,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 87462,
+      "proof_design": "PQ_HIDING_FOLDING",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 7300,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 108580,
+        "uniform_64": 488200,
+        "uniform_96": 721800
+      },
+      "public_only_calldata_nonzero_bytes": 486,
+      "public_only_calldata_zero_bytes": 6814,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 32,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "individual_instances_absorbed": 32,
+        "initial_accumulators": 1,
+        "sequential_fold_steps": 31
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 818629,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 1445262,
+      "proof_design": "PQ_HIDING_FOLDING",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 7300,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 108580,
+        "uniform_64": 488200,
+        "uniform_96": 721800
+      },
+      "public_only_calldata_nonzero_bytes": 486,
+      "public_only_calldata_zero_bytes": 6814,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 64,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "internal_aggregation_nodes": 63,
+        "leaf_individual_proofs": 64,
+        "tree_depth": 6
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 1811596,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 130365,
+      "proof_design": "RECURSIVE_BINARY_TREE",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 14468,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 194660,
+        "uniform_64": 946952,
+        "uniform_96": 1409928
+      },
+      "public_only_calldata_nonzero_bytes": 966,
+      "public_only_calldata_zero_bytes": 13502,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 64,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "internal_aggregation_nodes": 63,
+        "leaf_individual_proofs": 64,
+        "tree_depth": 6
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 1811596,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 2889765,
+      "proof_design": "RECURSIVE_BINARY_TREE",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 14468,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 194660,
+        "uniform_64": 946952,
+        "uniform_96": 1409928
+      },
+      "public_only_calldata_nonzero_bytes": 966,
+      "public_only_calldata_zero_bytes": 13502,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 64,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "outer_relation_depth": 1,
+        "outer_relation_individual_verifications": 64
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 1811596,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 130365,
+      "proof_design": "FLAT_OUTER_PROOF",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 14468,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 194660,
+        "uniform_64": 946952,
+        "uniform_96": 1409928
+      },
+      "public_only_calldata_nonzero_bytes": 966,
+      "public_only_calldata_zero_bytes": 13502,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 64,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "outer_relation_depth": 1,
+        "outer_relation_individual_verifications": 64
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 1811596,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 2889765,
+      "proof_design": "FLAT_OUTER_PROOF",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 14468,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 194660,
+        "uniform_64": 946952,
+        "uniform_96": 1409928
+      },
+      "public_only_calldata_nonzero_bytes": 966,
+      "public_only_calldata_zero_bytes": 13502,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    },
+    {
+      "N": 64,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "individual_instances_absorbed": 64,
+        "initial_accumulators": 1,
+        "sequential_fold_steps": 63
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 1811596,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 130365,
+      "proof_design": "PQ_HIDING_FOLDING",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 14468,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 194660,
+        "uniform_64": 946952,
+        "uniform_96": 1409928
+      },
+      "public_only_calldata_nonzero_bytes": 966,
+      "public_only_calldata_zero_bytes": 13502,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "SAME_USER_MULTI_NOTE",
+      "verifier_gas": null
+    },
+    {
+      "N": 64,
+      "aggregate_peak_rss_bytes": null,
+      "aggregate_proving_time_ms": null,
+      "aggregate_verification_time_ms": null,
+      "component_status": "PASS_EXACT_ISOLATED_FOUNDRY_COMPONENTS",
+      "design_structure": {
+        "class": "EXACT_COMBINATORIAL_STRUCTURE_NOT_PROOF_BENCHMARK",
+        "individual_instances_absorbed": 64,
+        "initial_accumulators": 1,
+        "sequential_fold_steps": 63
+      },
+      "failure_recovery_gas": null,
+      "full_calldata_bytes": null,
+      "full_calldata_nonzero_bytes": null,
+      "full_calldata_zero_bytes": null,
+      "gas_per_withdrawal": null,
+      "gate": "STOP_BY_DEPENDENCY",
+      "minimum_economical_N": null,
+      "nullifier_component_gas": 1811596,
+      "outer_proof_bytes": null,
+      "outer_proof_bytes_status": "NOT_EVALUATED_NO_ACCEPTED_HIDING_INNER_PROOF",
+      "payout_component_gas": 2889765,
+      "proof_design": "PQ_HIDING_FOLDING",
+      "proof_metrics_status": "NOT_EVALUATED",
+      "public_only_calldata_bytes": 14468,
+      "public_only_calldata_floors": {
+        "active_eip7623_10_40": 194660,
+        "uniform_64": 946952,
+        "uniform_96": 1409928
+      },
+      "public_only_calldata_nonzero_bytes": 966,
+      "public_only_calldata_zero_bytes": 13502,
+      "settlement_execution_gas": null,
+      "successful_pull_claim_gas": 32656,
+      "total_gas": {
+        "active_eip7623_10_40": null,
+        "uniform_64": null,
+        "uniform_96": null
+      },
+      "total_reason": "MISSING_ACCEPTED_HIDING_INNER_AND_OUTER_PROOF_METRICS; COMPONENTS_ARE_NOT_ADDITIVE_FULL_SETTLEMENT",
+      "user_topology": "UNRELATED_USERS",
+      "verifier_gas": null
+    }
+  ],
+  "payout_policy": "PULL_PAYMENTS; ATOMIC_VERIFY_AND_CREDIT; CLAIM_FAILURE_RETAINS_CREDIT",
+  "privacy_architecture": {
+    "aggregator_forbidden_input": [
+      "NOTE_SECRET",
+      "MERKLE_PATH",
+      "TRAPDOOR",
+      "RAW_WITNESS"
+    ],
+    "aggregator_input": [
+      "OPAQUE_INDIVIDUAL_PROOF",
+      "PUBLIC_STATEMENT"
+    ],
+    "model_boundary": "SHA256 MODEL TOKENS ARE NOT PROOFS OR ZK EVIDENCE",
+    "settlement": "ONE_TRANSACTION_CONSUMES_N_NULLIFIERS_AND_CREATES_N_PULL_PAYOUTS",
+    "user": "GENERATES_INDIVIDUAL_ZERO_KNOWLEDGE_PROOF_LOCALLY"
+  },
+  "proof_designs": [
+    "RECURSIVE_BINARY_TREE",
+    "FLAT_OUTER_PROOF",
+    "PQ_HIDING_FOLDING"
+  ],
+  "recovery": {
+    "bad_individual_proof": "REJECT_BEFORE_BATCH; KEEP_OTHER_PROOFS",
+    "failed_outer_or_raced_nullifier": "ATOMIC_REVERT; REBUILD_EXCLUDING_BAD_OR_SPENT_ENTRY",
+    "failed_payout": "PULL_CREDIT_REMAINS; PAYEE_RETRIES CLAIM",
+    "ordering": "CANONICAL SORT MAKES BATCH_ID UNIQUE FOR A SET; DUPLICATE KEYS REJECTED",
+    "unfilled_or_censored": "NONEXCLUSIVE_NONCUSTODIAL_SUBMISSION_TO_ANOTHER_AGGREGATOR_OR_INDIVIDUAL_PATH"
+  },
+  "safety": [
+    {
+      "N": 1,
+      "attacks_rejected": [
+        "replay_or_spent_nullifier",
+        "alter_recipient",
+        "alter_relayer",
+        "alter_fee",
+        "alter_root",
+        "alter_nullifier",
+        "unfilled_threshold",
+        "rejecting_receiver_claim"
+      ],
+      "bad_proof_recovery": "BAD_SUBMISSION_EXCLUDED; GOOD_PROOFS_REMAIN_REBATCHABLE",
+      "censorship_recovery": "SAME_PROOF_PACKAGE_ACCEPTED_BY_SECOND_PERMISSIONLESS_AGGREGATOR",
+      "front_run_result": "CALLER_CANNOT_REDIRECT_BOUND_PULL_CREDITS",
+      "model_result": "PASS",
+      "payout_failure": "FAILED_PULL_CLAIM_RETAINS_CREDIT_FOR_RETRY",
+      "privacy_boundary": "AGGREGATOR_API_RECEIVED_PROOF_SUBMISSION_ONLY",
+      "proof_metadata_linkage": "NOT_EVALUATED_NO_ACCEPTED_ZERO_KNOWLEDGE_PROOF",
+      "unfilled_batch_exit": "NONCUSTODIAL_SUBMISSION; USER_RETAINS_INDIVIDUAL_PATH",
+      "user_topology": "SAME_USER_MULTI_NOTE"
+    },
+    {
+      "N": 1,
+      "attacks_rejected": [
+        "replay_or_spent_nullifier",
+        "alter_recipient",
+        "alter_relayer",
+        "alter_fee",
+        "alter_root",
+        "alter_nullifier",
+        "unfilled_threshold",
+        "rejecting_receiver_claim"
+      ],
+      "bad_proof_recovery": "BAD_SUBMISSION_EXCLUDED; GOOD_PROOFS_REMAIN_REBATCHABLE",
+      "censorship_recovery": "SAME_PROOF_PACKAGE_ACCEPTED_BY_SECOND_PERMISSIONLESS_AGGREGATOR",
+      "front_run_result": "CALLER_CANNOT_REDIRECT_BOUND_PULL_CREDITS",
+      "model_result": "PASS",
+      "payout_failure": "FAILED_PULL_CLAIM_RETAINS_CREDIT_FOR_RETRY",
+      "privacy_boundary": "AGGREGATOR_API_RECEIVED_PROOF_SUBMISSION_ONLY",
+      "proof_metadata_linkage": "NOT_EVALUATED_NO_ACCEPTED_ZERO_KNOWLEDGE_PROOF",
+      "unfilled_batch_exit": "NONCUSTODIAL_SUBMISSION; USER_RETAINS_INDIVIDUAL_PATH",
+      "user_topology": "UNRELATED_USERS"
+    },
+    {
+      "N": 2,
+      "attacks_rejected": [
+        "replay_or_spent_nullifier",
+        "alter_recipient",
+        "alter_relayer",
+        "alter_fee",
+        "alter_root",
+        "alter_nullifier",
+        "noncanonical_order",
+        "duplicate_nullifier_before_payout",
+        "unfilled_threshold",
+        "rejecting_receiver_claim"
+      ],
+      "bad_proof_recovery": "BAD_SUBMISSION_EXCLUDED; GOOD_PROOFS_REMAIN_REBATCHABLE",
+      "censorship_recovery": "SAME_PROOF_PACKAGE_ACCEPTED_BY_SECOND_PERMISSIONLESS_AGGREGATOR",
+      "front_run_result": "CALLER_CANNOT_REDIRECT_BOUND_PULL_CREDITS",
+      "model_result": "PASS",
+      "payout_failure": "FAILED_PULL_CLAIM_RETAINS_CREDIT_FOR_RETRY",
+      "privacy_boundary": "AGGREGATOR_API_RECEIVED_PROOF_SUBMISSION_ONLY",
+      "proof_metadata_linkage": "NOT_EVALUATED_NO_ACCEPTED_ZERO_KNOWLEDGE_PROOF",
+      "unfilled_batch_exit": "NONCUSTODIAL_SUBMISSION; USER_RETAINS_INDIVIDUAL_PATH",
+      "user_topology": "SAME_USER_MULTI_NOTE"
+    },
+    {
+      "N": 2,
+      "attacks_rejected": [
+        "replay_or_spent_nullifier",
+        "alter_recipient",
+        "alter_relayer",
+        "alter_fee",
+        "alter_root",
+        "alter_nullifier",
+        "noncanonical_order",
+        "duplicate_nullifier_before_payout",
+        "unfilled_threshold",
+        "rejecting_receiver_claim"
+      ],
+      "bad_proof_recovery": "BAD_SUBMISSION_EXCLUDED; GOOD_PROOFS_REMAIN_REBATCHABLE",
+      "censorship_recovery": "SAME_PROOF_PACKAGE_ACCEPTED_BY_SECOND_PERMISSIONLESS_AGGREGATOR",
+      "front_run_result": "CALLER_CANNOT_REDIRECT_BOUND_PULL_CREDITS",
+      "model_result": "PASS",
+      "payout_failure": "FAILED_PULL_CLAIM_RETAINS_CREDIT_FOR_RETRY",
+      "privacy_boundary": "AGGREGATOR_API_RECEIVED_PROOF_SUBMISSION_ONLY",
+      "proof_metadata_linkage": "NOT_EVALUATED_NO_ACCEPTED_ZERO_KNOWLEDGE_PROOF",
+      "unfilled_batch_exit": "NONCUSTODIAL_SUBMISSION; USER_RETAINS_INDIVIDUAL_PATH",
+      "user_topology": "UNRELATED_USERS"
+    },
+    {
+      "N": 4,
+      "attacks_rejected": [
+        "replay_or_spent_nullifier",
+        "alter_recipient",
+        "alter_relayer",
+        "alter_fee",
+        "alter_root",
+        "alter_nullifier",
+        "noncanonical_order",
+        "duplicate_nullifier_before_payout",
+        "unfilled_threshold",
+        "rejecting_receiver_claim"
+      ],
+      "bad_proof_recovery": "BAD_SUBMISSION_EXCLUDED; GOOD_PROOFS_REMAIN_REBATCHABLE",
+      "censorship_recovery": "SAME_PROOF_PACKAGE_ACCEPTED_BY_SECOND_PERMISSIONLESS_AGGREGATOR",
+      "front_run_result": "CALLER_CANNOT_REDIRECT_BOUND_PULL_CREDITS",
+      "model_result": "PASS",
+      "payout_failure": "FAILED_PULL_CLAIM_RETAINS_CREDIT_FOR_RETRY",
+      "privacy_boundary": "AGGREGATOR_API_RECEIVED_PROOF_SUBMISSION_ONLY",
+      "proof_metadata_linkage": "NOT_EVALUATED_NO_ACCEPTED_ZERO_KNOWLEDGE_PROOF",
+      "unfilled_batch_exit": "NONCUSTODIAL_SUBMISSION; USER_RETAINS_INDIVIDUAL_PATH",
+      "user_topology": "SAME_USER_MULTI_NOTE"
+    },
+    {
+      "N": 4,
+      "attacks_rejected": [
+        "replay_or_spent_nullifier",
+        "alter_recipient",
+        "alter_relayer",
+        "alter_fee",
+        "alter_root",
+        "alter_nullifier",
+        "noncanonical_order",
+        "duplicate_nullifier_before_payout",
+        "unfilled_threshold",
+        "rejecting_receiver_claim"
+      ],
+      "bad_proof_recovery": "BAD_SUBMISSION_EXCLUDED; GOOD_PROOFS_REMAIN_REBATCHABLE",
+      "censorship_recovery": "SAME_PROOF_PACKAGE_ACCEPTED_BY_SECOND_PERMISSIONLESS_AGGREGATOR",
+      "front_run_result": "CALLER_CANNOT_REDIRECT_BOUND_PULL_CREDITS",
+      "model_result": "PASS",
+      "payout_failure": "FAILED_PULL_CLAIM_RETAINS_CREDIT_FOR_RETRY",
+      "privacy_boundary": "AGGREGATOR_API_RECEIVED_PROOF_SUBMISSION_ONLY",
+      "proof_metadata_linkage": "NOT_EVALUATED_NO_ACCEPTED_ZERO_KNOWLEDGE_PROOF",
+      "unfilled_batch_exit": "NONCUSTODIAL_SUBMISSION; USER_RETAINS_INDIVIDUAL_PATH",
+      "user_topology": "UNRELATED_USERS"
+    },
+    {
+      "N": 8,
+      "attacks_rejected": [
+        "replay_or_spent_nullifier",
+        "alter_recipient",
+        "alter_relayer",
+        "alter_fee",
+        "alter_root",
+        "alter_nullifier",
+        "noncanonical_order",
+        "duplicate_nullifier_before_payout",
+        "unfilled_threshold",
+        "rejecting_receiver_claim"
+      ],
+      "bad_proof_recovery": "BAD_SUBMISSION_EXCLUDED; GOOD_PROOFS_REMAIN_REBATCHABLE",
+      "censorship_recovery": "SAME_PROOF_PACKAGE_ACCEPTED_BY_SECOND_PERMISSIONLESS_AGGREGATOR",
+      "front_run_result": "CALLER_CANNOT_REDIRECT_BOUND_PULL_CREDITS",
+      "model_result": "PASS",
+      "payout_failure": "FAILED_PULL_CLAIM_RETAINS_CREDIT_FOR_RETRY",
+      "privacy_boundary": "AGGREGATOR_API_RECEIVED_PROOF_SUBMISSION_ONLY",
+      "proof_metadata_linkage": "NOT_EVALUATED_NO_ACCEPTED_ZERO_KNOWLEDGE_PROOF",
+      "unfilled_batch_exit": "NONCUSTODIAL_SUBMISSION; USER_RETAINS_INDIVIDUAL_PATH",
+      "user_topology": "SAME_USER_MULTI_NOTE"
+    },
+    {
+      "N": 8,
+      "attacks_rejected": [
+        "replay_or_spent_nullifier",
+        "alter_recipient",
+        "alter_relayer",
+        "alter_fee",
+        "alter_root",
+        "alter_nullifier",
+        "noncanonical_order",
+        "duplicate_nullifier_before_payout",
+        "unfilled_threshold",
+        "rejecting_receiver_claim"
+      ],
+      "bad_proof_recovery": "BAD_SUBMISSION_EXCLUDED; GOOD_PROOFS_REMAIN_REBATCHABLE",
+      "censorship_recovery": "SAME_PROOF_PACKAGE_ACCEPTED_BY_SECOND_PERMISSIONLESS_AGGREGATOR",
+      "front_run_result": "CALLER_CANNOT_REDIRECT_BOUND_PULL_CREDITS",
+      "model_result": "PASS",
+      "payout_failure": "FAILED_PULL_CLAIM_RETAINS_CREDIT_FOR_RETRY",
+      "privacy_boundary": "AGGREGATOR_API_RECEIVED_PROOF_SUBMISSION_ONLY",
+      "proof_metadata_linkage": "NOT_EVALUATED_NO_ACCEPTED_ZERO_KNOWLEDGE_PROOF",
+      "unfilled_batch_exit": "NONCUSTODIAL_SUBMISSION; USER_RETAINS_INDIVIDUAL_PATH",
+      "user_topology": "UNRELATED_USERS"
+    },
+    {
+      "N": 16,
+      "attacks_rejected": [
+        "replay_or_spent_nullifier",
+        "alter_recipient",
+        "alter_relayer",
+        "alter_fee",
+        "alter_root",
+        "alter_nullifier",
+        "noncanonical_order",
+        "duplicate_nullifier_before_payout",
+        "unfilled_threshold",
+        "rejecting_receiver_claim"
+      ],
+      "bad_proof_recovery": "BAD_SUBMISSION_EXCLUDED; GOOD_PROOFS_REMAIN_REBATCHABLE",
+      "censorship_recovery": "SAME_PROOF_PACKAGE_ACCEPTED_BY_SECOND_PERMISSIONLESS_AGGREGATOR",
+      "front_run_result": "CALLER_CANNOT_REDIRECT_BOUND_PULL_CREDITS",
+      "model_result": "PASS",
+      "payout_failure": "FAILED_PULL_CLAIM_RETAINS_CREDIT_FOR_RETRY",
+      "privacy_boundary": "AGGREGATOR_API_RECEIVED_PROOF_SUBMISSION_ONLY",
+      "proof_metadata_linkage": "NOT_EVALUATED_NO_ACCEPTED_ZERO_KNOWLEDGE_PROOF",
+      "unfilled_batch_exit": "NONCUSTODIAL_SUBMISSION; USER_RETAINS_INDIVIDUAL_PATH",
+      "user_topology": "SAME_USER_MULTI_NOTE"
+    },
+    {
+      "N": 16,
+      "attacks_rejected": [
+        "replay_or_spent_nullifier",
+        "alter_recipient",
+        "alter_relayer",
+        "alter_fee",
+        "alter_root",
+        "alter_nullifier",
+        "noncanonical_order",
+        "duplicate_nullifier_before_payout",
+        "unfilled_threshold",
+        "rejecting_receiver_claim"
+      ],
+      "bad_proof_recovery": "BAD_SUBMISSION_EXCLUDED; GOOD_PROOFS_REMAIN_REBATCHABLE",
+      "censorship_recovery": "SAME_PROOF_PACKAGE_ACCEPTED_BY_SECOND_PERMISSIONLESS_AGGREGATOR",
+      "front_run_result": "CALLER_CANNOT_REDIRECT_BOUND_PULL_CREDITS",
+      "model_result": "PASS",
+      "payout_failure": "FAILED_PULL_CLAIM_RETAINS_CREDIT_FOR_RETRY",
+      "privacy_boundary": "AGGREGATOR_API_RECEIVED_PROOF_SUBMISSION_ONLY",
+      "proof_metadata_linkage": "NOT_EVALUATED_NO_ACCEPTED_ZERO_KNOWLEDGE_PROOF",
+      "unfilled_batch_exit": "NONCUSTODIAL_SUBMISSION; USER_RETAINS_INDIVIDUAL_PATH",
+      "user_topology": "UNRELATED_USERS"
+    },
+    {
+      "N": 32,
+      "attacks_rejected": [
+        "replay_or_spent_nullifier",
+        "alter_recipient",
+        "alter_relayer",
+        "alter_fee",
+        "alter_root",
+        "alter_nullifier",
+        "noncanonical_order",
+        "duplicate_nullifier_before_payout",
+        "unfilled_threshold",
+        "rejecting_receiver_claim"
+      ],
+      "bad_proof_recovery": "BAD_SUBMISSION_EXCLUDED; GOOD_PROOFS_REMAIN_REBATCHABLE",
+      "censorship_recovery": "SAME_PROOF_PACKAGE_ACCEPTED_BY_SECOND_PERMISSIONLESS_AGGREGATOR",
+      "front_run_result": "CALLER_CANNOT_REDIRECT_BOUND_PULL_CREDITS",
+      "model_result": "PASS",
+      "payout_failure": "FAILED_PULL_CLAIM_RETAINS_CREDIT_FOR_RETRY",
+      "privacy_boundary": "AGGREGATOR_API_RECEIVED_PROOF_SUBMISSION_ONLY",
+      "proof_metadata_linkage": "NOT_EVALUATED_NO_ACCEPTED_ZERO_KNOWLEDGE_PROOF",
+      "unfilled_batch_exit": "NONCUSTODIAL_SUBMISSION; USER_RETAINS_INDIVIDUAL_PATH",
+      "user_topology": "SAME_USER_MULTI_NOTE"
+    },
+    {
+      "N": 32,
+      "attacks_rejected": [
+        "replay_or_spent_nullifier",
+        "alter_recipient",
+        "alter_relayer",
+        "alter_fee",
+        "alter_root",
+        "alter_nullifier",
+        "noncanonical_order",
+        "duplicate_nullifier_before_payout",
+        "unfilled_threshold",
+        "rejecting_receiver_claim"
+      ],
+      "bad_proof_recovery": "BAD_SUBMISSION_EXCLUDED; GOOD_PROOFS_REMAIN_REBATCHABLE",
+      "censorship_recovery": "SAME_PROOF_PACKAGE_ACCEPTED_BY_SECOND_PERMISSIONLESS_AGGREGATOR",
+      "front_run_result": "CALLER_CANNOT_REDIRECT_BOUND_PULL_CREDITS",
+      "model_result": "PASS",
+      "payout_failure": "FAILED_PULL_CLAIM_RETAINS_CREDIT_FOR_RETRY",
+      "privacy_boundary": "AGGREGATOR_API_RECEIVED_PROOF_SUBMISSION_ONLY",
+      "proof_metadata_linkage": "NOT_EVALUATED_NO_ACCEPTED_ZERO_KNOWLEDGE_PROOF",
+      "unfilled_batch_exit": "NONCUSTODIAL_SUBMISSION; USER_RETAINS_INDIVIDUAL_PATH",
+      "user_topology": "UNRELATED_USERS"
+    },
+    {
+      "N": 64,
+      "attacks_rejected": [
+        "replay_or_spent_nullifier",
+        "alter_recipient",
+        "alter_relayer",
+        "alter_fee",
+        "alter_root",
+        "alter_nullifier",
+        "noncanonical_order",
+        "duplicate_nullifier_before_payout",
+        "unfilled_threshold",
+        "rejecting_receiver_claim"
+      ],
+      "bad_proof_recovery": "BAD_SUBMISSION_EXCLUDED; GOOD_PROOFS_REMAIN_REBATCHABLE",
+      "censorship_recovery": "SAME_PROOF_PACKAGE_ACCEPTED_BY_SECOND_PERMISSIONLESS_AGGREGATOR",
+      "front_run_result": "CALLER_CANNOT_REDIRECT_BOUND_PULL_CREDITS",
+      "model_result": "PASS",
+      "payout_failure": "FAILED_PULL_CLAIM_RETAINS_CREDIT_FOR_RETRY",
+      "privacy_boundary": "AGGREGATOR_API_RECEIVED_PROOF_SUBMISSION_ONLY",
+      "proof_metadata_linkage": "NOT_EVALUATED_NO_ACCEPTED_ZERO_KNOWLEDGE_PROOF",
+      "unfilled_batch_exit": "NONCUSTODIAL_SUBMISSION; USER_RETAINS_INDIVIDUAL_PATH",
+      "user_topology": "SAME_USER_MULTI_NOTE"
+    },
+    {
+      "N": 64,
+      "attacks_rejected": [
+        "replay_or_spent_nullifier",
+        "alter_recipient",
+        "alter_relayer",
+        "alter_fee",
+        "alter_root",
+        "alter_nullifier",
+        "noncanonical_order",
+        "duplicate_nullifier_before_payout",
+        "unfilled_threshold",
+        "rejecting_receiver_claim"
+      ],
+      "bad_proof_recovery": "BAD_SUBMISSION_EXCLUDED; GOOD_PROOFS_REMAIN_REBATCHABLE",
+      "censorship_recovery": "SAME_PROOF_PACKAGE_ACCEPTED_BY_SECOND_PERMISSIONLESS_AGGREGATOR",
+      "front_run_result": "CALLER_CANNOT_REDIRECT_BOUND_PULL_CREDITS",
+      "model_result": "PASS",
+      "payout_failure": "FAILED_PULL_CLAIM_RETAINS_CREDIT_FOR_RETRY",
+      "privacy_boundary": "AGGREGATOR_API_RECEIVED_PROOF_SUBMISSION_ONLY",
+      "proof_metadata_linkage": "NOT_EVALUATED_NO_ACCEPTED_ZERO_KNOWLEDGE_PROOF",
+      "unfilled_batch_exit": "NONCUSTODIAL_SUBMISSION; USER_RETAINS_INDIVIDUAL_PATH",
+      "user_topology": "UNRELATED_USERS"
+    }
+  ],
+  "scheduling_policies": [
+    "FIXED_WINDOW",
+    "THRESHOLD_TRIGGERED",
+    "PERMISSIONLESS_MULTIPLE_AGGREGATORS"
+  ],
+  "scheduling_results": [
+    {
+      "N": 1,
+      "fixed_window": {
+        "at_deadline": "BUILT",
+        "deadline": 1300,
+        "early_close": "fixed_window_early_close"
+      },
+      "permissionless_multiple_aggregators": "IDENTICAL_CANONICAL_BATCH_FROM_THREE_UNREGISTERED_IDENTITIES",
+      "submission_exclusivity": "NONE",
+      "threshold_triggered": {
+        "at_threshold": "BUILT_IMMEDIATELY",
+        "before_threshold": "threshold_not_met"
+      }
+    },
+    {
+      "N": 2,
+      "fixed_window": {
+        "at_deadline": "BUILT",
+        "deadline": 1300,
+        "early_close": "fixed_window_early_close"
+      },
+      "permissionless_multiple_aggregators": "IDENTICAL_CANONICAL_BATCH_FROM_THREE_UNREGISTERED_IDENTITIES",
+      "submission_exclusivity": "NONE",
+      "threshold_triggered": {
+        "at_threshold": "BUILT_IMMEDIATELY",
+        "before_threshold": "threshold_not_met"
+      }
+    },
+    {
+      "N": 4,
+      "fixed_window": {
+        "at_deadline": "BUILT",
+        "deadline": 1300,
+        "early_close": "fixed_window_early_close"
+      },
+      "permissionless_multiple_aggregators": "IDENTICAL_CANONICAL_BATCH_FROM_THREE_UNREGISTERED_IDENTITIES",
+      "submission_exclusivity": "NONE",
+      "threshold_triggered": {
+        "at_threshold": "BUILT_IMMEDIATELY",
+        "before_threshold": "threshold_not_met"
+      }
+    },
+    {
+      "N": 8,
+      "fixed_window": {
+        "at_deadline": "BUILT",
+        "deadline": 1300,
+        "early_close": "fixed_window_early_close"
+      },
+      "permissionless_multiple_aggregators": "IDENTICAL_CANONICAL_BATCH_FROM_THREE_UNREGISTERED_IDENTITIES",
+      "submission_exclusivity": "NONE",
+      "threshold_triggered": {
+        "at_threshold": "BUILT_IMMEDIATELY",
+        "before_threshold": "threshold_not_met"
+      }
+    },
+    {
+      "N": 16,
+      "fixed_window": {
+        "at_deadline": "BUILT",
+        "deadline": 1300,
+        "early_close": "fixed_window_early_close"
+      },
+      "permissionless_multiple_aggregators": "IDENTICAL_CANONICAL_BATCH_FROM_THREE_UNREGISTERED_IDENTITIES",
+      "submission_exclusivity": "NONE",
+      "threshold_triggered": {
+        "at_threshold": "BUILT_IMMEDIATELY",
+        "before_threshold": "threshold_not_met"
+      }
+    },
+    {
+      "N": 32,
+      "fixed_window": {
+        "at_deadline": "BUILT",
+        "deadline": 1300,
+        "early_close": "fixed_window_early_close"
+      },
+      "permissionless_multiple_aggregators": "IDENTICAL_CANONICAL_BATCH_FROM_THREE_UNREGISTERED_IDENTITIES",
+      "submission_exclusivity": "NONE",
+      "threshold_triggered": {
+        "at_threshold": "BUILT_IMMEDIATELY",
+        "before_threshold": "threshold_not_met"
+      }
+    },
+    {
+      "N": 64,
+      "fixed_window": {
+        "at_deadline": "BUILT",
+        "deadline": 1300,
+        "early_close": "fixed_window_early_close"
+      },
+      "permissionless_multiple_aggregators": "IDENTICAL_CANONICAL_BATCH_FROM_THREE_UNREGISTERED_IDENTITIES",
+      "submission_exclusivity": "NONE",
+      "threshold_triggered": {
+        "at_threshold": "BUILT_IMMEDIATELY",
+        "before_threshold": "threshold_not_met"
+      }
+    }
+  ],
+  "schema": "sp70-aggregation-results-v1",
+  "schema_guard": "PASS_COUNTERFEIT_TOTAL_REJECTED",
+  "status": "STOP_BY_DEPENDENCY",
+  "user_topologies": [
+    "SAME_USER_MULTI_NOTE",
+    "UNRELATED_USERS"
+  ]
+}
