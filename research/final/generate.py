@@ -165,12 +165,94 @@ def spike_section(number: int, title: str, result_card: str, methodology: str,
 """
 
 
+def v03_floor_distributions() -> dict[str, dict[str, float | int]]:
+    records = [json.loads(path.read_text()) for path in sorted((ROOT / "research/runs").glob("v03-*.json"))]
+    if len(records) != 60:
+        raise ValueError("expected exactly 60 retained v03 records")
+    schedules = {
+        "current": "ACTIVE_EIP7623",
+        "64": "FUTURE_EIP7976_64_64",
+        "96": "DRAFT_EIP8311_96_96",
+    }
+    result: dict[str, dict[str, float | int]] = {}
+    for side, field in (("A", "gas_scenarios"), ("B", "part_b_gas_scenarios")):
+        for schedule, name in schedules.items():
+            rows = [next(item for item in record["evm"][field] if item["name"] == name) for record in records]
+            values = sorted(item["total_gas"] for item in rows)
+            result[f"{side}_{schedule}"] = {
+                "p50": (values[29] + values[30]) / 2,
+                "min": values[0],
+                "max": values[-1],
+                "floor_binding_count": sum(bool(item["floor_is_binding"]) for item in rows),
+            }
+    return result
+
+
+def markdown_cell(value: object) -> str:
+    return str(value).replace("|", "/").replace("\n", " ").strip()
+
+
+def negative_measurements(scorecard: dict) -> str:
+    labels = {
+        "proof_bytes": "proof",
+        "abi_calldata": "ABI",
+        "prover_performance_by_hardware": "prover",
+        "evm_gas_by_component": "EVM components",
+        "complete_transaction_gas_three_schedules": "complete tx",
+        "runtime_initcode_deployment_gas": "code/deployment",
+    }
+    summaries = []
+    for key, label in labels.items():
+        metric = scorecard["raw_metrics"][key]
+        value = metric["value"]
+        if isinstance(value, list) and value:
+            run_ids = sorted({str(row.get("source_run_id")) for row in value if isinstance(row, dict) and row.get("source_run_id")})
+            run_note = f"; runs {run_ids[0]}" + (f"…{run_ids[-1]}" if len(run_ids) > 1 else "") if run_ids else ""
+            summaries.append(f"{label}={metric['status']} ({len(value)} rows{run_note})")
+        elif value not in (None, "", [], {}):
+            rendered = markdown_cell(value)
+            summaries.append(f"{label}={metric['status']} ({rendered[:120]})")
+        else:
+            summaries.append(f"{label}={metric['status']}")
+    paths = ", ".join(f"`{item['artifact_path']}`" for item in scorecard["stop_record"]["supporting_data"])
+    return "; ".join(summaries) + f"; sources {paths}"
+
+
+def negative_reason(scorecard: dict) -> str:
+    blockers = scorecard["raw_metrics"]["known_blockers"]["value"] or []
+    concise = [markdown_cell(item) for item in blockers if isinstance(item, str) and len(item) <= 220]
+    reasons = concise[:2] or [markdown_cell(item) for item in scorecard["hard_gate"]["reasons"]]
+    return "; ".join(reasons)
+
+
+def negative_category(scorecard: dict) -> str:
+    applicable = [
+        item["rule"] for item in scorecard["stop_record"]["rule_evaluations"]
+        if item["disposition"] == "APPLIES"
+    ]
+    blockers = scorecard["raw_metrics"]["known_blockers"]["value"] or []
+    corpus = " ".join(applicable + [str(item) for item in blockers] + scorecard["hard_gate"]["reasons"]).lower()
+    tests = (
+        ("security", ("security", "qrom", "cryptographic", "soundness", "transcript")),
+        ("privacy", ("hiding", "privacy", "zero-knowledge", "non-zk", " zk")),
+        ("gas", (" gas", "eip7825", "transaction cap")),
+        ("calldata", ("calldata", "proof floor", "proof bytes")),
+        ("code size", ("code size", "runtime module", "eip170")),
+        ("prover UX", ("prover", "rss", "memory", "cancellation", "recovery")),
+        ("complexity", ("complexity", "custom cryptography", "consensus-critical", "relation destroys")),
+        ("maturity", ("missing", "not implemented", "dependency", "upstream", "maturity", "external review", "no eligible")),
+    )
+    categories = [name for name, needles in tests if any(needle in corpus for needle in needles)]
+    return "/".join(categories or ["maturity"])
+
+
 def build_report() -> str:
     base = load_json("BASE")
     sec = load_json("SEC")
     sp80 = load_json("SP80")
     sp91 = load_json("SP91")
     d = base["distributions"]
+    floors = v03_floor_distributions()
     assert sp80["eligibleCount"] == sp80["finalistCount"] == sp80["prototypeCount"] == 0
     assert sp80["status"] == FRONTIER
     assert sp91["scope"]["reproduced_claim"].startswith(OUTCOME)
@@ -187,7 +269,7 @@ def build_report() -> str:
 - **Deposit cost:** the exact H0 direct deposit measured **13,991,021 execution gas**, above the research deposit UX gate; higher-arity alternatives were stopped. {citation('GAS')} {citation('SP11')}
 - **Proof bytes:** C00 median raw proof and ABI sizes are the values above. They are distributions over fresh retained runs, not worst-case bounds; maximum proof length remains unresolved. {citation('BASE')}
 - **Prover latency/RSS:** C00 H1 warm-only proof wall-time median is **{d['prove_wall_ms']['p50']:,.3f} ms**, p95 **{d['prove_wall_ms']['p95']:,.3f} ms**, and peak-RSS median **{d['peak_rss_bytes']['p50']:,.0f} B**. Cold H1, H2, H3, portability, cancellation, and recovery were not evaluated. {citation('BASE')} {citation('SP73')}
-- **Current/future gas floors:** C00 measured active-schedule totals fail the complete robust gate. The 64- and 96-gas-per-byte scenarios are prospective design scenarios, not active-network receipts; no integrated candidate has exact complete totals under all schedules. {citation('PLAN')} {citation('CP3')}
+- **Current/future gas floors:** the retained C00 records contain computed scenario distributions. Part A current/64/96 p50 is **{floors['A_current']['p50']:,.1f} / {floors['A_64']['p50']:,.1f} / {floors['A_96']['p50']:,.1f} gas** (each range **{floors['A_current']['min']:,.0f}–{floors['A_current']['max']:,.0f}**); Part B is **{floors['B_current']['p50']:,.1f} / {floors['B_64']['p50']:,.1f} / {floors['B_96']['p50']:,.1f} gas** (each range **{floors['B_current']['min']:,.0f}–{floors['B_current']['max']:,.0f}**). The future values are retained computed scenarios, not active-network receipts; all recorded floors were non-binding, and no new integrated candidate has an evaluated distribution. {citation('RUN_INDEX')} {citation('PLAN')}
 - **Code/deployment status:** research components and state harnesses exist, but no integrated finalist/prototype exists and deployment is prohibited. C00 runtime/initcode size checks pass, while its pool internal CREATE measured **18,873,630 gas** and exact top-level deployment remains `NOT_EVALUATED`. {citation('BASE')} {citation('SP80')}
 - **Full-plan decision:** a full new engineering plan is **not warranted**. Only blocker-closing, source-pinned targeted research is warranted.
 - **Three largest unresolved risks:** (1) no externally accepted complete composed security/QROM/structural analysis; (2) no accepted fixed-compression relation feeding a hiding integrated proof; (3) no exact integrated transaction/deployment/prover envelope across required schedules and hardware. {citation('CP4')}
@@ -234,7 +316,7 @@ The chronology therefore ends at a failed reference, not a launch point: later c
         "Keep as frozen negative baseline."),
         "Use the frozen corpus and fixed vectors to produce fresh proofs; report population standard deviation and interpolation percentiles over retained runs.",
         "Pinned Rust prover/verifier plus complete local Foundry pool calls for Part A and Part B; every run retains proof, calldata, gas, and hardware records.",
-        f"Across **{base['run_count']} runs**, raw proof p50 was **{d['raw_proof_bytes']['p50']:,.0f} B** (min **{d['raw_proof_bytes']['min']:,.0f}**, max **{d['raw_proof_bytes']['max']:,.0f}**); ABI p50 **{d['abi_calldata_bytes']['p50']:,.0f} B**; Part-A active-total p50 **{d['a_total']['p50']:,.1f} gas**; Part-B active-total p50 **{d['b_total']['p50']:,.1f} gas**. {citation('BASE')}",
+        f"Across **{base['run_count']} runs**, raw proof p50 was **{d['raw_proof_bytes']['p50']:,.0f} B** (min **{d['raw_proof_bytes']['min']:,.0f}**, max **{d['raw_proof_bytes']['max']:,.0f}**); ABI p50 **{d['abi_calldata_bytes']['p50']:,.0f} B**. Retained computed transaction-scenario p50s for current/64/96 were Part A **{floors['A_current']['p50']:,.1f}/{floors['A_64']['p50']:,.1f}/{floors['A_96']['p50']:,.1f} gas** and Part B **{floors['B_current']['p50']:,.1f}/{floors['B_64']['p50']:,.1f}/{floors['B_96']['p50']:,.1f} gas**; future schedules are computed scenarios, not new receipts. {citation('BASE')} {citation('RUN_INDEX')}",
         f"Proof p95 **{d['raw_proof_bytes']['p95']:,.1f} B**, p99 **{d['raw_proof_bytes']['p99']:,.2f} B**, population σ **{d['raw_proof_bytes']['stddev']:,.2f} B**; Part-A total p95 **{d['a_total']['p95']:,.1f} gas** and Part-B total p95 **{d['b_total']['p95']:,.1f} gas**. These are empirical distributions, not worst-case bounds. {citation('BASE')}",
         f"The reproduced Part-B total median differs from the prior report by -1.036%; cause was not isolated. Deposit matched the report exactly. {citation('BASE')}",
         "Compiler/harness versus proof-variation attribution remains unresolved; second-client coverage is partial and top-level deployment lacks calldata distribution/receipt evidence.",
@@ -278,6 +360,26 @@ The chronology therefore ends at a failed reference, not a launch point: later c
         23: ("SP-01/SP-30/SP-80", "Composed security and cryptanalysis can justify integration.", "All candidate bundles", "Internal methods, structural gate review, source packets and bundle checks.", "External cryptographic acceptance, complete QROM/composition and exact-instance structural review.", "FAIL", "No security-qualified candidate or bundle; internal independent review is explicitly not external cryptographic acceptance. [CP1] [SP80]", [SOURCES["SEC_STATUS"], "research/cryptanalysis/review-packet/status.json", SOURCES["SP80"]]),
         24: ("SP-02", "Pinned advisories and analogous custom paths can be closed.", "Plonky3 and custom Rust/Solidity paths", "Applicability matrix and focused regression runner.", "Malformed-proof panic containment/panic-freedom and independent transcript/shape review.", "FAIL", "Archived failed: the native malformed-proof panic boundary is unresolved; integration remains blocked. [ADVISORY]", [SOURCES["ADVISORY"], "research/advisories/run_regressions.py"]),
     }
+    implementations = {
+        7: "The retained corpus is `research/common-corpus/semantic-cases.json` plus `invalid-mutations.json`, identified by `corpus-manifest.json`; candidate mappings and resulting run IDs are indexed in `research/summaries/run-index.csv`. No post-baseline integrated mapper exists.",
+        8: "Entrypoint `python3 research/candidates/hash-compression-common/run.py` generates/checks the H0–H7 Rust/TypeScript bundle and Solidity anchor harness. The retained profile pins solc 0.8.30, Prague EVM, optimizer enabled with 200 runs, and via-IR; candidate modes and widths are in their manifests.",
+        9: "Entrypoints `python3 research/candidates/merkle-shape/run.py` and `python3 research/candidates/deposit-batching/run.py` execute deterministic models; each package's `ingest-foundry.py` imports isolated Solidity evidence. SP-11 retains binary depth-20 H0 and checks arity variants; SP-12 models bounded batched root transitions.",
+        10: "Dependency checkers `python3 research/candidates/air-geometry/check.py` and `python3 research/candidates/structured-relation/check.py` read all H0–H7 dispositions and SP-02. They emit stopped-state results: A0 is source-reference only, A1–A4 are unattempted, and AIR/R1CS/CCS/Boolean conversions remain unattempted.",
+        11: "Entrypoint `python3 research/cryptanalysis/transcript/run-focused.py` exercises T0–T3 claim/challenge grammars; `python3 research/candidates/verifier-optimization-common/run-focused.py` records V1–V9 isolated Rust/Solidity diagnostics. V9's retained benchmark JSON carries the projection and explicitly leaves `fullPath` not evaluated.",
+        12: "`python3 research/candidates/field-bakeoff-common/generate_packages.py` materializes F0–F5 packages; native kernels are built from `native/Cargo.toml` and Solidity kernels run through `solidity/run_bench.py`. These are field-operation/opened-row diagnostics, not a ported relation.",
+        13: "Entrypoint `python3 research/fri-pareto/run.py` applies `grid.json` to the frozen H0 relation, evaluates the full analytical Cartesian set, and generates two fresh native proofs for each b4-q32, b4-q48, and b3-q111 anchor. `--metadata-only` verifies retained metadata without fresh proofs.",
+        14: "Entrypoint `research/candidates/C20-hvzk-whir/run-focused.sh` builds the lockfile-pinned Rust adapter and runs two fresh HidingWhirPcs upstream smokes at 4,096 logical/padded rows and trace width 12. It deliberately does not map the PQTC relation or call an EVM verifier.",
+        15: "`research/candidates/C30-stir/run-focused.sh` builds/runs the lockfile-pinned TwoAdicStirPcs adapter with ZK=false; `research/candidates/C40-circle/run-focused.sh` and `source-watch.py` validate the pinned CirclePcs API without executing a native proof. Both validators enforce their result schemas.",
+        16: "Entrypoint `python3 research/candidates/C50-spartan-whir/run.py` checks pinned native DirectSparse/Spark controls and the standalone Solidity-WHIR build/tests. It preserves the upstream gas-script failure before measurement and does not synthesize an exact PQTC relation.",
+        17: "Entrypoint `python3 research/candidates/C60-recursion/run.py` executes the pinned recursive Fibonacci architecture control and inspects recursive Keccak, the `--zk` behavior, dependency version, in-circuit WHIR adapter, and EVM availability. The control is labeled upstream/toy, never PQTC.",
+        18: "Entrypoint `python3 research/candidates/C70-flock-veil/run.py` source-checks Flock, runs the exact historical batch-44 attempt without patching the missing Ligerito configuration, and records the VEIL root/MLE/zerocheck upstream PoCs. `batch-capacity.json` preserves source-derived capacity semantics separately from benchmark success.",
+        19: "Entrypoint `python3 research/aggregation/run.py` evaluates `model.py` over N=1,2,4,8,16,32,64 and imports isolated settlement components through `ingest-foundry.py`. The API enforces proof-only aggregation privacy, while all proof/verifier/prover fields stay null without an accepted individual proof.",
+        20: "Entrypoint `python3 research/two-call-state/run.py` executes the transitions, invariants, attacks, and cleanup model from `transitions.json`, `invariants.json`, and `attacks.json`, then binds the Solidity research harness outputs. It records 10/10 modeled attacks while refusing full-path or security qualification.",
+        21: "Entrypoint `python3 research/l2-economics/generate.py` generates signed-size cases and source-limit admission results from `matrix.json`/`sources.json`; `python3 research/economic-throughput/run.py` computes only evidence-backed throughput rows. OP FastLZ inputs are synthetic, and absent Arbitrum/Scroll executables and network receipts remain null.",
+        22: "Entrypoint `python3 research/prover-operations/analyze.py` validates the 60 C00 source records and their 480 declared artifacts, then computes retained H1-warm latency/RSS/storage distributions. `cli-workflow.json` is specification-only; no synthetic H1-cold, H2/H3, cancellation, pressure, or recovery values are emitted.",
+        23: "Entrypoint `python3 research/cryptanalysis/review-packet/assemble.py` assembles the pinned transcript/hash review packet and manifest. It combines the SP-01 calculator, transcript claim graph, structural statuses, and explicit open QROM/MMCS/composition questions; it does not issue cryptographic acceptance.",
+        24: "Entrypoint `python3 research/advisories/run_regressions.py` evaluates the pinned advisory applicability matrix and analogous Rust/Solidity paths, including malformed-proof behavior. The retained `regression-results.json` preserves the unresolved native panic boundary and therefore fails closed.",
+    }
     for n in range(7, 25):
         sid, hyp, cand, completed, omitted, gate, raw, arts = generic[n]
         source_commit = "708adad" if n <= 12 else "6f40453"
@@ -287,7 +389,7 @@ The chronology therefore ends at a failed reference, not a launch point: later c
             "Research/benchmark-only; no custody or deployment authorization.",
             "Close the named blocker only; do not promote."),
             "Apply the plan's common evidence classes and fail closed at missing dependencies.",
-            "Use the committed package checker/model/harness named in its status; no component output is relabeled as an integrated result.",
+            implementations[n],
             raw,
             "Where retained distributions exist, the complete CSV is linked. Otherwise the result is deterministic/status evidence and a confidence interval is not applicable. Missing distributions remain `NOT_EVALUATED`.",
             "C00 is the only complete reference path. Isolated kernels, toy relations, upstream smokes, and projections are not directly comparable to its complete pool calls.",
@@ -295,17 +397,29 @@ The chronology therefore ends at a failed reference, not a launch point: later c
             omitted,
             "The gate result applies to this spike. A local pass or useful negative control cannot satisfy integration, security, transaction, or product gates.",
             arts))
+    minimum_rows = "\n".join(
+        f"| {row['candidate_id']} | {row['hash_relation']} | {row['air_r1cs']} | {row['backend']} | {row['required_status']} |"
+        for row in read_csv("MINIMUM")
+    )
 
     parts.append(f"""## 25. Candidate Pareto frontiers
 
 Hard gates precede weighted scores. With zero eligible candidates there is no promotable Pareto winner; the complete machine-readable tables are `research/summaries/*.csv` and the eight complete axes are in `research/report-synthesis/pareto/`. {citation('SP90')}
 
+### Minimum candidate matrix
+
+All required plan rows are retained even where evaluation stopped by a justified dependency failure. {citation('MINIMUM')}
+
+| Candidate | Hash relation | AIR/R1CS | Backend | Required status |
+|---|---|---|---|---|
+{minimum_rows}
+
 ### Candidate master table
 
 | Candidate | Hash | AIR/R1CS | PCS | ZK | Accepted security | Proof B | Tx gas current | Tx gas 64 | Tx gas 96 | Deposit gas | Prove p50 | RSS | Runtime max | Gate |
 |---|---|---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| C00 [BASE] | P2BB512 | horizontal AIR | hiding FRI q32 | yes | no | {d['raw_proof_bytes']['p50']:,.0f} median | {d['a_total']['p50']:,.1f} Part A median | NOT_EVALUATED | NOT_EVALUATED | 13,991,021 | {d['prove_wall_ms']['p50']:,.3f} ms | {d['peak_rss_bytes']['p50']:,.0f} B median | 17,827 B | FAIL |
-| C10-fri [SP50] | frozen H0 | frozen AIR | hiding FRI sweep | yes | no | representative complete CSV | projected only | projected only | projected only | NOT_EVALUATED | anchor CSV | anchor CSV | NOT_EVALUATED | FAIL |
+| C00 [RUN_INDEX] | P2BB512 | horizontal AIR | hiding FRI q32 | yes | no | {d['raw_proof_bytes']['p50']:,.0f} median | A {floors['A_current']['min']:,.0f}/{floors['A_current']['p50']:,.1f}/{floors['A_current']['max']:,.0f}; B {floors['B_current']['min']:,.0f}/{floors['B_current']['p50']:,.1f}/{floors['B_current']['max']:,.0f} min/p50/max | A {floors['A_64']['min']:,.0f}/{floors['A_64']['p50']:,.1f}/{floors['A_64']['max']:,.0f}; B {floors['B_64']['min']:,.0f}/{floors['B_64']['p50']:,.1f}/{floors['B_64']['max']:,.0f} computed min/p50/max | A {floors['A_96']['min']:,.0f}/{floors['A_96']['p50']:,.1f}/{floors['A_96']['max']:,.0f}; B {floors['B_96']['min']:,.0f}/{floors['B_96']['p50']:,.1f}/{floors['B_96']['max']:,.0f} computed min/p50/max | 13,991,021 | {d['prove_wall_ms']['p50']:,.3f} ms | {d['peak_rss_bytes']['p50']:,.0f} B median | 17,827 B | FAIL |
+| C10-fri [SP50] | frozen H0 | frozen AIR | hiding FRI sweep | yes | no | representative complete CSV | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | anchor CSV | anchor CSV | NOT_EVALUATED | FAIL |
 | C20 [SP51] | upstream synthetic | upstream smoke | HidingWhirPcs | yes | no | 36,767 anchor-scale | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | 5.562 ms anchor-scale | 6,389,760 B | NOT_EVALUATED | DEFERRED |
 | Bundles A–F [SP80] | mixed | mixed | mixed | required | no | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | FAIL |
 
@@ -321,16 +435,16 @@ Hard gates precede weighted scores. With zero eligible candidates there is no pr
 
 | Candidate | Parse/transcript | AIR/R1CS | Openings | LDT/PCS | MMCS | State/payout | Calldata | Floor binding? | Total |
 |---|---:|---:|---:|---:|---:|---:|---:|---|---:|
-| C00 Part A [BASE] | component ledger linked | component ledger linked | component ledger linked | component ledger linked | component ledger linked | included | exact measured ABI | active execution-bound; future not evaluated | {d['a_total']['p50']:,.1f} median |
-| C00 Part B [BASE] | component ledger linked | component ledger linked | component ledger linked | component ledger linked | component ledger linked | included | exact measured ABI | active execution-bound; future not evaluated | {d['b_total']['p50']:,.1f} median |
-| V9 [SP31] | isolated only | isolated only | isolated only | isolated only | isolated only | NOT_EVALUATED | projection input | NOT_EVALUATED | NOT_EVALUATED |
+| C00 Part A [RUN_INDEX] | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | no, 0/60 current/64/96 computed-scenario rows | {floors['A_current']['p50']:,.1f} / {floors['A_64']['p50']:,.1f} / {floors['A_96']['p50']:,.1f} current/64/96 p50 |
+| C00 Part B [RUN_INDEX] | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | no, 0/60 current/64/96 computed-scenario rows | {floors['B_current']['p50']:,.1f} / {floors['B_64']['p50']:,.1f} / {floors['B_96']['p50']:,.1f} current/64/96 p50 |
+| V9 [SP31_RESULT] | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED |
 
 ### Proof byte ledger
 
 | Candidate | Header | Statement | Global | Queries | Paths/frontiers | Salts/masks | LDT | Final | ABI overhead | Total |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| C00 [BASE] | complete CSV | complete CSV | complete CSV | complete CSV | frontier NOT_EVALUATED | complete CSV | complete CSV | complete CSV | 668 B median | {d['abi_calldata_bytes']['p50']:,.0f} ABI median |
-| C10-fri q111 representative [PROOF] | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | included | included | included | included | included | NOT_EVALUATED | 484,577 raw anchor |
+| C00 [PROOF] | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | 668 B median | {d['abi_calldata_bytes']['p50']:,.0f} ABI median |
+| C10-fri q111 representative [PROOF] | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | 484,577 raw anchor |
 | Integrated bundles [SP80] | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED | NOT_EVALUATED |
 
 ### Prover table
@@ -359,18 +473,26 @@ No robust two-transaction build is recommended. C00's approximate split is refer
     stopped = []
     for row in read_csv("CANDIDATES"):
         if row["integration_eligible"] != "true":
-            cid = row["candidate_id"]
-            status = row["reported_status"] or row["hard_gate_status"]
-            kind = row["candidate_kind"]
-            category = "security/complexity/maturity"
-            if cid.startswith("V") or cid in {"C00", "C00/v03-baseline", "Bundle-F"}:
-                category = "gas/calldata/code size/security"
-            elif cid in {"C20", "C30", "C40", "C50", "C60", "C70"}:
-                category = "privacy/maturity/complexity"
-            measurements = f"See `{row['scorecard_path']}` and `{row['artifact_path']}`; blank metrics are NOT_EVALUATED"
-            revival = "Revisit only after the named hard-gate blocker has source-pinned evidence and an exact integrated common-protocol run."
-            stopped.append(f"| {cid} | {status} | {kind} | {measurements} | {category} | {revival} |")
-    parts.append("## 29. Rejected/deferred candidates\n\nEvery non-eligible scorecard is retained below; this intentionally preserves negative and deferred work rather than presenting only representative winners. The reason is the reported status/hard gate, the last stage is the scorecard kind, measurements link the complete record, category names the dominant failure class, and revival is explicit. [CANDIDATES] [SCORECARDS]\n\n| Candidate | Reason | Last completed stage | Measurements | Failure category | Revival condition |\n|---|---|---|---|---|---|\n" + "\n".join(stopped) + "\n")
+            scorecard = json.loads((ROOT / row["scorecard_path"]).read_text())
+            stop = scorecard["stop_record"]
+            reported = scorecard["raw_metrics"]["gate_status"]["value"]["reported_status"]
+            reason = markdown_cell(f"{reported}: {negative_reason(scorecard)}")
+            last_stage = markdown_cell(stop["last_stage"])
+            measurements = markdown_cell(negative_measurements(scorecard))
+            category = markdown_cell(negative_category(scorecard))
+            revival = markdown_cell(stop["revival_condition"])
+            stopped.append(
+                f"| {scorecard['candidate_id']} | {reason} | {last_stage} | "
+                f"{measurements} | {category} | {revival} |"
+            )
+    parts.append(
+        "## 29. Rejected/deferred candidates\n\n"
+        "Every non-eligible scorecard is retained below; this intentionally preserves negative and deferred work rather than presenting only representative winners. "
+        "Reason, last stage, measurement status/source, category, and revival are read or deterministically derived from each candidate's own scorecard `hard_gate`, "
+        "`raw_metrics`, and `stop_record`; no generic stage or revival text is substituted. [CANDIDATES] [SCORECARDS]\n\n"
+        "| Candidate | Reason | Last completed stage | Measurements | Failure category | Revival condition |\n"
+        "|---|---|---|---|---|---|\n" + "\n".join(stopped) + "\n"
+    )
     parts.append(f"""## 30. Unresolved decisions
 
 The authoritative concise register is [`UNRESOLVED_QUESTIONS.md`](UNRESOLVED_QUESTIONS.md). None is silently assigned zero or treated as passed. The largest blockers are external composed-security acceptance, an eligible fixed relation, and complete integrated operational evidence. Until they close, Outcome D and `{RECOMMENDATION}` remain controlling. {citation('CP4')}
@@ -398,10 +520,9 @@ python3 research/report-synthesis/generate.py --check
 python3 research/integrated-finalists/check.py
 python3 research/candidates/air-geometry/check.py
 python3 research/candidates/structured-relation/check.py
-python3 research/final/generate.py --check
 ```
 
-To regenerate only this package (except the separately owned final manifest), run:
+SP-92 generation and deterministic checking (the final manifest is separately owned):
 
 ```sh
 python3 research/final/generate.py
@@ -418,6 +539,7 @@ For the frozen C00 action commands and prerequisites, use `python3 research/repr
 
 
 def build_matrix() -> str:
+    floors = v03_floor_distributions()
     rows = [
         ["outcome", OUTCOME, "no new full build yet", SOURCES["SP91"], sha(SOURCES["SP91"])],
         ["recommendation", RECOMMENDATION, "blocker-closing research only", SOURCES["CP4"], sha(SOURCES["CP4"])],
@@ -430,6 +552,16 @@ def build_matrix() -> str:
         ["robust_two_tx_build", "NO", "projection fails; full path not evaluated", SOURCES["SP72"], sha(SOURCES["SP72"])],
         ["full_engineering_plan", "NO", "targeted research first", SOURCES["CP4"], sha(SOURCES["CP4"])],
     ]
+    for side in ("A", "B"):
+        for schedule in ("current", "64", "96"):
+            distribution = floors[f"{side}_{schedule}"]
+            rows.append([
+                f"c00_part_{side.lower()}_{schedule}_gas_distribution",
+                f"min={distribution['min']};p50={distribution['p50']};max={distribution['max']}",
+                "retained computed transaction scenario; future schedules are not active-network receipts",
+                SOURCES["RUN_INDEX"],
+                sha(SOURCES["RUN_INDEX"]),
+            ])
     out = io.StringIO(newline="")
     writer = csv.writer(out, lineterminator="\n")
     writer.writerow(["field", "value", "interpretation", "artifact_path", "artifact_sha256"])
