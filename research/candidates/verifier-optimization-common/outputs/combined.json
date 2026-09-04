@@ -183,7 +183,7 @@
         "value": null
       },
       "differentialTests": {
-        "rustAssertions": 9,
+        "rustDiagnosticAssertions": 9,
         "solidityUnsafeCases": 1
       },
       "isolatedActive64And96Delta": {
@@ -196,22 +196,25 @@
           "uniform96": -597961
         }
       },
-      "measurementScope": "isolated kernels only",
-      "nativeMeasured": {
+      "measurementScope": "isolated Solidity gas is measured; Rust aggregate timing is diagnostic, not common-protocol evidence",
+      "nativeDiagnostic": {
         "hornerMultiplications": 256,
-        "hornerNs": 4130875,
+        "hornerNs": 4349208,
         "materializedBytes": 2048,
         "materializedMultiplications": 511,
-        "materializedNs": 2957958,
+        "materializedNs": 3247458,
         "streamedBytes": 0,
         "streamedMultiplications": 512,
-        "streamedNs": 2388750
+        "streamedNs": 2486041
       },
+      "nativeDiagnosticClassification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+      "nativeMeasured": null,
       "nativeVerifierDelta": {
         "baselineKey": "materializedNs",
         "candidateKey": "hornerNs",
-        "nanosecondsDelta": 1172917,
-        "scope": "native isolated kernel"
+        "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+        "nanosecondsDelta": 1101750,
+        "scope": "native isolated aggregate kernel timing; no warmup or distribution"
       },
       "noMicrobenchmarkSumClaim": true,
       "opcodeCounts": {
@@ -344,7 +347,7 @@
         "value": null
       },
       "differentialTests": {
-        "rustAssertions": 9,
+        "rustDiagnosticAssertions": 9,
         "solidityUnsafeCases": 3
       },
       "isolatedActive64And96Delta": {
@@ -394,19 +397,22 @@
           "leg": "quotient recomposition"
         }
       ],
-      "measurementScope": "isolated kernels only",
-      "nativeMeasured": {
+      "measurementScope": "isolated Solidity gas is measured; Rust aggregate timing is diagnostic, not common-protocol evidence",
+      "nativeDiagnostic": {
         "checkedMultiplicationsPerInverse": 1,
-        "checkedWitnessNs": 4250,
+        "checkedWitnessNs": 3875,
         "exponentiationMultiplicationsPerInverse": 61,
-        "exponentiationNs": 748500,
+        "exponentiationNs": 812583,
         "witnessBytes": 128
       },
+      "nativeDiagnosticClassification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+      "nativeMeasured": null,
       "nativeVerifierDelta": {
         "baselineKey": "exponentiationNs",
         "candidateKey": "checkedWitnessNs",
-        "nanosecondsDelta": -744250,
-        "scope": "native isolated kernel"
+        "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+        "nanosecondsDelta": -808708,
+        "scope": "native isolated aggregate kernel timing; no warmup or distribution"
       },
       "noMicrobenchmarkSumClaim": true,
       "opcodeCounts": {
@@ -535,7 +541,7 @@
         "value": null
       },
       "differentialTests": {
-        "rustAssertions": 9,
+        "rustDiagnosticAssertions": 9,
         "solidityUnsafeCases": 1
       },
       "isolatedActive64And96Delta": {
@@ -548,18 +554,21 @@
           "uniform96": -639427
         }
       },
-      "measurementScope": "isolated kernels only",
-      "nativeMeasured": {
-        "fusedParseDotNs": 1866541,
+      "measurementScope": "isolated Solidity gas is measured; Rust aggregate timing is diagnostic, not common-protocol evidence",
+      "nativeDiagnostic": {
+        "fusedParseDotNs": 1929166,
         "fusedScratchBytes": 0,
-        "separateParseDotNs": 873625,
+        "separateParseDotNs": 925750,
         "separateScratchBytes": 2048
       },
+      "nativeDiagnosticClassification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+      "nativeMeasured": null,
       "nativeVerifierDelta": {
         "baselineKey": "separateParseDotNs",
         "candidateKey": "fusedParseDotNs",
-        "nanosecondsDelta": 992916,
-        "scope": "native isolated kernel"
+        "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+        "nanosecondsDelta": 1003416,
+        "scope": "native isolated aggregate kernel timing; no warmup or distribution"
       },
       "noMicrobenchmarkSumClaim": true,
       "opcodeCounts": {
@@ -682,7 +691,7 @@
         "value": null
       },
       "differentialTests": {
-        "rustAssertions": 9,
+        "rustDiagnosticAssertions": 9,
         "solidityUnsafeCases": 1
       },
       "isolatedActive64And96Delta": {
@@ -695,18 +704,21 @@
           "uniform96": -535665
         }
       },
-      "measurementScope": "isolated kernels only",
-      "nativeMeasured": {
+      "measurementScope": "isolated Solidity gas is measured; Rust aggregate timing is diagnostic, not common-protocol evidence",
+      "nativeDiagnostic": {
         "boundedScratchBytes": 0,
         "copyBytes": 2048,
-        "copyEvaluateNs": 2133625,
-        "sliceEvaluateNs": 2081458
+        "copyEvaluateNs": 2298250,
+        "sliceEvaluateNs": 2218500
       },
+      "nativeDiagnosticClassification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+      "nativeMeasured": null,
       "nativeVerifierDelta": {
         "baselineKey": "copyEvaluateNs",
         "candidateKey": "sliceEvaluateNs",
-        "nanosecondsDelta": -52167,
-        "scope": "native isolated kernel"
+        "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+        "nanosecondsDelta": -79750,
+        "scope": "native isolated aggregate kernel timing; no warmup or distribution"
       },
       "noMicrobenchmarkSumClaim": true,
       "opcodeCounts": {
@@ -832,7 +844,7 @@
         "value": null
       },
       "differentialTests": {
-        "rustAssertions": 9,
+        "rustDiagnosticAssertions": 9,
         "solidityUnsafeCases": 1
       },
       "isolatedActive64And96Delta": {
@@ -845,19 +857,22 @@
           "uniform96": -5624
         }
       },
-      "measurementScope": "isolated kernels only",
-      "nativeMeasured": {
-        "calldataCheckedNs": 172083,
+      "measurementScope": "isolated Solidity gas is measured; Rust aggregate timing is diagnostic, not common-protocol evidence",
+      "nativeDiagnostic": {
+        "calldataCheckedNs": 177208,
         "calldataTableBytes": 128,
-        "derivedNs": 834,
-        "fixedReadNs": 6709,
+        "derivedNs": 875,
+        "fixedReadNs": 5167,
         "fixedTableBytes": 128
       },
+      "nativeDiagnosticClassification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+      "nativeMeasured": null,
       "nativeVerifierDelta": {
         "baselineKey": "fixedReadNs",
         "candidateKey": "derivedNs",
-        "nanosecondsDelta": -5875,
-        "scope": "native isolated kernel"
+        "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+        "nanosecondsDelta": -4292,
+        "scope": "native isolated aggregate kernel timing; no warmup or distribution"
       },
       "noMicrobenchmarkSumClaim": true,
       "opcodeCounts": {
@@ -992,7 +1007,7 @@
         "value": null
       },
       "differentialTests": {
-        "rustAssertions": 9,
+        "rustDiagnosticAssertions": 9,
         "solidityUnsafeCases": 1
       },
       "isolatedActive64And96Delta": {
@@ -1005,20 +1020,23 @@
           "uniform96": -43635
         }
       },
-      "measurementScope": "isolated kernels only",
-      "nativeMeasured": {
-        "checkedSuppliedNs": 16542,
-        "exponentiationNs": 137125,
-        "fixedTable8Ns": 1166,
+      "measurementScope": "isolated Solidity gas is measured; Rust aggregate timing is diagnostic, not common-protocol evidence",
+      "nativeDiagnostic": {
+        "checkedSuppliedNs": 17583,
+        "exponentiationNs": 143500,
+        "fixedTable8Ns": 1208,
         "fixedTableBytes": 32,
-        "incrementalNs": 84,
+        "incrementalNs": 125,
         "suppliedPointBytes": 128
       },
+      "nativeDiagnosticClassification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+      "nativeMeasured": null,
       "nativeVerifierDelta": {
         "baselineKey": "exponentiationNs",
         "candidateKey": "incrementalNs",
-        "nanosecondsDelta": -137041,
-        "scope": "native isolated kernel"
+        "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+        "nanosecondsDelta": -143375,
+        "scope": "native isolated aggregate kernel timing; no warmup or distribution"
       },
       "noMicrobenchmarkSumClaim": true,
       "opcodeCounts": {
@@ -1152,7 +1170,7 @@
         "value": null
       },
       "differentialTests": {
-        "rustAssertions": 9,
+        "rustDiagnosticAssertions": 9,
         "solidityUnsafeCases": 2
       },
       "frontierAndWidth": {
@@ -1210,8 +1228,8 @@
         ]
       },
       "isolatedActive64And96Delta": null,
-      "measurementScope": "isolated kernels only",
-      "nativeMeasured": {
+      "measurementScope": "isolated Solidity gas is measured; Rust aggregate timing is diagnostic, not common-protocol evidence",
+      "nativeDiagnostic": {
         "digest256LowerBoundBytes": 8192,
         "digest320WorstCaseBytes": 10240,
         "digest384WorstCaseBytes": 12288,
@@ -1220,6 +1238,8 @@
         "queries": 32,
         "treeDepth": 13
       },
+      "nativeDiagnosticClassification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+      "nativeMeasured": null,
       "nativeVerifierDelta": null,
       "noMicrobenchmarkSumClaim": true,
       "opcodeCounts": {
@@ -1366,7 +1386,7 @@
         "value": null
       },
       "differentialTests": {
-        "rustAssertions": 9,
+        "rustDiagnosticAssertions": 9,
         "solidityUnsafeCases": 4
       },
       "isolatedActive64And96Delta": {
@@ -1379,19 +1399,22 @@
           "uniform96": 61953
         }
       },
-      "measurementScope": "isolated kernels only",
-      "nativeMeasured": {
+      "measurementScope": "isolated Solidity gas is measured; Rust aggregate timing is diagnostic, not common-protocol evidence",
+      "nativeDiagnostic": {
         "elements": 256,
-        "pack31Ns": 1661917,
+        "pack31Ns": 1738417,
         "packed31Bytes": 992,
         "u32Bytes": 1024,
-        "u32ReadNs": 193584
+        "u32ReadNs": 215125
       },
+      "nativeDiagnosticClassification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+      "nativeMeasured": null,
       "nativeVerifierDelta": {
         "baselineKey": "u32ReadNs",
         "candidateKey": "pack31Ns",
-        "nanosecondsDelta": 1468333,
-        "scope": "native isolated kernel"
+        "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+        "nanosecondsDelta": 1523292,
+        "scope": "native isolated aggregate kernel timing; no warmup or distribution"
       },
       "noMicrobenchmarkSumClaim": true,
       "opcodeCounts": {
@@ -1414,8 +1437,9 @@
         "per256CanonicalFields": -32
       },
       "proverDelta": {
-        "nanosecondsDelta": 1661917,
-        "scope": "isolated pack256 kernel"
+        "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+        "nanosecondsTotal": 1738417,
+        "scope": "isolated pack256 aggregate timing; no warmup or distribution"
       },
       "runtimeByteDelta": {
         "status": "NOT_ATTRIBUTABLE: shared experiment contract",
@@ -2002,12 +2026,12 @@
         "value": null
       },
       "differentialTests": {
-        "rustAssertions": 9,
+        "rustDiagnosticAssertions": 9,
         "solidityUnsafeCases": 1
       },
       "isolatedActive64And96Delta": null,
-      "measurementScope": "isolated kernels only",
-      "nativeMeasured": {
+      "measurementScope": "isolated Solidity gas is measured; Rust aggregate timing is diagnostic, not common-protocol evidence",
+      "nativeDiagnostic": {
         "model": "evaluated by package driver with AIR segment placement",
         "splits": [
           [
@@ -2040,6 +2064,8 @@
           ]
         ]
       },
+      "nativeDiagnosticClassification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+      "nativeMeasured": null,
       "nativeVerifierDelta": null,
       "noMicrobenchmarkSumClaim": true,
       "opcodeCounts": {
@@ -2116,54 +2142,104 @@
   "gatePolicy": ">=2% measured full verifier saving, security-risk removal, or material measured worst-case byte reduction",
   "measured": {
     "available": true,
-    "forgeTranscriptSha256": "7b7e78d6e27449eba73e5be1e4d253f606648eac57ae5ea09c8e111a51eebfd5",
-    "native": {
+    "forgeTranscriptSha256": "a9c6dbfefacbd25c7a824d9894a7389fd39887a10556bb5c943091d1053995ce",
+    "scope": "isolated Solidity gas kernels only",
+    "solidity": {
+      "COMMON.deploymentExecutionGas": 1057569,
+      "COMMON.runtimeBytes": 5115,
+      "V1.hornerGas": 129454,
+      "V1.materializedGas": 727415,
+      "V1.streamedGas": 128003,
+      "V2.checkedWitnessGas": 857,
+      "V2.exponentiationGas": 9353,
+      "V3.fusedParseDotGas": 210353,
+      "V3.separateParseDotGas": 849780,
+      "V4.calldataEvaluationGas": 127811,
+      "V4.copiedEvaluationGas": 663476,
+      "V5.checkedCalldataTableGas": 89183,
+      "V5.derivedTableGas": 3028,
+      "V5.fixedTableGas": 8652,
+      "V6.checkedPointsGas": 21451,
+      "V6.exponentiationGas": 48640,
+      "V6.fixedTable8Gas": 1748,
+      "V6.incrementalGas": 5005,
+      "V7.exactFrontierGas": 257975,
+      "V8.packed31Bytes": 992,
+      "V8.section31Gas": 238092,
+      "V8.u32Bytes": 1024,
+      "V8.unpack31Gas": 237632,
+      "V8.unpack32Gas": 175167,
+      "V9.airA.10.maxGas": 13623798,
+      "V9.airA.12.maxGas": 14046222,
+      "V9.airA.13.maxGas": 14257434,
+      "V9.airA.14.maxGas": 14468646,
+      "V9.airA.15.maxGas": 14679858,
+      "V9.airA.16.maxGas": 14891070,
+      "V9.airA.8.maxGas": 14046069,
+      "V9.airB.10.maxGas": 16487292,
+      "V9.airB.12.maxGas": 16064868,
+      "V9.airB.13.maxGas": 15853656,
+      "V9.airB.14.maxGas": 15642444,
+      "V9.airB.15.maxGas": 15431232,
+      "V9.airB.16.maxGas": 15220020,
+      "V9.airB.8.maxGas": 16909716
+    }
+  },
+  "nativeDiagnostic": {
+    "available": true,
+    "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+    "commonProtocolComparable": false,
+    "scope": "isolated Rust aggregate timing without warmup or distribution",
+    "values": {
       "babyBearModulus": 2013265921,
       "checksums": 530080236,
+      "commonProtocolComparable": false,
+      "distributionAvailable": false,
       "engine": "rust-std-instant",
+      "measurementClass": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
       "measurements": {
         "V1": {
           "hornerMultiplications": 256,
-          "hornerNs": 4130875,
+          "hornerNs": 4349208,
           "materializedBytes": 2048,
           "materializedMultiplications": 511,
-          "materializedNs": 2957958,
+          "materializedNs": 3247458,
           "streamedBytes": 0,
           "streamedMultiplications": 512,
-          "streamedNs": 2388750
+          "streamedNs": 2486041
         },
         "V2": {
           "checkedMultiplicationsPerInverse": 1,
-          "checkedWitnessNs": 4250,
+          "checkedWitnessNs": 3875,
           "exponentiationMultiplicationsPerInverse": 61,
-          "exponentiationNs": 748500,
+          "exponentiationNs": 812583,
           "witnessBytes": 128
         },
         "V3": {
-          "fusedParseDotNs": 1866541,
+          "fusedParseDotNs": 1929166,
           "fusedScratchBytes": 0,
-          "separateParseDotNs": 873625,
+          "separateParseDotNs": 925750,
           "separateScratchBytes": 2048
         },
         "V4": {
           "boundedScratchBytes": 0,
           "copyBytes": 2048,
-          "copyEvaluateNs": 2133625,
-          "sliceEvaluateNs": 2081458
+          "copyEvaluateNs": 2298250,
+          "sliceEvaluateNs": 2218500
         },
         "V5": {
-          "calldataCheckedNs": 172083,
+          "calldataCheckedNs": 177208,
           "calldataTableBytes": 128,
-          "derivedNs": 834,
-          "fixedReadNs": 6709,
+          "derivedNs": 875,
+          "fixedReadNs": 5167,
           "fixedTableBytes": 128
         },
         "V6": {
-          "checkedSuppliedNs": 16542,
-          "exponentiationNs": 137125,
-          "fixedTable8Ns": 1166,
+          "checkedSuppliedNs": 17583,
+          "exponentiationNs": 143500,
+          "fixedTable8Ns": 1208,
           "fixedTableBytes": 32,
-          "incrementalNs": 84,
+          "incrementalNs": 125,
           "suppliedPointBytes": 128
         },
         "V7": {
@@ -2177,10 +2253,10 @@
         },
         "V8": {
           "elements": 256,
-          "pack31Ns": 1661917,
+          "pack31Ns": 1738417,
           "packed31Bytes": 992,
           "u32Bytes": 1024,
-          "u32ReadNs": 193584
+          "u32ReadNs": 215125
         },
         "V9": {
           "model": "evaluated by package driver with AIR segment placement",
@@ -2226,49 +2302,9 @@
         "zeroLegalWitnessRejected": true
       },
       "repetitions": 2000,
-      "schema": "pqtc-sp31-native-measurements-v1",
-      "terms": 256
-    },
-    "scope": "isolated Rust and Solidity kernels",
-    "solidity": {
-      "COMMON.deploymentExecutionGas": 1057569,
-      "COMMON.runtimeBytes": 5115,
-      "V1.hornerGas": 129454,
-      "V1.materializedGas": 727415,
-      "V1.streamedGas": 128003,
-      "V2.checkedWitnessGas": 857,
-      "V2.exponentiationGas": 9353,
-      "V3.fusedParseDotGas": 210353,
-      "V3.separateParseDotGas": 849780,
-      "V4.calldataEvaluationGas": 127811,
-      "V4.copiedEvaluationGas": 663476,
-      "V5.checkedCalldataTableGas": 89183,
-      "V5.derivedTableGas": 3028,
-      "V5.fixedTableGas": 8652,
-      "V6.checkedPointsGas": 21451,
-      "V6.exponentiationGas": 48640,
-      "V6.fixedTable8Gas": 1748,
-      "V6.incrementalGas": 5005,
-      "V7.exactFrontierGas": 257975,
-      "V8.packed31Bytes": 992,
-      "V8.section31Gas": 238092,
-      "V8.u32Bytes": 1024,
-      "V8.unpack31Gas": 237632,
-      "V8.unpack32Gas": 175167,
-      "V9.airA.10.maxGas": 13623798,
-      "V9.airA.12.maxGas": 14046222,
-      "V9.airA.13.maxGas": 14257434,
-      "V9.airA.14.maxGas": 14468646,
-      "V9.airA.15.maxGas": 14679858,
-      "V9.airA.16.maxGas": 14891070,
-      "V9.airA.8.maxGas": 14046069,
-      "V9.airB.10.maxGas": 16487292,
-      "V9.airB.12.maxGas": 16064868,
-      "V9.airB.13.maxGas": 15853656,
-      "V9.airB.14.maxGas": 15642444,
-      "V9.airB.15.maxGas": 15431232,
-      "V9.airB.16.maxGas": 15220020,
-      "V9.airB.8.maxGas": 16909716
+      "schema": "pqtc-sp31-native-diagnostics-v2",
+      "terms": 256,
+      "warmupIterations": 0
     }
   },
   "projected": {

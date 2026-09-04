@@ -31,7 +31,73 @@
   "completeTransactionState": "NOT_EVALUATED: no isolated full-verifier variant; microbenchmark deltas are not summed",
   "custodyIntegration": "PROHIBITED",
   "gate": "Keep only after >=2% full-verifier saving, security-risk removal, or material worst-case byte reduction.",
-  "measurementState": "ISOLATED_MEASURED",
+  "inheritanceMatrix": {
+    "applicationDigest": {
+      "compatibility": "Frozen P2BB512-v1 application digest, typed domains, and 64-byte output are unchanged.",
+      "disposition": "INHERITED"
+    },
+    "applicationMode": {
+      "compatibility": "Frozen width-16 rate-4 capacity-12 Poseidon2 application sponge mode is unchanged.",
+      "disposition": "INHERITED"
+    },
+    "baseField": {
+      "compatibility": "Frozen BabyBear modulus and canonical field semantics are unchanged.",
+      "disposition": "INHERITED"
+    },
+    "challengeField": {
+      "compatibility": "Frozen degree-4 BabyBear extension and coefficient ordering are unchanged.",
+      "disposition": "INHERITED"
+    },
+    "checkpointModel": {
+      "compatibility": "Frozen consumer-bound A/B checkpoint state and replay rules are unchanged.",
+      "disposition": "INHERITED"
+    },
+    "deploymentManifest": {
+      "compatibility": "Frozen parameter/deployment manifest remains authoritative; no candidate deployment artifact is proposed.",
+      "disposition": "INHERITED"
+    },
+    "evmVerifier": {
+      "compatibility": "Exact frontier validation and variant-specific cap traversal replace only the isolated MMCS verification kernel.",
+      "disposition": "MODIFIED"
+    },
+    "hiding": {
+      "compatibility": "Frozen random codewords, MMCS salts, and fresh prover randomness are unchanged.",
+      "disposition": "INHERITED"
+    },
+    "mmcs": {
+      "compatibility": "Exact 512-bit frontier counting is compatible; cap and digest-width variants change commitment/verification semantics and require a new reviewed parameter set. 384/320/256 are not accepted.",
+      "disposition": "REPLACED"
+    },
+    "noteEncoding": {
+      "compatibility": "Frozen pqtc-note-v3 note encoding is byte-for-byte unchanged.",
+      "disposition": "INHERITED"
+    },
+    "pcs": {
+      "compatibility": "Frozen hiding two-adic FRI q32 profile, blowup, rounds, and grinding are unchanged.",
+      "disposition": "INHERITED"
+    },
+    "proofCodec": {
+      "compatibility": "Cap/frontier/digest-width variants require distinct bounded sections and are not byte-compatible with frozen Part A/B.",
+      "disposition": "REPLACED"
+    },
+    "publicStatement": {
+      "compatibility": "Frozen four-Digest512 withdrawal statement and 64 canonical BabyBear public values are unchanged.",
+      "disposition": "INHERITED"
+    },
+    "relation": {
+      "compatibility": "Frozen 256-row, 190-column, 1,186-constraint withdrawal AIR is unchanged.",
+      "disposition": "INHERITED"
+    },
+    "transcript": {
+      "compatibility": "Frozen KeccakPair512 transcript order, domains, and challenges are unchanged.",
+      "disposition": "INHERITED"
+    },
+    "tree": {
+      "compatibility": "Frozen binary depth-20 application Merkle tree and root representation are unchanged.",
+      "disposition": "INHERITED"
+    }
+  },
+  "measurementState": "ISOLATED_SOLIDITY_MEASURED_RUST_DIAGNOSTIC_NOT_COMMON_PROTOCOL",
   "plonky3Commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
   "publicNetwork": "PROHIBITED",
   "researchOnly": true,

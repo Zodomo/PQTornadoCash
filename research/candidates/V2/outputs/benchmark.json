@@ -90,7 +90,7 @@
     "value": null
   },
   "differentialTests": {
-    "rustAssertions": 9,
+    "rustDiagnosticAssertions": 9,
     "solidityUnsafeCases": 3
   },
   "isolatedActive64And96Delta": {
@@ -140,19 +140,22 @@
       "leg": "quotient recomposition"
     }
   ],
-  "measurementScope": "isolated kernels only",
-  "nativeMeasured": {
+  "measurementScope": "isolated Solidity gas is measured; Rust aggregate timing is diagnostic, not common-protocol evidence",
+  "nativeDiagnostic": {
     "checkedMultiplicationsPerInverse": 1,
-    "checkedWitnessNs": 4250,
+    "checkedWitnessNs": 3875,
     "exponentiationMultiplicationsPerInverse": 61,
-    "exponentiationNs": 748500,
+    "exponentiationNs": 812583,
     "witnessBytes": 128
   },
+  "nativeDiagnosticClassification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+  "nativeMeasured": null,
   "nativeVerifierDelta": {
     "baselineKey": "exponentiationNs",
     "candidateKey": "checkedWitnessNs",
-    "nanosecondsDelta": -744250,
-    "scope": "native isolated kernel"
+    "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+    "nanosecondsDelta": -808708,
+    "scope": "native isolated aggregate kernel timing; no warmup or distribution"
   },
   "noMicrobenchmarkSumClaim": true,
   "opcodeCounts": {

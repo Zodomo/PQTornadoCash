@@ -200,8 +200,12 @@ fn main() {
     let spread: Vec<u32> = (0..32).map(|i| i * 256).collect();
     assert_eq!(frontier_count(&spread, 13).unwrap(), max_frontier_13_32);
     let json = format!(r#"{{
-  "schema":"pqtc-sp31-native-measurements-v1",
+  "schema":"pqtc-sp31-native-diagnostics-v2",
   "engine":"rust-std-instant",
+  "measurementClass":"DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+  "commonProtocolComparable":false,
+  "warmupIterations":0,
+  "distributionAvailable":false,
   "repetitions":{reps},
   "babyBearModulus":{P},
   "terms":{N},

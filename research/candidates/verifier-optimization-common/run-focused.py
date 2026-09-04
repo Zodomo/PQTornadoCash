@@ -247,7 +247,7 @@ def native_kernel_delta(cid: str, native_row: dict | None) -> dict | None:
     if cid not in keys:
         return None
     before, after = keys[cid]
-    return {"scope": "native isolated kernel", "nanosecondsDelta": native_row[after] - native_row[before], "baselineKey": before, "candidateKey": after}
+    return {"classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL", "scope": "native isolated aggregate kernel timing; no warmup or distribution", "nanosecondsDelta": native_row[after] - native_row[before], "baselineKey": before, "candidateKey": after}
 
 
 def candidate_measurement(cid: str, native: dict | None, solidity: dict | None) -> dict:
@@ -256,7 +256,8 @@ def candidate_measurement(cid: str, native: dict | None, solidity: dict | None) 
     base_active = {part: calldata_models(BASELINE["executionGas"][part], BASELINE["abiBytes"][part], BASELINE["zeroBytes"][part]) for part in ("partA", "partB")}
     result = {
         "schema": "pqtc-sp31-candidate-output-v1", "candidateId": cid,
-        "measurementScope": "isolated kernels only", "nativeMeasured": n, "solidityMeasured": s,
+        "measurementScope": "isolated Solidity gas is measured; Rust aggregate timing is diagnostic, not common-protocol evidence",
+        "nativeMeasured": None, "nativeDiagnostic": n, "nativeDiagnosticClassification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL" if n is not None else "NOT_EVALUATED", "solidityMeasured": s,
         "baselineCompleteTransaction": BASELINE,
         "completeTransactionMeasured": None,
         "completeTransactionProjected": None,
@@ -265,7 +266,7 @@ def candidate_measurement(cid: str, native: dict | None, solidity: dict | None) 
         "isolatedActive64And96Delta": isolated_floor_delta(cid, solidity),
         "calldataDeltaBytes": 0, "runtimeByteDelta": {"value": None, "status": "NOT_ATTRIBUTABLE: shared experiment contract"}, "proofByteDelta": 0,
         "deploymentGasDelta": {"value": None, "status": "NOT_ATTRIBUTABLE: shared experiment contract"}, "proverDelta": {"nanoseconds": 0, "kind": "projected verifier-only change"}, "nativeVerifierDelta": native_kernel_delta(cid, n),
-        "differentialTests": {"rustAssertions": 9 if native is not None else 0, "solidityUnsafeCases": 0 if solidity is None else {"V2": 3, "V7": 2, "V8": 4}.get(cid, 1)},
+        "differentialTests": {"rustDiagnosticAssertions": 9 if native is not None else 0, "solidityUnsafeCases": 0 if solidity is None else {"V2": 3, "V7": 2, "V8": 4}.get(cid, 1)},
         "noMicrobenchmarkSumClaim": True,
     }
     if cid == "V2":
@@ -287,7 +288,7 @@ def candidate_measurement(cid: str, native: dict | None, solidity: dict | None) 
     elif cid == "V5": result.update({"calldataDeltaBytes": {"fixed": 0, "derived": 0, "checkedCalldata32": 128}, "proofByteDelta": {"fixed": 0, "derived": 0, "checkedCalldata32": 128}, "proverDelta": {"fixed": 0, "derived": 0, "checkedCalldata": "serialize 32 canonical fields"}})
     elif cid == "V6": result.update({"calldataDeltaBytes": {"exponentiation": 0, "incremental": 0, "checkedPoints32": 128, "fixedTable": 0}, "proofByteDelta": {"exponentiation": 0, "incremental": 0, "checkedPoints32": 128, "fixedTable": 0}, "proverDelta": {"exponentiation": 0, "incremental": 0, "checkedPoints": "serialize 32 canonical fields", "fixedTable": 0}})
     elif cid == "V7": result.update({"frontierAndWidth": exact_tables(native), "proofByteDelta": "variant-specific worst-case table; full proof unavailable", "calldataDeltaBytes": "same as variant-specific frontier proof-byte delta", "proverDelta": {"nanoseconds": None, "hashAndSerializationCounts": "variant-specific"}, "uniformFloorDeltaFrom512WorstCase": {"384": {"bytes": -4096, "gas64": -262144, "gas96": -393216}, "320": {"bytes": -6144, "gas64": -393216, "gas96": -589824}, "256LowerBound": {"bytes": -8192, "gas64": -524288, "gas96": -786432}}})
-    elif cid == "V8": result.update({"calldataDeltaBytes": {"per256CanonicalFields": -32, "u32Bytes": 1024, "packed31Bytes": 992, "framedSectionBytes": 996, "derivedOnlySectionBytes": 4, "oneTransactionDuplicateGlobalProjection": -9208}, "codecComparisons": {"u32": 1024, "packed31": 992, "lengthPrefixedPacked31": 996, "derivedOmissionWhenAll256ValuesArePriorTranscriptFunctions": 4, "removeSecondGlobalCopyOnlyInOneTransactionModel": -9208}, "proofByteDelta": {"per256CanonicalFields": -32, "fullProof": None}, "proverDelta": {"scope": "isolated pack256 kernel", "nanosecondsDelta": None if n is None else n["pack31Ns"]}, "uniformFloorDeltaPer256Fields": {"64": -2048, "96": -3072}})
+    elif cid == "V8": result.update({"calldataDeltaBytes": {"per256CanonicalFields": -32, "u32Bytes": 1024, "packed31Bytes": 992, "framedSectionBytes": 996, "derivedOnlySectionBytes": 4, "oneTransactionDuplicateGlobalProjection": -9208}, "codecComparisons": {"u32": 1024, "packed31": 992, "lengthPrefixedPacked31": 996, "derivedOmissionWhenAll256ValuesArePriorTranscriptFunctions": 4, "removeSecondGlobalCopyOnlyInOneTransactionModel": -9208}, "proofByteDelta": {"per256CanonicalFields": -32, "fullProof": None}, "proverDelta": {"classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL", "scope": "isolated pack256 aggregate timing; no warmup or distribution", "nanosecondsTotal": None if n is None else n["pack31Ns"]}, "uniformFloorDeltaPer256Fields": {"64": -2048, "96": -3072}})
     elif cid == "V9": result["completeTransactionProjected"] = {"kind": "component-model projection, not measurement", "rows": split_model()}
     return result
 
@@ -308,32 +309,89 @@ def canonical_fixture_observation() -> dict:
     return {"status": "OBSERVED_BASELINE_ONLY", "path": str(fixture.relative_to(ROOT)), "artifacts": records, "optimizedFullPath": "UNAVAILABLE: isolated kernels are not integrated into custody verifier"}
 
 
+def inheritance_matrix(cid: str) -> dict:
+    inherited = {
+        "noteEncoding": "Frozen pqtc-note-v3 note encoding is byte-for-byte unchanged.",
+        "applicationDigest": "Frozen P2BB512-v1 application digest, typed domains, and 64-byte output are unchanged.",
+        "applicationMode": "Frozen width-16 rate-4 capacity-12 Poseidon2 application sponge mode is unchanged.",
+        "tree": "Frozen binary depth-20 application Merkle tree and root representation are unchanged.",
+        "publicStatement": "Frozen four-Digest512 withdrawal statement and 64 canonical BabyBear public values are unchanged.",
+        "relation": "Frozen 256-row, 190-column, 1,186-constraint withdrawal AIR is unchanged.",
+        "baseField": "Frozen BabyBear modulus and canonical field semantics are unchanged.",
+        "challengeField": "Frozen degree-4 BabyBear extension and coefficient ordering are unchanged.",
+        "pcs": "Frozen hiding two-adic FRI q32 profile, blowup, rounds, and grinding are unchanged.",
+        "hiding": "Frozen random codewords, MMCS salts, and fresh prover randomness are unchanged.",
+        "mmcs": "Frozen binary pruned MMCS with full 512-bit digests remains the compatibility baseline.",
+        "transcript": "Frozen KeccakPair512 transcript order, domains, and challenges are unchanged.",
+        "proofCodec": "Frozen canonical Part A/B proof codec remains the compatibility baseline.",
+        "evmVerifier": "Frozen custody verifier is untouched; only an isolated research kernel is modified.",
+        "checkpointModel": "Frozen consumer-bound A/B checkpoint state and replay rules are unchanged.",
+        "deploymentManifest": "Frozen parameter/deployment manifest remains authoritative; no candidate deployment artifact is proposed.",
+    }
+    matrix = {key: {"disposition": "INHERITED", "compatibility": value} for key, value in inherited.items()}
+    changes = {
+        "V1": {"evmVerifier": ("MODIFIED", "Alpha accumulation implementation changes only; Horner is compatible only where frozen coefficient order permits exact differential equality.")},
+        "V2": {
+            "proofCodec": ("MODIFIED", "Eligible nonzero inverse witnesses add canonical fields and require a new versioned section; zero-legal legs retain the frozen encoding."),
+            "evmVerifier": ("MODIFIED", "Exponentiation may be replaced by witness multiplication only behind verifier-owned nonzero-leg guards."),
+        },
+        "V3": {"evmVerifier": ("MODIFIED", "Parsing and dot product are fused while preserving frozen big-endian u32 canonical rejection and field order.")},
+        "V4": {"evmVerifier": ("MODIFIED", "Evaluation consumes bounded calldata directly instead of copying arrays; public proof bytes remain compatible.")},
+        "V5": {
+            "proofCodec": ("MODIFIED", "Fixed and derived variants preserve the codec; the checked-calldata table variant adds a versioned canonical table section."),
+            "evmVerifier": ("MODIFIED", "Constant lookup changes among code-embedded, derived, and recurrence-checked calldata strategies."),
+        },
+        "V6": {
+            "proofCodec": ("MODIFIED", "Exponentiation/incremental/fixed variants preserve bytes; checked supplied points require a versioned canonical section."),
+            "evmVerifier": ("MODIFIED", "Query-point computation strategy changes but every point remains bound to the frozen transcript challenge."),
+        },
+        "V7": {
+            "mmcs": ("REPLACED", "Exact 512-bit frontier counting is compatible; cap and digest-width variants change commitment/verification semantics and require a new reviewed parameter set. 384/320/256 are not accepted."),
+            "proofCodec": ("REPLACED", "Cap/frontier/digest-width variants require distinct bounded sections and are not byte-compatible with frozen Part A/B."),
+            "evmVerifier": ("MODIFIED", "Exact frontier validation and variant-specific cap traversal replace only the isolated MMCS verification kernel."),
+        },
+        "V8": {
+            "proofCodec": ("REPLACED", "Length-framed canonical 31-bit sections and derived-value omission are uniquely decodable but not byte-compatible with frozen 32-bit sections."),
+            "evmVerifier": ("MODIFIED", "The parser adds bounded 31-bit decoding, canonical rejection, and terminal zero-padding enforcement."),
+            "checkpointModel": ("MODIFIED", "Removing duplicated globals applies only to a one-transaction model; frozen A/B checkpoints retain both bindings."),
+        },
+        "V9": {
+            "proofCodec": ("MODIFIED", "Query bundles are repartitioned across A/B while total q32 content and canonical per-query encoding remain unchanged."),
+            "evmVerifier": ("MODIFIED", "Part boundaries and AIR-segment placement change; the custody verifier is not integrated."),
+            "checkpointModel": ("MODIFIED", "Checkpoint position/count fields must bind the selected versioned asymmetric split; frozen 16/16 remains the control."),
+        },
+    }
+    for key, (disposition, compatibility) in changes[cid].items():
+        matrix[key] = {"disposition": disposition, "compatibility": compatibility}
+    return matrix
+
+
 def write_candidate(cid: str, native: dict | None, solidity: dict | None) -> None:
     title, assumption = CANDIDATES[cid]
     directory = HERE.parent / cid
     output = candidate_measurement(cid, native, solidity)
-    measured = native is not None and solidity is not None
+    solidity_measured = solidity is not None
     manifest = {
         "candidateId": cid, "spikeId": "SP-31", "title": title, "status": "BENCHMARK_ONLY",
         "baseline": "source-bound C00/v03-baseline run research/runs/v03-fixed-01.json at 00f829001999ee66da6fd5161c4c205c07d0b937",
         "plonky3Commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+        "inheritanceMatrix": inheritance_matrix(cid),
         "canonicalFixture": canonical_fixture_observation(),
-
-
         "researchOnly": True, "custodyIntegration": "PROHIBITED", "publicNetwork": "PROHIBITED",
-        "measurementState": "ISOLATED_MEASURED" if measured else "NOT_EVALUATED",
+        "measurementState": "ISOLATED_SOLIDITY_MEASURED_RUST_DIAGNOSTIC_NOT_COMMON_PROTOCOL" if solidity_measured else "NOT_EVALUATED",
         "completeTransactionState": "NOT_EVALUATED: no isolated full-verifier variant; microbenchmark deltas are not summed",
         "gate": "Keep only after >=2% full-verifier saving, security-risk removal, or material worst-case byte reduction.",
         "sharedImplementation": "../verifier-optimization-common",
     }
     status = {
-        "candidateId": cid, "status": "BENCHMARK_ONLY", "isolatedRust": "PASS" if native else "NOT_EVALUATED",
-        "isolatedSolidity": "PASS" if solidity else "NOT_EVALUATED", "fullPath": "NOT_EVALUATED",
-        "gateDecision": "PENDING_FULL_PATH",
-        "reason": "No isolated full-verifier variant exists in the research package; a baseline canonical fixture is observed when present, but kernel deltas are never relabeled or added as full-path savings.",
-        "unsafeCases": "PASS" if measured and cid in ("V2", "V7", "V8") else "SOURCE_PRESENT_NOT_RUN" if cid in ("V2", "V7", "V8") else "NOT_APPLICABLE",
+        "candidateId": cid, "status": "BENCHMARK_ONLY",
+        "isolatedRust": "DIAGNOSTIC_NOT_COMMON_PROTOCOL" if native is not None else "NOT_EVALUATED",
+        "isolatedSolidity": "PASS" if solidity_measured else "NOT_EVALUATED",
+        "fullPath": "NOT_EVALUATED", "gateDecision": "PENDING_FULL_PATH",
+        "reason": "No isolated full-verifier variant exists; baseline canonical evidence is observed, Solidity gas is isolated measured evidence, and Rust aggregate timings are diagnostic only.",
+        "unsafeCases": "PASS" if solidity_measured and cid in ("V2", "V7", "V8") else "SOURCE_PRESENT_NOT_RUN" if cid in ("V2", "V7", "V8") else "NOT_APPLICABLE",
     }
-    assumptions = {"candidateId": cid, "inherited": ["Frozen v0.3 relation, q32 profile, transcript, BabyBear modulus, two-call semantics, and 512-bit proof digests remain unchanged unless the experiment row explicitly says otherwise."], "new": [assumption], "forbidden": ["custody integration", "public RPC", ".env or live keys", "classical wrapper", "modular reduction of encoded fields", "claiming isolated kernel sums as complete-transaction gas"]}
+    assumptions = {"candidateId": cid, "inherited": ["Frozen v0.3 relation, q32 profile, transcript, BabyBear modulus, two-call semantics, and 512-bit proof digests remain unchanged unless the inheritance matrix explicitly marks a layer modified or replaced."], "new": [assumption], "forbidden": ["custody integration", "public RPC", ".env or live keys", "classical wrapper", "modular reduction of encoded fields", "claiming isolated kernel sums as complete-transaction gas"]}
     dump(directory / "manifest.json", manifest)
     dump(directory / "status.json", status)
     dump(directory / "assumptions.json", assumptions)
@@ -343,6 +401,7 @@ def write_candidate(cid: str, native: dict | None, solidity: dict | None) -> Non
         f"- New: {assumption}\n"
         "- Encoded BabyBear fields are canonical big-endian u32 or the explicitly framed little-endian 31-bit stream; neither form reduces out-of-range values.\n"
         "- Full-transaction gas, runtime attribution, proof/prover delta, and dynamic opcode counts remain unmeasured until a canonical full verifier variant exists.\n"
+        "- Rust `bench()` totals have no warmup or distribution and are DIAGNOSTIC_NOT_COMMON_PROTOCOL; only isolated Solidity gas is classified as measured.\n"
         "- No isolated microbenchmark delta is added to another to claim complete-verifier savings.\n"
     )
     dump(directory / "negative-results.json", {"candidateId": cid, "cases": NEGATIVE[cid]})
@@ -354,11 +413,12 @@ def write_candidate(cid: str, native: dict | None, solidity: dict | None) -> Non
 
 
 def write_combined(native: dict | None, solidity: dict | None, transcript_hash: str | None) -> None:
-    measured = native is not None and solidity is not None
+    solidity_measured = solidity is not None
     outputs = {cid: candidate_measurement(cid, native, solidity) for cid in CANDIDATES}
     report = {
         "schema": "pqtc-sp31-combined-report-v1", "status": "BENCHMARK_ONLY",
-        "measured": {"scope": "isolated Rust and Solidity kernels", "available": measured, "native": native, "solidity": solidity, "forgeTranscriptSha256": transcript_hash},
+        "measured": {"scope": "isolated Solidity gas kernels only", "available": solidity_measured, "solidity": solidity, "forgeTranscriptSha256": transcript_hash},
+        "nativeDiagnostic": {"scope": "isolated Rust aggregate timing without warmup or distribution", "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL", "commonProtocolComparable": False, "available": native is not None, "values": native},
         "canonicalFixture": canonical_fixture_observation(),
         "baseline": {"projectionAnchor": BASELINE, "historicComparator": HISTORIC_BASELINE},
         "projected": {"scope": "source-bound canonical run plus explicitly named historic component model; calldata-floor values recomputed from exact current bytes", "querySplits": split_model(), "mmcs": exact_tables(native)},
@@ -369,14 +429,15 @@ def write_combined(native: dict | None, solidity: dict | None, transcript_hash: 
     }
     dump(HERE / "outputs" / "combined.json", report)
     dump(HERE / "outputs" / "baseline-reference.json", {"projectionAnchor": BASELINE, "historicComparator": HISTORIC_BASELINE})
-    dump(HERE / "status.json", {"status": "BENCHMARK_ONLY", "isolatedMeasurements": "PASS" if measured else "NOT_EVALUATED", "fullPath": "NOT_EVALUATED", "combinedGate": "PENDING_FULL_PATH", "noAdditiveClaim": True})
+    dump(HERE / "status.json", {"status": "BENCHMARK_ONLY", "isolatedSolidityMeasurements": "PASS" if solidity_measured else "NOT_EVALUATED", "isolatedRustTiming": "DIAGNOSTIC_NOT_COMMON_PROTOCOL" if native is not None else "NOT_EVALUATED", "fullPath": "NOT_EVALUATED", "combinedGate": "PENDING_FULL_PATH", "noAdditiveClaim": True})
     dump(HERE / "manifest.json", {"candidateId": "SP-31/V1-V9", "status": "BENCHMARK_ONLY", "command": "python3 research/candidates/verifier-optimization-common/run-focused.py", "paths": list(CANDIDATES), "plonky3Commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c", "custodyIntegration": False})
     (HERE / "ADR.md").write_text(
         "# SP-31 combined verifier optimization package\n\n"
         "## Status\n\nBENCHMARK_ONLY. No custody integration is authorized.\n\n"
-        "## Decision\n\nRun V1-V9 from one fail-closed command. Keep measured isolated kernels and explicit component projections in separate JSON fields. "
-        "Do not add overlapping microbenchmarks. V3+V4 is the only predeclared simplifying combination. "
-        "A complete-transaction gate remains pending because no isolated optimized full-verifier variant exists; the source-bound canonical baseline is observed and used for projections.\n"
+        "## Decision\n\nRun V1-V9 from one fail-closed command. Keep measured isolated Solidity gas and diagnostic Rust aggregate timings in separate JSON fields. "
+        "The Rust `bench()` loop has no warmup or sample distribution and is not common-protocol-comparable. Do not add overlapping microbenchmarks. "
+        "V3+V4 is the only predeclared simplifying combination. A complete-transaction gate remains pending because no isolated optimized full-verifier variant exists; "
+        "the source-bound canonical baseline is observed and used for projections.\n"
     )
     (HERE / "assumptions.md").write_text(
         "# SP-31 combined assumptions\n\n"
@@ -385,7 +446,7 @@ def write_combined(native: dict | None, solidity: dict | None, transcript_hash: 
         "- The active/64/96 schedules are recomputed from current exact calldata bytes and zero counts; each total is the maximum of the standard path and its floor.\n"
         "- The canonical proof is consumed for baseline bytes, hashes, and gas. No optimized full verifier is integrated, so no full-path savings are claimed.\n"
     )
-    dump(HERE / "negative-results.json", {"package": "SP-31", "results": ["Canonical v03-fixed-01 is consumed as the projection anchor, but no optimized full-verifier path exists.", "Dynamic full-verifier opcode counts remain unavailable.", "384/320-bit digest truncation lacks external review.", "No individual candidate has passed the complete-verifier gate.", "Isolated kernel savings are not summed."]})
+    dump(HERE / "negative-results.json", {"package": "SP-31", "results": ["Canonical v03-fixed-01 is consumed as the projection anchor, but no optimized full-verifier path exists.", "Dynamic full-verifier opcode counts remain unavailable.", "384/320-bit digest truncation lacks external review.", "No individual candidate has passed the complete-verifier gate.", "Isolated kernel savings are not summed.", "Rust aggregate timings have no warmup or distribution and are DIAGNOSTIC_NOT_COMMON_PROTOCOL."]})
 
 
 def validate() -> None:
