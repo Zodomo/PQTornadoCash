@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "recordType": "FormalAssuranceStudyManifest",
+  "studyId": "CROSS-CUTTING-18-FORMAL-ASSURANCE",
+  "title": "Formal and semi-formal assurance inventory",
+  "researchOnly": true,
+  "productionCodeChanged": false,
+  "ownedPath": "research/formal-assurance/**",
+  "baseline": {
+    "candidateId": "C00/v03-baseline",
+    "tag": "pqtc-v0.3-research-baseline",
+    "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+    "frozen": true
+  },
+  "researchSnapshotCommit": "5a6714c07fac6b8ba20b4b52e1b60884d8e6ee89",
+  "candidateContext": {
+    "finalist": null,
+    "securityQualifiedCandidate": false,
+    "externalCryptographicAcceptance": "OPEN"
+  },
+  "artifacts": {
+    "README.md": "scope, commands, model limits, findings, and cost summary",
+    "ADR.md": "decision record for bounded assurance mapping",
+    "assumptions.json": "machine-readable assumptions and exclusions",
+    "checker.py": "deterministic finite transition model and invariant evaluator",
+    "inventory.json": "machine-readable inventory of all six plan surfaces",
+    "manifest.json": "package and retained-output manifest",
+    "mutations.json": "plausible controller mutations and expected invariant detections",
+    "negative-results.json": "rejected, deferred, and not-evaluated assurance claims",
+    "result.schema.json": "JSON Schema for the retained checker result",
+    "run.py": "deterministic generator and byte-for-byte retained-result checker",
+    "scope-estimates.json": "integer engineer-week PROJECTION ranges and assumptions",
+    "source-pins.json": "baseline/current source pins and SHA-256 hashes",
+    "status.json": "machine-readable package status",
+    "results/checker-results.json": "retained exhaustive reference and mutation result"
+  },
+  "outputPlan": {
+    "inputs": ["checker.py", "mutations.json"],
+    "generatorCommand": "python3 research/formal-assurance/run.py",
+    "verificationCommand": "python3 research/formal-assurance/run.py --check",
+    "output": "research/formal-assurance/results/checker-results.json",
+    "schema": "research/formal-assurance/result.schema.json",
+    "serialization": "UTF-8 JSON, sorted keys, two-space indentation, one trailing newline",
+    "determinism": "No time, randomness, network, process ordering, or machine-specific value is serialized.",
+    "retention": "Commit the generated result, including one deterministic counterexample witness for every detected mutation.",
+    "failurePolicy": "The runner exits nonzero if the reference violates an invariant, any declared mutation escapes detection, the retained bytes drift, or the retained output is missing."
+  },
+  "modelBounds": {
+    "identifierEqualityClasses": 2,
+    "proofSlots": 1,
+    "nullifiers": 1,
+    "reachability": "exhaustive least fixed point",
+    "claim": "SEMI_FORMAL_ABSTRACT_MODEL_NOT_PROTOCOL_PROOF"
+  },
+  "costEvidenceClass": "PROJECTION_PLANNING_RANGE_NOT_MEASUREMENT"
+}

@@ -1,0 +1,724 @@
+{
+  "counts": {
+    "actions": 1088,
+    "mutantTransitionsChecked": 295936,
+    "mutations": 8,
+    "reachableStates": 34,
+    "referenceTransitionsChecked": 36992
+  },
+  "inputs": {
+    "checker.py": {
+      "sha256": "a7489bfe6fa7ad5ebc1a572e3c90a1ddfbefe5399413ddcdfe918b74d12820d8"
+    },
+    "mutations.json": {
+      "sha256": "78e42e805de833722b480e148c446f552a4e15072dad36ef3b9d33ce0f28cf78"
+    }
+  },
+  "model": {
+    "abstractions": [
+      "Identifiers are equality classes, not hashes or byte strings.",
+      "Parser, verifier, pool guards, and transfers are nondeterministic booleans.",
+      "EVM revert is modeled as atomic restoration of all cross-call state.",
+      "Cryptography, gas, concurrency, calldata layout, and liveness are outside the model."
+    ],
+    "finiteDomains": {
+      "booleanGuards": [
+        false,
+        true
+      ],
+      "checkpointDigest": [
+        0,
+        1
+      ],
+      "consumer": [
+        0,
+        1
+      ],
+      "coreProof": [
+        0,
+        1
+      ],
+      "globalDigest": [
+        0,
+        1
+      ],
+      "nullifiers": 1,
+      "proofSlots": 1,
+      "statement": [
+        0,
+        1
+      ]
+    },
+    "reachability": "least fixed point from an empty checkpoint and unspent nullifier under reference transitions"
+  },
+  "mutations": [
+    {
+      "description": "Accept Part B from a caller other than the consumer that created the checkpoint.",
+      "detected": true,
+      "expectedInvariant": "complete_requires_bound_consumer",
+      "id": "M01_SKIP_CONSUMER_BINDING",
+      "violationCounts": {
+        "complete_requires_bound_consumer": 32
+      },
+      "witness": {
+        "action": {
+          "caller": 1,
+          "checkpoint_digest": 0,
+          "common_parser_ok": true,
+          "core": 0,
+          "global_digest": 0,
+          "kind": "complete",
+          "pool_guards_ok": true,
+          "recipient_transfer_ok": true,
+          "relayer_transfer_ok": true,
+          "second_half_ok": true,
+          "statement": 0
+        },
+        "invariant": "complete_requires_bound_consumer",
+        "outcome": {
+          "reason": "COMPLETED",
+          "state": {
+            "checkpoint": null,
+            "completed_count": 1,
+            "nullifier_spent": true
+          },
+          "success": true
+        },
+        "pathToState": [
+          {
+            "action": {
+              "caller": 0,
+              "checkpoint_digest": 0,
+              "common_parser_ok": true,
+              "core": 0,
+              "global_digest": 0,
+              "kind": "begin",
+              "pool_guards_ok": true,
+              "recipient_transfer_ok": true,
+              "relayer_transfer_ok": true,
+              "second_half_ok": true,
+              "statement": 0
+            },
+            "outcome": {
+              "reason": "CHECKPOINT_CREATED",
+              "state": {
+                "checkpoint": {
+                  "checkpoint_digest": 0,
+                  "consumer": 0,
+                  "core": 0,
+                  "global_digest": 0,
+                  "statement": 0
+                },
+                "completed_count": 0,
+                "nullifier_spent": false
+              },
+              "success": true
+            }
+          }
+        ],
+        "state": {
+          "checkpoint": {
+            "checkpoint_digest": 0,
+            "consumer": 0,
+            "core": 0,
+            "global_digest": 0,
+            "statement": 0
+          },
+          "completed_count": 0,
+          "nullifier_spent": false
+        }
+      }
+    },
+    {
+      "description": "Accept Part B for a public statement different from the statement stored by Part A.",
+      "detected": true,
+      "expectedInvariant": "complete_requires_bound_statement",
+      "id": "M02_SKIP_STATEMENT_BINDING",
+      "violationCounts": {
+        "complete_requires_bound_statement": 32
+      },
+      "witness": {
+        "action": {
+          "caller": 0,
+          "checkpoint_digest": 0,
+          "common_parser_ok": true,
+          "core": 0,
+          "global_digest": 0,
+          "kind": "complete",
+          "pool_guards_ok": true,
+          "recipient_transfer_ok": true,
+          "relayer_transfer_ok": true,
+          "second_half_ok": true,
+          "statement": 1
+        },
+        "invariant": "complete_requires_bound_statement",
+        "outcome": {
+          "reason": "COMPLETED",
+          "state": {
+            "checkpoint": null,
+            "completed_count": 1,
+            "nullifier_spent": true
+          },
+          "success": true
+        },
+        "pathToState": [
+          {
+            "action": {
+              "caller": 0,
+              "checkpoint_digest": 0,
+              "common_parser_ok": true,
+              "core": 0,
+              "global_digest": 0,
+              "kind": "begin",
+              "pool_guards_ok": true,
+              "recipient_transfer_ok": true,
+              "relayer_transfer_ok": true,
+              "second_half_ok": true,
+              "statement": 0
+            },
+            "outcome": {
+              "reason": "CHECKPOINT_CREATED",
+              "state": {
+                "checkpoint": {
+                  "checkpoint_digest": 0,
+                  "consumer": 0,
+                  "core": 0,
+                  "global_digest": 0,
+                  "statement": 0
+                },
+                "completed_count": 0,
+                "nullifier_spent": false
+              },
+              "success": true
+            }
+          }
+        ],
+        "state": {
+          "checkpoint": {
+            "checkpoint_digest": 0,
+            "consumer": 0,
+            "core": 0,
+            "global_digest": 0,
+            "statement": 0
+          },
+          "completed_count": 0,
+          "nullifier_spent": false
+        }
+      }
+    },
+    {
+      "description": "Leave a successful verification checkpoint live and therefore replayable.",
+      "detected": true,
+      "expectedInvariant": "successful_complete_consumes_checkpoint",
+      "id": "M03_KEEP_CHECKPOINT",
+      "violationCounts": {
+        "successful_complete_consumes_checkpoint": 32
+      },
+      "witness": {
+        "action": {
+          "caller": 0,
+          "checkpoint_digest": 0,
+          "common_parser_ok": true,
+          "core": 0,
+          "global_digest": 0,
+          "kind": "complete",
+          "pool_guards_ok": true,
+          "recipient_transfer_ok": true,
+          "relayer_transfer_ok": true,
+          "second_half_ok": true,
+          "statement": 0
+        },
+        "invariant": "successful_complete_consumes_checkpoint",
+        "outcome": {
+          "reason": "COMPLETED",
+          "state": {
+            "checkpoint": {
+              "checkpoint_digest": 0,
+              "consumer": 0,
+              "core": 0,
+              "global_digest": 0,
+              "statement": 0
+            },
+            "completed_count": 1,
+            "nullifier_spent": true
+          },
+          "success": true
+        },
+        "pathToState": [
+          {
+            "action": {
+              "caller": 0,
+              "checkpoint_digest": 0,
+              "common_parser_ok": true,
+              "core": 0,
+              "global_digest": 0,
+              "kind": "begin",
+              "pool_guards_ok": true,
+              "recipient_transfer_ok": true,
+              "relayer_transfer_ok": true,
+              "second_half_ok": true,
+              "statement": 0
+            },
+            "outcome": {
+              "reason": "CHECKPOINT_CREATED",
+              "state": {
+                "checkpoint": {
+                  "checkpoint_digest": 0,
+                  "consumer": 0,
+                  "core": 0,
+                  "global_digest": 0,
+                  "statement": 0
+                },
+                "completed_count": 0,
+                "nullifier_spent": false
+              },
+              "success": true
+            }
+          }
+        ],
+        "state": {
+          "checkpoint": {
+            "checkpoint_digest": 0,
+            "consumer": 0,
+            "core": 0,
+            "global_digest": 0,
+            "statement": 0
+          },
+          "completed_count": 0,
+          "nullifier_spent": false
+        }
+      }
+    },
+    {
+      "description": "Permit a new controller transition after its abstract nullifier is spent.",
+      "detected": true,
+      "expectedInvariant": "spent_nullifier_blocks_begin_and_complete",
+      "id": "M04_ALLOW_SPENT_NULLIFIER",
+      "violationCounts": {
+        "begin_requires_unspent_nullifier": 32,
+        "spent_nullifier_blocks_begin_and_complete": 32
+      },
+      "witness": {
+        "action": {
+          "caller": 0,
+          "checkpoint_digest": 0,
+          "common_parser_ok": true,
+          "core": 0,
+          "global_digest": 0,
+          "kind": "begin",
+          "pool_guards_ok": true,
+          "recipient_transfer_ok": true,
+          "relayer_transfer_ok": true,
+          "second_half_ok": true,
+          "statement": 0
+        },
+        "invariant": "spent_nullifier_blocks_begin_and_complete",
+        "outcome": {
+          "reason": "CHECKPOINT_CREATED",
+          "state": {
+            "checkpoint": {
+              "checkpoint_digest": 0,
+              "consumer": 0,
+              "core": 0,
+              "global_digest": 0,
+              "statement": 0
+            },
+            "completed_count": 1,
+            "nullifier_spent": true
+          },
+          "success": true
+        },
+        "pathToState": [
+          {
+            "action": {
+              "caller": 0,
+              "checkpoint_digest": 0,
+              "common_parser_ok": true,
+              "core": 0,
+              "global_digest": 0,
+              "kind": "begin",
+              "pool_guards_ok": true,
+              "recipient_transfer_ok": true,
+              "relayer_transfer_ok": true,
+              "second_half_ok": true,
+              "statement": 0
+            },
+            "outcome": {
+              "reason": "CHECKPOINT_CREATED",
+              "state": {
+                "checkpoint": {
+                  "checkpoint_digest": 0,
+                  "consumer": 0,
+                  "core": 0,
+                  "global_digest": 0,
+                  "statement": 0
+                },
+                "completed_count": 0,
+                "nullifier_spent": false
+              },
+              "success": true
+            }
+          },
+          {
+            "action": {
+              "caller": 0,
+              "checkpoint_digest": 0,
+              "common_parser_ok": true,
+              "core": 0,
+              "global_digest": 0,
+              "kind": "complete",
+              "pool_guards_ok": true,
+              "recipient_transfer_ok": true,
+              "relayer_transfer_ok": true,
+              "second_half_ok": true,
+              "statement": 0
+            },
+            "outcome": {
+              "reason": "COMPLETED",
+              "state": {
+                "checkpoint": null,
+                "completed_count": 1,
+                "nullifier_spent": true
+              },
+              "success": true
+            }
+          }
+        ],
+        "state": {
+          "checkpoint": null,
+          "completed_count": 1,
+          "nullifier_spent": true
+        }
+      }
+    },
+    {
+      "description": "Persist checkpoint deletion or nullifier spending when a late verifier or transfer failure occurs.",
+      "detected": true,
+      "expectedInvariant": "failed_transition_is_atomic",
+      "id": "M05_NON_ATOMIC_FAILURE",
+      "violationCounts": {
+        "failed_transition_is_atomic": 224
+      },
+      "witness": {
+        "action": {
+          "caller": 0,
+          "checkpoint_digest": 0,
+          "common_parser_ok": true,
+          "core": 0,
+          "global_digest": 0,
+          "kind": "complete",
+          "pool_guards_ok": true,
+          "recipient_transfer_ok": false,
+          "relayer_transfer_ok": false,
+          "second_half_ok": false,
+          "statement": 0
+        },
+        "invariant": "failed_transition_is_atomic",
+        "outcome": {
+          "reason": "SECOND_HALF_FAILURE",
+          "state": {
+            "checkpoint": null,
+            "completed_count": 0,
+            "nullifier_spent": false
+          },
+          "success": false
+        },
+        "pathToState": [
+          {
+            "action": {
+              "caller": 0,
+              "checkpoint_digest": 0,
+              "common_parser_ok": true,
+              "core": 0,
+              "global_digest": 0,
+              "kind": "begin",
+              "pool_guards_ok": true,
+              "recipient_transfer_ok": true,
+              "relayer_transfer_ok": true,
+              "second_half_ok": true,
+              "statement": 0
+            },
+            "outcome": {
+              "reason": "CHECKPOINT_CREATED",
+              "state": {
+                "checkpoint": {
+                  "checkpoint_digest": 0,
+                  "consumer": 0,
+                  "core": 0,
+                  "global_digest": 0,
+                  "statement": 0
+                },
+                "completed_count": 0,
+                "nullifier_spent": false
+              },
+              "success": true
+            }
+          }
+        ],
+        "state": {
+          "checkpoint": {
+            "checkpoint_digest": 0,
+            "consumer": 0,
+            "core": 0,
+            "global_digest": 0,
+            "statement": 0
+          },
+          "completed_count": 0,
+          "nullifier_spent": false
+        }
+      }
+    },
+    {
+      "description": "Overwrite an existing proof-slot checkpoint with conflicting Part A bindings.",
+      "detected": true,
+      "expectedInvariant": "existing_checkpoint_cannot_be_overwritten",
+      "id": "M06_OVERWRITE_CHECKPOINT",
+      "violationCounts": {
+        "existing_checkpoint_cannot_be_overwritten": 992
+      },
+      "witness": {
+        "action": {
+          "caller": 0,
+          "checkpoint_digest": 1,
+          "common_parser_ok": true,
+          "core": 0,
+          "global_digest": 0,
+          "kind": "begin",
+          "pool_guards_ok": true,
+          "recipient_transfer_ok": true,
+          "relayer_transfer_ok": true,
+          "second_half_ok": true,
+          "statement": 0
+        },
+        "invariant": "existing_checkpoint_cannot_be_overwritten",
+        "outcome": {
+          "reason": "CHECKPOINT_OVERWRITTEN",
+          "state": {
+            "checkpoint": {
+              "checkpoint_digest": 1,
+              "consumer": 0,
+              "core": 0,
+              "global_digest": 0,
+              "statement": 0
+            },
+            "completed_count": 0,
+            "nullifier_spent": false
+          },
+          "success": true
+        },
+        "pathToState": [
+          {
+            "action": {
+              "caller": 0,
+              "checkpoint_digest": 0,
+              "common_parser_ok": true,
+              "core": 0,
+              "global_digest": 0,
+              "kind": "begin",
+              "pool_guards_ok": true,
+              "recipient_transfer_ok": true,
+              "relayer_transfer_ok": true,
+              "second_half_ok": true,
+              "statement": 0
+            },
+            "outcome": {
+              "reason": "CHECKPOINT_CREATED",
+              "state": {
+                "checkpoint": {
+                  "checkpoint_digest": 0,
+                  "consumer": 0,
+                  "core": 0,
+                  "global_digest": 0,
+                  "statement": 0
+                },
+                "completed_count": 0,
+                "nullifier_spent": false
+              },
+              "success": true
+            }
+          }
+        ],
+        "state": {
+          "checkpoint": {
+            "checkpoint_digest": 0,
+            "consumer": 0,
+            "core": 0,
+            "global_digest": 0,
+            "statement": 0
+          },
+          "completed_count": 0,
+          "nullifier_spent": false
+        }
+      }
+    },
+    {
+      "description": "Complete without a successful second-half proof verification.",
+      "detected": true,
+      "expectedInvariant": "complete_requires_second_half_verification",
+      "id": "M07_SKIP_SECOND_HALF",
+      "violationCounts": {
+        "complete_requires_second_half_verification": 32
+      },
+      "witness": {
+        "action": {
+          "caller": 0,
+          "checkpoint_digest": 0,
+          "common_parser_ok": true,
+          "core": 0,
+          "global_digest": 0,
+          "kind": "complete",
+          "pool_guards_ok": true,
+          "recipient_transfer_ok": true,
+          "relayer_transfer_ok": true,
+          "second_half_ok": false,
+          "statement": 0
+        },
+        "invariant": "complete_requires_second_half_verification",
+        "outcome": {
+          "reason": "COMPLETED",
+          "state": {
+            "checkpoint": null,
+            "completed_count": 1,
+            "nullifier_spent": true
+          },
+          "success": true
+        },
+        "pathToState": [
+          {
+            "action": {
+              "caller": 0,
+              "checkpoint_digest": 0,
+              "common_parser_ok": true,
+              "core": 0,
+              "global_digest": 0,
+              "kind": "begin",
+              "pool_guards_ok": true,
+              "recipient_transfer_ok": true,
+              "relayer_transfer_ok": true,
+              "second_half_ok": true,
+              "statement": 0
+            },
+            "outcome": {
+              "reason": "CHECKPOINT_CREATED",
+              "state": {
+                "checkpoint": {
+                  "checkpoint_digest": 0,
+                  "consumer": 0,
+                  "core": 0,
+                  "global_digest": 0,
+                  "statement": 0
+                },
+                "completed_count": 0,
+                "nullifier_spent": false
+              },
+              "success": true
+            }
+          }
+        ],
+        "state": {
+          "checkpoint": {
+            "checkpoint_digest": 0,
+            "consumer": 0,
+            "core": 0,
+            "global_digest": 0,
+            "statement": 0
+          },
+          "completed_count": 0,
+          "nullifier_spent": false
+        }
+      }
+    },
+    {
+      "description": "Accept Part B global data whose digest differs from the Part A checkpoint.",
+      "detected": true,
+      "expectedInvariant": "complete_requires_bound_global_data",
+      "id": "M08_SKIP_GLOBAL_BINDING",
+      "violationCounts": {
+        "complete_requires_bound_global_data": 32
+      },
+      "witness": {
+        "action": {
+          "caller": 0,
+          "checkpoint_digest": 0,
+          "common_parser_ok": true,
+          "core": 0,
+          "global_digest": 1,
+          "kind": "complete",
+          "pool_guards_ok": true,
+          "recipient_transfer_ok": true,
+          "relayer_transfer_ok": true,
+          "second_half_ok": true,
+          "statement": 0
+        },
+        "invariant": "complete_requires_bound_global_data",
+        "outcome": {
+          "reason": "COMPLETED",
+          "state": {
+            "checkpoint": null,
+            "completed_count": 1,
+            "nullifier_spent": true
+          },
+          "success": true
+        },
+        "pathToState": [
+          {
+            "action": {
+              "caller": 0,
+              "checkpoint_digest": 0,
+              "common_parser_ok": true,
+              "core": 0,
+              "global_digest": 0,
+              "kind": "begin",
+              "pool_guards_ok": true,
+              "recipient_transfer_ok": true,
+              "relayer_transfer_ok": true,
+              "second_half_ok": true,
+              "statement": 0
+            },
+            "outcome": {
+              "reason": "CHECKPOINT_CREATED",
+              "state": {
+                "checkpoint": {
+                  "checkpoint_digest": 0,
+                  "consumer": 0,
+                  "core": 0,
+                  "global_digest": 0,
+                  "statement": 0
+                },
+                "completed_count": 0,
+                "nullifier_spent": false
+              },
+              "success": true
+            }
+          }
+        ],
+        "state": {
+          "checkpoint": {
+            "checkpoint_digest": 0,
+            "consumer": 0,
+            "core": 0,
+            "global_digest": 0,
+            "statement": 0
+          },
+          "completed_count": 0,
+          "nullifier_spent": false
+        }
+      }
+    }
+  ],
+  "qualification": "SEMI_FORMAL_ABSTRACT_MODEL_NOT_PROTOCOL_PROOF",
+  "reference": {
+    "status": "PASS",
+    "violationCounts": {},
+    "witnesses": []
+  },
+  "schemaVersion": 1,
+  "summary": {
+    "allMutationsDetected": true,
+    "detectedMutations": 8,
+    "formalVerificationClaim": false,
+    "protocolProofClaim": false,
+    "referencePass": true,
+    "status": "PASS"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "recordType": "FormalAssuranceNextBuildEstimate",
+  "evidenceClass": "PROJECTION_PLANNING_RANGE_NOT_MEASUREMENT",
+  "unit": "engineer-week",
+  "allCostsInteger": true,
+  "prerequisite": "A finalist relation, proof framing, Rust implementation boundary, and Solidity verifier boundary are frozen.",
+  "workstreams": [
+    {
+      "id": "NB-01",
+      "name": "single-source relation IR and AIR/R1CS generation",
+      "minEngineerWeeks": 10,
+      "maxEngineerWeeks": 16,
+      "dependsOn": [],
+      "deliverables": ["typed relation specification", "Rust AIR generator", "R1CS emitter where backend requires it", "Solidity evaluator obligations", "stable constraint IDs"],
+      "exclusions": ["new cryptographic relation design", "backend security proof"]
+    },
+    {
+      "id": "NB-02",
+      "name": "symbolic constraint coverage",
+      "minEngineerWeeks": 6,
+      "maxEngineerWeeks": 10,
+      "dependsOn": ["NB-01"],
+      "deliverables": ["dependency graph", "selector and boundary queries", "unconstrained-degree-of-freedom checks", "machine-readable mutation coverage"],
+      "exclusions": ["claim that finite mutations prove relation soundness"]
+    },
+    {
+      "id": "NB-03",
+      "name": "one proof-assistant refinement target",
+      "minEngineerWeeks": 12,
+      "maxEngineerWeeks": 20,
+      "dependsOn": ["NB-01"],
+      "deliverables": ["pinned Lean, Coq, or Isabelle environment", "application-framing or codec theorem", "explicit imported assumptions", "reproducible proof check"],
+      "exclusions": ["parallel ports to all three assistants", "complete protocol soundness theorem", "proof of Poseidon2 or Keccak cryptanalysis"]
+    },
+    {
+      "id": "NB-04",
+      "name": "controller SMT/refinement",
+      "minEngineerWeeks": 4,
+      "maxEngineerWeeks": 7,
+      "dependsOn": [],
+      "deliverables": ["bytecode- or source-linked transition model", "revert and external-call semantics", "consumer/statement/replay invariants", "counterexample-producing mutations"],
+      "exclusions": ["liveness under arbitrary chain conditions", "cryptographic verifier proof"]
+    },
+    {
+      "id": "NB-05",
+      "name": "proof-codec specification and parser verification",
+      "minEngineerWeeks": 8,
+      "maxEngineerWeeks": 14,
+      "dependsOn": [],
+      "deliverables": ["normative versioned grammar", "cursor and length obligations", "canonicality and trailing-byte proofs", "Rust/Solidity rejection equivalence corpus"],
+      "exclusions": ["finalist codec redesign after the grammar freezes"]
+    },
+    {
+      "id": "NB-06",
+      "name": "Rust/Solidity arithmetic equivalence",
+      "minEngineerWeeks": 8,
+      "maxEngineerWeeks": 14,
+      "dependsOn": ["NB-01"],
+      "deliverables": ["canonical arithmetic specification", "field and extension boundary obligations", "hash/transcript step equivalence", "generated cross-language checks"],
+      "exclusions": ["primitive security proof", "gas optimization"]
+    },
+    {
+      "id": "NB-07",
+      "name": "integration, CI, and review packet",
+      "minEngineerWeeks": 4,
+      "maxEngineerWeeks": 7,
+      "dependsOn": ["NB-02", "NB-03", "NB-04", "NB-05", "NB-06"],
+      "deliverables": ["pinned reproducible runners", "artifact hashes", "assumption ledger", "failure triage and reviewer procedure"],
+      "exclusions": ["external cryptographic acceptance", "production audit", "finding remediation"]
+    }
+  ],
+  "summedSerialEffort": {
+    "minEngineerWeeks": 52,
+    "maxEngineerWeeks": 88,
+    "arithmetic": "(10+6+12+4+8+8+4) to (16+10+20+7+14+14+7)",
+    "scheduleClaim": false
+  },
+  "unsummedContingencies": [
+    "A finalist or proof format changes after work begins.",
+    "The selected backend lacks a stable R1CS/AIR extraction boundary.",
+    "Imported field, hash, transcript, or EVM libraries require new formalization.",
+    "External reviewers require theorem strengthening or remediation."
+  ],
+  "securityQualificationFromEstimate": false
+}

@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "recordType": "FormalAssuranceSurfaceInventory",
+  "qualification": "MAPPING_ONLY_NO_FORMAL_VERIFICATION_OR_PROTOCOL_PROOF",
+  "baseline": {
+    "id": "C00/v03-baseline",
+    "tag": "pqtc-v0.3-research-baseline",
+    "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+    "frozen": true
+  },
+  "currentResearch": {
+    "commit": "5a6714c07fac6b8ba20b4b52e1b60884d8e6ee89",
+    "finalistAvailable": false,
+    "securityQualifiedCandidateAvailable": false,
+    "externalCryptographicAcceptance": "OPEN"
+  },
+  "surfaces": [
+    {
+      "id": "FA-01",
+      "surface": "single-source AIR/R1CS",
+      "v03State": "ABSENT",
+      "currentResearchState": "BLOCKED_NO_FINALIST",
+      "evidence": [
+        "crates/pqtc-poseidon-air/src/air.rs",
+        "contracts/src/verifier/AirEvaluatorPoseidon.sol",
+        "research/backends/landscape/matrix.json",
+        "research/backends/pcs-bakeoff/manifest.json"
+      ],
+      "finding": "Frozen v0.3 has a Rust WithdrawalAir and a separate Solidity evaluator whose comment asserts identical constraint order; it has no checked declarative relation that generates both AIR and R1CS. Current backend proxies do not implement an accepted exact PQTC relation.",
+      "amenableTarget": "A finalist-specific typed relation IR that emits Rust AIR, optional R1CS, Solidity evaluator data, constraint IDs, and equivalence test vectors from one checked source.",
+      "gaps": [
+        "no finalist relation",
+        "no canonical relation IR",
+        "no R1CS for the exact frozen relation",
+        "no proof that generated targets preserve the IR semantics"
+      ],
+      "claim": "NOT_VERIFIED"
+    },
+    {
+      "id": "FA-02",
+      "surface": "symbolic constraint coverage",
+      "v03State": "PARTIAL_TEST_EVIDENCE",
+      "currentResearchState": "NOT_STARTED_FOR_ANY_FINALIST",
+      "evidence": [
+        "crates/pqtc-poseidon-air/src/air.rs",
+        "crates/pqtc-poseidon-air/src/lib.rs",
+        "research/common-corpus/invalid-mutations.json"
+      ],
+      "finding": "The frozen Rust AIR contains row/limb mutation and boundary tests and the common corpus retains invalid semantic mutations. These are finite tests, not solver-backed path coverage or a proof that every witness degree of freedom is constrained.",
+      "amenableTarget": "Stable constraint IDs, symbolic dependency graphs, solver queries for unconstrained columns and selector combinations, boundary-row obligations, and mutation-to-constraint coverage reports generated from the finalist relation.",
+      "gaps": [
+        "no stable machine-readable constraint IDs",
+        "no symbolic execution/SMT coverage artifact",
+        "no completeness theorem for mutation classes",
+        "candidate adapters do not share one exact relation"
+      ],
+      "claim": "NOT_VERIFIED"
+    },
+    {
+      "id": "FA-03",
+      "surface": "Lean/Coq/Isabelle targets",
+      "v03State": "ABSENT",
+      "currentResearchState": "MAPPED_NOT_SELECTED",
+      "evidence": [
+        "crates/pqtc-poseidon-air/src/lib.rs",
+        "crates/pqtc-hash/src/lib.rs",
+        "contracts/src/libraries/PQTCApplicationHash.sol",
+        "contracts/src/libraries/PQTCProofCodec.sol"
+      ],
+      "finding": "No checked Lean, Coq, or Isabelle development is retained for v0.3 or a current candidate. With no finalist, selecting a complete protocol formalization would be premature.",
+      "amenableTarget": "Choose one assistant after finalist selection and prove a narrow refinement target: application-relation framing and canonical field encoding, or proof-codec parser totality/rejection; import hash permutation facts as explicit assumptions unless separately proved.",
+      "formalizationOptions": [
+        {"assistant": "Lean", "candidateTarget": "executable application relation plus Rust/Solidity arithmetic refinement"},
+        {"assistant": "Coq", "candidateTarget": "canonical proof-codec grammar, parser safety, and encode/decode properties"},
+        {"assistant": "Isabelle", "candidateTarget": "two-call controller transition system and refinement obligations"}
+      ],
+      "gaps": [
+        "no proof assistant selected",
+        "no finalist semantics frozen",
+        "no libraries/toolchain pins",
+        "no imported or proved Poseidon2/Keccak assumptions",
+        "no external proof review"
+      ],
+      "claim": "NOT_VERIFIED"
+    },
+    {
+      "id": "FA-04",
+      "surface": "finite controller transitions",
+      "v03State": "SEMI_FORMAL_MODEL_AVAILABLE_IN_THIS_PACKAGE",
+      "currentResearchState": "SEMI_FORMAL_ABSTRACT_CHECK_COMPLETE",
+      "evidence": [
+        "contracts/src/PQTCVerificationRegistry.sol",
+        "contracts/src/PQTCClassicPool.sol",
+        "research/formal-assurance/checker.py",
+        "research/formal-assurance/results/checker-results.json"
+      ],
+      "finding": "The retained checker exhausts the least fixed point of a finite equality-class model and detects mutations in consumer/statement/global binding, checkpoint consumption, nullifier replay blocking, collision handling, late-failure atomicity, and second-half verification.",
+      "amenableTarget": "Encode the selected controller in SMT or a proof assistant and prove a refinement from Solidity/EVM call-and-revert semantics, including adversarial reentrancy and all external-call outcomes.",
+      "gaps": [
+        "abstract booleans replace parsers and verifiers",
+        "one proof slot and one nullifier only",
+        "hash collisions and byte encodings are outside the model",
+        "no EVM trace/refinement link",
+        "gas, liveness, concurrency, and chain behavior are outside the model"
+      ],
+      "claim": "SEMI_FORMAL_NOT_PROTOCOL_PROOF"
+    },
+    {
+      "id": "FA-05",
+      "surface": "proof-codec parsing",
+      "v03State": "TESTED_NOT_VERIFIED",
+      "currentResearchState": "NO_FINALIST_CODEC",
+      "evidence": [
+        "contracts/src/libraries/CanonicalCodec.sol",
+        "contracts/src/libraries/PQTCProofCodec.sol",
+        "crates/pqtc-stark/src/codec.rs",
+        "contracts/src/PQTCVerificationRegistry.sol"
+      ],
+      "finding": "Frozen Rust and Solidity code implement strict version/shape/canonical-field/end-marker parsing and statement/checkpoint binding. Tests and retained proof round trips are implementation evidence, not parser memory-safety, grammar-completeness, or cross-language refinement proofs.",
+      "amenableTarget": "Specify a versioned byte grammar once; generate or verify Rust and Solidity decoders; prove cursor bounds, canonical decoding, trailing-byte rejection, encode/decode round trip, and identical rejection classes.",
+      "gaps": [
+        "no standalone normative grammar",
+        "no verified cursor arithmetic",
+        "no exhaustive differential parser result",
+        "no finalist framing",
+        "no resource-bound proof for adversarial inputs"
+      ],
+      "claim": "NOT_VERIFIED"
+    },
+    {
+      "id": "FA-06",
+      "surface": "Rust/Solidity arithmetic equivalence",
+      "v03State": "VECTOR_AND_INTEGRATION_EVIDENCE_ONLY",
+      "currentResearchState": "NOT_STARTED_FOR_ANY_FINALIST",
+      "evidence": [
+        "crates/pqtc-hash/src/lib.rs",
+        "crates/pqtc-spec/src/domains.rs",
+        "contracts/src/libraries/BabyBear.sol",
+        "contracts/src/libraries/P2BB512.sol",
+        "contracts/src/libraries/PQTCApplicationHash.sol",
+        "contracts/src/verifier/AirEvaluatorPoseidon.sol",
+        "contracts/test/HashVectors.t.sol"
+      ],
+      "finding": "The frozen code has shared constants, cross-language vectors, and integrated proof checks, but separate implementations remain. The frozen TypeScript suite does not itself consume all 1,000 generated vectors, and no refinement proof covers field, extension, hash, transcript, AIR-fold, and codec arithmetic.",
+      "amenableTarget": "Define canonical integer/field semantics and prove or exhaustively cross-check every boundary-bearing primitive, then connect generated Solidity arithmetic to the finalist Rust implementation at function and transcript-step boundaries.",
+      "gaps": [
+        "no common executable arithmetic specification",
+        "no proof across overflow/reduction behavior",
+        "no complete extension-field/transcript equivalence artifact",
+        "no generated equivalence obligations",
+        "no finalist implementation"
+      ],
+      "claim": "NOT_VERIFIED"
+    }
+  ]
+}

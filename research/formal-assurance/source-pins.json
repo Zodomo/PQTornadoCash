@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "recordType": "FormalAssuranceSourcePins",
+  "hashAlgorithm": "SHA-256",
+  "frozenBaseline": {
+    "tag": "pqtc-v0.3-research-baseline",
+    "peeledCommit": "00f829001999ee66da6fd5161c4c205c07d0b937"
+  },
+  "researchSnapshotCommit": "5a6714c07fac6b8ba20b4b52e1b60884d8e6ee89",
+  "solidityConfiguration": {
+    "solc": "0.8.30",
+    "evmVersion": "prague",
+    "optimizer": true,
+    "optimizerRuns": 200,
+    "viaIR": true
+  },
+  "files": [
+    {"path": "contracts/src/PQTCClassicPool.sol", "sha256": "5ce4f94692e87922efd0584e543afc43937ad8647161dd4e3e16bb8a442c0fd0", "surfaces": ["finite-controller", "application-state"]},
+    {"path": "contracts/src/PQTCVerificationRegistry.sol", "sha256": "8553941eb44998dca5bd18cc6eeb7d016bb8cccfa334efb7f693a4a1575a4722", "surfaces": ["finite-controller", "proof-codec"]},
+    {"path": "contracts/src/libraries/PQTCProofCodec.sol", "sha256": "a4fd095958ca9c35268bb7a5b5da5950a09b0c3b4c5f50118fbeeb455d6f61bd", "surfaces": ["proof-codec"]},
+    {"path": "contracts/src/libraries/CanonicalCodec.sol", "sha256": "d5b52d20c25e1e88079016993877e588c15c020a3c19f7c9f7437ea938926929", "surfaces": ["proof-codec", "arithmetic-equivalence"]},
+    {"path": "contracts/src/verifier/AirEvaluatorPoseidon.sol", "sha256": "eb34d91b6c94c53c010078b6a90d7222841dddb5808d7d4021be3538b741e09e", "surfaces": ["single-source-air-r1cs", "symbolic-coverage", "arithmetic-equivalence"]},
+    {"path": "contracts/src/libraries/P2BB512.sol", "sha256": "eac664c088b7acacd0401dc1714afaa3a7e6459a71b93b330f6c321c70139534", "surfaces": ["arithmetic-equivalence"]},
+    {"path": "contracts/src/libraries/PQTCApplicationHash.sol", "sha256": "add9a5b6a21f32216b9f87a64abd24c49710405d7a3f59f5d918824e2713fe5d", "surfaces": ["proof-assistant-target", "arithmetic-equivalence"]},
+    {"path": "contracts/src/libraries/BabyBear.sol", "sha256": "0b260468dfdd98e9a837165dbd61a2f908f15bed31e8e7fb285b0c6242ed5d63", "surfaces": ["arithmetic-equivalence"]},
+    {"path": "crates/pqtc-poseidon-air/src/air.rs", "sha256": "feb6d3a9949b69b55acc20e9b8826e0086bef1f9f7ae296df8ed4cafc61a3c53", "surfaces": ["single-source-air-r1cs", "symbolic-coverage"]},
+    {"path": "crates/pqtc-poseidon-air/src/lib.rs", "sha256": "5a25c94d811f4e6004634af887baa5f4c8b53ead18a33db4e0a8868a45811c26", "surfaces": ["proof-assistant-target", "symbolic-coverage"]},
+    {"path": "crates/pqtc-stark/src/codec.rs", "sha256": "006e0183d2a259075003ec73e6d2199160cba9a2148b08d46b9611de30d69d94", "surfaces": ["proof-codec"]},
+    {"path": "crates/pqtc-stark/src/query.rs", "sha256": "feb1b778459660babee3a199cab968f6403874df0a97d1a524baee5f3c8640a2", "surfaces": ["proof-codec", "arithmetic-equivalence"]},
+    {"path": "crates/pqtc-stark/src/crypto.rs", "sha256": "4ca0894b4172e8b53d7efed35064426e99c5770cdd4f895dae8aa29ed312091a", "surfaces": ["arithmetic-equivalence"]},
+    {"path": "crates/pqtc-hash/src/lib.rs", "sha256": "44d0e1f817ffbfd92c65ffee0bb34eb1b5002c4fcce7f88fee75e3661a5266f6", "surfaces": ["proof-assistant-target", "arithmetic-equivalence"]},
+    {"path": "crates/pqtc-spec/src/lib.rs", "sha256": "0f6d38b4e028d8162390454fddc6d72d440a6750c1e84ef80655066142d56ec5", "surfaces": ["proof-assistant-target", "arithmetic-equivalence"]},
+    {"path": "crates/pqtc-spec/src/domains.rs", "sha256": "b020c104d76dac15ef912c8a0891c6eb3e18b61865eed131b5b606ef3d3ec63f", "surfaces": ["proof-assistant-target", "arithmetic-equivalence"]}
+  ],
+  "commonCorpus": {
+    "semanticCasesPath": "research/common-corpus/semantic-cases.json",
+    "semanticCasesSha256": "04de8cec2e4c21e346048f0f8fdf60b5346f0c9487dcc56c077814c0b59d40ec",
+    "invalidMutationsPath": "research/common-corpus/invalid-mutations.json",
+    "invalidMutationsSha256": "f910fdc222beb8ad62098349650ef7e3a8f106480636d33eb404ad8225dd10a1"
+  },
+  "pinQualification": "Hashes identify inspected source bytes; they do not imply verification, audit, or security acceptance."
+}

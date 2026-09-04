@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "mutations": [
+    {
+      "id": "M01_SKIP_CONSUMER_BINDING",
+      "description": "Accept Part B from a caller other than the consumer that created the checkpoint.",
+      "flags": {"skip_consumer_binding": true},
+      "expectedInvariant": "complete_requires_bound_consumer"
+    },
+    {
+      "id": "M02_SKIP_STATEMENT_BINDING",
+      "description": "Accept Part B for a public statement different from the statement stored by Part A.",
+      "flags": {"skip_statement_binding": true},
+      "expectedInvariant": "complete_requires_bound_statement"
+    },
+    {
+      "id": "M03_KEEP_CHECKPOINT",
+      "description": "Leave a successful verification checkpoint live and therefore replayable.",
+      "flags": {"keep_checkpoint_after_success": true},
+      "expectedInvariant": "successful_complete_consumes_checkpoint"
+    },
+    {
+      "id": "M04_ALLOW_SPENT_NULLIFIER",
+      "description": "Permit a new controller transition after its abstract nullifier is spent.",
+      "flags": {"allow_spent_nullifier": true},
+      "expectedInvariant": "spent_nullifier_blocks_begin_and_complete"
+    },
+    {
+      "id": "M05_NON_ATOMIC_FAILURE",
+      "description": "Persist checkpoint deletion or nullifier spending when a late verifier or transfer failure occurs.",
+      "flags": {"non_atomic_failure": true},
+      "expectedInvariant": "failed_transition_is_atomic"
+    },
+    {
+      "id": "M06_OVERWRITE_CHECKPOINT",
+      "description": "Overwrite an existing proof-slot checkpoint with conflicting Part A bindings.",
+      "flags": {"overwrite_checkpoint": true},
+      "expectedInvariant": "existing_checkpoint_cannot_be_overwritten"
+    },
+    {
+      "id": "M07_SKIP_SECOND_HALF",
+      "description": "Complete without a successful second-half proof verification.",
+      "flags": {"skip_second_half_verification": true},
+      "expectedInvariant": "complete_requires_second_half_verification"
+    },
+    {
+      "id": "M08_SKIP_GLOBAL_BINDING",
+      "description": "Accept Part B global data whose digest differs from the Part A checkpoint.",
+      "flags": {"skip_global_binding": true},
+      "expectedInvariant": "complete_requires_bound_global_data"
+    }
+  ]
+}

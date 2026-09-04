@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "recordType": "FormalAssuranceAssumptions",
+  "scope": "PQTC next-generation plan section 18",
+  "assumptions": [
+    {
+      "id": "A01",
+      "statement": "Frozen v0.3 is evidence and a semantic control only; this package does not modify or re-qualify it."
+    },
+    {
+      "id": "A02",
+      "statement": "No next-generation finalist or accepted compression relation exists, so finalist-specific formalization is mapped and costed but not claimed complete."
+    },
+    {
+      "id": "A03",
+      "statement": "The finite-state checker uses two equality classes for every identifier, one proof slot, one nullifier, and Boolean outcomes for pool guards, parsers, verifier halves, and transfers."
+    },
+    {
+      "id": "A04",
+      "statement": "A failed EVM transaction restores registry, pool, nullifier, and transfer effects atomically; the checker tests a mutation that violates this assumption but does not prove EVM semantics."
+    },
+    {
+      "id": "A05",
+      "statement": "Hash collision resistance, proof-system soundness and zero knowledge, parser byte semantics, gas sufficiency, liveness, reorgs, concurrency, and deployed-chain behavior are outside the abstract checker."
+    },
+    {
+      "id": "A06",
+      "statement": "Engineer-week ranges mean one experienced engineer working full time for one week and include implementation, focused review, reproducible checks, and artifact documentation."
+    },
+    {
+      "id": "A07",
+      "statement": "The plan chooses one of Lean, Coq, or Isabelle for the narrow theorem-prover workstream; implementing the same development in all three is excluded."
+    },
+    {
+      "id": "A08",
+      "statement": "The estimates assume a finalist relation, proof framing, Rust implementation, Solidity verifier boundary, and toolchain pins are frozen before formalization starts."
+    },
+    {
+      "id": "A09",
+      "statement": "External cryptographic review, a protocol soundness theorem, new primitive proofs, remediation of findings, audits, hardware evaluation, and deployment qualification are excluded from the summed range."
+    },
+    {
+      "id": "A10",
+      "statement": "All estimated costs are integer PROJECTION planning ranges, not measured delivery effort, quotes, or security acceptance."
+    }
+  ],
+  "environmentConstraints": {
+    "solidityCanonicalConfigurationIfUsed": {
+      "solc": "0.8.30",
+      "evmVersion": "prague",
+      "optimizer": true,
+      "optimizerRuns": 200,
+      "viaIR": true
+    },
+    "activeTransactionGasCap": 16777216,
+    "externalCryptographicAcceptance": "OPEN",
+    "hardwareH2": "NOT_EVALUATED",
+    "hardwareH3": "NOT_EVALUATED"
+  }
+}

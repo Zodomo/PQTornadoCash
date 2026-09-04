@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pqtornado.invalid/research/formal-assurance/result.schema.json",
+  "title": "PQTC semi-formal finite-state checker result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "qualification", "model", "counts", "reference", "mutations", "summary", "inputs"],
+  "properties": {
+    "schemaVersion": {"const": 1},
+    "qualification": {"const": "SEMI_FORMAL_ABSTRACT_MODEL_NOT_PROTOCOL_PROOF"},
+    "model": {
+      "type": "object",
+      "required": ["finiteDomains", "reachability", "abstractions"],
+      "properties": {
+        "finiteDomains": {"type": "object"},
+        "reachability": {"type": "string"},
+        "abstractions": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actions", "reachableStates", "referenceTransitionsChecked", "mutations", "mutantTransitionsChecked"],
+      "properties": {
+        "actions": {"type": "integer", "minimum": 1},
+        "reachableStates": {"type": "integer", "minimum": 1},
+        "referenceTransitionsChecked": {"type": "integer", "minimum": 1},
+        "mutations": {"type": "integer", "minimum": 1},
+        "mutantTransitionsChecked": {"type": "integer", "minimum": 1}
+      }
+    },
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "violationCounts", "witnesses"],
+      "properties": {
+        "status": {"enum": ["PASS", "FAIL"]},
+        "violationCounts": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 1}},
+        "witnesses": {"type": "array"}
+      }
+    },
+    "mutations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "description", "expectedInvariant", "detected", "violationCounts", "witness"],
+        "properties": {
+          "id": {"type": "string"},
+          "description": {"type": "string"},
+          "expectedInvariant": {"type": "string"},
+          "detected": {"type": "boolean"},
+          "violationCounts": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 1}},
+          "witness": {"type": ["object", "null"]}
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "referencePass", "allMutationsDetected", "detectedMutations", "formalVerificationClaim", "protocolProofClaim"],
+      "properties": {
+        "status": {"enum": ["PASS", "FAIL"]},
+        "referencePass": {"type": "boolean"},
+        "allMutationsDetected": {"type": "boolean"},
+        "detectedMutations": {"type": "integer", "minimum": 0},
+        "formalVerificationClaim": {"const": false},
+        "protocolProofClaim": {"const": false}
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["sha256"],
+        "properties": {"sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+      }
+    }
+  }
+}

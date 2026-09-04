@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "recordType": "FormalAssuranceNegativeResults",
+  "results": [
+    {
+      "id": "NR-01",
+      "approach": "claim full formal verification from the finite-state checker",
+      "outcome": "REJECT",
+      "reason": "The checker operates on equality classes and Boolean outcomes and has no refinement proof to Solidity, EVM semantics, parser bytes, or cryptography."
+    },
+    {
+      "id": "NR-02",
+      "approach": "formalize a next-generation protocol before a finalist exists",
+      "outcome": "DEFER",
+      "reason": "There is no accepted relation, proof framing, arithmetic implementation, or security-qualified finalist to freeze as the target."
+    },
+    {
+      "id": "NR-03",
+      "approach": "treat separate Rust AIR and Solidity evaluator implementations as a single source",
+      "outcome": "REJECT",
+      "reason": "Matching dimensions, comments, vectors, or tests do not create a checked generation path or semantic-preservation theorem."
+    },
+    {
+      "id": "NR-04",
+      "approach": "claim symbolic constraint completeness from mutation tests",
+      "outcome": "REJECT",
+      "reason": "Finite row, limb, boundary, and corpus mutations provide useful negative evidence but do not quantify over all witnesses or selectors."
+    },
+    {
+      "id": "NR-05",
+      "approach": "claim a verified proof codec from strict readers and round trips",
+      "outcome": "REJECT",
+      "reason": "No normative grammar, parser refinement theorem, exhaustive differential result, or adversarial resource proof is retained."
+    },
+    {
+      "id": "NR-06",
+      "approach": "claim Rust/Solidity equivalence from shared constants and vectors",
+      "outcome": "REJECT",
+      "reason": "Vectors sample behavior and integrated proofs exercise selected paths; neither proves all field, extension, hash, transcript, AIR-fold, and codec arithmetic."
+    },
+    {
+      "id": "NR-07",
+      "approach": "select Lean, Coq, or Isabelle as universally superior without a target and team constraint",
+      "outcome": "NOT_SELECTED",
+      "reason": "All three can host a narrow target; library fit, extraction needs, reviewer expertise, and finalist semantics must drive the choice."
+    },
+    {
+      "id": "NR-08",
+      "approach": "include external cryptographic acceptance in the engineer-week sum",
+      "outcome": "OPEN_UNCOSTED",
+      "reason": "Reviewer availability, theorem scope, findings, and remediation are unknown; the estimate explicitly excludes external acceptance."
+    },
+    {
+      "id": "NR-09",
+      "approach": "infer live-chain or hardware assurance",
+      "outcome": "NOT_EVALUATED",
+      "reason": "The package executes only a local finite abstract model. H2/H3 hardware, deployment receipts, and public-chain behavior are not evaluated."
+    }
+  ]
+}
