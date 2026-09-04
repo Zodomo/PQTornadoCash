@@ -1,0 +1,70 @@
+{
+  "schema": "pqtc-sp71-l2-negative-results-v1",
+  "snapshot_date": "2026-09-04",
+  "negative_results": [
+    {
+      "id": "ordinary-210-kib",
+      "status": "SOURCE_PROVEN_REJECTED",
+      "result": "Every generated 210 KiB signed transaction exceeds OP 131,072, Arbitrum 95,000, and Scroll 116,736-byte ordinary sequencer limits.",
+      "consequence": "No full-node launch is required to establish this size rejection. Chunking or a separately reproduced non-ordinary route is a protocol/product change."
+    },
+    {
+      "id": "complete-80-210-kib-range",
+      "status": "SP71_GATE_FAIL",
+      "result": "No selected ordinary sequencer supports the complete required calldata range.",
+      "consequence": "Fee tuning cannot repair ordinary-path byte rejection."
+    },
+    {
+      "id": "local-admission-receipts",
+      "status": "NOT_EVALUATED_INDEPENDENT_REPRODUCTION_TASK",
+      "result": "No pinned op-reth Karst, Nitro ArbOS61, or Scroll Feynman node was launched and no local admission receipt/error was captured.",
+      "consequence": "Projected acceptance below a size limit remains independent of faithful local tx-pool reproduction."
+    },
+    {
+      "id": "pqtc-verifier-receipts",
+      "status": "NOT_EVALUATED",
+      "result": "No exact verifier was deployed or executed on any selected L2 client; there is no PQTC receipt evidence.",
+      "consequence": "EIP-7623/no-op gas and baseline gas-cap projections must not be relabeled verifier execution measurements."
+    },
+    {
+      "id": "arbitrum-fee-total",
+      "status": "NOT_EVALUATED_MISSING_EXECUTABLE",
+      "result": "The repository does not retain the pinned Nitro v3.11.3 Brotli-level-1 pricing executable.",
+      "consequence": "Compressed bytes, poster gas, L1 fee, and total fee are null rather than approximated with a generic Brotli package."
+    },
+    {
+      "id": "scroll-fee-total",
+      "status": "NOT_EVALUATED_MISSING_EXECUTABLE",
+      "result": "The repository does not retain the pinned Scroll codec-v8 standard-zstd-0.13 experimental executable.",
+      "consequence": "Compression ratio, Feynman penalty, L1 data fee, and total fee are null rather than approximated with the workstation zstd binary."
+    },
+    {
+      "id": "scroll-galileo",
+      "status": "NOT_ACTIVE",
+      "result": "Mainnet GalileoTime is nil at the source pin.",
+      "consequence": "The Galileo compressed-signed-transaction formula is excluded."
+    },
+    {
+      "id": "verifier-code-limits",
+      "status": "NOT_EVALUATED_NO_ARTIFACT",
+      "result": "No exact runtime or initcode artifact was supplied for comparison with 24,576/49,152-byte active limits.",
+      "consequence": "No deployment-fit claim is made."
+    },
+    {
+      "id": "hardware-h2",
+      "status": "NOT_EVALUATED_PROFILE_UNAVAILABLE",
+      "result": "The CI 8-core/32 GiB hardware profile is unavailable."
+    },
+    {
+      "id": "hardware-h3",
+      "status": "NOT_EVALUATED_PROFILE_UNAVAILABLE",
+      "result": "The commodity 16-core/64 GiB hardware profile is unavailable."
+    },
+    {
+      "id": "live-prices-and-latencies",
+      "status": "NOT_MEASURED",
+      "result": "No live price, current Scroll header gas limit, batch marginal compression, proof latency, or withdrawal wall-clock sample was obtained.",
+      "consequence": "Only explicit synthetic fee scenarios and pinned protocol assumptions are reported."
+    }
+  ]
+}

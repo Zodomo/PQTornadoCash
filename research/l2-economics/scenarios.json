@@ -1,0 +1,40 @@
+{
+  "schema": "pqtc-sp71-synthetic-scenarios-v1",
+  "snapshot_date": "2026-09-04",
+  "classification": "SYNTHETIC_OFFLINE_INPUTS_NOT_LIVE_PRICES",
+  "precision": 1000000,
+  "scenarios": [
+    {"id":"l1-1gwei-blob-1wei","l1_base_fee_wei":1000000000,"l1_blob_base_fee_wei":1},
+    {"id":"l1-1gwei-blob-10wei","l1_base_fee_wei":1000000000,"l1_blob_base_fee_wei":10},
+    {"id":"l1-1gwei-blob-100wei","l1_base_fee_wei":1000000000,"l1_blob_base_fee_wei":100},
+    {"id":"l1-10gwei-blob-1wei","l1_base_fee_wei":10000000000,"l1_blob_base_fee_wei":1},
+    {"id":"l1-10gwei-blob-10wei","l1_base_fee_wei":10000000000,"l1_blob_base_fee_wei":10},
+    {"id":"l1-10gwei-blob-100wei","l1_base_fee_wei":10000000000,"l1_blob_base_fee_wei":100},
+    {"id":"l1-30gwei-blob-1wei","l1_base_fee_wei":30000000000,"l1_blob_base_fee_wei":1},
+    {"id":"l1-30gwei-blob-10wei","l1_base_fee_wei":30000000000,"l1_blob_base_fee_wei":10},
+    {"id":"l1-30gwei-blob-100wei","l1_base_fee_wei":30000000000,"l1_blob_base_fee_wei":100},
+    {"id":"l1-100gwei-blob-1wei","l1_base_fee_wei":100000000000,"l1_blob_base_fee_wei":1},
+    {"id":"l1-100gwei-blob-10wei","l1_base_fee_wei":100000000000,"l1_blob_base_fee_wei":10},
+    {"id":"l1-100gwei-blob-100wei","l1_base_fee_wei":100000000000,"l1_blob_base_fee_wei":100}
+  ],
+  "shared_synthetic_parameters": {
+    "l2_base_fee_wei": 20000000,
+    "priority_fee_wei": 0,
+    "op_l1_base_fee_scalar": 1000000,
+    "op_l1_blob_fee_scalar": 1000000,
+    "op_da_footprint_gas_scalar": 400,
+    "op_operator_fee_scalar": 0,
+    "op_operator_fee_constant_wei": 0,
+    "arbitrum_price_per_unit_wei": 1000000000,
+    "arbitrum_brotli_level": 1,
+    "scroll_exec_scalar": 1000000000,
+    "scroll_blob_scalar": 1000000000,
+    "scroll_penalty_threshold": 1500000000,
+    "scroll_penalty_factor": 2000000000
+  },
+  "notes": [
+    "Every number is an explicit synthetic experiment input; none is observed chain state.",
+    "Arbitrum PricePerUnit and Scroll oracle scalars are retained even though their pinned compression executables are unavailable, so those fee totals remain NOT_EVALUATED.",
+    "The OP scalar choices are synthetic and must not be described as OP Mainnet state."
+  ]
+}

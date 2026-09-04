@@ -1,0 +1,34 @@
+{
+  "schema": "pqtc-sp71-l2-status-v1",
+  "snapshot_date": "2026-09-04",
+  "ticket": "SP-71",
+  "status": "COMPLETE_NEGATIVE_GATE_RESULT",
+  "gate": {
+    "question": "Does any selected ordinary L2 sequencer admit the complete deterministic 80-210 KiB transaction range while preserving a reproducible fee and verifier evidence path?",
+    "result": "FAIL",
+    "reason": "Every selected ordinary sequencer source-proven byte limit rejects the generated 210 KiB signed transactions; no selected network supports the complete range.",
+    "80_kib": "PROJECTED_SIZE_ADMISSIBLE_ON_ALL_SELECTED_ORDINARY_PATHS",
+    "210_kib": "PROJECTED_SIZE_REJECTED_ON_ALL_SELECTED_ORDINARY_PATHS"
+  },
+  "evidence": {
+    "signed_transactions": "GENERATED_AND_HASHED",
+    "eip7623": "EVALUATED_EXACT",
+    "ordinary_admission": "PROJECTED_FROM_PINNED_SOURCE_LIMITS",
+    "op_fastlz_fee": "PROJECTION_EVALUATED_WITH_SYNTHETIC_INPUTS",
+    "arbitrum_fee": "NOT_EVALUATED_MISSING_PINNED_EXECUTABLE",
+    "scroll_fee": "NOT_EVALUATED_MISSING_PINNED_EXECUTABLE",
+    "baseline_h1": "MEASURED_SOURCE_DISTRIBUTION_PROJECTED_AGAINST_LIMITS",
+    "hardware_h2": "NOT_EVALUATED_PROFILE_UNAVAILABLE",
+    "hardware_h3": "NOT_EVALUATED_PROFILE_UNAVAILABLE",
+    "local_admission": "NOT_EVALUATED_INDEPENDENT_REPRODUCTION_TASK",
+    "pqtc_receipts": "NOT_EVALUATED_NONE_CAPTURED",
+    "deployment_code_size": "NOT_EVALUATED_NO_EXACT_VERIFIER_ARTIFACT"
+  },
+  "decision": "Do not select an ordinary direct-sequencer route for an unchunked 210 KiB witness. Any chunked or non-ordinary route requires a separate design and faithful local reproduction.",
+  "prohibitions": [
+    "Do not describe projected admission as a receipt.",
+    "Do not describe no-op calldata gas as verifier execution.",
+    "Do not describe any synthetic fee as live.",
+    "Do not claim PQTC measurement without the exact verifier receipt."
+  ]
+}

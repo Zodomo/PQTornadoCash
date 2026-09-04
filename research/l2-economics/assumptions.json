@@ -1,0 +1,23 @@
+{
+  "schema": "pqtc-sp71-l2-assumptions-v1",
+  "snapshot_date": "2026-09-04",
+  "assumptions": [
+    {"id":"offline-only","statement":"No public RPC, testnet/mainnet submission, production key, or live price is used."},
+    {"id":"research-key","statement":"The deterministic signer is Anvil/Hardhat account 0, a universally public test key that must never hold assets."},
+    {"id":"transaction-shape","statement":"Each generated object is a real signed EIP-1559 type-2 call with fixed nonce 7, value 0, priority cap 1 gwei, fee cap 30 gwei, empty access list, and network chain ID; calldata is the generated payload itself."},
+    {"id":"destination","statement":"0x1111111111111111111111111111111111111111 is treated only as a no-code calldata sink for byte-derived no-op gas; no state or receipt is claimed."},
+    {"id":"payloads","statement":"Seeded-incompressible bytes are SHAKE-256 output domain-separated by family, byte length, and snapshot date; repeated bytes use the fixed ASCII pattern PQT-SP71-REPEATED-WITNESS|."},
+    {"id":"admission","statement":"Admission statuses are projections from exact signed serialized length against ordinary sequencer rules, not receipt evidence; deposit, delayed, enforced, and bridge paths are distinct and excluded."},
+    {"id":"gas","statement":"EIP-7623 floor and no-op calldata gas are exact byte-derived protocol calculations; verifier execution gas is not inferred from them."},
+    {"id":"scroll-gas","statement":"Scroll calculations use an explicit 10,000,000 gas scenario from pinned genesis because current header gas is external state and was not queried."},
+    {"id":"prices","statement":"All prices and scalars in scenarios.json are synthetic experiment inputs, not current, recent, historical, quoted, or live network values."},
+    {"id":"compression","statement":"OP FastLZ compressed size is an exact source-traced port; Arbitrum Nitro Brotli-level-1 and Scroll codec-v8 zstd remain NOT_EVALUATED because the exact pinned executables are not retained in this repository."},
+    {"id":"fees","statement":"Every calculated fee is labeled PROJECTION. Arbitrum and Scroll totals remain null while their exact compression result is unavailable."},
+    {"id":"baseline","statement":"v03-distribution.csv is H1 local Apple M4 Max measured source evidence; applying its total-gas columns to L2 gas caps is a feasibility projection, not an L2 verifier receipt."},
+    {"id":"hardware-h2","statement":"H2 CI 8-core/32 GiB is unavailable and NOT_EVALUATED."},
+    {"id":"hardware-h3","statement":"H3 commodity 16-core/64 GiB is unavailable and NOT_EVALUATED."},
+    {"id":"hash-name-collision","statement":"Hardware profile labels H1/H2/H3 in this package do not refer to hash candidates research/candidates/H1, H2, or H3."},
+    {"id":"deployment","statement":"Active runtime/initcode limits are checked at 24,576/49,152 bytes, but no exact verifier bytecode artifact was supplied, so artifact-specific deployment feasibility is NOT_EVALUATED."},
+    {"id":"security","statement":"Finality and withdrawal entries describe pinned protocol assumptions, not measured wall-clock latency or guarantees under dishonest operators/governance."}
+  ]
+}

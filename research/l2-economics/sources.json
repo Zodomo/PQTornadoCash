@@ -1,0 +1,72 @@
+{
+  "schema": "pqtc-sp71-l2-source-pins-v1",
+  "snapshot_date": "2026-09-04",
+  "network_pins": {
+    "op-mainnet": {
+      "chain_id": 10,
+      "active_rules": "Karst with Fjord/Jovian/Isthmus rules",
+      "superchain_registry_commit": "9dce5d25fb6a3d4fb372ce92dc8eed3a4a17175c",
+      "specs_commit": "210825a4e97c3887654aefa692dc9edb63fabf21",
+      "optimism_commit": "9f7eb670dbcd579ec1bf873fb643649a9af8ef9d",
+      "fastlz_commit": "344eb4025f9ae866ebf7a2ec48850f7113a97a42",
+      "sources": [
+        {"id":"op-registry","url":"https://github.com/ethereum-optimism/superchain-registry/blob/9dce5d25fb6a3d4fb372ce92dc8eed3a4a17175c/superchain/configs/mainnet/op.toml","lines":"1-29"},
+        {"id":"op-fjord-fee","url":"https://github.com/ethereum-optimism/specs/blob/210825a4e97c3887654aefa692dc9edb63fabf21/specs/protocol/fjord/exec-engine.md","lines":"20-53"},
+        {"id":"op-jovian-footprint","url":"https://github.com/ethereum-optimism/specs/blob/210825a4e97c3887654aefa692dc9edb63fabf21/specs/protocol/jovian/exec-engine.md","lines":"100-174"},
+        {"id":"op-jovian-scalar","url":"https://github.com/ethereum-optimism/specs/blob/210825a4e97c3887654aefa692dc9edb63fabf21/specs/protocol/jovian/l1-attributes.md","lines":"39-44"},
+        {"id":"op-size-test","url":"https://github.com/ethereum-optimism/optimism/blob/9f7eb670dbcd579ec1bf873fb643649a9af8ef9d/op-acceptance-tests/tests/osaka_on_l2_test.go","lines":"431-438"},
+        {"id":"op-karst-notice","url":"https://github.com/ethereum-optimism/optimism/blob/9f7eb670dbcd579ec1bf873fb643649a9af8ef9d/docs/public-docs/notices/archive/upgrade-19.mdx","lines":"13-48"},
+        {"id":"op-block-gas","url":"https://github.com/ethereum-optimism/optimism/blob/9f7eb670dbcd579ec1bf873fb643649a9af8ef9d/docs/public-docs/app-developers/guides/transactions/subblocks-and-gas-usage.mdx","lines":"13-23"},
+        {"id":"op-fastlz","url":"https://github.com/ariya/FastLZ/blob/344eb4025f9ae866ebf7a2ec48850f7113a97a42/fastlz.c","lines":"135-506"},
+        {"id":"op-withdrawal","url":"https://github.com/ethereum-optimism/optimism/blob/9f7eb670dbcd579ec1bf873fb643649a9af8ef9d/docs/public-docs/app-developers/guides/bridging/messaging.mdx","lines":"120-125"}
+      ]
+    },
+    "arbitrum-one": {
+      "chain_id": 42161,
+      "active_rules": "ArbOS 61 Elara / Nitro v3.11.3",
+      "nitro_tag": "v3.11.3",
+      "nitro_commit": "4130f4c50d81209ff94aa63b51ed55d3739cdaba",
+      "nitro_image": "offchainlabs/nitro-node:v3.11.3-beb2108",
+      "consensus_v61_root": "0xc10cd7ec6acaf1c441a3f6bd0900ad20f15855ba775a96f1939118cbc629dc97",
+      "docs_commit": "aa64f3ec5817f429e8391265003c6fdcdd35c4c4",
+      "sources": [
+        {"id":"arbos61","url":"https://github.com/OffchainLabs/arbitrum-docs/blob/aa64f3ec5817f429e8391265003c6fdcdd35c4c4/docs/run-arbitrum-node/arbos-releases/arbos61.mdx","lines":"18-97"},
+        {"id":"nitro-l1-pricing","url":"https://github.com/OffchainLabs/nitro/blob/4130f4c50d81209ff94aa63b51ed55d3739cdaba/arbos/l1pricing/l1pricing.go","lines":"518-552"},
+        {"id":"nitro-brotli-level","url":"https://github.com/OffchainLabs/nitro/blob/4130f4c50d81209ff94aa63b51ed55d3739cdaba/arbos/arbosState/arbosstate.go","lines":"302-304,436-438"},
+        {"id":"nitro-sequencer-size","url":"https://github.com/OffchainLabs/nitro/blob/4130f4c50d81209ff94aa63b51ed55d3739cdaba/execution/gethexec/sequencer.go","lines":"169-214,1364-1368"},
+        {"id":"nitro-gas-limits","url":"https://github.com/OffchainLabs/nitro/blob/4130f4c50d81209ff94aa63b51ed55d3739cdaba/arbos/l2pricing/model.go","lines":"18-25"},
+        {"id":"arbitrum-parameters","url":"https://github.com/OffchainLabs/arbitrum-docs/blob/aa64f3ec5817f429e8391265003c6fdcdd35c4c4/docs/partials/_reference-chain-parameters.mdx","lines":"1-27"},
+        {"id":"arbitrum-finality","url":"https://github.com/OffchainLabs/arbitrum-docs/blob/aa64f3ec5817f429e8391265003c6fdcdd35c4c4/docs/how-arbitrum-works/deep-dives/finality.mdx","lines":"29-55"}
+      ]
+    },
+    "scroll-mainnet": {
+      "chain_id": 534352,
+      "active_rules": "Feynman; GalileoTime=nil",
+      "orchestrator_commit": "788fdf0555c5605ae493f6072a5f98b4492b2753",
+      "l2geth_tag": "scroll-v5.9.17",
+      "l2geth_commit": "8629f088d78f6feef5abb8a6c201dc3fd633251f",
+      "da_codec_tag": "v0.10.0",
+      "da_codec_commit": "afa161a4487fe3ba600bfdb792daeb3dcc21fa25",
+      "docs_commit": "762fb923680aaea700ced619a88483a7005c4f9b",
+      "sources": [
+        {"id":"scroll-pin","url":"https://github.com/scroll-tech/scroll/blob/788fdf0555c5605ae493f6072a5f98b4492b2753/Makefile","lines":"7-20"},
+        {"id":"scroll-config","url":"https://github.com/scroll-tech/go-ethereum/blob/8629f088d78f6feef5abb8a6c201dc3fd633251f/params/config.go","lines":"268-270,366-405"},
+        {"id":"scroll-size","url":"https://github.com/scroll-tech/go-ethereum/blob/8629f088d78f6feef5abb8a6c201dc3fd633251f/params/config.go","lines":"787-798"},
+        {"id":"scroll-pool","url":"https://github.com/scroll-tech/go-ethereum/blob/8629f088d78f6feef5abb8a6c201dc3fd633251f/core/tx_pool.go","lines":"781-790"},
+        {"id":"scroll-fee","url":"https://github.com/scroll-tech/go-ethereum/blob/8629f088d78f6feef5abb8a6c201dc3fd633251f/rollup/fees/rollup_fee.go","lines":"177-207,272-321,397-431"},
+        {"id":"scroll-codec","url":"https://github.com/scroll-tech/da-codec/blob/afa161a4487fe3ba600bfdb792daeb3dcc21fa25/encoding/codecv8.go","lines":"14-18"},
+        {"id":"scroll-zstd","url":"https://github.com/scroll-tech/da-codec/blob/afa161a4487fe3ba600bfdb792daeb3dcc21fa25/encoding/zstd/zstd.go","lines":"38-45"},
+        {"id":"scroll-precompiles","url":"https://github.com/scroll-tech/go-ethereum/blob/8629f088d78f6feef5abb8a6c201dc3fd633251f/core/vm/contracts.go","lines":"147-158"},
+        {"id":"scroll-finality","url":"https://github.com/scroll-tech/scroll-documentation/blob/762fb923680aaea700ced619a88483a7005c4f9b/src/content/docs/en/technology/chain/transactions.mdx","lines":"52-77"},
+        {"id":"scroll-euclid","url":"https://github.com/scroll-tech/scroll-documentation/blob/762fb923680aaea700ced619a88483a7005c4f9b/src/content/docs/en/technology/overview/scroll-upgrades/euclid-upgrade.mdx","lines":"72-86"}
+      ]
+    }
+  },
+  "shared_sources": [
+    {"id":"eip-7623","commit":"9207c6011f526bd40abd79649484a1a342585bd4","url":"https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-7623.md"},
+    {"id":"eip-3860","commit":"9207c6011f526bd40abd79649484a1a342585bd4","url":"https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-3860.md"},
+    {"id":"eip-170","commit":"9207c6011f526bd40abd79649484a1a342585bd4","url":"https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-170.md"},
+    {"id":"gas-rules-local","path":"research/gas-rules/rules.json","snapshot_date":"2026-09-04"},
+    {"id":"baseline-local","path":"research/summaries/v03-distribution.csv","classification":"H1_LOCAL_APPLE_M4_MAX_MEASURED_SOURCE"}
+  ]
+}

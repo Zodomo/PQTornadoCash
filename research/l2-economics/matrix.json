@@ -1,0 +1,72 @@
+{
+  "schema": "pqtc-sp71-l2-network-matrix-v1",
+  "snapshot_date": "2026-09-04",
+  "result_semantics": {
+    "admission": "Projection from pinned ordinary-sequencer byte/gas rules; not a local receipt",
+    "no_op_calldata": "Exact active byte-derived gas floor for a call with no verifier execution",
+    "verifier_execution": "Requires the exact verifier and a selected-client local receipt",
+    "pqtc_receipt": "No PQTC receipt exists in this package"
+  },
+  "shared": {
+    "eip7623": {"tokens":"zero_bytes + 4 * nonzero_bytes","floor_gas":"21000 + 10 * tokens","status":"ACTIVE"},
+    "runtime_code_limit_bytes": 24576,
+    "initcode_limit_bytes": 49152,
+    "contract_limit_check": "Any verifier artifact above either active limit is deployment-infeasible on the selected ordinary EVM route; no verifier artifact was supplied to this experiment."
+  },
+  "networks": {
+    "op-mainnet": {
+      "chain_id": 10,
+      "active_release": "Karst",
+      "ordinary_signed_tx_limit_bytes": 131072,
+      "per_tx_gas_limit": 16777216,
+      "documented_block_gas_limit": 40000000,
+      "admission_rule": "serialized type-2 transaction length <= 128 KiB and gasLimit <= 2^24; deposits exempt",
+      "l1_fee_formula": "floor(max(100000000, -42585600 + 836500*fastlzSize) * (16*l1BaseFeeScalar*l1BaseFee + l1BlobFeeScalar*l1BlobBaseFee) / 1e12)",
+      "da_footprint_formula": "max(100, floor((-42585600 + 836500*fastlzSize)/1e6)) * daFootprintGasScalar; zero configured scalar maps to 400",
+      "operator_fee_formula": "gasUsed * operatorFeeScalar * 100 + operatorFeeConstant",
+      "estimator": "FastLZ of complete signed serialized transaction",
+      "estimator_status": "IMPLEMENTED_FROM_PINNED_FASTLZ_SOURCE",
+      "finality": "Sequencer inclusion is provisional; safe/finalized follows Ethereum L1",
+      "withdrawal": "Approximately seven days through the respected CANNON_KONA type-8 fault-proof game",
+      "security_assumption": "At least one honest challenger responds to an invalid claim before game clocks expire",
+      "evm_notes": "24,576-byte runtime and 49,152-byte initcode limits; Karst MODEXP/P256VERIFY/BN256-pairing behavior must be audited for the verifier"
+    },
+    "arbitrum-one": {
+      "chain_id": 42161,
+      "active_release": "ArbOS 61 Elara / Nitro v3.11.3",
+      "ordinary_signed_tx_limit_bytes": 95000,
+      "per_tx_gas_limit": 32000000,
+      "block_gas_limit": 32000000,
+      "effective_final_transaction_block_allowance": 64000000,
+      "admission_rule": "sequencer default tx.Size() <= 95000; delayed Inbox DataTooLarge boundary 117964 is a distinct route",
+      "l1_fee_formula": "compressedBytes=BrotliLevel1(signedTx); units=16*compressedBytes; posterCostWei=PricePerUnit*units; posterGas=floor(posterCostWei/L2BaseFee)",
+      "execution_fee_formula": "L2BaseFee * (executionGas + posterGas); ordinary priority fee collection inactive on One at ArbOS61 activation",
+      "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+      "finality": "Sub-second sequencer-trusting soft finality; parent-chain data finality roughly 12-15 minutes",
+      "withdrawal": "45,818 L1-block BoLD dispute window, approximately 6.4 days, then claim",
+      "security_assumption": "At least one validator checks and challenges; force inclusion period is 5,760 L1 blocks/about 24 hours",
+      "evm_notes": "Solidity runtime remains 24 KiB and initcode 49,152 bytes; 96 KiB Stylus fragments are not an ordinary Solidity-verifier escape hatch"
+    },
+    "scroll-mainnet": {
+      "chain_id": 534352,
+      "active_release": "Feynman; Galileo inactive (GalileoTime=nil)",
+      "ordinary_signed_tx_limit_bytes": 116736,
+      "pinned_genesis_gas_limit": 10000000,
+      "current_gas_limit_status": "EXTERNAL_LIVE_VALUE_NOT_QUERIED; experiments use explicit 10,000,000 scenario",
+      "max_regular_transactions_per_block": 100,
+      "aggregate_regular_payload_limit_bytes": 122880,
+      "admission_rule": "IsValidBlockSizeForMining(tx.Size()) applies 1/0.95 against 120 KiB, giving signed tx <= 116736; gas must fit header",
+      "l1_fee_formula": "feePerByte=execScalar*l1BaseFee+blobScalar*l1BlobBaseFee; ratio=max(1e9,len(tx.data)*1e9/len(codecV8Zstd(tx.data))); penalty=1e9 if ratio>=threshold else penaltyFactor; fee=floor(feePerByte*len(signedTx)*penalty/1e18)",
+      "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+      "finality": "Confirmed is sequencer inclusion; Committed is L1-finalized batch commit; Finalized is L1-finalized validity proof",
+      "withdrawal": "Executable with Merkle proof after validity finalization; no fixed seven-day fraud window; latency is external",
+      "security_assumption": "Validity proof plus L1; Euclid enforced inclusion/emergency submission; upgrades controlled by 9-of-12 Security Council",
+      "evm_notes": "24,576-byte runtime and 49,152-byte initcode limits; RIPEMD-160 and BLAKE2F disabled, MODEXP components limited to 32 bytes, no blob opcodes/EIP-4788"
+    }
+  },
+  "ordinary_path_range_gate": {
+    "80_kib": {"op-mainnet":"PROJECTED_SIZE_ADMISSIBLE","arbitrum-one":"PROJECTED_SIZE_ADMISSIBLE","scroll-mainnet":"PROJECTED_SIZE_ADMISSIBLE"},
+    "210_kib": {"op-mainnet":"PROJECTED_SIZE_REJECTED","arbitrum-one":"PROJECTED_SIZE_REJECTED","scroll-mainnet":"PROJECTED_SIZE_REJECTED"},
+    "conclusion": "No selected ordinary sequencer admits the complete 80-210 KiB range."
+  }
+}
