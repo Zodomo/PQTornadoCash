@@ -1,0 +1,684 @@
+{
+  "config": {
+    "arithmetic": "PYTHON_DECIMAL_AND_FRACTION_NO_BINARY_FLOAT",
+    "path": "research/economic-throughput/assumptions.json",
+    "sha256": "eb0706f028d25d4feadc7cec3673123fbc00718ae870742fbffb59321aeaebc4"
+  },
+  "cross_cutting_context": {
+    "aggregation": {
+      "external_cryptographic_acceptance": "OPEN",
+      "gate": "STOP_BY_DEPENDENCY",
+      "role": "CONTEXT_ONLY_NO_MEASURED_FULL_AGGREGATION_INCLUDED",
+      "status": "STOP_BY_DEPENDENCY"
+    },
+    "gas_rules": {
+      "active_profile": "osaka-active",
+      "alternate_floor_status": [
+        {
+          "activation_class": "scheduled_unactivated",
+          "id": "eip-7976-standalone-64-64",
+          "may_be_labeled_active": false
+        },
+        {
+          "activation_class": "unscheduled_draft",
+          "id": "eip-8311-standalone-96-96",
+          "may_be_labeled_active": false
+        }
+      ],
+      "transaction_cap": 16777216
+    },
+    "l2": {
+      "H2": "NOT_EVALUATED_CI_8_CORE_32_GIB_PROFILE_UNAVAILABLE",
+      "H3": "NOT_EVALUATED_COMMODITY_16_CORE_64_GIB_PROFILE_UNAVAILABLE",
+      "fee_labels": "PROJECTION_USING_SYNTHETIC_INPUTS_NOT_LIVE",
+      "pqtc_receipt_evidence": "NOT_EVALUATED_NO_SELECTED_L2_VERIFIER_RECEIPT",
+      "role": "CONTEXT_ONLY_SYNTHETIC_FEE_PROJECTIONS_EXCLUDED_FROM_L1_BASELINE_COST_TABLE"
+    },
+    "prover_operations_gate": {
+      "blockingIds": [
+        "H1_COLD_MISSING",
+        "H2_COMPLETE_MEASUREMENTS_MISSING",
+        "H3_COMPLETE_MEASUREMENTS_MISSING",
+        "PRACTICAL_CLI_NOT_IMPLEMENTED",
+        "SETUP_PRECOMPUTATION_MISSING",
+        "CANCELLATION_MISSING",
+        "PROGRESS_MISSING",
+        "MEMORY_PRESSURE_MISSING",
+        "CRASH_RECOVERY_MISSING"
+      ],
+      "finalistSelected": false,
+      "rule": "A finalist must have complete H1/H2/H3 measurements and a practical CLI workflow.",
+      "securityQualified": false,
+      "status": "FAIL"
+    }
+  },
+  "finalist_count": 0,
+  "finalist_gate": "NOT_APPLICABLE_NO_FINALIST",
+  "finalists": [],
+  "non_finalist_context": [
+    {
+      "candidate_id": "C00/v03-baseline",
+      "disposition": "NON_FINALIST_CONTEXT",
+      "finalist_selected": false,
+      "gas_and_block_model": {
+        "active_schedule_cost_sensitivity": [
+          {
+            "path": "part_a_p50",
+            "representative": "LINEAR_INTERPOLATED_P50_OF_60_COMMITTED_RECORDS",
+            "representative_gas": "16664641.5",
+            "rows": [
+              {
+                "cost_eth": "0.00166646415",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 1666464150000000,
+                "effective_gas_price_gwei": "0.1"
+              },
+              {
+                "cost_eth": "0.00833232075",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 8332320750000000,
+                "effective_gas_price_gwei": "0.5"
+              },
+              {
+                "cost_eth": "0.0166646415",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 16664641500000000,
+                "effective_gas_price_gwei": "1"
+              },
+              {
+                "cost_eth": "0.0833232075",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 83323207500000000,
+                "effective_gas_price_gwei": "5"
+              },
+              {
+                "cost_eth": "0.166646415",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 166646415000000000,
+                "effective_gas_price_gwei": "10"
+              },
+              {
+                "cost_eth": "0.833232075",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 833232075000000000,
+                "effective_gas_price_gwei": "50"
+              }
+            ]
+          },
+          {
+            "path": "part_b_p50",
+            "representative": "LINEAR_INTERPOLATED_P50_OF_60_COMMITTED_RECORDS",
+            "representative_gas": "13959759.5",
+            "rows": [
+              {
+                "cost_eth": "0.00139597595",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 1395975950000000,
+                "effective_gas_price_gwei": "0.1"
+              },
+              {
+                "cost_eth": "0.00697987975",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 6979879750000000,
+                "effective_gas_price_gwei": "0.5"
+              },
+              {
+                "cost_eth": "0.0139597595",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 13959759500000000,
+                "effective_gas_price_gwei": "1"
+              },
+              {
+                "cost_eth": "0.0697987975",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 69798797500000000,
+                "effective_gas_price_gwei": "5"
+              },
+              {
+                "cost_eth": "0.139597595",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 139597595000000000,
+                "effective_gas_price_gwei": "10"
+              },
+              {
+                "cost_eth": "0.697987975",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 697987975000000000,
+                "effective_gas_price_gwei": "50"
+              }
+            ]
+          },
+          {
+            "path": "complete_two_call_p50",
+            "representative": "LINEAR_INTERPOLATED_P50_OF_60_COMMITTED_RECORDS",
+            "representative_gas": "30621386.5",
+            "rows": [
+              {
+                "cost_eth": "0.00306213865",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 3062138650000000,
+                "effective_gas_price_gwei": "0.1"
+              },
+              {
+                "cost_eth": "0.01531069325",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 15310693250000000,
+                "effective_gas_price_gwei": "0.5"
+              },
+              {
+                "cost_eth": "0.0306213865",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 30621386500000000,
+                "effective_gas_price_gwei": "1"
+              },
+              {
+                "cost_eth": "0.1531069325",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 153106932500000000,
+                "effective_gas_price_gwei": "5"
+              },
+              {
+                "cost_eth": "0.306213865",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 306213865000000000,
+                "effective_gas_price_gwei": "10"
+              },
+              {
+                "cost_eth": "1.531069325",
+                "cost_usd": "NOT_EVALUATED",
+                "cost_wei": 1531069325000000000,
+                "effective_gas_price_gwei": "50"
+              }
+            ]
+          }
+        ],
+        "calldata": {
+          "complete_two_call_withdrawal": {
+            "count": 60,
+            "maximum": "214472",
+            "median": "209608",
+            "minimum": "198728",
+            "unit": "bytes"
+          },
+          "part_a": {
+            "count": 60,
+            "maximum": "109220",
+            "median": "105060",
+            "minimum": "95268",
+            "unit": "bytes"
+          },
+          "part_b": {
+            "count": 60,
+            "maximum": "110500",
+            "median": "104932",
+            "minimum": "94116",
+            "unit": "bytes"
+          }
+        },
+        "method": "EXACT_COMMITTED_CALLDATA_AND_MEASURED_EXECUTION; ALTERNATE_STANDALONE_FLOOR_MAXIMUM",
+        "schedule_warning": "64/64 is scheduled but unactivated and 96/96 is an unscheduled draft; neither is labeled active or a complete Amsterdam composition.",
+        "schedules": [
+          {
+            "blocks": [
+              {
+                "block_gas_limit": 30000000,
+                "maximum_calldata_over_observed_eligible_packings": {
+                  "bytes": 198728,
+                  "withdrawals": 1,
+                  "witness_run_id": "v03-fixed-06"
+                },
+                "observed_eligible_best_case": {
+                  "calldata_bytes_for_that_packing": 198728,
+                  "max_completed_withdrawals": 1,
+                  "witness_complete_gas": 29953824,
+                  "witness_run_id": "v03-fixed-06"
+                },
+                "observed_eligible_conservative": {
+                  "completed_withdrawals": 0,
+                  "gas_bound_per_withdrawal": 30858391,
+                  "meaning": "capacity guaranteed only across the 51 transaction-cap-eligible committed baseline records"
+                },
+                "p50_complete_withdrawal_block_share": {
+                  "exact_fraction": "61242773/60000000",
+                  "percent_12_rounded": "102.071288333333"
+                }
+              },
+              {
+                "block_gas_limit": 36000000,
+                "maximum_calldata_over_observed_eligible_packings": {
+                  "bytes": 214472,
+                  "withdrawals": 1,
+                  "witness_run_id": "v03-corpus-08"
+                },
+                "observed_eligible_best_case": {
+                  "calldata_bytes_for_that_packing": 198728,
+                  "max_completed_withdrawals": 1,
+                  "witness_complete_gas": 29953824,
+                  "witness_run_id": "v03-fixed-06"
+                },
+                "observed_eligible_conservative": {
+                  "completed_withdrawals": 1,
+                  "gas_bound_per_withdrawal": 30858391,
+                  "meaning": "capacity guaranteed only across the 51 transaction-cap-eligible committed baseline records"
+                },
+                "p50_complete_withdrawal_block_share": {
+                  "exact_fraction": "61242773/72000000",
+                  "percent_12_rounded": "85.059406944444"
+                }
+              },
+              {
+                "block_gas_limit": 60000000,
+                "maximum_calldata_over_observed_eligible_packings": {
+                  "bytes": 397456,
+                  "withdrawals": 2,
+                  "witness_run_id": "v03-fixed-06"
+                },
+                "observed_eligible_best_case": {
+                  "calldata_bytes_for_that_packing": 397456,
+                  "max_completed_withdrawals": 2,
+                  "witness_complete_gas": 29953824,
+                  "witness_run_id": "v03-fixed-06"
+                },
+                "observed_eligible_conservative": {
+                  "completed_withdrawals": 1,
+                  "gas_bound_per_withdrawal": 30858391,
+                  "meaning": "capacity guaranteed only across the 51 transaction-cap-eligible committed baseline records"
+                },
+                "p50_complete_withdrawal_block_share": {
+                  "exact_fraction": "61242773/120000000",
+                  "percent_12_rounded": "51.035644166667"
+                }
+              }
+            ],
+            "floor_binding_counts": {
+              "part_a": 0,
+              "part_b": 0
+            },
+            "floor_coefficients": {
+              "nonzero_byte_gas": 40,
+              "zero_byte_gas": 10
+            },
+            "gas": {
+              "complete_two_call_withdrawal": {
+                "count": 60,
+                "maximum": "30916835",
+                "median": "30621386.5",
+                "minimum": "29953824",
+                "unit": "gas"
+              },
+              "part_a": {
+                "count": 60,
+                "maximum": "16953270",
+                "median": "16664641.5",
+                "minimum": "16179681",
+                "unit": "gas"
+              },
+              "part_b": {
+                "count": 60,
+                "maximum": "14264492",
+                "median": "13959759.5",
+                "minimum": "13333063",
+                "unit": "gas"
+              }
+            },
+            "id": "ACTIVE_EIP7623",
+            "status": "ACTIVE_OSAKA_AS_OF_SNAPSHOT",
+            "transaction_cap": {
+              "cap": 16777216,
+              "eligible_run_count": 51,
+              "ineligible_run_count": 9,
+              "status": "FAIL_OBSERVED_PART_A_EXCEEDS_CAP"
+            }
+          },
+          {
+            "blocks": [
+              {
+                "block_gas_limit": 30000000,
+                "maximum_calldata_over_observed_eligible_packings": {
+                  "bytes": 198728,
+                  "withdrawals": 1,
+                  "witness_run_id": "v03-fixed-06"
+                },
+                "observed_eligible_best_case": {
+                  "calldata_bytes_for_that_packing": 198728,
+                  "max_completed_withdrawals": 1,
+                  "witness_complete_gas": 29953824,
+                  "witness_run_id": "v03-fixed-06"
+                },
+                "observed_eligible_conservative": {
+                  "completed_withdrawals": 0,
+                  "gas_bound_per_withdrawal": 30858391,
+                  "meaning": "capacity guaranteed only across the 51 transaction-cap-eligible committed baseline records"
+                },
+                "p50_complete_withdrawal_block_share": {
+                  "exact_fraction": "61242773/60000000",
+                  "percent_12_rounded": "102.071288333333"
+                }
+              },
+              {
+                "block_gas_limit": 36000000,
+                "maximum_calldata_over_observed_eligible_packings": {
+                  "bytes": 214472,
+                  "withdrawals": 1,
+                  "witness_run_id": "v03-corpus-08"
+                },
+                "observed_eligible_best_case": {
+                  "calldata_bytes_for_that_packing": 198728,
+                  "max_completed_withdrawals": 1,
+                  "witness_complete_gas": 29953824,
+                  "witness_run_id": "v03-fixed-06"
+                },
+                "observed_eligible_conservative": {
+                  "completed_withdrawals": 1,
+                  "gas_bound_per_withdrawal": 30858391,
+                  "meaning": "capacity guaranteed only across the 51 transaction-cap-eligible committed baseline records"
+                },
+                "p50_complete_withdrawal_block_share": {
+                  "exact_fraction": "61242773/72000000",
+                  "percent_12_rounded": "85.059406944444"
+                }
+              },
+              {
+                "block_gas_limit": 60000000,
+                "maximum_calldata_over_observed_eligible_packings": {
+                  "bytes": 397456,
+                  "withdrawals": 2,
+                  "witness_run_id": "v03-fixed-06"
+                },
+                "observed_eligible_best_case": {
+                  "calldata_bytes_for_that_packing": 397456,
+                  "max_completed_withdrawals": 2,
+                  "witness_complete_gas": 29953824,
+                  "witness_run_id": "v03-fixed-06"
+                },
+                "observed_eligible_conservative": {
+                  "completed_withdrawals": 1,
+                  "gas_bound_per_withdrawal": 30858391,
+                  "meaning": "capacity guaranteed only across the 51 transaction-cap-eligible committed baseline records"
+                },
+                "p50_complete_withdrawal_block_share": {
+                  "exact_fraction": "61242773/120000000",
+                  "percent_12_rounded": "51.035644166667"
+                }
+              }
+            ],
+            "floor_binding_counts": {
+              "part_a": 0,
+              "part_b": 0
+            },
+            "floor_coefficients": {
+              "nonzero_byte_gas": 64,
+              "zero_byte_gas": 64
+            },
+            "gas": {
+              "complete_two_call_withdrawal": {
+                "count": 60,
+                "maximum": "30916835",
+                "median": "30621386.5",
+                "minimum": "29953824",
+                "unit": "gas"
+              },
+              "part_a": {
+                "count": 60,
+                "maximum": "16953270",
+                "median": "16664641.5",
+                "minimum": "16179681",
+                "unit": "gas"
+              },
+              "part_b": {
+                "count": 60,
+                "maximum": "14264492",
+                "median": "13959759.5",
+                "minimum": "13333063",
+                "unit": "gas"
+              }
+            },
+            "id": "FUTURE_EIP7976_64_64",
+            "status": "SCHEDULED_UNACTIVATED_STANDALONE_SENSITIVITY",
+            "transaction_cap": {
+              "cap": 16777216,
+              "eligible_run_count": 51,
+              "ineligible_run_count": 9,
+              "status": "FAIL_OBSERVED_PART_A_EXCEEDS_CAP"
+            }
+          },
+          {
+            "blocks": [
+              {
+                "block_gas_limit": 30000000,
+                "maximum_calldata_over_observed_eligible_packings": {
+                  "bytes": 198728,
+                  "withdrawals": 1,
+                  "witness_run_id": "v03-fixed-06"
+                },
+                "observed_eligible_best_case": {
+                  "calldata_bytes_for_that_packing": 198728,
+                  "max_completed_withdrawals": 1,
+                  "witness_complete_gas": 29953824,
+                  "witness_run_id": "v03-fixed-06"
+                },
+                "observed_eligible_conservative": {
+                  "completed_withdrawals": 0,
+                  "gas_bound_per_withdrawal": 30858391,
+                  "meaning": "capacity guaranteed only across the 51 transaction-cap-eligible committed baseline records"
+                },
+                "p50_complete_withdrawal_block_share": {
+                  "exact_fraction": "61242773/60000000",
+                  "percent_12_rounded": "102.071288333333"
+                }
+              },
+              {
+                "block_gas_limit": 36000000,
+                "maximum_calldata_over_observed_eligible_packings": {
+                  "bytes": 214472,
+                  "withdrawals": 1,
+                  "witness_run_id": "v03-corpus-08"
+                },
+                "observed_eligible_best_case": {
+                  "calldata_bytes_for_that_packing": 198728,
+                  "max_completed_withdrawals": 1,
+                  "witness_complete_gas": 29953824,
+                  "witness_run_id": "v03-fixed-06"
+                },
+                "observed_eligible_conservative": {
+                  "completed_withdrawals": 1,
+                  "gas_bound_per_withdrawal": 30858391,
+                  "meaning": "capacity guaranteed only across the 51 transaction-cap-eligible committed baseline records"
+                },
+                "p50_complete_withdrawal_block_share": {
+                  "exact_fraction": "61242773/72000000",
+                  "percent_12_rounded": "85.059406944444"
+                }
+              },
+              {
+                "block_gas_limit": 60000000,
+                "maximum_calldata_over_observed_eligible_packings": {
+                  "bytes": 397456,
+                  "withdrawals": 2,
+                  "witness_run_id": "v03-fixed-06"
+                },
+                "observed_eligible_best_case": {
+                  "calldata_bytes_for_that_packing": 397456,
+                  "max_completed_withdrawals": 2,
+                  "witness_complete_gas": 29953824,
+                  "witness_run_id": "v03-fixed-06"
+                },
+                "observed_eligible_conservative": {
+                  "completed_withdrawals": 1,
+                  "gas_bound_per_withdrawal": 30858391,
+                  "meaning": "capacity guaranteed only across the 51 transaction-cap-eligible committed baseline records"
+                },
+                "p50_complete_withdrawal_block_share": {
+                  "exact_fraction": "61242773/120000000",
+                  "percent_12_rounded": "51.035644166667"
+                }
+              }
+            ],
+            "floor_binding_counts": {
+              "part_a": 0,
+              "part_b": 0
+            },
+            "floor_coefficients": {
+              "nonzero_byte_gas": 96,
+              "zero_byte_gas": 96
+            },
+            "gas": {
+              "complete_two_call_withdrawal": {
+                "count": 60,
+                "maximum": "30916835",
+                "median": "30621386.5",
+                "minimum": "29953824",
+                "unit": "gas"
+              },
+              "part_a": {
+                "count": 60,
+                "maximum": "16953270",
+                "median": "16664641.5",
+                "minimum": "16179681",
+                "unit": "gas"
+              },
+              "part_b": {
+                "count": 60,
+                "maximum": "14264492",
+                "median": "13959759.5",
+                "minimum": "13333063",
+                "unit": "gas"
+              }
+            },
+            "id": "DRAFT_EIP8311_96_96",
+            "status": "UNSCHEDULED_DRAFT_STANDALONE_SENSITIVITY",
+            "transaction_cap": {
+              "cap": 16777216,
+              "eligible_run_count": 51,
+              "ineligible_run_count": 9,
+              "status": "FAIL_OBSERVED_PART_A_EXCEEDS_CAP"
+            }
+          }
+        ]
+      },
+      "gate_status": "FAIL",
+      "must_not_receive_passing_weighted_result": true,
+      "prover_throughput": {
+        "H1": {
+          "cold": "NOT_EVALUATED",
+          "derived_sequential_throughput": {
+            "aggregate_exact_proofs_per_second": "2000000000000000000/1207472823400166819",
+            "aggregate_proofs_per_second_12_rounded": "1.656351978480",
+            "classification": "DERIVED_FROM_SEQUENTIAL_WARM_WALL_TIMES_NOT_A_CONCURRENT_LOAD_TEST",
+            "reciprocal_of_median_exact_proofs_per_second": "5000000000000000/3024842500090017",
+            "reciprocal_of_median_proofs_per_second_12_rounded": "1.652978626111"
+          },
+          "hardware_id": "H1-MAC16-5-M4MAX-48G",
+          "neon_code_path_execution": "NOT_EVALUATED",
+          "status": "PARTIALLY_MEASURED_WARM_ONLY",
+          "wall_ms": {
+            "count": 60,
+            "maximum": "1115.2789169864263",
+            "median": "604.9685000180034",
+            "minimum": "272.52025000052527",
+            "unit": "milliseconds"
+          },
+          "warm_run_count": 60
+        },
+        "H2": "NOT_EVALUATED_NO_COMMITTED_MEASUREMENTS",
+        "H3": "NOT_EVALUATED_NO_COMMITTED_MEASUREMENTS"
+      },
+      "relayer_break_even": {
+        "formula": {
+          "fee_fraction_of_withdrawal": "full_break_even_wei / withdrawal_denomination_wei",
+          "full_break_even_wei": "network_cost_wei + non_gas_cost_wei + capital_and_risk_cost_wei + prover_cost_wei",
+          "network_cost_wei": "gas_used * effective_gas_price_wei + l2_fee_wei",
+          "prover_cost_conversion": "prover_wall_hours * prover_machine_hourly_usd / eth_usd, requiring separately pinned USD inputs"
+        },
+        "gas_only_lower_bound_sensitivity": {
+          "gas": "30621386.5",
+          "representative": "ACTIVE_EIP7623_COMPLETE_TWO_CALL_LINEAR_INTERPOLATED_P50",
+          "rows": [
+            {
+              "cost_eth": "0.00306213865",
+              "cost_usd": "NOT_EVALUATED",
+              "cost_wei": 3062138650000000,
+              "effective_gas_price_gwei": "0.1"
+            },
+            {
+              "cost_eth": "0.01531069325",
+              "cost_usd": "NOT_EVALUATED",
+              "cost_wei": 15310693250000000,
+              "effective_gas_price_gwei": "0.5"
+            },
+            {
+              "cost_eth": "0.0306213865",
+              "cost_usd": "NOT_EVALUATED",
+              "cost_wei": 30621386500000000,
+              "effective_gas_price_gwei": "1"
+            },
+            {
+              "cost_eth": "0.1531069325",
+              "cost_usd": "NOT_EVALUATED",
+              "cost_wei": 153106932500000000,
+              "effective_gas_price_gwei": "5"
+            },
+            {
+              "cost_eth": "0.306213865",
+              "cost_usd": "NOT_EVALUATED",
+              "cost_wei": 306213865000000000,
+              "effective_gas_price_gwei": "10"
+            },
+            {
+              "cost_eth": "1.531069325",
+              "cost_usd": "NOT_EVALUATED",
+              "cost_wei": 1531069325000000000,
+              "effective_gas_price_gwei": "50"
+            }
+          ],
+          "warning": "This excludes L2/data fees, non-gas operations, capital, risk, failed transactions, and prover machine cost and is not a quoted relayer fee."
+        },
+        "missing_inputs": [
+          "non_gas_cost_wei",
+          "capital_and_risk_cost_wei",
+          "withdrawal_denomination_wei",
+          "prover_machine_hourly_usd",
+          "l2_fee_input"
+        ],
+        "status": "NOT_EVALUATED_MISSING_OPERATIONAL_FEE_INPUTS"
+      },
+      "security_qualified": false,
+      "weighted_result": "NOT_COMPUTED_NON_FINALIST"
+    }
+  ],
+  "reproducibility": {
+    "command": "python3 research/economic-throughput/run.py",
+    "source_pin_count": 70,
+    "validated_exact_calldata_artifacts": 120,
+    "validated_run_records": 60
+  },
+  "schema": "pqtc-section19-economic-throughput-result-v1",
+  "section19_obligation": "VACUOUS_NO_FINALIST_ROWS_EXIST",
+  "separation": {
+    "cryptographic_gate_inputs": [],
+    "external_cryptographic_acceptance": "OPEN",
+    "live_chain_state": "NOT_EVALUATED",
+    "live_price": "NOT_EVALUATED",
+    "operational_sensitivity_inputs": [
+      "effective gas price",
+      "synthetic block gas limit",
+      "optional pinned ETH/USD price",
+      "relayer operational costs"
+    ],
+    "volatile_inputs_in_cryptographic_gate": false
+  },
+  "snapshot_date": "2026-09-04",
+  "source_hashes_sha256": "aabfc7832ba7df2620f2111534f3b000f1cf5c6186c439d3fdcc67078fbcff59",
+  "status": "COMPLETE_NON_FINALIST_CONTEXT_ONLY",
+  "usd_example": {
+    "configurable_offline_input": [
+      "eth_usd",
+      "price_timestamp_utc",
+      "source_artifact",
+      "source_sha256",
+      "source_description"
+    ],
+    "separation": "USD_PRICE_IS_OPERATIONAL_SENSITIVITY_AND_NEVER_A_CRYPTOGRAPHIC_GATE_INPUT",
+    "status": "NOT_EVALUATED_NO_PINNED_PRICE_SOURCE"
+  }
+}

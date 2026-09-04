@@ -1,0 +1,49 @@
+{
+  "schema": "pqtc-section19-assumptions-v1",
+  "snapshot_date": "2026-09-04",
+  "classification": "DETERMINISTIC_OFFLINE_OPERATIONAL_SENSITIVITY_NOT_CRYPTOGRAPHIC_GATE",
+  "effective_gas_price_gwei": ["0.1", "0.5", "1", "5", "10", "50"],
+  "block_gas_limits": [30000000, 36000000, 60000000],
+  "transaction_gas_limit_max": 16777216,
+  "gas_schedules": [
+    {
+      "id": "ACTIVE_EIP7623",
+      "status": "ACTIVE_OSAKA_AS_OF_SNAPSHOT",
+      "zero_byte_floor_gas": 10,
+      "nonzero_byte_floor_gas": 40
+    },
+    {
+      "id": "FUTURE_EIP7976_64_64",
+      "status": "SCHEDULED_UNACTIVATED_STANDALONE_SENSITIVITY",
+      "zero_byte_floor_gas": 64,
+      "nonzero_byte_floor_gas": 64
+    },
+    {
+      "id": "DRAFT_EIP8311_96_96",
+      "status": "UNSCHEDULED_DRAFT_STANDALONE_SENSITIVITY",
+      "zero_byte_floor_gas": 96,
+      "nonzero_byte_floor_gas": 96
+    }
+  ],
+  "usd_example": {
+    "eth_usd": null,
+    "price_timestamp_utc": null,
+    "source_artifact": null,
+    "source_sha256": null,
+    "source_description": null
+  },
+  "relayer": {
+    "non_gas_cost_wei": null,
+    "capital_and_risk_cost_wei": null,
+    "withdrawal_denomination_wei": null,
+    "prover_machine_hourly_usd": null,
+    "priority_fee_model": "INCLUDED_IN_EFFECTIVE_GAS_PRICE_INPUT",
+    "l2_fee_input": null
+  },
+  "notes": [
+    "Block gas limits are explicit synthetic sensitivity inputs, not observed live-chain state.",
+    "Gas-price points are effective transaction gas prices; no live fee or priority-fee observation is claimed.",
+    "USD examples require all price fields plus a locally available source artifact whose SHA-256 matches source_sha256.",
+    "Null relayer fields intentionally keep full break-even and fee-denomination results NOT_EVALUATED."
+  ]
+}

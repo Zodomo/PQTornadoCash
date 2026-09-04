@@ -1,0 +1,56 @@
+{
+  "schema": "pqtc-section19-negative-results-v1",
+  "snapshot_date": "2026-09-04",
+  "results": [
+    {
+      "id": "ET-N01",
+      "status": "NOT_APPLICABLE_NO_FINALIST",
+      "finding": "finalist_count is zero, so no finalist economic or throughput row exists and the every-finalist section-19 obligation is vacuous"
+    },
+    {
+      "id": "ET-N02",
+      "status": "FAIL",
+      "finding": "C00/v03-baseline is NON_FINALIST_CONTEXT and 9 of 60 observed Part A transactions exceed the active 2^24 transaction gas-limit cap"
+    },
+    {
+      "id": "ET-N03",
+      "status": "NOT_EVALUATED",
+      "finding": "no pinned ETH/USD price artifact exists; canonical USD examples are not calculated"
+    },
+    {
+      "id": "ET-N04",
+      "status": "NOT_EVALUATED",
+      "finding": "full relayer break-even is missing L2/data fees, non-gas cost, capital/risk cost, withdrawal denomination, prover machine price, and pinned price conversion"
+    },
+    {
+      "id": "ET-N05",
+      "status": "NOT_EVALUATED",
+      "finding": "H1 cold timing and explicit NEON-path execution are absent"
+    },
+    {
+      "id": "ET-N06",
+      "status": "NOT_EVALUATED",
+      "finding": "H2 commodity x86-64/AVX2 and H3 high-end x86-64/AVX-512 measurements are absent; no throughput projection is substituted"
+    },
+    {
+      "id": "ET-N07",
+      "status": "STOP_BY_DEPENDENCY",
+      "finding": "aggregation lacks an accepted hiding individual proof, accepted PQ-oriented outer proof, measured outer prover/verifier, and complete full-transaction gas/calldata"
+    },
+    {
+      "id": "ET-N08",
+      "status": "NOT_EVALUATED",
+      "finding": "no selected L2 verifier receipt or live fee state is available; synthetic L2 fee projections are not mixed into the L1 baseline table"
+    },
+    {
+      "id": "ET-N09",
+      "status": "NOT_EVALUATED",
+      "finding": "block packing is deterministic arithmetic over committed records, not a mined-receipt, state-contention, ordering, or concurrent throughput experiment"
+    },
+    {
+      "id": "ET-N10",
+      "status": "OPEN",
+      "finding": "external cryptographic acceptance remains open and no volatile economic input changes that status"
+    }
+  ]
+}

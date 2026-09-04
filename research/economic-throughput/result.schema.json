@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pqtc-section19-economic-throughput-result-v1",
+  "title": "PQTC section-19 economic and throughput result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "snapshot_date",
+    "status",
+    "finalist_count",
+    "finalists",
+    "finalist_gate",
+    "section19_obligation",
+    "source_hashes_sha256",
+    "config",
+    "usd_example",
+    "non_finalist_context",
+    "cross_cutting_context",
+    "separation",
+    "reproducibility"
+  ],
+  "properties": {
+    "schema": {"const": "pqtc-section19-economic-throughput-result-v1"},
+    "snapshot_date": {"type": "string", "format": "date"},
+    "status": {"const": "COMPLETE_NON_FINALIST_CONTEXT_ONLY"},
+    "finalist_count": {"const": 0},
+    "finalists": {"type": "array", "maxItems": 0},
+    "finalist_gate": {"const": "NOT_APPLICABLE_NO_FINALIST"},
+    "section19_obligation": {"const": "VACUOUS_NO_FINALIST_ROWS_EXIST"},
+    "source_hashes_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "config": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "arithmetic"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "arithmetic": {"const": "PYTHON_DECIMAL_AND_FRACTION_NO_BINARY_FLOAT"}
+      }
+    },
+    "usd_example": {
+      "type": "object",
+      "required": ["status", "separation"],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_EVALUATED_NO_PINNED_PRICE_SOURCE",
+            "EVALUATED_PINNED_OFFLINE_SOURCE"
+          ]
+        },
+        "separation": {"const": "USD_PRICE_IS_OPERATIONAL_SENSITIVITY_AND_NEVER_A_CRYPTOGRAPHIC_GATE_INPUT"}
+      }
+    },
+    "non_finalist_context": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {"$ref": "#/$defs/nonFinalistContext"}
+    },
+    "cross_cutting_context": {"type": "object"},
+    "separation": {
+      "type": "object",
+      "required": [
+        "volatile_inputs_in_cryptographic_gate",
+        "cryptographic_gate_inputs",
+        "operational_sensitivity_inputs",
+        "external_cryptographic_acceptance",
+        "live_chain_state",
+        "live_price"
+      ],
+      "properties": {
+        "volatile_inputs_in_cryptographic_gate": {"const": false},
+        "cryptographic_gate_inputs": {"type": "array", "maxItems": 0},
+        "operational_sensitivity_inputs": {"type": "array", "minItems": 1},
+        "external_cryptographic_acceptance": {"const": "OPEN"},
+        "live_chain_state": {"const": "NOT_EVALUATED"},
+        "live_price": {"const": "NOT_EVALUATED"}
+      }
+    },
+    "reproducibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["command", "source_pin_count", "validated_run_records", "validated_exact_calldata_artifacts"],
+      "properties": {
+        "command": {"const": "python3 research/economic-throughput/run.py"},
+        "source_pin_count": {"type": "integer", "minimum": 1},
+        "validated_run_records": {"const": 60},
+        "validated_exact_calldata_artifacts": {"const": 120}
+      }
+    }
+  },
+  "$defs": {
+    "nonFinalistContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id",
+        "disposition",
+        "security_qualified",
+        "finalist_selected",
+        "gate_status",
+        "weighted_result",
+        "must_not_receive_passing_weighted_result",
+        "gas_and_block_model",
+        "prover_throughput",
+        "relayer_break_even"
+      ],
+      "properties": {
+        "candidate_id": {"const": "C00/v03-baseline"},
+        "disposition": {"const": "NON_FINALIST_CONTEXT"},
+        "security_qualified": {"const": false},
+        "finalist_selected": {"const": false},
+        "gate_status": {"const": "FAIL"},
+        "weighted_result": {"const": "NOT_COMPUTED_NON_FINALIST"},
+        "must_not_receive_passing_weighted_result": {"const": true},
+        "gas_and_block_model": {"type": "object"},
+        "prover_throughput": {
+          "type": "object",
+          "required": ["H1", "H2", "H3"],
+          "properties": {
+            "H1": {"type": "object"},
+            "H2": {"const": "NOT_EVALUATED_NO_COMMITTED_MEASUREMENTS"},
+            "H3": {"const": "NOT_EVALUATED_NO_COMMITTED_MEASUREMENTS"}
+          }
+        },
+        "relayer_break_even": {
+          "type": "object",
+          "required": ["status", "formula", "gas_only_lower_bound_sensitivity", "missing_inputs"],
+          "properties": {
+            "status": {"const": "NOT_EVALUATED_MISSING_OPERATIONAL_FEE_INPUTS"},
+            "formula": {"type": "object"},
+            "gas_only_lower_bound_sensitivity": {"type": "object"},
+            "missing_inputs": {"type": "array", "minItems": 1}
+          }
+        }
+      }
+    }
+  }
+}
