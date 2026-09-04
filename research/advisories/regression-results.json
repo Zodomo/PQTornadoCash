@@ -16,10 +16,10 @@
       "exitCode": 0,
       "name": "rust-codec-roundtrip-and-shape",
       "passed": true,
-      "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (target/debug/deps/pqtc_stark-89caa74d33d8979d)\n",
-      "stderrSha256": "d03ac871e09388a067cee2a9ac6d1c53283885f6dfc97ae5f37097ca592dce2c",
-      "stdout": "\nrunning 1 test\ntest codec::tests::two_parts_round_trip_bind_and_verify_natively ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 4.24s\n\n",
-      "stdoutSha256": "bd2ec43bbcaa7d639ef346e93df8d23e95e9bca77d6875bf0c82a49fb04aa95b"
+      "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s\n     Running unittests src/lib.rs (target/debug/deps/pqtc_stark-89caa74d33d8979d)\n",
+      "stderrSha256": "6ab1f7102f15b10269d15f74eeb5fe1702dc062c51b886e87bed2f81df03fa25",
+      "stdout": "\nrunning 1 test\ntest codec::tests::two_parts_round_trip_bind_and_verify_natively ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 4.04s\n\n",
+      "stdoutSha256": "67158fb669d58d20b35bee65f99f5046b5b6b77be73a26d291fe8dffc5735985"
     },
     {
       "command": [
@@ -36,8 +36,8 @@
       "exitCode": 0,
       "name": "rust-noncanonical-field",
       "passed": true,
-      "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.03s\n     Running unittests src/lib.rs (target/debug/deps/pqtc_stark-89caa74d33d8979d)\n",
-      "stderrSha256": "28bc968de431353f2a347a0fec08195abf6d83a2626278ec0c5fb0a3a6a78aa8",
+      "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s\n     Running unittests src/lib.rs (target/debug/deps/pqtc_stark-89caa74d33d8979d)\n",
+      "stderrSha256": "32f6db5d791882b451992a9c084bc5eaca34f91bc534f03479a2da1f4414dbe1",
       "stdout": "\nrunning 1 test\ntest codec::tests::malformed_field_rejected ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 0.00s\n\n",
       "stdoutSha256": "eca263a13d29893755efc7d9899fc968ebf4f0b4ddc67b9d2c180a7405847584"
     },
@@ -76,8 +76,8 @@
       "exitCode": 0,
       "name": "rust-full-width-digest",
       "passed": true,
-      "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.03s\n     Running unittests src/lib.rs (target/debug/deps/pqtc_stark-89caa74d33d8979d)\n",
-      "stderrSha256": "28bc968de431353f2a347a0fec08195abf6d83a2626278ec0c5fb0a3a6a78aa8",
+      "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.02s\n     Running unittests src/lib.rs (target/debug/deps/pqtc_stark-89caa74d33d8979d)\n",
+      "stderrSha256": "bbaaebfd36780942e246b20f4f2acc1ef654197feea541444b3a9a1e961899b7",
       "stdout": "\nrunning 1 test\ntest crypto::tests::digest_halves_both_affect_nodes ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 0.00s\n\n",
       "stdoutSha256": "147b1f5e7fc5266d27dba9f14f43598b142b355417ddb4a1c1f837394e094528"
     },
@@ -101,8 +101,8 @@
       "passed": true,
       "stderr": "",
       "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout": "trace_rows=256\ntrace_width=190\nproof_part_a_bytes=17890\nproof_part_b_bytes=17922\nproof_bytes=35812\nopened_trace_local=190 opened_trace_next=190 quotient_chunks=16 quotient_chunk_width=4 random_openings=4\nfri_rounds=9 fri_inputs=3 fri_final_poly=1\nfri_input_0_queries=2 matrix_widths=[6] salts_per_query=1 path_hashes=21\nfri_input_1_queries=2 matrix_widths=[192] salts_per_query=1 path_hashes=21\nfri_input_2_queries=2 matrix_widths=[6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6] salts_per_query=16 path_hashes=21\nhiding_shapes=[[[2]], [[2, 2]], [[2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2]]]\nprove_ms=41\nverify_and_mutations_ms=100\nsame_witness_proofs_differ=true\ncanonical_roundtrip_verified=true\nstructured_mutations_rejected=100\n",
-      "stdoutSha256": "c3df51c0ccba931368ddbec0e06f518cff7347e3d7cf542e1472d8eaf1ccef4d"
+      "stdout": "trace_rows=256\ntrace_width=190\nproof_part_a_bytes=17890\nproof_part_b_bytes=17922\nproof_bytes=35812\nopened_trace_local=190 opened_trace_next=190 quotient_chunks=16 quotient_chunk_width=4 random_openings=4\nfri_rounds=9 fri_inputs=3 fri_final_poly=1\nfri_input_0_queries=2 matrix_widths=[6] salts_per_query=1 path_hashes=22\nfri_input_1_queries=2 matrix_widths=[192] salts_per_query=1 path_hashes=22\nfri_input_2_queries=2 matrix_widths=[6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6] salts_per_query=16 path_hashes=22\nhiding_shapes=[[[2]], [[2, 2]], [[2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2]]]\nprove_ms=46\nverify_and_mutations_ms=99\nsame_witness_proofs_differ=true\ncanonical_roundtrip_verified=true\nstructured_mutations_rejected=100\n",
+      "stdoutSha256": "3b61473b59ec82b17b3a69bf6107cd00a66c8b7d7bcf568f97bae9280c8fa619"
     },
     {
       "command": [
@@ -119,8 +119,8 @@
       "passed": true,
       "stderr": "",
       "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout": "No files changed, compilation skipped\n\nRan 9 tests for contracts/test/StagedVerifier.t.sol:CompactVerifierTest\n[PASS] testRejectsDifferentStatementAtCompletion() (gas: 28502940)\n[PASS] testRejectsFriSaltMutationAtRegeneratedOffset() (gas: 18703551)\n[PASS] testRejectsMalformedPrunedFrontier() (gas: 33176123)\n[PASS] testRejectsMixedPartProofId() (gas: 28638596)\n[PASS] testRejectsNoncanonicalHeaderField() (gas: 7128373)\n[PASS] testRejectsReorderedFirstHalfQueries() (gas: 12687891)\n[PASS] testRejectsReorderedSecondHalfQueries() (gas: 31995883)\n[PASS] testRejectsSecondPartGlobalMutation() (gas: 28941344)\n[PASS] testRejectsTranscriptBoundGlobalMutation() (gas: 7640693)\nSuite result: ok. 9 passed; 0 failed; 0 skipped; finished in 37.73ms (144.90ms CPU time)\n\nRan 1 test suite in 45.54ms (37.73ms CPU time): 9 tests passed, 0 failed, 0 skipped (9 total tests)\n",
-      "stdoutSha256": "729b7a503512794e3af436618fc151fc6acd16d0645cf6f7f5b46eb31ea257f2"
+      "stdout": "No files changed, compilation skipped\n\nRan 9 tests for contracts/test/StagedVerifier.t.sol:CompactVerifierTest\n[PASS] testRejectsDifferentStatementAtCompletion() (gas: 28502940)\n[PASS] testRejectsFriSaltMutationAtRegeneratedOffset() (gas: 18703551)\n[PASS] testRejectsMalformedPrunedFrontier() (gas: 33176123)\n[PASS] testRejectsMixedPartProofId() (gas: 28638596)\n[PASS] testRejectsNoncanonicalHeaderField() (gas: 7128373)\n[PASS] testRejectsReorderedFirstHalfQueries() (gas: 12687891)\n[PASS] testRejectsReorderedSecondHalfQueries() (gas: 31995883)\n[PASS] testRejectsSecondPartGlobalMutation() (gas: 28941344)\n[PASS] testRejectsTranscriptBoundGlobalMutation() (gas: 7640693)\nSuite result: ok. 9 passed; 0 failed; 0 skipped; finished in 30.38ms (141.26ms CPU time)\n\nRan 1 test suite in 30.78ms (30.38ms CPU time): 9 tests passed, 0 failed, 0 skipped (9 total tests)\n",
+      "stdoutSha256": "3efeb42ac8ca74068e31c9dc3b4f95c385fa614cf06bdbfb3afb3aaf7738e7b8"
     }
   ],
   "gateResult": "FAIL",
@@ -160,7 +160,7 @@
       "passed": true
     }
   ],
-  "timestampUtc": "2026-09-04T17:56:54.257408Z",
+  "timestampUtc": "2026-09-04T18:47:32.525148Z",
   "unresolved": [
     "The pinned upstream README states that native verification may panic on malformed in-memory proof objects.",
     "PQTC has no catch_unwind boundary around verify_withdrawal; native-catch-unwind-boundary is expected to fail until a later engineering specification addresses it.",

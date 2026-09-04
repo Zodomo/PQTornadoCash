@@ -30,9 +30,10 @@
     {
       "finding": 3,
       "title": "Propagate SP-01 limitations into all baseline run records",
-      "resolution": "All 60 run records are generated from the q32 SP-01 artifact with 107-bit conjectural random-words, 56-bit conditional LDR and Johnson assumption, 37-bit quantum UDR under the unconditional theorem regime, retained omissions, internal review limitations, and external review OPEN.",
+      "resolution": "All 60 run records are generated from the q32 SP-01 artifact with 107-bit conjectural random-words, 56-bit conditional LDR and Johnson assumption, 37-bit quantum UDR under the unconditional theorem regime, retained omissions, internal review limitations, and external review OPEN. The baseline assumptions table uses the same conditional/unconditional labels.",
       "evidence": [
         "benchmark-run.schema.json",
+        "research/candidates/v03-baseline/assumptions.md",
         "research/candidates/v03-baseline/scripts/generate-all.py",
         "research/candidates/v03-baseline/scripts/synthesize-measurements.py",
         "research/runs/v03-fixed-01.json"
@@ -41,9 +42,10 @@
     {
       "finding": 4,
       "title": "Update GHSA dispositions after focused regressions ran",
-      "resolution": "Each of the five GHSA rows records its executed PASS while preserving its residual-risk qualification; the unresolved native malformed-proof panic remains FAIL at the SP-02 gate.",
+      "resolution": "Each of the five GHSA rows in both human-readable and machine-readable advisory evidence records its executed PASS while preserving its residual-risk qualification; the unresolved native malformed-proof panic remains FAIL at the SP-02 gate.",
       "evidence": [
         "research/advisories/README.md",
+        "research/advisories/advisory-matrix.json",
         "research/advisories/regression-results.json"
       ]
     },

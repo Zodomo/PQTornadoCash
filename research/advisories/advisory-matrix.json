@@ -17,7 +17,8 @@
       "pinnedStatus": "PATCH_PRESENT",
       "customPaths": ["crates/pqtc-stark/src/codec.rs:399-421", "contracts/src/PQTCVerificationRegistry.sol:374-404"],
       "regressions": ["rust-codec-roundtrip-and-shape", "solidity-transcript-shape-mutations"],
-      "disposition": "INAPPLICABLE_BY_ORDERING_WITH_EXECUTED_REGRESSION_REQUIRED",
+      "executedRegressionResult": "PASS",
+      "disposition": "INAPPLICABLE_BY_ORDERING_WITH_EXECUTED_REGRESSION_PASS",
       "residualRisk": "Rust/Solidity parity and every opened coordinate must remain covered; a source-order observation alone is not a proof.",
       "source": "https://github.com/Plonky3/Plonky3/security/advisories/GHSA-vrmm-4mm5-38vm"
     },
@@ -30,7 +31,8 @@
       "pinnedStatus": "PATCH_PRESENT",
       "customPaths": ["crates/pqtc-stark/src/codec.rs:515-610", "contracts/src/libraries/PQTCProofCodec.sol", "contracts/src/verifier/PQTCQueryVerifier.sol"],
       "regressions": ["rust-codec-roundtrip-and-shape", "rust-serialized-structured-mutations", "solidity-transcript-shape-mutations"],
-      "disposition": "CUSTOM_SHAPE_GATE_PRESENT_WITH_EXECUTED_REGRESSION_REQUIRED",
+      "executedRegressionResult": "PASS",
+      "disposition": "CUSTOM_SHAPE_GATE_PRESENT_WITH_EXECUTED_REGRESSION_PASS",
       "residualRisk": "All parallel sequence lengths need expected-minus-one and expected-plus-one coverage; current research runner exercises serialized shapes, not arbitrary in-memory StarkProof values.",
       "source": "https://github.com/Plonky3/Plonky3/security/advisories/GHSA-m23j-cj9m-ppg9"
     },
@@ -43,7 +45,8 @@
       "pinnedStatus": "PATCH_PRESENT",
       "customPaths": ["crates/pqtc-stark/src/codec.rs:561-568", "contracts/src/verifier/FriVerifier.sol"],
       "regressions": ["rust-codec-roundtrip-and-shape", "rust-serialized-structured-mutations", "solidity-transcript-shape-mutations"],
-      "disposition": "EXACT_SINGLE_FINAL_VALUE_SHAPE_PRESENT_WITH_REGRESSION_REQUIRED",
+      "executedRegressionResult": "PASS",
+      "disposition": "EXACT_SINGLE_FINAL_VALUE_SHAPE_PRESENT_WITH_EXECUTED_REGRESSION_PASS",
       "residualRisk": "v0.3 fixes final length at one. Future variable-arity or mixed-height profiles must test beta-power roll-in equivalence explicitly.",
       "source": "https://github.com/Plonky3/Plonky3/security/advisories/GHSA-f69f-5fx9-w9r9"
     },
@@ -56,7 +59,8 @@
       "pinnedStatus": "PATCH_PRESENT_BUT_UNSAFE_CLASS_REMAINS_FOR_VARIABLE_LENGTH",
       "customPaths": ["crates/pqtc-hash/src/lib.rs:47-66", "contracts/src/libraries/P2BB512.sol", "crates/pqtc-stark/src/crypto.rs:142-150"],
       "regressions": ["rust-typed-transcript", "rust-serialized-structured-mutations"],
-      "disposition": "CUSTOM_LENGTH_AND_TYPE_FRAMING_PRESENT",
+      "executedRegressionResult": "PASS",
+      "disposition": "CUSTOM_LENGTH_AND_TYPE_FRAMING_PRESENT_WITH_EXECUTED_REGRESSION_PASS",
       "residualRisk": "Fixed-shape Solidity entry points and exact Rust length framing need cross-language k*rate boundary vectors; future candidate modes must not inherit padding-free variable input.",
       "source": "https://github.com/Plonky3/Plonky3/security/advisories/GHSA-3g92-f9ch-qjcm"
     },
@@ -70,7 +74,8 @@
       "pinnedStatus": "PATCH_PRESENT",
       "customPaths": ["crates/pqtc-stark/src/crypto.rs:142-216", "contracts/src/libraries/Transcript512.sol"],
       "regressions": ["rust-typed-transcript", "rust-full-width-digest", "solidity-transcript-shape-mutations"],
-      "disposition": "UPSTREAM_CLASS_NOT_USED_CUSTOM_TRANSCRIPT_REQUIRES_EQUIVALENT_INVARIANTS",
+      "executedRegressionResult": "PASS",
+      "disposition": "UPSTREAM_CLASS_NOT_USED_CUSTOM_TRANSCRIPT_WITH_EXECUTED_REGRESSION_PASS",
       "residualRisk": "Partial-tail distinction, full digest-bit binding, rejection sampling, and challenge reachability require explicit Rust/Solidity vectors.",
       "source": "https://github.com/Plonky3/Plonky3/security/advisories/GHSA-vj64-rjf3-w3v7"
     },

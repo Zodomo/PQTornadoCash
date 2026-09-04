@@ -5,7 +5,7 @@
 | Frozen tag peels to commit `00f829001999ee66da6fd5161c4c205c07d0b937`. | Machine-checked by inventory command | A mismatch aborts before proving. |
 | Plonky3 is the exact commit `3152b14a89067c83775a8076cc262ffc48a1fd7c`. | Source-bound and inventory-checked | No branch/tag substitution is accepted. |
 | q32 random-words security is 107 bits. | Conjectural | It is not reported as proven security. |
-| Best generated proven v0.3 bound is 56 bits (37 unique decoding). | Proven model output, not a full-system theorem | C00 does not meet a strict proven 100-bit target. |
+| v0.3 q32 has a 56-bit list-decoding result and a 37-bit quantum unique-decoding result. | 56-bit LDR is a conditional theorem requiring mutual correlated agreement up to the Johnson bound; 37-bit UDR is unconditional | Neither regime meets a strict proven 100-bit target; external cryptographic review remains OPEN. |
 | P2BB512 behaves like the intended ideal permutation up to its generic capacity ceiling. | Unreviewed structural assumption | Independent classical/quantum cryptanalysis remains required. |
 | KeccakPair512 Fiat–Shamir composition is secure in the QROM. | Unproven | No complete QROM claim is made. |
 | Four random codewords and salted MMCS leaves give the intended witness hiding. | Implementation mechanism present; full proof absent | Timing, malformed-input, and composition leakage remain review items. |
