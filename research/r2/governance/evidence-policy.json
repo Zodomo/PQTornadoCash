@@ -1,0 +1,22 @@
+{
+  "schema": "pqtc.r2.evidence-policy.v1",
+  "measurement_statuses": ["NOT_EVALUATED", "EXECUTION_BLOCKED", "MEASURED", "EXACT_ANALYTICAL_BOUND", "CALIBRATED_PROJECTION", "UNCALIBRATED_PROJECTION", "OUT_OF_MODEL_DOMAIN", "NOT_APPLICABLE"],
+  "numeric_statuses": ["MEASURED", "EXACT_ANALYTICAL_BOUND", "CALIBRATED_PROJECTION", "UNCALIBRATED_PROJECTION"],
+  "decision_statuses": ["CONTINUE_EXPERIMENT", "REPEAT_MEASUREMENT", "DEFER_EXTERNAL_REVIEW", "REJECT_EXACT_CANDIDATE", "STOP_ENGINEERING_BARRIER", "STOP_RESOURCE_LIMIT", "READY_FOR_CROSS_CANDIDATE_COMPARISON", "NOT_READY_FOR_BUILD_SELECTION"],
+  "stop_reason_classes": ["proven/constructed security failure", "incomplete security analysis", "reference-correctness failure", "incomplete application semantics", "measured performance failure", "analytical impossibility within stated assumptions", "uncalibrated model prediction", "missing software/API/configuration", "licensing/access limitation", "resource/budget limit", "project-policy decision"],
+  "independent_assessments": ["specification_status", "correctness_evidence", "privacy_evidence", "security_status", "performance_evidence", "implementation_stage", "promotion_status"],
+  "gates": {
+    "physical": "Target-hardfork capped signed local transaction, code and initcode limits; unknown is not failure",
+    "product": {"one_call_gas": 14000000, "one_call_abi_bytes": 81920, "two_call_each_gas": 12000000, "two_call_combined_gas": 20000000, "two_call_combined_abi_bytes": 131072, "deposit_gas": 4000000, "runtime_module_bytes": 22000, "deployment_gas": 14000000},
+    "security_privacy": "Exact scoped accepted model required for qualification; unqualified reference-correct controls may be measured"
+  },
+  "pipelines": {
+    "R2-C0": "Frozen H0 horizontal FRI reference",
+    "R2-C1": "Identical H0 predicate with vertical low-degree FRI",
+    "R2-C2": "Complete H5-like width32/d12 horizontal FRI",
+    "R2-C3": "Identical complete H5-like predicate with vertical low-degree FRI",
+    "R2-C4": "Exact H0 or selected complete compression relation with hiding alternative backend"
+  },
+  "configuration_id": "pipeline ID plus SHA256 of canonical semantic/hash/field/AIR/PCS/hiding/MMCS/transcript/codec/parameters/implementation/toolchain metadata; source revision and run ID retained separately",
+  "invariants": ["Missing values are null, never structural zero", "No external acceptance inferred from internal checks", "No component-sum gas represented as a complete measured transaction", "No performance rejection from a missing measurement", "No old artifact overwritten", "All retained witnesses synthetic and unfunded", "Timed native benchmarks run one process at a time", "No real secret environment inherited into execution or logs"]
+}

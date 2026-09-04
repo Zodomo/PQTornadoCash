@@ -1,0 +1,2282 @@
+{
+  "canonical_secret_bits": "8 * log2(2013265921) \u2248 247.255, canonical limbs by rejection sampling, not arbitrary256-bit reduction",
+  "case_count": 256,
+  "case_index": [
+    {
+      "case_id": "swc-v1-000",
+      "leaf_index": 0,
+      "strata": [
+        "leaf-index-0",
+        "path-all-zero",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-001",
+      "leaf_index": 1,
+      "strata": [
+        "leaf-index-1",
+        "leaf-index-power-minus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-002",
+      "leaf_index": 2,
+      "strata": [
+        "leaf-index-2",
+        "leaf-index-power",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-003",
+      "leaf_index": 3,
+      "strata": [
+        "leaf-index-3",
+        "leaf-index-power-minus-one",
+        "leaf-index-power-plus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-004",
+      "leaf_index": 1048575,
+      "strata": [
+        "leaf-index-maximum-20-bit",
+        "path-all-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-005",
+      "leaf_index": 699050,
+      "strata": [
+        "path-alternating-0101",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-006",
+      "leaf_index": 349525,
+      "strata": [
+        "path-alternating-1010",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-007",
+      "leaf_index": 1,
+      "strata": [
+        "leaf-index-1",
+        "leaf-index-power-minus-one",
+        "repeated-sibling-prefix",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-008",
+      "leaf_index": 2,
+      "strata": [
+        "leaf-index-2",
+        "leaf-index-power",
+        "low-field-byte-value",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-009",
+      "leaf_index": 3,
+      "strata": [
+        "leaf-index-3",
+        "leaf-index-power-minus-one",
+        "leaf-index-power-plus-one",
+        "low-field-byte-value",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-010",
+      "leaf_index": 3,
+      "strata": [
+        "high-field-byte-value",
+        "leaf-index-3",
+        "leaf-index-power-minus-one",
+        "leaf-index-power-plus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-011",
+      "leaf_index": 4,
+      "strata": [
+        "high-field-byte-value",
+        "leaf-index-power",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-012",
+      "leaf_index": 5,
+      "strata": [
+        "leaf-index-power-plus-one",
+        "rejection-sampling-retry-trigger",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-013",
+      "leaf_index": 7,
+      "strata": [
+        "leaf-index-power-minus-one",
+        "rejection-sampling-retry-trigger",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-014",
+      "leaf_index": 8,
+      "strata": [
+        "leaf-index-power",
+        "rejection-sampling-retry-trigger",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-015",
+      "leaf_index": 9,
+      "strata": [
+        "leaf-index-power-plus-one",
+        "rejection-sampling-retry-trigger",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-016",
+      "leaf_index": 15,
+      "strata": [
+        "fee-zero",
+        "leaf-index-power-minus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-017",
+      "leaf_index": 16,
+      "strata": [
+        "fee-equals-denomination",
+        "leaf-index-power",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-018",
+      "leaf_index": 17,
+      "strata": [
+        "fee-small-nonzero",
+        "leaf-index-power-plus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-019",
+      "leaf_index": 31,
+      "strata": [
+        "fee-large-nonzero",
+        "leaf-index-power-minus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-020",
+      "leaf_index": 32,
+      "strata": [
+        "leaf-index-power",
+        "recipient-many-zero-bytes",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-021",
+      "leaf_index": 33,
+      "strata": [
+        "leaf-index-power-plus-one",
+        "relayer-many-zero-bytes",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-022",
+      "leaf_index": 63,
+      "strata": [
+        "leaf-index-power-minus-one",
+        "recipient-few-zero-bytes",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-023",
+      "leaf_index": 64,
+      "strata": [
+        "leaf-index-power",
+        "relayer-few-zero-bytes",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-024",
+      "leaf_index": 65,
+      "strata": [
+        "leaf-index-power-plus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-025",
+      "leaf_index": 127,
+      "strata": [
+        "leaf-index-power-minus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-026",
+      "leaf_index": 128,
+      "strata": [
+        "leaf-index-power",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-027",
+      "leaf_index": 129,
+      "strata": [
+        "leaf-index-power-plus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-028",
+      "leaf_index": 255,
+      "strata": [
+        "leaf-index-power-minus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-029",
+      "leaf_index": 256,
+      "strata": [
+        "leaf-index-power",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-030",
+      "leaf_index": 257,
+      "strata": [
+        "leaf-index-power-plus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-031",
+      "leaf_index": 511,
+      "strata": [
+        "leaf-index-power-minus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-032",
+      "leaf_index": 512,
+      "strata": [
+        "leaf-index-power",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-033",
+      "leaf_index": 513,
+      "strata": [
+        "leaf-index-power-plus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-034",
+      "leaf_index": 1023,
+      "strata": [
+        "leaf-index-power-minus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-035",
+      "leaf_index": 1024,
+      "strata": [
+        "leaf-index-power",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-036",
+      "leaf_index": 1025,
+      "strata": [
+        "leaf-index-power-plus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-037",
+      "leaf_index": 2047,
+      "strata": [
+        "leaf-index-power-minus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-038",
+      "leaf_index": 2048,
+      "strata": [
+        "leaf-index-power",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-039",
+      "leaf_index": 2049,
+      "strata": [
+        "leaf-index-power-plus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-040",
+      "leaf_index": 4095,
+      "strata": [
+        "leaf-index-power-minus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-041",
+      "leaf_index": 4096,
+      "strata": [
+        "leaf-index-power",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-042",
+      "leaf_index": 4097,
+      "strata": [
+        "leaf-index-power-plus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-043",
+      "leaf_index": 8191,
+      "strata": [
+        "leaf-index-power-minus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-044",
+      "leaf_index": 8192,
+      "strata": [
+        "leaf-index-power",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-045",
+      "leaf_index": 8193,
+      "strata": [
+        "leaf-index-power-plus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-046",
+      "leaf_index": 16383,
+      "strata": [
+        "leaf-index-power-minus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-047",
+      "leaf_index": 16384,
+      "strata": [
+        "leaf-index-power",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-048",
+      "leaf_index": 16385,
+      "strata": [
+        "leaf-index-power-plus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-049",
+      "leaf_index": 32767,
+      "strata": [
+        "leaf-index-power-minus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-050",
+      "leaf_index": 32768,
+      "strata": [
+        "leaf-index-power",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-051",
+      "leaf_index": 32769,
+      "strata": [
+        "leaf-index-power-plus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-052",
+      "leaf_index": 65535,
+      "strata": [
+        "leaf-index-power-minus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-053",
+      "leaf_index": 65536,
+      "strata": [
+        "leaf-index-power",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-054",
+      "leaf_index": 65537,
+      "strata": [
+        "leaf-index-power-plus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-055",
+      "leaf_index": 131071,
+      "strata": [
+        "leaf-index-power-minus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-056",
+      "leaf_index": 131072,
+      "strata": [
+        "leaf-index-power",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-057",
+      "leaf_index": 131073,
+      "strata": [
+        "leaf-index-power-plus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-058",
+      "leaf_index": 262143,
+      "strata": [
+        "leaf-index-power-minus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-059",
+      "leaf_index": 262144,
+      "strata": [
+        "leaf-index-power",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-060",
+      "leaf_index": 262145,
+      "strata": [
+        "leaf-index-power-plus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-061",
+      "leaf_index": 524287,
+      "strata": [
+        "leaf-index-power-minus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-062",
+      "leaf_index": 524288,
+      "strata": [
+        "leaf-index-power",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-063",
+      "leaf_index": 524289,
+      "strata": [
+        "leaf-index-power-plus-one",
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-064",
+      "leaf_index": 679811,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-065",
+      "leaf_index": 724112,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-066",
+      "leaf_index": 953818,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-067",
+      "leaf_index": 920222,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-068",
+      "leaf_index": 695346,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-069",
+      "leaf_index": 208378,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-070",
+      "leaf_index": 56789,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-071",
+      "leaf_index": 701505,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-072",
+      "leaf_index": 9368,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-073",
+      "leaf_index": 705107,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-074",
+      "leaf_index": 471147,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-075",
+      "leaf_index": 109579,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-076",
+      "leaf_index": 473433,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-077",
+      "leaf_index": 262751,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-078",
+      "leaf_index": 734990,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-079",
+      "leaf_index": 835684,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-080",
+      "leaf_index": 701972,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-081",
+      "leaf_index": 290787,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-082",
+      "leaf_index": 95028,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-083",
+      "leaf_index": 706660,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-084",
+      "leaf_index": 255780,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-085",
+      "leaf_index": 661520,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-086",
+      "leaf_index": 52398,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-087",
+      "leaf_index": 286987,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-088",
+      "leaf_index": 292490,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-089",
+      "leaf_index": 472210,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-090",
+      "leaf_index": 867502,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-091",
+      "leaf_index": 23239,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-092",
+      "leaf_index": 736223,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-093",
+      "leaf_index": 349637,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-094",
+      "leaf_index": 131063,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-095",
+      "leaf_index": 17023,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-096",
+      "leaf_index": 517010,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-097",
+      "leaf_index": 266371,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-098",
+      "leaf_index": 458658,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-099",
+      "leaf_index": 796133,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-100",
+      "leaf_index": 240800,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-101",
+      "leaf_index": 177926,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-102",
+      "leaf_index": 570173,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-103",
+      "leaf_index": 59075,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-104",
+      "leaf_index": 916729,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-105",
+      "leaf_index": 606039,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-106",
+      "leaf_index": 131061,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-107",
+      "leaf_index": 307064,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-108",
+      "leaf_index": 2795,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-109",
+      "leaf_index": 289330,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-110",
+      "leaf_index": 108806,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-111",
+      "leaf_index": 386648,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-112",
+      "leaf_index": 924059,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-113",
+      "leaf_index": 637756,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-114",
+      "leaf_index": 359456,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-115",
+      "leaf_index": 149094,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-116",
+      "leaf_index": 530287,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-117",
+      "leaf_index": 568562,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-118",
+      "leaf_index": 9269,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-119",
+      "leaf_index": 715483,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-120",
+      "leaf_index": 734028,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-121",
+      "leaf_index": 103268,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-122",
+      "leaf_index": 31594,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-123",
+      "leaf_index": 572998,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-124",
+      "leaf_index": 843562,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-125",
+      "leaf_index": 346431,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-126",
+      "leaf_index": 568901,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-127",
+      "leaf_index": 705688,
+      "strata": [
+        "structured"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-128",
+      "leaf_index": 286320,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-129",
+      "leaf_index": 202573,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-130",
+      "leaf_index": 78699,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-131",
+      "leaf_index": 523044,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-132",
+      "leaf_index": 172933,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-133",
+      "leaf_index": 913582,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-134",
+      "leaf_index": 71030,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-135",
+      "leaf_index": 60848,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-136",
+      "leaf_index": 1025324,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-137",
+      "leaf_index": 306599,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-138",
+      "leaf_index": 493132,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-139",
+      "leaf_index": 973071,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-140",
+      "leaf_index": 75114,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-141",
+      "leaf_index": 297550,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-142",
+      "leaf_index": 167669,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-143",
+      "leaf_index": 285299,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-144",
+      "leaf_index": 724661,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-145",
+      "leaf_index": 395781,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-146",
+      "leaf_index": 358622,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-147",
+      "leaf_index": 622203,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-148",
+      "leaf_index": 895970,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-149",
+      "leaf_index": 1022633,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-150",
+      "leaf_index": 966003,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-151",
+      "leaf_index": 593828,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-152",
+      "leaf_index": 719078,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-153",
+      "leaf_index": 350147,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-154",
+      "leaf_index": 451707,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-155",
+      "leaf_index": 804549,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-156",
+      "leaf_index": 335974,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-157",
+      "leaf_index": 666226,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-158",
+      "leaf_index": 26186,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-159",
+      "leaf_index": 941047,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-160",
+      "leaf_index": 623320,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-161",
+      "leaf_index": 717068,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-162",
+      "leaf_index": 670843,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-163",
+      "leaf_index": 1003714,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-164",
+      "leaf_index": 852419,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-165",
+      "leaf_index": 670444,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-166",
+      "leaf_index": 470053,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-167",
+      "leaf_index": 818580,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-168",
+      "leaf_index": 921894,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-169",
+      "leaf_index": 520739,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-170",
+      "leaf_index": 110350,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-171",
+      "leaf_index": 84415,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-172",
+      "leaf_index": 31445,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-173",
+      "leaf_index": 939028,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-174",
+      "leaf_index": 377776,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-175",
+      "leaf_index": 66896,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-176",
+      "leaf_index": 585259,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-177",
+      "leaf_index": 699238,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-178",
+      "leaf_index": 1006291,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-179",
+      "leaf_index": 675192,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-180",
+      "leaf_index": 942846,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-181",
+      "leaf_index": 953712,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-182",
+      "leaf_index": 297135,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-183",
+      "leaf_index": 440772,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-184",
+      "leaf_index": 236195,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-185",
+      "leaf_index": 922339,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-186",
+      "leaf_index": 473023,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-187",
+      "leaf_index": 62241,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-188",
+      "leaf_index": 325805,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-189",
+      "leaf_index": 560402,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-190",
+      "leaf_index": 811165,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-191",
+      "leaf_index": 347853,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-192",
+      "leaf_index": 181438,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-193",
+      "leaf_index": 1005360,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-194",
+      "leaf_index": 680835,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-195",
+      "leaf_index": 33584,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-196",
+      "leaf_index": 309841,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-197",
+      "leaf_index": 1033905,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-198",
+      "leaf_index": 605177,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-199",
+      "leaf_index": 836223,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-200",
+      "leaf_index": 938170,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-201",
+      "leaf_index": 508251,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-202",
+      "leaf_index": 1003749,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-203",
+      "leaf_index": 57618,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-204",
+      "leaf_index": 109320,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-205",
+      "leaf_index": 663440,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-206",
+      "leaf_index": 713766,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-207",
+      "leaf_index": 996838,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-208",
+      "leaf_index": 84803,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-209",
+      "leaf_index": 524244,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-210",
+      "leaf_index": 1005422,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-211",
+      "leaf_index": 125464,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-212",
+      "leaf_index": 430443,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-213",
+      "leaf_index": 169831,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-214",
+      "leaf_index": 920509,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-215",
+      "leaf_index": 792764,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-216",
+      "leaf_index": 43154,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-217",
+      "leaf_index": 781492,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-218",
+      "leaf_index": 885661,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-219",
+      "leaf_index": 6738,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-220",
+      "leaf_index": 547337,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-221",
+      "leaf_index": 724673,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-222",
+      "leaf_index": 226826,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-223",
+      "leaf_index": 838592,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-224",
+      "leaf_index": 558494,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-225",
+      "leaf_index": 856904,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-226",
+      "leaf_index": 705359,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-227",
+      "leaf_index": 10391,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-228",
+      "leaf_index": 674608,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-229",
+      "leaf_index": 460998,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-230",
+      "leaf_index": 1026561,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-231",
+      "leaf_index": 915914,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-232",
+      "leaf_index": 653537,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-233",
+      "leaf_index": 771807,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-234",
+      "leaf_index": 330391,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-235",
+      "leaf_index": 563605,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-236",
+      "leaf_index": 876197,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-237",
+      "leaf_index": 140314,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-238",
+      "leaf_index": 450929,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-239",
+      "leaf_index": 135089,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-240",
+      "leaf_index": 496523,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-241",
+      "leaf_index": 176385,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-242",
+      "leaf_index": 393103,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-243",
+      "leaf_index": 100528,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-244",
+      "leaf_index": 235883,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-245",
+      "leaf_index": 908195,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-246",
+      "leaf_index": 635926,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-247",
+      "leaf_index": 90542,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-248",
+      "leaf_index": 329333,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-249",
+      "leaf_index": 67428,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-250",
+      "leaf_index": 751043,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-251",
+      "leaf_index": 539786,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-252",
+      "leaf_index": 328431,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-253",
+      "leaf_index": 912672,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-254",
+      "leaf_index": 822751,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    },
+    {
+      "case_id": "swc-v1-255",
+      "leaf_index": 17939,
+      "strata": [
+        "fully-random",
+        "path-random"
+      ],
+      "tree_depth": 20
+    }
+  ],
+  "funded": false,
+  "proof_randomness": "fresh operating-system entropy; deterministic corpus seeds never seed masks",
+  "query_overlap": "Select extremes from transcript-valid proofs after generation; artificial queries only in separately labeled bounds tests.",
+  "schema": "pqtc.r2.corpus.v1",
+  "source": "research/common-corpus/semantic-cases.json",
+  "source_sha256": "04de8cec2e4c21e346048f0f8fdf60b5346f0c9487dcc56c077814c0b59d40ec",
+  "synthetic": true
+}
