@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sp11-merkle-shape-v1",
+  "type": "object",
+  "required": ["schema", "candidate", "status", "required_capacity", "corpus", "variants", "decision"],
+  "properties": {
+    "schema": {"const": "sp11-merkle-shape-v1"},
+    "candidate": {"const": "SP-11"},
+    "required_capacity": {"const": 1048576},
+    "variants": {"type": "array", "minItems": 6, "maxItems": 6},
+    "decision": {
+      "type": "object",
+      "required": ["higher_arity_security_gate", "custody_finalist"],
+      "properties": {
+        "higher_arity_security_gate": {"const": "FAIL"},
+        "custody_finalist": {"const": "BINARY_DEPTH20_H0_UNCHANGED"}
+      }
+    }
+  }
+}

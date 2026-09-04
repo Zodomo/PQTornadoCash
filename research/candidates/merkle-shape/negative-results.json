@@ -1,0 +1,30 @@
+{
+  "schema": "sp11-negative-results-v1",
+  "results": [
+    {
+      "variant": "arity-4/depth-10",
+      "result": "STOP",
+      "reason": "No accepted arity-4 compressor; folding H0 changes framing and does not establish a reviewed relation."
+    },
+    {
+      "variant": "arity-8/depth-7",
+      "result": "STOP",
+      "reason": "No accepted arity-8 compressor; capacity is 2^21 and witnesses grow to 2688 bytes without security approval."
+    },
+    {
+      "variant": "precomputed/packed H0 zero constants",
+      "result": "INFEASIBLE_FOR_FROZEN_SCOPE_BINDING",
+      "reason": "The frozen empty leaf and all zero nodes depend on the deployment-specific scope; universal code constants would change semantics."
+    },
+    {
+      "variant": "H3/H5/H6-backed accumulator",
+      "result": "STOP",
+      "reason": "SP-10 marks these benchmark-only candidates STOPPED or not reviewed; gas improvement cannot authorize custody use."
+    },
+    {
+      "variant": "unbounded root history",
+      "result": "STATE_GROWTH_NEGATIVE",
+      "reason": "One new logical known-root slot is retained per insertion forever; bounded history is an explicit withdrawal-liveness tradeoff."
+    }
+  ]
+}

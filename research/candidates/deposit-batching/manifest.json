@@ -1,0 +1,18 @@
+{
+  "schema": "research-candidate-manifest-v1",
+  "candidate": "SP-12",
+  "title": "Permissionless deposit batching and public transition relation",
+  "disposition": "DEFERRED_STOP",
+  "entrypoint": "python3 research/candidates/deposit-batching/run.py",
+  "machine_output": "research/candidates/deposit-batching/outputs/results.json",
+  "optional_exact_gas_command": "cd research/candidates/deposit-batching/solidity && ./run-gas.sh",
+  "batch_sizes": [8, 16, 32, 64, 256],
+  "canonicalization": "strict queue prefix by monotonic sequence",
+  "escape_paths": ["permissionless head refund after timeout", "permissionless forced-single executable model"],
+  "authority": "No owner, privileged finalizer key, or always-online operator.",
+  "proof_backend": "NOT_EVALUATED",
+  "frozen_dependencies": [
+    "research/candidates/v03-baseline/gas/measured-summary.json",
+    "research/candidates/hash-compression-common/gas/results.json"
+  ]
+}

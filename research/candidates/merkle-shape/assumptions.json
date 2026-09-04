@@ -1,0 +1,30 @@
+{
+  "schema": "sp11-assumptions-v1",
+  "assumptions": [
+    {
+      "id": "A1",
+      "claim": "The frozen v0.3 depth-20 H0 accumulator and corpus define required parity.",
+      "status": "FROZEN_INPUT"
+    },
+    {
+      "id": "A2",
+      "claim": "A higher-arity node relation requires an accepted, domain-separated arity-specific compressor.",
+      "status": "UNSATISFIED_SECURITY_PREREQUISITE"
+    },
+    {
+      "id": "A3",
+      "claim": "SHA-512 in model.py proves only deterministic shape semantics, never PQTC root or security equivalence.",
+      "status": "MODEL_BOUNDARY"
+    },
+    {
+      "id": "A4",
+      "claim": "Synthetic boundary frontier values preserve gas/control-flow shape but do not prove reachable root provenance.",
+      "status": "HARNESS_ONLY_RELAXATION"
+    },
+    {
+      "id": "A5",
+      "claim": "H3, H5 and H6 figures are engineering lower-bound evidence only because none passed SP-10 security qualification.",
+      "status": "BENCHMARK_ONLY"
+    }
+  ]
+}

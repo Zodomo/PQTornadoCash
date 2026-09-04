@@ -1,0 +1,30 @@
+{
+  "schema": "sp12-assumptions-v1",
+  "assumptions": [
+    {
+      "id": "A1",
+      "claim": "Queue order is the unique monotonic enqueue sequence and finalization consumes only its current prefix.",
+      "status": "EXECUTABLE_INVARIANT"
+    },
+    {
+      "id": "A2",
+      "claim": "Any caller may finalize a valid transition or trigger an expired-head escape; no operator identity is available.",
+      "status": "EXECUTABLE_INVARIANT"
+    },
+    {
+      "id": "A3",
+      "claim": "ModelProofBackend establishes only interface behavior and cannot stand in for a PCS/STARK proof.",
+      "status": "MODEL_BOUNDARY"
+    },
+    {
+      "id": "A4",
+      "claim": "Poisson stationary independent arrivals are used only for analytic latency expectations.",
+      "status": "ECONOMIC_MODEL_ASSUMPTION"
+    },
+    {
+      "id": "A5",
+      "claim": "A refund recipient can receive native ETH; failed transfer reverts atomically and leaves the head pending.",
+      "status": "SOLIDITY_INTERFACE_ASSUMPTION"
+    }
+  ]
+}

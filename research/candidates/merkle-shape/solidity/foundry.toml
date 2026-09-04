@@ -1,0 +1,17 @@
+[profile.default]
+src = "src"
+test = "test"
+out = "out"
+libs = ["../../../../lib"]
+allow_paths = ["../../../../lib", "../../../../contracts/src"]
+remappings = ["forge-std/=../../../../lib/forge-std/src/", "pqtc/=../../../../contracts/src/"]
+solc_version = "0.8.30"
+evm_version = "prague"
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+gas_limit = 1000000000000
+fs_permissions = [
+  { access = "write", path = "../outputs" },
+  { access = "read", path = "../../../../test-vectors/hash/v3.json" }
+]

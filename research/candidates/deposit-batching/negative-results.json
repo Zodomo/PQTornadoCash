@@ -1,0 +1,30 @@
+{
+  "schema": "sp12-negative-results-v1",
+  "results": [
+    {
+      "id": "NO_BACKEND",
+      "result": "STOP",
+      "reason": "No trustless proof backend exists for the public old-root/prefix/new-root transition; proof bytes, proving time, verification time, RSS, and finalizer gas remain NOT_EVALUATED."
+    },
+    {
+      "id": "NO_AMORTIZATION_CLAIM",
+      "result": "DEFERRED",
+      "reason": "Queue enqueue gas alone cannot establish break-even; proof verification and batch settlement gas are required for every batch size."
+    },
+    {
+      "id": "MODEL_PROOF",
+      "result": "NOT_A_PROOF",
+      "reason": "The deterministic model oracle detects statement mutation but supplies no soundness, zero knowledge, PCS commitment, or verifier."
+    },
+    {
+      "id": "QUEUE_FLOODING",
+      "result": "RESIDUAL_GRIEFING",
+      "reason": "Canonical order blocks substitution and reordering but does not prevent a funded attacker from filling the queue and locking capital until timeout."
+    },
+    {
+      "id": "HIGH_BATCH_LATENCY",
+      "result": "TRADEOFF",
+      "reason": "At low arrival rates, batches 64 and 256 produce long fill latency; permissionless timeout escape bounds withholding but sacrifices batching."
+    }
+  ]
+}

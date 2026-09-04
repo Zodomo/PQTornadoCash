@@ -1,0 +1,18 @@
+{
+  "schema": "research-candidate-manifest-v1",
+  "candidate": "SP-11",
+  "title": "Merkle shape and state-layout spike",
+  "disposition": "STOP_HIGHER_ARITY_RETAIN_BINARY_DEPTH20",
+  "frozen_dependencies": [
+    "contracts/src/libraries/PQTCApplicationHash.sol",
+    "contracts/src/libraries/P2BB512.sol",
+    "test-vectors/hash/v3.json",
+    "research/candidates/hash-compression-common/gas/results.json"
+  ],
+  "entrypoint": "python3 research/candidates/merkle-shape/run.py",
+  "machine_output": "research/candidates/merkle-shape/outputs/results.json",
+  "optional_exact_gas_command": "cd research/candidates/merkle-shape/solidity && ./run-gas.sh",
+  "optional_exact_parity_command": "cd research/candidates/merkle-shape/solidity && ./run-parity.sh",
+  "models": ["binary-depth20", "quaternary-depth10", "octal-depth7"],
+  "measurement_policy": "Exact retained measurements and executable logical counts are labeled separately from projections and NOT_EVALUATED fields."
+}
