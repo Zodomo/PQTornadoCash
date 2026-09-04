@@ -1,0 +1,48 @@
+{
+  "checkpoint": 1,
+  "name": "baseline-method-freeze",
+  "snapshot_date": "2026-09-04",
+  "reviewed_commit": "d956ac0a7cd878b200be240fa8fd9a1a3da09d30",
+  "review_class": "INTERNAL_INDEPENDENT_REVIEW_NOT_EXTERNAL_CRYPTOGRAPHIC_ACCEPTANCE",
+  "verdict": "METHOD_FREEZE_APPROVED",
+  "remaining_high_or_medium_findings": 0,
+  "spike_dispositions": {
+    "SP-00": "FAIL",
+    "SP-01": "INTERNAL_METHODOLOGY_ACCEPTED_WITH_LIMITATIONS_EXTERNAL_REVIEW_OPEN",
+    "SP-02": "FAIL_ARCHIVED_FAILED"
+  },
+  "security_summary": {
+    "q32_random_words_bits": 107,
+    "q32_ldr_bits": 56,
+    "q32_ldr_status": "conditional-theorem-johnson-correlated-agreement",
+    "q32_udr_bits": 37,
+    "q32_udr_status": "unconditional-theorem-regime",
+    "independent_human_acceptance": false
+  },
+  "baseline_failures": [
+    "9_of_60_part_a_runs_exceed_active_eip7825_cap",
+    "pool_internal_create_gas_exceeds_active_eip7825_cap",
+    "top_level_deployment_gas_not_evaluated",
+    "mined_receipts_not_evaluated",
+    "part_b_total_median_delta_minus_1_036_percent_unattributed"
+  ],
+  "advisory_gate": {
+    "focused_regressions_passed": true,
+    "native_malformed_proof_panic_boundary": "UNRESOLVED",
+    "overall": "FAIL"
+  },
+  "permitted_next_scope": "ISOLATED_BENCHMARK_ONLY",
+  "forbidden_next_scope": [
+    "candidate_integration",
+    "deployment",
+    "security_qualification"
+  ],
+  "corrections": "research/reviews/checkpoint-1-corrections.json",
+  "verification": [
+    "python3 -m unittest research/security-model/calculator/tests/test_security_calculator.py",
+    "python3 research/candidates/v03-baseline/scripts/synthesize-measurements.py",
+    "python3 -m unittest discover -s research/harness/tests -p test_*.py",
+    "research/harness/benchctl/benchctl validate-run research/runs/v03-*.json (60 records)",
+    "python3 research/advisories/run_regressions.py"
+  ]
+}
