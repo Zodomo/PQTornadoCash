@@ -1,0 +1,69 @@
+{
+  "schema": "pqtc.research-checkpoint.v1",
+  "checkpoint": 5,
+  "name": "independent reproduction and report freeze",
+  "timestamp_utc": "2026-09-04T20:29:32Z",
+  "decision": "PASS_REPORT_FREEZE",
+  "report_commit": "de6a36465c3364a785e277bd16cbd74b83465f54",
+  "reproduction_snapshot": "e318928de5a5aff0bb0a4c0f92c03cb8eea13830",
+  "outcome": "OUTCOME_D",
+  "recommendation": "RECOMMEND_ADDITIONAL_TARGETED_RESEARCH",
+  "frontier_status": "CURRENT_RESEARCH_FRONTIER_NO_VIABLE_NEXT_BUILD",
+  "authorization": {
+    "freeze_research_report": true,
+    "draft_separate_engineering_specification": false,
+    "implement_or_deploy_v04": false
+  },
+  "independent_reproduction": {
+    "record": "research/reproduction/independent-result.json",
+    "result": "PASS",
+    "finalists_reproduced": 0,
+    "negative_decision_chain_reproduced": true,
+    "checks": 6,
+    "manifest_files": 1886,
+    "authoritative_v03_records": 60,
+    "research_records": 47
+  },
+  "report_contract": {
+    "sections": 32,
+    "spike_cards": 21,
+    "required_summary_tables": 5,
+    "minimum_candidate_rows": 11,
+    "scorecards": 62,
+    "negative_result_rows": 62
+  },
+  "review": {
+    "reviewer": "ReportFreezeReview",
+    "initial_findings": 7,
+    "initial_p0": 0,
+    "initial_p1": 2,
+    "initial_p2": 5,
+    "closed_findings": 7,
+    "remaining_p0": 0,
+    "remaining_p1": 0,
+    "remaining_p2": 0,
+    "closure": "PASS"
+  },
+  "closed_findings": [
+    "retained C00 64/96 computed gas scenarios are reported and distinguished from receipts",
+    "unsupported gas and proof components are marked NOT_EVALUATED",
+    "all eleven minimum candidate matrix rows are embedded",
+    "negative results use candidate-specific last stages, measurements, categories, and revival conditions",
+    "spike sections identify exact package implementations and entrypoints",
+    "SP-91 and SP-92 commands are correctly separated",
+    "C00 ABI overhead reports the retained 668-byte median"
+  ],
+  "open_security_limitations": [
+    "external cryptographic review remains open",
+    "no security-qualified candidate exists",
+    "no eligible finalist or complete prototype exists"
+  ],
+  "evidence": [
+    "research/final/NEXT_GENERATION_RESEARCH_REPORT.md",
+    "research/final/report-source-map.json",
+    "research/final/EXECUTIVE_MATRIX.csv",
+    "research/final/UNRESOLVED_QUESTIONS.md",
+    "research/reproduction/independent-result.json",
+    "research/summaries/spike-results.json"
+  ]
+}
