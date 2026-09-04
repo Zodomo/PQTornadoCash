@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pqtc-sp13-foundry-gas-v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "measurement_scope", "gas_delta_definition", "storage_transition", "compiler_profile", "variants"],
+  "properties": {
+    "schema": {"const": "pqtc-sp13-foundry-gas-v1"},
+    "measurement_scope": {"const": "SOLIDITY_MICROBENCHMARK_NOT_FULL_PROTOCOL"},
+    "gas_delta_definition": {"type": "string"},
+    "storage_transition": {"const": "cold untouched zero slot to nonzero slot"},
+    "compiler_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["solc_version", "evm_version", "optimizer", "optimizer_runs", "via_ir"],
+      "properties": {
+        "solc_version": {"const": "0.8.30"},
+        "evm_version": {"const": "prague"},
+        "optimizer": {"const": true},
+        "optimizer_runs": {"const": 200},
+        "via_ir": {"const": true}
+      }
+    },
+    "variants": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "digest_bytes", "node_payload_bytes", "hash_only_call_gas", "storage_only_cold_call_gas", "hash_and_storage_cold_call_gas", "measurement_scope"],
+        "properties": {
+          "id": {"type": "string"},
+          "digest_bytes": {"type": "integer", "minimum": 32},
+          "node_payload_bytes": {"type": "integer", "minimum": 64},
+          "hash_only_call_gas": {"type": "integer", "minimum": 1},
+          "storage_only_cold_call_gas": {"type": "integer", "minimum": 1},
+          "hash_and_storage_cold_call_gas": {"type": "integer", "minimum": 1},
+          "measurement_scope": {"const": "SOLIDITY_MICROBENCHMARK_NOT_FULL_PROTOCOL"}
+        }
+      }
+    }
+  }
+}

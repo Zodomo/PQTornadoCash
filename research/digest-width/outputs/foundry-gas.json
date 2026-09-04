@@ -1,0 +1,51 @@
+{
+  "schema": "pqtc-sp13-foundry-gas-v1",
+  "measurement_scope": "SOLIDITY_MICROBENCHMARK_NOT_FULL_PROTOCOL",
+  "gas_delta_definition": "gasleft before minus gasleft after one low-level EVM call; deployment and transaction intrinsic/calldata gas excluded",
+  "storage_transition": "cold untouched zero slot to nonzero slot",
+  "compiler_profile": {
+    "evm_version": "prague",
+    "optimizer": true,
+    "optimizer_runs": 200,
+    "solc_version": "0.8.30",
+    "via_ir": true
+  },
+  "variants": [
+    {
+      "digest_bytes": 64,
+      "hash_and_storage_cold_call_gas": 45387,
+      "hash_only_call_gas": 1637,
+      "id": "keccak-pair-512",
+      "measurement_scope": "SOLIDITY_MICROBENCHMARK_NOT_FULL_PROTOCOL",
+      "node_payload_bytes": 128,
+      "storage_only_cold_call_gas": 44633
+    },
+    {
+      "digest_bytes": 48,
+      "hash_and_storage_cold_call_gas": 45362,
+      "hash_only_call_gas": 1480,
+      "id": "keccak-pair-trunc-384",
+      "measurement_scope": "SOLIDITY_MICROBENCHMARK_NOT_FULL_PROTOCOL",
+      "node_payload_bytes": 96,
+      "storage_only_cold_call_gas": 44833
+    },
+    {
+      "digest_bytes": 40,
+      "hash_and_storage_cold_call_gas": 45542,
+      "hash_only_call_gas": 1440,
+      "id": "keccak-pair-trunc-320",
+      "measurement_scope": "SOLIDITY_MICROBENCHMARK_NOT_FULL_PROTOCOL",
+      "node_payload_bytes": 80,
+      "storage_only_cold_call_gas": 44572
+    },
+    {
+      "digest_bytes": 32,
+      "hash_and_storage_cold_call_gas": 23277,
+      "hash_only_call_gas": 1436,
+      "id": "single-keccak-256-lower-bound",
+      "measurement_scope": "SOLIDITY_MICROBENCHMARK_NOT_FULL_PROTOCOL",
+      "node_payload_bytes": 64,
+      "storage_only_cold_call_gas": 22502
+    }
+  ]
+}

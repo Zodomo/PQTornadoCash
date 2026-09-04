@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "hash": "sha256",
+  "source_commit": "5a6714c07fac6b8ba20b4b52e1b60884d8e6ee89",
+  "external_inputs": [
+    {
+      "path": "PQTC_NEXT_GENERATION_RESEARCH_PLAN.md",
+      "sha256": "2da7ab2b570695da4f05d23c135cae1911459b77ad5cc6c2981e6ab7e886353f",
+      "use": "Cross-cutting section 13 requirements and project security target"
+    },
+    {
+      "path": "contracts/src/libraries/KeccakPair512.sol",
+      "sha256": "2f526fcf9c2fd2ef889938260df6585392d90f6217c0abbcae38cd257090a7d8",
+      "use": "Frozen v0.3 branch framing reference"
+    },
+    {
+      "path": "research/candidates/V7/outputs/benchmark.json",
+      "sha256": "44eefbd9ed966a571162e876e9600a75df2b035588ec02f69d59b39af7643be0",
+      "use": "Predecessor width/frontier evidence; not reused as section-13 gas measurement"
+    }
+  ],
+  "study_executables_and_outputs": [
+    {
+      "path": "research/digest-width/run.py",
+      "sha256": "f022968639b0edf9110e16fbc022795f452cac2e2242b887c2dbf973182a67e1"
+    },
+    {
+      "path": "research/digest-width/result-schema.json",
+      "sha256": "84ac91119da289ea7f1bc2d59edee8f8e198aac75b37a846eddf5374b83221c2"
+    },
+    {
+      "path": "research/digest-width/foundry-result-schema.json",
+      "sha256": "3985a174c7f905a22d66b454a4eb33b7dfa2627b07ebee6cb9dd45cda66eb224"
+    },
+    {
+      "path": "research/digest-width/solidity/foundry.toml",
+      "sha256": "55d8b2df4f666a886015ad602130c4c155c18987755e92b203fb99867e17e4dc"
+    },
+    {
+      "path": "research/digest-width/solidity/src/DigestWidthHarness.sol",
+      "sha256": "9df81cb4a3cba718d67fc1f40c0a2e37d9c88f3dc924b3138d93380fdc9be7eb"
+    },
+    {
+      "path": "research/digest-width/solidity/test/DigestWidthGas.t.sol",
+      "sha256": "d710ad272bbc3dff792f841c2a609d2b8fa087c876e99e79ce83ae8c90059ece"
+    },
+    {
+      "path": "research/digest-width/results.json",
+      "sha256": "3e037de661438cf16edc101e2088c0a8ec3c3311a5b587fc0e91ccda7fab5dde"
+    }
+  ],
+  "conditional_output": {
+    "path": "research/digest-width/outputs/foundry-gas.json",
+    "status": "ABSENT_UNTIL_CANONICAL_FOUNDRY_HARNESS_RUN",
+    "schema": "research/digest-width/foundry-result-schema.json"
+  }
+}

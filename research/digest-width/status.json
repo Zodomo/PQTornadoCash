@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "study": "cross-cutting-section-13-digest-width",
+  "status": "COMPLETE_NO_ADOPTION",
+  "decision": "NO_ADOPTION",
+  "checks": {
+    "variants_in_complete_matrix": 4,
+    "exact_encoding_rules_retained": true,
+    "depth_20_path_arithmetic_verified": true,
+    "generic_bht_and_grover_models_retained": true,
+    "multi_target_calculator_configurable": true,
+    "protocol_lifetime_sensitivity_points": 8,
+    "prague_opcode_component_gas_exact": true,
+    "canonical_solidity_profile_pinned": true,
+    "solidity_parity_and_gas_tests_present": true,
+    "deterministic_result_check_passed": true,
+    "full_protocol_variants_measured": false
+  },
+  "variant_status": {
+    "keccak-pair-512": "BASELINE_ONLY_NOT_SECURITY_ACCEPTED",
+    "keccak-pair-trunc-384": "STOP_PENDING_EXTERNAL_ANALYSIS",
+    "keccak-pair-trunc-320": "STOP_PENDING_EXTERNAL_ANALYSIS",
+    "single-keccak-256-lower-bound": "REJECT_NONQUALIFYING_LOWER_BOUND"
+  },
+  "gas": {
+    "exact_opcode_components": "COMPLETE_MICROBENCHMARK_NOT_FULL_PROTOCOL",
+    "solidity_harness_output": "NOT_MEASURED_RUN_CANONICAL_FOUNDRY_HARNESS",
+    "full_protocol": "NOT_EVALUATED_NO_FULL_PROTOCOL_VARIANT_IMPLEMENTATION",
+    "microbenchmark_sum_claim": false
+  },
+  "security": {
+    "target_bits": 100,
+    "model": "GENERIC_PROJECTIONS_ONLY",
+    "construction_reductions": "OPEN",
+    "external_cryptographic_acceptance": "OPEN",
+    "live_chain_evidence": "NOT_EVALUATED"
+  }
+}

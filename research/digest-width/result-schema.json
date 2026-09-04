@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pqtc-sp13-digest-width-results-v1",
+  "title": "PQTC cross-cutting section 13 digest-width result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "study",
+    "decision",
+    "decision_reason",
+    "canonical_encoding",
+    "compiler_profile",
+    "gas_measurement_status",
+    "all_costs_policy",
+    "variants"
+  ],
+  "properties": {
+    "schema": {"const": "pqtc-sp13-digest-width-results-v1"},
+    "study": {"const": "cross-cutting-section-13-digest-width"},
+    "decision": {"const": "NO_ADOPTION"},
+    "decision_reason": {"type": "string", "minLength": 1},
+    "canonical_encoding": {
+      "type": "object",
+      "required": ["tag", "branch_frame", "branch_values", "payload", "digest_serialization"]
+    },
+    "compiler_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["solc_version", "evm_version", "optimizer", "optimizer_runs", "via_ir"],
+      "properties": {
+        "solc_version": {"const": "0.8.30"},
+        "evm_version": {"const": "prague"},
+        "optimizer": {"const": true},
+        "optimizer_runs": {"const": 200},
+        "via_ir": {"const": true}
+      }
+    },
+    "gas_measurement_status": {"enum": ["NOT_MEASURED_RUN_CANONICAL_FOUNDRY_HARNESS", "MEASURED_CANONICAL_FOUNDRY_MICROBENCHMARK"]},
+    "all_costs_policy": {"type": "string", "minLength": 1},
+    "variants": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {"$ref": "#/$defs/variant"}
+    }
+  },
+  "$defs": {
+    "nonnegativeInteger": {"type": "integer", "minimum": 0},
+    "measurement": {
+      "type": "object",
+      "required": ["measurement_scope"]
+    },
+    "variant": {
+      "type": "object",
+      "required": [
+        "id",
+        "width_bits",
+        "branch_count",
+        "branch_output_bits",
+        "construction",
+        "truncation",
+        "construction_status",
+        "reduction_status",
+        "review_status",
+        "verdict",
+        "digest_bytes",
+        "depth_20_authentication_path",
+        "canonical_binary_node_payload",
+        "optimal_fixed_storage",
+        "prague_opcode_gas_components",
+        "gas_microbenchmark",
+        "full_protocol_gas",
+        "security"
+      ],
+      "properties": {
+        "id": {"enum": ["keccak-pair-512", "keccak-pair-trunc-384", "keccak-pair-trunc-320", "single-keccak-256-lower-bound"]},
+        "width_bits": {"enum": [256, 320, 384, 512]},
+        "branch_count": {"enum": [1, 2]},
+        "branch_output_bits": {"enum": [160, 192, 256]},
+        "construction": {"type": "string"},
+        "truncation": {"type": "string"},
+        "construction_status": {"type": "string"},
+        "reduction_status": {"type": "string"},
+        "review_status": {"type": "string"},
+        "verdict": {"enum": ["NO_ADOPTION_BASELINE_ONLY", "STOP_PENDING_EXTERNAL_ANALYSIS", "REJECT_NONQUALIFYING_LOWER_BOUND"]},
+        "digest_bytes": {"enum": [32, 40, 48, 64]},
+        "depth_20_authentication_path": {"$ref": "#/$defs/measurement"},
+        "canonical_binary_node_payload": {"$ref": "#/$defs/measurement"},
+        "optimal_fixed_storage": {"$ref": "#/$defs/measurement"},
+        "prague_opcode_gas_components": {"$ref": "#/$defs/measurement"},
+        "gas_microbenchmark": {"$ref": "#/$defs/measurement"},
+        "full_protocol_gas": {"$ref": "#/$defs/measurement"},
+        "security": {
+          "type": "object",
+          "required": ["target_quantum_bits", "single_target", "protocol_lifetime_sensitivity", "model_scope"]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "study_id": "SP-13/digest-width",
+  "title": "Proof commitment and digest-width study",
+  "scope": "research/digest-width/** only; cross-cutting section 13; no production or frozen-v0.3 changes",
+  "source_commit": "5a6714c07fac6b8ba20b4b52e1b60884d8e6ee89",
+  "inputs": [
+    "PQTC_NEXT_GENERATION_RESEARCH_PLAN.md#section-13",
+    "contracts/src/libraries/KeccakPair512.sol",
+    "research/candidates/V7/outputs/benchmark.json"
+  ],
+  "variants": [
+    "keccak-pair-512",
+    "keccak-pair-trunc-384",
+    "keccak-pair-trunc-320",
+    "single-keccak-256-lower-bound"
+  ],
+  "outputs": [
+    "README.md",
+    "ADR.md",
+    "assumptions.md",
+    "manifest.json",
+    "negative-results.json",
+    "status.json",
+    "result-schema.json",
+    "foundry-result-schema.json",
+    "run.py",
+    "results.json",
+    "source-hashes.json",
+    "solidity/foundry.toml",
+    "solidity/src/DigestWidthHarness.sol",
+    "solidity/test/DigestWidthGas.t.sol",
+    "outputs/foundry-gas.json (generated only by canonical Foundry microbenchmark)"
+  ],
+  "deterministic_runner": {
+    "path": "research/digest-width/run.py",
+    "check_command": "python3 research/digest-width/run.py",
+    "regenerate_command": "python3 research/digest-width/run.py --write",
+    "dependencies": "Python 3 standard library only",
+    "default_target_digest_outputs_log2": [0, 16, 24, 32, 40, 48, 56, 64]
+  },
+  "solidity_harness": {
+    "root": "research/digest-width/solidity",
+    "command": "forge test --root research/digest-width/solidity --match-contract DigestWidthGasTest -vv",
+    "output": "research/digest-width/outputs/foundry-gas.json",
+    "compiler_profile": {
+      "solc_version": "0.8.30",
+      "evm_version": "prague",
+      "optimizer": true,
+      "optimizer_runs": 200,
+      "via_ir": true
+    },
+    "measurement_scope": "SOLIDITY_MICROBENCHMARK_NOT_FULL_PROTOCOL"
+  },
+  "acceptance_contract": {
+    "decision": "NO_ADOPTION",
+    "depth": 20,
+    "quantum_target_bits": 100,
+    "widths_bits": [512, 384, 320, 256],
+    "keccak_pair_trunc_384": "STOP_PENDING_EXTERNAL_ANALYSIS",
+    "keccak_pair_trunc_320": "STOP_PENDING_EXTERNAL_ANALYSIS",
+    "single_keccak_256": "REJECT_NONQUALIFYING_LOWER_BOUND",
+    "full_protocol_measurement": "NOT_EVALUATED",
+    "external_cryptographic_acceptance": "OPEN"
+  }
+}

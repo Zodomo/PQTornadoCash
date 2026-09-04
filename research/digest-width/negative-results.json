@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "study": "cross-cutting-section-13-digest-width",
+  "decision": "NO_ADOPTION",
+  "negative_results": [
+    {
+      "id": "single-keccak-256-generic-collision",
+      "status": "FAIL",
+      "evidence": "The generic single-target BHT projection is 2^(256/3) queries; floor(log2(work)) is 85, below the 100-bit target before multi-target adjustment.",
+      "measurement_scope": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_FULL_PROTOCOL"
+    },
+    {
+      "id": "keccak-pair-trunc-320-lifetime-margin",
+      "status": "FAIL_AT_OR_ABOVE_2_POW_24_TARGETS",
+      "evidence": "Under the configured multi-instance BHT projection, m=24 gives (320-24)/3 = 296/3 bits and floor 98. The nominal projection reaches 100 bits only for m <= 20 and is not a reduction.",
+      "measurement_scope": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_FULL_PROTOCOL"
+    },
+    {
+      "id": "keccak-pair-trunc-384-review",
+      "status": "STOP_PENDING_EXTERNAL_ANALYSIS",
+      "evidence": "Nominal generic width is insufficient adoption evidence: no combined two-branch truncation reduction, all-uses analysis, QROM composition analysis, or independent review is retained.",
+      "measurement_scope": "CONSTRUCTION_AND_REVIEW_GATE_NOT_A_GAS_MEASUREMENT"
+    },
+    {
+      "id": "keccak-pair-trunc-320-review",
+      "status": "STOP_PENDING_EXTERNAL_ANALYSIS",
+      "evidence": "No combined two-branch truncation reduction, all-uses analysis, QROM composition analysis, or independent review is retained.",
+      "measurement_scope": "CONSTRUCTION_AND_REVIEW_GATE_NOT_A_GAS_MEASUREMENT"
+    },
+    {
+      "id": "truncated-fixed-storage-slots",
+      "status": "NO_SLOT_SAVING",
+      "evidence": "Both 48-byte and 40-byte digests require ceil(bytes/32)=2 fixed EVM slots, equal to the 64-byte baseline. They leave 16 and 24 allocated bytes unused respectively.",
+      "measurement_scope": "EXACT_STORAGE_LAYOUT_COMPONENT_NOT_FULL_PROTOCOL"
+    },
+    {
+      "id": "microbenchmark-to-protocol-extrapolation",
+      "status": "NOT_EVALUATED",
+      "evidence": "No complete 512/384/320/256 protocol implementations with identical semantics exist in this package. Hash/storage microbenchmark deltas are not summed into transaction gas.",
+      "measurement_scope": "FULL_PROTOCOL"
+    },
+    {
+      "id": "keccak-pair-512-security-acceptance",
+      "status": "OPEN",
+      "evidence": "The frozen implementation is pinned, but no complete two-branch composition or QROM reduction and no accepted external cryptographic review are supplied by this study.",
+      "measurement_scope": "CONSTRUCTION_AND_REVIEW_GATE_NOT_A_GAS_MEASUREMENT"
+    }
+  ]
+}

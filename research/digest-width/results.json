@@ -1,0 +1,1103 @@
+{
+  "all_costs_policy": "Byte/storage and Prague opcode-component counts are exact integers. Solidity call gas is an exact gasleft delta only when retained Foundry output is present. Security work factors are explicitly labeled projections.",
+  "canonical_encoding": {
+    "branch_frame": "branch_u8 || tag_u8 || payload",
+    "branch_values": [
+      0,
+      1
+    ],
+    "digest_serialization": "concatenate retained branch bytes in ascending branch order",
+    "payload": "exact caller-supplied bytes; no implicit ABI encoding, length, delimiter, or padding is hashed",
+    "tag": "exactly one unsigned byte"
+  },
+  "compiler_profile": {
+    "evm_version": "prague",
+    "optimizer": true,
+    "optimizer_runs": 200,
+    "solc_version": "0.8.30",
+    "via_ir": true
+  },
+  "decision": "NO_ADOPTION",
+  "decision_reason": "No variant has both an accepted complete security argument and the required independent external review; 320/384 remain stopped and 256 fails the 100-bit generic quantum-collision target even at one target.",
+  "gas_measurement_status": "MEASURED_CANONICAL_FOUNDRY_MICROBENCHMARK",
+  "schema": "pqtc-sp13-digest-width-results-v1",
+  "study": "cross-cutting-section-13-digest-width",
+  "variants": [
+    {
+      "branch_count": 2,
+      "branch_output_bits": 256,
+      "canonical_binary_node_payload": {
+        "encoding": "left_digest_bytes || right_digest_bytes, with no length prefix or padding",
+        "framed_keccak_input_bytes_per_branch": 130,
+        "keccak_invocations_per_node": 2,
+        "measurement_scope": "EXACT_HASH_MICROBENCHMARK_INPUT_NOT_FULL_PROTOCOL",
+        "payload_bytes": 128
+      },
+      "construction": "K(0x00 || tag_u8 || payload) || K(0x01 || tag_u8 || payload)",
+      "construction_status": "IMPLEMENTED_FROZEN_V03",
+      "depth_20_authentication_path": {
+        "direction_bits_bytes_if_separately_byte_aligned": 3,
+        "excludes": [
+          "leaf",
+          "root",
+          "index",
+          "length prefixes",
+          "ABI padding",
+          "proof framing"
+        ],
+        "measurement_scope": "EXACT_WIDTH_COMPONENT_NOT_FULL_PROTOCOL",
+        "path_bytes": 1280,
+        "path_bytes_including_separate_direction_bitmap": 1283,
+        "sibling_count": 20,
+        "sibling_digest_bytes": 64
+      },
+      "digest_bytes": 64,
+      "full_protocol_gas": {
+        "measurement_scope": "FULL_PROTOCOL",
+        "microbenchmark_sum_claim": false,
+        "status": "NOT_EVALUATED_NO_FULL_PROTOCOL_VARIANT_IMPLEMENTATION",
+        "value": null
+      },
+      "gas_microbenchmark": {
+        "digest_bytes": 64,
+        "hash_and_storage_cold_call_gas": 45387,
+        "hash_only_call_gas": 1637,
+        "id": "keccak-pair-512",
+        "measurement_scope": "SOLIDITY_MICROBENCHMARK_NOT_FULL_PROTOCOL",
+        "node_payload_bytes": 128,
+        "storage_only_cold_call_gas": 44633
+      },
+      "id": "keccak-pair-512",
+      "optimal_fixed_storage": {
+        "allocated_bytes": 64,
+        "measurement_scope": "EXACT_STORAGE_LAYOUT_COMPONENT_NOT_FULL_PROTOCOL",
+        "storage_slots": 2,
+        "unused_bytes": 0
+      },
+      "prague_opcode_gas_components": {
+        "cold_zero_to_nonzero_sstore_gas_per_digest": 44200,
+        "cold_zero_to_nonzero_sstore_gas_per_slot": 22100,
+        "excludes": [
+          "memory expansion",
+          "copying",
+          "masking",
+          "ABI",
+          "CALL",
+          "transaction intrinsic gas",
+          "calldata gas",
+          "surrounding protocol"
+        ],
+        "keccak256_gas_per_branch": 60,
+        "keccak256_gas_per_digest": 120,
+        "keccak256_words_per_branch": 5,
+        "measurement_scope": "EXACT_EVM_OPCODE_COMPONENT_MICROBENCHMARK_NOT_FULL_PROTOCOL"
+      },
+      "reduction_status": "OPEN_NO_COMPLETE_TWO_BRANCH_COMPOSITION_OR_QROM_REDUCTION",
+      "review_status": "OPEN_NOT_SECURITY_ACCEPTED",
+      "security": {
+        "model_scope": "Generic random-oracle projections only; excludes structural, composition, correlated-branch, domain-reuse, QROM Fiat-Shamir, and protocol reductions",
+        "protocol_lifetime_sensitivity": [
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 26815615859885194199148049996411692254958731641184786755447122887443528060147093953603748596333806855380063716372972101707507765623893139892867298012168192,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 0
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 170,
+              "log2_queries_projection": "512/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 256,
+              "log2_queries_projection": "256",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 1,
+            "target_digest_outputs_log2": 0,
+            "underlying_keccak_invocations": 2
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 26815615859885194199148049996411692254958731641184786755447122887443528060147093953603748596333806855380063716372972101707507765623893139892867298012168192,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 4294901760
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 165,
+              "log2_queries_projection": "496/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 248,
+              "log2_queries_projection": "248",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 65536,
+            "target_digest_outputs_log2": 16,
+            "underlying_keccak_invocations": 131072
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 26815615859885194199148049996411692254958731641184786755447122887443528060147093953603748596333806855380063716372972101707507765623893139892867298012168192,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 281474959933440
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 162,
+              "log2_queries_projection": "488/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 244,
+              "log2_queries_projection": "244",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 16777216,
+            "target_digest_outputs_log2": 24,
+            "underlying_keccak_invocations": 33554432
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 26815615859885194199148049996411692254958731641184786755447122887443528060147093953603748596333806855380063716372972101707507765623893139892867298012168192,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 18446744069414584320
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 160,
+              "log2_queries_projection": "160",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 240,
+              "log2_queries_projection": "240",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 4294967296,
+            "target_digest_outputs_log2": 32,
+            "underlying_keccak_invocations": 8589934592
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 26815615859885194199148049996411692254958731641184786755447122887443528060147093953603748596333806855380063716372972101707507765623893139892867298012168192,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 1208925819613529663078400
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 157,
+              "log2_queries_projection": "472/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 236,
+              "log2_queries_projection": "236",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 1099511627776,
+            "target_digest_outputs_log2": 40,
+            "underlying_keccak_invocations": 2199023255552
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 26815615859885194199148049996411692254958731641184786755447122887443528060147093953603748596333806855380063716372972101707507765623893139892867298012168192,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 79228162514264056118567239680
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 154,
+              "log2_queries_projection": "464/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 232,
+              "log2_queries_projection": "232",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 281474976710656,
+            "target_digest_outputs_log2": 48,
+            "underlying_keccak_invocations": 562949953421312
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 26815615859885194199148049996411692254958731641184786755447122887443528060147093953603748596333806855380063716372972101707507765623893139892867298012168192,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 5192296858534827556472902291292160
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 152,
+              "log2_queries_projection": "152",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 228,
+              "log2_queries_projection": "228",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 72057594037927936,
+            "target_digest_outputs_log2": 56,
+            "underlying_keccak_invocations": 144115188075855872
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 26815615859885194199148049996411692254958731641184786755447122887443528060147093953603748596333806855380063716372972101707507765623893139892867298012168192,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 340282366920938463444927863358058659840
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 149,
+              "log2_queries_projection": "448/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 224,
+              "log2_queries_projection": "224",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 18446744073709551616,
+            "target_digest_outputs_log2": 64,
+            "underlying_keccak_invocations": 36893488147419103232
+          }
+        ],
+        "single_target": {
+          "classical_accidental_collision_union_bound": {
+            "denominator": 26815615859885194199148049996411692254958731641184786755447122887443528060147093953603748596333806855380063716372972101707507765623893139892867298012168192,
+            "formula": "M*(M-1)/2^(n+1)",
+            "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+            "numerator": 0
+          },
+          "generic_bht_collision": {
+            "floor_log2_queries": 170,
+            "log2_queries_projection": "512/3",
+            "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+          },
+          "generic_grover_preimage_or_second_preimage": {
+            "floor_log2_queries": 256,
+            "log2_queries_projection": "256",
+            "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+          },
+          "target_digest_outputs": 1,
+          "target_digest_outputs_log2": 0
+        },
+        "target_quantum_bits": 100
+      },
+      "truncation": "NONE; retain all 32 bytes of each branch in branch order",
+      "verdict": "NO_ADOPTION_BASELINE_ONLY",
+      "width_bits": 512
+    },
+    {
+      "branch_count": 2,
+      "branch_output_bits": 192,
+      "canonical_binary_node_payload": {
+        "encoding": "left_digest_bytes || right_digest_bytes, with no length prefix or padding",
+        "framed_keccak_input_bytes_per_branch": 98,
+        "keccak_invocations_per_node": 2,
+        "measurement_scope": "EXACT_HASH_MICROBENCHMARK_INPUT_NOT_FULL_PROTOCOL",
+        "payload_bytes": 96
+      },
+      "construction": "prefix_24(K(0x00 || tag_u8 || payload)) || prefix_24(K(0x01 || tag_u8 || payload))",
+      "construction_status": "SPECIFIED_RESEARCH_PROTOTYPE_ONLY",
+      "depth_20_authentication_path": {
+        "direction_bits_bytes_if_separately_byte_aligned": 3,
+        "excludes": [
+          "leaf",
+          "root",
+          "index",
+          "length prefixes",
+          "ABI padding",
+          "proof framing"
+        ],
+        "measurement_scope": "EXACT_WIDTH_COMPONENT_NOT_FULL_PROTOCOL",
+        "path_bytes": 960,
+        "path_bytes_including_separate_direction_bitmap": 963,
+        "sibling_count": 20,
+        "sibling_digest_bytes": 48
+      },
+      "digest_bytes": 48,
+      "full_protocol_gas": {
+        "measurement_scope": "FULL_PROTOCOL",
+        "microbenchmark_sum_claim": false,
+        "status": "NOT_EVALUATED_NO_FULL_PROTOCOL_VARIANT_IMPLEMENTATION",
+        "value": null
+      },
+      "gas_microbenchmark": {
+        "digest_bytes": 48,
+        "hash_and_storage_cold_call_gas": 45362,
+        "hash_only_call_gas": 1480,
+        "id": "keccak-pair-trunc-384",
+        "measurement_scope": "SOLIDITY_MICROBENCHMARK_NOT_FULL_PROTOCOL",
+        "node_payload_bytes": 96,
+        "storage_only_cold_call_gas": 44833
+      },
+      "id": "keccak-pair-trunc-384",
+      "optimal_fixed_storage": {
+        "allocated_bytes": 64,
+        "measurement_scope": "EXACT_STORAGE_LAYOUT_COMPONENT_NOT_FULL_PROTOCOL",
+        "storage_slots": 2,
+        "unused_bytes": 16
+      },
+      "prague_opcode_gas_components": {
+        "cold_zero_to_nonzero_sstore_gas_per_digest": 44200,
+        "cold_zero_to_nonzero_sstore_gas_per_slot": 22100,
+        "excludes": [
+          "memory expansion",
+          "copying",
+          "masking",
+          "ABI",
+          "CALL",
+          "transaction intrinsic gas",
+          "calldata gas",
+          "surrounding protocol"
+        ],
+        "keccak256_gas_per_branch": 54,
+        "keccak256_gas_per_digest": 108,
+        "keccak256_words_per_branch": 4,
+        "measurement_scope": "EXACT_EVM_OPCODE_COMPONENT_MICROBENCHMARK_NOT_FULL_PROTOCOL"
+      },
+      "reduction_status": "OPEN_NO_TWO_BRANCH_TRUNCATION_REDUCTION",
+      "review_status": "NOT_REVIEWED_EXTERNAL_ANALYSIS_REQUIRED",
+      "security": {
+        "model_scope": "Generic random-oracle projections only; excludes structural, composition, correlated-branch, domain-reuse, QROM Fiat-Shamir, and protocol reductions",
+        "protocol_lifetime_sensitivity": [
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 78804012392788958424558080200287227610159478540930893335896586808491443542994421222828532509769831281613255980613632,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 0
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 128,
+              "log2_queries_projection": "128",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 192,
+              "log2_queries_projection": "192",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 1,
+            "target_digest_outputs_log2": 0,
+            "underlying_keccak_invocations": 2
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 78804012392788958424558080200287227610159478540930893335896586808491443542994421222828532509769831281613255980613632,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 4294901760
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 122,
+              "log2_queries_projection": "368/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 184,
+              "log2_queries_projection": "184",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 65536,
+            "target_digest_outputs_log2": 16,
+            "underlying_keccak_invocations": 131072
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 78804012392788958424558080200287227610159478540930893335896586808491443542994421222828532509769831281613255980613632,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 281474959933440
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 120,
+              "log2_queries_projection": "120",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 180,
+              "log2_queries_projection": "180",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 16777216,
+            "target_digest_outputs_log2": 24,
+            "underlying_keccak_invocations": 33554432
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 78804012392788958424558080200287227610159478540930893335896586808491443542994421222828532509769831281613255980613632,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 18446744069414584320
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 117,
+              "log2_queries_projection": "352/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 176,
+              "log2_queries_projection": "176",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 4294967296,
+            "target_digest_outputs_log2": 32,
+            "underlying_keccak_invocations": 8589934592
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 78804012392788958424558080200287227610159478540930893335896586808491443542994421222828532509769831281613255980613632,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 1208925819613529663078400
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 114,
+              "log2_queries_projection": "344/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 172,
+              "log2_queries_projection": "172",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 1099511627776,
+            "target_digest_outputs_log2": 40,
+            "underlying_keccak_invocations": 2199023255552
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 78804012392788958424558080200287227610159478540930893335896586808491443542994421222828532509769831281613255980613632,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 79228162514264056118567239680
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 112,
+              "log2_queries_projection": "112",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 168,
+              "log2_queries_projection": "168",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 281474976710656,
+            "target_digest_outputs_log2": 48,
+            "underlying_keccak_invocations": 562949953421312
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 78804012392788958424558080200287227610159478540930893335896586808491443542994421222828532509769831281613255980613632,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 5192296858534827556472902291292160
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 109,
+              "log2_queries_projection": "328/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 164,
+              "log2_queries_projection": "164",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 72057594037927936,
+            "target_digest_outputs_log2": 56,
+            "underlying_keccak_invocations": 144115188075855872
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 78804012392788958424558080200287227610159478540930893335896586808491443542994421222828532509769831281613255980613632,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 340282366920938463444927863358058659840
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 106,
+              "log2_queries_projection": "320/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 160,
+              "log2_queries_projection": "160",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 18446744073709551616,
+            "target_digest_outputs_log2": 64,
+            "underlying_keccak_invocations": 36893488147419103232
+          }
+        ],
+        "single_target": {
+          "classical_accidental_collision_union_bound": {
+            "denominator": 78804012392788958424558080200287227610159478540930893335896586808491443542994421222828532509769831281613255980613632,
+            "formula": "M*(M-1)/2^(n+1)",
+            "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+            "numerator": 0
+          },
+          "generic_bht_collision": {
+            "floor_log2_queries": 128,
+            "log2_queries_projection": "128",
+            "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+          },
+          "generic_grover_preimage_or_second_preimage": {
+            "floor_log2_queries": 192,
+            "log2_queries_projection": "192",
+            "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+          },
+          "target_digest_outputs": 1,
+          "target_digest_outputs_log2": 0
+        },
+        "target_quantum_bits": 100
+      },
+      "truncation": "For each 32-byte Keccak output, retain bytes [0:24] (the leftmost/MSB 192 bits), discard bytes [24:32], then concatenate branch 0 before branch 1",
+      "verdict": "STOP_PENDING_EXTERNAL_ANALYSIS",
+      "width_bits": 384
+    },
+    {
+      "branch_count": 2,
+      "branch_output_bits": 160,
+      "canonical_binary_node_payload": {
+        "encoding": "left_digest_bytes || right_digest_bytes, with no length prefix or padding",
+        "framed_keccak_input_bytes_per_branch": 82,
+        "keccak_invocations_per_node": 2,
+        "measurement_scope": "EXACT_HASH_MICROBENCHMARK_INPUT_NOT_FULL_PROTOCOL",
+        "payload_bytes": 80
+      },
+      "construction": "prefix_20(K(0x00 || tag_u8 || payload)) || prefix_20(K(0x01 || tag_u8 || payload))",
+      "construction_status": "SPECIFIED_RESEARCH_PROTOTYPE_ONLY",
+      "depth_20_authentication_path": {
+        "direction_bits_bytes_if_separately_byte_aligned": 3,
+        "excludes": [
+          "leaf",
+          "root",
+          "index",
+          "length prefixes",
+          "ABI padding",
+          "proof framing"
+        ],
+        "measurement_scope": "EXACT_WIDTH_COMPONENT_NOT_FULL_PROTOCOL",
+        "path_bytes": 800,
+        "path_bytes_including_separate_direction_bitmap": 803,
+        "sibling_count": 20,
+        "sibling_digest_bytes": 40
+      },
+      "digest_bytes": 40,
+      "full_protocol_gas": {
+        "measurement_scope": "FULL_PROTOCOL",
+        "microbenchmark_sum_claim": false,
+        "status": "NOT_EVALUATED_NO_FULL_PROTOCOL_VARIANT_IMPLEMENTATION",
+        "value": null
+      },
+      "gas_microbenchmark": {
+        "digest_bytes": 40,
+        "hash_and_storage_cold_call_gas": 45542,
+        "hash_only_call_gas": 1440,
+        "id": "keccak-pair-trunc-320",
+        "measurement_scope": "SOLIDITY_MICROBENCHMARK_NOT_FULL_PROTOCOL",
+        "node_payload_bytes": 80,
+        "storage_only_cold_call_gas": 44572
+      },
+      "id": "keccak-pair-trunc-320",
+      "optimal_fixed_storage": {
+        "allocated_bytes": 64,
+        "measurement_scope": "EXACT_STORAGE_LAYOUT_COMPONENT_NOT_FULL_PROTOCOL",
+        "storage_slots": 2,
+        "unused_bytes": 24
+      },
+      "prague_opcode_gas_components": {
+        "cold_zero_to_nonzero_sstore_gas_per_digest": 44200,
+        "cold_zero_to_nonzero_sstore_gas_per_slot": 22100,
+        "excludes": [
+          "memory expansion",
+          "copying",
+          "masking",
+          "ABI",
+          "CALL",
+          "transaction intrinsic gas",
+          "calldata gas",
+          "surrounding protocol"
+        ],
+        "keccak256_gas_per_branch": 48,
+        "keccak256_gas_per_digest": 96,
+        "keccak256_words_per_branch": 3,
+        "measurement_scope": "EXACT_EVM_OPCODE_COMPONENT_MICROBENCHMARK_NOT_FULL_PROTOCOL"
+      },
+      "reduction_status": "OPEN_NO_TWO_BRANCH_TRUNCATION_REDUCTION",
+      "review_status": "NOT_REVIEWED_EXTERNAL_ANALYSIS_REQUIRED",
+      "security": {
+        "model_scope": "Generic random-oracle projections only; excludes structural, composition, correlated-branch, domain-reuse, QROM Fiat-Shamir, and protocol reductions",
+        "protocol_lifetime_sensitivity": [
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 4271974071841820164790043412339104229205409044713305539894083215644439451561281100045924173873152,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 0
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 106,
+              "log2_queries_projection": "320/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 160,
+              "log2_queries_projection": "160",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 1,
+            "target_digest_outputs_log2": 0,
+            "underlying_keccak_invocations": 2
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 4271974071841820164790043412339104229205409044713305539894083215644439451561281100045924173873152,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 4294901760
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 101,
+              "log2_queries_projection": "304/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 152,
+              "log2_queries_projection": "152",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 65536,
+            "target_digest_outputs_log2": 16,
+            "underlying_keccak_invocations": 131072
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 4271974071841820164790043412339104229205409044713305539894083215644439451561281100045924173873152,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 281474959933440
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 98,
+              "log2_queries_projection": "296/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 148,
+              "log2_queries_projection": "148",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 16777216,
+            "target_digest_outputs_log2": 24,
+            "underlying_keccak_invocations": 33554432
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 4271974071841820164790043412339104229205409044713305539894083215644439451561281100045924173873152,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 18446744069414584320
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 96,
+              "log2_queries_projection": "96",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 144,
+              "log2_queries_projection": "144",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 4294967296,
+            "target_digest_outputs_log2": 32,
+            "underlying_keccak_invocations": 8589934592
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 4271974071841820164790043412339104229205409044713305539894083215644439451561281100045924173873152,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 1208925819613529663078400
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 93,
+              "log2_queries_projection": "280/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 140,
+              "log2_queries_projection": "140",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 1099511627776,
+            "target_digest_outputs_log2": 40,
+            "underlying_keccak_invocations": 2199023255552
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 4271974071841820164790043412339104229205409044713305539894083215644439451561281100045924173873152,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 79228162514264056118567239680
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 90,
+              "log2_queries_projection": "272/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 136,
+              "log2_queries_projection": "136",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 281474976710656,
+            "target_digest_outputs_log2": 48,
+            "underlying_keccak_invocations": 562949953421312
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 4271974071841820164790043412339104229205409044713305539894083215644439451561281100045924173873152,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 5192296858534827556472902291292160
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 88,
+              "log2_queries_projection": "88",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 132,
+              "log2_queries_projection": "132",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 72057594037927936,
+            "target_digest_outputs_log2": 56,
+            "underlying_keccak_invocations": 144115188075855872
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 4271974071841820164790043412339104229205409044713305539894083215644439451561281100045924173873152,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 340282366920938463444927863358058659840
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 85,
+              "log2_queries_projection": "256/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 128,
+              "log2_queries_projection": "128",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 18446744073709551616,
+            "target_digest_outputs_log2": 64,
+            "underlying_keccak_invocations": 36893488147419103232
+          }
+        ],
+        "single_target": {
+          "classical_accidental_collision_union_bound": {
+            "denominator": 4271974071841820164790043412339104229205409044713305539894083215644439451561281100045924173873152,
+            "formula": "M*(M-1)/2^(n+1)",
+            "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+            "numerator": 0
+          },
+          "generic_bht_collision": {
+            "floor_log2_queries": 106,
+            "log2_queries_projection": "320/3",
+            "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+          },
+          "generic_grover_preimage_or_second_preimage": {
+            "floor_log2_queries": 160,
+            "log2_queries_projection": "160",
+            "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+          },
+          "target_digest_outputs": 1,
+          "target_digest_outputs_log2": 0
+        },
+        "target_quantum_bits": 100
+      },
+      "truncation": "For each 32-byte Keccak output, retain bytes [0:20] (the leftmost/MSB 160 bits), discard bytes [20:32], then concatenate branch 0 before branch 1",
+      "verdict": "STOP_PENDING_EXTERNAL_ANALYSIS",
+      "width_bits": 320
+    },
+    {
+      "branch_count": 1,
+      "branch_output_bits": 256,
+      "canonical_binary_node_payload": {
+        "encoding": "left_digest_bytes || right_digest_bytes, with no length prefix or padding",
+        "framed_keccak_input_bytes_per_branch": 66,
+        "keccak_invocations_per_node": 1,
+        "measurement_scope": "EXACT_HASH_MICROBENCHMARK_INPUT_NOT_FULL_PROTOCOL",
+        "payload_bytes": 64
+      },
+      "construction": "K(0x00 || tag_u8 || payload)",
+      "construction_status": "IMPLEMENTED_RESEARCH_NEGATIVE_CONTROL",
+      "depth_20_authentication_path": {
+        "direction_bits_bytes_if_separately_byte_aligned": 3,
+        "excludes": [
+          "leaf",
+          "root",
+          "index",
+          "length prefixes",
+          "ABI padding",
+          "proof framing"
+        ],
+        "measurement_scope": "EXACT_WIDTH_COMPONENT_NOT_FULL_PROTOCOL",
+        "path_bytes": 640,
+        "path_bytes_including_separate_direction_bitmap": 643,
+        "sibling_count": 20,
+        "sibling_digest_bytes": 32
+      },
+      "digest_bytes": 32,
+      "full_protocol_gas": {
+        "measurement_scope": "FULL_PROTOCOL",
+        "microbenchmark_sum_claim": false,
+        "status": "NOT_EVALUATED_NO_FULL_PROTOCOL_VARIANT_IMPLEMENTATION",
+        "value": null
+      },
+      "gas_microbenchmark": {
+        "digest_bytes": 32,
+        "hash_and_storage_cold_call_gas": 23277,
+        "hash_only_call_gas": 1436,
+        "id": "single-keccak-256-lower-bound",
+        "measurement_scope": "SOLIDITY_MICROBENCHMARK_NOT_FULL_PROTOCOL",
+        "node_payload_bytes": 64,
+        "storage_only_cold_call_gas": 22502
+      },
+      "id": "single-keccak-256-lower-bound",
+      "optimal_fixed_storage": {
+        "allocated_bytes": 32,
+        "measurement_scope": "EXACT_STORAGE_LAYOUT_COMPONENT_NOT_FULL_PROTOCOL",
+        "storage_slots": 1,
+        "unused_bytes": 0
+      },
+      "prague_opcode_gas_components": {
+        "cold_zero_to_nonzero_sstore_gas_per_digest": 22100,
+        "cold_zero_to_nonzero_sstore_gas_per_slot": 22100,
+        "excludes": [
+          "memory expansion",
+          "copying",
+          "masking",
+          "ABI",
+          "CALL",
+          "transaction intrinsic gas",
+          "calldata gas",
+          "surrounding protocol"
+        ],
+        "keccak256_gas_per_branch": 48,
+        "keccak256_gas_per_digest": 48,
+        "keccak256_words_per_branch": 3,
+        "measurement_scope": "EXACT_EVM_OPCODE_COMPONENT_MICROBENCHMARK_NOT_FULL_PROTOCOL"
+      },
+      "reduction_status": "NOT_APPLICABLE_TO_REJECTION_GENERIC_BHT_BOUND_ALREADY_FAILS",
+      "review_status": "NOT_SUBMITTED_NONQUALIFYING_LOWER_BOUND",
+      "security": {
+        "model_scope": "Generic random-oracle projections only; excludes structural, composition, correlated-branch, domain-reuse, QROM Fiat-Shamir, and protocol reductions",
+        "protocol_lifetime_sensitivity": [
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 231584178474632390847141970017375815706539969331281128078915168015826259279872,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 0
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 85,
+              "log2_queries_projection": "256/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 128,
+              "log2_queries_projection": "128",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 1,
+            "target_digest_outputs_log2": 0,
+            "underlying_keccak_invocations": 1
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 231584178474632390847141970017375815706539969331281128078915168015826259279872,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 4294901760
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 80,
+              "log2_queries_projection": "80",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 120,
+              "log2_queries_projection": "120",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 65536,
+            "target_digest_outputs_log2": 16,
+            "underlying_keccak_invocations": 65536
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 231584178474632390847141970017375815706539969331281128078915168015826259279872,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 281474959933440
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 77,
+              "log2_queries_projection": "232/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 116,
+              "log2_queries_projection": "116",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 16777216,
+            "target_digest_outputs_log2": 24,
+            "underlying_keccak_invocations": 16777216
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 231584178474632390847141970017375815706539969331281128078915168015826259279872,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 18446744069414584320
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 74,
+              "log2_queries_projection": "224/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 112,
+              "log2_queries_projection": "112",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 4294967296,
+            "target_digest_outputs_log2": 32,
+            "underlying_keccak_invocations": 4294967296
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 231584178474632390847141970017375815706539969331281128078915168015826259279872,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 1208925819613529663078400
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 72,
+              "log2_queries_projection": "72",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 108,
+              "log2_queries_projection": "108",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 1099511627776,
+            "target_digest_outputs_log2": 40,
+            "underlying_keccak_invocations": 1099511627776
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 231584178474632390847141970017375815706539969331281128078915168015826259279872,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 79228162514264056118567239680
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 69,
+              "log2_queries_projection": "208/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 104,
+              "log2_queries_projection": "104",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 281474976710656,
+            "target_digest_outputs_log2": 48,
+            "underlying_keccak_invocations": 281474976710656
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 231584178474632390847141970017375815706539969331281128078915168015826259279872,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 5192296858534827556472902291292160
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 66,
+              "log2_queries_projection": "200/3",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 100,
+              "log2_queries_projection": "100",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 72057594037927936,
+            "target_digest_outputs_log2": 56,
+            "underlying_keccak_invocations": 72057594037927936
+          },
+          {
+            "classical_accidental_collision_union_bound": {
+              "denominator": 231584178474632390847141970017375815706539969331281128078915168015826259279872,
+              "formula": "M*(M-1)/2^(n+1)",
+              "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+              "numerator": 340282366920938463444927863358058659840
+            },
+            "generic_bht_collision": {
+              "floor_log2_queries": 64,
+              "log2_queries_projection": "64",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "generic_grover_preimage_or_second_preimage": {
+              "floor_log2_queries": 96,
+              "log2_queries_projection": "96",
+              "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+            },
+            "target_digest_outputs": 18446744073709551616,
+            "target_digest_outputs_log2": 64,
+            "underlying_keccak_invocations": 18446744073709551616
+          }
+        ],
+        "single_target": {
+          "classical_accidental_collision_union_bound": {
+            "denominator": 231584178474632390847141970017375815706539969331281128078915168015826259279872,
+            "formula": "M*(M-1)/2^(n+1)",
+            "measurement_class": "EXACT_RATIONAL_UNION_BOUND_NOT_FULL_PROTOCOL",
+            "numerator": 0
+          },
+          "generic_bht_collision": {
+            "floor_log2_queries": 85,
+            "log2_queries_projection": "256/3",
+            "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+          },
+          "generic_grover_preimage_or_second_preimage": {
+            "floor_log2_queries": 128,
+            "log2_queries_projection": "128",
+            "measurement_class": "GENERIC_ATTACK_MODEL_PROJECTION_NOT_A_SECURITY_PROOF"
+          },
+          "target_digest_outputs": 1,
+          "target_digest_outputs_log2": 0
+        },
+        "target_quantum_bits": 100
+      },
+      "truncation": "NONE; retain all 32 bytes of branch 0; branch 1 is not evaluated",
+      "verdict": "REJECT_NONQUALIFYING_LOWER_BOUND",
+      "width_bits": 256
+    }
+  ]
+}
