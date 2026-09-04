@@ -6,6 +6,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[4]
 REPORT = ROOT / "old_reports/ENGINEERING_REPORT.md"
+if not REPORT.exists():
+    REPORT = ROOT / "ENGINEERING_REPORT.md"
 OUT = ROOT / "research/candidates/v03-baseline/source-hashes.json"
 ROW = re.compile(r"^\| `([^`]+)` \| (?:[^|]+\| )?([0-9,]+) \| `([0-9a-f]{64})` \|$")
 BASELINE = "00f829001999ee66da6fd5161c4c205c07d0b937"
@@ -58,7 +60,7 @@ if len(sources)!=59 or len(generated)!=16: raise SystemExit(f"report inventory p
 peel=subprocess.run(["git","rev-parse","pqtc-v0.3-research-baseline^{}"],cwd=ROOT,text=True,capture_output=True)
 peeled=peel.stdout.strip() if peel.returncode==0 else None
 if peeled != BASELINE: raise SystemExit(f"baseline tag peel mismatch: expected {BASELINE}, got {peeled or peel.stderr.strip()}")
-record={"candidate_id":"C00/v03-baseline","baseline_tag":"pqtc-v0.3-research-baseline","baseline_commit":BASELINE,"tag_peel_verified":True,"report":"old_reports/ENGINEERING_REPORT.md","source_count":59,"generated_count":16,"sources":verify(sources),"generated":verify(generated)}
+record={"candidate_id":"C00/v03-baseline","baseline_tag":"pqtc-v0.3-research-baseline","baseline_commit":BASELINE,"tag_peel_verified":True,"report":REPORT.relative_to(ROOT).as_posix(),"source_count":59,"generated_count":16,"sources":verify(sources),"generated":verify(generated)}
 OUT.parent.mkdir(parents=True,exist_ok=True)
 OUT.write_text(json.dumps(record,indent=2,sort_keys=True)+"\n")
 parameter_result={"status":"NOT_EVALUATED","reason":"--skip-parameter-regeneration was supplied"} if args.skip_parameter_regeneration else regenerate_parameters()
