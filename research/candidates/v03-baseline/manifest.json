@@ -1,0 +1,72 @@
+{
+  "candidateId": "C00/v03-baseline",
+  "spikeId": "SP-00",
+  "status": "NOT_EVALUATED",
+  "baseline": {
+    "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+    "tag": "pqtc-v0.3-research-baseline",
+    "plonky3Commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+    "profile": "sepolia-v0.3",
+    "parameterId": "0x35adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62ab7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea07779"
+  },
+  "protocolComponents": {
+    "noteEntropyAndEncoding": "INHERITED",
+    "applicationDigest": "INHERITED",
+    "hashMode": "INHERITED",
+    "treeArityDepth": "INHERITED",
+    "publicStatement": "INHERITED",
+    "relation": "INHERITED",
+    "baseChallengeField": "INHERITED",
+    "pcsLdt": "INHERITED",
+    "hidingConstruction": "INHERITED",
+    "proofMmcs": "INHERITED",
+    "transcript": "INHERITED",
+    "proofCodec": "INHERITED",
+    "evmVerifier": "INHERITED",
+    "checkpointModel": "INHERITED",
+    "deploymentManifest": "INHERITED_EMPTY_RUNTIME_HASH_LIST"
+  },
+  "researchOnlyAdditions": [
+    "deterministic backend-neutral corpus adapter with explicit rejection records",
+    "measurement/proof runner around frozen public Rust APIs",
+    "nested Foundry fixture and trace harness",
+    "local second-client and opcode trace routes"
+  ],
+  "relation": {
+    "kind": "AIR",
+    "rows": 256,
+    "width": 190,
+    "constraints": 1186,
+    "maxDegree": 7,
+    "batchedFunctions": 210
+  },
+  "proofSystem": {
+    "baseField": "BabyBear",
+    "challengeExtensionDegree": 4,
+    "friQueries": 32,
+    "friLogBlowup": 4,
+    "friBinaryRounds": 9,
+    "hiding": true,
+    "randomCodewords": 4,
+    "mmcsSaltFields": 8,
+    "entropySource": "operating system; caller-selected proving seeds unavailable"
+  },
+  "corpus": {
+    "source": "research/common-corpus/semantic-cases.json",
+    "supported": "all valid depth-20 cases",
+    "proofSelection": "first 30 supported cases in source order plus 30 repetitions of the fixed report witness",
+    "mapping": "Keccak-256 domain-separated u32 rejection sampling; big-endian; modulus 2013265921"
+  },
+  "noCode": false,
+  "blocked": true,
+  "blockers": [
+    "strict security target is not met by the 56-bit best proven v0.3 bound",
+    "complete QROM and independent ZK analyses are absent",
+    "deployment runtime hashes are absent from the frozen manifest",
+    "valid-proof worst-case frontier and gas are unproven",
+    "abandoned checkpoint storage economics are unresolved",
+    "no audit, public-network receipt, or second-client evidence is pre-existing"
+  ],
+  "publicNetworkExecution": "PROHIBITED",
+  "productionSecrets": "PROHIBITED"
+}

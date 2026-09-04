@@ -1,0 +1,302 @@
+{
+  "application_hash": {
+    "candidate": "P2BB512-v1",
+    "capacity": 12,
+    "digest_bytes": 64,
+    "digest_fields": 16,
+    "domain_scheme": "v0.3 typed tags plus byte/element length and aux",
+    "family": "Poseidon2",
+    "field": "BabyBear",
+    "mode": "rate-4 sponge",
+    "rate": 4,
+    "review_status": "independent structural cryptanalysis outstanding",
+    "state_width": 16
+  },
+  "artifacts": [
+    {
+      "bytes": 2932,
+      "description": "Exact v0.3 public statement input",
+      "digests": {
+        "keccak256": "9e0552dd490014f8e4792e15f85e5f330a7aed6bbdd9abc65a19056394f79aaa",
+        "sha256": "85a4f121074eeaf74d24ac40a85e11ddd38f6908bec6682351b01580fb94674a"
+      },
+      "media_type": "application/json",
+      "path": "research/candidates/v03-baseline/proofs/v03-corpus-10/statement.json"
+    },
+    {
+      "bytes": 17532,
+      "description": "Exact synthetic benchmark private witness; never production material",
+      "digests": {
+        "keccak256": "ee4617b69932f412ac8f2dbaa4097007afb87a228b5c6f67d7a135d82081e9e7",
+        "sha256": "e03e2d3ff6a2908dcc14fd28c21abb5dce4bbf202a43f4f0072a383a7a6e0ca9"
+      },
+      "media_type": "application/json",
+      "path": "research/candidates/v03-baseline/proofs/v03-corpus-10/witness.json"
+    },
+    {
+      "bytes": 64722,
+      "description": "Candidate derivation with original semantic source case",
+      "digests": {
+        "keccak256": "3d5ac6e2dc674cf2d5e1fb48c2c741673f85a2ae32d9dade3cb1aad66735594b",
+        "sha256": "71d7d0c637121a3a69b382fed2d1139f6ce3e6de761b5230c62decfce4d1154a"
+      },
+      "media_type": "application/json",
+      "path": "research/candidates/v03-baseline/proofs/v03-corpus-10/derived-case.json"
+    },
+    {
+      "bytes": 38098,
+      "description": "Explicit rejection-sampling record",
+      "digests": {
+        "keccak256": "01fb4a20a513aca0807fef90378294847c38136284c97ce7dd710536c4695d2e",
+        "sha256": "2418752103bed00e2fbdbe47cf52b8e69c7e450c5a7e1c48e010faef84a623a8"
+      },
+      "media_type": "application/json",
+      "path": "research/candidates/v03-baseline/proofs/v03-corpus-10/mapping.json"
+    },
+    {
+      "bytes": 104678,
+      "description": "Canonical proof part A",
+      "digests": {
+        "keccak256": "af8e683222e011a1fe2c516fe380a50d66f0d3a3799a8d26a46e1e198f8fc6b1",
+        "sha256": "b600e91f27dd66d32b28a93a8c18a5433da83e44a171fc94b258fc657d21cdf8"
+      },
+      "media_type": "application/octet-stream",
+      "path": "research/candidates/v03-baseline/proofs/v03-corpus-10/part-a.pqtc"
+    },
+    {
+      "bytes": 104198,
+      "description": "Canonical proof part B",
+      "digests": {
+        "keccak256": "655b447e76e9e1dae8e377c9c84e5574f25199ce8452c3f598c11d37c97b9381",
+        "sha256": "e592b26f4f1f86a7c96e2f68acb7251f32a159d13fade4607ae438dd8796a85e"
+      },
+      "media_type": "application/octet-stream",
+      "path": "research/candidates/v03-baseline/proofs/v03-corpus-10/part-b.pqtc"
+    },
+    {
+      "bytes": 104996,
+      "description": "Exact beginWithdrawal calldata for the fixed research harness address",
+      "digests": {
+        "keccak256": "9c97bfb0ed8f6d21527a735a35e610c0fbe13ecde2bb5ccee87297cf669137a4",
+        "sha256": "2394913d2c00687ca7afda76c568e8ee747d4daa51ce9fbb24db8532f8b7ef68"
+      },
+      "media_type": "application/vnd.ethereum.calldata",
+      "path": "research/candidates/v03-baseline/proofs/v03-corpus-10/part-a.calldata"
+    },
+    {
+      "bytes": 104548,
+      "description": "Exact withdraw calldata including consumer-bound verification ID",
+      "digests": {
+        "keccak256": "51cdea530b2af9dfbcc9f143db80aa0466d7ffef01a6245a1648a35e90625b52",
+        "sha256": "814d03c20bb67431c12e1ce5019181c56400ada2dd3dbc091e11dc4640946890"
+      },
+      "media_type": "application/vnd.ethereum.calldata",
+      "path": "research/candidates/v03-baseline/proofs/v03-corpus-10/part-b.calldata"
+    }
+  ],
+  "candidate_id": "C00/v03-baseline",
+  "evm": {
+    "chain_config_hash": null,
+    "client": "NOT_EVALUATED",
+    "client_version": "NOT_EVALUATED",
+    "component_gas": {},
+    "deployment_gas": 0,
+    "execution_gas": 0,
+    "gas_scenarios": [
+      {
+        "floor_gas": 0,
+        "floor_is_binding": false,
+        "name": "ACTIVE_EIP7623",
+        "total_gas": 0,
+        "tx_cap_margin": 0
+      },
+      {
+        "floor_gas": 0,
+        "floor_is_binding": false,
+        "name": "SCENARIO_EIP7976_64_PER_BYTE",
+        "total_gas": 0,
+        "tx_cap_margin": 0
+      },
+      {
+        "floor_gas": 0,
+        "floor_is_binding": false,
+        "name": "SCENARIO_EIP8311_96_PER_BYTE",
+        "total_gas": 0,
+        "tx_cap_margin": 0
+      }
+    ],
+    "initcode_bytes": 0,
+    "measured": false,
+    "measurement_status": "NOT_EVALUATED: EVM execution is performed by verify-all.sh after proof generation; schema-required numeric fields use zero only as an explicit unmeasured sentinel",
+    "opcode_counts": {},
+    "receipt_block": null,
+    "receipt_gas_used": 0,
+    "runtime_bytes": 0,
+    "standard_intrinsic_gas": 0,
+    "transaction_gas_limit": 0,
+    "transaction_hash": null
+  },
+  "git": {
+    "branch_or_tag": "pqtc-v0.3-research-baseline",
+    "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+    "dirty": true,
+    "repository": "/Users/zodomo/code/PQTornado",
+    "submodules": {}
+  },
+  "hardware": {
+    "allocator": null,
+    "architecture": "arm64",
+    "cpu_affinity": null,
+    "cpu_features": [],
+    "cpu_model": "Apple M4 Max",
+    "hardware_id": "macnch33z3.local-arm64",
+    "kernel": "24.6.0",
+    "logical_cores": 16,
+    "os": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+    "physical_cores": 16,
+    "power_mode": null,
+    "ram_bytes": 51539607552,
+    "threads_used": 16
+  },
+  "proof_bytes": {
+    "abi_calldata_bytes": 209544,
+    "calldata_nonzero_bytes": 207933,
+    "calldata_zero_bytes": 1611,
+    "frontier_status": "NOT_EVALUATED: the v0.3 public codec API does not expose split-query pruned-frontier lengths",
+    "nonzero_bytes": 207534,
+    "raw_proof_bytes": 208876,
+    "sections": {
+      "part_a": 104678,
+      "part_b": 104198
+    },
+    "unique_query_indices": 32,
+    "zero_bytes": 1342
+  },
+  "proof_system": {
+    "base_field": "BabyBear",
+    "challenge_field": "degree-4 BabyBear extension",
+    "challenge_field_bits": 120,
+    "classical_wrapper": false,
+    "commit_grinding_bits_configured": 16,
+    "final_polynomial_length": 1,
+    "fold_schedule": "nine binary rounds",
+    "hiding": true,
+    "hiding_construction": "four random codewords and eight MMCS salt fields per leaf",
+    "log_blowup": 4,
+    "mmcs_digest_bytes": 64,
+    "name": "Plonky3 hiding two-adic FRI STARK q32",
+    "pcs_or_ldt": "hiding two-adic FRI",
+    "query_count": 32,
+    "query_grinding_bits_configured": 16,
+    "random_codewords": 4,
+    "salt_fields": 8,
+    "transcript": "KeccakPair512",
+    "trusted_setup": false
+  },
+  "protocol": {
+    "asset": "native ETH",
+    "case_id": "swc-v1-009",
+    "denomination_wei": "100000000000000000",
+    "semantic_source_kind": "semantic-corpus",
+    "semantic_version": "3",
+    "transaction_shape": "NATIVE_ONLY",
+    "tree_arity": 2,
+    "tree_depth": 20
+  },
+  "prover": {
+    "cold_or_warm": "WARM",
+    "cpu_ms": null,
+    "native_verify_ms": 2.173,
+    "peak_rss_bytes": 29163520,
+    "peak_rss_status": null,
+    "proof_only_ms": 466.282209,
+    "success": true,
+    "wall_ms": 487.2614159830846
+  },
+  "relation": {
+    "active_rows": 244,
+    "base_degree_bits": 8,
+    "batched_functions": 210,
+    "constraint_count": 1186,
+    "hiding_degree_bits": 9,
+    "kind": "AIR",
+    "logical_rows": 256,
+    "max_degree": 7,
+    "nonzero_count_status": "NOT_EVALUATED: frozen AIR does not expose this count",
+    "padded_rows": 256,
+    "padding_rows": 12,
+    "quotient_chunks": 16,
+    "trace_width": 190
+  },
+  "result": {
+    "confounders": [
+      "EVM and deployment measurements have not run",
+      "valid-proof maximum frontier/gas is unproven"
+    ],
+    "failure_reason": null,
+    "gate_status": "NOT_EVALUATED",
+    "notes": [
+      "Native proof and codec round trip verified",
+      "OS hiding entropy used",
+      "Synthetic benchmark secrets are intentionally published and must never be reused"
+    ],
+    "success": true
+  },
+  "run_id": "v03-corpus-10",
+  "schema_version": "1",
+  "security": {
+    "classification": "PQ_ORIENTED_RESEARCH",
+    "external_review": null,
+    "lowest_accepted_bits": 56,
+    "qrom_status": "No complete QROM proof for custom transcript/composition",
+    "terms": [
+      {
+        "binding": false,
+        "classical_bits": 107,
+        "formula_source": "parameters/sepolia-v0.3/security-analysis.json",
+        "model": "generated v0.3 conjecture",
+        "multi_target_count_log2": null,
+        "name": "FRI random-words",
+        "notes": [
+          "Not a proven 100-bit claim"
+        ],
+        "omitted_terms": [
+          "unbounded multi-target proof volume"
+        ],
+        "proven_or_conjectural": "CONJECTURAL",
+        "quantum_bits": null
+      },
+      {
+        "binding": true,
+        "classical_bits": 56,
+        "formula_source": "parameters/sepolia-v0.3/security-analysis.json",
+        "model": "list decoding",
+        "multi_target_count_log2": null,
+        "name": "FRI best proven",
+        "notes": [
+          "Unique-decoding bound is 37 bits"
+        ],
+        "omitted_terms": [],
+        "proven_or_conjectural": "PROVEN",
+        "quantum_bits": null
+      }
+    ],
+    "zk_status": "Hiding enabled; full independent ZK proof outstanding"
+  },
+  "spike_id": "SP-00",
+  "timestamp_utc": "2026-09-04T17:41:58.363694+00:00",
+  "toolchain": {
+    "cargo": "cargo 1.97.0 (c980f4866 2026-06-30)",
+    "container_image_digest": null,
+    "evm_revision": "Prague",
+    "foundry": "forge Version: 1.7.1",
+    "node": "v24.19.0",
+    "package_manager": "11.20.0",
+    "plonky3_commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+    "rustc": "rustc 1.97.0 (2d8144b78 2026-07-07)",
+    "rustflags": [],
+    "solc": "NOT_EVALUATED: tool unavailable",
+    "solc_optimizer_runs": 1,
+    "via_ir": true
+  }
+}

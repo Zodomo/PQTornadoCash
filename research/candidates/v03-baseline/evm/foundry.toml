@@ -1,0 +1,18 @@
+[profile.default]
+src = "src"
+test = "test"
+out = "out"
+cache_path = "cache"
+solc_version = "0.8.30"
+evm_version = "prague"
+optimizer = true
+optimizer_runs = 1
+via_ir = true
+remappings = [
+  "forge-std/=../../../../lib/forge-std/src/",
+  "v03/=../../../../contracts/src/"
+]
+fs_permissions = [
+  { access = "read", path = "../proofs" },
+  { access = "write", path = "../gas" }
+]

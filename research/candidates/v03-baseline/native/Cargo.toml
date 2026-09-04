@@ -1,0 +1,19 @@
+[package]
+name = "v03-baseline-reproducer"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[dependencies]
+anyhow = "1.0.100"
+clap = { version = "4.5.48", features = ["derive"] }
+hex = "0.4.3"
+pqtc-hash = { path = "../../../../crates/pqtc-hash" }
+pqtc-poseidon-air = { path = "../../../../crates/pqtc-poseidon-air" }
+pqtc-security = { path = "../../../../crates/pqtc-security" }
+pqtc-spec = { path = "../../../../crates/pqtc-spec" }
+pqtc-stark = { path = "../../../../crates/pqtc-stark" }
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.145"

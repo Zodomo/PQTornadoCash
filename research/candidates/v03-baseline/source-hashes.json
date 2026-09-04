@@ -1,0 +1,463 @@
+{
+  "baseline_commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+  "baseline_tag": "pqtc-v0.3-research-baseline",
+  "candidate_id": "C00/v03-baseline",
+  "generated": [
+    {
+      "bytes": 148,
+      "path": "parameters/ci/manifest.bin",
+      "sha256": "31d86f7c1cba14f02c376aae8c9d23f16e754ea0f039e90817adf3b6ebdf8112",
+      "verified": true
+    },
+    {
+      "bytes": 891,
+      "path": "parameters/ci/manifest.json",
+      "sha256": "781c5ee70cbf7607a54d809262d0f28c4b3ec48f4e044c7409524e4fd603677b",
+      "verified": true
+    },
+    {
+      "bytes": 131,
+      "path": "parameters/ci/parameter-id.txt",
+      "sha256": "14ee74d203c34e6c2c4d74442afa45c3c1ff85de74735a2207730fe71ca81444",
+      "verified": true
+    },
+    {
+      "bytes": 278,
+      "path": "parameters/ci/security-analysis.json",
+      "sha256": "a17ccc27ff3684d528489a43779389f9cff2a2bcd087d85960a39c36fe001447",
+      "verified": true
+    },
+    {
+      "bytes": 149,
+      "path": "parameters/dev/manifest.bin",
+      "sha256": "2a057502d5157799eeabad5269cf77127e9382d0e0b8d63b235f7f523c58b86a",
+      "verified": true
+    },
+    {
+      "bytes": 891,
+      "path": "parameters/dev/manifest.json",
+      "sha256": "1efbaf8674058400220e34bbf4d1095a90e302e329d7f73c3945826d45f466aa",
+      "verified": true
+    },
+    {
+      "bytes": 131,
+      "path": "parameters/dev/parameter-id.txt",
+      "sha256": "b3de16a9fd29c3a238f141b2b7182e7a9a76cecccfdb3fa17d948bf7a2a6d189",
+      "verified": true
+    },
+    {
+      "bytes": 274,
+      "path": "parameters/dev/security-analysis.json",
+      "sha256": "c627f1d404bc5b64333226dddf7d8e3ee2869855d7ed506c7930c63583c3e6ba",
+      "verified": true
+    },
+    {
+      "bytes": 158,
+      "path": "parameters/sepolia-v0.3/manifest.bin",
+      "sha256": "3c4233b4e316d6725abb416eb78fa543ca987c4dc487ada7e67c463e5ad0d21e",
+      "verified": true
+    },
+    {
+      "bytes": 903,
+      "path": "parameters/sepolia-v0.3/manifest.json",
+      "sha256": "0d891caaddfc6d954655e15cf86e90ed99825c9f060df907c3afabab695b1c42",
+      "verified": true
+    },
+    {
+      "bytes": 131,
+      "path": "parameters/sepolia-v0.3/parameter-id.txt",
+      "sha256": "dc13595b449af2270a79cc8c95d7454f32788e8ca9c0e9aab0f28c1b577521c1",
+      "verified": true
+    },
+    {
+      "bytes": 279,
+      "path": "parameters/sepolia-v0.3/security-analysis.json",
+      "sha256": "790d06863695a6ce591454d564af1822659802f8433bef24f80bfdfd2151458d",
+      "verified": true
+    },
+    {
+      "bytes": 101990,
+      "path": "test-vectors/verifier/v3/part-a.pqtc",
+      "sha256": "117620affe3dd9788089bc357f894c999d94215bcea54c26db6c28f5244764e7",
+      "verified": true
+    },
+    {
+      "bytes": 108294,
+      "path": "test-vectors/verifier/v3/part-b.pqtc",
+      "sha256": "b73057343f2e5f0f8557ce157f1576eb7ebffd665d09342b4096af57f4e8ab18",
+      "verified": true
+    },
+    {
+      "bytes": 2631824,
+      "path": "test-vectors/verifier/v3.json",
+      "sha256": "41f93db40e659a96b27fe13fd8e6915c501d8f1fb4de78a0d2093a3ac5f8160e",
+      "verified": true
+    },
+    {
+      "bytes": 1855944,
+      "path": "test-vectors/hash/v3.json",
+      "sha256": "4515d8f26dbc03dd694ea3347dfa7dc5d543e67516a5ceafdd6b1ad23c2e5ad2",
+      "verified": true
+    }
+  ],
+  "generated_count": 16,
+  "report": "old_reports/ENGINEERING_REPORT.md",
+  "source_count": 59,
+  "sources": [
+    {
+      "bytes": 8652,
+      "path": "contracts/src/PQTCClassicPool.sol",
+      "sha256": "5ce4f94692e87922efd0584e543afc43937ad8647161dd4e3e16bb8a442c0fd0",
+      "verified": true
+    },
+    {
+      "bytes": 731,
+      "path": "contracts/src/PQTCDomains.sol",
+      "sha256": "82575864ba97c7c4045b5a0d9ea5ab2c7a672b3ceb79550433a8e907c7697025",
+      "verified": true
+    },
+    {
+      "bytes": 23407,
+      "path": "contracts/src/PQTCVerificationRegistry.sol",
+      "sha256": "8553941eb44998dca5bd18cc6eeb7d016bb8cccfa334efb7f693a4a1575a4722",
+      "verified": true
+    },
+    {
+      "bytes": 1371,
+      "path": "contracts/src/libraries/BabyBear.sol",
+      "sha256": "0b260468dfdd98e9a837165dbd61a2f908f15bed31e8e7fb285b0c6242ed5d63",
+      "verified": true
+    },
+    {
+      "bytes": 4288,
+      "path": "contracts/src/libraries/BabyBearExt4.sol",
+      "sha256": "fa3063d15f60b4fde8570b23228a9d05fd90221fb40d3ba5b0eb153412da0e3f",
+      "verified": true
+    },
+    {
+      "bytes": 5418,
+      "path": "contracts/src/libraries/BabyBearExt4Packed.sol",
+      "sha256": "84440d8861592ac49c70600ea99ad3978a92e2cae55dfadc5720850bf3b0d874",
+      "verified": true
+    },
+    {
+      "bytes": 2864,
+      "path": "contracts/src/libraries/CanonicalCodec.sol",
+      "sha256": "d5b52d20c25e1e88079016993877e588c15c020a3c19f7c9f7437ea938926929",
+      "verified": true
+    },
+    {
+      "bytes": 618,
+      "path": "contracts/src/libraries/Digest512.sol",
+      "sha256": "be41fb4d1d6ba6c2cd44ca3fe9d0b8515c4ca6a156b05342b9678a3e97cc9f75",
+      "verified": true
+    },
+    {
+      "bytes": 1214,
+      "path": "contracts/src/libraries/KeccakPair512.sol",
+      "sha256": "2f526fcf9c2fd2ef889938260df6585392d90f6217c0abbcae38cd257090a7d8",
+      "verified": true
+    },
+    {
+      "bytes": 21406,
+      "path": "contracts/src/libraries/P2BB512.sol",
+      "sha256": "eac664c088b7acacd0401dc1714afaa3a7e6459a71b93b330f6c321c70139534",
+      "verified": true
+    },
+    {
+      "bytes": 7317,
+      "path": "contracts/src/libraries/PQTCApplicationHash.sol",
+      "sha256": "add9a5b6a21f32216b9f87a64abd24c49710405d7a3f59f5d918824e2713fe5d",
+      "verified": true
+    },
+    {
+      "bytes": 4780,
+      "path": "contracts/src/libraries/PQTCProofCodec.sol",
+      "sha256": "a4fd095958ca9c35268bb7a5b5da5950a09b0c3b4c5f50118fbeeb455d6f61bd",
+      "verified": true
+    },
+    {
+      "bytes": 5577,
+      "path": "contracts/src/libraries/Transcript512.sol",
+      "sha256": "1928fc0fd636e900db5575bc85d5fc0d51ff6efcd6271e62871d0810ea7c35c1",
+      "verified": true
+    },
+    {
+      "bytes": 21818,
+      "path": "contracts/src/verifier/AirEvaluatorPoseidon.sol",
+      "sha256": "eb34d91b6c94c53c010078b6a90d7222841dddb5808d7d4021be3538b741e09e",
+      "verified": true
+    },
+    {
+      "bytes": 2062,
+      "path": "contracts/src/verifier/FriVerifier.sol",
+      "sha256": "01f91143211fd02db8b22ff8362196faba53aa131943a5b46ab2744462c2330b",
+      "verified": true
+    },
+    {
+      "bytes": 9328,
+      "path": "contracts/src/verifier/MmcsVerifier.sol",
+      "sha256": "950892ccf87e23f30083b3ea1d9689e8904b2770d25a280fed7b056010cced4d",
+      "verified": true
+    },
+    {
+      "bytes": 3547,
+      "path": "contracts/src/verifier/PQTCAirStageVerifier.sol",
+      "sha256": "4f810d9fe141236e5f19219c31dc225dba37e0f9657b20364bbb21ece7d16202",
+      "verified": true
+    },
+    {
+      "bytes": 16578,
+      "path": "contracts/src/verifier/PQTCQueryVerifier.sol",
+      "sha256": "8c6316f1132875dc647cba0d51c4779c8b14d97cf904acea67f01577efffa92f",
+      "verified": true
+    },
+    {
+      "bytes": 4709,
+      "path": "contracts/src/verifier/StarkOodVerifier.sol",
+      "sha256": "9f44097ddc797d3bf0841584d68983696952aecaeaac79e15021115ed2251828",
+      "verified": true
+    },
+    {
+      "bytes": 6849,
+      "path": "contracts/test/AirEvaluator.t.sol",
+      "sha256": "b86a5482e0ac235548678866ffb97025e7e3a39f0ab584fafd175e09325d97ca",
+      "verified": true
+    },
+    {
+      "bytes": 1915,
+      "path": "contracts/test/BabyBear.t.sol",
+      "sha256": "00cc49cfbd3fd201a2e0019cbfc4a120ef298fbbe8f1f7311e64c96cefe878d9",
+      "verified": true
+    },
+    {
+      "bytes": 6780,
+      "path": "contracts/test/HashVectors.t.sol",
+      "sha256": "c1fb6dfe291acb0f7854ff1205d87ab343bcf00618e33fbf8724dca71c0603a3",
+      "verified": true
+    },
+    {
+      "bytes": 6711,
+      "path": "contracts/test/P2BB512.t.sol",
+      "sha256": "12de6c8ff8eb312c02e01be265dcf16d4307f2ebd5af6ed19f9205019cb19bba",
+      "verified": true
+    },
+    {
+      "bytes": 18661,
+      "path": "contracts/test/PQTCClassicPool.t.sol",
+      "sha256": "0f7b47328a3668a5bb0caf1ef0459f0e39e59d2155004a30d529320e5c873d6e",
+      "verified": true
+    },
+    {
+      "bytes": 5009,
+      "path": "contracts/test/PQTCClassicPoolInvariant.t.sol",
+      "sha256": "32e4ab2d4c317d3633abe33ba51d76eca836c5ad2aad46d23b08e5c439240edf",
+      "verified": true
+    },
+    {
+      "bytes": 18228,
+      "path": "contracts/test/StagedVerifier.t.sol",
+      "sha256": "f8a5707247dfe5b4eb98da42eaf353073e71256db8c9f97e6b5c4237c824c125",
+      "verified": true
+    },
+    {
+      "bytes": 6851,
+      "path": "contracts/test/VerifierFoundation.t.sol",
+      "sha256": "d1b96f53fb4443bf981b6553ea745fe78d5fe1239cb369d6feb1e5afcaf4555f",
+      "verified": true
+    },
+    {
+      "bytes": 864,
+      "path": "crates/pqtc-cli/Cargo.toml",
+      "sha256": "3d74f02bf0059aeefab6b752e93a986ab20e415e59c9ebcea94db77ce90f948c",
+      "verified": true
+    },
+    {
+      "bytes": 41315,
+      "path": "crates/pqtc-cli/src/main.rs",
+      "sha256": "33237faccaa91f93981a5a7f799a4f0748c40cd83f3fe39d38e240b690355a94",
+      "verified": true
+    },
+    {
+      "bytes": 439,
+      "path": "crates/pqtc-hash/Cargo.toml",
+      "sha256": "b1e69d03afb27cfbb30dfe53ab0892378d15481b53ec3efb129b9cc4c90ece61",
+      "verified": true
+    },
+    {
+      "bytes": 23669,
+      "path": "crates/pqtc-hash/src/lib.rs",
+      "sha256": "44d0e1f817ffbfd92c65ffee0bb34eb1b5002c4fcce7f88fee75e3661a5266f6",
+      "verified": true
+    },
+    {
+      "bytes": 309,
+      "path": "crates/pqtc-indexer/Cargo.toml",
+      "sha256": "2cc72f6eb0f2af8e1ecdf14df0336cc2613f4da55c5350f9e1bcd554f24c462b",
+      "verified": true
+    },
+    {
+      "bytes": 10178,
+      "path": "crates/pqtc-indexer/src/lib.rs",
+      "sha256": "30f34740b54c72a7eb2d22c9443e0b44ab9688911dc1ecbc494e4e71cd8c9479",
+      "verified": true
+    },
+    {
+      "bytes": 373,
+      "path": "crates/pqtc-merkle/Cargo.toml",
+      "sha256": "b2d2a8a9e78c6f0edddd6c629b7bdc49cf4428b43fc241aa60dcb20956cc0647",
+      "verified": true
+    },
+    {
+      "bytes": 8027,
+      "path": "crates/pqtc-merkle/src/lib.rs",
+      "sha256": "e88b08bede72a6c3d12b582d6bdb2e4f0f073719469a5383579605dcea164609",
+      "verified": true
+    },
+    {
+      "bytes": 603,
+      "path": "crates/pqtc-poseidon-air/Cargo.toml",
+      "sha256": "9adea4eb899121cad7fd644aa9af75f6c73f0ca51c39a17767b24d7d600f7afb",
+      "verified": true
+    },
+    {
+      "bytes": 23561,
+      "path": "crates/pqtc-poseidon-air/src/air.rs",
+      "sha256": "feb6d3a9949b69b55acc20e9b8826e0086bef1f9f7ae296df8ed4cafc61a3c53",
+      "verified": true
+    },
+    {
+      "bytes": 14715,
+      "path": "crates/pqtc-poseidon-air/src/lib.rs",
+      "sha256": "5a25c94d811f4e6004634af887baa5f4c8b53ead18a33db4e0a8868a45811c26",
+      "verified": true
+    },
+    {
+      "bytes": 499,
+      "path": "crates/pqtc-security/Cargo.toml",
+      "sha256": "ccd74b00cf0342facf98c04aca8a4fd5f8b87d063316f6435ebcfcce092d22dd",
+      "verified": true
+    },
+    {
+      "bytes": 13741,
+      "path": "crates/pqtc-security/src/lib.rs",
+      "sha256": "53e97ad9b4da7a472393f681ae86e1ec1a370efd805812d626424df9f2b41df7",
+      "verified": true
+    },
+    {
+      "bytes": 343,
+      "path": "crates/pqtc-spec/Cargo.toml",
+      "sha256": "e9976f9d7be608ed6e03612383489cbdcfca7f08176db8b3f01c12f8cb51b901",
+      "verified": true
+    },
+    {
+      "bytes": 529,
+      "path": "crates/pqtc-spec/src/domains.rs",
+      "sha256": "b020c104d76dac15ef912c8a0891c6eb3e18b61865eed131b5b606ef3d3ec63f",
+      "verified": true
+    },
+    {
+      "bytes": 13445,
+      "path": "crates/pqtc-spec/src/lib.rs",
+      "sha256": "0f6d38b4e028d8162390454fddc6d72d440a6750c1e84ef80655066142d56ec5",
+      "verified": true
+    },
+    {
+      "bytes": 638,
+      "path": "crates/pqtc-stark/Cargo.toml",
+      "sha256": "4d132001a27feb07a0ebe848adfbacbc6b3928eab7229d05d494247f8f751e0b",
+      "verified": true
+    },
+    {
+      "bytes": 41763,
+      "path": "crates/pqtc-stark/src/codec.rs",
+      "sha256": "006e0183d2a259075003ec73e6d2199160cba9a2148b08d46b9611de30d69d94",
+      "verified": true
+    },
+    {
+      "bytes": 9976,
+      "path": "crates/pqtc-stark/src/crypto.rs",
+      "sha256": "4ca0894b4172e8b53d7efed35064426e99c5770cdd4f895dae8aa29ed312091a",
+      "verified": true
+    },
+    {
+      "bytes": 4465,
+      "path": "crates/pqtc-stark/src/lib.rs",
+      "sha256": "eb0166dccf6fe1e8cdcd59f8a94dcfda058dbc4fd73bf5f7925b160c66d6b967",
+      "verified": true
+    },
+    {
+      "bytes": 19575,
+      "path": "crates/pqtc-stark/src/query.rs",
+      "sha256": "feb1b778459660babee3a199cab968f6403874df0a97d1a524baee5f3c8640a2",
+      "verified": true
+    },
+    {
+      "bytes": 768,
+      "path": "packages/sdk/package.json",
+      "sha256": "2fcc6919b555985d6405b809f6fc128ca5c2bf521a677b5bcb395c4d87e2a4bd",
+      "verified": true
+    },
+    {
+      "bytes": 1461,
+      "path": "packages/sdk/src/domains.ts",
+      "sha256": "291575c9a6389628f9187c49bc1d9f350788ad9943132327e98ade2bdc0a5db0",
+      "verified": true
+    },
+    {
+      "bytes": 23917,
+      "path": "packages/sdk/src/index.ts",
+      "sha256": "ad783a94010a598b27d372e7274a96a07ed9a867a8d636ec872775ea6ac34a71",
+      "verified": true
+    },
+    {
+      "bytes": 26676,
+      "path": "packages/sdk/src/relayer.ts",
+      "sha256": "8452c16486935ec7974e8c58b752e1928a63f3bdc77a02c0d259cdb2d36f34ed",
+      "verified": true
+    },
+    {
+      "bytes": 1336,
+      "path": "packages/sdk/test/domains.test.ts",
+      "sha256": "dba50f5867f7c3b008974e2b1571076addb3994b5131ced916f48d46ab789ca4",
+      "verified": true
+    },
+    {
+      "bytes": 13966,
+      "path": "packages/sdk/test/relayer.test.ts",
+      "sha256": "1341666c147255bb3530179af23e16c80596d20a0fa8a17b42c69f93f01b630d",
+      "verified": true
+    },
+    {
+      "bytes": 9671,
+      "path": "packages/sdk/test/vectors.test.ts",
+      "sha256": "7b8718e9f0bc9d8b8c22edf5cdf6c4a141e9a0a52cf345ff9fa28743c17226b2",
+      "verified": true
+    },
+    {
+      "bytes": 347,
+      "path": "packages/sdk/tsconfig.json",
+      "sha256": "a2ff4eb744682b923b5b2d6791abe5f04f21fb8d3ea12c1f2e452fa9de44a95a",
+      "verified": true
+    },
+    {
+      "bytes": 2031,
+      "path": "script/DeploySepolia.s.sol",
+      "sha256": "67e244bb058b1d15ac3a25657323dd2b27413be2a09b4afccbc1e811a0c3497d",
+      "verified": true
+    },
+    {
+      "bytes": 1503,
+      "path": "script/LocalTwoPartE2E.s.sol",
+      "sha256": "c0d158b63f18523af68059b8a3fb9e8110a09d7477b0f7b82ac0bd25ff28db8d",
+      "verified": true
+    },
+    {
+      "bytes": 1550,
+      "path": "script/SubmitTwoPartProof.s.sol",
+      "sha256": "5f17ea132ecf68d43021e0af7b25d56e55896072e805079c7a460c5a094398fc",
+      "verified": true
+    }
+  ],
+  "tag_peel_verified": true
+}

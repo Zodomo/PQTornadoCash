@@ -1,0 +1,27 @@
+{
+  "candidate_id": "C00/v03-baseline",
+  "committed": {
+    "native": "candidate-owned Rust adapter and proof runner",
+    "evm": "nested research-only Foundry project",
+    "scripts": "reproduction and measurement entry points"
+  },
+  "generated_by_generate_all": {
+    "vectors/derived": "fixed and 30 distinct corpus-derived exact inputs",
+    "proofs/v03-*": "60 exact statement/witness/proof/calldata bundles",
+    "research/runs/v03-*.json": "60 root-schema run records",
+    "research/summaries/v03-distribution.csv": "60-row raw distribution"
+  },
+  "generated_by_verification": {
+    "gas/evm": "per-fixture Foundry call traces",
+    "gas/deployment-profile.log": "deployment size/gas output",
+    "gas/second-client.json": "second-client receipts",
+    "gas/opcode-counts.json": "client structLogs opcode counts"
+  },
+  "security": "Owned by the independent research/security-model package; C00 duplicates no calculator",
+  "absent_until_measured": [
+    "gas/evm",
+    "gas/deployment-profile.log",
+    "gas/second-client.json",
+    "gas/opcode-counts.json"
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "artifacts": [
+    {
+      "bytes": 148,
+      "equals_frozen": true,
+      "first_equals_second": true,
+      "path": "parameters/ci/manifest.bin",
+      "sha256": "31d86f7c1cba14f02c376aae8c9d23f16e754ea0f039e90817adf3b6ebdf8112"
+    },
+    {
+      "bytes": 891,
+      "equals_frozen": true,
+      "first_equals_second": true,
+      "path": "parameters/ci/manifest.json",
+      "sha256": "781c5ee70cbf7607a54d809262d0f28c4b3ec48f4e044c7409524e4fd603677b"
+    },
+    {
+      "bytes": 131,
+      "equals_frozen": true,
+      "first_equals_second": true,
+      "path": "parameters/ci/parameter-id.txt",
+      "sha256": "14ee74d203c34e6c2c4d74442afa45c3c1ff85de74735a2207730fe71ca81444"
+    },
+    {
+      "bytes": 278,
+      "equals_frozen": true,
+      "first_equals_second": true,
+      "path": "parameters/ci/security-analysis.json",
+      "sha256": "a17ccc27ff3684d528489a43779389f9cff2a2bcd087d85960a39c36fe001447"
+    },
+    {
+      "bytes": 149,
+      "equals_frozen": true,
+      "first_equals_second": true,
+      "path": "parameters/dev/manifest.bin",
+      "sha256": "2a057502d5157799eeabad5269cf77127e9382d0e0b8d63b235f7f523c58b86a"
+    },
+    {
+      "bytes": 891,
+      "equals_frozen": true,
+      "first_equals_second": true,
+      "path": "parameters/dev/manifest.json",
+      "sha256": "1efbaf8674058400220e34bbf4d1095a90e302e329d7f73c3945826d45f466aa"
+    },
+    {
+      "bytes": 131,
+      "equals_frozen": true,
+      "first_equals_second": true,
+      "path": "parameters/dev/parameter-id.txt",
+      "sha256": "b3de16a9fd29c3a238f141b2b7182e7a9a76cecccfdb3fa17d948bf7a2a6d189"
+    },
+    {
+      "bytes": 274,
+      "equals_frozen": true,
+      "first_equals_second": true,
+      "path": "parameters/dev/security-analysis.json",
+      "sha256": "c627f1d404bc5b64333226dddf7d8e3ee2869855d7ed506c7930c63583c3e6ba"
+    },
+    {
+      "bytes": 158,
+      "equals_frozen": true,
+      "first_equals_second": true,
+      "path": "parameters/sepolia-v0.3/manifest.bin",
+      "sha256": "3c4233b4e316d6725abb416eb78fa543ca987c4dc487ada7e67c463e5ad0d21e"
+    },
+    {
+      "bytes": 903,
+      "equals_frozen": true,
+      "first_equals_second": true,
+      "path": "parameters/sepolia-v0.3/manifest.json",
+      "sha256": "0d891caaddfc6d954655e15cf86e90ed99825c9f060df907c3afabab695b1c42"
+    },
+    {
+      "bytes": 131,
+      "equals_frozen": true,
+      "first_equals_second": true,
+      "path": "parameters/sepolia-v0.3/parameter-id.txt",
+      "sha256": "dc13595b449af2270a79cc8c95d7454f32788e8ca9c0e9aab0f28c1b577521c1"
+    },
+    {
+      "bytes": 279,
+      "equals_frozen": true,
+      "first_equals_second": true,
+      "path": "parameters/sepolia-v0.3/security-analysis.json",
+      "sha256": "790d06863695a6ce591454d564af1822659802f8433bef24f80bfdfd2151458d"
+    }
+  ],
+  "byte_identical": true,
+  "command": "cargo run --locked --offline --quiet -p pqtc-cli -- parameters-generate --out-dir \"$OUT\"",
+  "runs": 2,
+  "status": "PASS"
+}
