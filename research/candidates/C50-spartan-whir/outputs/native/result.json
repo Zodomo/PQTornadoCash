@@ -1,0 +1,62 @@
+{
+  "blocker": {
+    "executable": "circom",
+    "kind": "MISSING_PREREQUISITE"
+  },
+  "candidate_id": "C50",
+  "commands": [
+    "mkdir -p build",
+    "circom example.circom --prime koalabear --r1cs --c -o build",
+    "make -C build/example_cpp",
+    "build/example_cpp/example input.json build/example.wtns",
+    "cargo run --release --features parallel --example end_to_end -- setup build/example.r1cs build/proving-key.bin build/verifying-key.bin",
+    "cargo run --release --features parallel --example end_to_end -- prove build/proving-key.bin build/example.wtns build/proof.bin build/public-inputs.bin",
+    "cargo run --release --features parallel --example end_to_end -- verify build/verifying-key.bin build/public-inputs.bin build/proof.bin"
+  ],
+  "evidence_origin": "LOCAL_REPRODUCTION_OF_PINNED_UPSTREAM",
+  "execution_status": "NOT_EVALUATED",
+  "finished_at": "2026-09-04T18:27:51.222048Z",
+  "gate_status": "PASS_IMPLEMENTATION_MATURITY_ONLY",
+  "license_gate": "BLOCKED_FOR_COPY_OR_REDISTRIBUTION",
+  "pin": "f525cddea38bb605304d3a8e6394dda10ac64b4a",
+  "pqtc_classification": "NOT_PQTC_NO_EXACT_RELATION",
+  "relation": "UPSTREAM_README_EXAMPLE_NOT_FROZEN_H0",
+  "run_type": "native_full_zk_end_to_end",
+  "schema_version": 1,
+  "started_at": "2026-09-04T18:27:51.218433Z",
+  "steps": [
+    {
+      "command": "mkdir -p build",
+      "execution_status": "COMPLETED",
+      "exit_code": 0,
+      "logs": {
+        "stderr": {
+          "path": "research/candidates/C50-spartan-whir/outputs/native/step-01.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "research/candidates/C50-spartan-whir/outputs/native/step-01.stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "blocker": {
+        "executable": "circom",
+        "kind": "MISSING_PREREQUISITE"
+      },
+      "command": "circom example.circom --prime koalabear --r1cs --c -o build",
+      "execution_status": "NOT_EVALUATED",
+      "logs": {
+        "stderr": {
+          "path": "research/candidates/C50-spartan-whir/outputs/native/step-02.stderr.log",
+          "sha256": "655fc2c135d7c6a48e78aeef2d560f30ec5acaebe87b78e18da060162aee6a3c"
+        },
+        "stdout": {
+          "path": "research/candidates/C50-spartan-whir/outputs/native/step-02.stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ]
+}

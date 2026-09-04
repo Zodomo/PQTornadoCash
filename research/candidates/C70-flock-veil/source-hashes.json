@@ -1,0 +1,57 @@
+{
+  "schema": "pqtc.upstream-source-hashes.v1",
+  "candidate_id": "C70",
+  "hash_algorithm": "sha256",
+  "sources": [
+    {
+      "repository": "https://github.com/succinctlabs/flock",
+      "commit": "c2d0c2485a54f7b7694e19f4f59730ffde3405cf",
+      "files": {
+        "crates/flock-prover/benches/keccak3_proof.rs": "965b64f1783814e62afee1a281fbbb33987d86555f3b3f0f5a25f23095f0c616",
+        "crates/flock-prover/src/r1cs_hashes/keccak3.rs": "f3bc3f7cdf477078a135b70b0eeee470d062b5be38bf075e5a59f7efa9dd14bf",
+        "crates/flock-prover/src/prover.rs": "b5cf6523e987ae7e0ba23aaf07a3a3c089e3e724a8cec7b5a90a98b9f4641f7b",
+        "crates/flock-core/src/pcs/ligerito.rs": "1e607b05604c5eb37cd68d9db57a56eb3e44f2e2680f056e4e86e3235494b4a5"
+      }
+    },
+    {
+      "repository": "https://github.com/succinctlabs/flock",
+      "commit": "43f0eee06d887d87ad25d72614cbc2b17fe91430",
+      "files": {
+        "README.md": "76b0b7dc0d73e8b46efb5f7c5f988e9bb8201350d1c871e8ae21cf39e1534ac6"
+      }
+    },
+    {
+      "repository": "https://github.com/succinctlabs/flock",
+      "commit": "0f0d63268e1373c585251e95152b3a6943e2d818",
+      "files": {
+        "README.md": "bd30762ecd358ff16f2989166727c5dba5de345d92fcf8ca92398d51978e46b4"
+      },
+      "negative_tree_assertion": "Keccak encoders and benches absent"
+    },
+    {
+      "repository": "https://github.com/succinctlabs/sp1",
+      "commit": "6d7ee5c091ad19e957a5faa5869de8739a76aa78",
+      "files": {
+        "slop/crates/veil/README.md": "4e40ce525b683fb636a18589509a6d54f3aa8d8d47b488bedb791daa1c3073c8",
+        "slop/crates/veil/src/zk/stacked_pcs/mod.rs": "4723733d119b008f0f67618c0196b63ce2e544adf6030df45a260e4000ec53e8"
+      }
+    }
+  ],
+  "retained_local_evidence": {
+    "outputs/source-check/result.json": "15052ff454c369f614e3ac277b4fb59b32610ba9ae2d8cc952b062e7fd67d096",
+    "outputs/flock-benchmark/result.json": "68e5c32f5df7770715fe7528206455c86559c79e2b4c816c705d3c8289c01723",
+    "outputs/flock-benchmark/stdout.log": "08f298fa09504603823ff50b9d6b05aec1cb37e34c9216592ac1069efc631592",
+    "outputs/flock-benchmark/stderr.log": "9a2da03677f48da394bfbccd4db4512817590187e81e7ca62af41f1960f910c3",
+    "outputs/veil-root/result.json": "af24641cf4857557140b4b2a21dd72c4da9943d38765b209c669fd0c24d571c3",
+    "outputs/veil-root/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "outputs/veil-root/stderr.log": "e1d3f03f8624425b8e329a71c46e650ab5b3d19bc4fa78f31d674d48b3071b12",
+    "outputs/veil-mle/result.json": "fa4726320914108dca77e1ce1a362f86c4ce44c7644db1b5aa663bc81377ad3b",
+    "outputs/veil-mle/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "outputs/veil-mle/stderr.log": "9180d850443aa649165bfe6a0116c54917b0e30fa659bbbd227d2ba0be611d32",
+    "outputs/veil-zerocheck/result.json": "1b41cce330fbbdd4723d8d1f70953208ebab01892040a63b5d13af9ea6793092",
+    "outputs/veil-zerocheck/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "outputs/veil-zerocheck/stderr.log": "5570472d70f1309a7e1a3ed4eec8294360416dd8bdd8081202cd232acdd33c46"
+  },
+  "license": "MIT OR Apache-2.0",
+  "license_gate": "CLEAR_FOR_RESEARCH_RECHECK_BEFORE_DISTRIBUTION"
+}

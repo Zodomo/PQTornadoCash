@@ -1,0 +1,79 @@
+{
+  "schema": "pqtc.upstream-source-hashes.v1",
+  "candidate_id": "C50",
+  "hash_algorithm": "sha256",
+  "sources": [
+    {
+      "repository": "https://github.com/ethereum/spartan-whir",
+      "commit": "f525cddea38bb605304d3a8e6394dda10ac64b4a",
+      "files": {
+        "README.md": "f24b1efa028def2cca4962a646f7aa25c6bc892c9749febad5ead2318d414c49",
+        "src/poseidon.rs": "893ed2475dd9fee42ffe85c271c004f24001e17460bd3168aaff039955ddc2e2",
+        "examples/end_to_end.rs": "472466b4cfdb561ab980ff3df9411aa6de1fe8399f8c5620be75c6b61c7dc952"
+      }
+    },
+    {
+      "repository": "https://github.com/ethereum/sol-spartan-whir",
+      "commit": "b381a9091568d1a4a52b50d0b27488a767051faf",
+      "files": {
+        "README.md": "ee810796b973bf64a58ee432333269235e3de545571367e20d1d7d3ca56d6d5f",
+        "test/FixtureDecode_lir6_ff5_rsv1.t.sol": "95481d156a0429c707ac4974a25dccf77c04302abd942dfe0f2bae1990602a39",
+        ".agents/skills/tx-gas-benchmarking/scripts/run_tx_gas_benchmark.sh": "2da79e4aa2d41e8a6b876f0a176baceb6fb5afd8cd19525420b06c0be0ab9ea6"
+      }
+    },
+    {
+      "repository": "https://github.com/alxkzmn/spartan-whir-export",
+      "commit": "ec7c24f451f208debf86144d45bb3441e9d85cc4",
+      "files": {
+        "README.md": "6a082485d5e294782a779be8ac44c774ecb486912230c08fe2ae72c8a5b9c4cf"
+      }
+    },
+    {
+      "repository": "https://github.com/privacy-ethereum/sol-whir",
+      "commit": "b719b97b5961ac1c1679383b31e55439a26682f9",
+      "role": "authoritative dependency gitlink control from the archived plain-WHIR line",
+      "files": {
+        ".gitmodules": "7f003f2e63268e30c9af3a3e7e06be7eaf672cda69c8cc1b905ecc9131f759c1"
+      },
+      "gitlinks": {
+        "lib/forge-std": "035de35f5e366c8d6ed142aec4ccb57fe2dd87d4",
+        "lib/solady": "513f581675374706dbe947284d6b12d19ce35a2a"
+      }
+    },
+    {
+      "repository": "https://github.com/foundry-rs/forge-std",
+      "commit": "035de35f5e366c8d6ed142aec4ccb57fe2dd87d4",
+      "role": "pinned Foundry test/script dependency",
+      "files": {
+        "src/Test.sol": "242f2494d264bf00515b7bfcb5a3e6cbc3e737d03795105cbf19f68d8b640dd9",
+        "src/Script.sol": "c4de2ae936fa7bb4f4250a3908c6bce7acdc84034156cb252fdc2d9a1c020012",
+        "src/StdJson.sol": "0211b47e93dbeb6a7de6112470a77137038ed73b79b015847f013e49fcd7511f"
+      }
+    },
+    {
+      "repository": "https://github.com/Vectorized/solady",
+      "commit": "513f581675374706dbe947284d6b12d19ce35a2a",
+      "role": "pinned Solidity utility dependency",
+      "files": {
+        "src/utils/LibSort.sol": "ff6fa9e5021aeab6c1491e6f9ae123bf4cc20e4813e9f661640741ef6296e446"
+      }
+    }
+  ],
+  "retained_local_evidence": {
+    "outputs/native/result.json": "9e1a82640a17730c99b30b44ac6852c582cceb195d4610173c95cc7c81d44b56",
+    "outputs/native/step-01.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "outputs/native/step-01.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "outputs/native/step-02.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "outputs/native/step-02.stderr.log": "655fc2c135d7c6a48e78aeef2d560f30ec5acaebe87b78e18da060162aee6a3c",
+    "outputs/source-check/result.json": "965f2d2f49c9624e91fe5fda1a499b8089e5043535085366cd13ec53a4b7ee95",
+    "outputs/solidity/result.json": "47f041697452bd4e9bbd519dc8ed750ce18a1cb02b3633a07abaa37fe07a7333",
+    "outputs/solidity/step-01.stdout.log": "055cd23c865e61352ed1c86e1bb8685353fa965ae9fafceec8ac2bc2a3bce5aa",
+    "outputs/solidity/step-01.stderr.log": "dc2e560de0611d279e23ac36bff8f6792ca4afd9577cbc99eed02eee5ea44548",
+    "outputs/solidity/step-02.stdout.log": "bb2cf5740c338029bc38a6ab4cf2dc292ccc74a1e83f539afcf27b6768a15d54",
+    "outputs/solidity/step-02.stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "outputs/solidity-gas/result.json": "e9bcaaa8d97d643360451e5f90b9b4fec25f6884057af9f81dbe1114d25ac430",
+    "outputs/solidity-gas/stderr.log": "6c0a35829dfba9968648e347569087bff799d015f23e713f476778ff112852ce",
+    "outputs/solidity-gas/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "license_gate": "BLOCKED_FOR_COPY_OR_REDISTRIBUTION"
+}

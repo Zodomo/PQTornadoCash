@@ -1,0 +1,26 @@
+{
+  "schema": "pqtc.backend-assumptions.v1",
+  "package": "emerging",
+  "assumptions": [
+    {
+      "id": "E-A1",
+      "statement": "The frozen v0.3/H0 relation and corpus are the only faithful PQTC relation control.",
+      "consequence": "Generic upstream examples are never labeled PQTC."
+    },
+    {
+      "id": "E-A2",
+      "statement": "Pins, source findings, license gates, and implementation limits in ../landscape are authoritative.",
+      "consequence": "Runners fail on pin or inspected-file hash drift."
+    },
+    {
+      "id": "E-A3",
+      "statement": "Upstream-only measurements require the label UPSTREAM_BASELINE_NOT_PQTC.",
+      "consequence": "No upstream claim can qualify a finalist."
+    },
+    {
+      "id": "E-A4",
+      "statement": "No hiding construction, transcript theorem, cross-version port, Flock adapter, or EVM verifier is invented in this package.",
+      "consequence": "Unmet gates retain DEFERRED or STOP."
+    }
+  ]
+}

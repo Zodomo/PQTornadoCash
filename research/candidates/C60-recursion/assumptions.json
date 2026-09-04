@@ -1,0 +1,26 @@
+{
+  "schema": "pqtc.backend-assumptions.v1",
+  "candidate_id": "C60",
+  "assumptions": [
+    {
+      "id": "C60-A1",
+      "statement": "The mandated Plonky3 line is exactly 0.6.0 at 3152b14a89067c83775a8076cc262ffc48a1fd7c.",
+      "consequence": "The upstream recursion tree's 0.7.0 dependencies are incompatible without an unauthorized port."
+    },
+    {
+      "id": "C60-A2",
+      "statement": "recursive_fibonacci with --zk is a toy architecture smoke, not the frozen v0.3/H0 relation.",
+      "consequence": "No result may be labeled PQTC."
+    },
+    {
+      "id": "C60-A3",
+      "statement": "recursive_keccak uses a non-ZK uni-stark base proof and non-ZK recursive configs.",
+      "consequence": "Supplying --zk does not create privacy evidence."
+    },
+    {
+      "id": "C60-A4",
+      "statement": "No new hiding adapter, recursion composition theorem, transcript binding, or EVM verifier is in scope.",
+      "consequence": "The candidate remains DEFERRED."
+    }
+  ]
+}

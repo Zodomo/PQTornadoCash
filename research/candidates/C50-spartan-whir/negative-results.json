@@ -1,0 +1,63 @@
+{
+  "schema": "pqtc.backend-negative-results.v1",
+  "candidate_id": "C50",
+  "results": [
+    {
+      "id": "C50-N1",
+      "finding": "No exact frozen v0.3/H0 PQTC R1CS or audited public-input binding is supplied by the generic native API.",
+      "effect": "Native example cannot be labeled PQTC."
+    },
+    {
+      "id": "C50-N2",
+      "finding": "The exporter intentionally does not depend on current client-side spartan-whir; checked fixtures use empty public inputs, a zero witness commitment, placeholder sumchecks, and a real standalone plain-WHIR proof.",
+      "effect": "Full EVM Spartan is DEFERRED."
+    },
+    {
+      "id": "C50-N3",
+      "finding": "No matching full-ZK Spartan Solidity verifier or deployable architecture was located; monolithic high-security standalone-WHIR variants exceed EIP-170.",
+      "effect": "No EVM finalist claim."
+    },
+    {
+      "id": "C50-N4",
+      "finding": "No complete LICENSE file or adequate explicit license grant was found at the two ethereum pins.",
+      "effect": "Vendoring, copying, and redistribution are blocked."
+    },
+    {
+      "id": "C50-N5",
+      "finding": "No implementation-specific QROM reduction for the exact transcript and composition was located.",
+      "effect": "No concrete post-quantum security claim."
+    },
+    {
+      "id": "C50-N6",
+      "finding": "The exact pinned transaction-gas script exits at line 95 under nounset because target_contract[@] is unbound.",
+      "effect": "The upstream gas harness is UNEXECUTABLE_UPSTREAM_HARNESS_AT_PIN and gas is NOT_EVALUATED; do not patch or report a local gas number."
+    }
+  ],
+  "retained_evidence": {
+    "standalone_solidity_whir_build_tests": {
+      "disposition": "PASS",
+      "classification": "STANDALONE_WHIR_NOT_SPARTAN_NOT_PQTC",
+      "result": {
+        "path": "outputs/solidity/result.json",
+        "sha256": "47f041697452bd4e9bbd519dc8ed750ce18a1cb02b3633a07abaa37fe07a7333"
+      }
+    },
+    "standalone_solidity_whir_gas": {
+      "disposition": "UNEXECUTABLE_UPSTREAM_HARNESS_AT_PIN",
+      "measurement_status": "NOT_EVALUATED",
+      "classification": "STANDALONE_WHIR_NOT_SPARTAN_NOT_PQTC",
+      "result": {
+        "path": "outputs/solidity-gas/result.json",
+        "sha256": "e9bcaaa8d97d643360451e5f90b9b4fec25f6884057af9f81dbe1114d25ac430"
+      },
+      "stderr": {
+        "path": "outputs/solidity-gas/stderr.log",
+        "sha256": "6c0a35829dfba9968648e347569087bff799d015f23e713f476778ff112852ce"
+      },
+      "stdout": {
+        "path": "outputs/solidity-gas/stdout.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  }
+}

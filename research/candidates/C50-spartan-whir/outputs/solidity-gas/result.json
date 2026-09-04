@@ -1,0 +1,68 @@
+{
+  "candidate_id": "C50",
+  "command": "bash .agents/skills/tx-gas-benchmarking/scripts/run_tx_gas_benchmark.sh script/WhirBlobNativeTxBenchmark_k22_jb100_ext5_lir4_ff4_rsv3_pow28.s.sol",
+  "evidence_origin": "LOCAL_REPRODUCTION_OF_PINNED_UPSTREAM",
+  "execution_status": "FAILED",
+  "exit_code": 1,
+  "finished_at": "2026-09-04T18:42:34.250980Z",
+  "gate_status": "DEFERRED_FULL_EVM_SPARTAN",
+  "license_gate": "BLOCKED_FOR_COPY_OR_REDISTRIBUTION",
+  "logs": {
+    "stderr": {
+      "path": "research/candidates/C50-spartan-whir/outputs/solidity-gas/stderr.log",
+      "sha256": "6c0a35829dfba9968648e347569087bff799d015f23e713f476778ff112852ce"
+    },
+    "stdout": {
+      "path": "research/candidates/C50-spartan-whir/outputs/solidity-gas/stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "pin": "b381a9091568d1a4a52b50d0b27488a767051faf",
+  "pqtc_classification": "STANDALONE_WHIR_NOT_SPARTAN_NOT_PQTC",
+  "run_type": "standalone_solidity_whir_gas",
+  "schema_version": 1,
+  "solidity_dependencies": {
+    "dependencies": {
+      "forge_std": {
+        "commit": "035de35f5e366c8d6ed142aec4ccb57fe2dd87d4",
+        "recursive_submodules": [],
+        "repository": "https://github.com/foundry-rs/forge-std",
+        "verified_files": [
+          {
+            "path": "src/Test.sol",
+            "sha256": "242f2494d264bf00515b7bfcb5a3e6cbc3e737d03795105cbf19f68d8b640dd9"
+          },
+          {
+            "path": "src/Script.sol",
+            "sha256": "c4de2ae936fa7bb4f4250a3908c6bce7acdc84034156cb252fdc2d9a1c020012"
+          },
+          {
+            "path": "src/StdJson.sol",
+            "sha256": "0211b47e93dbeb6a7de6112470a77137038ed73b79b015847f013e49fcd7511f"
+          }
+        ]
+      },
+      "solady": {
+        "commit": "513f581675374706dbe947284d6b12d19ce35a2a",
+        "recursive_submodules": [],
+        "repository": "https://github.com/Vectorized/solady",
+        "verified_files": [
+          {
+            "path": "src/utils/LibSort.sol",
+            "sha256": "ff6fa9e5021aeab6c1491e6f9ae123bf4cc20e4813e9f661640741ef6296e446"
+          }
+        ]
+      }
+    },
+    "pin_source": {
+      "commit": "b719b97b5961ac1c1679383b31e55439a26682f9",
+      "gitlinks": {
+        "lib/forge-std": "035de35f5e366c8d6ed142aec4ccb57fe2dd87d4",
+        "lib/solady": "513f581675374706dbe947284d6b12d19ce35a2a"
+      },
+      "repository": "https://github.com/privacy-ethereum/sol-whir"
+    },
+    "upstream_root_submodules": []
+  },
+  "started_at": "2026-09-04T18:42:34.239045Z"
+}

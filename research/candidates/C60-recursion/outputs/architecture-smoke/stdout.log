@@ -1,0 +1,297 @@
+INFO     ｉ [info]: Recursively proving 1000 Fibonacci iterations with field BabyBear, quintic false, hash Poseidon1
+INFO     run [ 94.1µs | 100.00% ]
+INFO     AluAir::compute_schedule [ 42.0µs | 100.00% ]
+INFO     prove_all_tables [ 68.6ms | 0.19% / 100.00% ]
+INFO     ┝━ ConstAir::build_trace [ 1.12µs | 0.00% ]
+INFO     ┝━ WitnessSendAir::build_trace [ 250ns | 0.00% ]
+INFO     ┝━ AluAir::compute_schedule [ 291ns | 0.00% ]
+INFO     ┝━ AluAir::trace_to_matrix [ 625ns | 0.00% ]
+INFO     ┝━ ｉ [info]: AIR shape | table: "CONST" | main_cols: 1 | prep_cols: 2 | rows: 1000
+INFO     ┝━ ｉ [info]: AIR shape | table: "PUBLIC" | main_cols: 1 | prep_cols: 2 | rows: 1
+INFO     ┝━ ｉ [info]: AIR shape | table: "ALU" | main_cols: 7 | prep_cols: 20 | rows: 1 | lanes: 1
+INFO     ┕━ prove_batch [ 68.4ms | 80.32% / 99.80% ]
+INFO        ┝━ infer log of constraint degree [ 3.21µs | 0.00% ] air_idx: 0
+INFO        ┝━ infer log of constraint degree [ 1.79µs | 0.00% ] air_idx: 1
+INFO        ┝━ infer log of constraint degree [ 15.9µs | 0.02% ] air_idx: 2
+INFO        ┝━ randomize polys [ 70.9µs | 0.10% ]
+INFO        ┝━ randomize polys [ 103µs | 0.15% ]
+INFO        ┝━ compute quotient [ 2.37ms | 3.45% ] air_idx: 0
+INFO        ┝━ compute quotient [ 464µs | 0.68% ] air_idx: 1
+INFO        ┝━ compute quotient [ 1.47ms | 2.15% ] air_idx: 2
+INFO        ┝━ compute_inverse_denominators [ 248µs | 0.36% ]
+INFO        ┕━ FRI prover [ 8.61ms | 8.05% / 12.56% ]
+INFO           ┝━ commit phase [ 2.86ms | 4.17% ]
+INFO           ┕━ query phase [ 236µs | 0.34% ]
+Proof size: 127727 bytes
+INFO     verify_batch [ 4.26ms | 97.93% / 100.00% ]
+INFO     ┝━ infer log of constraint degree [ 2.29µs | 0.05% ] air_idx: 0
+INFO     ┝━ infer log of constraint degree [ 1.04µs | 0.02% ] air_idx: 1
+INFO     ┝━ infer log of constraint degree [ 9.96µs | 0.23% ] air_idx: 2
+INFO     ┝━ verify constraints [ 53.0µs | 1.24% ] air_idx: 0
+INFO     ┝━ verify constraints [ 2.83µs | 0.07% ] air_idx: 1
+INFO     ┕━ verify constraints [ 19.0µs | 0.45% ] air_idx: 2
+INFO     build_next_layer_circuit [ 13.5ms | 100.00% / 100.00% ]
+INFO     ┕━ AluAir::compute_schedule [ 167ns | 0.00% ]
+INFO     prove_next_layer [ 3.54s | 14.99% / 100.00% ]
+INFO     ┝━ AluAir::compute_schedule [ 308µs | 0.01% ]
+INFO     ┝━ AluAir::compute_schedule [ 250ns | 0.00% ]
+INFO     ┝━ run [ 7.88ms | 0.22% ]
+INFO     ┕━ prove_all_tables [ 3.00s | 0.11% / 84.77% ]
+INFO        ┝━ ConstAir::build_trace [ 10.0µs | 0.00% ]
+INFO        ┝━ WitnessSendAir::build_trace [ 541ns | 0.00% ]
+INFO        ┝━ AluAir::compute_schedule [ 455µs | 0.01% ]
+INFO        ┝━ AluAir::trace_to_matrix [ 520µs | 0.01% ]
+INFO        ┝━ Poseidon1CircuitAir::build_trace [ 370µs | 0.01% ]
+INFO        ┝━ Poseidon1CircuitAir::build_trace [ 11.2ms | 0.32% ]
+INFO        ┝━ RecomposeAir::build_trace [ 8.50µs | 0.00% ]
+INFO        ┝━ ｉ [info]: AIR shape | table: "CONST" | main_cols: 4 | prep_cols: 2 | rows: 84
+INFO        ┝━ ｉ [info]: AIR shape | table: "PUBLIC" | main_cols: 4 | prep_cols: 2 | rows: 103
+INFO        ┝━ ｉ [info]: AIR shape | table: "ALU" | main_cols: 80 | prep_cols: 60 | rows: 11504 | lanes: 3
+INFO        ┝━ ｉ [info]: AIR shape | table: NpoTypeId(poseidon1_perm/baby_bear_d4_w16_challenger) | main_cols: 300 | prep_cols: 24 | rows: 168 | lanes: 1
+INFO        ┝━ ｉ [info]: AIR shape | table: NpoTypeId(poseidon1_perm/baby_bear_d4_w16) | main_cols: 300 | prep_cols: 24 | rows: 7020 | lanes: 1
+INFO        ┝━ ｉ [info]: AIR shape | table: NpoTypeId(recompose/coeff) | main_cols: 4 | prep_cols: 10 | rows: 1621 | lanes: 1
+INFO        ┕━ prove_batch [ 2.99s | 69.76% / 84.31% ]
+INFO           ┝━ infer log of constraint degree [ 8.42µs | 0.00% ] air_idx: 0
+INFO           ┝━ infer log of constraint degree [ 2.00µs | 0.00% ] air_idx: 1
+INFO           ┝━ infer log of constraint degree [ 76.4µs | 0.00% ] air_idx: 2
+INFO           ┝━ infer log of constraint degree [ 217µs | 0.01% ] air_idx: 3
+INFO           ┝━ infer log of constraint degree [ 178µs | 0.01% ] air_idx: 4
+INFO           ┝━ infer log of constraint degree [ 5.88µs | 0.00% ] air_idx: 5
+INFO           ┝━ randomize polys [ 13.0ms | 0.37% ]
+INFO           ┝━ randomize polys [ 2.48ms | 0.07% ]
+INFO           ┝━ compute quotient [ 506µs | 0.01% ] air_idx: 0
+INFO           ┝━ compute quotient [ 445µs | 0.01% ] air_idx: 1
+INFO           ┝━ compute quotient [ 287ms | 8.11% ] air_idx: 2
+INFO           ┝━ compute quotient [ 3.59ms | 0.10% ] air_idx: 3
+INFO           ┝━ compute quotient [ 123ms | 3.48% ] air_idx: 4
+INFO           ┝━ compute quotient [ 6.60ms | 0.19% ] air_idx: 5
+INFO           ┝━ compute_inverse_denominators [ 4.43ms | 0.13% ]
+INFO           ┕━ FRI prover [ 73.5ms | 0.14% / 2.07% ]
+INFO              ┝━ commit phase [ 67.6ms | 1.91% ]
+INFO              ┕━ query phase [ 905µs | 0.03% ]
+Proof size: 453090 bytes
+INFO     verify_batch [ 19.1ms | 96.87% / 100.00% ]
+INFO     ┝━ infer log of constraint degree [ 2.67µs | 0.01% ] air_idx: 0
+INFO     ┝━ infer log of constraint degree [ 1.62µs | 0.01% ] air_idx: 1
+INFO     ┝━ infer log of constraint degree [ 57.1µs | 0.30% ] air_idx: 2
+INFO     ┝━ infer log of constraint degree [ 197µs | 1.03% ] air_idx: 3
+INFO     ┝━ infer log of constraint degree [ 192µs | 1.01% ] air_idx: 4
+INFO     ┝━ infer log of constraint degree [ 5.08µs | 0.03% ] air_idx: 5
+INFO     ┝━ verify constraints [ 8.38µs | 0.04% ] air_idx: 0
+INFO     ┝━ verify constraints [ 2.54µs | 0.01% ] air_idx: 1
+INFO     ┝━ verify constraints [ 42.9µs | 0.22% ] air_idx: 2
+INFO     ┝━ verify constraints [ 65.7µs | 0.34% ] air_idx: 3
+INFO     ┝━ verify constraints [ 18.0µs | 0.09% ] air_idx: 4
+INFO     ┕━ verify constraints [ 4.58µs | 0.02% ] air_idx: 5
+INFO     build_next_layer_circuit [ 79.4ms | 99.88% / 100.00% ]
+INFO     ┕━ AluAir::compute_schedule [ 97.8µs | 0.12% ]
+INFO     prove_next_layer [ 14.9s | 14.49% / 100.00% ]
+INFO     ┝━ AluAir::compute_schedule [ 1.69ms | 0.01% ]
+INFO     ┝━ AluAir::compute_schedule [ 35.2µs | 0.00% ]
+INFO     ┝━ run [ 24.6ms | 0.16% ]
+INFO     ┕━ prove_all_tables [ 12.7s | 0.08% / 85.33% ]
+INFO        ┝━ ConstAir::build_trace [ 2.21µs | 0.00% ]
+INFO        ┝━ WitnessSendAir::build_trace [ 458ns | 0.00% ]
+INFO        ┝━ AluAir::compute_schedule [ 1.51ms | 0.01% ]
+INFO        ┝━ AluAir::trace_to_matrix [ 2.05ms | 0.01% ]
+INFO        ┝━ Poseidon1CircuitAir::build_trace [ 3.58ms | 0.02% ]
+INFO        ┝━ Poseidon1CircuitAir::build_trace [ 58.3ms | 0.39% ]
+INFO        ┝━ RecomposeAir::build_trace [ 46.7µs | 0.00% ]
+INFO        ┝━ ｉ [info]: AIR shape | table: "CONST" | main_cols: 4 | prep_cols: 2 | rows: 797
+INFO        ┝━ ｉ [info]: AIR shape | table: "PUBLIC" | main_cols: 4 | prep_cols: 2 | rows: 133
+INFO        ┝━ ｉ [info]: AIR shape | table: "ALU" | main_cols: 80 | prep_cols: 60 | rows: 45548 | lanes: 3
+INFO        ┝━ ｉ [info]: AIR shape | table: NpoTypeId(poseidon1_perm/baby_bear_d4_w16_challenger) | main_cols: 300 | prep_cols: 24 | rows: 1108 | lanes: 1
+INFO        ┝━ ｉ [info]: AIR shape | table: NpoTypeId(poseidon1_perm/baby_bear_d4_w16) | main_cols: 300 | prep_cols: 24 | rows: 18090 | lanes: 1
+INFO        ┝━ ｉ [info]: AIR shape | table: NpoTypeId(recompose/coeff) | main_cols: 4 | prep_cols: 10 | rows: 10988 | lanes: 1
+INFO        ┕━ prove_batch [ 12.6s | 70.15% / 84.81% ]
+INFO           ┝━ infer log of constraint degree [ 8.75µs | 0.00% ] air_idx: 0
+INFO           ┝━ infer log of constraint degree [ 2.12µs | 0.00% ] air_idx: 1
+INFO           ┝━ infer log of constraint degree [ 71.4µs | 0.00% ] air_idx: 2
+INFO           ┝━ infer log of constraint degree [ 207µs | 0.00% ] air_idx: 3
+INFO           ┝━ infer log of constraint degree [ 184µs | 0.00% ] air_idx: 4
+INFO           ┝━ infer log of constraint degree [ 5.71µs | 0.00% ] air_idx: 5
+INFO           ┝━ randomize polys [ 55.5ms | 0.37% ]
+INFO           ┝━ randomize polys [ 10.5ms | 0.07% ]
+INFO           ┝━ compute quotient [ 2.03ms | 0.01% ] air_idx: 0
+INFO           ┝━ compute quotient [ 442µs | 0.00% ] air_idx: 1
+INFO           ┝━ compute quotient [ 1.11s | 7.47% ] air_idx: 2
+INFO           ┝━ compute quotient [ 28.5ms | 0.19% ] air_idx: 3
+INFO           ┝━ compute quotient [ 540ms | 3.62% ] air_idx: 4
+INFO           ┝━ compute quotient [ 69.1ms | 0.46% ] air_idx: 5
+INFO           ┝━ compute_inverse_denominators [ 18.1ms | 0.12% ]
+INFO           ┕━ FRI prover [ 348ms | 0.09% / 2.34% ]
+INFO              ┝━ commit phase [ 335ms | 2.25% ]
+INFO              ┕━ query phase [ 543µs | 0.00% ]
+Proof size: 509507 bytes
+INFO     verify_batch [ 16.1ms | 96.92% / 100.00% ]
+INFO     ┝━ infer log of constraint degree [ 2.50µs | 0.02% ] air_idx: 0
+INFO     ┝━ infer log of constraint degree [ 1.42µs | 0.01% ] air_idx: 1
+INFO     ┝━ infer log of constraint degree [ 52.7µs | 0.33% ] air_idx: 2
+INFO     ┝━ infer log of constraint degree [ 181µs | 1.12% ] air_idx: 3
+INFO     ┝━ infer log of constraint degree [ 171µs | 1.06% ] air_idx: 4
+INFO     ┝━ infer log of constraint degree [ 4.71µs | 0.03% ] air_idx: 5
+INFO     ┝━ verify constraints [ 8.33µs | 0.05% ] air_idx: 0
+INFO     ┝━ verify constraints [ 3.62µs | 0.02% ] air_idx: 1
+INFO     ┝━ verify constraints [ 22.3µs | 0.14% ] air_idx: 2
+INFO     ┝━ verify constraints [ 20.5µs | 0.13% ] air_idx: 3
+INFO     ┝━ verify constraints [ 22.7µs | 0.14% ] air_idx: 4
+INFO     ┕━ verify constraints [ 5.62µs | 0.03% ] air_idx: 5
+INFO     build_next_layer_circuit [ 65.3ms | 99.50% / 100.00% ]
+INFO     ┕━ AluAir::compute_schedule [ 326µs | 0.50% ]
+INFO     prove_next_layer [ 15.4s | 14.54% / 100.00% ]
+INFO     ┝━ AluAir::compute_schedule [ 1.52ms | 0.01% ]
+INFO     ┝━ AluAir::compute_schedule [ 175µs | 0.00% ]
+INFO     ┝━ run [ 27.9ms | 0.18% ]
+INFO     ┕━ prove_all_tables [ 13.1s | 0.07% / 85.26% ]
+INFO        ┝━ ConstAir::build_trace [ 2.25µs | 0.00% ]
+INFO        ┝━ WitnessSendAir::build_trace [ 542ns | 0.00% ]
+INFO        ┝━ AluAir::compute_schedule [ 1.72ms | 0.01% ]
+INFO        ┝━ AluAir::trace_to_matrix [ 2.06ms | 0.01% ]
+INFO        ┝━ Poseidon1CircuitAir::build_trace [ 3.24ms | 0.02% ]
+INFO        ┝━ Poseidon1CircuitAir::build_trace [ 47.0ms | 0.31% ]
+INFO        ┝━ RecomposeAir::build_trace [ 45.3µs | 0.00% ]
+INFO        ┝━ ｉ [info]: AIR shape | table: "CONST" | main_cols: 4 | prep_cols: 2 | rows: 807
+INFO        ┝━ ｉ [info]: AIR shape | table: "PUBLIC" | main_cols: 4 | prep_cols: 2 | rows: 151
+INFO        ┝━ ｉ [info]: AIR shape | table: "ALU" | main_cols: 80 | prep_cols: 60 | rows: 47244 | lanes: 3
+INFO        ┝━ ｉ [info]: AIR shape | table: NpoTypeId(poseidon1_perm/baby_bear_d4_w16_challenger) | main_cols: 300 | prep_cols: 24 | rows: 1111 | lanes: 1
+INFO        ┝━ ｉ [info]: AIR shape | table: NpoTypeId(poseidon1_perm/baby_bear_d4_w16) | main_cols: 300 | prep_cols: 24 | rows: 21330 | lanes: 1
+INFO        ┝━ ｉ [info]: AIR shape | table: NpoTypeId(recompose/coeff) | main_cols: 4 | prep_cols: 10 | rows: 11012 | lanes: 1
+INFO        ┕━ prove_batch [ 13.0s | 68.81% / 84.84% ]
+INFO           ┝━ infer log of constraint degree [ 15.2µs | 0.00% ] air_idx: 0
+INFO           ┝━ infer log of constraint degree [ 2.08µs | 0.00% ] air_idx: 1
+INFO           ┝━ infer log of constraint degree [ 83.8µs | 0.00% ] air_idx: 2
+INFO           ┝━ infer log of constraint degree [ 281µs | 0.00% ] air_idx: 3
+INFO           ┝━ infer log of constraint degree [ 230µs | 0.00% ] air_idx: 4
+INFO           ┝━ infer log of constraint degree [ 7.00µs | 0.00% ] air_idx: 5
+INFO           ┝━ randomize polys [ 57.7ms | 0.38% ]
+INFO           ┝━ randomize polys [ 11.9ms | 0.08% ]
+INFO           ┝━ compute quotient [ 2.15ms | 0.01% ] air_idx: 0
+INFO           ┝━ compute quotient [ 505µs | 0.00% ] air_idx: 1
+INFO           ┝━ compute quotient [ 1.38s | 8.98% ] air_idx: 2
+INFO           ┝━ compute quotient [ 29.4ms | 0.19% ] air_idx: 3
+INFO           ┝━ compute quotient [ 545ms | 3.54% ] air_idx: 4
+INFO           ┝━ compute quotient [ 72.2ms | 0.47% ] air_idx: 5
+INFO           ┝━ compute_inverse_denominators [ 26.6ms | 0.17% ]
+INFO           ┕━ FRI prover [ 338ms | 0.04% / 2.20% ]
+INFO              ┝━ commit phase [ 332ms | 2.16% ]
+INFO              ┕━ query phase [ 555µs | 0.00% ]
+Proof size: 510403 bytes
+INFO     verify_batch [ 16.6ms | 96.44% / 100.00% ]
+INFO     ┝━ infer log of constraint degree [ 2.50µs | 0.02% ] air_idx: 0
+INFO     ┝━ infer log of constraint degree [ 1.50µs | 0.01% ] air_idx: 1
+INFO     ┝━ infer log of constraint degree [ 59.1µs | 0.36% ] air_idx: 2
+INFO     ┝━ infer log of constraint degree [ 222µs | 1.34% ] air_idx: 3
+INFO     ┝━ infer log of constraint degree [ 220µs | 1.33% ] air_idx: 4
+INFO     ┝━ infer log of constraint degree [ 6.33µs | 0.04% ] air_idx: 5
+INFO     ┝━ verify constraints [ 8.29µs | 0.05% ] air_idx: 0
+INFO     ┝━ verify constraints [ 3.00µs | 0.02% ] air_idx: 1
+INFO     ┝━ verify constraints [ 20.0µs | 0.12% ] air_idx: 2
+INFO     ┝━ verify constraints [ 22.2µs | 0.13% ] air_idx: 3
+INFO     ┝━ verify constraints [ 20.0µs | 0.12% ] air_idx: 4
+INFO     ┕━ verify constraints [ 4.71µs | 0.03% ] air_idx: 5
+INFO     build_next_layer_circuit [ 72.3ms | 99.69% / 100.00% ]
+INFO     ┕━ AluAir::compute_schedule [ 226µs | 0.31% ]
+INFO     build_next_layer_prep [ 2.19s | 99.94% / 100.00% ]
+INFO     ┕━ AluAir::compute_schedule [ 1.36ms | 0.06% ]
+INFO     prove_next_layer [ 12.8s | 0.27% / 100.00% ]
+INFO     ┝━ AluAir::compute_schedule [ 198µs | 0.00% ]
+INFO     ┝━ run [ 26.9ms | 0.21% ]
+INFO     ┕━ prove_all_tables [ 12.7s | 0.08% / 99.52% ]
+INFO        ┝━ ConstAir::build_trace [ 1.75µs | 0.00% ]
+INFO        ┝━ WitnessSendAir::build_trace [ 541ns | 0.00% ]
+INFO        ┝━ AluAir::compute_schedule [ 1.49ms | 0.01% ]
+INFO        ┝━ AluAir::trace_to_matrix [ 1.88ms | 0.01% ]
+INFO        ┝━ Poseidon1CircuitAir::build_trace [ 3.02ms | 0.02% ]
+INFO        ┝━ Poseidon1CircuitAir::build_trace [ 45.9ms | 0.36% ]
+INFO        ┝━ RecomposeAir::build_trace [ 44.4µs | 0.00% ]
+INFO        ┝━ ｉ [info]: AIR shape | table: "CONST" | main_cols: 4 | prep_cols: 2 | rows: 807
+INFO        ┝━ ｉ [info]: AIR shape | table: "PUBLIC" | main_cols: 4 | prep_cols: 2 | rows: 151
+INFO        ┝━ ｉ [info]: AIR shape | table: "ALU" | main_cols: 80 | prep_cols: 60 | rows: 47244 | lanes: 3
+INFO        ┝━ ｉ [info]: AIR shape | table: NpoTypeId(poseidon1_perm/baby_bear_d4_w16_challenger) | main_cols: 300 | prep_cols: 24 | rows: 1111 | lanes: 1
+INFO        ┝━ ｉ [info]: AIR shape | table: NpoTypeId(poseidon1_perm/baby_bear_d4_w16) | main_cols: 300 | prep_cols: 24 | rows: 21330 | lanes: 1
+INFO        ┝━ ｉ [info]: AIR shape | table: NpoTypeId(recompose/coeff) | main_cols: 4 | prep_cols: 10 | rows: 11012 | lanes: 1
+INFO        ┕━ prove_batch [ 12.7s | 81.99% / 99.03% ]
+INFO           ┝━ infer log of constraint degree [ 8.58µs | 0.00% ] air_idx: 0
+INFO           ┝━ infer log of constraint degree [ 1.96µs | 0.00% ] air_idx: 1
+INFO           ┝━ infer log of constraint degree [ 67.5µs | 0.00% ] air_idx: 2
+INFO           ┝━ infer log of constraint degree [ 207µs | 0.00% ] air_idx: 3
+INFO           ┝━ infer log of constraint degree [ 176µs | 0.00% ] air_idx: 4
+INFO           ┝━ infer log of constraint degree [ 5.67µs | 0.00% ] air_idx: 5
+INFO           ┝━ randomize polys [ 54.4ms | 0.42% ]
+INFO           ┝━ randomize polys [ 23.1ms | 0.18% ]
+INFO           ┝━ compute quotient [ 2.11ms | 0.02% ] air_idx: 0
+INFO           ┝━ compute quotient [ 437µs | 0.00% ] air_idx: 1
+INFO           ┝━ compute quotient [ 1.14s | 8.91% ] air_idx: 2
+INFO           ┝━ compute quotient [ 28.3ms | 0.22% ] air_idx: 3
+INFO           ┝━ compute quotient [ 514ms | 4.02% ] air_idx: 4
+INFO           ┝━ compute quotient [ 68.1ms | 0.53% ] air_idx: 5
+INFO           ┝━ compute_inverse_denominators [ 17.8ms | 0.14% ]
+INFO           ┕━ FRI prover [ 330ms | 0.04% / 2.58% ]
+INFO              ┝━ commit phase [ 325ms | 2.54% ]
+INFO              ┕━ query phase [ 472µs | 0.00% ]
+Proof size: 510211 bytes
+INFO     verify_batch [ 16.8ms | 96.74% / 100.00% ]
+INFO     ┝━ infer log of constraint degree [ 2.92µs | 0.02% ] air_idx: 0
+INFO     ┝━ infer log of constraint degree [ 1.38µs | 0.01% ] air_idx: 1
+INFO     ┝━ infer log of constraint degree [ 60.4µs | 0.36% ] air_idx: 2
+INFO     ┝━ infer log of constraint degree [ 196µs | 1.17% ] air_idx: 3
+INFO     ┝━ infer log of constraint degree [ 209µs | 1.24% ] air_idx: 4
+INFO     ┝━ infer log of constraint degree [ 5.62µs | 0.03% ] air_idx: 5
+INFO     ┝━ verify constraints [ 8.12µs | 0.05% ] air_idx: 0
+INFO     ┝━ verify constraints [ 3.04µs | 0.02% ] air_idx: 1
+INFO     ┝━ verify constraints [ 19.9µs | 0.12% ] air_idx: 2
+INFO     ┝━ verify constraints [ 19.6µs | 0.12% ] air_idx: 3
+INFO     ┝━ verify constraints [ 18.1µs | 0.11% ] air_idx: 4
+INFO     ┕━ verify constraints [ 4.38µs | 0.03% ] air_idx: 5
+INFO     build_next_layer_circuit [ 65.5ms | 98.53% / 100.00% ]
+INFO     ┕━ AluAir::compute_schedule [ 961µs | 1.47% ]
+INFO     prove_next_layer [ 13.0s | 0.27% / 100.00% ]
+INFO     ┝━ AluAir::compute_schedule [ 203µs | 0.00% ]
+INFO     ┝━ run [ 34.4ms | 0.27% ]
+INFO     ┕━ prove_all_tables [ 12.9s | 0.10% / 99.47% ]
+INFO        ┝━ ConstAir::build_trace [ 2.58µs | 0.00% ]
+INFO        ┝━ WitnessSendAir::build_trace [ 917ns | 0.00% ]
+INFO        ┝━ AluAir::trace_to_matrix [ 3.63ms | 0.03% ]
+INFO        ┝━ Poseidon1CircuitAir::build_trace [ 4.87ms | 0.04% ]
+INFO        ┝━ Poseidon1CircuitAir::build_trace [ 57.7ms | 0.45% ]
+INFO        ┝━ RecomposeAir::build_trace [ 55.4µs | 0.00% ]
+INFO        ┝━ ｉ [info]: AIR shape | table: "CONST" | main_cols: 4 | prep_cols: 2 | rows: 807
+INFO        ┝━ ｉ [info]: AIR shape | table: "PUBLIC" | main_cols: 4 | prep_cols: 2 | rows: 151
+INFO        ┝━ ｉ [info]: AIR shape | table: "ALU" | main_cols: 80 | prep_cols: 60 | rows: 47244 | lanes: 3
+INFO        ┝━ ｉ [info]: AIR shape | table: NpoTypeId(poseidon1_perm/baby_bear_d4_w16_challenger) | main_cols: 300 | prep_cols: 24 | rows: 1111 | lanes: 1
+INFO        ┝━ ｉ [info]: AIR shape | table: NpoTypeId(poseidon1_perm/baby_bear_d4_w16) | main_cols: 300 | prep_cols: 24 | rows: 21330 | lanes: 1
+INFO        ┝━ ｉ [info]: AIR shape | table: NpoTypeId(recompose/coeff) | main_cols: 4 | prep_cols: 10 | rows: 11012 | lanes: 1
+INFO        ┕━ prove_batch [ 12.8s | 81.75% / 98.86% ]
+INFO           ┝━ infer log of constraint degree [ 9.33µs | 0.00% ] air_idx: 0
+INFO           ┝━ infer log of constraint degree [ 2.08µs | 0.00% ] air_idx: 1
+INFO           ┝━ infer log of constraint degree [ 74.9µs | 0.00% ] air_idx: 2
+INFO           ┝━ infer log of constraint degree [ 226µs | 0.00% ] air_idx: 3
+INFO           ┝━ infer log of constraint degree [ 184µs | 0.00% ] air_idx: 4
+INFO           ┝━ infer log of constraint degree [ 5.46µs | 0.00% ] air_idx: 5
+INFO           ┝━ randomize polys [ 56.1ms | 0.43% ]
+INFO           ┝━ randomize polys [ 11.1ms | 0.09% ]
+INFO           ┝━ compute quotient [ 1.96ms | 0.02% ] air_idx: 0
+INFO           ┝━ compute quotient [ 418µs | 0.00% ] air_idx: 1
+INFO           ┝━ compute quotient [ 1.13s | 8.69% ] air_idx: 2
+INFO           ┝━ compute quotient [ 28.7ms | 0.22% ] air_idx: 3
+INFO           ┝━ compute quotient [ 535ms | 4.13% ] air_idx: 4
+INFO           ┝━ compute quotient [ 69.2ms | 0.53% ] air_idx: 5
+INFO           ┝━ compute_inverse_denominators [ 18.6ms | 0.14% ]
+INFO           ┕━ FRI prover [ 368ms | 0.28% / 2.84% ]
+INFO              ┝━ commit phase [ 331ms | 2.56% ]
+INFO              ┕━ query phase [ 410µs | 0.00% ]
+Proof size: 506371 bytes
+INFO     verify_batch [ 16.3ms | 96.80% / 100.00% ]
+INFO     ┝━ infer log of constraint degree [ 2.42µs | 0.01% ] air_idx: 0
+INFO     ┝━ infer log of constraint degree [ 1.38µs | 0.01% ] air_idx: 1
+INFO     ┝━ infer log of constraint degree [ 53.2µs | 0.33% ] air_idx: 2
+INFO     ┝━ infer log of constraint degree [ 195µs | 1.20% ] air_idx: 3
+INFO     ┝━ infer log of constraint degree [ 187µs | 1.15% ] air_idx: 4
+INFO     ┝━ infer log of constraint degree [ 4.83µs | 0.03% ] air_idx: 5
+INFO     ┝━ verify constraints [ 9.46µs | 0.06% ] air_idx: 0
+INFO     ┝━ verify constraints [ 3.58µs | 0.02% ] air_idx: 1
+INFO     ┝━ verify constraints [ 22.7µs | 0.14% ] air_idx: 2
+INFO     ┝━ verify constraints [ 19.5µs | 0.12% ] air_idx: 3
+INFO     ┝━ verify constraints [ 18.5µs | 0.11% ] air_idx: 4
+INFO     ┕━ verify constraints [ 4.54µs | 0.03% ] air_idx: 5
+INFO     ｉ [info]: Recursive proof verified successfully

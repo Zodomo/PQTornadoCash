@@ -1,0 +1,27 @@
+{
+  "candidate_id": "C60",
+  "command": "cargo run --profile optimized --example recursive_fibonacci -- --field baby-bear --hash poseidon1 --n 1000 --num-recursive-layers 5 --zk",
+  "dependency_gate": "PLONKY3_0_7_INCOMPATIBLE_WITH_MANDATED_0_6",
+  "evidence_origin": "LOCAL_REPRODUCTION_OF_PINNED_UPSTREAM",
+  "evm_verifier": false,
+  "execution_status": "COMPLETED",
+  "exit_code": 0,
+  "finished_at": "2026-09-04T18:30:56.079725Z",
+  "gate_status": "DEFERRED",
+  "logs": {
+    "stderr": {
+      "path": "research/candidates/C60-recursion/outputs/architecture-smoke/stderr.log",
+      "sha256": "17345a2647aab16e6e4402eab371e454799d659114ad9c0bf78de462e5e451d2"
+    },
+    "stdout": {
+      "path": "research/candidates/C60-recursion/outputs/architecture-smoke/stdout.log",
+      "sha256": "bf488d521519615b896cd00e1749cfd6ebc13ca9c2102aaf8ec63b669fe3dbb4"
+    }
+  },
+  "pin": "34e3a2c3837834a7bf98a0b65063e0180e7fbb7b",
+  "pqtc_classification": "UPSTREAM_ARCHITECTURE_SMOKE_NOT_PQTC",
+  "relation": "TOY_FIBONACCI_NOT_PQTC",
+  "run_type": "recursive_fibonacci_zk_architecture_smoke",
+  "schema_version": 1,
+  "started_at": "2026-09-04T18:28:46.745152Z"
+}

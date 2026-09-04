@@ -1,0 +1,65 @@
+{
+  "batch_capacity": {
+    "capacity_permutations": 48,
+    "derivation": "ceil(44/3)=15 blocks; next power of two is 16; 16*3=48 slots; 48-44=4 valid all-zero permutations",
+    "dummy_zero_permutations": 4,
+    "evidence_label": "UPSTREAM_BASELINE_NOT_PQTC",
+    "requested_permutations": 44,
+    "rounded_slots": 16,
+    "three_wide_blocks": 15
+  },
+  "candidate_id": "C70",
+  "evidence_origin": "LOCAL_SOURCE_CHECK_OF_PINNED_UPSTREAM",
+  "evm_paths": [],
+  "evm_verifier": false,
+  "gate_status": {
+    "flock": "STOP",
+    "veil": "DEFERRED"
+  },
+  "keccak_current": false,
+  "pins": {
+    "flock_keccak_parent": "c2d0c2485a54f7b7694e19f4f59730ffde3405cf",
+    "flock_keccak_removal": "0f0d63268e1373c585251e95152b3a6943e2d818",
+    "flock_release": "43f0eee06d887d87ad25d72614cbc2b17fe91430",
+    "veil": "6d7ee5c091ad19e957a5faa5869de8739a76aa78"
+  },
+  "pqtc_classification": "NOT_PQTC",
+  "run_type": "source_check",
+  "schema_version": 1,
+  "veil_adapter": "KOALABEAR_DEGREE4_STACKED_PCS_NOT_FLOCK_BINARY_FIELD_LIGERITO",
+  "verified_files": {
+    "historical": [
+      {
+        "path": "crates/flock-prover/benches/keccak3_proof.rs",
+        "sha256": "965b64f1783814e62afee1a281fbbb33987d86555f3b3f0f5a25f23095f0c616"
+      },
+      {
+        "path": "crates/flock-prover/src/r1cs_hashes/keccak3.rs",
+        "sha256": "f3bc3f7cdf477078a135b70b0eeee470d062b5be38bf075e5a59f7efa9dd14bf"
+      }
+    ],
+    "release": [
+      {
+        "path": "README.md",
+        "sha256": "76b0b7dc0d73e8b46efb5f7c5f988e9bb8201350d1c871e8ae21cf39e1534ac6"
+      }
+    ],
+    "removal": [
+      {
+        "path": "README.md",
+        "sha256": "bd30762ecd358ff16f2989166727c5dba5de345d92fcf8ca92398d51978e46b4"
+      }
+    ],
+    "veil": [
+      {
+        "path": "slop/crates/veil/README.md",
+        "sha256": "4e40ce525b683fb636a18589509a6d54f3aa8d8d47b488bedb791daa1c3073c8"
+      },
+      {
+        "path": "slop/crates/veil/src/zk/stacked_pcs/mod.rs",
+        "sha256": "4723733d119b008f0f67618c0196b63ce2e544adf6030df45a260e4000ec53e8"
+      }
+    ]
+  },
+  "zero_knowledge": false
+}

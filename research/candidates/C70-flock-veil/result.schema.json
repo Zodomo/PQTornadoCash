@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pqtc.c70.result.schema.json",
+  "title": "C70 upstream reproduction result",
+  "type": "object",
+  "required": ["schema_version", "candidate_id", "run_type", "evidence_origin", "pqtc_classification", "gate_status"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "candidate_id": {"const": "C70"},
+    "run_type": {"enum": ["source_check", "historical_flock_keccak3_batch_44", "veil_poc_root", "veil_poc_mle_eval", "veil_poc_zerocheck"]},
+    "evidence_origin": {"enum": ["LOCAL_SOURCE_CHECK_OF_PINNED_UPSTREAM", "LOCAL_REPRODUCTION_OF_PINNED_UPSTREAM"]},
+    "pqtc_classification": {"enum": ["NOT_PQTC", "UPSTREAM_BASELINE_NOT_PQTC", "EXPERIMENTAL_UPSTREAM_POC_NOT_PQTC"]},
+    "execution_status": {"enum": ["COMPLETED", "FAILED", "NOT_EVALUATED"]},
+    "blocker": {
+      "type": "object",
+      "required": ["kind", "executable"],
+      "properties": {
+        "kind": {"const": "MISSING_PREREQUISITE"},
+        "executable": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "gate_status": {},
+    "pin": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "exit_code": {"type": "integer"},
+    "reproduction_disposition": {"const": "UNEXECUTABLE_AT_PIN"},
+    "expected_failure": {"const": "MISSING_LIGERITO_M21_FAST_SECURITY_CONFIG"},
+    "requested_permutations": {"type": "integer", "const": 44},
+    "capacity_permutations": {"type": "integer", "const": 48},
+    "dummy_zero_permutations": {"type": "integer", "const": 4}
+  },
+  "additionalProperties": true
+}

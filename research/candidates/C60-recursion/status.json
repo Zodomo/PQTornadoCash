@@ -1,0 +1,14 @@
+{
+  "schema": "pqtc.backend-candidate-status.v1",
+  "candidate_id": "C60",
+  "overall": "DEFERRED",
+  "recursive_fibonacci_zk_architecture_smoke": "PASS_UPSTREAM_ARCHITECTURE_SMOKE_NOT_PQTC",
+  "recursive_keccak_zk": false,
+  "recursive_keccak_zk_flag_effect": "NONE",
+  "mandated_dependency_compatible": false,
+  "hiding_whir_adapter_in_circuit": false,
+  "evm_verifier": false,
+  "integrated": false,
+  "privacy_finalist": false,
+  "reason": "The pinned tree uses Plonky3 0.7.0 rather than mandated 0.6.0; recursive_keccak remains non-ZK even with --zk; the in-circuit WHIR code mirrors ordinary WhirVerifier rather than HidingWhirPcs; no EVM path exists."
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "pqtc.backend-negative-results.v1",
+  "candidate_id": "C60",
+  "results": [
+    {
+      "id": "C60-N1",
+      "finding": "Pinned Plonky3-recursion declares p3-air, p3-batch-stark, and p3-whir 0.7.0.",
+      "effect": "It is not directly compatible with mandated Plonky3 0.6.0."
+    },
+    {
+      "id": "C60-N2",
+      "finding": "recursive_keccak always uses a non-ZK p3-uni-stark base proof and explicitly states that --zk has no effect.",
+      "effect": "The Keccak path is non-ZK."
+    },
+    {
+      "id": "C60-N3",
+      "finding": "The in-circuit WHIR verifier mirrors ordinary WhirVerifier and leaves PCS adapter transcript work to the caller.",
+      "effect": "It is not an in-circuit HidingWhirPcs integration."
+    },
+    {
+      "id": "C60-N4",
+      "finding": "No EVM verifier or gas/calldata path was located.",
+      "effect": "No on-chain qualification is possible."
+    },
+    {
+      "id": "C60-N5",
+      "finding": "No recursion-specific privacy, composition, transcript, or concrete QROM theorem was located for this exact implementation.",
+      "effect": "PQTC path remains DEFERRED."
+    }
+  ]
+}

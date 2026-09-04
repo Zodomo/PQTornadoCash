@@ -1,0 +1,33 @@
+{
+  "schema": "pqtc.backend-candidate-manifest.v1",
+  "candidate_id": "C70",
+  "title": "Historical Flock Keccak and VEIL adapter controls",
+  "research_cutoff": "2026-09-04",
+  "integrated": false,
+  "privacy_finalist": false,
+  "tracks": {
+    "flock": {
+      "status": "STOP",
+      "release_commit": "43f0eee06d887d87ad25d72614cbc2b17fe91430",
+      "historical_keccak_parent": "c2d0c2485a54f7b7694e19f4f59730ffde3405cf",
+      "keccak_removal_commit": "0f0d63268e1373c585251e95152b3a6943e2d818",
+      "pqtc": false,
+      "batch_44_reproduction": "UNEXECUTABLE_AT_PIN",
+      "batch_44_result": "FAIL",
+      "failure_evidence": "outputs/flock-benchmark/result.json"
+    },
+    "veil": {
+      "status": "DEFERRED",
+      "repository": "https://github.com/succinctlabs/sp1",
+      "commit": "6d7ee5c091ad19e957a5faa5869de8739a76aa78",
+      "pqtc": false,
+      "poc_runs": {
+        "root": "PASS_EXPERIMENTAL_UPSTREAM_POC_NOT_PQTC",
+        "mle_eval": "PASS_EXPERIMENTAL_UPSTREAM_POC_NOT_PQTC",
+        "zerocheck": "PASS_EXPERIMENTAL_UPSTREAM_POC_NOT_PQTC"
+      }
+    }
+  },
+  "runner": "run.py",
+  "result_schema": "result.schema.json"
+}

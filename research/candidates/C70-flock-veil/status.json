@@ -1,0 +1,20 @@
+{
+  "schema": "pqtc.backend-candidate-status.v1",
+  "candidate_id": "C70",
+  "flock": "STOP",
+  "veil": "DEFERRED",
+  "flock_zero_knowledge": false,
+  "flock_current_keccak": false,
+  "flock_evm_verifier": false,
+  "historical_batch_44_reproduction": "UNEXECUTABLE_AT_PIN",
+  "historical_batch_44_result": "FAIL",
+  "historical_batch_44_published_measurement": false,
+  "source_check": "PASS",
+  "veil_flock_adapter": false,
+  "veil_root_poc": "PASS_EXPERIMENTAL_UPSTREAM_POC_NOT_PQTC",
+  "veil_mle_eval_poc": "PASS_EXPERIMENTAL_UPSTREAM_POC_NOT_PQTC",
+  "veil_zerocheck_poc": "PASS_EXPERIMENTAL_UPSTREAM_POC_NOT_PQTC",
+  "integrated": false,
+  "privacy_finalist": false,
+  "reason": "Flock is non-ZK, has no EVM verifier, and removed Keccak. The exact historical batch-44 command builds but panics because no Ligerito (m=21, profile=fast) security config is registered; adding one would be an ad-hoc patch. Capacity 48 with four dummy zero permutations remains source-derived harness semantics, not a successful benchmark. VEIL's PoC uses KoalaBear degree-4 stacked Basefold rather than Flock's binary-field Ligerito/transcript and remains deferred."
+}

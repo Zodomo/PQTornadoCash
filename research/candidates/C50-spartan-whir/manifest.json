@@ -1,0 +1,47 @@
+{
+  "schema": "pqtc.backend-candidate-manifest.v1",
+  "candidate_id": "C50",
+  "title": "Spartan-WHIR native full-ZK and standalone Solidity-WHIR controls",
+  "research_cutoff": "2026-09-04",
+  "integrated": false,
+  "frozen_relation": "v0.3/H0",
+  "tracks": {
+    "native_full_zk": {
+      "repository": "https://github.com/ethereum/spartan-whir",
+      "commit": "f525cddea38bb605304d3a8e6394dda10ac64b4a",
+      "status": "PASS",
+      "scope": "UPSTREAM_FULL_ZK_IMPLEMENTATION_MATURITY_ONLY",
+      "pqtc": false,
+      "retained_attempt": {
+        "path": "outputs/native/result.json",
+        "disposition": "NOT_EVALUATED_MISSING_CIRCOM"
+      }
+    },
+    "solidity_standalone_whir": {
+      "repository": "https://github.com/ethereum/sol-spartan-whir",
+      "commit": "b381a9091568d1a4a52b50d0b27488a767051faf",
+      "status": "DEFERRED",
+      "scope": "STANDALONE_PLAIN_WHIR_PLACEHOLDER_CONTROL",
+      "build_tests": "PASS",
+      "gas_harness": "UNEXECUTABLE_UPSTREAM_HARNESS_AT_PIN",
+      "gas_measurement": "NOT_EVALUATED",
+      "retained_evidence": {
+        "build_tests": "outputs/solidity/result.json",
+        "gas_harness": "outputs/solidity-gas/result.json"
+      },
+      "pqtc": false,
+      "dependency_pin_source": {
+        "repository": "https://github.com/privacy-ethereum/sol-whir",
+        "commit": "b719b97b5961ac1c1679383b31e55439a26682f9"
+      },
+      "dependencies": {
+        "forge-std": "035de35f5e366c8d6ed142aec4ccb57fe2dd87d4",
+        "solady": "513f581675374706dbe947284d6b12d19ce35a2a"
+      }
+    }
+  },
+  "license_gate": "BLOCKED_FOR_COPY_OR_REDISTRIBUTION",
+  "runner": "run.py",
+  "result_schema": "result.schema.json",
+  "upstream_claims": "upstream-claims.json"
+}

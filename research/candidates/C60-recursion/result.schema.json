@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pqtc.c60.result.schema.json",
+  "title": "C60 upstream reproduction result",
+  "type": "object",
+  "required": ["schema_version", "candidate_id", "run_type", "evidence_origin", "pqtc_classification", "gate_status"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "candidate_id": {"const": "C60"},
+    "run_type": {"enum": ["source_check", "recursive_fibonacci_zk_architecture_smoke"]},
+    "evidence_origin": {"enum": ["LOCAL_SOURCE_CHECK_OF_PINNED_UPSTREAM", "LOCAL_REPRODUCTION_OF_PINNED_UPSTREAM"]},
+    "pqtc_classification": {"enum": ["NOT_PQTC_ARCHITECTURE_EVIDENCE_ONLY", "UPSTREAM_ARCHITECTURE_SMOKE_NOT_PQTC"]},
+    "execution_status": {"enum": ["COMPLETED", "FAILED", "NOT_EVALUATED"]},
+    "blocker": {
+      "type": "object",
+      "required": ["kind", "executable"],
+      "properties": {
+        "kind": {"const": "MISSING_PREREQUISITE"},
+        "executable": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "gate_status": {"const": "DEFERRED"},
+    "pin": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "exit_code": {"type": "integer"}
+  },
+  "additionalProperties": true
+}

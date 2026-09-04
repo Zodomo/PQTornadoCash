@@ -1,0 +1,30 @@
+{
+  "candidate_id": "C70",
+  "capacity_permutations": 48,
+  "command": "KECCAK3_KS=44 cargo bench --bench keccak3_proof",
+  "dummy_zero_permutations": 4,
+  "evidence_origin": "LOCAL_REPRODUCTION_OF_PINNED_UPSTREAM",
+  "evm_verifier": false,
+  "execution_status": "FAILED",
+  "exit_code": 101,
+  "finished_at": "2026-09-04T18:33:29.558938Z",
+  "gate_status": "STOP",
+  "logs": {
+    "stderr": {
+      "path": "research/candidates/C70-flock-veil/outputs/flock-benchmark/stderr.log",
+      "sha256": "9a2da03677f48da394bfbccd4db4512817590187e81e7ca62af41f1960f910c3"
+    },
+    "stdout": {
+      "path": "research/candidates/C70-flock-veil/outputs/flock-benchmark/stdout.log",
+      "sha256": "08f298fa09504603823ff50b9d6b05aec1cb37e34c9216592ac1069efc631592"
+    }
+  },
+  "pin": "c2d0c2485a54f7b7694e19f4f59730ffde3405cf",
+  "pqtc_classification": "UPSTREAM_BASELINE_NOT_PQTC",
+  "requested_permutations": 44,
+  "run_type": "historical_flock_keccak3_batch_44",
+  "schema_version": 1,
+  "started_at": "2026-09-04T18:32:41.539514Z",
+  "trial_selection": "BEST_OF_3_UPSTREAM_HARNESS",
+  "zero_knowledge": false
+}

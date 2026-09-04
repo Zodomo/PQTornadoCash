@@ -1,0 +1,31 @@
+{
+  "schema": "pqtc.backend-negative-results.v1",
+  "package": "emerging",
+  "results": [
+    {
+      "id": "E-N1",
+      "finding": "No exact frozen v0.3/H0 relation is implemented by the retained upstream controls.",
+      "effect": "No emerging candidate result is PQTC."
+    },
+    {
+      "id": "E-N2",
+      "finding": "No full-ZK Spartan EVM verifier, recursion EVM verifier, or Flock EVM verifier is available.",
+      "effect": "No emerging EVM finalist."
+    },
+    {
+      "id": "E-N3",
+      "finding": "Spartan-WHIR source cannot be vendored without an explicit license grant.",
+      "effect": "C50 integration remains blocked."
+    },
+    {
+      "id": "E-N4",
+      "finding": "Plonky3-recursion 0.7.0 is incompatible with mandated 0.6.0 and its Keccak route is non-ZK.",
+      "effect": "C60 remains DEFERRED."
+    },
+    {
+      "id": "E-N5",
+      "finding": "Flock is non-ZK, removed Keccak, and has no EVM verifier; VEIL's PoC adapter does not match Flock.",
+      "effect": "Flock is STOP and VEIL is DEFERRED."
+    }
+  ]
+}

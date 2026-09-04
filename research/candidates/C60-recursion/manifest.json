@@ -1,0 +1,22 @@
+{
+  "schema": "pqtc.backend-candidate-manifest.v1",
+  "candidate_id": "C60",
+  "title": "Plonky3 recursive proof architecture control",
+  "research_cutoff": "2026-09-04",
+  "status": "DEFERRED",
+  "integrated": false,
+  "privacy_finalist": false,
+  "repository": "https://github.com/Plonky3/Plonky3-recursion",
+  "commit": "34e3a2c3837834a7bf98a0b65063e0180e7fbb7b",
+  "upstream_version": "0.1.0",
+  "upstream_plonky3_version": "0.7.0",
+  "mandated_plonky3_version": "0.6.0",
+  "runner": "run.py",
+  "result_schema": "result.schema.json",
+  "permitted_run": "recursive_fibonacci --zk architecture smoke only",
+  "retained_run": {
+    "path": "outputs/architecture-smoke/result.json",
+    "disposition": "PASS_UPSTREAM_ARCHITECTURE_SMOKE_NOT_PQTC"
+  },
+  "forbidden_label": "PQTC"
+}

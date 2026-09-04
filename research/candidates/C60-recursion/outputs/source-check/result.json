@@ -1,0 +1,39 @@
+{
+  "candidate_id": "C60",
+  "dependency_gate": {
+    "compatible": false,
+    "mandated": "0.6.0",
+    "upstream_recursion": "0.7.0"
+  },
+  "evidence_origin": "LOCAL_SOURCE_CHECK_OF_PINNED_UPSTREAM",
+  "gate_status": "DEFERRED",
+  "in_circuit_whir": "ORDINARY_WHIR_VERIFIER_NOT_HIDING_PCS_ADAPTER",
+  "pin": "34e3a2c3837834a7bf98a0b65063e0180e7fbb7b",
+  "pqtc_classification": "NOT_PQTC_ARCHITECTURE_EVIDENCE_ONLY",
+  "recursive_keccak_zk": false,
+  "recursive_keccak_zk_flag_effect": "NONE",
+  "run_type": "source_check",
+  "schema_version": 1,
+  "verified_files": [
+    {
+      "path": "README.md",
+      "sha256": "c4fd900e21009c20d25b7272f1af1ba31fef721120aefd2b8424eae41e2a6694"
+    },
+    {
+      "path": "Cargo.toml",
+      "sha256": "049da0859398c87c1bfc6ad2566116b3f6b32b34f71dada1385bc658c5e7f38d"
+    },
+    {
+      "path": "recursion/examples/recursive_fibonacci.rs",
+      "sha256": "22ec9ed3bdcd8efe508a2c5f6e695af2969a28eac6bdda7760e8fbdef077f9a6"
+    },
+    {
+      "path": "recursion/examples/recursive_keccak.rs",
+      "sha256": "8940894929ec5b7b7d9f8bb61f819fb642a289925e4bdfee1ab127616c84e006"
+    },
+    {
+      "path": "recursion/src/pcs/whir/verifier.rs",
+      "sha256": "39e52bce5e188b5fe64203e5c6f32cd624ff6ea54054dc5d9fb59a4baa46df8d"
+    }
+  ]
+}

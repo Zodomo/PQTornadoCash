@@ -1,0 +1,103 @@
+{
+  "candidate_id": "C50",
+  "evidence_origin": "LOCAL_SOURCE_CHECK_OF_PINNED_UPSTREAM",
+  "gate_status": {
+    "full_evm_spartan": "DEFERRED",
+    "native_full_zk_maturity": "PASS"
+  },
+  "license_gate": "BLOCKED_FOR_COPY_OR_REDISTRIBUTION",
+  "pins": {
+    "dependency_control": "b719b97b5961ac1c1679383b31e55439a26682f9",
+    "exporter": "ec7c24f451f208debf86144d45bb3441e9d85cc4",
+    "forge_std": "035de35f5e366c8d6ed142aec4ccb57fe2dd87d4",
+    "native": "f525cddea38bb605304d3a8e6394dda10ac64b4a",
+    "solady": "513f581675374706dbe947284d6b12d19ce35a2a",
+    "solidity": "b381a9091568d1a4a52b50d0b27488a767051faf"
+  },
+  "pqtc_classification": "NOT_PQTC_NO_EXACT_RELATION",
+  "run_type": "source_check",
+  "schema_version": 1,
+  "solidity_dependencies": {
+    "dependencies": {
+      "forge_std": {
+        "commit": "035de35f5e366c8d6ed142aec4ccb57fe2dd87d4",
+        "recursive_submodules": [],
+        "repository": "https://github.com/foundry-rs/forge-std",
+        "verified_files": [
+          {
+            "path": "src/Test.sol",
+            "sha256": "242f2494d264bf00515b7bfcb5a3e6cbc3e737d03795105cbf19f68d8b640dd9"
+          },
+          {
+            "path": "src/Script.sol",
+            "sha256": "c4de2ae936fa7bb4f4250a3908c6bce7acdc84034156cb252fdc2d9a1c020012"
+          },
+          {
+            "path": "src/StdJson.sol",
+            "sha256": "0211b47e93dbeb6a7de6112470a77137038ed73b79b015847f013e49fcd7511f"
+          }
+        ]
+      },
+      "solady": {
+        "commit": "513f581675374706dbe947284d6b12d19ce35a2a",
+        "recursive_submodules": [],
+        "repository": "https://github.com/Vectorized/solady",
+        "verified_files": [
+          {
+            "path": "src/utils/LibSort.sol",
+            "sha256": "ff6fa9e5021aeab6c1491e6f9ae123bf4cc20e4813e9f661640741ef6296e446"
+          }
+        ]
+      }
+    },
+    "pin_source": {
+      "commit": "b719b97b5961ac1c1679383b31e55439a26682f9",
+      "gitlinks": {
+        "lib/forge-std": "035de35f5e366c8d6ed142aec4ccb57fe2dd87d4",
+        "lib/solady": "513f581675374706dbe947284d6b12d19ce35a2a"
+      },
+      "repository": "https://github.com/privacy-ethereum/sol-whir"
+    },
+    "upstream_root_submodules": []
+  },
+  "top_level_license_files": {
+    "native": [],
+    "solidity": []
+  },
+  "verified_files": {
+    "exporter": [
+      {
+        "path": "README.md",
+        "sha256": "6a082485d5e294782a779be8ac44c774ecb486912230c08fe2ae72c8a5b9c4cf"
+      }
+    ],
+    "native": [
+      {
+        "path": "README.md",
+        "sha256": "f24b1efa028def2cca4962a646f7aa25c6bc892c9749febad5ead2318d414c49"
+      },
+      {
+        "path": "src/poseidon.rs",
+        "sha256": "893ed2475dd9fee42ffe85c271c004f24001e17460bd3168aaff039955ddc2e2"
+      },
+      {
+        "path": "examples/end_to_end.rs",
+        "sha256": "472466b4cfdb561ab980ff3df9411aa6de1fe8399f8c5620be75c6b61c7dc952"
+      }
+    ],
+    "solidity": [
+      {
+        "path": "README.md",
+        "sha256": "ee810796b973bf64a58ee432333269235e3de545571367e20d1d7d3ca56d6d5f"
+      },
+      {
+        "path": "test/FixtureDecode_lir6_ff5_rsv1.t.sol",
+        "sha256": "95481d156a0429c707ac4974a25dccf77c04302abd942dfe0f2bae1990602a39"
+      },
+      {
+        "path": ".agents/skills/tx-gas-benchmarking/scripts/run_tx_gas_benchmark.sh",
+        "sha256": "2da79e4aa2d41e8a6b876f0a176baceb6fb5afd8cd19525420b06c0be0ab9ea6"
+      }
+    ]
+  }
+}

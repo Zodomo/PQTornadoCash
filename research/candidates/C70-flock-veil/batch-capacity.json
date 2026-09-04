@@ -1,0 +1,20 @@
+{
+  "schema": "pqtc.upstream-baseline-capacity.v1",
+  "candidate_id": "C70",
+  "source_commit": "c2d0c2485a54f7b7694e19f4f59730ffde3405cf",
+  "evidence_origin": "SOURCE_DERIVED_FROM_PINNED_UPSTREAM",
+  "pqtc_classification": "UPSTREAM_BASELINE_NOT_PQTC",
+  "requested_permutations": 44,
+  "permutations_per_block": 3,
+  "minimum_blocks": 15,
+  "rounded_power_of_two_blocks": 16,
+  "capacity_permutations": 48,
+  "dummy_zero_permutations": 4,
+  "dummy_semantics": "valid all-zero Keccak computations",
+  "harness_trial_selection_if_executable": "best of 3",
+  "derivation": "ceil(44 / 3) = 15; next_power_of_two(15) = 16; 16 * 3 = 48; 48 - 44 = 4",
+  "measurement_available_upstream": false,
+  "measurement_completed_locally": false,
+  "reproduction_disposition": "UNEXECUTABLE_AT_PIN",
+  "failure": "MISSING_LIGERITO_M21_FAST_SECURITY_CONFIG"
+}

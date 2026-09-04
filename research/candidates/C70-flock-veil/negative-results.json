@@ -1,0 +1,59 @@
+{
+  "schema": "pqtc.backend-negative-results.v1",
+  "candidate_id": "C70",
+  "results": [
+    {
+      "id": "C70-N1",
+      "finding": "The Flock paper states that the implementation offers succinctness and not zero knowledge.",
+      "effect": "Flock is STOP as a privacy finalist."
+    },
+    {
+      "id": "C70-N2",
+      "finding": "Commit 0f0d63268e1373c585251e95152b3a6943e2d818 removed both Keccak encoders, their benches, and their only consumers.",
+      "effect": "Batch-44 is historical only."
+    },
+    {
+      "id": "C70-N3",
+      "finding": "No Solidity, Yul, or EVM verifier exists in the inspected Flock tree.",
+      "effect": "No on-chain qualification is possible."
+    },
+    {
+      "id": "C70-N4",
+      "finding": "No upstream batch-44 measurement is published, and the exact local command at the historical pin produced no benchmark number.",
+      "effect": "Batch-44 is UNEXECUTABLE_AT_PIN/FAIL; capacity facts remain source-derived UPSTREAM_BASELINE_NOT_PQTC semantics only."
+    },
+    {
+      "id": "C70-N7",
+      "finding": "The exact KECCAK3_KS=44 command built and then panicked because no Ligerito security config is registered for (m=21, profile=fast). The embedded registry starts at m=22; the requested m21_fast TOML is absent.",
+      "effect": "Adding or registering m21_fast would be an ad-hoc source patch, so the exact pin is retained as failed negative evidence rather than repaired."
+    },
+    {
+      "id": "C70-N5",
+      "finding": "VEIL's concrete PoC adapter is KoalaBear degree-4 with stacked Basefold, not Flock's binary-field Ligerito and transcript.",
+      "effect": "VEIL over Flock is DEFERRED."
+    },
+    {
+      "id": "C70-N6",
+      "finding": "No binary-field VEIL adapter, Flock verifier compiler, transcript binding analysis, soundness analysis, EVM backend, or concrete QROM theorem was located.",
+      "effect": "No custom integration or finalist claim is permitted."
+    }
+  ],
+  "retained_evidence": {
+    "directory": "outputs/flock-benchmark",
+    "result": {
+      "path": "outputs/flock-benchmark/result.json",
+      "sha256": "68e5c32f5df7770715fe7528206455c86559c79e2b4c816c705d3c8289c01723"
+    },
+    "stderr": {
+      "path": "outputs/flock-benchmark/stderr.log",
+      "sha256": "9a2da03677f48da394bfbccd4db4512817590187e81e7ca62af41f1960f910c3"
+    },
+    "stdout": {
+      "path": "outputs/flock-benchmark/stdout.log",
+      "sha256": "08f298fa09504603823ff50b9d6b05aec1cb37e34c9216592ac1069efc631592"
+    },
+    "execution_status": "FAILED",
+    "exit_code": 101,
+    "disposition": "UNEXECUTABLE_AT_PIN"
+  }
+}

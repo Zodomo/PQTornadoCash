@@ -1,0 +1,26 @@
+{
+  "schema": "pqtc.backend-assumptions.v1",
+  "candidate_id": "C70",
+  "assumptions": [
+    {
+      "id": "C70-A1",
+      "statement": "The only reproducible Flock Keccak3 harness is the exact historical parent c2d0c2485a54f7b7694e19f4f59730ffde3405cf.",
+      "consequence": "Its result is historical non-hiding evidence only."
+    },
+    {
+      "id": "C70-A2",
+      "statement": "KECCAK3_KS=44 selects 44 requested permutations in a three-wide harness that rounds 15 blocks to 16.",
+      "consequence": "Capacity is 48 and four slots are valid all-zero dummy permutations."
+    },
+    {
+      "id": "C70-A3",
+      "statement": "The Flock paper's implementation limitation is authoritative: succinctness is provided, zero knowledge is not.",
+      "consequence": "Flock is STOP as a privacy finalist."
+    },
+    {
+      "id": "C70-A4",
+      "statement": "VEIL's inspected adapter is KoalaBear degree-4 plus stacked Basefold, not Flock's binary-field Ligerito/transcript.",
+      "consequence": "VEIL is DEFERRED; no adapter is invented here."
+    }
+  ]
+}

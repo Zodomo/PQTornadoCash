@@ -1,0 +1,16 @@
+{
+  "schema": "pqtc.backend-candidate-status.v1",
+  "candidate_id": "C50",
+  "overall": "DEFERRED",
+  "native_full_zk_implementation_maturity": "PASS",
+  "native_exact_pqtc_relation": "NOT_IMPLEMENTED",
+  "native_end_to_end_reproduction": "NOT_EVALUATED_MISSING_CIRCOM",
+  "full_evm_spartan": "DEFERRED",
+  "standalone_solidity_whir_build_tests": "PASS",
+  "standalone_solidity_whir_gas_harness": "UNEXECUTABLE_UPSTREAM_HARNESS_AT_PIN",
+  "standalone_solidity_whir_gas_measurement": "NOT_EVALUATED",
+  "privacy_finalist": false,
+  "integrated": false,
+  "license_clear_for_vendoring": false,
+  "reason": "Pinned native APIs implement full-ZK DirectSparse and Spark, but no exact frozen v0.3/H0 relation is present. The standalone plain-WHIR Solidity project builds and its tests pass with pinned dependencies, but its exact gas script exits before measurement on an unbound target_contract array; no gas result was evaluated. Placeholder Spartan fields, missing full EVM Spartan, and inadequate repository license grants keep the candidate deferred."
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "pqtc.backend-assumptions.v1",
+  "candidate_id": "C50",
+  "assumptions": [
+    {
+      "id": "C50-A1",
+      "statement": "The frozen production control remains v0.3/H0; the upstream README circuit is only an implementation smoke relation.",
+      "consequence": "A successful native run is not PQTC evidence."
+    },
+    {
+      "id": "C50-A2",
+      "statement": "Full-ZK proving randomness is supplied by the upstream OS-seeded StdRng or an injected Rng + CryptoRng.",
+      "consequence": "Predictable randomness is inadmissible."
+    },
+    {
+      "id": "C50-A3",
+      "statement": "The checked Solidity fixtures contain one real plain-WHIR PCS proof inside placeholder Spartan fields.",
+      "consequence": "All Solidity results are standalone WHIR, not Spartan and not PQTC."
+    },
+    {
+      "id": "C50-A4",
+      "statement": "No code from either ethereum repository may be copied or redistributed without an explicit license grant.",
+      "consequence": "The runner clones upstream into an external workspace and this package vendors no upstream source."
+    }
+  ]
+}

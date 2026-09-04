@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pqtc.c50.result.schema.json",
+  "title": "C50 upstream reproduction result",
+  "type": "object",
+  "required": ["schema_version", "candidate_id", "run_type", "evidence_origin", "pqtc_classification", "gate_status"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "candidate_id": {"const": "C50"},
+    "run_type": {"enum": ["source_check", "native_full_zk_end_to_end", "standalone_solidity_whir", "standalone_solidity_whir_gas"]},
+    "evidence_origin": {"enum": ["LOCAL_SOURCE_CHECK_OF_PINNED_UPSTREAM", "LOCAL_REPRODUCTION_OF_PINNED_UPSTREAM"]},
+    "pqtc_classification": {"enum": ["NOT_PQTC_NO_EXACT_RELATION", "STANDALONE_WHIR_NOT_SPARTAN_NOT_PQTC"]},
+    "execution_status": {"enum": ["COMPLETED", "FAILED", "NOT_EVALUATED"]},
+    "blocker": {
+      "type": "object",
+      "required": ["kind", "executable"],
+      "properties": {
+        "kind": {"const": "MISSING_PREREQUISITE"},
+        "executable": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "gate_status": {},
+    "exit_code": {"type": "integer"},
+    "pin": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "reproduction_disposition": {
+      "enum": [
+        "PASS_STANDALONE_WHIR_BUILD_TESTS_ONLY",
+        "UNEXECUTABLE_UPSTREAM_HARNESS_AT_PIN"
+      ]
+    },
+    "gas_measurement_status": {"const": "NOT_EVALUATED"},
+    "expected_failure": {"const": "UNBOUND_TARGET_CONTRACT_ARRAY_AT_LINE_95"},
+    "solidity_dependencies": {
+      "type": "object",
+      "required": ["pin_source", "dependencies", "upstream_root_submodules"],
+      "properties": {
+        "pin_source": {
+          "type": "object",
+          "required": ["repository", "commit", "gitlinks"]
+        },
+        "dependencies": {
+          "type": "object",
+          "required": ["forge_std", "solady"]
+        },
+        "upstream_root_submodules": {"type": "array"}
+      }
+    },
+    "license_gate": {"const": "BLOCKED_FOR_COPY_OR_REDISTRIBUTION"}
+  },
+  "additionalProperties": true
+}
