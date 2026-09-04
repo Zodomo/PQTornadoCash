@@ -1,0 +1,30 @@
+{
+  "checkpoint": 4,
+  "name": "product-architecture",
+  "snapshot_date": "2026-09-04",
+  "reviewed_commit": "6f40453",
+  "review_class": "INTERNAL_INDEPENDENT_REVIEW_NOT_EXTERNAL_CRYPTOGRAPHIC_ACCEPTANCE",
+  "verdict": "PASS_NEGATIVE_DECISION",
+  "remaining_high_or_medium_findings": 0,
+  "selected_product_path": null,
+  "architectures": {
+    "individual_ethereum_l1": "NO_SECURITY_QUALIFIED_FINALIST",
+    "aggregation": "STOP_BY_DEPENDENCY",
+    "robust_two_call": "FAIL_PROJECTION_FULL_PATH_NOT_EVALUATED",
+    "l2": "PRODUCT_GATE_NOT_EVALUATED_NOT_PASSED",
+    "prover_operations": "FAIL"
+  },
+  "l2_admission_sweep": "FAIL_210_KIB_ORDINARY_PATHS",
+  "l2_required_network_scope": "INCOMPLETE",
+  "prover_hardware": {
+    "H1": "WARM_BASELINE_ONLY",
+    "H2": "NOT_EVALUATED",
+    "H3": "NOT_EVALUATED"
+  },
+  "permitted_next_scope": "BLOCKER_CLOSING_EVIDENCE_ACQUISITION_ONLY",
+  "forbidden_next_scope": [
+    "product_promotion",
+    "custody_integration",
+    "deployment"
+  ]
+}
