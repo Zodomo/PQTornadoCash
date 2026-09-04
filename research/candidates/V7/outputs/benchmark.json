@@ -1,0 +1,160 @@
+{
+  "active64And96Baseline": {
+    "partA": {
+      "active": 16539302,
+      "uniform64": 16539302,
+      "uniform96": 16539302
+    },
+    "partB": {
+      "active": 14105909,
+      "uniform64": 14105909,
+      "uniform96": 14105909
+    }
+  },
+  "baselineCompleteTransaction": {
+    "abiBytes": {
+      "partA": 102308,
+      "partB": 108644
+    },
+    "executionGas": {
+      "partA": 14891070,
+      "partB": 12356373
+    },
+    "nativeVerifierNs": null,
+    "proofBytes": {
+      "partA": 101990,
+      "partB": 108294
+    },
+    "proverNs": null,
+    "registryExecutionGas": {
+      "partA": 14056853,
+      "partB": 11470158
+    },
+    "runtimeBytes": null,
+    "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+    "zeroBytes": {
+      "partA": 808,
+      "partB": 814
+    }
+  },
+  "calldataDeltaBytes": "same as variant-specific frontier proof-byte delta",
+  "candidateId": "V7",
+  "completeTransactionMeasured": null,
+  "completeTransactionProjected": null,
+  "deploymentGasDelta": {
+    "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+    "value": null
+  },
+  "differentialTests": {
+    "rustAssertions": 9,
+    "solidityUnsafeCases": 2
+  },
+  "frontierAndWidth": {
+    "caps": [
+      {
+        "bytes512": 16384,
+        "capHeight": 0,
+        "worstCaseDigestCountModel": 256
+      },
+      {
+        "bytes512": 16512,
+        "capHeight": 1,
+        "worstCaseDigestCountModel": 258
+      },
+      {
+        "bytes512": 16640,
+        "capHeight": 2,
+        "worstCaseDigestCountModel": 260
+      },
+      {
+        "bytes512": 16896,
+        "capHeight": 3,
+        "worstCaseDigestCountModel": 264
+      },
+      {
+        "bytes512": 17408,
+        "capHeight": 4,
+        "worstCaseDigestCountModel": 272
+      }
+    ],
+    "exactWorstCaseFrontierDigests": 256,
+    "queries": 32,
+    "treeDepth": 13,
+    "widths": [
+      {
+        "bits": 512,
+        "bytes": 16384,
+        "decision": "ELIGIBLE"
+      },
+      {
+        "bits": 384,
+        "bytes": 12288,
+        "decision": "REJECT_NO_EXTERNAL_REVIEW"
+      },
+      {
+        "bits": 320,
+        "bytes": 10240,
+        "decision": "REJECT_NO_EXTERNAL_REVIEW"
+      },
+      {
+        "bits": 256,
+        "bytes": 8192,
+        "decision": "LOWER_BOUND_ONLY_NOT_ACCEPTABLE"
+      }
+    ]
+  },
+  "isolatedActive64And96Delta": null,
+  "measurementScope": "isolated kernels only",
+  "nativeMeasured": {
+    "digest256LowerBoundBytes": 8192,
+    "digest320WorstCaseBytes": 10240,
+    "digest384WorstCaseBytes": 12288,
+    "digest512WorstCaseBytes": 16384,
+    "exactWorstCaseFrontierDigests": 256,
+    "queries": 32,
+    "treeDepth": 13
+  },
+  "nativeVerifierDelta": null,
+  "noMicrobenchmarkSumClaim": true,
+  "opcodeCounts": {
+    "evmDynamicBaseline": null,
+    "evmDynamicCandidate": null,
+    "logicalKernelCounts": {
+      "currentAndExactWorstCase": {
+        "frontierDigests": 256
+      },
+      "hashCallsDependOnFixture": null
+    },
+    "status": "NOT_EVALUATED: canonical full-transaction opcode trace unavailable"
+  },
+  "proofByteDelta": "variant-specific worst-case table; full proof unavailable",
+  "proverDelta": {
+    "hashAndSerializationCounts": "variant-specific",
+    "nanoseconds": null
+  },
+  "runtimeByteDelta": {
+    "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+    "value": null
+  },
+  "schema": "pqtc-sp31-candidate-output-v1",
+  "solidityMeasured": {
+    "exactFrontierGas": 257975
+  },
+  "uniformFloorDeltaFrom512WorstCase": {
+    "256LowerBound": {
+      "bytes": -8192,
+      "gas64": -524288,
+      "gas96": -786432
+    },
+    "320": {
+      "bytes": -6144,
+      "gas64": -393216,
+      "gas96": -589824
+    },
+    "384": {
+      "bytes": -4096,
+      "gas64": -262144,
+      "gas96": -393216
+    }
+  }
+}

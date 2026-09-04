@@ -1,0 +1,79 @@
+Compiling 21 files with Solc 0.8.30
+Solc 0.8.30 finished in 1.28s
+Compiler run successful!
+
+Ran 13 tests for test/VerifierOptimization.t.sol:VerifierOptimizationGasTest
+[PASS] testRuntimeAndDeploymentGas() (gas: 1062045)
+Logs:
+  COMMON.deploymentExecutionGas: 1057569
+  COMMON.runtimeBytes: 5115
+
+[PASS] testUnsafeCodecCasesReject() (gas: 1083444)
+[PASS] testUnsafeFrontierCasesReject() (gas: 13394)
+[PASS] testUnsafeInverseCasesReject() (gas: 11472)
+[PASS] testV1Gas() (gas: 990976)
+Logs:
+  V1.materializedGas: 727415
+  V1.streamedGas: 128003
+  V1.hornerGas: 129454
+
+[PASS] testV2Gas() (gas: 14696)
+Logs:
+  V2.exponentiationGas: 9353
+  V2.checkedWitnessGas: 857
+
+[PASS] testV3Gas() (gas: 1064359)
+Logs:
+  V3.separateParseDotGas: 849780
+  V3.fusedParseDotGas: 210353
+
+[PASS] testV4Gas() (gas: 795595)
+Logs:
+  V4.copiedEvaluationGas: 663476
+  V4.calldataEvaluationGas: 127811
+
+[PASS] testV5Gas() (gas: 106866)
+Logs:
+  V5.fixedTableGas: 8652
+  V5.derivedTableGas: 3028
+  V5.checkedCalldataTableGas: 89183
+
+[PASS] testV6Gas() (gas: 89857)
+Logs:
+  V6.exponentiationGas: 48640
+  V6.incrementalGas: 5005
+  V6.checkedPointsGas: 21451
+  V6.fixedTable8Gas: 1748
+
+[PASS] testV7Gas() (gas: 267129)
+Logs:
+  V7.exactFrontierGas: 257975
+
+[PASS] testV8Gas() (gas: 1501166)
+Logs:
+  V8.unpack32Gas: 175167
+  V8.unpack31Gas: 237632
+  V8.section31Gas: 238092
+  V8.u32Bytes: 1024
+  V8.packed31Bytes: 992
+
+[PASS] testV9Gas() (gas: 73817)
+Logs:
+  V9.airA.8.maxGas: 14046069
+  V9.airB.8.maxGas: 16909716
+  V9.airA.10.maxGas: 13623798
+  V9.airB.10.maxGas: 16487292
+  V9.airA.12.maxGas: 14046222
+  V9.airB.12.maxGas: 16064868
+  V9.airA.13.maxGas: 14257434
+  V9.airB.13.maxGas: 15853656
+  V9.airA.14.maxGas: 14468646
+  V9.airB.14.maxGas: 15642444
+  V9.airA.15.maxGas: 14679858
+  V9.airB.15.maxGas: 15431232
+  V9.airA.16.maxGas: 14891070
+  V9.airB.16.maxGas: 15220020
+
+Suite result: ok. 13 passed; 0 failed; 0 skipped; finished in 8.35ms (22.65ms CPU time)
+
+Ran 1 test suite in 14.84ms (8.35ms CPU time): 13 tests passed, 0 failed, 0 skipped (13 total tests)

@@ -1,0 +1,2365 @@
+{
+  "candidateOutputs": {
+    "V1": {
+      "active64And96Baseline": {
+        "partA": {
+          "active": 16539302,
+          "uniform64": 16539302,
+          "uniform96": 16539302
+        },
+        "partB": {
+          "active": 14105909,
+          "uniform64": 14105909,
+          "uniform96": 14105909
+        }
+      },
+      "baselineCompleteTransaction": {
+        "abiBytes": {
+          "partA": 102308,
+          "partB": 108644
+        },
+        "executionGas": {
+          "partA": 14891070,
+          "partB": 12356373
+        },
+        "nativeVerifierNs": null,
+        "proofBytes": {
+          "partA": 101990,
+          "partB": 108294
+        },
+        "proverNs": null,
+        "registryExecutionGas": {
+          "partA": 14056853,
+          "partB": 11470158
+        },
+        "runtimeBytes": null,
+        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "zeroBytes": {
+          "partA": 808,
+          "partB": 814
+        }
+      },
+      "calldataDeltaBytes": 0,
+      "candidateId": "V1",
+      "completeTransactionMeasured": null,
+      "completeTransactionProjected": null,
+      "deploymentGasDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "differentialTests": {
+        "rustAssertions": 9,
+        "solidityUnsafeCases": 1
+      },
+      "isolatedActive64And96Delta": {
+        "calldataBytesDelta": 0,
+        "executionGasDelta": -597961,
+        "scope": "isolated kernel with compact-section bytes; not a verifier transaction",
+        "totalGasDelta": {
+          "active": -597961,
+          "uniform64": -597961,
+          "uniform96": -597961
+        }
+      },
+      "measurementScope": "isolated kernels only",
+      "nativeMeasured": {
+        "hornerMultiplications": 256,
+        "hornerNs": 4281250,
+        "materializedBytes": 2048,
+        "materializedMultiplications": 511,
+        "materializedNs": 3209208,
+        "streamedBytes": 0,
+        "streamedMultiplications": 512,
+        "streamedNs": 2418000
+      },
+      "nativeVerifierDelta": {
+        "baselineKey": "materializedNs",
+        "candidateKey": "hornerNs",
+        "nanosecondsDelta": 1072042,
+        "scope": "native isolated kernel"
+      },
+      "noMicrobenchmarkSumClaim": true,
+      "opcodeCounts": {
+        "evmDynamicBaseline": null,
+        "evmDynamicCandidate": null,
+        "logicalKernelCounts": {
+          "baseline": {
+            "addmod": 256,
+            "memoryWords": 256,
+            "mulmod": 511
+          },
+          "horner": {
+            "addmod": 256,
+            "memoryWords": 0,
+            "mulmod": 256
+          },
+          "streamed": {
+            "addmod": 256,
+            "memoryWords": 0,
+            "mulmod": 512
+          }
+        },
+        "status": "NOT_EVALUATED: canonical full-transaction opcode trace unavailable"
+      },
+      "proofByteDelta": 0,
+      "proverDelta": {
+        "kind": "projected verifier-only change",
+        "nanoseconds": 0
+      },
+      "runtimeByteDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "schema": "pqtc-sp31-candidate-output-v1",
+      "solidityMeasured": {
+        "hornerGas": 129454,
+        "materializedGas": 727415,
+        "streamedGas": 128003
+      }
+    },
+    "V2": {
+      "active64And96Baseline": {
+        "partA": {
+          "active": 16539302,
+          "uniform64": 16539302,
+          "uniform96": 16539302
+        },
+        "partB": {
+          "active": 14105909,
+          "uniform64": 14105909,
+          "uniform96": 14105909
+        }
+      },
+      "baselineCompleteTransaction": {
+        "abiBytes": {
+          "partA": 102308,
+          "partB": 108644
+        },
+        "executionGas": {
+          "partA": 14891070,
+          "partB": 12356373
+        },
+        "nativeVerifierNs": null,
+        "proofBytes": {
+          "partA": 101990,
+          "partB": 108294
+        },
+        "proverNs": null,
+        "registryExecutionGas": {
+          "partA": 14056853,
+          "partB": 11470158
+        },
+        "runtimeBytes": null,
+        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "zeroBytes": {
+          "partA": 808,
+          "partB": 814
+        }
+      },
+      "calldataDeltaBytes": {
+        "fullProof": null,
+        "perBaseInverse": 4,
+        "perExtensionInverse": 16
+      },
+      "candidateId": "V2",
+      "completeTransactionMeasured": null,
+      "completeTransactionProjected": null,
+      "deploymentGasDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "differentialTests": {
+        "rustAssertions": 9,
+        "solidityUnsafeCases": 3
+      },
+      "isolatedActive64And96Delta": {
+        "calldataBytesDelta": 4,
+        "executionGasDelta": -8496,
+        "scope": "isolated kernel with compact-section bytes; not a verifier transaction",
+        "totalGasDelta": {
+          "active": -8432,
+          "uniform64": -8432,
+          "uniform96": -8432
+        }
+      },
+      "legalityMatrix": [
+        {
+          "eligible": true,
+          "guard": "zeta is checked outside every evaluation domain",
+          "leg": "DEEP denominators"
+        },
+        {
+          "eligible": true,
+          "guard": "check every denominator before accepting products",
+          "leg": "batch inversion, all-nonzero"
+        },
+        {
+          "eligible": false,
+          "guard": "retain zero-aware native algorithm",
+          "leg": "batch inversion, zero legal"
+        },
+        {
+          "eligible": true,
+          "guard": "derived nonzero two-adic point and canonical witness",
+          "leg": "FRI fold points"
+        },
+        {
+          "eligible": false,
+          "guard": "zero is legal at the selected row",
+          "leg": "selector denominators on-domain"
+        },
+        {
+          "eligible": true,
+          "guard": "explicit domain exclusion",
+          "leg": "selector denominators out-of-domain"
+        },
+        {
+          "eligible": true,
+          "guard": "zeta^n != 1 checked independently",
+          "leg": "quotient recomposition"
+        }
+      ],
+      "measurementScope": "isolated kernels only",
+      "nativeMeasured": {
+        "checkedMultiplicationsPerInverse": 1,
+        "checkedWitnessNs": 2500,
+        "exponentiationMultiplicationsPerInverse": 61,
+        "exponentiationNs": 525416,
+        "witnessBytes": 128
+      },
+      "nativeVerifierDelta": {
+        "baselineKey": "exponentiationNs",
+        "candidateKey": "checkedWitnessNs",
+        "nanosecondsDelta": -522916,
+        "scope": "native isolated kernel"
+      },
+      "noMicrobenchmarkSumClaim": true,
+      "opcodeCounts": {
+        "evmDynamicBaseline": null,
+        "evmDynamicCandidate": null,
+        "logicalKernelCounts": {
+          "perCheckedWitness": {
+            "canonicalChecks": 1,
+            "mulmod": 1,
+            "nonzeroGuards": 1
+          },
+          "perInverseBaseline": {
+            "mulmod": 61
+          }
+        },
+        "status": "NOT_EVALUATED: canonical full-transaction opcode trace unavailable"
+      },
+      "proofByteDelta": {
+        "fullProof": null,
+        "perBaseInverse": 4,
+        "perExtensionInverse": 16
+      },
+      "proverDelta": {
+        "extraWork": "serialize witnesses; compute only inverses not already available",
+        "nanoseconds": null
+      },
+      "runtimeByteDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "schema": "pqtc-sp31-candidate-output-v1",
+      "solidityMeasured": {
+        "checkedWitnessGas": 857,
+        "exponentiationGas": 9353
+      },
+      "uniformFloorDeltaPerBaseInverse": {
+        "64": 256,
+        "96": 384
+      }
+    },
+    "V3": {
+      "active64And96Baseline": {
+        "partA": {
+          "active": 16539302,
+          "uniform64": 16539302,
+          "uniform96": 16539302
+        },
+        "partB": {
+          "active": 14105909,
+          "uniform64": 14105909,
+          "uniform96": 14105909
+        }
+      },
+      "baselineCompleteTransaction": {
+        "abiBytes": {
+          "partA": 102308,
+          "partB": 108644
+        },
+        "executionGas": {
+          "partA": 14891070,
+          "partB": 12356373
+        },
+        "nativeVerifierNs": null,
+        "proofBytes": {
+          "partA": 101990,
+          "partB": 108294
+        },
+        "proverNs": null,
+        "registryExecutionGas": {
+          "partA": 14056853,
+          "partB": 11470158
+        },
+        "runtimeBytes": null,
+        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "zeroBytes": {
+          "partA": 808,
+          "partB": 814
+        }
+      },
+      "calldataDeltaBytes": 0,
+      "candidateId": "V3",
+      "completeTransactionMeasured": null,
+      "completeTransactionProjected": null,
+      "deploymentGasDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "differentialTests": {
+        "rustAssertions": 9,
+        "solidityUnsafeCases": 1
+      },
+      "isolatedActive64And96Delta": {
+        "calldataBytesDelta": 0,
+        "executionGasDelta": -639427,
+        "scope": "isolated kernel with compact-section bytes; not a verifier transaction",
+        "totalGasDelta": {
+          "active": -639427,
+          "uniform64": -639427,
+          "uniform96": -639427
+        }
+      },
+      "measurementScope": "isolated kernels only",
+      "nativeMeasured": {
+        "fusedParseDotNs": 1907208,
+        "fusedScratchBytes": 0,
+        "separateParseDotNs": 823958,
+        "separateScratchBytes": 2048
+      },
+      "nativeVerifierDelta": {
+        "baselineKey": "separateParseDotNs",
+        "candidateKey": "fusedParseDotNs",
+        "nanosecondsDelta": 1083250,
+        "scope": "native isolated kernel"
+      },
+      "noMicrobenchmarkSumClaim": true,
+      "opcodeCounts": {
+        "evmDynamicBaseline": null,
+        "evmDynamicCandidate": null,
+        "logicalKernelCounts": {
+          "baseline": {
+            "canonicalLoads": 256,
+            "mulmod": 256,
+            "scratchWords": 256
+          },
+          "fused": {
+            "canonicalLoads": 256,
+            "mulmod": 256,
+            "scratchWords": 0
+          }
+        },
+        "status": "NOT_EVALUATED: canonical full-transaction opcode trace unavailable"
+      },
+      "proofByteDelta": 0,
+      "proverDelta": {
+        "kind": "projected verifier-only change",
+        "nanoseconds": 0
+      },
+      "runtimeByteDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "schema": "pqtc-sp31-candidate-output-v1",
+      "solidityMeasured": {
+        "fusedParseDotGas": 210353,
+        "separateParseDotGas": 849780
+      }
+    },
+    "V4": {
+      "active64And96Baseline": {
+        "partA": {
+          "active": 16539302,
+          "uniform64": 16539302,
+          "uniform96": 16539302
+        },
+        "partB": {
+          "active": 14105909,
+          "uniform64": 14105909,
+          "uniform96": 14105909
+        }
+      },
+      "baselineCompleteTransaction": {
+        "abiBytes": {
+          "partA": 102308,
+          "partB": 108644
+        },
+        "executionGas": {
+          "partA": 14891070,
+          "partB": 12356373
+        },
+        "nativeVerifierNs": null,
+        "proofBytes": {
+          "partA": 101990,
+          "partB": 108294
+        },
+        "proverNs": null,
+        "registryExecutionGas": {
+          "partA": 14056853,
+          "partB": 11470158
+        },
+        "runtimeBytes": null,
+        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "zeroBytes": {
+          "partA": 808,
+          "partB": 814
+        }
+      },
+      "calldataDeltaBytes": 0,
+      "candidateId": "V4",
+      "completeTransactionMeasured": null,
+      "completeTransactionProjected": null,
+      "deploymentGasDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "differentialTests": {
+        "rustAssertions": 9,
+        "solidityUnsafeCases": 1
+      },
+      "isolatedActive64And96Delta": {
+        "calldataBytesDelta": 0,
+        "executionGasDelta": -535665,
+        "scope": "isolated kernel with compact-section bytes; not a verifier transaction",
+        "totalGasDelta": {
+          "active": -535665,
+          "uniform64": -535665,
+          "uniform96": -535665
+        }
+      },
+      "measurementScope": "isolated kernels only",
+      "nativeMeasured": {
+        "boundedScratchBytes": 0,
+        "copyBytes": 2048,
+        "copyEvaluateNs": 2280209,
+        "sliceEvaluateNs": 2215875
+      },
+      "nativeVerifierDelta": {
+        "baselineKey": "copyEvaluateNs",
+        "candidateKey": "sliceEvaluateNs",
+        "nanosecondsDelta": -64334,
+        "scope": "native isolated kernel"
+      },
+      "noMicrobenchmarkSumClaim": true,
+      "opcodeCounts": {
+        "evmDynamicBaseline": null,
+        "evmDynamicCandidate": null,
+        "logicalKernelCounts": {
+          "baseline": {
+            "calldataWordsCopied": 256,
+            "scratchWords": 256
+          },
+          "calldataNative": {
+            "boundChecksBeforeLoop": 1,
+            "calldataWordsCopied": 0,
+            "scratchWords": 0
+          }
+        },
+        "status": "NOT_EVALUATED: canonical full-transaction opcode trace unavailable"
+      },
+      "proofByteDelta": 0,
+      "proverDelta": {
+        "kind": "projected verifier-only change",
+        "nanoseconds": 0
+      },
+      "runtimeByteDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "schema": "pqtc-sp31-candidate-output-v1",
+      "solidityMeasured": {
+        "calldataEvaluationGas": 127811,
+        "copiedEvaluationGas": 663476
+      }
+    },
+    "V5": {
+      "active64And96Baseline": {
+        "partA": {
+          "active": 16539302,
+          "uniform64": 16539302,
+          "uniform96": 16539302
+        },
+        "partB": {
+          "active": 14105909,
+          "uniform64": 14105909,
+          "uniform96": 14105909
+        }
+      },
+      "baselineCompleteTransaction": {
+        "abiBytes": {
+          "partA": 102308,
+          "partB": 108644
+        },
+        "executionGas": {
+          "partA": 14891070,
+          "partB": 12356373
+        },
+        "nativeVerifierNs": null,
+        "proofBytes": {
+          "partA": 101990,
+          "partB": 108294
+        },
+        "proverNs": null,
+        "registryExecutionGas": {
+          "partA": 14056853,
+          "partB": 11470158
+        },
+        "runtimeBytes": null,
+        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "zeroBytes": {
+          "partA": 808,
+          "partB": 814
+        }
+      },
+      "calldataDeltaBytes": {
+        "checkedCalldata32": 128,
+        "derived": 0,
+        "fixed": 0
+      },
+      "candidateId": "V5",
+      "completeTransactionMeasured": null,
+      "completeTransactionProjected": null,
+      "deploymentGasDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "differentialTests": {
+        "rustAssertions": 9,
+        "solidityUnsafeCases": 1
+      },
+      "isolatedActive64And96Delta": {
+        "calldataBytesDelta": 0,
+        "executionGasDelta": -5624,
+        "scope": "isolated kernel with compact-section bytes; not a verifier transaction",
+        "totalGasDelta": {
+          "active": -5624,
+          "uniform64": -5624,
+          "uniform96": -5624
+        }
+      },
+      "measurementScope": "isolated kernels only",
+      "nativeMeasured": {
+        "calldataCheckedNs": 176834,
+        "calldataTableBytes": 128,
+        "derivedNs": 916,
+        "fixedReadNs": 5250,
+        "fixedTableBytes": 128
+      },
+      "nativeVerifierDelta": {
+        "baselineKey": "fixedReadNs",
+        "candidateKey": "derivedNs",
+        "nanosecondsDelta": -4334,
+        "scope": "native isolated kernel"
+      },
+      "noMicrobenchmarkSumClaim": true,
+      "opcodeCounts": {
+        "evmDynamicBaseline": null,
+        "evmDynamicCandidate": null,
+        "logicalKernelCounts": {
+          "checkedCalldata": {
+            "calldataFields": 32,
+            "mulmod": 31
+          },
+          "derived": {
+            "mulmod": 32
+          },
+          "fixed": {
+            "codeTableBytes": 128,
+            "tableLoads": 32
+          }
+        },
+        "status": "NOT_EVALUATED: canonical full-transaction opcode trace unavailable"
+      },
+      "proofByteDelta": {
+        "checkedCalldata32": 128,
+        "derived": 0,
+        "fixed": 0
+      },
+      "proverDelta": {
+        "checkedCalldata": "serialize 32 canonical fields",
+        "derived": 0,
+        "fixed": 0
+      },
+      "runtimeByteDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "schema": "pqtc-sp31-candidate-output-v1",
+      "solidityMeasured": {
+        "checkedCalldataTableGas": 89183,
+        "derivedTableGas": 3028,
+        "fixedTableGas": 8652
+      }
+    },
+    "V6": {
+      "active64And96Baseline": {
+        "partA": {
+          "active": 16539302,
+          "uniform64": 16539302,
+          "uniform96": 16539302
+        },
+        "partB": {
+          "active": 14105909,
+          "uniform64": 14105909,
+          "uniform96": 14105909
+        }
+      },
+      "baselineCompleteTransaction": {
+        "abiBytes": {
+          "partA": 102308,
+          "partB": 108644
+        },
+        "executionGas": {
+          "partA": 14891070,
+          "partB": 12356373
+        },
+        "nativeVerifierNs": null,
+        "proofBytes": {
+          "partA": 101990,
+          "partB": 108294
+        },
+        "proverNs": null,
+        "registryExecutionGas": {
+          "partA": 14056853,
+          "partB": 11470158
+        },
+        "runtimeBytes": null,
+        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "zeroBytes": {
+          "partA": 808,
+          "partB": 814
+        }
+      },
+      "calldataDeltaBytes": {
+        "checkedPoints32": 128,
+        "exponentiation": 0,
+        "fixedTable": 0,
+        "incremental": 0
+      },
+      "candidateId": "V6",
+      "completeTransactionMeasured": null,
+      "completeTransactionProjected": null,
+      "deploymentGasDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "differentialTests": {
+        "rustAssertions": 9,
+        "solidityUnsafeCases": 1
+      },
+      "isolatedActive64And96Delta": {
+        "calldataBytesDelta": 0,
+        "executionGasDelta": -43635,
+        "scope": "isolated kernel with compact-section bytes; not a verifier transaction",
+        "totalGasDelta": {
+          "active": -43635,
+          "uniform64": -43635,
+          "uniform96": -43635
+        }
+      },
+      "measurementScope": "isolated kernels only",
+      "nativeMeasured": {
+        "checkedSuppliedNs": 17625,
+        "exponentiationNs": 143416,
+        "fixedTable8Ns": 1250,
+        "fixedTableBytes": 32,
+        "incrementalNs": 125,
+        "suppliedPointBytes": 128
+      },
+      "nativeVerifierDelta": {
+        "baselineKey": "exponentiationNs",
+        "candidateKey": "incrementalNs",
+        "nanosecondsDelta": -143291,
+        "scope": "native isolated kernel"
+      },
+      "noMicrobenchmarkSumClaim": true,
+      "opcodeCounts": {
+        "evmDynamicBaseline": null,
+        "evmDynamicCandidate": null,
+        "logicalKernelCounts": {
+          "checkedPoints": {
+            "calldataFields": 32,
+            "mulmod": 31,
+            "powCalls": 1
+          },
+          "exponentiation": {
+            "powCalls": 32
+          },
+          "incremental": {
+            "mulmod": 32,
+            "powCalls": 1
+          }
+        },
+        "status": "NOT_EVALUATED: canonical full-transaction opcode trace unavailable"
+      },
+      "proofByteDelta": {
+        "checkedPoints32": 128,
+        "exponentiation": 0,
+        "fixedTable": 0,
+        "incremental": 0
+      },
+      "proverDelta": {
+        "checkedPoints": "serialize 32 canonical fields",
+        "exponentiation": 0,
+        "fixedTable": 0,
+        "incremental": 0
+      },
+      "runtimeByteDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "schema": "pqtc-sp31-candidate-output-v1",
+      "solidityMeasured": {
+        "checkedPointsGas": 21451,
+        "exponentiationGas": 48640,
+        "fixedTable8Gas": 1748,
+        "incrementalGas": 5005
+      }
+    },
+    "V7": {
+      "active64And96Baseline": {
+        "partA": {
+          "active": 16539302,
+          "uniform64": 16539302,
+          "uniform96": 16539302
+        },
+        "partB": {
+          "active": 14105909,
+          "uniform64": 14105909,
+          "uniform96": 14105909
+        }
+      },
+      "baselineCompleteTransaction": {
+        "abiBytes": {
+          "partA": 102308,
+          "partB": 108644
+        },
+        "executionGas": {
+          "partA": 14891070,
+          "partB": 12356373
+        },
+        "nativeVerifierNs": null,
+        "proofBytes": {
+          "partA": 101990,
+          "partB": 108294
+        },
+        "proverNs": null,
+        "registryExecutionGas": {
+          "partA": 14056853,
+          "partB": 11470158
+        },
+        "runtimeBytes": null,
+        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "zeroBytes": {
+          "partA": 808,
+          "partB": 814
+        }
+      },
+      "calldataDeltaBytes": "same as variant-specific frontier proof-byte delta",
+      "candidateId": "V7",
+      "completeTransactionMeasured": null,
+      "completeTransactionProjected": null,
+      "deploymentGasDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "differentialTests": {
+        "rustAssertions": 9,
+        "solidityUnsafeCases": 2
+      },
+      "frontierAndWidth": {
+        "caps": [
+          {
+            "bytes512": 16384,
+            "capHeight": 0,
+            "worstCaseDigestCountModel": 256
+          },
+          {
+            "bytes512": 16512,
+            "capHeight": 1,
+            "worstCaseDigestCountModel": 258
+          },
+          {
+            "bytes512": 16640,
+            "capHeight": 2,
+            "worstCaseDigestCountModel": 260
+          },
+          {
+            "bytes512": 16896,
+            "capHeight": 3,
+            "worstCaseDigestCountModel": 264
+          },
+          {
+            "bytes512": 17408,
+            "capHeight": 4,
+            "worstCaseDigestCountModel": 272
+          }
+        ],
+        "exactWorstCaseFrontierDigests": 256,
+        "queries": 32,
+        "treeDepth": 13,
+        "widths": [
+          {
+            "bits": 512,
+            "bytes": 16384,
+            "decision": "ELIGIBLE"
+          },
+          {
+            "bits": 384,
+            "bytes": 12288,
+            "decision": "REJECT_NO_EXTERNAL_REVIEW"
+          },
+          {
+            "bits": 320,
+            "bytes": 10240,
+            "decision": "REJECT_NO_EXTERNAL_REVIEW"
+          },
+          {
+            "bits": 256,
+            "bytes": 8192,
+            "decision": "LOWER_BOUND_ONLY_NOT_ACCEPTABLE"
+          }
+        ]
+      },
+      "isolatedActive64And96Delta": null,
+      "measurementScope": "isolated kernels only",
+      "nativeMeasured": {
+        "digest256LowerBoundBytes": 8192,
+        "digest320WorstCaseBytes": 10240,
+        "digest384WorstCaseBytes": 12288,
+        "digest512WorstCaseBytes": 16384,
+        "exactWorstCaseFrontierDigests": 256,
+        "queries": 32,
+        "treeDepth": 13
+      },
+      "nativeVerifierDelta": null,
+      "noMicrobenchmarkSumClaim": true,
+      "opcodeCounts": {
+        "evmDynamicBaseline": null,
+        "evmDynamicCandidate": null,
+        "logicalKernelCounts": {
+          "currentAndExactWorstCase": {
+            "frontierDigests": 256
+          },
+          "hashCallsDependOnFixture": null
+        },
+        "status": "NOT_EVALUATED: canonical full-transaction opcode trace unavailable"
+      },
+      "proofByteDelta": "variant-specific worst-case table; full proof unavailable",
+      "proverDelta": {
+        "hashAndSerializationCounts": "variant-specific",
+        "nanoseconds": null
+      },
+      "runtimeByteDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "schema": "pqtc-sp31-candidate-output-v1",
+      "solidityMeasured": {
+        "exactFrontierGas": 257975
+      },
+      "uniformFloorDeltaFrom512WorstCase": {
+        "256LowerBound": {
+          "bytes": -8192,
+          "gas64": -524288,
+          "gas96": -786432
+        },
+        "320": {
+          "bytes": -6144,
+          "gas64": -393216,
+          "gas96": -589824
+        },
+        "384": {
+          "bytes": -4096,
+          "gas64": -262144,
+          "gas96": -393216
+        }
+      }
+    },
+    "V8": {
+      "active64And96Baseline": {
+        "partA": {
+          "active": 16539302,
+          "uniform64": 16539302,
+          "uniform96": 16539302
+        },
+        "partB": {
+          "active": 14105909,
+          "uniform64": 14105909,
+          "uniform96": 14105909
+        }
+      },
+      "baselineCompleteTransaction": {
+        "abiBytes": {
+          "partA": 102308,
+          "partB": 108644
+        },
+        "executionGas": {
+          "partA": 14891070,
+          "partB": 12356373
+        },
+        "nativeVerifierNs": null,
+        "proofBytes": {
+          "partA": 101990,
+          "partB": 108294
+        },
+        "proverNs": null,
+        "registryExecutionGas": {
+          "partA": 14056853,
+          "partB": 11470158
+        },
+        "runtimeBytes": null,
+        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "zeroBytes": {
+          "partA": 808,
+          "partB": 814
+        }
+      },
+      "calldataDeltaBytes": {
+        "derivedOnlySectionBytes": 4,
+        "framedSectionBytes": 996,
+        "oneTransactionDuplicateGlobalProjection": -9208,
+        "packed31Bytes": 992,
+        "per256CanonicalFields": -32,
+        "u32Bytes": 1024
+      },
+      "candidateId": "V8",
+      "codecComparisons": {
+        "derivedOmissionWhenAll256ValuesArePriorTranscriptFunctions": 4,
+        "lengthPrefixedPacked31": 996,
+        "packed31": 992,
+        "removeSecondGlobalCopyOnlyInOneTransactionModel": -9208,
+        "u32": 1024
+      },
+      "completeTransactionMeasured": null,
+      "completeTransactionProjected": null,
+      "deploymentGasDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "differentialTests": {
+        "rustAssertions": 9,
+        "solidityUnsafeCases": 4
+      },
+      "isolatedActive64And96Delta": {
+        "calldataBytesDelta": -32,
+        "executionGasDelta": 62465,
+        "scope": "isolated kernel with compact-section bytes; not a verifier transaction",
+        "totalGasDelta": {
+          "active": 61953,
+          "uniform64": 61953,
+          "uniform96": 61953
+        }
+      },
+      "measurementScope": "isolated kernels only",
+      "nativeMeasured": {
+        "elements": 256,
+        "pack31Ns": 1676959,
+        "packed31Bytes": 992,
+        "u32Bytes": 1024,
+        "u32ReadNs": 206584
+      },
+      "nativeVerifierDelta": {
+        "baselineKey": "u32ReadNs",
+        "candidateKey": "pack31Ns",
+        "nanosecondsDelta": 1470375,
+        "scope": "native isolated kernel"
+      },
+      "noMicrobenchmarkSumClaim": true,
+      "opcodeCounts": {
+        "evmDynamicBaseline": null,
+        "evmDynamicCandidate": null,
+        "logicalKernelCounts": {
+          "packed31": {
+            "canonicalChecksPerField": 1,
+            "inputBitsPerField": 31,
+            "terminalPaddingChecks": 1
+          },
+          "u32": {
+            "inputBitsPerField": 32
+          }
+        },
+        "status": "NOT_EVALUATED: canonical full-transaction opcode trace unavailable"
+      },
+      "proofByteDelta": {
+        "fullProof": null,
+        "per256CanonicalFields": -32
+      },
+      "proverDelta": {
+        "nanosecondsDelta": 1676959,
+        "scope": "isolated pack256 kernel"
+      },
+      "runtimeByteDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "schema": "pqtc-sp31-candidate-output-v1",
+      "solidityMeasured": {
+        "packed31Bytes": 992,
+        "section31Gas": 238092,
+        "u32Bytes": 1024,
+        "unpack31Gas": 237632,
+        "unpack32Gas": 175167
+      },
+      "uniformFloorDeltaPer256Fields": {
+        "64": -2048,
+        "96": -3072
+      }
+    },
+    "V9": {
+      "active64And96Baseline": {
+        "partA": {
+          "active": 16539302,
+          "uniform64": 16539302,
+          "uniform96": 16539302
+        },
+        "partB": {
+          "active": 14105909,
+          "uniform64": 14105909,
+          "uniform96": 14105909
+        }
+      },
+      "baselineCompleteTransaction": {
+        "abiBytes": {
+          "partA": 102308,
+          "partB": 108644
+        },
+        "executionGas": {
+          "partA": 14891070,
+          "partB": 12356373
+        },
+        "nativeVerifierNs": null,
+        "proofBytes": {
+          "partA": 101990,
+          "partB": 108294
+        },
+        "proverNs": null,
+        "registryExecutionGas": {
+          "partA": 14056853,
+          "partB": 11470158
+        },
+        "runtimeBytes": null,
+        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "zeroBytes": {
+          "partA": 808,
+          "partB": 814
+        }
+      },
+      "calldataDeltaBytes": 0,
+      "candidateId": "V9",
+      "completeTransactionMeasured": null,
+      "completeTransactionProjected": {
+        "kind": "component-model projection, not measurement",
+        "rows": [
+          {
+            "airPlacement": "A",
+            "executionGas": [
+              13201375,
+              14046068
+            ],
+            "minimumMarginActive": 193376,
+            "projectedAbiBytes": [
+              55917,
+              158187
+            ],
+            "projectedProofBytes": [
+              55599,
+              157837
+            ],
+            "split": [
+              8,
+              24
+            ],
+            "totalGas": {
+              "active": [
+                14111743,
+                16583840
+              ],
+              "uniform64": [
+                14111743,
+                16583840
+              ],
+              "uniform96": [
+                14111743,
+                16583840
+              ]
+            }
+          },
+          {
+            "airPlacement": "B",
+            "executionGas": [
+              10337728,
+              16909715
+            ],
+            "minimumMarginActive": -2670271,
+            "projectedAbiBytes": [
+              55917,
+              158187
+            ],
+            "projectedProofBytes": [
+              55599,
+              157837
+            ],
+            "split": [
+              8,
+              24
+            ],
+            "totalGas": {
+              "active": [
+                11248096,
+                19447487
+              ],
+              "uniform64": [
+                11248096,
+                19447487
+              ],
+              "uniform96": [
+                11248096,
+                19447487
+              ]
+            }
+          },
+          {
+            "airPlacement": "A",
+            "executionGas": [
+              13623799,
+              13623644
+            ],
+            "minimumMarginActive": 812860,
+            "projectedAbiBytes": [
+              67515,
+              145801
+            ],
+            "projectedProofBytes": [
+              67197,
+              145451
+            ],
+            "split": [
+              10,
+              22
+            ],
+            "totalGas": {
+              "active": [
+                14718643,
+                15964356
+              ],
+              "uniform64": [
+                14718643,
+                15964356
+              ],
+              "uniform96": [
+                14718643,
+                15964356
+              ]
+            }
+          },
+          {
+            "airPlacement": "B",
+            "executionGas": [
+              10760152,
+              16487291
+            ],
+            "minimumMarginActive": -2050787,
+            "projectedAbiBytes": [
+              67515,
+              145801
+            ],
+            "projectedProofBytes": [
+              67197,
+              145451
+            ],
+            "split": [
+              10,
+              22
+            ],
+            "totalGas": {
+              "active": [
+                11854996,
+                18828003
+              ],
+              "uniform64": [
+                11854996,
+                18828003
+              ],
+              "uniform96": [
+                11854996,
+                18828003
+              ]
+            }
+          },
+          {
+            "airPlacement": "A",
+            "executionGas": [
+              14046222,
+              13201221
+            ],
+            "minimumMarginActive": 1432339,
+            "projectedAbiBytes": [
+              79112,
+              133416
+            ],
+            "projectedProofBytes": [
+              78794,
+              133066
+            ],
+            "split": [
+              12,
+              20
+            ],
+            "totalGas": {
+              "active": [
+                15325514,
+                15344877
+              ],
+              "uniform64": [
+                15325514,
+                15344877
+              ],
+              "uniform96": [
+                15325514,
+                15344877
+              ]
+            }
+          },
+          {
+            "airPlacement": "B",
+            "executionGas": [
+              11182575,
+              16064868
+            ],
+            "minimumMarginActive": -1431308,
+            "projectedAbiBytes": [
+              79112,
+              133416
+            ],
+            "projectedProofBytes": [
+              78794,
+              133066
+            ],
+            "split": [
+              12,
+              20
+            ],
+            "totalGas": {
+              "active": [
+                12461867,
+                18208524
+              ],
+              "uniform64": [
+                12461867,
+                18208524
+              ],
+              "uniform96": [
+                12461867,
+                18208524
+              ]
+            }
+          },
+          {
+            "airPlacement": "A",
+            "executionGas": [
+              14257434,
+              12990009
+            ],
+            "minimumMarginActive": 1148258,
+            "projectedAbiBytes": [
+              84911,
+              127223
+            ],
+            "projectedProofBytes": [
+              84593,
+              126873
+            ],
+            "split": [
+              13,
+              19
+            ],
+            "totalGas": {
+              "active": [
+                15628958,
+                15035141
+              ],
+              "uniform64": [
+                15628958,
+                15035141
+              ],
+              "uniform96": [
+                15628958,
+                15035141
+              ]
+            }
+          },
+          {
+            "airPlacement": "B",
+            "executionGas": [
+              11393787,
+              15853656
+            ],
+            "minimumMarginActive": -1121572,
+            "projectedAbiBytes": [
+              84911,
+              127223
+            ],
+            "projectedProofBytes": [
+              84593,
+              126873
+            ],
+            "split": [
+              13,
+              19
+            ],
+            "totalGas": {
+              "active": [
+                12765311,
+                17898788
+              ],
+              "uniform64": [
+                12765311,
+                17898788
+              ],
+              "uniform96": [
+                12765311,
+                17898788
+              ]
+            }
+          },
+          {
+            "airPlacement": "A",
+            "executionGas": [
+              14468646,
+              12778797
+            ],
+            "minimumMarginActive": 844802,
+            "projectedAbiBytes": [
+              90710,
+              121030
+            ],
+            "projectedProofBytes": [
+              90392,
+              120680
+            ],
+            "split": [
+              14,
+              18
+            ],
+            "totalGas": {
+              "active": [
+                15932414,
+                14725393
+              ],
+              "uniform64": [
+                15932414,
+                14725393
+              ],
+              "uniform96": [
+                15932414,
+                14725393
+              ]
+            }
+          },
+          {
+            "airPlacement": "B",
+            "executionGas": [
+              11604999,
+              15642444
+            ],
+            "minimumMarginActive": -811824,
+            "projectedAbiBytes": [
+              90710,
+              121030
+            ],
+            "projectedProofBytes": [
+              90392,
+              120680
+            ],
+            "split": [
+              14,
+              18
+            ],
+            "totalGas": {
+              "active": [
+                13068767,
+                17589040
+              ],
+              "uniform64": [
+                13068767,
+                17589040
+              ],
+              "uniform96": [
+                13068767,
+                17589040
+              ]
+            }
+          },
+          {
+            "airPlacement": "A",
+            "executionGas": [
+              14679858,
+              12567585
+            ],
+            "minimumMarginActive": 541358,
+            "projectedAbiBytes": [
+              96509,
+              114837
+            ],
+            "projectedProofBytes": [
+              96191,
+              114487
+            ],
+            "split": [
+              15,
+              17
+            ],
+            "totalGas": {
+              "active": [
+                16235858,
+                14415657
+              ],
+              "uniform64": [
+                16235858,
+                14415657
+              ],
+              "uniform96": [
+                16235858,
+                14415657
+              ]
+            }
+          },
+          {
+            "airPlacement": "B",
+            "executionGas": [
+              11816211,
+              15431232
+            ],
+            "minimumMarginActive": -502088,
+            "projectedAbiBytes": [
+              96509,
+              114837
+            ],
+            "projectedProofBytes": [
+              96191,
+              114487
+            ],
+            "split": [
+              15,
+              17
+            ],
+            "totalGas": {
+              "active": [
+                13372211,
+                17279304
+              ],
+              "uniform64": [
+                13372211,
+                17279304
+              ],
+              "uniform96": [
+                13372211,
+                17279304
+              ]
+            }
+          },
+          {
+            "airPlacement": "A",
+            "executionGas": [
+              14891070,
+              12356373
+            ],
+            "minimumMarginActive": 237914,
+            "projectedAbiBytes": [
+              102308,
+              108644
+            ],
+            "projectedProofBytes": [
+              101990,
+              108294
+            ],
+            "split": [
+              16,
+              16
+            ],
+            "totalGas": {
+              "active": [
+                16539302,
+                14105909
+              ],
+              "uniform64": [
+                16539302,
+                14105909
+              ],
+              "uniform96": [
+                16539302,
+                14105909
+              ]
+            }
+          },
+          {
+            "airPlacement": "B",
+            "executionGas": [
+              12027423,
+              15220020
+            ],
+            "minimumMarginActive": -192340,
+            "projectedAbiBytes": [
+              102308,
+              108644
+            ],
+            "projectedProofBytes": [
+              101990,
+              108294
+            ],
+            "split": [
+              16,
+              16
+            ],
+            "totalGas": {
+              "active": [
+                13675655,
+                16969556
+              ],
+              "uniform64": [
+                13675655,
+                16969556
+              ],
+              "uniform96": [
+                13675655,
+                16969556
+              ]
+            }
+          }
+        ]
+      },
+      "deploymentGasDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "differentialTests": {
+        "rustAssertions": 9,
+        "solidityUnsafeCases": 1
+      },
+      "isolatedActive64And96Delta": null,
+      "measurementScope": "isolated kernels only",
+      "nativeMeasured": {
+        "model": "evaluated by package driver with AIR segment placement",
+        "splits": [
+          [
+            8,
+            24
+          ],
+          [
+            10,
+            22
+          ],
+          [
+            12,
+            20
+          ],
+          [
+            13,
+            19
+          ],
+          [
+            14,
+            18
+          ],
+          [
+            15,
+            17
+          ],
+          [
+            16,
+            16
+          ]
+        ]
+      },
+      "nativeVerifierDelta": null,
+      "noMicrobenchmarkSumClaim": true,
+      "opcodeCounts": {
+        "evmDynamicBaseline": null,
+        "evmDynamicCandidate": null,
+        "logicalKernelCounts": {
+          "airPlacementsPerSplit": 2,
+          "completeOpcodeTrace": null,
+          "querySplitsEvaluated": 7
+        },
+        "status": "NOT_EVALUATED: canonical full-transaction opcode trace unavailable"
+      },
+      "proofByteDelta": 0,
+      "proverDelta": {
+        "kind": "projected verifier-only change",
+        "nanoseconds": 0
+      },
+      "runtimeByteDelta": {
+        "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+        "value": null
+      },
+      "schema": "pqtc-sp31-candidate-output-v1",
+      "solidityMeasured": {
+        "airA.10.maxGas": 13623798,
+        "airA.12.maxGas": 14046222,
+        "airA.13.maxGas": 14257434,
+        "airA.14.maxGas": 14468646,
+        "airA.15.maxGas": 14679858,
+        "airA.16.maxGas": 14891070,
+        "airA.8.maxGas": 14046069,
+        "airB.10.maxGas": 16487292,
+        "airB.12.maxGas": 16064868,
+        "airB.13.maxGas": 15853656,
+        "airB.14.maxGas": 15642444,
+        "airB.15.maxGas": 15431232,
+        "airB.16.maxGas": 15220020,
+        "airB.8.maxGas": 16909716
+      }
+    }
+  },
+  "canonicalFixture": {
+    "artifacts": {
+      "part-a.calldata": {
+        "bytes": 108644,
+        "sha256": "af6a132e60ed7879b36ed2ca79d671714475faf2555d499af74b57b01addf03e",
+        "zeroBytes": 798
+      },
+      "part-a.pqtc": {
+        "bytes": 108326,
+        "sha256": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+        "zeroBytes": 656
+      },
+      "part-b.calldata": {
+        "bytes": 104228,
+        "sha256": "3b42e9cbe0af2c24a4eebf0fc381b4f31b0b4a58222fe951c5a3142c3bab11ad",
+        "zeroBytes": 807
+      },
+      "part-b.pqtc": {
+        "bytes": 103878,
+        "sha256": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701",
+        "zeroBytes": 666
+      }
+    },
+    "optimizedFullPath": "UNAVAILABLE: isolated kernels are not integrated into custody verifier",
+    "path": "research/candidates/v03-baseline/proofs/v03-fixed-01",
+    "status": "OBSERVED_BASELINE_ONLY"
+  },
+  "completeTransaction": {
+    "combinedSavings": null,
+    "measured": null,
+    "reason": "canonical full-path fixture unavailable",
+    "reasonCombined": "isolated microbenchmarks overlap and are deliberately not summed"
+  },
+  "gatePolicy": ">=2% measured full verifier saving, security-risk removal, or material measured worst-case byte reduction",
+  "measured": {
+    "available": true,
+    "forgeTranscriptSha256": "80c6bab81dddc47b959742e784cd593b7bc9153c26c0b4e21fb794e6e0f518e1",
+    "native": {
+      "babyBearModulus": 2013265921,
+      "checksums": 530080236,
+      "engine": "rust-std-instant",
+      "measurements": {
+        "V1": {
+          "hornerMultiplications": 256,
+          "hornerNs": 4281250,
+          "materializedBytes": 2048,
+          "materializedMultiplications": 511,
+          "materializedNs": 3209208,
+          "streamedBytes": 0,
+          "streamedMultiplications": 512,
+          "streamedNs": 2418000
+        },
+        "V2": {
+          "checkedMultiplicationsPerInverse": 1,
+          "checkedWitnessNs": 2500,
+          "exponentiationMultiplicationsPerInverse": 61,
+          "exponentiationNs": 525416,
+          "witnessBytes": 128
+        },
+        "V3": {
+          "fusedParseDotNs": 1907208,
+          "fusedScratchBytes": 0,
+          "separateParseDotNs": 823958,
+          "separateScratchBytes": 2048
+        },
+        "V4": {
+          "boundedScratchBytes": 0,
+          "copyBytes": 2048,
+          "copyEvaluateNs": 2280209,
+          "sliceEvaluateNs": 2215875
+        },
+        "V5": {
+          "calldataCheckedNs": 176834,
+          "calldataTableBytes": 128,
+          "derivedNs": 916,
+          "fixedReadNs": 5250,
+          "fixedTableBytes": 128
+        },
+        "V6": {
+          "checkedSuppliedNs": 17625,
+          "exponentiationNs": 143416,
+          "fixedTable8Ns": 1250,
+          "fixedTableBytes": 32,
+          "incrementalNs": 125,
+          "suppliedPointBytes": 128
+        },
+        "V7": {
+          "digest256LowerBoundBytes": 8192,
+          "digest320WorstCaseBytes": 10240,
+          "digest384WorstCaseBytes": 12288,
+          "digest512WorstCaseBytes": 16384,
+          "exactWorstCaseFrontierDigests": 256,
+          "queries": 32,
+          "treeDepth": 13
+        },
+        "V8": {
+          "elements": 256,
+          "pack31Ns": 1676959,
+          "packed31Bytes": 992,
+          "u32Bytes": 1024,
+          "u32ReadNs": 206584
+        },
+        "V9": {
+          "model": "evaluated by package driver with AIR segment placement",
+          "splits": [
+            [
+              8,
+              24
+            ],
+            [
+              10,
+              22
+            ],
+            [
+              12,
+              20
+            ],
+            [
+              13,
+              19
+            ],
+            [
+              14,
+              18
+            ],
+            [
+              15,
+              17
+            ],
+            [
+              16,
+              16
+            ]
+          ]
+        }
+      },
+      "negativeTests": {
+        "duplicateFrontierIndexRejected": true,
+        "noncanonicalFieldRejected": true,
+        "nonzeroPaddingRejected": true,
+        "outOfRangeFrontierIndexRejected": true,
+        "truncatedPackingRejected": true,
+        "zeroInverseRejected": true,
+        "zeroLegalWitnessRejected": true
+      },
+      "repetitions": 2000,
+      "schema": "pqtc-sp31-native-measurements-v1",
+      "terms": 256
+    },
+    "scope": "isolated Rust and Solidity kernels",
+    "solidity": {
+      "COMMON.deploymentExecutionGas": 1057569,
+      "COMMON.runtimeBytes": 5115,
+      "V1.hornerGas": 129454,
+      "V1.materializedGas": 727415,
+      "V1.streamedGas": 128003,
+      "V2.checkedWitnessGas": 857,
+      "V2.exponentiationGas": 9353,
+      "V3.fusedParseDotGas": 210353,
+      "V3.separateParseDotGas": 849780,
+      "V4.calldataEvaluationGas": 127811,
+      "V4.copiedEvaluationGas": 663476,
+      "V5.checkedCalldataTableGas": 89183,
+      "V5.derivedTableGas": 3028,
+      "V5.fixedTableGas": 8652,
+      "V6.checkedPointsGas": 21451,
+      "V6.exponentiationGas": 48640,
+      "V6.fixedTable8Gas": 1748,
+      "V6.incrementalGas": 5005,
+      "V7.exactFrontierGas": 257975,
+      "V8.packed31Bytes": 992,
+      "V8.section31Gas": 238092,
+      "V8.u32Bytes": 1024,
+      "V8.unpack31Gas": 237632,
+      "V8.unpack32Gas": 175167,
+      "V9.airA.10.maxGas": 13623798,
+      "V9.airA.12.maxGas": 14046222,
+      "V9.airA.13.maxGas": 14257434,
+      "V9.airA.14.maxGas": 14468646,
+      "V9.airA.15.maxGas": 14679858,
+      "V9.airA.16.maxGas": 14891070,
+      "V9.airA.8.maxGas": 14046069,
+      "V9.airB.10.maxGas": 16487292,
+      "V9.airB.12.maxGas": 16064868,
+      "V9.airB.13.maxGas": 15853656,
+      "V9.airB.14.maxGas": 15642444,
+      "V9.airB.15.maxGas": 15431232,
+      "V9.airB.16.maxGas": 15220020,
+      "V9.airB.8.maxGas": 16909716
+    }
+  },
+  "projected": {
+    "mmcs": {
+      "caps": [
+        {
+          "bytes512": 16384,
+          "capHeight": 0,
+          "worstCaseDigestCountModel": 256
+        },
+        {
+          "bytes512": 16512,
+          "capHeight": 1,
+          "worstCaseDigestCountModel": 258
+        },
+        {
+          "bytes512": 16640,
+          "capHeight": 2,
+          "worstCaseDigestCountModel": 260
+        },
+        {
+          "bytes512": 16896,
+          "capHeight": 3,
+          "worstCaseDigestCountModel": 264
+        },
+        {
+          "bytes512": 17408,
+          "capHeight": 4,
+          "worstCaseDigestCountModel": 272
+        }
+      ],
+      "exactWorstCaseFrontierDigests": 256,
+      "queries": 32,
+      "treeDepth": 13,
+      "widths": [
+        {
+          "bits": 512,
+          "bytes": 16384,
+          "decision": "ELIGIBLE"
+        },
+        {
+          "bits": 384,
+          "bytes": 12288,
+          "decision": "REJECT_NO_EXTERNAL_REVIEW"
+        },
+        {
+          "bits": 320,
+          "bytes": 10240,
+          "decision": "REJECT_NO_EXTERNAL_REVIEW"
+        },
+        {
+          "bits": 256,
+          "bytes": 8192,
+          "decision": "LOWER_BOUND_ONLY_NOT_ACCEPTABLE"
+        }
+      ]
+    },
+    "querySplits": [
+      {
+        "airPlacement": "A",
+        "executionGas": [
+          13201375,
+          14046068
+        ],
+        "minimumMarginActive": 193376,
+        "projectedAbiBytes": [
+          55917,
+          158187
+        ],
+        "projectedProofBytes": [
+          55599,
+          157837
+        ],
+        "split": [
+          8,
+          24
+        ],
+        "totalGas": {
+          "active": [
+            14111743,
+            16583840
+          ],
+          "uniform64": [
+            14111743,
+            16583840
+          ],
+          "uniform96": [
+            14111743,
+            16583840
+          ]
+        }
+      },
+      {
+        "airPlacement": "B",
+        "executionGas": [
+          10337728,
+          16909715
+        ],
+        "minimumMarginActive": -2670271,
+        "projectedAbiBytes": [
+          55917,
+          158187
+        ],
+        "projectedProofBytes": [
+          55599,
+          157837
+        ],
+        "split": [
+          8,
+          24
+        ],
+        "totalGas": {
+          "active": [
+            11248096,
+            19447487
+          ],
+          "uniform64": [
+            11248096,
+            19447487
+          ],
+          "uniform96": [
+            11248096,
+            19447487
+          ]
+        }
+      },
+      {
+        "airPlacement": "A",
+        "executionGas": [
+          13623799,
+          13623644
+        ],
+        "minimumMarginActive": 812860,
+        "projectedAbiBytes": [
+          67515,
+          145801
+        ],
+        "projectedProofBytes": [
+          67197,
+          145451
+        ],
+        "split": [
+          10,
+          22
+        ],
+        "totalGas": {
+          "active": [
+            14718643,
+            15964356
+          ],
+          "uniform64": [
+            14718643,
+            15964356
+          ],
+          "uniform96": [
+            14718643,
+            15964356
+          ]
+        }
+      },
+      {
+        "airPlacement": "B",
+        "executionGas": [
+          10760152,
+          16487291
+        ],
+        "minimumMarginActive": -2050787,
+        "projectedAbiBytes": [
+          67515,
+          145801
+        ],
+        "projectedProofBytes": [
+          67197,
+          145451
+        ],
+        "split": [
+          10,
+          22
+        ],
+        "totalGas": {
+          "active": [
+            11854996,
+            18828003
+          ],
+          "uniform64": [
+            11854996,
+            18828003
+          ],
+          "uniform96": [
+            11854996,
+            18828003
+          ]
+        }
+      },
+      {
+        "airPlacement": "A",
+        "executionGas": [
+          14046222,
+          13201221
+        ],
+        "minimumMarginActive": 1432339,
+        "projectedAbiBytes": [
+          79112,
+          133416
+        ],
+        "projectedProofBytes": [
+          78794,
+          133066
+        ],
+        "split": [
+          12,
+          20
+        ],
+        "totalGas": {
+          "active": [
+            15325514,
+            15344877
+          ],
+          "uniform64": [
+            15325514,
+            15344877
+          ],
+          "uniform96": [
+            15325514,
+            15344877
+          ]
+        }
+      },
+      {
+        "airPlacement": "B",
+        "executionGas": [
+          11182575,
+          16064868
+        ],
+        "minimumMarginActive": -1431308,
+        "projectedAbiBytes": [
+          79112,
+          133416
+        ],
+        "projectedProofBytes": [
+          78794,
+          133066
+        ],
+        "split": [
+          12,
+          20
+        ],
+        "totalGas": {
+          "active": [
+            12461867,
+            18208524
+          ],
+          "uniform64": [
+            12461867,
+            18208524
+          ],
+          "uniform96": [
+            12461867,
+            18208524
+          ]
+        }
+      },
+      {
+        "airPlacement": "A",
+        "executionGas": [
+          14257434,
+          12990009
+        ],
+        "minimumMarginActive": 1148258,
+        "projectedAbiBytes": [
+          84911,
+          127223
+        ],
+        "projectedProofBytes": [
+          84593,
+          126873
+        ],
+        "split": [
+          13,
+          19
+        ],
+        "totalGas": {
+          "active": [
+            15628958,
+            15035141
+          ],
+          "uniform64": [
+            15628958,
+            15035141
+          ],
+          "uniform96": [
+            15628958,
+            15035141
+          ]
+        }
+      },
+      {
+        "airPlacement": "B",
+        "executionGas": [
+          11393787,
+          15853656
+        ],
+        "minimumMarginActive": -1121572,
+        "projectedAbiBytes": [
+          84911,
+          127223
+        ],
+        "projectedProofBytes": [
+          84593,
+          126873
+        ],
+        "split": [
+          13,
+          19
+        ],
+        "totalGas": {
+          "active": [
+            12765311,
+            17898788
+          ],
+          "uniform64": [
+            12765311,
+            17898788
+          ],
+          "uniform96": [
+            12765311,
+            17898788
+          ]
+        }
+      },
+      {
+        "airPlacement": "A",
+        "executionGas": [
+          14468646,
+          12778797
+        ],
+        "minimumMarginActive": 844802,
+        "projectedAbiBytes": [
+          90710,
+          121030
+        ],
+        "projectedProofBytes": [
+          90392,
+          120680
+        ],
+        "split": [
+          14,
+          18
+        ],
+        "totalGas": {
+          "active": [
+            15932414,
+            14725393
+          ],
+          "uniform64": [
+            15932414,
+            14725393
+          ],
+          "uniform96": [
+            15932414,
+            14725393
+          ]
+        }
+      },
+      {
+        "airPlacement": "B",
+        "executionGas": [
+          11604999,
+          15642444
+        ],
+        "minimumMarginActive": -811824,
+        "projectedAbiBytes": [
+          90710,
+          121030
+        ],
+        "projectedProofBytes": [
+          90392,
+          120680
+        ],
+        "split": [
+          14,
+          18
+        ],
+        "totalGas": {
+          "active": [
+            13068767,
+            17589040
+          ],
+          "uniform64": [
+            13068767,
+            17589040
+          ],
+          "uniform96": [
+            13068767,
+            17589040
+          ]
+        }
+      },
+      {
+        "airPlacement": "A",
+        "executionGas": [
+          14679858,
+          12567585
+        ],
+        "minimumMarginActive": 541358,
+        "projectedAbiBytes": [
+          96509,
+          114837
+        ],
+        "projectedProofBytes": [
+          96191,
+          114487
+        ],
+        "split": [
+          15,
+          17
+        ],
+        "totalGas": {
+          "active": [
+            16235858,
+            14415657
+          ],
+          "uniform64": [
+            16235858,
+            14415657
+          ],
+          "uniform96": [
+            16235858,
+            14415657
+          ]
+        }
+      },
+      {
+        "airPlacement": "B",
+        "executionGas": [
+          11816211,
+          15431232
+        ],
+        "minimumMarginActive": -502088,
+        "projectedAbiBytes": [
+          96509,
+          114837
+        ],
+        "projectedProofBytes": [
+          96191,
+          114487
+        ],
+        "split": [
+          15,
+          17
+        ],
+        "totalGas": {
+          "active": [
+            13372211,
+            17279304
+          ],
+          "uniform64": [
+            13372211,
+            17279304
+          ],
+          "uniform96": [
+            13372211,
+            17279304
+          ]
+        }
+      },
+      {
+        "airPlacement": "A",
+        "executionGas": [
+          14891070,
+          12356373
+        ],
+        "minimumMarginActive": 237914,
+        "projectedAbiBytes": [
+          102308,
+          108644
+        ],
+        "projectedProofBytes": [
+          101990,
+          108294
+        ],
+        "split": [
+          16,
+          16
+        ],
+        "totalGas": {
+          "active": [
+            16539302,
+            14105909
+          ],
+          "uniform64": [
+            16539302,
+            14105909
+          ],
+          "uniform96": [
+            16539302,
+            14105909
+          ]
+        }
+      },
+      {
+        "airPlacement": "B",
+        "executionGas": [
+          12027423,
+          15220020
+        ],
+        "minimumMarginActive": -192340,
+        "projectedAbiBytes": [
+          102308,
+          108644
+        ],
+        "projectedProofBytes": [
+          101990,
+          108294
+        ],
+        "split": [
+          16,
+          16
+        ],
+        "totalGas": {
+          "active": [
+            13675655,
+            16969556
+          ],
+          "uniform64": [
+            13675655,
+            16969556
+          ],
+          "uniform96": [
+            13675655,
+            16969556
+          ]
+        }
+      }
+    ],
+    "scope": "explicit frozen-component and calldata-floor models only"
+  },
+  "schema": "pqtc-sp31-combined-report-v1",
+  "simplifyingCombinations": [
+    {
+      "members": [
+        "V3",
+        "V4"
+      ],
+      "reason": "one bounded calldata-consumption loop removes both the parse pass and memory copy without introducing another abstraction"
+    }
+  ],
+  "status": "BENCHMARK_ONLY"
+}

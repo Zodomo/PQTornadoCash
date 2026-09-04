@@ -1,0 +1,155 @@
+{
+  "active64And96Baseline": {
+    "partA": {
+      "active": 16539302,
+      "uniform64": 16539302,
+      "uniform96": 16539302
+    },
+    "partB": {
+      "active": 14105909,
+      "uniform64": 14105909,
+      "uniform96": 14105909
+    }
+  },
+  "baselineCompleteTransaction": {
+    "abiBytes": {
+      "partA": 102308,
+      "partB": 108644
+    },
+    "executionGas": {
+      "partA": 14891070,
+      "partB": 12356373
+    },
+    "nativeVerifierNs": null,
+    "proofBytes": {
+      "partA": 101990,
+      "partB": 108294
+    },
+    "proverNs": null,
+    "registryExecutionGas": {
+      "partA": 14056853,
+      "partB": 11470158
+    },
+    "runtimeBytes": null,
+    "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+    "zeroBytes": {
+      "partA": 808,
+      "partB": 814
+    }
+  },
+  "calldataDeltaBytes": {
+    "fullProof": null,
+    "perBaseInverse": 4,
+    "perExtensionInverse": 16
+  },
+  "candidateId": "V2",
+  "completeTransactionMeasured": null,
+  "completeTransactionProjected": null,
+  "deploymentGasDelta": {
+    "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+    "value": null
+  },
+  "differentialTests": {
+    "rustAssertions": 9,
+    "solidityUnsafeCases": 3
+  },
+  "isolatedActive64And96Delta": {
+    "calldataBytesDelta": 4,
+    "executionGasDelta": -8496,
+    "scope": "isolated kernel with compact-section bytes; not a verifier transaction",
+    "totalGasDelta": {
+      "active": -8432,
+      "uniform64": -8432,
+      "uniform96": -8432
+    }
+  },
+  "legalityMatrix": [
+    {
+      "eligible": true,
+      "guard": "zeta is checked outside every evaluation domain",
+      "leg": "DEEP denominators"
+    },
+    {
+      "eligible": true,
+      "guard": "check every denominator before accepting products",
+      "leg": "batch inversion, all-nonzero"
+    },
+    {
+      "eligible": false,
+      "guard": "retain zero-aware native algorithm",
+      "leg": "batch inversion, zero legal"
+    },
+    {
+      "eligible": true,
+      "guard": "derived nonzero two-adic point and canonical witness",
+      "leg": "FRI fold points"
+    },
+    {
+      "eligible": false,
+      "guard": "zero is legal at the selected row",
+      "leg": "selector denominators on-domain"
+    },
+    {
+      "eligible": true,
+      "guard": "explicit domain exclusion",
+      "leg": "selector denominators out-of-domain"
+    },
+    {
+      "eligible": true,
+      "guard": "zeta^n != 1 checked independently",
+      "leg": "quotient recomposition"
+    }
+  ],
+  "measurementScope": "isolated kernels only",
+  "nativeMeasured": {
+    "checkedMultiplicationsPerInverse": 1,
+    "checkedWitnessNs": 2500,
+    "exponentiationMultiplicationsPerInverse": 61,
+    "exponentiationNs": 525416,
+    "witnessBytes": 128
+  },
+  "nativeVerifierDelta": {
+    "baselineKey": "exponentiationNs",
+    "candidateKey": "checkedWitnessNs",
+    "nanosecondsDelta": -522916,
+    "scope": "native isolated kernel"
+  },
+  "noMicrobenchmarkSumClaim": true,
+  "opcodeCounts": {
+    "evmDynamicBaseline": null,
+    "evmDynamicCandidate": null,
+    "logicalKernelCounts": {
+      "perCheckedWitness": {
+        "canonicalChecks": 1,
+        "mulmod": 1,
+        "nonzeroGuards": 1
+      },
+      "perInverseBaseline": {
+        "mulmod": 61
+      }
+    },
+    "status": "NOT_EVALUATED: canonical full-transaction opcode trace unavailable"
+  },
+  "proofByteDelta": {
+    "fullProof": null,
+    "perBaseInverse": 4,
+    "perExtensionInverse": 16
+  },
+  "proverDelta": {
+    "extraWork": "serialize witnesses; compute only inverses not already available",
+    "nanoseconds": null
+  },
+  "runtimeByteDelta": {
+    "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+    "value": null
+  },
+  "schema": "pqtc-sp31-candidate-output-v1",
+  "solidityMeasured": {
+    "checkedWitnessGas": 857,
+    "exponentiationGas": 9353
+  },
+  "uniformFloorDeltaPerBaseInverse": {
+    "64": 256,
+    "96": 384
+  }
+}

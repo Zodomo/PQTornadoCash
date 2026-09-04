@@ -1,0 +1,7 @@
+# V9 assumptions
+
+- Inherited: Frozen v0.3 relation, q32 profile, transcript, BabyBear modulus, two-call semantics, and 512-bit proof digests remain unchanged unless the experiment row explicitly says otherwise.
+- New: All required 8/24 through 16/16 splits and both AIR placements are projected against one component model; minimum margin, not equal count, is optimized.
+- Encoded BabyBear fields are canonical big-endian u32 or the explicitly framed little-endian 31-bit stream; neither form reduces out-of-range values.
+- Full-transaction gas, runtime attribution, proof/prover delta, and dynamic opcode counts remain unmeasured until a canonical full verifier variant exists.
+- No isolated microbenchmark delta is added to another to claim complete-verifier savings.

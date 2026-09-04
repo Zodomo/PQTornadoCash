@@ -1,0 +1,16 @@
+[workspace]
+
+[package]
+name = "pqtc-verifier-optimization-research"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[[bin]]
+name = "verifier-optimization-bench"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1

@@ -1,0 +1,117 @@
+{
+  "active64And96Baseline": {
+    "partA": {
+      "active": 16539302,
+      "uniform64": 16539302,
+      "uniform96": 16539302
+    },
+    "partB": {
+      "active": 14105909,
+      "uniform64": 14105909,
+      "uniform96": 14105909
+    }
+  },
+  "baselineCompleteTransaction": {
+    "abiBytes": {
+      "partA": 102308,
+      "partB": 108644
+    },
+    "executionGas": {
+      "partA": 14891070,
+      "partB": 12356373
+    },
+    "nativeVerifierNs": null,
+    "proofBytes": {
+      "partA": 101990,
+      "partB": 108294
+    },
+    "proverNs": null,
+    "registryExecutionGas": {
+      "partA": 14056853,
+      "partB": 11470158
+    },
+    "runtimeBytes": null,
+    "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+    "zeroBytes": {
+      "partA": 808,
+      "partB": 814
+    }
+  },
+  "calldataDeltaBytes": 0,
+  "candidateId": "V1",
+  "completeTransactionMeasured": null,
+  "completeTransactionProjected": null,
+  "deploymentGasDelta": {
+    "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+    "value": null
+  },
+  "differentialTests": {
+    "rustAssertions": 9,
+    "solidityUnsafeCases": 1
+  },
+  "isolatedActive64And96Delta": {
+    "calldataBytesDelta": 0,
+    "executionGasDelta": -597961,
+    "scope": "isolated kernel with compact-section bytes; not a verifier transaction",
+    "totalGasDelta": {
+      "active": -597961,
+      "uniform64": -597961,
+      "uniform96": -597961
+    }
+  },
+  "measurementScope": "isolated kernels only",
+  "nativeMeasured": {
+    "hornerMultiplications": 256,
+    "hornerNs": 4281250,
+    "materializedBytes": 2048,
+    "materializedMultiplications": 511,
+    "materializedNs": 3209208,
+    "streamedBytes": 0,
+    "streamedMultiplications": 512,
+    "streamedNs": 2418000
+  },
+  "nativeVerifierDelta": {
+    "baselineKey": "materializedNs",
+    "candidateKey": "hornerNs",
+    "nanosecondsDelta": 1072042,
+    "scope": "native isolated kernel"
+  },
+  "noMicrobenchmarkSumClaim": true,
+  "opcodeCounts": {
+    "evmDynamicBaseline": null,
+    "evmDynamicCandidate": null,
+    "logicalKernelCounts": {
+      "baseline": {
+        "addmod": 256,
+        "memoryWords": 256,
+        "mulmod": 511
+      },
+      "horner": {
+        "addmod": 256,
+        "memoryWords": 0,
+        "mulmod": 256
+      },
+      "streamed": {
+        "addmod": 256,
+        "memoryWords": 0,
+        "mulmod": 512
+      }
+    },
+    "status": "NOT_EVALUATED: canonical full-transaction opcode trace unavailable"
+  },
+  "proofByteDelta": 0,
+  "proverDelta": {
+    "kind": "projected verifier-only change",
+    "nanoseconds": 0
+  },
+  "runtimeByteDelta": {
+    "status": "NOT_ATTRIBUTABLE: shared experiment contract",
+    "value": null
+  },
+  "schema": "pqtc-sp31-candidate-output-v1",
+  "solidityMeasured": {
+    "hornerGas": 129454,
+    "materializedGas": 727415,
+    "streamedGas": 128003
+  }
+}
