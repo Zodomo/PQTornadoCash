@@ -3,13 +3,14 @@ pragma solidity 0.8.30;
 
 import {Test} from "forge-std/Test.sol";
 import {Digest512} from "v03/libraries/Digest512.sol";
+import {IPQTCVerificationRegistry} from "v03/PQTCClassicPool.sol";
 import {PQTCVerificationRegistry} from "v03/PQTCVerificationRegistry.sol";
 import {PQTCAirStageVerifier} from "v03/verifier/PQTCAirStageVerifier.sol";
 import {PQTCQueryVerifier} from "v03/verifier/PQTCQueryVerifier.sol";
 import {ResearchFixturePool} from "../src/ResearchFixturePool.sol";
 
 contract BaselineFixtureTest is Test {
-    address payable private constant FIXED_POOL = payable(0xc00000000000000000000000000000000000c000);
+    address payable private constant FIXED_POOL = payable(0xc00000000000000000000000000000000000C000);
     Digest512 private parameterId = Digest512(
         0x35adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62a,
         0xb7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea07779
@@ -26,7 +27,8 @@ contract BaselineFixtureTest is Test {
         PQTCAirStageVerifier air = new PQTCAirStageVerifier();
         PQTCQueryVerifier query = new PQTCQueryVerifier();
         PQTCVerificationRegistry registry = new PQTCVerificationRegistry(air, query, parameterId);
-        ResearchFixturePool template = new ResearchFixturePool(denomination, parameterId, registry);
+        ResearchFixturePool template =
+            new ResearchFixturePool(denomination, parameterId, IPQTCVerificationRegistry(address(registry)));
         vm.etch(FIXED_POOL, address(template).code);
         ResearchFixturePool(FIXED_POOL).researchInitializeEtchedStorage(fixtureScope, root, parameterId);
         (bytes32 scopeLeft, bytes32 scopeRight) = ResearchFixturePool(FIXED_POOL).scope();

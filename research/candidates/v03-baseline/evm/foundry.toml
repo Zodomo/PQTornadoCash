@@ -12,6 +12,10 @@ remappings = [
   "forge-std/=../../../../lib/forge-std/src/",
   "v03/=../../../../contracts/src/"
 ]
+allow_paths = [
+  "../../../../contracts",
+  "../../../../lib/forge-std/src"
+]
 fs_permissions = [
   { access = "read", path = "../proofs" },
   { access = "write", path = "../gas" }

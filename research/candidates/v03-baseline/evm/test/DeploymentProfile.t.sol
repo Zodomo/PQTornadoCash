@@ -3,7 +3,7 @@ pragma solidity 0.8.30;
 
 import {Test} from "forge-std/Test.sol";
 import {Digest512} from "v03/libraries/Digest512.sol";
-import {PQTCClassicPool} from "v03/PQTCClassicPool.sol";
+import {IPQTCVerificationRegistry, PQTCClassicPool} from "v03/PQTCClassicPool.sol";
 import {PQTCVerificationRegistry} from "v03/PQTCVerificationRegistry.sol";
 import {PQTCAirStageVerifier} from "v03/verifier/PQTCAirStageVerifier.sol";
 import {PQTCQueryVerifier} from "v03/verifier/PQTCQueryVerifier.sol";
@@ -27,7 +27,8 @@ contract DeploymentProfileTest is Test {
         _emit("PQTCVerificationRegistry", before - gasleft(), address(registry).code.length, type(PQTCVerificationRegistry).creationCode.length + registryArgs.length);
         bytes memory poolArgs = abi.encode(uint256(1 ether), parameterId, registry);
         before = gasleft();
-        PQTCClassicPool pool = new PQTCClassicPool(1 ether, parameterId, registry);
+        PQTCClassicPool pool =
+            new PQTCClassicPool(1 ether, parameterId, IPQTCVerificationRegistry(address(registry)));
         _emit("PQTCClassicPool", before - gasleft(), address(pool).code.length, type(PQTCClassicPool).creationCode.length + poolArgs.length);
     }
 
