@@ -1,0 +1,755 @@
+{
+  "schema": "pqtc.sp90.result.v1",
+  "spike": "SP-90",
+  "research_cutoff": "2026-09-04",
+  "evidence_boundary": {
+    "allowed": [
+      "research/runs",
+      "research/run-records",
+      "committed package results",
+      "checkpoints 1-4"
+    ],
+    "excluded": [
+      "projections as measurements",
+      "uncommitted observations",
+      "weighted gate overrides"
+    ],
+    "provenance": [
+      {
+        "source_run_id": null,
+        "artifact_path": "research/run-records/evidence-manifest.json",
+        "artifact_sha256": "2efde7e327c632025e6b9e0566a9f1e4a0f423dcead640c6fd5333294e6ce048"
+      }
+    ]
+  },
+  "scorecard_count": 62,
+  "scorecard_index": [
+    {
+      "scorecard_id": "bundle:A",
+      "candidate_id": "Bundle-A",
+      "kind": "bundle",
+      "path": "research/report-synthesis/scorecards/bundle--A.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "bundle:B",
+      "candidate_id": "Bundle-B",
+      "kind": "bundle",
+      "path": "research/report-synthesis/scorecards/bundle--B.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "bundle:C",
+      "candidate_id": "Bundle-C",
+      "kind": "bundle",
+      "path": "research/report-synthesis/scorecards/bundle--C.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "bundle:D",
+      "candidate_id": "Bundle-D",
+      "kind": "bundle",
+      "path": "research/report-synthesis/scorecards/bundle--D.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "bundle:E",
+      "candidate_id": "Bundle-E",
+      "kind": "bundle",
+      "path": "research/report-synthesis/scorecards/bundle--E.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "bundle:F",
+      "candidate_id": "Bundle-F",
+      "kind": "bundle",
+      "path": "research/report-synthesis/scorecards/bundle--F.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:C20-hvzk-whir",
+      "candidate_id": "C20",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--C20-hvzk-whir.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:C30-stir",
+      "candidate_id": "C30",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--C30-stir.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:C40-circle",
+      "candidate_id": "C40",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--C40-circle.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:C50-spartan-whir",
+      "candidate_id": "C50",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--C50-spartan-whir.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:C60-recursion",
+      "candidate_id": "C60",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--C60-recursion.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:C70-flock-veil",
+      "candidate_id": "C70",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--C70-flock-veil.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:F0",
+      "candidate_id": "F0",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--F0.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:F1",
+      "candidate_id": "F1",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--F1.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:F2",
+      "candidate_id": "F2",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--F2.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:F3",
+      "candidate_id": "F3",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--F3.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:F4",
+      "candidate_id": "F4",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--F4.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:F5",
+      "candidate_id": "F5",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--F5.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:H0",
+      "candidate_id": "H0",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--H0.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:H1",
+      "candidate_id": "H1",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--H1.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:H2",
+      "candidate_id": "H2",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--H2.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:H3",
+      "candidate_id": "H3",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--H3.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:H4",
+      "candidate_id": "H4",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--H4.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:H5",
+      "candidate_id": "H5",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--H5.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:H6",
+      "candidate_id": "H6",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--H6.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:H7",
+      "candidate_id": "H7",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--H7.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:T0",
+      "candidate_id": "T0",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--T0.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:T1",
+      "candidate_id": "T1",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--T1.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:T2",
+      "candidate_id": "T2",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--T2.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:T3",
+      "candidate_id": "T3",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--T3.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:V1",
+      "candidate_id": "V1",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--V1.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:V2",
+      "candidate_id": "V2",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--V2.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:V3",
+      "candidate_id": "V3",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--V3.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:V4",
+      "candidate_id": "V4",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--V4.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:V5",
+      "candidate_id": "V5",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--V5.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:V6",
+      "candidate_id": "V6",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--V6.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:V7",
+      "candidate_id": "V7",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--V7.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:V8",
+      "candidate_id": "V8",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--V8.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:V9",
+      "candidate_id": "V9",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--V9.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:air-geometry",
+      "candidate_id": "SP-20",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--air-geometry.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:deposit-batching",
+      "candidate_id": "deposit-batching",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--deposit-batching.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:hash-compression-common",
+      "candidate_id": "hash-compression-common",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--hash-compression-common.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:merkle-shape",
+      "candidate_id": "merkle-shape",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--merkle-shape.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:structured-relation",
+      "candidate_id": "SP-21",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--structured-relation.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:v03-baseline",
+      "candidate_id": "C00/v03-baseline",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--v03-baseline.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "component:verifier-optimization-common",
+      "candidate_id": "SP-31/V1-V9",
+      "kind": "component",
+      "path": "research/report-synthesis/scorecards/component--verifier-optimization-common.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "minimum:C00",
+      "candidate_id": "C00",
+      "kind": "minimum_matrix",
+      "path": "research/report-synthesis/scorecards/minimum--C00.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "minimum:C01",
+      "candidate_id": "C01",
+      "kind": "minimum_matrix",
+      "path": "research/report-synthesis/scorecards/minimum--C01.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "minimum:C10",
+      "candidate_id": "C10",
+      "kind": "minimum_matrix",
+      "path": "research/report-synthesis/scorecards/minimum--C10.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "minimum:C11",
+      "candidate_id": "C11",
+      "kind": "minimum_matrix",
+      "path": "research/report-synthesis/scorecards/minimum--C11.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "minimum:C12",
+      "candidate_id": "C12",
+      "kind": "minimum_matrix",
+      "path": "research/report-synthesis/scorecards/minimum--C12.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "minimum:C20",
+      "candidate_id": "C20",
+      "kind": "minimum_matrix",
+      "path": "research/report-synthesis/scorecards/minimum--C20.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "minimum:C21",
+      "candidate_id": "C21",
+      "kind": "minimum_matrix",
+      "path": "research/report-synthesis/scorecards/minimum--C21.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "minimum:C22",
+      "candidate_id": "C22",
+      "kind": "minimum_matrix",
+      "path": "research/report-synthesis/scorecards/minimum--C22.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "minimum:C23",
+      "candidate_id": "C23",
+      "kind": "minimum_matrix",
+      "path": "research/report-synthesis/scorecards/minimum--C23.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "minimum:C30",
+      "candidate_id": "C30",
+      "kind": "minimum_matrix",
+      "path": "research/report-synthesis/scorecards/minimum--C30.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "minimum:C40",
+      "candidate_id": "C40",
+      "kind": "minimum_matrix",
+      "path": "research/report-synthesis/scorecards/minimum--C40.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "product:aggregation",
+      "candidate_id": "product-aggregation",
+      "kind": "product_study",
+      "path": "research/report-synthesis/scorecards/product--aggregation.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "product:individual-l1",
+      "candidate_id": "product-individual-l1",
+      "kind": "product_study",
+      "path": "research/report-synthesis/scorecards/product--individual-l1.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "product:l2",
+      "candidate_id": "product-l2",
+      "kind": "product_study",
+      "path": "research/report-synthesis/scorecards/product--l2.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "product:prover-operations",
+      "candidate_id": "product-prover-operations",
+      "kind": "product_study",
+      "path": "research/report-synthesis/scorecards/product--prover-operations.json",
+      "eligible": false
+    },
+    {
+      "scorecard_id": "product:robust-two-call",
+      "candidate_id": "product-robust-two-call",
+      "kind": "product_study",
+      "path": "research/report-synthesis/scorecards/product--robust-two-call.json",
+      "eligible": false
+    }
+  ],
+  "pareto_axes": [
+    {
+      "axis_id": "security-vs-one-tx-gas",
+      "path": "research/report-synthesis/pareto/security-vs-one-tx-gas.csv",
+      "x_metric": "security",
+      "x_direction": "max",
+      "y_metric": "tx",
+      "y_direction": "min",
+      "comparable_count": 0,
+      "excluded_count": 62,
+      "nondominated_scorecards": [],
+      "policy": "Nondominance computed only among records with both axes non-null; exclusions retain explicit reasons."
+    },
+    {
+      "axis_id": "security-vs-proof-bytes",
+      "path": "research/report-synthesis/pareto/security-vs-proof-bytes.csv",
+      "x_metric": "security",
+      "x_direction": "max",
+      "y_metric": "proof",
+      "y_direction": "min",
+      "comparable_count": 0,
+      "excluded_count": 62,
+      "nondominated_scorecards": [],
+      "policy": "Nondominance computed only among records with both axes non-null; exclusions retain explicit reasons."
+    },
+    {
+      "axis_id": "proof-bytes-vs-execution-gas",
+      "path": "research/report-synthesis/pareto/proof-bytes-vs-execution-gas.csv",
+      "x_metric": "proof",
+      "x_direction": "min",
+      "y_metric": "tx",
+      "y_direction": "min",
+      "comparable_count": 2,
+      "excluded_count": 60,
+      "nondominated_scorecards": [
+        "component:v03-baseline",
+        "minimum:C00"
+      ],
+      "policy": "Nondominance computed only among records with both axes non-null; exclusions retain explicit reasons."
+    },
+    {
+      "axis_id": "prover-time-vs-transaction-gas",
+      "path": "research/report-synthesis/pareto/prover-time-vs-transaction-gas.csv",
+      "x_metric": "prover",
+      "x_direction": "min",
+      "y_metric": "tx",
+      "y_direction": "min",
+      "comparable_count": 2,
+      "excluded_count": 60,
+      "nondominated_scorecards": [
+        "component:v03-baseline",
+        "minimum:C00"
+      ],
+      "policy": "Nondominance computed only among records with both axes non-null; exclusions retain explicit reasons."
+    },
+    {
+      "axis_id": "deposit-gas-vs-withdrawal-gas",
+      "path": "research/report-synthesis/pareto/deposit-gas-vs-withdrawal-gas.csv",
+      "x_metric": "deposit",
+      "x_direction": "min",
+      "y_metric": "withdrawal",
+      "y_direction": "min",
+      "comparable_count": 0,
+      "excluded_count": 62,
+      "nondominated_scorecards": [],
+      "policy": "Nondominance computed only among records with both axes non-null; exclusions retain explicit reasons."
+    },
+    {
+      "axis_id": "runtime-code-size-vs-verifier-gas",
+      "path": "research/report-synthesis/pareto/runtime-code-size-vs-verifier-gas.csv",
+      "x_metric": "runtime",
+      "x_direction": "min",
+      "y_metric": "verifier",
+      "y_direction": "min",
+      "comparable_count": 0,
+      "excluded_count": 62,
+      "nondominated_scorecards": [],
+      "policy": "Nondominance computed only among records with both axes non-null; exclusions retain explicit reasons."
+    },
+    {
+      "axis_id": "implementation-complexity-vs-performance",
+      "path": "research/report-synthesis/pareto/implementation-complexity-vs-performance.csv",
+      "x_metric": "complexity",
+      "x_direction": "min",
+      "y_metric": "performance",
+      "y_direction": "min",
+      "comparable_count": 0,
+      "excluded_count": 62,
+      "nondominated_scorecards": [],
+      "policy": "Nondominance computed only among records with both axes non-null; exclusions retain explicit reasons."
+    },
+    {
+      "axis_id": "total-gas-vs-amortized-aggregation-gas",
+      "path": "research/report-synthesis/pareto/total-gas-vs-amortized-aggregation-gas.csv",
+      "x_metric": "total",
+      "x_direction": "min",
+      "y_metric": "amortized",
+      "y_direction": "min",
+      "comparable_count": 0,
+      "excluded_count": 62,
+      "nondominated_scorecards": [],
+      "policy": "Nondominance computed only among records with both axes non-null; exclusions retain explicit reasons."
+    }
+  ],
+  "weight_sets": [
+    {
+      "name": "suggested",
+      "weights_percent": {
+        "security_confidence_and_completeness": 25,
+        "one_transaction_feasibility_and_margin": 20,
+        "total_user_gas_economic_cost": 15,
+        "proof_bytes_future_floor_robustness": 10,
+        "prover_ux": 10,
+        "audit_and_implementation_complexity": 10,
+        "deposit_efficiency": 5,
+        "upstream_maturity_maintainability": 5
+      },
+      "sum_percent": 100,
+      "policy": "Secondary only; null excluded with coverage; gates control."
+    },
+    {
+      "name": "security_heavy",
+      "weights_percent": {
+        "security_confidence_and_completeness": 40,
+        "one_transaction_feasibility_and_margin": 15,
+        "total_user_gas_economic_cost": 10,
+        "proof_bytes_future_floor_robustness": 10,
+        "prover_ux": 5,
+        "audit_and_implementation_complexity": 10,
+        "deposit_efficiency": 5,
+        "upstream_maturity_maintainability": 5
+      },
+      "sum_percent": 100,
+      "policy": "Secondary only; null excluded with coverage; gates control."
+    },
+    {
+      "name": "gas_heavy",
+      "weights_percent": {
+        "security_confidence_and_completeness": 20,
+        "one_transaction_feasibility_and_margin": 25,
+        "total_user_gas_economic_cost": 25,
+        "proof_bytes_future_floor_robustness": 10,
+        "prover_ux": 5,
+        "audit_and_implementation_complexity": 5,
+        "deposit_efficiency": 5,
+        "upstream_maturity_maintainability": 5
+      },
+      "sum_percent": 100,
+      "policy": "Secondary only; null excluded with coverage; gates control."
+    },
+    {
+      "name": "operations_heavy",
+      "weights_percent": {
+        "security_confidence_and_completeness": 20,
+        "one_transaction_feasibility_and_margin": 15,
+        "total_user_gas_economic_cost": 10,
+        "proof_bytes_future_floor_robustness": 10,
+        "prover_ux": 20,
+        "audit_and_implementation_complexity": 10,
+        "deposit_efficiency": 5,
+        "upstream_maturity_maintainability": 10
+      },
+      "sum_percent": 100,
+      "policy": "Secondary only; null excluded with coverage; gates control."
+    }
+  ],
+  "sensitivity": {
+    "sets_evaluated": [
+      "suggested",
+      "security_heavy",
+      "gas_heavy",
+      "operations_heavy"
+    ],
+    "eligible_under_any_set": [],
+    "conclusion": "Score movement cannot create a finalist while hard gates fail."
+  },
+  "stop_rule_catalog": [
+    {
+      "rule_id": "SR01",
+      "rule": "relies on a prohibited classical wrapper"
+    },
+    {
+      "rule_id": "SR02",
+      "rule": "non-hiding and no concrete hiding path exists"
+    },
+    {
+      "rule_id": "SR03",
+      "rule": "generic or structural security falls below the target"
+    },
+    {
+      "rule_id": "SR04",
+      "rule": "proof floor alone exceeds the transaction cap"
+    },
+    {
+      "rule_id": "SR05",
+      "rule": "verifier requires an unavailable precompile"
+    },
+    {
+      "rule_id": "SR06",
+      "rule": "runtime cannot be modularized under current EIP-170 without changing semantics"
+    },
+    {
+      "rule_id": "SR07",
+      "rule": "complete relation destroys the toy-benchmark advantage"
+    },
+    {
+      "rule_id": "SR08",
+      "rule": "prover cannot run within available memory and has no practical service model"
+    },
+    {
+      "rule_id": "SR09",
+      "rule": "strictly dominated by another candidate"
+    },
+    {
+      "rule_id": "SR10",
+      "rule": "new consensus-critical custom cryptography is disproportionate to measured gain"
+    }
+  ],
+  "decision": {
+    "outcome": "OUTCOME_D",
+    "label": "no new full build yet",
+    "hard_gate_winners": [],
+    "eligible_finalists": []
+  },
+  "recommendation_token": "RECOMMEND_ADDITIONAL_TARGETED_RESEARCH",
+  "decision_evidence": [
+    {
+      "claim": "Checkpoint 1 forbids integration, deployment, and security qualification.",
+      "provenance": [
+        {
+          "source_run_id": null,
+          "artifact_path": "research/reviews/checkpoint-1-baseline.json",
+          "artifact_sha256": "a7841c1581069fc4db87ccb8f0c23a80c05943233ad10cefc285bae6ea748bbb"
+        }
+      ]
+    },
+    {
+      "claim": "Checkpoint 2 authorizes no full bundle.",
+      "provenance": [
+        {
+          "source_run_id": null,
+          "artifact_path": "research/reviews/checkpoint-2-structural.json",
+          "artifact_sha256": "f358ae71042aa6888a3cf43fe0534a3b40cadd5c0f060fd8f3cc075c1e3da3d2"
+        }
+      ]
+    },
+    {
+      "claim": "Checkpoint 3 records empty integration scope.",
+      "provenance": [
+        {
+          "source_run_id": null,
+          "artifact_path": "research/reviews/checkpoint-3-backends.json",
+          "artifact_sha256": "c84297a081923a9c2fcdfd1963f5178b337c186fb9201028cb816435564d2416"
+        }
+      ]
+    },
+    {
+      "claim": "Checkpoint 4 selects no product path.",
+      "provenance": [
+        {
+          "source_run_id": null,
+          "artifact_path": "research/reviews/checkpoint-4-product.json",
+          "artifact_sha256": "978c65c77f5ee137745aa279a2da8dfb8229b13ecd244432e80c91c738975526"
+        }
+      ]
+    },
+    {
+      "claim": "SP-80 records zero eligible bundles and complete prototypes.",
+      "provenance": [
+        {
+          "source_run_id": null,
+          "artifact_path": "research/integrated-finalists/status.json",
+          "artifact_sha256": "337a451fe3380f1c2169999417cd87372a35545fdc5e278b7c4fd11010da4b6d"
+        },
+        {
+          "source_run_id": null,
+          "artifact_path": "research/integrated-finalists/outputs/results.json",
+          "artifact_sha256": "98334597a3e55cba1d6e7da8ab3ab99af451ae7d96fe7fe423480d45131abedb"
+        }
+      ],
+      "frontier_status": "CURRENT_RESEARCH_FRONTIER_NO_VIABLE_NEXT_BUILD"
+    }
+  ],
+  "consistency": {
+    "checkpoint_1_forbids_integration": true,
+    "checkpoint_2_authorizes_no_bundle": true,
+    "checkpoint_3_empty_integration_scope": true,
+    "checkpoint_4_selects_no_product": true,
+    "sp80_zero_eligible": true,
+    "weighted_scores_cannot_override_gates": true,
+    "null_is_not_zero": true,
+    "false_finalist_count": 0
+  }
+}

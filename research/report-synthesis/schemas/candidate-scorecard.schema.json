@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pqtc.sp90.candidate-scorecard.v1",
+  "title": "SP-90 raw-metrics-first candidate scorecard",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema", "scorecard_id", "candidate_id", "candidate_kind", "identity",
+    "raw_metrics", "secondary_scores", "hard_gate", "stop_record"
+  ],
+  "properties": {
+    "schema": {"const": "pqtc.sp90.candidate-scorecard.v1"},
+    "scorecard_id": {"type": "string", "minLength": 1},
+    "candidate_id": {"type": "string", "minLength": 1},
+    "candidate_kind": {"enum": ["component", "minimum_matrix", "bundle", "product_study"]},
+    "identity": {"$ref": "#/$defs/field"},
+    "raw_metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocol_semantics", "application_hash_compression", "digest_width", "tree_shape",
+        "arithmetization", "field_challenge_field", "pcs_ldt", "hiding_construction",
+        "proof_mmcs_transcript", "security_profile", "proof_bytes", "abi_calldata",
+        "prover_performance_by_hardware", "native_verifier_performance", "evm_gas_by_component",
+        "complete_transaction_gas_three_schedules", "runtime_initcode_deployment_gas",
+        "state_growth", "checkpoint_behavior", "implementation_maturity",
+        "external_review_status", "known_blockers", "gate_status"
+      ],
+      "properties": {
+        "protocol_semantics": {"$ref": "#/$defs/field"},
+        "application_hash_compression": {"$ref": "#/$defs/field"},
+        "digest_width": {"$ref": "#/$defs/field"},
+        "tree_shape": {"$ref": "#/$defs/field"},
+        "arithmetization": {"$ref": "#/$defs/field"},
+        "field_challenge_field": {"$ref": "#/$defs/field"},
+        "pcs_ldt": {"$ref": "#/$defs/field"},
+        "hiding_construction": {"$ref": "#/$defs/field"},
+        "proof_mmcs_transcript": {"$ref": "#/$defs/field"},
+        "security_profile": {"$ref": "#/$defs/field"},
+        "proof_bytes": {"$ref": "#/$defs/field"},
+        "abi_calldata": {"$ref": "#/$defs/field"},
+        "prover_performance_by_hardware": {"$ref": "#/$defs/field"},
+        "native_verifier_performance": {"$ref": "#/$defs/field"},
+        "evm_gas_by_component": {"$ref": "#/$defs/field"},
+        "complete_transaction_gas_three_schedules": {"$ref": "#/$defs/field"},
+        "runtime_initcode_deployment_gas": {"$ref": "#/$defs/field"},
+        "state_growth": {"$ref": "#/$defs/field"},
+        "checkpoint_behavior": {"$ref": "#/$defs/field"},
+        "implementation_maturity": {"$ref": "#/$defs/field"},
+        "external_review_status": {"$ref": "#/$defs/field"},
+        "known_blockers": {"$ref": "#/$defs/field"},
+        "gate_status": {"$ref": "#/$defs/field"}
+      }
+    },
+    "secondary_scores": {
+      "type": "object",
+      "required": ["raw_category_scores", "weight_sets", "sensitivity"],
+      "additionalProperties": false,
+      "properties": {
+        "raw_category_scores": {"type": "object"},
+        "weight_sets": {"type": "array", "minItems": 4},
+        "sensitivity": {"type": "object"}
+      }
+    },
+    "hard_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eligible", "security_qualified", "integration_eligible", "reasons", "provenance"],
+      "properties": {
+        "eligible": {"const": false},
+        "security_qualified": {"const": false},
+        "integration_eligible": {"const": false},
+        "reasons": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "provenance": {"$ref": "#/$defs/provenanceList"}
+      }
+    },
+    "stop_record": {
+      "type": "object",
+      "required": ["stopped", "last_stage", "supporting_data", "revival_condition", "rule_evaluations"],
+      "properties": {
+        "stopped": {"type": "boolean"},
+        "last_stage": {"type": "string"},
+        "supporting_data": {"$ref": "#/$defs/provenanceList"},
+        "revival_condition": {"type": "string", "minLength": 1},
+        "rule_evaluations": {"type": "array", "minItems": 10, "maxItems": 10}
+      }
+    }
+  },
+  "$defs": {
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_run_id", "artifact_path", "artifact_sha256"],
+      "properties": {
+        "source_run_id": {"type": ["string", "null"]},
+        "artifact_path": {"type": "string", "minLength": 1},
+        "artifact_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "provenanceList": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/provenance"}},
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "value", "provenance"],
+      "properties": {
+        "status": {"enum": ["OBSERVED", "REPORTED", "NOT_EVALUATED"]},
+        "value": {},
+        "provenance": {"$ref": "#/$defs/provenanceList"}
+      }
+    }
+  }
+}
