@@ -15,15 +15,14 @@ The first command parses and verifies the engineering report's 59 source records
 
 The second command verifies all 60 artifacts natively and then runs each exact A/B calldata pair through the nested Foundry harness's complete `beginWithdrawal` and `withdraw` calls. It is intentionally expensive. `--native-only` performs only native verification and leaves EVM status `NOT_EVALUATED`.
 
-Additional commands:
+Additional deterministic commands:
 
 ```sh
 research/candidates/v03-baseline/scripts/measure-deployment.sh
-python3 research/candidates/v03-baseline/scripts/second-client-route.py --rpc-url http://127.0.0.1:8545 --from-address "$LOCAL_UNLOCKED_ACCOUNT" --run-id v03-fixed-01
-python3 research/candidates/v03-baseline/scripts/opcode-profile.py --rpc-url http://127.0.0.1:8545 "$TX_A" "$TX_B"
+research/candidates/v03-baseline/scripts/run-geth-t8n.sh v03-fixed-19
 ```
 
-The second-client route accepts only loopback HTTP(S), uses an unlocked synthetic account, and never reads a private key or `.env`. Its documented precondition is a locally fixture-initialized research pool at `0xc00000000000000000000000000000000000c000`. The parent supplies or installs the second client.
+The t8n route exports a focused Foundry prestate, signs two synthetic transactions offline with the public Anvil development key, and executes exact A then B calldata sequentially under Prague rules and the 2^24 gas cap. It uses a preinstalled `ethereum/client-go:alltools-v1.17.5` image pinned to commit `9621c6ad`; it never pulls an image, contacts RPC, or reads the repository `.env`. `v03-fixed-19` passes both simulated transactions and retains per-transaction opcode maps. The retained `v03-fixed-01` run is an intentional negative: Part A exhausts forwarded gas under the same cap. Neither result is a mined receipt.
 
 ## Candidate mapping
 
@@ -33,7 +32,7 @@ The 30 corpus proofs use the first 30 valid depth-20 cases in corpus order. The 
 
 ## Evidence and honest gaps
 
-Generated proof directories are `proofs/v03-*`; schema-valid raw records are `research/runs/v03-*.json`; the row-level distribution is `research/summaries/v03-distribution.csv`. SHA-256 and Ethereum Keccak-256 are lowercase and are computed over exact bytes. Internal frontier and subsection lengths are `NOT_EVALUATED`: the frozen public codec returns query indices and whole A/B parts but does not expose split-query frontier totals. They are not guessed. EVM, deployment, receipt, second-client, and opcode fields remain explicitly unmeasured until their commands run. The SP-00 gate therefore remains `NOT_EVALUATED`, not PASS.
+Generated proof directories are `proofs/v03-*`; schema-valid raw records are `research/runs/v03-*.json`; the row-level distribution is `research/summaries/v03-distribution.csv`. SHA-256 and Ethereum Keccak-256 are lowercase and are computed over exact bytes. Internal frontier and subsection lengths are `NOT_EVALUATED`: the frozen public codec returns query indices and whole A/B parts but does not expose split-query frontier totals. They are not guessed. Sixty native and Foundry A/B checks pass, but 9/60 Part A total-gas observations exceed EIP-7825; the SP-00 gate is therefore `FAIL`. Top-level creation gas and mined receipts remain explicitly `NOT_EVALUATED` and cannot reverse that observed failure.
 
 The Foundry harness is isolated under `evm/`. Its research-only subclass loads synthetic scope/root state so arbitrary corpus paths can traverse the unchanged pool-facing verification and payout code. This bypass is evidence plumbing, not a deployable pool and not a claim that synthetic sibling paths arose from deposits.
 

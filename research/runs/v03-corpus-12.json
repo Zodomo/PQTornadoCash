@@ -99,6 +99,7 @@
     "chain_config_hash": null,
     "client": "Foundry local EVM",
     "client_version": "forge Version: 1.7.1",
+    "code_deposit_gas": 1498800,
     "component_gas": {
       "pool_a_execution": 14758480,
       "pool_a_standard_intrinsic": 1613668,
@@ -106,6 +107,11 @@
       "pool_b_standard_intrinsic": 1669964
     },
     "deployment_gas": 0,
+    "deployment_gas_status": "NOT_EVALUATED: no creation transaction/receipt and initcode zero/nonzero byte distribution is absent",
+    "deposit_execution_gas": 13991021,
+    "deposit_status": "PASS_EXACT_REPORT_MATCH",
+    "eip170_status": "PASS",
+    "eip3860_status": "PASS",
     "execution_gas": 14758480,
     "gas_scenarios": [
       {
@@ -130,11 +136,12 @@
         "tx_cap_margin": 405068
       }
     ],
-    "initcode_bytes": 0,
+    "initcode_bytes": 12867,
+    "internal_create_observed_gas": 18873630,
     "measured": true,
     "measurement_status": "PASS: complete pool A/B calls; top-level receipt fields remain NOT_EVALUATED because Foundry test execution is not a mined transaction",
     "opcode_counts": {},
-    "opcode_status": "NOT_EVALUATED by this command; use opcode-profile.py",
+    "opcode_status": "PASS_T8N_SIMULATION",
     "part_b_gas_scenarios": [
       {
         "floor_gas": 4143410,
@@ -160,9 +167,10 @@
     ],
     "receipt_block": null,
     "receipt_gas_used": 0,
-    "receipt_status": "NOT_EVALUATED",
-    "runtime_bytes": 0,
+    "receipt_status": "SIMULATION_ONLY: no mined receipt",
+    "runtime_bytes": 7494,
     "runtime_status": "NOT_EVALUATED by this command; use measure-deployment.sh",
+    "second_client_status": "PASS_T8N_SIMULATION_NOT_MINED",
     "standard_intrinsic_gas": 1613668,
     "transaction_gas_limit": 16777216,
     "transaction_hash": null
@@ -261,16 +269,20 @@
   },
   "result": {
     "confounders": [
-      "EVM and deployment measurements have not run",
-      "valid-proof maximum frontier/gas is unproven"
+      "The 60-run maximum is empirical, not a formal valid-proof frontier/gas bound",
+      "No mined receipt",
+      "Top-level creation transaction gas is NOT_EVALUATED"
     ],
-    "failure_reason": null,
-    "gate_status": "NOT_EVALUATED",
+    "failure_reason": "Nine of 60 valid fresh part-A transactions exceed the EIP-7825 cap; top-level pool deployment and mined-receipt evidence remain incomplete.",
+    "gate_status": "FAIL",
     "notes": [
       "Native proof and codec round trip verified",
       "OS hiding entropy used",
       "Synthetic benchmark secrets are intentionally published and must never be reused",
-      "Complete pool-facing A/B calls verified in Foundry; deployment and opcode gates remain NOT_EVALUATED"
+      "Candidate gate fails on observed EIP-7825 part-A violations",
+      "Complete pool-facing A/B simulation passed in Foundry",
+      "Deployment code/initcode sizes and internal new-expression gas were measured separately",
+      "Deposit execution gas exactly matches the report"
     ],
     "success": true
   },

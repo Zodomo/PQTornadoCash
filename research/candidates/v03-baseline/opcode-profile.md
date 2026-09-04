@@ -1,13 +1,9 @@
-# C00 opcode profile
+# C00 opcode and component profile
 
-**Status: NOT_EVALUATED.** No opcode counts are fabricated from Solidity source or historic aggregate gas.
+**Component status: PASS for 60 Foundry A/B simulations. Raw opcode-count status: PASS_T8N_SIMULATION.**
 
-`verify-all.py` retains one `forge -vvvv` execution trace per exact A/B fixture under `gas/evm/`. For a client transaction, run `opcode-profile.py` with a loopback RPC URL and the A/B transaction hashes. The script requires a `debug_traceTransaction` result with `structLogs`, counts every `op` value, preserves step count/failure/gas fields, and writes `gas/opcode-counts.json` with the client version.
+The retained `gas/evm/v03-*.trace.log` set contains 60 complete call traces. Every trace records a passing pool-facing A/B execution, and the synthesizer byte-checks the four gas values against its run JSON. Part A execution ranges from 14,643,477 to 15,205,581 gas (p50 14,974,675.5); part B ranges from 11,815,711 to 12,486,352 (p50 12,271,183.5).
 
-This division keeps three forms of evidence distinct:
+go-ethereum t8n evidence is retained for 1 passing fixture(s), with two sequential successful simulated receipts per fixture and 7,178,838 aggregated opcode steps. The pinned client identity and per-transaction opcode maps are retained in each `gas/t8n/*/evidence.json`. 1 additional capped simulation failure(s) remain visible in `failure-evidence.json`; they do not weaken the candidate's FAIL gate. Raw multi-gigabyte JSONL is deleted only after deterministic aggregation. These are deterministic Prague state-transition simulations, not mined receipts.
 
-1. pool/component gas emitted by the nested Foundry harness;
-2. call-level traces from exact retained calldata;
-3. opcode counts from a named execution client's transaction trace.
-
-A provider summary, RPC estimate, or report fixture number is not opcode evidence. Public RPC endpoints are refused by the supplied script.
+Foundry traces are component evidence. t8n receipts are simulated state-transition receipts. Neither is represented as a mined network receipt.

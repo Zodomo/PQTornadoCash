@@ -1,9 +1,12 @@
 {
   "blocked": true,
   "candidate_id": "C00/v03-baseline",
-  "deployment_gas": "NOT_EVALUATED",
+  "deployment_code_size_gates": "PASS_EIP170_AND_EIP3860",
+  "deployment_gas": "INTERNAL_CREATE_MEASURED; TOP_LEVEL_NOT_EVALUATED",
+  "deposit": "PASS_EXACT_REPORT_MATCH",
   "evm_verification": "PASS",
-  "gate_status": "NOT_EVALUATED",
+  "gate_failure_reason": "Nine valid fresh part-A calls exceed 16,777,216 gas; missing top-level deployment/mined-receipt evidence cannot reverse this observed failure.",
+  "gate_status": "FAIL",
   "native_verification": "PASS",
   "negative_results": [
     "q32 has only 56 best generated proven bits and 37 unique-decoding bits",
@@ -11,14 +14,17 @@
     "Docker context does not exclude .env",
     "TypeScript does not consume the claimed 1,000 generated vectors",
     "deployment manifest has no runtime code hashes",
-    "no audit or public-network receipt exists"
+    "no audit or public-network receipt exists",
+    "Pinned geth t8n also rejects retained v03-fixed-01 under the transaction cap; structured failure evidence is retained."
   ],
   "no_code": false,
-  "opcode_profile": "NOT_EVALUATED",
+  "opcode_profile": "COMPONENT_PROFILE_PASS; PASS_T8N_SIMULATION",
   "parameter_regeneration": "PASS",
+  "part_a_eip7825": "FAIL_9_OF_60",
+  "part_b_eip7825": "PASS_60_OF_60",
   "proof_generation": "PASS",
   "public_network": "PROHIBITED",
-  "second_client": "NOT_EVALUATED",
+  "second_client": "PASS_T8N_SIMULATION_NOT_MINED",
   "source_identity": "PASS",
   "spike_id": "SP-00",
   "status_policy": "Commands fail closed. Metrics remain NOT_EVALUATED or schema-required zero sentinels until measured; historic report numbers are not relabeled as fresh measurements."

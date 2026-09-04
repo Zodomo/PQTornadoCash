@@ -46,13 +46,12 @@ status.update({"native_verification":"PASS"})
 if args.native_only:
     print("native_verified=60 evm=NOT_EVALUATED")
     raise SystemExit(0)
-if (ROOT/".env").exists(): raise SystemExit("refusing Foundry invocation while repository .env exists")
 GAS.mkdir(parents=True,exist_ok=True)
 measured={}
-forge_version=subprocess.run(["forge","--version"],cwd=ROOT,text=True,capture_output=True,check=True).stdout.strip().splitlines()[0]
+forge_version=subprocess.run(["forge","--version"],cwd=CAND/"evm",text=True,capture_output=True,check=True).stdout.strip().splitlines()[0]
 for job in jobs:
     fixture=f"../proofs/{job['run_id']}"
-    result=subprocess.run(["forge","test","--root",str(CAND/"evm"),"--match-test","testArbitraryGeneratedFixtureThroughCompletePoolCalls","-vvvv"],cwd=ROOT,text=True,capture_output=True,env={**os.environ,"V03_FIXTURE_DIR":fixture})
+    result=subprocess.run(["forge","test","--root",".","--match-test","testArbitraryGeneratedFixtureThroughCompletePoolCalls","-vvvv"],cwd=CAND/"evm",text=True,capture_output=True,env={**os.environ,"V03_FIXTURE_DIR":fixture})
     log=result.stdout+result.stderr
     (GAS/f"{job['run_id']}.trace.log").write_text(log)
     if result.returncode:
@@ -73,4 +72,6 @@ for row in rows:
 with SUMMARY.open("w",newline="") as handle:
     writer=csv.DictWriter(handle,fieldnames=list(rows[0])); writer.writeheader(); writer.writerows(rows)
 status=json.loads((CAND/"status.json").read_text()); status.update({"native_verification":"PASS","evm_verification":"PASS","gate_status":"NOT_EVALUATED"}); (CAND/"status.json").write_text(json.dumps(status,indent=2,sort_keys=True)+"\n")
+if (CAND/"gas/deployment-profile.log").is_file() and (CAND/"gas/deposit-profile.log").is_file():
+    subprocess.run([sys.executable,str(CAND/"scripts/synthesize-measurements.py")],cwd=ROOT,check=True)
 print("native_verified=60 evm_pool_A_B_verified=60 traces=60")

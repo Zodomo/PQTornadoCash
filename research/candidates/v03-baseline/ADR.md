@@ -24,11 +24,15 @@ The frozen source implements the report's intended relation; the pinned toolchai
 
 ## Measurements
 
-No expensive proof batch, EVM batch, deployment profile, second-client route, or opcode profile is committed as pre-evaluated evidence. Their status is `NOT_EVALUATED` until the reproducible commands execute. The report's historic values are reference values only and are not copied into fresh-run measured fields.
+Sixty fresh q32 proofs were generated and verified natively; all 60 exact calldata pairs passed the complete Foundry pool-facing A/B simulation. Part-A total gas ranges 16,179,681–16,953,270 with p50 16,664,641.5; part B ranges 13,333,063–14,264,492 with p50 13,959,759.5. Nine part-A samples exceed 16,777,216; no part-B sample does.
+
+Against the report, p50 deltas are 0.561% (A execution), 0.758% (A total), -0.689% (B execution), and -1.036% (B total). The B-total delta exceeds 1%. The exact cause is not isolated: fresh query/calldata variation and current harness/compiler instrumentation both differ from the single report fixture, so no stronger attribution is made. Reproduced deposit execution gas is exactly 13,991,021, matching the report.
+
+Deployment profiling establishes EIP-170/EIP-3860 code-size passes. Pool internal `new` gas is 18,873,630, above 2^24; exact top-level creation transaction gas remains NOT_EVALUATED. Raw opcode status is PASS_T8N_SIMULATION; second-client status is PASS_T8N_SIMULATION_NOT_MINED. Any t8n receipt is explicitly a simulation, not mined evidence.
 
 ## Gate result
 
-`NOT_EVALUATED`. Source identity checking is implemented. Promotion requires 60 generated records, native and EVM success, measured deployment gas, and comparison of the resulting gas distribution to the report.
+`FAIL`. Native, deposit, and Foundry correctness passed, but 9/60 observed valid part-A transactions exceed EIP-7825. Missing top-level creation and mined-receipt evidence remain visible and cannot convert an observed cap failure into PASS.
 
 ## Decision and compatibility
 

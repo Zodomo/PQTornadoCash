@@ -15,6 +15,8 @@ contract BaselineFixtureTest is Test {
         0x35adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62a,
         0xb7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea07779
     );
+    address private constant SYNTHETIC_SENDER = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
+
 
     function testArbitraryGeneratedFixtureThroughCompletePoolCalls() external {
         string memory fixture = vm.envString("V03_FIXTURE_DIR");
@@ -57,6 +59,26 @@ contract BaselineFixtureTest is Test {
         emit log_named_uint("V03_POOL_A_CALLDATA_BYTES", expectedA.length);
         emit log_named_uint("V03_POOL_B_CALLDATA_BYTES", expectedB.length);
     }
+    function testExportFixturePrestate() external {
+        string memory fixture = vm.envString("V03_FIXTURE_DIR");
+        string memory data = vm.readFile(string.concat(fixture, "/evm.json"));
+        assertEq(vm.parseJsonAddress(data, ".pool_address"), FIXED_POOL, "fixture targets research pool");
+        uint256 denomination = vm.parseUint(vm.parseJsonString(data, ".denomination_wei"));
+        Digest512 memory fixtureScope = _digest(data, ".scope");
+        Digest512 memory root = _digest(data, ".root");
+
+        PQTCAirStageVerifier air = new PQTCAirStageVerifier();
+        PQTCQueryVerifier query = new PQTCQueryVerifier();
+        PQTCVerificationRegistry registry = new PQTCVerificationRegistry(air, query, parameterId);
+        ResearchFixturePool template =
+            new ResearchFixturePool(denomination, parameterId, IPQTCVerificationRegistry(address(registry)));
+        vm.etch(FIXED_POOL, address(template).code);
+        ResearchFixturePool(FIXED_POOL).researchInitializeEtchedStorage(fixtureScope, root, parameterId);
+        vm.deal(FIXED_POOL, denomination);
+        vm.deal(SYNTHETIC_SENDER, 100 ether);
+        vm.dumpState(vm.envString("V03_PRESTATE_OUT"));
+    }
+
 
     function _digest(string memory data, string memory key) private pure returns (Digest512 memory value) {
         bytes memory encoded = vm.parseJsonBytes(data, key);
