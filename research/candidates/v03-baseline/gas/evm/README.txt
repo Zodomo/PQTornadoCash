@@ -1,0 +1,1 @@
+Each trace is raw Foundry -vvvv output for an exact retained calldata pair. It preserves call-level execution and is suitable as input to client/opcode trace tooling; it is not an opcode count. Unsupported aggregate opcode counts remain NOT_EVALUATED.

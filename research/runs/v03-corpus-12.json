@@ -97,43 +97,74 @@
   "candidate_id": "C00/v03-baseline",
   "evm": {
     "chain_config_hash": null,
-    "client": "NOT_EVALUATED",
-    "client_version": "NOT_EVALUATED",
-    "component_gas": {},
+    "client": "Foundry local EVM",
+    "client_version": "forge Version: 1.7.1",
+    "component_gas": {
+      "pool_a_execution": 14758480,
+      "pool_a_standard_intrinsic": 1613668,
+      "pool_b_execution": 12202465,
+      "pool_b_standard_intrinsic": 1669964
+    },
     "deployment_gas": 0,
-    "execution_gas": 0,
+    "execution_gas": 14758480,
     "gas_scenarios": [
       {
-        "floor_gas": 0,
+        "floor_gas": 4002670,
         "floor_is_binding": false,
         "name": "ACTIVE_EIP7623",
-        "total_gas": 0,
-        "tx_cap_margin": 0
+        "total_gas": 16372148,
+        "tx_cap_margin": 405068
       },
       {
-        "floor_gas": 0,
+        "floor_gas": 6429448,
         "floor_is_binding": false,
         "name": "SCENARIO_EIP7976_64_PER_BYTE",
-        "total_gas": 0,
-        "tx_cap_margin": 0
+        "total_gas": 16372148,
+        "tx_cap_margin": 405068
       },
       {
-        "floor_gas": 0,
+        "floor_gas": 9633672,
         "floor_is_binding": false,
         "name": "SCENARIO_EIP8311_96_PER_BYTE",
-        "total_gas": 0,
-        "tx_cap_margin": 0
+        "total_gas": 16372148,
+        "tx_cap_margin": 405068
       }
     ],
     "initcode_bytes": 0,
-    "measured": false,
-    "measurement_status": "NOT_EVALUATED: EVM execution is performed by verify-all.sh after proof generation; schema-required numeric fields use zero only as an explicit unmeasured sentinel",
+    "measured": true,
+    "measurement_status": "PASS: complete pool A/B calls; top-level receipt fields remain NOT_EVALUATED because Foundry test execution is not a mined transaction",
     "opcode_counts": {},
+    "opcode_status": "NOT_EVALUATED by this command; use opcode-profile.py",
+    "part_b_gas_scenarios": [
+      {
+        "floor_gas": 4143410,
+        "floor_is_binding": false,
+        "name": "ACTIVE_EIP7623",
+        "total_gas": 13872429,
+        "tx_cap_margin": 2904787
+      },
+      {
+        "floor_gas": 6654728,
+        "floor_is_binding": false,
+        "name": "SCENARIO_EIP7976_64_PER_BYTE",
+        "total_gas": 13872429,
+        "tx_cap_margin": 2904787
+      },
+      {
+        "floor_gas": 9971592,
+        "floor_is_binding": false,
+        "name": "SCENARIO_EIP8311_96_PER_BYTE",
+        "total_gas": 13872429,
+        "tx_cap_margin": 2904787
+      }
+    ],
     "receipt_block": null,
     "receipt_gas_used": 0,
+    "receipt_status": "NOT_EVALUATED",
     "runtime_bytes": 0,
-    "standard_intrinsic_gas": 0,
-    "transaction_gas_limit": 0,
+    "runtime_status": "NOT_EVALUATED by this command; use measure-deployment.sh",
+    "standard_intrinsic_gas": 1613668,
+    "transaction_gas_limit": 16777216,
     "transaction_hash": null
   },
   "git": {
@@ -199,7 +230,7 @@
     "denomination_wei": "18446744073709551616",
     "semantic_source_kind": "semantic-corpus",
     "semantic_version": "3",
-    "transaction_shape": "NATIVE_ONLY",
+    "transaction_shape": "OTHER",
     "tree_arity": 2,
     "tree_depth": 20
   },
@@ -238,7 +269,8 @@
     "notes": [
       "Native proof and codec round trip verified",
       "OS hiding entropy used",
-      "Synthetic benchmark secrets are intentionally published and must never be reused"
+      "Synthetic benchmark secrets are intentionally published and must never be reused",
+      "Complete pool-facing A/B calls verified in Foundry; deployment and opcode gates remain NOT_EVALUATED"
     ],
     "success": true
   },
