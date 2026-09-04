@@ -1,0 +1,160 @@
+{
+  "recordType": "StructuredRelationMachineResults",
+  "studyId": "SP-21",
+  "status": "STOPPED_BY_DEPENDENCY",
+  "resultSemantics": {
+    "relationImplementation": false,
+    "schemaIsExecutable": false,
+    "schemaIsMeasured": false,
+    "selectedBackend": null,
+    "conversionResult": null,
+    "numericConversionCounts": false
+  },
+  "dependencyObservation": {
+    "evidenceClass": "SOURCE_VERIFIED_BASELINE",
+    "eligibleCandidate": null,
+    "candidates": [
+      {"candidateId": "H0", "status": "BENCHMARK_ONLY", "allPass": false, "airDisposition": "STOPPED"},
+      {"candidateId": "H1", "status": "BENCHMARK_ONLY", "allPass": false, "airDisposition": "STOPPED"},
+      {"candidateId": "H2", "status": "DEFERRED", "allPass": false, "airDisposition": "STOPPED"},
+      {"candidateId": "H3", "status": "BENCHMARK_ONLY", "allPass": false, "airDisposition": "STOPPED"},
+      {"candidateId": "H4", "status": "BENCHMARK_ONLY", "allPass": false, "airDisposition": "STOPPED"},
+      {"candidateId": "H5", "status": "BENCHMARK_ONLY", "allPass": false, "airDisposition": "STOPPED"},
+      {"candidateId": "H6", "status": "BENCHMARK_ONLY", "allPass": false, "airDisposition": "STOPPED"},
+      {"candidateId": "H7", "status": "BENCHMARK_ONLY", "allPass": false, "airDisposition": "STOPPED"}
+    ]
+  },
+  "frozenControl": {
+    "evidenceClass": "SOURCE_VERIFIED_BASELINE",
+    "relation": "P2BB512-v1 withdrawal",
+    "publicValueOrder": ["scope", "root", "nullifierHash", "payoutDigest"],
+    "publicValueCount": 64,
+    "privateWitness": ["nullifierSecret", "trapdoor", "leafIndex", "pathBits[20]", "siblings[20]"],
+    "corpus": {
+      "path": "research/common-corpus/semantic-cases.json",
+      "sha256": "04de8cec2e4c21e346048f0f8fdf60b5346f0c9487dcc56c077814c0b59d40ec",
+      "semanticCases": 256,
+      "corpusVersion": 1,
+      "protocolSemanticVersion": "pqtc-withdrawal-semantics-v1",
+      "conversionExecution": "NOT_ATTEMPTED_BY_GATE"
+    },
+    "applicationInvocationCounts": {"nullifier": 1, "noteCommitment": 1, "merkleNode": 20, "total": 22},
+    "poseidonPermutationExpansion": {"nullifier": 9, "noteCommitment": 11, "merkleNodes": 220, "total": 240},
+    "warning": "The unequal framed sponge calls are a frozen semantic control, not the missing fixed-compression SP-10 finalist."
+  },
+  "intendedSchema": {
+    "schemaClass": "HYPOTHESIS_ONLY",
+    "disposition": "NOT_ATTEMPTED_BY_GATE",
+    "relationImplementation": false,
+    "qualifiedPrimitive": null,
+    "block": {
+      "symbol": "F",
+      "definition": "UNKNOWN_UNTIL_SP10_FINALIST",
+      "declaredOnce": true,
+      "inputInterface": "domain || framing || ordered application inputs",
+      "outputInterface": "canonical application digest",
+      "constraints": "UNKNOWN_NOT_COMPILED",
+      "variables": "UNKNOWN_NOT_COMPILED",
+      "nonzeros": "UNKNOWN_NOT_COMPILED"
+    },
+    "batch": {
+      "intendedInstanceCount": 22,
+      "countEvidence": "SOURCE_VERIFIED_BASELINE_DECOMPOSITION",
+      "instances": [
+        {"instanceId": "F00", "role": "nullifier", "ordinal": "0", "publicInputs": ["scope", "expectedNullifierHash"], "privateInputs": ["nullifierSecret"], "outputBinding": "output == expectedNullifierHash"},
+        {"instanceId": "F01", "role": "noteCommitment", "ordinal": "0", "publicInputs": ["scope"], "privateInputs": ["nullifierSecret", "trapdoor"], "outputBinding": "output == leafDigest"},
+        {"instanceId": "F02", "role": "merkleNode", "ordinal": "0", "publicInputs": ["level=0"], "privateInputs": ["pathBit[0]", "sibling[0]"], "outputBinding": "output == pathDigest[1]"},
+        {"instanceId": "F03", "role": "merkleNode", "ordinal": "1", "publicInputs": ["level=1"], "privateInputs": ["pathBit[1]", "sibling[1]"], "outputBinding": "output == pathDigest[2]"},
+        {"instanceId": "F04", "role": "merkleNode", "ordinal": "2", "publicInputs": ["level=2"], "privateInputs": ["pathBit[2]", "sibling[2]"], "outputBinding": "output == pathDigest[3]"},
+        {"instanceId": "F05", "role": "merkleNode", "ordinal": "3", "publicInputs": ["level=3"], "privateInputs": ["pathBit[3]", "sibling[3]"], "outputBinding": "output == pathDigest[4]"},
+        {"instanceId": "F06", "role": "merkleNode", "ordinal": "4", "publicInputs": ["level=4"], "privateInputs": ["pathBit[4]", "sibling[4]"], "outputBinding": "output == pathDigest[5]"},
+        {"instanceId": "F07", "role": "merkleNode", "ordinal": "5", "publicInputs": ["level=5"], "privateInputs": ["pathBit[5]", "sibling[5]"], "outputBinding": "output == pathDigest[6]"},
+        {"instanceId": "F08", "role": "merkleNode", "ordinal": "6", "publicInputs": ["level=6"], "privateInputs": ["pathBit[6]", "sibling[6]"], "outputBinding": "output == pathDigest[7]"},
+        {"instanceId": "F09", "role": "merkleNode", "ordinal": "7", "publicInputs": ["level=7"], "privateInputs": ["pathBit[7]", "sibling[7]"], "outputBinding": "output == pathDigest[8]"},
+        {"instanceId": "F10", "role": "merkleNode", "ordinal": "8", "publicInputs": ["level=8"], "privateInputs": ["pathBit[8]", "sibling[8]"], "outputBinding": "output == pathDigest[9]"},
+        {"instanceId": "F11", "role": "merkleNode", "ordinal": "9", "publicInputs": ["level=9"], "privateInputs": ["pathBit[9]", "sibling[9]"], "outputBinding": "output == pathDigest[10]"},
+        {"instanceId": "F12", "role": "merkleNode", "ordinal": "10", "publicInputs": ["level=10"], "privateInputs": ["pathBit[10]", "sibling[10]"], "outputBinding": "output == pathDigest[11]"},
+        {"instanceId": "F13", "role": "merkleNode", "ordinal": "11", "publicInputs": ["level=11"], "privateInputs": ["pathBit[11]", "sibling[11]"], "outputBinding": "output == pathDigest[12]"},
+        {"instanceId": "F14", "role": "merkleNode", "ordinal": "12", "publicInputs": ["level=12"], "privateInputs": ["pathBit[12]", "sibling[12]"], "outputBinding": "output == pathDigest[13]"},
+        {"instanceId": "F15", "role": "merkleNode", "ordinal": "13", "publicInputs": ["level=13"], "privateInputs": ["pathBit[13]", "sibling[13]"], "outputBinding": "output == pathDigest[14]"},
+        {"instanceId": "F16", "role": "merkleNode", "ordinal": "14", "publicInputs": ["level=14"], "privateInputs": ["pathBit[14]", "sibling[14]"], "outputBinding": "output == pathDigest[15]"},
+        {"instanceId": "F17", "role": "merkleNode", "ordinal": "15", "publicInputs": ["level=15"], "privateInputs": ["pathBit[15]", "sibling[15]"], "outputBinding": "output == pathDigest[16]"},
+        {"instanceId": "F18", "role": "merkleNode", "ordinal": "16", "publicInputs": ["level=16"], "privateInputs": ["pathBit[16]", "sibling[16]"], "outputBinding": "output == pathDigest[17]"},
+        {"instanceId": "F19", "role": "merkleNode", "ordinal": "17", "publicInputs": ["level=17"], "privateInputs": ["pathBit[17]", "sibling[17]"], "outputBinding": "output == pathDigest[18]"},
+        {"instanceId": "F20", "role": "merkleNode", "ordinal": "18", "publicInputs": ["level=18"], "privateInputs": ["pathBit[18]", "sibling[18]"], "outputBinding": "output == pathDigest[19]"},
+        {"instanceId": "F21", "role": "merkleNode", "ordinal": "19", "publicInputs": ["level=19", "expectedRoot"], "privateInputs": ["pathBit[19]", "sibling[19]"], "outputBinding": "output == expectedRoot"}
+      ]
+    },
+    "glue": {
+      "symbol": "G",
+      "relations": [
+        "F00 output equals public nullifierHash",
+        "F01 output initializes pathDigest[0]",
+        "for each level i, select (pathDigest[i], sibling[i]) order using pathBit[i]",
+        "for each level i, feed the ordered pair and public level i to F[2+i]",
+        "for each level i, pathBit[i] equals bit i of leafIndex",
+        "leafIndex is a 20-bit value and every pathBit is Boolean",
+        "F21 output equals public root",
+        "scope, root, nullifierHash, and payoutDigest retain their exact ordered public-statement binding",
+        "the application, not the proof, supplies expected public values"
+      ],
+      "pathOrderSelections": 20,
+      "glueConstraintCount": "UNKNOWN_NOT_COMPILED",
+      "variables": "UNKNOWN_NOT_COMPILED",
+      "nonzeros": "UNKNOWN_NOT_COMPILED"
+    },
+    "partition": {
+      "public": ["scope[16]", "root[16]", "nullifierHash[16]", "payoutDigest[16]"],
+      "private": ["nullifierSecret[8]", "trapdoor[8]", "leafIndex", "pathBits[20]", "siblings[20][16]", "intermediate block wires"],
+      "backendPublicInputSource": "VERIFIER_SELECTED_APPLICATION_STATEMENT"
+    },
+    "memoryLayout": "UNKNOWN_NOT_COMPILED",
+    "symbolicLowerBounds": [
+      {"evidenceClass": "SYMBOLIC_LOWER_BOUND", "expression": "relation = F^22 + G"},
+      {"evidenceClass": "SYMBOLIC_LOWER_BOUND", "expression": "G includes at least 20 path-order selections and 20 path-bit/leaf-index consistency checks"},
+      {"evidenceClass": "SYMBOLIC_LOWER_BOUND", "expression": "serialized metadata must identify one F definition and all 22 ordered instances"}
+    ]
+  },
+  "conversions": [
+    {"form": "AIR", "disposition": "NOT_ATTEMPTED_BY_GATE", "measured": false, "variables": "UNKNOWN_NOT_COMPILED", "constraints": "UNKNOWN_NOT_COMPILED", "nonzeros": "UNKNOWN_NOT_COMPILED", "glueConstraints": "UNKNOWN_NOT_COMPILED", "memoryLayout": "UNKNOWN_NOT_COMPILED"},
+    {"form": "R1CS", "disposition": "NOT_ATTEMPTED_BY_GATE", "measured": false, "variables": "UNKNOWN_NOT_COMPILED", "constraints": "UNKNOWN_NOT_COMPILED", "nonzeros": "UNKNOWN_NOT_COMPILED", "glueConstraints": "UNKNOWN_NOT_COMPILED", "memoryLayout": "UNKNOWN_NOT_COMPILED"},
+    {"form": "CCS", "disposition": "NOT_ATTEMPTED_BY_GATE", "measured": false, "variables": "UNKNOWN_NOT_COMPILED", "constraints": "UNKNOWN_NOT_COMPILED", "nonzeros": "UNKNOWN_NOT_COMPILED", "glueConstraints": "UNKNOWN_NOT_COMPILED", "memoryLayout": "UNKNOWN_NOT_COMPILED"},
+    {"form": "Boolean", "disposition": "NOT_ATTEMPTED_BY_GATE", "measured": false, "variables": "UNKNOWN_NOT_COMPILED", "constraints": "UNKNOWN_NOT_COMPILED", "nonzeros": "UNKNOWN_NOT_COMPILED", "glueConstraints": "UNKNOWN_NOT_COMPILED", "memoryLayout": "UNKNOWN_NOT_COMPILED"}
+  ],
+  "backendApiPreservationChecklist": [
+    {"id": "API-01", "requirement": "Accept one reusable F definition rather than 22 unrelated copies", "required": true, "evaluation": "NOT_ATTEMPTED_BY_GATE"},
+    {"id": "API-02", "requirement": "Carry explicit batch size and stable ordered instance identifiers", "required": true, "evaluation": "NOT_ATTEMPTED_BY_GATE"},
+    {"id": "API-03", "requirement": "Carry ordered per-instance inputs and outputs", "required": true, "evaluation": "NOT_ATTEMPTED_BY_GATE"},
+    {"id": "API-04", "requirement": "Represent glue G separately from F", "required": true, "evaluation": "NOT_ATTEMPTED_BY_GATE"},
+    {"id": "API-05", "requirement": "Preserve public/private labels and verifier-selected expected public inputs", "required": true, "evaluation": "NOT_ATTEMPTED_BY_GATE"},
+    {"id": "API-06", "requirement": "Preserve repetition metadata through setup, proving, verification, and serialization", "required": true, "evaluation": "NOT_ATTEMPTED_BY_GATE"},
+    {"id": "API-07", "requirement": "Report structured and fully expanded variables, constraints, nonzeros, glue size, and memory layout", "required": true, "evaluation": "NOT_ATTEMPTED_BY_GATE"},
+    {"id": "API-08", "requirement": "Run canonical-corpus equivalence plus repeated-block and glue mutation coverage", "required": true, "evaluation": "NOT_ATTEMPTED_BY_GATE"}
+  ],
+  "backendSourceComparison": [
+    {
+      "backend": "ethereum/spartan-whir",
+      "pin": "f525cddea38bb605304d3a8e6394dda10ac64b4a",
+      "evidenceClass": "SOURCE_VERIFIED_BASELINE",
+      "finding": "Generic KoalaBear R1CS is exposed; no special PQTC repeated-block API or preservation contract is present.",
+      "structuredPqtcApi": false,
+      "conversion": "NOT_ATTEMPTED_BY_GATE"
+    },
+    {
+      "backend": "Flock",
+      "pin": "0f0d63268e1373c585251e95152b3a6943e2d818",
+      "evidenceClass": "SOURCE_VERIFIED_BASELINE",
+      "finding": "Current Flock removed the application Keccak encoder and its end-to-end proof-benchmark consumers; residual low-level benchmark code is not a PQTC repeated-block API.",
+      "currentApplicationKeccakApi": false,
+      "conversion": "NOT_ATTEMPTED_BY_GATE"
+    }
+  ],
+  "stopConditions": [
+    {"id": "STOP-DEPENDENCY", "condition": "No SP-10 candidate satisfies the eligibility predicate", "observed": true, "effect": "DO_NOT_CONVERT"},
+    {"id": "STOP-FLAT-ONLY", "condition": "Backend accepts only a generic flattened matrix with no reusable-F identity", "observedForGenericSpartanSurface": true, "effect": "REJECT_AS_STRUCTURED_API"},
+    {"id": "STOP-METADATA", "condition": "Repetition, ordering, glue, or public/private metadata is dropped at any API or serialization boundary", "observed": "NOT_ATTEMPTED_BY_GATE", "effect": "STOP"},
+    {"id": "STOP-EXPANSION-UNKNOWN", "condition": "Structured and expanded variable/constraint/nonzero counts are not both emitted", "observed": "NOT_ATTEMPTED_BY_GATE", "effect": "STOP"},
+    {"id": "STOP-EXPANSION-ADVANTAGE", "condition": "Generic expansion destroys the repeated-function advantage", "threshold": "NO_NUMERIC_THRESHOLD_SPECIFIED_BY_SP21", "observed": "NOT_ATTEMPTED_BY_GATE", "effect": "STOP"},
+    {"id": "STOP-CORPUS", "condition": "Structured and reference relations do not accept/reject the same corpus and targeted mutations", "observed": "NOT_ATTEMPTED_BY_GATE", "effect": "STOP"}
+  ]
+}

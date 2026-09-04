@@ -1,0 +1,43 @@
+{
+  "recordType": "StructuredRelationStudyAssumptions",
+  "studyId": "SP-21",
+  "status": "STOPPED_BY_DEPENDENCY",
+  "evidenceClasses": {
+    "SOURCE_VERIFIED_BASELINE": "Exact frozen v0.3 relation identity or pinned backend-surface finding.",
+    "SYMBOLIC_LOWER_BOUND": "A structural expression without compiled counts or measurements.",
+    "UNKNOWN_NOT_COMPILED": "A required count or layout value unavailable because no conversion exists.",
+    "NOT_ATTEMPTED_BY_GATE": "Work prohibited because no SP-10 candidate became eligible."
+  },
+  "baselineFacts": [
+    "One frozen withdrawal calls the application hash 22 times: one nullifier, one note commitment, and 20 level-bound Merkle nodes.",
+    "Those calls use different framed payloads and expand to 240 rate-four Poseidon2 sponge permutations in A0; this is not evidence of a qualified fixed-compression finalist.",
+    "The public partition is 64 canonical BabyBear values ordered scope, root, nullifier hash, payout digest.",
+    "The private partition is nullifier secret, trapdoor, leaf index, 20 path bits, and 20 sibling digests.",
+    "The application chooses the expected public statement; a proof-supplied public vector is not authoritative."
+  ],
+  "schemaBoundary": {
+    "purpose": "Describe the intended repeated-block interface only.",
+    "code": false,
+    "relationImplementation": false,
+    "backendAdapter": false,
+    "compiledMatrices": false,
+    "witnessGenerator": false,
+    "proofSystem": false
+  },
+  "backendEvidenceScope": {
+    "spartanWhir": "The pinned landscape record establishes generic R1CS support and the absence of a special PQTC repeated-block API; no source is copied here.",
+    "flock": "The pinned landscape record establishes removal of the application Keccak encoder and its proof-benchmark consumers, not absence of every low-level Keccak benchmark file.",
+    "license": "The pinned Spartan-WHIR repository lacks adequate inspected license metadata; copying remains prohibited."
+  },
+  "measurementPolicy": {
+    "allowed": "Exact source identities and symbolic structural expressions.",
+    "prohibited": "Invented variables, constraints, nonzeros, glue counts, offsets, expansion ratios, sumcheck rounds, proof bytes, gas, time, RSS, or security results.",
+    "numericConsumption": "The 22-call and 240-permutation values describe the frozen control only; all conversion rows are nonnumeric and NOT_ATTEMPTED_BY_GATE."
+  },
+  "nonClaims": [
+    "The schema is not executable.",
+    "No backend preserves this schema merely because it accepts generic R1CS or Boolean constraints.",
+    "No historical Flock result is a current PQTC, hiding, or EVM result.",
+    "No conversion or backend passed the SP-21 gate."
+  ]
+}

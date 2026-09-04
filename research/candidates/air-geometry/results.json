@@ -1,0 +1,196 @@
+{
+  "recordType": "AirGeometryMachineResults",
+  "studyId": "SP-20",
+  "status": "STOPPED_BY_DEPENDENCY",
+  "resultSemantics": {
+    "numericGeometryAvailableOnlyWhen": "evidenceClass == SOURCE_VERIFIED_BASELINE",
+    "symbolicRowsAreMeasurements": false,
+    "notAttemptedRowsAreCandidates": false,
+    "selectedGeometry": null,
+    "pcsIntegratedGeometry": null
+  },
+  "dependencyObservation": {
+    "evidenceClass": "SOURCE_VERIFIED_BASELINE",
+    "eligibleCandidate": null,
+    "candidates": [
+      {"candidateId": "H0", "status": "BENCHMARK_ONLY", "allPass": false, "airDisposition": "STOPPED"},
+      {"candidateId": "H1", "status": "BENCHMARK_ONLY", "allPass": false, "airDisposition": "STOPPED"},
+      {"candidateId": "H2", "status": "DEFERRED", "allPass": false, "airDisposition": "STOPPED"},
+      {"candidateId": "H3", "status": "BENCHMARK_ONLY", "allPass": false, "airDisposition": "STOPPED"},
+      {"candidateId": "H4", "status": "BENCHMARK_ONLY", "allPass": false, "airDisposition": "STOPPED"},
+      {"candidateId": "H5", "status": "BENCHMARK_ONLY", "allPass": false, "airDisposition": "STOPPED"},
+      {"candidateId": "H6", "status": "BENCHMARK_ONLY", "allPass": false, "airDisposition": "STOPPED"},
+      {"candidateId": "H7", "status": "BENCHMARK_ONLY", "allPass": false, "airDisposition": "STOPPED"}
+    ]
+  },
+  "relationIdentity": {
+    "evidenceClass": "SOURCE_VERIFIED_BASELINE",
+    "implementation": "crates/pqtc-poseidon-air/src/lib.rs and crates/pqtc-poseidon-air/src/air.rs",
+    "publicValueOrder": ["scope", "root", "nullifierHash", "payoutDigest"],
+    "publicValues": 64,
+    "treeDepth": 20,
+    "applicationInvocations": {
+      "nullifier": 1,
+      "noteCommitment": 1,
+      "merkleNode": 20,
+      "total": 22
+    },
+    "poseidonPermutations": {
+      "nullifier": 9,
+      "noteCommitment": 11,
+      "merkleNodes": 220,
+      "total": 240
+    },
+    "payoutBindingRows": 4,
+    "columnMap": {
+      "poseidonSubAir": "0..156",
+      "isNote": 157,
+      "isNullifier": 158,
+      "isMerkle": 159,
+      "isPayout": 160,
+      "isPadding": 161,
+      "stepBits": "162..165",
+      "levelBits": "166..170",
+      "isLastLevel": 171,
+      "pathBit": 172,
+      "leafIndex": 173,
+      "work": "174..189"
+    },
+    "corpus": {
+      "path": "research/common-corpus/semantic-cases.json",
+      "sha256": "04de8cec2e4c21e346048f0f8fdf60b5346f0c9487dcc56c077814c0b59d40ec",
+      "semanticCases": 256,
+      "protocolSemanticVersion": "pqtc-withdrawal-semantics-v1",
+      "corpusVersion": 1,
+      "candidateNeutral": true,
+      "a0Mapping": "Keccak-256 domain-separated u32be rejection sampling below BabyBear modulus 2013265921; every rejected draw recorded",
+      "relationClaim": "identity source only; no alternate trace generated"
+    }
+  },
+  "families": {
+    "A0": {
+      "name": "existing horizontal reference",
+      "evidenceClass": "SOURCE_VERIFIED_BASELINE",
+      "disposition": "REFERENCE_ONLY",
+      "measured": false,
+      "sourceVerified": true,
+      "geometry": {
+        "logicalRows": 256,
+        "activePermutationRows": 240,
+        "payoutBindingRows": 4,
+        "paddingRows": 12,
+        "paddedRows": 256,
+        "baseDegreeBits": 8,
+        "hidingDegreeBits": 9,
+        "traceWidthByTable": {"main": 190},
+        "poseidonSubAirWidth": 157,
+        "preprocessedWidth": 0,
+        "constraintCount": 1186,
+        "maximumDegree": 7,
+        "quotientDegreeBits": 12,
+        "quotientChunkDegreeBits": 8,
+        "quotientChunks": 16,
+        "batchedFunctions": {
+          "trace": 190,
+          "quotient": 16,
+          "randomCodewords": 4,
+          "total": 210
+        },
+        "transitionRotations": [0, 1],
+        "activeVsPaddingRows": {"active": 244, "padding": 12}
+      },
+      "hidingAndFriInputs": {
+        "profile": "sepolia-v0.3",
+        "baseField": "BabyBear",
+        "challengeExtensionDegree": 4,
+        "friLogBlowup": 4,
+        "friQueries": 32,
+        "friLogFinalPolynomialLength": 0,
+        "friMaximumLogArity": 1,
+        "commitProofOfWorkBits": 16,
+        "queryProofOfWorkBits": 16,
+        "randomCodewords": 4,
+        "mmcsSaltElements": 8,
+        "hiding": true
+      },
+      "finalistOnlyMetrics": {
+        "estimatedQueryOpenBytes": "NOT_REPORTED_FROM_PARTIAL_ARITHMETIC",
+        "actualProofBytes": "NOT_REMEASURED_BY_SP20",
+        "nativeProvingTime": "NOT_REMEASURED_BY_SP20",
+        "nativePeakRss": "NOT_REMEASURED_BY_SP20",
+        "evmAirDeepGas": "NOT_REMEASURED_BY_SP20"
+      }
+    },
+    "A1": {
+      "name": "full-round vertical, all S-boxes parallel",
+      "evidenceClass": "NOT_ATTEMPTED_BY_GATE",
+      "disposition": "NOT_ATTEMPTED_BY_GATE",
+      "measured": false,
+      "laneParallelismLabel": "full",
+      "symbolicLowerBounds": [
+        {"evidenceClass": "SYMBOLIC_LOWER_BOUND", "metric": "carriedStateLanes", "expression": "W_state >= 16"},
+        {"evidenceClass": "SYMBOLIC_LOWER_BOUND", "metric": "roundRows", "expression": "R_rounds >= number_of_permutation_rounds"}
+      ],
+      "requiredMetrics": {
+        "logicalRows": "UNKNOWN_NOT_IMPLEMENTED",
+        "paddedRows": "UNKNOWN_NOT_IMPLEMENTED",
+        "baseDegreeBits": "UNKNOWN_NOT_IMPLEMENTED",
+        "hidingDegreeBits": "UNKNOWN_NOT_IMPLEMENTED",
+        "traceWidthByTable": "UNKNOWN_NOT_IMPLEMENTED",
+        "preprocessedWidth": "UNKNOWN_NOT_IMPLEMENTED",
+        "constraintCount": "UNKNOWN_NOT_IMPLEMENTED",
+        "maximumDegree": "UNKNOWN_NOT_IMPLEMENTED",
+        "quotientDegreeAndChunks": "UNKNOWN_NOT_IMPLEMENTED",
+        "batchedFunctions": "UNKNOWN_NOT_IMPLEMENTED",
+        "transitionRotations": "UNKNOWN_NOT_IMPLEMENTED",
+        "activeVsPaddingRows": "UNKNOWN_NOT_IMPLEMENTED",
+        "estimatedQueryOpenBytes": "UNKNOWN_NOT_IMPLEMENTED",
+        "actualProofBytes": "NOT_ATTEMPTED_BY_GATE",
+        "nativeProvingTimeAndRss": "NOT_ATTEMPTED_BY_GATE",
+        "evmAirDeepGas": "NOT_ATTEMPTED_BY_GATE"
+      }
+    },
+    "A2": {
+      "name": "lane-serialized vertical sweep",
+      "evidenceClass": "NOT_ATTEMPTED_BY_GATE",
+      "disposition": "NOT_ATTEMPTED_BY_GATE",
+      "measured": false,
+      "rows": [
+        {"laneParallelismLabel": "1", "evidenceClass": "NOT_ATTEMPTED_BY_GATE", "measured": false, "symbolicLowerBound": {"evidenceClass": "SYMBOLIC_LOWER_BOUND", "expression": "sbox_rows_per_round >= ceil(active_sboxes_per_round / 1)"}, "requiredMetrics": "ALL_UNKNOWN_NOT_IMPLEMENTED"},
+        {"laneParallelismLabel": "2", "evidenceClass": "NOT_ATTEMPTED_BY_GATE", "measured": false, "symbolicLowerBound": {"evidenceClass": "SYMBOLIC_LOWER_BOUND", "expression": "sbox_rows_per_round >= ceil(active_sboxes_per_round / 2)"}, "requiredMetrics": "ALL_UNKNOWN_NOT_IMPLEMENTED"},
+        {"laneParallelismLabel": "4", "evidenceClass": "NOT_ATTEMPTED_BY_GATE", "measured": false, "symbolicLowerBound": {"evidenceClass": "SYMBOLIC_LOWER_BOUND", "expression": "sbox_rows_per_round >= ceil(active_sboxes_per_round / 4)"}, "requiredMetrics": "ALL_UNKNOWN_NOT_IMPLEMENTED"},
+        {"laneParallelismLabel": "8", "evidenceClass": "NOT_ATTEMPTED_BY_GATE", "measured": false, "symbolicLowerBound": {"evidenceClass": "SYMBOLIC_LOWER_BOUND", "expression": "sbox_rows_per_round >= ceil(active_sboxes_per_round / 8)"}, "requiredMetrics": "ALL_UNKNOWN_NOT_IMPLEMENTED"},
+        {"laneParallelismLabel": "16", "evidenceClass": "NOT_ATTEMPTED_BY_GATE", "measured": false, "symbolicLowerBound": {"evidenceClass": "SYMBOLIC_LOWER_BOUND", "expression": "sbox_rows_per_round >= ceil(active_sboxes_per_round / 16)"}, "requiredMetrics": "ALL_UNKNOWN_NOT_IMPLEMENTED"},
+        {"laneParallelismLabel": "full", "evidenceClass": "NOT_ATTEMPTED_BY_GATE", "measured": false, "symbolicLowerBound": {"evidenceClass": "SYMBOLIC_LOWER_BOUND", "expression": "sbox_rows_per_round >= 1 when a round has an active S-box"}, "requiredMetrics": "ALL_UNKNOWN_NOT_IMPLEMENTED"}
+      ],
+      "requiredMetricSchema": ["logicalRows", "paddedRows", "baseDegreeBits", "hidingDegreeBits", "traceWidthByTable", "preprocessedWidth", "constraintCount", "maximumDegree", "quotientDegreeAndChunks", "batchedFunctions", "transitionRotations", "activeVsPaddingRows", "estimatedQueryOpenBytes", "actualProofBytes", "nativeProvingTimeAndRss", "evmAirDeepGas"]
+    },
+    "A3": {
+      "name": "multi-table relation",
+      "evidenceClass": "NOT_ATTEMPTED_BY_GATE",
+      "disposition": "NOT_ATTEMPTED_BY_GATE",
+      "measured": false,
+      "tables": [
+        {"table": "controller/path", "evidenceClass": "NOT_ATTEMPTED_BY_GATE", "width": "UNKNOWN_NOT_IMPLEMENTED", "rows": "UNKNOWN_NOT_IMPLEMENTED"},
+        {"table": "application-compression", "evidenceClass": "NOT_ATTEMPTED_BY_GATE", "width": "UNKNOWN_NOT_IMPLEMENTED", "rows": "UNKNOWN_NOT_IMPLEMENTED"},
+        {"table": "fixed/preprocessed-rounds", "evidenceClass": "NOT_ATTEMPTED_BY_GATE", "presence": "UNKNOWN_DESIGN_CHOICE", "committedWidth": "UNKNOWN_NOT_IMPLEMENTED"},
+        {"table": "linking permutation-or-lookup", "evidenceClass": "NOT_ATTEMPTED_BY_GATE", "kind": "UNKNOWN_DESIGN_CHOICE", "cost": "UNKNOWN_NOT_IMPLEMENTED"}
+      ],
+      "symbolicLowerBound": {"evidenceClass": "SYMBOLIC_LOWER_BOUND", "expression": "cost(linking) < cost(carrying controller and compression state together) is required to proceed"},
+      "requiredMetrics": "ALL_UNKNOWN_NOT_IMPLEMENTED"
+    },
+    "A4": {
+      "name": "backend-neutral structured relation",
+      "evidenceClass": "NOT_ATTEMPTED_BY_GATE",
+      "disposition": "NOT_ATTEMPTED_BY_GATE",
+      "measured": false,
+      "rows": [
+        {"form": "AIR", "relationIdentity": "SAME_FROZEN_SEMANTICS_REQUIRED", "conversion": "NOT_ATTEMPTED_BY_GATE", "variables": "UNKNOWN_NOT_IMPLEMENTED", "constraints": "UNKNOWN_NOT_IMPLEMENTED", "nonzeros": "UNKNOWN_NOT_IMPLEMENTED"},
+        {"form": "R1CS", "relationIdentity": "SAME_FROZEN_SEMANTICS_REQUIRED", "conversion": "NOT_ATTEMPTED_BY_GATE", "variables": "UNKNOWN_NOT_IMPLEMENTED", "constraints": "UNKNOWN_NOT_IMPLEMENTED", "nonzeros": "UNKNOWN_NOT_IMPLEMENTED"},
+        {"form": "CCS", "relationIdentity": "SAME_FROZEN_SEMANTICS_REQUIRED", "conversion": "NOT_ATTEMPTED_BY_GATE", "variables": "UNKNOWN_NOT_IMPLEMENTED", "constraints": "UNKNOWN_NOT_IMPLEMENTED", "nonzeros": "UNKNOWN_NOT_IMPLEMENTED"},
+        {"form": "Boolean", "relationIdentity": "SAME_FROZEN_SEMANTICS_REQUIRED", "conversion": "NOT_ATTEMPTED_BY_GATE", "variables": "UNKNOWN_NOT_IMPLEMENTED", "constraints": "UNKNOWN_NOT_IMPLEMENTED", "nonzeros": "UNKNOWN_NOT_IMPLEMENTED"}
+      ],
+      "symbolicLowerBound": {"evidenceClass": "SYMBOLIC_LOWER_BOUND", "expression": "22 shared application invocations + glue G; backend counts remain unknown until compiled"}
+    }
+  }
+}

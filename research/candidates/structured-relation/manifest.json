@@ -1,0 +1,41 @@
+{
+  "recordType": "StructuredRelationStudyManifest",
+  "studyId": "SP-21",
+  "title": "Structured relation and repeated-computation decomposition",
+  "status": "STOPPED_BY_DEPENDENCY",
+  "researchOnly": true,
+  "productionCodeChanged": false,
+  "ownedPath": "research/candidates/structured-relation/**",
+  "dependency": {
+    "spike": "SP-10",
+    "requiredInput": "one application-compression finalist eligible for AIR and structured-relation work",
+    "eligibilityPredicate": "gateComparison.allPass == true AND gateComparison.airDisposition == ELIGIBLE_FOR_AIR",
+    "observed": "NO_ELIGIBLE_CANDIDATE",
+    "candidateStatusFiles": [
+      "research/candidates/H0/status.json",
+      "research/candidates/H1/status.json",
+      "research/candidates/H2/status.json",
+      "research/candidates/H3/status.json",
+      "research/candidates/H4/status.json",
+      "research/candidates/H5/status.json",
+      "research/candidates/H6/status.json",
+      "research/candidates/H7/status.json"
+    ]
+  },
+  "artifacts": {
+    "ADR.md": "dependency stop and backend decision record",
+    "assumptions.json": "schema boundaries and evidence taxonomy",
+    "source-hashes.json": "SHA-256 pins for frozen, dependency, and backend landscape evidence",
+    "status.json": "stop status and conversion dispositions",
+    "negative-results.json": "preserved backend and expansion stops",
+    "results.json": "intended repeated-block schema and API-preservation checklist",
+    "check.py": "deterministic source, package, and eligibility checker"
+  },
+  "reproduce": "python3 research/candidates/structured-relation/check.py",
+  "dependencyGate": "python3 research/candidates/structured-relation/check.py --require-eligible",
+  "dependencyGateExpectedExitWhileStopped": 3,
+  "noCode": true,
+  "relationImplementation": false,
+  "conversionImplementation": false,
+  "backendIntegration": "PROHIBITED"
+}

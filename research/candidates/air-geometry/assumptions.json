@@ -1,0 +1,43 @@
+{
+  "recordType": "AirGeometryStudyAssumptions",
+  "studyId": "SP-20",
+  "status": "STOPPED_BY_DEPENDENCY",
+  "facts": [
+    "The frozen relation uses the exact ordered public values scope, root, nullifier hash, payout digest.",
+    "The frozen witness contains canonical nullifier secret, trapdoor, 20-bit leaf index, 20 path bits, and 20 canonical sibling digests.",
+    "The semantic corpus is candidate-neutral; a future SP-10 finalist must define and record its own unbiased mapping.",
+    "A fixed or preprocessed column is not free unless its commitment, opening, and verifier acquisition costs are accounted for.",
+    "No H0-H7 candidate is eligible for AIR work under the checked SP-10 statuses."
+  ],
+  "evidenceClasses": {
+    "SOURCE_VERIFIED_BASELINE": "An exact constant or identity recovered from a pinned frozen source.",
+    "SYMBOLIC_LOWER_BOUND": "An algebraic necessity or expression with no assigned implementation value.",
+    "UNKNOWN_NOT_IMPLEMENTED": "A required metric for which no implementation exists and no value is claimed.",
+    "NOT_ATTEMPTED_BY_GATE": "Work prohibited because no SP-10 candidate became eligible."
+  },
+  "measurementPolicy": {
+    "a0": "Only frozen source constants and exact integer identities are reported.",
+    "a1ThroughA4": "No values are measured or projected; symbolic expressions and explicit unknowns only.",
+    "microbenchmarks": "Operation-count and field microbench results cannot be added to synthesize proof bytes, gas, time, RSS, quotient shape, or FRI cost.",
+    "numericConsumption": "Only records marked SOURCE_VERIFIED_BASELINE may be consumed as numeric geometry."
+  },
+  "symbolicConventions": {
+    "R": "logical rows",
+    "N": "padded power-of-two rows",
+    "W": "main-trace width",
+    "P": "preprocessed width",
+    "C": "constraint count",
+    "D": "maximum constraint degree",
+    "Q": "quotient chunks",
+    "B": "batched functions",
+    "L": "lane parallelism",
+    "G": "glue/linking relation cost"
+  },
+  "nonClaims": [
+    "No alternate AIR was implemented.",
+    "No candidate trace was generated or constraint-checked.",
+    "No PCS was integrated.",
+    "No proof size, gas, time, RSS, security, or production-readiness result is claimed.",
+    "The symbolic rows do not select a geometry."
+  ]
+}

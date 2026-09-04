@@ -1,0 +1,46 @@
+{
+  "recordType": "AirGeometryStudyManifest",
+  "studyId": "SP-20",
+  "title": "AIR geometry and constraint-degree redesign",
+  "status": "STOPPED_BY_DEPENDENCY",
+  "researchOnly": true,
+  "productionCodeChanged": false,
+  "ownedPath": "research/candidates/air-geometry/**",
+  "baseline": {
+    "candidateId": "C00/v03-baseline",
+    "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+    "tag": "pqtc-v0.3-research-baseline",
+    "profile": "sepolia-v0.3"
+  },
+  "dependency": {
+    "spike": "SP-10",
+    "candidateStatusFiles": [
+      "research/candidates/H0/status.json",
+      "research/candidates/H1/status.json",
+      "research/candidates/H2/status.json",
+      "research/candidates/H3/status.json",
+      "research/candidates/H4/status.json",
+      "research/candidates/H5/status.json",
+      "research/candidates/H6/status.json",
+      "research/candidates/H7/status.json"
+    ],
+    "eligibilityPredicate": "gateComparison.allPass == true AND gateComparison.airDisposition == ELIGIBLE_FOR_AIR",
+    "observed": "NO_ELIGIBLE_CANDIDATE",
+    "requiredDisposition": "STOPPED_BY_DEPENDENCY"
+  },
+  "artifacts": {
+    "ADR.md": "dependency-stop decision record",
+    "assumptions.json": "source boundaries and evidence taxonomy",
+    "source-hashes.json": "SHA-256 pins for frozen and dependency sources",
+    "status.json": "stop status and gates",
+    "negative-results.json": "preserved blockers and prohibited inferences",
+    "results.json": "source-verified A0 and non-measured A1-A4 worksheets",
+    "check.py": "deterministic source, package, and dependency checker"
+  },
+  "reproduce": "python3 research/candidates/air-geometry/check.py",
+  "dependencyGate": "python3 research/candidates/air-geometry/check.py --require-eligible",
+  "dependencyGateExpectedExitWhileStopped": 3,
+  "noCode": true,
+  "relationImplementation": false,
+  "pcsIntegration": "PROHIBITED"
+}

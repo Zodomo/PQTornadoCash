@@ -1,0 +1,34 @@
+{
+  "recordType": "AirGeometryStudyStatus",
+  "studyId": "SP-20",
+  "status": "STOPPED_BY_DEPENDENCY",
+  "checkerExpected": "PASS_STOPPED_STATE",
+  "upstream": {
+    "sp10EligibleCandidate": null,
+    "candidateCountChecked": 8,
+    "stoppedAirDispositions": 8,
+    "allCandidateIds": ["H0", "H1", "H2", "H3", "H4", "H5", "H6", "H7"],
+    "sp02GateResult": "FAIL"
+  },
+  "a0": {
+    "disposition": "REFERENCE_ONLY",
+    "evidenceClass": "SOURCE_VERIFIED_BASELINE",
+    "sourceVerified": true,
+    "pcsIntegration": false
+  },
+  "a1": {"disposition": "NOT_ATTEMPTED_BY_GATE", "measured": false},
+  "a2": {"disposition": "NOT_ATTEMPTED_BY_GATE", "measured": false},
+  "a3": {"disposition": "NOT_ATTEMPTED_BY_GATE", "measured": false},
+  "a4": {"disposition": "NOT_ATTEMPTED_BY_GATE", "measured": false},
+  "selectedGeometry": null,
+  "benchmarkResult": null,
+  "proofResult": null,
+  "gasResult": null,
+  "productionReady": false,
+  "pcsIntegration": "PROHIBITED",
+  "resumeConditions": [
+    "An SP-10 status has gateComparison.allPass true and airDisposition ELIGIBLE_FOR_AIR.",
+    "SP-02 is no longer a failed prerequisite.",
+    "The canonical corpus mapping and complete relation identity are frozen for that finalist."
+  ]
+}

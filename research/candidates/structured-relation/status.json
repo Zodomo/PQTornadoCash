@@ -1,0 +1,38 @@
+{
+  "recordType": "StructuredRelationStudyStatus",
+  "studyId": "SP-21",
+  "status": "STOPPED_BY_DEPENDENCY",
+  "checkerExpected": "PASS_STOPPED_STATE",
+  "upstream": {
+    "sp10EligibleCandidate": null,
+    "candidateCountChecked": 8,
+    "stoppedAirDispositions": 8,
+    "sp02GateResult": "FAIL"
+  },
+  "schema": {
+    "disposition": "HYPOTHESIS_ONLY",
+    "relationImplementation": false,
+    "intendedRepeatedBlockCount": 22,
+    "glueCount": "UNKNOWN_NOT_COMPILED"
+  },
+  "conversions": {
+    "AIR": "NOT_ATTEMPTED_BY_GATE",
+    "R1CS": "NOT_ATTEMPTED_BY_GATE",
+    "CCS": "NOT_ATTEMPTED_BY_GATE",
+    "Boolean": "NOT_ATTEMPTED_BY_GATE"
+  },
+  "backendIntegrations": {
+    "spartanWhir": "NOT_ATTEMPTED_BY_GATE",
+    "flock": "NOT_ATTEMPTED_BY_GATE"
+  },
+  "selectedBackend": null,
+  "benchmarkResult": null,
+  "proofResult": null,
+  "gasResult": null,
+  "productionReady": false,
+  "resumeConditions": [
+    "An SP-10 status has gateComparison.allPass true and airDisposition ELIGIBLE_FOR_AIR.",
+    "The finalist defines canonical vectors and an unbiased common-corpus mapping.",
+    "A backend API demonstrates that repeated-block metadata survives setup, proving, verification, and serialization."
+  ]
+}

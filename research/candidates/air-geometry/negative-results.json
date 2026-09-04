@@ -1,0 +1,47 @@
+{
+  "recordType": "AirGeometryNegativeResults",
+  "studyId": "SP-20",
+  "status": "STOPPED_BY_DEPENDENCY",
+  "results": [
+    {
+      "id": "SP20-N1",
+      "disposition": "STOP",
+      "finding": "No H0-H7 candidate satisfied the complete SP-10 gate; every checked airDisposition is STOPPED and every allPass value is false."
+    },
+    {
+      "id": "SP20-N2",
+      "disposition": "STOP",
+      "finding": "PCS integration is prohibited because there is no eligible SP-10 application primitive. H0 is a baseline, not a substitute finalist."
+    },
+    {
+      "id": "SP20-N3",
+      "disposition": "STOP",
+      "finding": "SP-02 remains ARCHIVED_FAILED with gateResult FAIL and integrationAllowed false due to the unresolved malformed-proof panic boundary."
+    },
+    {
+      "id": "SP20-N4",
+      "disposition": "NOT_ATTEMPTED_BY_GATE",
+      "finding": "A1 full-round vertical and all A2 lane-parallelism rows were not implemented; their geometry and performance fields remain explicit unknowns."
+    },
+    {
+      "id": "SP20-N5",
+      "disposition": "NOT_ATTEMPTED_BY_GATE",
+      "finding": "A3 linking and preprocessed-table designs were not implemented, so no commitment, opening, lookup, permutation, or EVM acquisition cost is assigned."
+    },
+    {
+      "id": "SP20-N6",
+      "disposition": "NOT_ATTEMPTED_BY_GATE",
+      "finding": "A4 AIR/R1CS/CCS/Boolean conversions were not created; the rows are schema placeholders and not relation implementations."
+    },
+    {
+      "id": "SP20-N7",
+      "disposition": "REJECTED_INFERENCE",
+      "finding": "Field-operation counts, verifier kernels, and microbench timings are not additive models of quotient shape, FRI padding, proof bytes, total gas, proving time, or RSS. No such numbers are synthesized here."
+    },
+    {
+      "id": "SP20-N8",
+      "disposition": "REFERENCE_ONLY",
+      "finding": "A0 source facts preserve the frozen relation identity but do not pass the SP-20 improvement gate and do not select a downstream geometry."
+    }
+  ]
+}

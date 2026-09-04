@@ -1,0 +1,52 @@
+{
+  "recordType": "StructuredRelationNegativeResults",
+  "studyId": "SP-21",
+  "status": "STOPPED_BY_DEPENDENCY",
+  "results": [
+    {
+      "id": "SP21-N1",
+      "disposition": "STOP",
+      "finding": "No H0-H7 candidate is an eligible SP-10 finalist; all eight airDisposition values are STOPPED and all eight allPass values are false."
+    },
+    {
+      "id": "SP21-N2",
+      "disposition": "NOT_ATTEMPTED_BY_GATE",
+      "finding": "AIR, R1CS, CCS, and Boolean conversions were not attempted. All size, nonzero, variable, glue, and memory-layout fields remain explicit unknowns."
+    },
+    {
+      "id": "SP21-N3",
+      "disposition": "REJECTED_INFERENCE",
+      "finding": "Pinned Spartan-WHIR supports generic KoalaBear R1CS but exposes no special PQTC repeated-block API or metadata-preservation contract. Generic R1CS support is not a structured-relation pass."
+    },
+    {
+      "id": "SP21-N4",
+      "disposition": "STOP",
+      "finding": "Current Flock removed the application Keccak encoder and its end-to-end proof-benchmark consumers. A residual low-level Keccak benchmark file and the historical parent do not provide a current PQTC relation API."
+    },
+    {
+      "id": "SP21-N5",
+      "disposition": "REJECTED_INFERENCE",
+      "finding": "The historical Flock batch-44 harness is non-ZK capacity-48 padding evidence, not a 22-call PQTC conversion, hiding proof, current backend result, or EVM result."
+    },
+    {
+      "id": "SP21-N6",
+      "disposition": "STOP_CONDITION",
+      "finding": "Reject a flatten-only reduction if it loses one-F/22-instance metadata, merges glue invisibly, accepts proof-selected public inputs, or cannot report both structured and expanded counts."
+    },
+    {
+      "id": "SP21-N7",
+      "disposition": "STOP_CONDITION",
+      "finding": "Reject expansion that destroys the repeated-function advantage. SP-21 specifies no numeric expansion threshold, so this package does not invent one."
+    },
+    {
+      "id": "SP21-N8",
+      "disposition": "NOT_ATTEMPTED_BY_GATE",
+      "finding": "No corpus equivalence, repeated-block mutation, glue mutation, proof, benchmark, or backend API preservation test ran because no relation was instantiated."
+    },
+    {
+      "id": "SP21-N9",
+      "disposition": "STOP",
+      "finding": "SP-02 remains ARCHIVED_FAILED with gateResult FAIL and integrationAllowed false; no backend integration may bypass that failed prerequisite."
+    }
+  ]
+}
