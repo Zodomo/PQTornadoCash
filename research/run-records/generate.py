@@ -9,9 +9,7 @@ import hashlib
 import io
 import json
 import statistics
-import subprocess
 import sys
-from datetime import datetime, timezone
 from copy import deepcopy
 from pathlib import Path
 from typing import Any, Iterable
@@ -27,8 +25,8 @@ sys.path.insert(0, str(REPORT_LIB))
 from keccak import Keccak256, self_test as keccak_self_test  # type: ignore  # noqa: E402
 from schema_validator import load_json, validate_document  # type: ignore  # noqa: E402
 
-COMMIT_FALLBACK = "aff4d015f3f092b71f7c63071c884f8819ca05aa"
-TIMESTAMP_FALLBACK = "2026-09-04T19:33:36Z"
+SOURCE_COMMIT = "aff4d015f3f092b71f7c63071c884f8819ca05aa"
+SOURCE_TIMESTAMP = "2026-09-04T19:33:36Z"
 GAS_NAMES = ("ACTIVE_EIP7623", "FUTURE_EIP7976_64_64", "DRAFT_EIP8311_96_96")
 RELATION_HEADER = ("candidate_id", "table_id", "logical_rows", "padded_rows", "base_degree_bits", "hiding_degree_bits", "trace_width", "preprocessed_width", "constraint_count", "max_degree", "quotient_chunks", "batched_functions", "rotations", "active_rows", "padding_rows")
 PROOF_HEADER = ("candidate_id", "run_id", "raw_proof_bytes", "abi_calldata_bytes", "header_bytes", "statement_bytes", "global_bytes", "query_row_bytes", "salt_bytes", "frontier_bytes", "ldt_bytes", "final_bytes", "continuation_bytes", "abi_overhead_bytes", "zero_bytes", "nonzero_bytes")
@@ -56,27 +54,15 @@ def file_digests(data: bytes) -> tuple[str, str]:
     return hashlib.sha256(data).hexdigest(), k.hexdigest()
 
 
-def git_value(*args: str, fallback: str) -> str:
-    try:
-        result = subprocess.run(["git", *args], cwd=ROOT, text=True, capture_output=True, check=True)
-    except (OSError, subprocess.CalledProcessError):
-        return fallback
-    return result.stdout.strip() or fallback
-
-
 def source_identity() -> tuple[dict[str, Any], str]:
-    commit = git_value("rev-parse", "HEAD", fallback=COMMIT_FALLBACK)
-    timestamp = datetime.fromisoformat(
-        git_value("show", "-s", "--format=%cI", "HEAD", fallback=TIMESTAMP_FALLBACK).replace("Z", "+00:00")
-    ).astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
-    try:
-        dirty = bool(subprocess.run(
-            ["git", "status", "--porcelain", "--untracked-files=no"], cwd=ROOT,
-            text=True, capture_output=True, check=True,
-        ).stdout.strip())
-    except (OSError, subprocess.CalledProcessError):
-        dirty = True
-    return {"repository": "PQTornado", "commit": commit, "dirty": dirty, "branch_or_tag": None, "submodules": {}}, timestamp
+    """Return the frozen source revision for these derived research records."""
+    return {
+        "repository": "PQTornado",
+        "commit": SOURCE_COMMIT,
+        "dirty": False,
+        "branch_or_tag": None,
+        "submodules": {},
+    }, SOURCE_TIMESTAMP
 
 
 def canonical_environment() -> tuple[dict[str, Any], dict[str, Any]]:
