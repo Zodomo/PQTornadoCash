@@ -1,0 +1,61 @@
+{
+  "schema": "pqtc.sp30.transcript-status.v1",
+  "workPackage": "SP-30",
+  "complete": true,
+  "classification": "BENCHMARK_ONLY",
+  "custodyIntegration": false,
+  "graphStatus": "EXACT_PINNED_V03_ORDER_RECORDED",
+  "grammarStatus": "VERSIONED_AND_UNAMBIGUOUS",
+  "vectorStatus": "GENERATOR_LOCAL_ONLY_NOT_SERIALIZED_MUTATION_OR_CROSS_LANGUAGE_PARITY",
+  "languageImplementations": [
+    "Rust",
+    "Solidity",
+    "TypeScript"
+  ],
+  "gate": {
+    "selected": "T3",
+    "result": "T3_EXTERNAL_REVIEW_ONLY",
+    "integrationBlocked": true,
+    "internalReviewConfidence": "HIGH",
+    "blockers": [
+      "claim/boundary state machine absent; primitive APIs permit premature sample",
+      "TypeScript misuse oracle uses out-of-band labels rather than serialized grammar",
+      "Rust/Solidity mutation and cross-language parity execution absent",
+      "full-width continuation redesign incomplete; identifiers remain bytes32",
+      "single-slot Solidity lookup overwrite and hashed-record comparison unresolved",
+      "candidate full-path EVM gas delta unmeasured"
+    ]
+  },
+  "candidates": {
+    "T0": "REFERENCE_CONTROL",
+    "T1": "NOT_SELECTED",
+    "T2": "REJECTED_EFFICIENCY",
+    "T3": "T3_EXTERNAL_REVIEW_ONLY"
+  },
+  "securityClaimsApproved": [],
+  "focusedRun": {
+    "result": "PASS",
+    "rustCandidatesBuiltAndTested": [
+      "T0",
+      "T1",
+      "T2",
+      "T3"
+    ],
+    "typescriptVectorsRegenerated": true,
+    "v03CheckpointReplay": "PASS_T0_EXACT_V03_CHECKPOINT_REPLAY",
+    "solidityCandidateMeasurements": [
+      "T0",
+      "T1",
+      "T2",
+      "T3"
+    ],
+    "profile": {
+      "solc": "0.8.30",
+      "evmVersion": "prague",
+      "optimizer": true,
+      "optimizerRuns": 200,
+      "viaIR": true
+    },
+    "cleanup": "PASS"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schema":"pqtc.sp30.baseline-evidence.v1",
+  "repositoryRelease":"v0.3",
+  "plonky3Commit":"3152b14a89067c83775a8076cc262ffc48a1fd7c",
+  "sources":[
+    {"path":"crates/pqtc-stark/src/crypto.rs","symbols":["Transcript512::new","Transcript512::absorb","Transcript512::sample_byte","CanSample::sample","CanSampleBits::sample_bits"],"establishes":["K512 transcript domains","field/commitment types","big-endian lengths","output reset","canonical field rejection sampling","bit sampling"]},
+    {"path":"crates/pqtc-stark/src/codec.rs","symbols":["derive_checkpoint","statement_key","checkpoint_digest","derive_proof_id","encode_proof_part_a","encode_proof_part_b","decode_proof_parts","put_checkpoint_payload"],"establishes":["full v0.3 transcript replay order","checkpoint grammar","statement/global/A-B continuation binding"]},
+    {"path":"crates/pqtc-spec/src/lib.rs","symbols":["BABY_BEAR_MODULUS","PUBLIC_VALUES_COUNT","WithdrawalStatement::public_values"],"establishes":["field modulus","64-field statement width","digest-half-to-field ordering"]},
+    {"path":"crates/pqtc-hash/src/lib.rs","symbols":["k512"],"establishes":["Ethereum Keccak-256 half prefixes and concatenation order"]},
+    {"path":"~/.cargo/git/checkouts/plonky3-7d8a3b21a665a86f/3152b14/uni-stark/src/verifier.rs","symbols":["verify"],"establishes":["instance/commitment/public value order and alpha/zeta boundaries"]},
+    {"path":"~/.cargo/git/checkouts/plonky3-7d8a3b21a665a86f/3152b14/fri/src/verifier.rs","symbols":["verify_shape_and_sample_challenges"],"establishes":["opening alpha, per-round commitment/PoW/beta order, final polynomial, arity, query PoW, query-index order"]},
+    {"path":"~/.cargo/git/checkouts/plonky3-7d8a3b21a665a86f/3152b14/challenger/src/grinding_challenger.rs","symbols":["GrindingChallenger::check_witness"],"establishes":["nonzero PoW witness absorb then bit squeeze; zero-bit early return"]}
+  ],
+  "note":"Cargo checkout paths identify the pinned source inspected for this research record. Normative repository dependencies pin the same full commit. Line numbers are intentionally omitted because source hashes and symbol names are stable review anchors."
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "pqtc.sp30.claim-challenge-graph.v1",
+  "baseline": {"release":"v0.3","plonky3":"3152b14a89067c83775a8076cc262ffc48a1fd7c","field":"BabyBear","modulus":2013265921,"extensionDegree":4},
+  "shape": {"degreeBits":9,"baseDegreeBits":8,"preprocessedWidth":0,"traceWidth":190,"quotientChunks":16,"randomCodewords":4,"friRounds":9,"queries":32,"commitPowBits":16,"queryPowBits":8,"queryIndexBits":13},
+  "initialization": [
+    {"claim":"parameter_digest","encoding":"digest64","fullWidth":true},
+    {"claim":"statement_public_values","encoding":"field32[64]","fullWidth":true}
+  ],
+  "boundaries": [
+    {"id":"B0","claims":["degree_bits:field32=9","base_degree_bits:field32=8","preprocessed_width:field32=0","trace_commit:digest64","public_values:field32[64]"],"outputs":["air_alpha:extension4"]},
+    {"id":"B1","claims":["quotient_commit:digest64","random_commit:digest64"],"outputs":["zeta:extension4"]},
+    {"id":"B2","claims":["random_plus_hiding:extension4[8]","trace_local_plus_hiding:extension4[194]","trace_next_plus_hiding:extension4[194]","quotient_0_plus_hiding:extension4[8]","quotient_1_plus_hiding:extension4[8]","quotient_2_plus_hiding:extension4[8]","quotient_3_plus_hiding:extension4[8]","quotient_4_plus_hiding:extension4[8]","quotient_5_plus_hiding:extension4[8]","quotient_6_plus_hiding:extension4[8]","quotient_7_plus_hiding:extension4[8]","quotient_8_plus_hiding:extension4[8]","quotient_9_plus_hiding:extension4[8]","quotient_10_plus_hiding:extension4[8]","quotient_11_plus_hiding:extension4[8]","quotient_12_plus_hiding:extension4[8]","quotient_13_plus_hiding:extension4[8]","quotient_14_plus_hiding:extension4[8]","quotient_15_plus_hiding:extension4[8]"],"outputs":["fri_alpha:extension4"]},
+    {"id":"B3.0..8","repeat":9,"claims":["fri_commit[r]:digest64","commit_pow_witness[r]:field32"],"outputs":["commit_pow_check[r]:bits16","fri_beta[r]:extension4"],"sameSqueezeStream":true},
+    {"id":"B4","claims":["final_poly:extension4[1]","log_arities:field32[9], each=1","query_pow_witness:field32"],"outputs":["query_pow_check:bits8","query_indices:bits13[32]"],"sameSqueezeStream":true}
+  ],
+  "edges":[
+    ["init","B0"],["B0","air_alpha"],["air_alpha","B1"],["B1","zeta"],["zeta","B2"],["B2","fri_alpha"],
+    ["fri_alpha","B3.0"],["B3.0","commit_pow_check.0"],["commit_pow_check.0","fri_beta.0"],["fri_beta.0","B3.1"],
+    ["B3.1","commit_pow_check.1"],["commit_pow_check.1","fri_beta.1"],["fri_beta.1","B3.2"],
+    ["B3.2","commit_pow_check.2"],["commit_pow_check.2","fri_beta.2"],["fri_beta.2","B3.3"],
+    ["B3.3","commit_pow_check.3"],["commit_pow_check.3","fri_beta.3"],["fri_beta.3","B3.4"],
+    ["B3.4","commit_pow_check.4"],["commit_pow_check.4","fri_beta.4"],["fri_beta.4","B3.5"],
+    ["B3.5","commit_pow_check.5"],["commit_pow_check.5","fri_beta.5"],["fri_beta.5","B3.6"],
+    ["B3.6","commit_pow_check.6"],["commit_pow_check.6","fri_beta.6"],["fri_beta.6","B3.7"],
+    ["B3.7","commit_pow_check.7"],["commit_pow_check.7","fri_beta.7"],["fri_beta.7","B3.8"],
+    ["B3.8","commit_pow_check.8"],["commit_pow_check.8","fri_beta.8"],["fri_beta.8","B4"],
+    ["B4","query_pow_check"],["query_pow_check","query_indices"]
+  ],
+  "forbiddenBatchEdges":[["B0","B1"],["B1","B2"],["B2","B3.0"],["B3.0","B3.1"],["B3.1","B3.2"],["B3.2","B3.3"],["B3.3","B3.4"],["B3.4","B3.5"],["B3.5","B3.6"],["B3.6","B3.7"],["B3.7","B3.8"],["B3.8","B4"]]
+}

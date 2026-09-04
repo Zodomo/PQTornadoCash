@@ -1,0 +1,80 @@
+{
+  "schema": "pqtc.sp30.candidate-manifest.v1",
+  "candidate": "T1",
+  "title": "typed-array absorb",
+  "classification": "BENCHMARK_ONLY",
+  "integrated": false,
+  "baseline": {
+    "release": "v0.3",
+    "plonky3": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+    "graph": "../../cryptanalysis/transcript/claim-challenge-graph.json",
+    "exactT0Replay": "../../cryptanalysis/transcript/v03-conformance.json"
+  },
+  "grammar": "../../cryptanalysis/transcript/grammar.json",
+  "specification": "../../cryptanalysis/transcript/SPEC.md",
+  "implementations": {
+    "rust": "rust/src/lib.rs",
+    "solidity": "solidity/Candidate.sol",
+    "typescript": "typescript/index.ts",
+    "sharedRust": "../../cryptanalysis/transcript/rust/transcript.rs",
+    "sharedSolidity": "../../cryptanalysis/transcript/solidity/TranscriptResearch.sol",
+    "sharedTypescript": "../../cryptanalysis/transcript/typescript/transcript.ts"
+  },
+  "vectors": {
+    "transcript": "vectors/transcript.json",
+    "misuse": "vectors/misuse.json",
+    "coverage": [
+      "every absorb",
+      "every squeeze",
+      "reorder",
+      "truncation",
+      "count",
+      "trailing zero",
+      "type substitution",
+      "challenge before claim",
+      "digest half swap",
+      "A/B half swap",
+      "cross-proof mixing"
+    ]
+  },
+  "measurements": {
+    "output": "measurements/transcript.json",
+    "measuredFields": [
+      "keccakCalls",
+      "hashedBytes",
+      "copiedBytes",
+      "peakFrameBytes",
+      "evmTranscriptGas",
+      "evmParserGas",
+      "evmHarnessCalldataBytes",
+      "evmPeakFrameBytes",
+      "evmKeccakCalls",
+      "evmHashedBytes",
+      "evmCopiedBytes",
+      "evmRuntimeCodeBytes",
+      "evmProofBytesDelta",
+      "evmCalldataBytesDelta",
+      "evmFullPathGasDeltaSentinel",
+      "evmInitcodeBytes",
+      "proofBytesDelta",
+      "abiCalldataBytesDelta"
+    ],
+    "unmeasuredFields": [
+      "fullPathGasDelta",
+      "memoryExpansionGas"
+    ]
+  },
+  "gate": {
+    "result": "NOT_SELECTED",
+    "integrationBlocked": true,
+    "internalReview": "T3_EXTERNAL_REVIEW_ONLY",
+    "blockers": [
+      "primitive APIs do not enforce the claim/boundary state machine and permit premature sample calls",
+      "TypeScript misuse labels are out-of-band rather than a serialized-grammar oracle",
+      "Rust/Solidity mutation and cross-language parity execution are absent",
+      "full-width continuation redesign is not implemented; identifiers remain bytes32",
+      "single-slot key collision overwrite and hashed-record comparison remain unresolved"
+    ],
+    "reason": "Fewer hash calls than T0, but T3 measures fewer calls while making challenge boundaries explicit."
+  }
+}

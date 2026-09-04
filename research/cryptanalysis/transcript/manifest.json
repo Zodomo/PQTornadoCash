@@ -1,0 +1,14 @@
+{
+  "schema":"pqtc.sp30.transcript-research-manifest.v1",
+  "workPackage":"SP-30",
+  "classification":"BENCHMARK_ONLY",
+  "integrated":false,
+  "baseline":{"release":"v0.3","plonky3":"3152b14a89067c83775a8076cc262ffc48a1fd7c","fixture":"../../candidates/v03-baseline/proofs/v03-fixed-01/part-a.pqtc","exactReplay":"v03-conformance.json"},
+  "normative":{"specification":"SPEC.md","grammar":"grammar.json","dependencyGraph":"claim-challenge-graph.json"},
+  "implementations":{"rust":"rust/transcript.rs","solidity":"solidity/TranscriptResearch.sol","typescript":"typescript/transcript.ts"},
+  "generators":{"focusedRun":"run-focused.py","vectors":"typescript/generate-vectors.ts","metadataAndHashes":"typescript/generate-metadata.ts","baselineReplay":"typescript/verify-v03-fixture.ts"},
+  "gasHarness":{"contract":"solidity/TranscriptResearch.sol#TranscriptGasHarness","scenario":"solidity/test/TranscriptGas.t.sol","config":"solidity/foundry.toml","profile":{"solc":"0.8.30","evmVersion":"prague","optimizer":true,"optimizerRuns":200,"viaIR":true},"result":"focused-run.json"},
+  "candidates":["../../candidates/T0","../../candidates/T1","../../candidates/T2","../../candidates/T3"],
+  "selectedGate":{"candidate":"T3","result":"T3_EXTERNAL_REVIEW_ONLY","internalReviewConfidence":"HIGH","integrationBlocked":true,"deploymentAllowed":false},
+  "unsupportedClaims":["QROM soundness","STARK soundness improvement","zero knowledge","collision-composition security","custody safety","deployment gas improvement"]
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "pqtc.sp30.negative-results.v1",
+  "candidate": "T1",
+  "unsupportedClaims": [
+    "QROM Fiat-Shamir soundness",
+    "STARK security improvement",
+    "collision-security composition",
+    "zero knowledge",
+    "custody safety",
+    "deployment gas improvement"
+  ],
+  "internalReview": {
+    "verdict": "T3_EXTERNAL_REVIEW_ONLY",
+    "confidence": "HIGH",
+    "blockers": [
+      "Rust, Solidity, and TypeScript transcript primitives expose absorb/sample directly and do not enforce the normative claim/boundary state machine; premature sampling is possible",
+      "The TypeScript misuse oracle rejects out-of-band labels, not malformed serialized transcript grammar",
+      "Required Rust/Solidity mutation execution and cross-language parity execution are absent",
+      "The full-width continuation redesign is not implemented: protocol identifiers remain bytes32",
+      "The Solidity lookup remains a single mapping slot susceptible to collision overwrite and compares records through another keccak digest"
+    ]
+  },
+  "observedNegativeResults": [],
+  "mutationEvidenceLimitation": "vectors/misuse.json is generator-local evidence only and is not an integration gate",
+  "disposition": "NOT_SELECTED",
+  "integrationBlocked": true
+}

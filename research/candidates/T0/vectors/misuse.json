@@ -1,0 +1,42 @@
+{
+  "schema": "pqtc.sp30.misuse-results.v1",
+  "candidate": "T0",
+  "results": {
+    "reorder": {
+      "outcome": "REJECTED",
+      "reason": "claim reorder or challenge-before-claim"
+    },
+    "truncation": {
+      "outcome": "REJECTED",
+      "reason": "item truncation or trailing zero"
+    },
+    "count": {
+      "outcome": "REJECTED",
+      "reason": "array count/length mismatch or trailing bytes"
+    },
+    "trailing_zero": {
+      "outcome": "REJECTED",
+      "reason": "item truncation or trailing zero"
+    },
+    "type_substitution": {
+      "outcome": "REJECTED",
+      "reason": "type substitution"
+    },
+    "challenge_before_claim": {
+      "outcome": "REJECTED",
+      "reason": "claim reorder or challenge-before-claim"
+    },
+    "half_swap": {
+      "outcome": "REJECTED",
+      "reason": "half role/magic mismatch"
+    },
+    "cross_proof_mixing": {
+      "outcome": "REJECTED",
+      "reason": "cross-proof proof-id mismatch"
+    },
+    "digest_half_swap": {
+      "outcome": "REJECTED",
+      "reason": "full-width digest mismatch"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema":"pqtc.sp30.transcript-negative-results.v1",
+  "classification":"BENCHMARK_ONLY",
+  "results":[
+    {"candidate":"T0","result":"not advanced","reason":"control retains one state hash per field and has the highest instrumented Keccak-call count"},
+    {"candidate":"T1","result":"not selected","reason":"typed arrays reduce hashing but T3 measures fewer K512 calls on the same graph"},
+    {"candidate":"T2","result":"rejected efficiency","reason":"item-digest plus state performs two K512 operations per logical item and shows no measured full-path benefit"},
+    {"candidate":"T3","result":"T3_EXTERNAL_REVIEW_ONLY","reason":"high-confidence internal review blocks integration; standalone EVM measurements do not resolve API, mutation/parity, continuation, or full-path issues"}
+  ],
+  "internalReview":{
+    "confidence":"HIGH",
+    "integrationBlocked":true,
+    "findings":[
+      "Rust, Solidity, and TypeScript APIs lack a claim/boundary state machine and permit premature sampling",
+      "TypeScript misuse rejection is based on out-of-band labels rather than serialized grammar",
+      "Rust/Solidity mutation execution and cross-language parity execution are absent",
+      "full-width continuation redesign is not implemented; identifiers remain bytes32",
+      "Solidity lookup uses one overwriteable slot and compares records through another Keccak digest"
+    ]
+  },
+  "rejectedSecurityInferences":[
+    "fewer Keccak calls imply soundness",
+    "a 32-byte lookup key can replace a full 64-byte digest",
+    "synthetic full-width bytes establish canonical verifier gas",
+    "cross-language source presence establishes cross-language equivalence",
+    "selection for external review authorizes custody integration"
+  ]
+}

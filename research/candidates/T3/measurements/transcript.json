@@ -1,0 +1,46 @@
+{
+  "schema": "pqtc.sp30.measurement.v1",
+  "candidate": "T3",
+  "classification": "BENCHMARK_ONLY",
+  "measured": {
+    "keccakCalls": 58,
+    "hashedBytes": 24718,
+    "copiedBytes": 36409,
+    "peakFrameBytes": 8555,
+    "evmTranscriptGas": 166554,
+    "evmParserGas": 1463,
+    "evmHarnessCalldataBytes": 2692,
+    "evmPeakFrameBytes": 361,
+    "evmKeccakCalls": 6,
+    "evmHashedBytes": 1706,
+    "evmCopiedBytes": 2259,
+    "evmRuntimeCodeBytes": 5460,
+    "evmProofBytesDelta": 0,
+    "evmCalldataBytesDelta": 0,
+    "evmFullPathGasDeltaSentinel": -57896044618658097711785492504343953926634992332820282019728792003956564819968,
+    "evmInitcodeBytes": 5486,
+    "proofBytesDelta": 0,
+    "abiCalldataBytesDelta": 0
+  },
+  "baselineFixture": {
+    "run": "research/runs/v03-fixed-01.json",
+    "partABytes": 108326,
+    "partBBytes": 103878,
+    "partACalldataBytes": 108644,
+    "partBCalldataBytes": 104228
+  },
+  "explicitlyUnmeasured": {
+    "fullPathGasDelta": "NOT_EVALUATED: canonical fixture research/runs/v03-fixed-01.json is retained, but BENCHMARK_ONLY transcript candidates are intentionally not integrated into the frozen full verifier path",
+    "memoryExpansionGas": "NOT_EVALUATED: requires EVM execution trace"
+  },
+  "accounting": "Instrumentation counts both Keccak-256 invocations in K512 and all bytes presented to them. copiedBytes counts construction of the two K512 preimages and 64-byte output plus T3 encoded-item staging; it excludes caller-owned input construction, allocator internals, and EVM memory expansion. Counts cover the accepted transcript path and exclude discarded prover grinding trials.",
+  "evmProfile": {
+    "solc": "0.8.30",
+    "evmVersion": "prague",
+    "optimizer": true,
+    "optimizerRuns": 200,
+    "viaIR": true
+  },
+  "measurementScope": "Standalone B0 transcript prefix plus strict typed-array parser; full verifier path intentionally unintegrated",
+  "deltaBasis": "Candidate vector embeds byte-identical canonical v0.3 A/B continuation and retains the frozen ABI"
+}

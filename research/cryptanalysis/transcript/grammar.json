@@ -1,0 +1,18 @@
+{
+  "schema":"pqtc.sp30.transcript-grammar.v1",
+  "byteOrder":"big-endian",
+  "canonicalField":{"name":"BabyBear","bytes":4,"modulusExclusive":2013265921,"decode":"reject >= modulus"},
+  "digest":{"bytes":64,"order":["left32","right32"]},
+  "extension":{"coefficients":4,"order":"basis-index ascending"},
+  "k512":{"leftPrefix":"00","rightPrefix":"01","input":"prefix:u8 || domain:u8 || payload","hash":"Ethereum Keccak-256"},
+  "squeeze":{"domain":68,"payload":"state:bytes64 || counter:u64","counterInitial":0,"consume":"left-to-right","onAbsorb":"clear output; counter=0"},
+  "sampling":{"field":"repeat x=be32(next4)&0x7fffffff until x<2013265921","extension":"four field samples","bits":"be32(next4)&((1<<bits)-1), bits<=31"},
+  "candidates":{
+    "T0":{"versionHex":"5051544354302d3031","initCompatibility":"K512(0x42,parameter64||64*field32)","initVersioned":"K512(0x42,version9||parameter64||count32||fields)","field":"K512(0x43,state64||0x01||length32=4||field32)","commitment":"K512(0x43,state64||0x02||length32=64||digest64)"},
+    "T1":{"versionHex":"5051544354312d3031","arrayPayload":"count32||count*field32","array":"K512(0x43,state64||0x03||length32||arrayPayload)","scalarAndCommitment":"T0 framing with T1 initialization"},
+    "T2":{"versionHex":"5051544354322d3031","itemDigest":"K512(0x45,version9||type8||length32||payload)","absorb":"K512(0x43,state64||itemDigest64)","typedPayloads":"scalar field32; commitment digest64; array count32||fields"},
+    "T3":{"versionHex":"5051544354332d3031","item":"type8||length32||payload","frame":"K512(0x46,state64||version9||itemCount32||encodedBytesLength32||items)","flush":"mandatory immediately before every sample; only if nonempty"}
+  },
+  "binding":{"statementKey":"keccak256(abiWord(PQTC.V3.STATEMENT)||parameterLeft32||parameterRight32||64*abiWord(field32))","checkpointDigest":"keccak256(abiWord(PQTC.V3.CHECKPOINT)||statementKey32||keccak256(checkpointPayload))","proofId":"keccak256(abiWord(PQTC.V3.PROOF)||statementKey32||keccak256(partABytes))","lookupAuthority":"full-width stored record; key is index only"},
+  "strictDecode":["known version","known type","exact fixed width","length equals available bytes","count*4+4 equals array length","canonical every field","consume entire input","expected claim order","challenge only at graph boundary"]
+}
