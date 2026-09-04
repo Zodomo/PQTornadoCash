@@ -1,0 +1,18 @@
+{
+  "spikeId": "SP-02",
+  "status": "ARCHIVED_FAILED",
+  "gateResult": "FAIL",
+  "classification": "PQ_ORIENTED_RESEARCH",
+  "completedScope": [
+    "all five public Plonky3 advisories through 2026-09-04",
+    "pinned patch applicability",
+    "custom Rust and Solidity analogous paths",
+    "focused executable regression runner",
+    "malformed-proof panic boundary"
+  ],
+  "primaryBlocker": "Pinned Plonky3 documents possible native verifier panics on malformed proofs and frozen PQTC v0.3 has no catch_unwind containment boundary.",
+  "integrationAllowed": false,
+  "benchmarkOnlyWorkAllowed": true,
+  "externalReview": "NOT_PERFORMED",
+  "revivalCondition": "Add and independently reproduce panic containment or prove panic-freedom for every codec-reachable malformed proof, then obtain independent review of the custom transcript and shape gates."
+}
