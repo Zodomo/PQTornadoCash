@@ -16,10 +16,10 @@
       "exitCode": 0,
       "name": "rust-codec-roundtrip-and-shape",
       "passed": true,
-      "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.03s\n     Running unittests src/lib.rs (target/debug/deps/pqtc_stark-89caa74d33d8979d)\n",
-      "stderrSha256": "28bc968de431353f2a347a0fec08195abf6d83a2626278ec0c5fb0a3a6a78aa8",
-      "stdout": "\nrunning 1 test\ntest codec::tests::two_parts_round_trip_bind_and_verify_natively ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 4.18s\n\n",
-      "stdoutSha256": "8ef7d50445d2d58872679b1400dacbfb3a73e3edba93e2620e11a8e443142d62"
+      "stderr": "    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.12s\n     Running unittests src/lib.rs (target/debug/deps/pqtc_stark-89caa74d33d8979d)\n",
+      "stderrSha256": "d03ac871e09388a067cee2a9ac6d1c53283885f6dfc97ae5f37097ca592dce2c",
+      "stdout": "\nrunning 1 test\ntest codec::tests::two_parts_round_trip_bind_and_verify_natively ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 8 filtered out; finished in 4.24s\n\n",
+      "stdoutSha256": "bd2ec43bbcaa7d639ef346e93df8d23e95e9bca77d6875bf0c82a49fb04aa95b"
     },
     {
       "command": [
@@ -101,8 +101,8 @@
       "passed": true,
       "stderr": "",
       "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout": "trace_rows=256\ntrace_width=190\nproof_part_a_bytes=17890\nproof_part_b_bytes=17922\nproof_bytes=35812\nopened_trace_local=190 opened_trace_next=190 quotient_chunks=16 quotient_chunk_width=4 random_openings=4\nfri_rounds=9 fri_inputs=3 fri_final_poly=1\nfri_input_0_queries=2 matrix_widths=[6] salts_per_query=1 path_hashes=22\nfri_input_1_queries=2 matrix_widths=[192] salts_per_query=1 path_hashes=22\nfri_input_2_queries=2 matrix_widths=[6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6] salts_per_query=16 path_hashes=22\nhiding_shapes=[[[2]], [[2, 2]], [[2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2]]]\nprove_ms=40\nverify_and_mutations_ms=94\nsame_witness_proofs_differ=true\ncanonical_roundtrip_verified=true\nstructured_mutations_rejected=100\n",
-      "stdoutSha256": "aa34994e89b88370ca0dd64012825bc8df16df7621783b68b636c4a834725319"
+      "stdout": "trace_rows=256\ntrace_width=190\nproof_part_a_bytes=17890\nproof_part_b_bytes=17922\nproof_bytes=35812\nopened_trace_local=190 opened_trace_next=190 quotient_chunks=16 quotient_chunk_width=4 random_openings=4\nfri_rounds=9 fri_inputs=3 fri_final_poly=1\nfri_input_0_queries=2 matrix_widths=[6] salts_per_query=1 path_hashes=21\nfri_input_1_queries=2 matrix_widths=[192] salts_per_query=1 path_hashes=21\nfri_input_2_queries=2 matrix_widths=[6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6] salts_per_query=16 path_hashes=21\nhiding_shapes=[[[2]], [[2, 2]], [[2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2], [2]]]\nprove_ms=41\nverify_and_mutations_ms=100\nsame_witness_proofs_differ=true\ncanonical_roundtrip_verified=true\nstructured_mutations_rejected=100\n",
+      "stdoutSha256": "c3df51c0ccba931368ddbec0e06f518cff7347e3d7cf542e1472d8eaf1ccef4d"
     },
     {
       "command": [
@@ -119,8 +119,8 @@
       "passed": true,
       "stderr": "",
       "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stdout": "No files changed, compilation skipped\n\nRan 9 tests for contracts/test/StagedVerifier.t.sol:CompactVerifierTest\n[PASS] testRejectsDifferentStatementAtCompletion() (gas: 28502940)\n[PASS] testRejectsFriSaltMutationAtRegeneratedOffset() (gas: 18703551)\n[PASS] testRejectsMalformedPrunedFrontier() (gas: 33176123)\n[PASS] testRejectsMixedPartProofId() (gas: 28638596)\n[PASS] testRejectsNoncanonicalHeaderField() (gas: 7128373)\n[PASS] testRejectsReorderedFirstHalfQueries() (gas: 12687891)\n[PASS] testRejectsReorderedSecondHalfQueries() (gas: 31995883)\n[PASS] testRejectsSecondPartGlobalMutation() (gas: 28941344)\n[PASS] testRejectsTranscriptBoundGlobalMutation() (gas: 7640693)\nSuite result: ok. 9 passed; 0 failed; 0 skipped; finished in 30.03ms (140.70ms CPU time)\n\nRan 1 test suite in 30.43ms (30.03ms CPU time): 9 tests passed, 0 failed, 0 skipped (9 total tests)\n",
-      "stdoutSha256": "34422d74b773566287626df7a0fbfdca2d9710f7dc66c3fbee8c8d03ea3367f4"
+      "stdout": "No files changed, compilation skipped\n\nRan 9 tests for contracts/test/StagedVerifier.t.sol:CompactVerifierTest\n[PASS] testRejectsDifferentStatementAtCompletion() (gas: 28502940)\n[PASS] testRejectsFriSaltMutationAtRegeneratedOffset() (gas: 18703551)\n[PASS] testRejectsMalformedPrunedFrontier() (gas: 33176123)\n[PASS] testRejectsMixedPartProofId() (gas: 28638596)\n[PASS] testRejectsNoncanonicalHeaderField() (gas: 7128373)\n[PASS] testRejectsReorderedFirstHalfQueries() (gas: 12687891)\n[PASS] testRejectsReorderedSecondHalfQueries() (gas: 31995883)\n[PASS] testRejectsSecondPartGlobalMutation() (gas: 28941344)\n[PASS] testRejectsTranscriptBoundGlobalMutation() (gas: 7640693)\nSuite result: ok. 9 passed; 0 failed; 0 skipped; finished in 37.73ms (144.90ms CPU time)\n\nRan 1 test suite in 45.54ms (37.73ms CPU time): 9 tests passed, 0 failed, 0 skipped (9 total tests)\n",
+      "stdoutSha256": "729b7a503512794e3af436618fc151fc6acd16d0645cf6f7f5b46eb31ea257f2"
     }
   ],
   "gateResult": "FAIL",
@@ -160,7 +160,7 @@
       "passed": true
     }
   ],
-  "timestampUtc": "2026-09-04T17:30:27.028424Z",
+  "timestampUtc": "2026-09-04T17:56:54.257408Z",
   "unresolved": [
     "The pinned upstream README states that native verification may panic on malformed in-memory proof objects.",
     "PQTC has no catch_unwind boundary around verify_withdrawal; native-catch-unwind-boundary is expected to fail until a later engineering specification addresses it.",
