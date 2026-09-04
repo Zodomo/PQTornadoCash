@@ -1,0 +1,22 @@
+[profile.default]
+src = "contracts/src"
+test = "contracts/test"
+script = "contracts/script"
+out = "out"
+libs = ["lib"]
+solc = "0.8.30"
+evm_version = "prague"
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+bytecode_hash = "none"
+fs_permissions = [
+    { access = "read", path = "./test-vectors" },
+    { access = "read", path = "./target" },
+    { access = "read", path = "./staged-proof" },
+]
+gas_limit = 9_223_372_036_854_775_807
+
+[invariant]
+runs = 64
+depth = 16

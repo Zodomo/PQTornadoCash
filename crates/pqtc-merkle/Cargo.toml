@@ -1,0 +1,19 @@
+[package]
+name = "pqtc-merkle"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+pqtc-hash = { path = "../pqtc-hash" }
+pqtc-spec = { path = "../pqtc-spec" }
+serde.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+hex.workspace = true
+serde_json.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,26 @@
+[package]
+name = "pqtc-poseidon-air"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+p3-air.workspace = true
+p3-baby-bear.workspace = true
+p3-field.workspace = true
+p3-matrix.workspace = true
+p3-poseidon2.workspace = true
+p3-poseidon2-air.workspace = true
+p3-symmetric.workspace = true
+p3-uni-stark.workspace = true
+pqtc-hash = { path = "../pqtc-hash" }
+pqtc-spec = { path = "../pqtc-spec" }
+serde.workspace = true
+thiserror.workspace = true
+
+[dev-dependencies]
+pqtc-merkle = { path = "../pqtc-merkle" }
+
+[lints]
+workspace = true

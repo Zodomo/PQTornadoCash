@@ -1,0 +1,35 @@
+[package]
+name = "pqtc-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "pqtc"
+path = "src/main.rs"
+
+[dependencies]
+anyhow.workspace = true
+clap.workspace = true
+hex.workspace = true
+p3-air.workspace = true
+p3-baby-bear.workspace = true
+p3-challenger.workspace = true
+p3-commit.workspace = true
+p3-field.workspace = true
+p3-symmetric.workspace = true
+p3-matrix.workspace = true
+p3-uni-stark.workspace = true
+pqtc-hash = { path = "../pqtc-hash" }
+pqtc-indexer = { path = "../pqtc-indexer" }
+pqtc-poseidon-air = { path = "../pqtc-poseidon-air" }
+pqtc-security = { path = "../pqtc-security" }
+pqtc-spec = { path = "../pqtc-spec" }
+pqtc-merkle = { path = "../pqtc-merkle" }
+pqtc-stark = { path = "../pqtc-stark" }
+serde.workspace = true
+serde_json.workspace = true
+
+[lints]
+workspace = true

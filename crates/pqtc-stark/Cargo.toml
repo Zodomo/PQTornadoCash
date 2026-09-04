@@ -1,0 +1,27 @@
+[package]
+name = "pqtc-stark"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+p3-baby-bear.workspace = true
+p3-challenger.workspace = true
+p3-commit.workspace = true
+p3-dft.workspace = true
+p3-field.workspace = true
+p3-fri.workspace = true
+p3-keccak.workspace = true
+p3-merkle-tree.workspace = true
+p3-symmetric.workspace = true
+p3-uni-stark.workspace = true
+pqtc-hash = { path = "../pqtc-hash" }
+pqtc-poseidon-air = { path = "../pqtc-poseidon-air" }
+pqtc-spec = { path = "../pqtc-spec" }
+rand.workspace = true
+thiserror.workspace = true
+
+
+[lints]
+workspace = true

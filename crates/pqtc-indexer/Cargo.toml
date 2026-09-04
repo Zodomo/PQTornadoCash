@@ -1,0 +1,15 @@
+[package]
+name = "pqtc-indexer"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+pqtc-merkle = { path = "../pqtc-merkle" }
+pqtc-spec = { path = "../pqtc-spec" }
+serde.workspace = true
+thiserror.workspace = true
+
+[lints]
+workspace = true

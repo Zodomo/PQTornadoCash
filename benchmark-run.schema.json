@@ -1,0 +1,334 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/pqtc/benchmark-run.schema.json",
+  "title": "PQTC next-generation research benchmark run",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "candidate_id",
+    "spike_id",
+    "timestamp_utc",
+    "git",
+    "toolchain",
+    "hardware",
+    "protocol",
+    "relation",
+    "proof_system",
+    "security",
+    "prover",
+    "proof_bytes",
+    "evm",
+    "artifacts",
+    "result"
+  ],
+  "properties": {
+    "schema_version": { "const": "1" },
+    "run_id": { "type": "string", "minLength": 1 },
+    "candidate_id": { "type": "string", "minLength": 1 },
+    "spike_id": { "type": "string", "pattern": "^SP-[0-9]{2}$" },
+    "timestamp_utc": { "type": "string", "format": "date-time" },
+    "git": { "$ref": "#/$defs/git" },
+    "toolchain": { "$ref": "#/$defs/toolchain" },
+    "hardware": { "$ref": "#/$defs/hardware" },
+    "protocol": { "$ref": "#/$defs/protocol" },
+    "application_hash": { "$ref": "#/$defs/applicationHash" },
+    "relation": { "$ref": "#/$defs/relation" },
+    "proof_system": { "$ref": "#/$defs/proofSystem" },
+    "security": { "$ref": "#/$defs/security" },
+    "prover": { "$ref": "#/$defs/prover" },
+    "proof_bytes": { "$ref": "#/$defs/proofBytes" },
+    "evm": { "$ref": "#/$defs/evm" },
+    "artifacts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/artifact" }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["success", "gate_status"],
+      "properties": {
+        "success": { "type": "boolean" },
+        "gate_status": {
+          "enum": ["PASS", "CONDITIONAL", "FAIL", "DEFERRED", "BENCHMARK_ONLY", "NOT_EVALUATED"]
+        },
+        "failure_reason": { "type": ["string", "null"] },
+        "confounders": { "type": "array", "items": { "type": "string" } },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "$defs": {
+    "nonnegativeInteger": { "type": "integer", "minimum": 0 },
+    "positiveInteger": { "type": "integer", "minimum": 1 },
+    "digest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sha256", "keccak256"],
+      "properties": {
+        "sha256": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" },
+        "keccak256": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" }
+      }
+    },
+    "git": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "commit", "dirty", "submodules"],
+      "properties": {
+        "repository": { "type": "string" },
+        "commit": { "type": "string", "minLength": 7 },
+        "dirty": { "type": "boolean" },
+        "branch_or_tag": { "type": ["string", "null"] },
+        "submodules": {
+          "type": "object",
+          "additionalProperties": { "type": "string", "minLength": 7 }
+        }
+      }
+    },
+    "toolchain": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["rustc", "solc", "foundry", "evm_revision"],
+      "properties": {
+        "rustc": { "type": "string" },
+        "cargo": { "type": "string" },
+        "solc": { "type": "string" },
+        "foundry": { "type": "string" },
+        "node": { "type": ["string", "null"] },
+        "package_manager": { "type": ["string", "null"] },
+        "evm_revision": { "type": "string" },
+        "rustflags": { "type": "array", "items": { "type": "string" } },
+        "solc_optimizer_runs": { "$ref": "#/$defs/nonnegativeInteger" },
+        "via_ir": { "type": "boolean" },
+        "container_image_digest": { "type": ["string", "null"] }
+      }
+    },
+    "hardware": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["hardware_id", "cpu_model", "physical_cores", "logical_cores", "ram_bytes", "os"],
+      "properties": {
+        "hardware_id": { "type": "string" },
+        "cpu_model": { "type": "string" },
+        "physical_cores": { "$ref": "#/$defs/positiveInteger" },
+        "logical_cores": { "$ref": "#/$defs/positiveInteger" },
+        "ram_bytes": { "$ref": "#/$defs/positiveInteger" },
+        "os": { "type": "string" },
+        "kernel": { "type": ["string", "null"] },
+        "architecture": { "type": "string" },
+        "cpu_features": { "type": "array", "items": { "type": "string" } },
+        "threads_used": { "$ref": "#/$defs/positiveInteger" },
+        "allocator": { "type": ["string", "null"] },
+        "power_mode": { "type": ["string", "null"] },
+        "cpu_affinity": { "type": ["string", "null"] }
+      }
+    },
+    "protocol": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["semantic_version", "asset", "denomination_wei", "tree_depth", "case_id"],
+      "properties": {
+        "semantic_version": { "type": "string" },
+        "asset": { "type": "string" },
+        "denomination_wei": { "type": "string", "pattern": "^[0-9]+$" },
+        "tree_depth": { "$ref": "#/$defs/positiveInteger" },
+        "tree_arity": { "$ref": "#/$defs/positiveInteger" },
+        "case_id": { "type": "string" },
+        "transaction_shape": { "enum": ["DEPOSIT", "WITHDRAW_ONE_TX", "WITHDRAW_A", "WITHDRAW_B", "DEPLOY", "NATIVE_ONLY", "OTHER"] }
+      }
+    },
+    "applicationHash": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["candidate", "family", "field", "mode", "state_width", "digest_fields", "digest_bytes"],
+      "properties": {
+        "candidate": { "type": "string" },
+        "family": { "type": "string" },
+        "field": { "type": "string" },
+        "mode": { "type": "string" },
+        "state_width": { "$ref": "#/$defs/positiveInteger" },
+        "rate": { "type": ["integer", "null"], "minimum": 1 },
+        "capacity": { "type": ["integer", "null"], "minimum": 1 },
+        "digest_fields": { "$ref": "#/$defs/positiveInteger" },
+        "digest_bytes": { "$ref": "#/$defs/positiveInteger" },
+        "full_rounds": { "$ref": "#/$defs/nonnegativeInteger" },
+        "partial_rounds": { "$ref": "#/$defs/nonnegativeInteger" },
+        "merkle_permutations": { "$ref": "#/$defs/nonnegativeInteger" },
+        "withdrawal_permutations": { "$ref": "#/$defs/nonnegativeInteger" },
+        "domain_scheme": { "type": "string" },
+        "review_status": { "type": "string" }
+      }
+    },
+    "relation": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["kind", "logical_rows", "padded_rows", "trace_width", "constraint_count", "max_degree", "batched_functions"],
+      "properties": {
+        "kind": { "enum": ["AIR", "R1CS", "CCS", "BOOLEAN_R1CS", "RECURSIVE", "OTHER"] },
+        "logical_rows": { "$ref": "#/$defs/nonnegativeInteger" },
+        "padded_rows": { "$ref": "#/$defs/nonnegativeInteger" },
+        "trace_width": { "$ref": "#/$defs/nonnegativeInteger" },
+        "preprocessed_width": { "$ref": "#/$defs/nonnegativeInteger" },
+        "constraint_count": { "$ref": "#/$defs/nonnegativeInteger" },
+        "nonzero_count": { "$ref": "#/$defs/nonnegativeInteger" },
+        "max_degree": { "$ref": "#/$defs/nonnegativeInteger" },
+        "quotient_chunks": { "$ref": "#/$defs/nonnegativeInteger" },
+        "batched_functions": { "$ref": "#/$defs/nonnegativeInteger" },
+        "base_degree_bits": { "$ref": "#/$defs/nonnegativeInteger" },
+        "hiding_degree_bits": { "$ref": "#/$defs/nonnegativeInteger" },
+        "active_rows": { "$ref": "#/$defs/nonnegativeInteger" },
+        "padding_rows": { "$ref": "#/$defs/nonnegativeInteger" }
+      }
+    },
+    "proofSystem": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["name", "base_field", "challenge_field", "hiding", "trusted_setup", "classical_wrapper"],
+      "properties": {
+        "name": { "type": "string" },
+        "base_field": { "type": "string" },
+        "challenge_field": { "type": "string" },
+        "challenge_field_bits": { "$ref": "#/$defs/nonnegativeInteger" },
+        "pcs_or_ldt": { "type": "string" },
+        "hiding": { "type": "boolean" },
+        "hiding_construction": { "type": ["string", "null"] },
+        "trusted_setup": { "type": "boolean" },
+        "classical_wrapper": { "type": "boolean" },
+        "query_count": { "$ref": "#/$defs/nonnegativeInteger" },
+        "log_blowup": { "$ref": "#/$defs/nonnegativeInteger" },
+        "fold_schedule": { "type": ["string", "null"] },
+        "final_polynomial_length": { "$ref": "#/$defs/nonnegativeInteger" },
+        "commit_grinding_bits_configured": { "$ref": "#/$defs/nonnegativeInteger" },
+        "query_grinding_bits_configured": { "$ref": "#/$defs/nonnegativeInteger" },
+        "random_codewords": { "$ref": "#/$defs/nonnegativeInteger" },
+        "salt_fields": { "$ref": "#/$defs/nonnegativeInteger" },
+        "transcript": { "type": "string" },
+        "mmcs_digest_bytes": { "$ref": "#/$defs/nonnegativeInteger" }
+      }
+    },
+    "securityTerm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "model", "proven_or_conjectural", "binding"],
+      "properties": {
+        "name": { "type": "string" },
+        "model": { "type": "string" },
+        "formula_source": { "type": ["string", "null"] },
+        "classical_bits": { "type": ["number", "null"] },
+        "quantum_bits": { "type": ["number", "null"] },
+        "proven_or_conjectural": { "enum": ["PROVEN", "CONJECTURAL", "HEURISTIC", "GENERIC_CEILING", "UNKNOWN"] },
+        "multi_target_count_log2": { "type": ["number", "null"] },
+        "binding": { "type": "boolean" },
+        "omitted_terms": { "type": "array", "items": { "type": "string" } },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "security": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["classification", "terms", "lowest_accepted_bits", "qrom_status", "zk_status"],
+      "properties": {
+        "classification": {
+          "enum": ["BENCHMARK_ONLY", "PQ_ORIENTED_RESEARCH", "SECURITY_QUALIFIED_CANDIDATE", "UNKNOWN"]
+        },
+        "terms": { "type": "array", "items": { "$ref": "#/$defs/securityTerm" } },
+        "lowest_accepted_bits": { "type": ["number", "null"] },
+        "qrom_status": { "type": "string" },
+        "zk_status": { "type": "string" },
+        "external_review": { "type": ["string", "null"] }
+      }
+    },
+    "distribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "count": { "$ref": "#/$defs/nonnegativeInteger" },
+        "min": { "type": ["number", "null"] },
+        "max": { "type": ["number", "null"] },
+        "mean": { "type": ["number", "null"] },
+        "stddev": { "type": ["number", "null"] },
+        "p50": { "type": ["number", "null"] },
+        "p90": { "type": ["number", "null"] },
+        "p95": { "type": ["number", "null"] },
+        "p99": { "type": ["number", "null"] }
+      }
+    },
+    "prover": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["success", "cold_or_warm", "wall_ms", "peak_rss_bytes", "native_verify_ms"],
+      "properties": {
+        "success": { "type": "boolean" },
+        "cold_or_warm": { "enum": ["COLD", "WARM", "NOT_APPLICABLE"] },
+        "wall_ms": { "type": ["number", "null"], "minimum": 0 },
+        "cpu_ms": { "type": ["number", "null"], "minimum": 0 },
+        "peak_rss_bytes": { "type": ["integer", "null"], "minimum": 0 },
+        "native_verify_ms": { "type": ["number", "null"], "minimum": 0 },
+        "phase_ms": { "type": "object", "additionalProperties": { "type": "number", "minimum": 0 } },
+        "distribution": { "$ref": "#/$defs/distribution" }
+      }
+    },
+    "proofBytes": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["raw_proof_bytes", "abi_calldata_bytes", "zero_bytes", "nonzero_bytes", "sections"],
+      "properties": {
+        "raw_proof_bytes": { "$ref": "#/$defs/nonnegativeInteger" },
+        "abi_calldata_bytes": { "$ref": "#/$defs/nonnegativeInteger" },
+        "zero_bytes": { "$ref": "#/$defs/nonnegativeInteger" },
+        "nonzero_bytes": { "$ref": "#/$defs/nonnegativeInteger" },
+        "unique_query_indices": { "$ref": "#/$defs/nonnegativeInteger" },
+        "frontier_digests": { "$ref": "#/$defs/nonnegativeInteger" },
+        "sections": { "type": "object", "additionalProperties": { "$ref": "#/$defs/nonnegativeInteger" } }
+      }
+    },
+    "gasScenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "floor_gas", "total_gas", "tx_cap_margin"],
+      "properties": {
+        "name": { "enum": ["ACTIVE_EIP7623", "SCENARIO_EIP7976_64_PER_BYTE", "SCENARIO_EIP8311_96_PER_BYTE"] },
+        "floor_gas": { "$ref": "#/$defs/nonnegativeInteger" },
+        "total_gas": { "$ref": "#/$defs/nonnegativeInteger" },
+        "tx_cap_margin": { "type": "integer" },
+        "floor_is_binding": { "type": "boolean" }
+      }
+    },
+    "evm": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["measured", "client", "execution_gas", "standard_intrinsic_gas", "receipt_gas_used", "gas_scenarios", "runtime_bytes"],
+      "properties": {
+        "measured": { "type": "boolean" },
+        "client": { "type": "string" },
+        "client_version": { "type": "string" },
+        "chain_config_hash": { "type": ["string", "null"] },
+        "execution_gas": { "$ref": "#/$defs/nonnegativeInteger" },
+        "standard_intrinsic_gas": { "$ref": "#/$defs/nonnegativeInteger" },
+        "receipt_gas_used": { "$ref": "#/$defs/nonnegativeInteger" },
+        "transaction_gas_limit": { "$ref": "#/$defs/nonnegativeInteger" },
+        "gas_scenarios": { "type": "array", "items": { "$ref": "#/$defs/gasScenario" }, "minItems": 3 },
+        "runtime_bytes": { "$ref": "#/$defs/nonnegativeInteger" },
+        "initcode_bytes": { "$ref": "#/$defs/nonnegativeInteger" },
+        "deployment_gas": { "$ref": "#/$defs/nonnegativeInteger" },
+        "component_gas": { "type": "object", "additionalProperties": { "$ref": "#/$defs/nonnegativeInteger" } },
+        "opcode_counts": { "type": "object", "additionalProperties": { "$ref": "#/$defs/nonnegativeInteger" } },
+        "transaction_hash": { "type": ["string", "null"] },
+        "receipt_block": { "type": ["integer", "null"], "minimum": 0 }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "digests"],
+      "properties": {
+        "path": { "type": "string" },
+        "bytes": { "$ref": "#/$defs/nonnegativeInteger" },
+        "media_type": { "type": ["string", "null"] },
+        "digests": { "$ref": "#/$defs/digest" },
+        "description": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

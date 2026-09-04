@@ -1,0 +1,36 @@
+{
+  "name": "@pqtc/sdk",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./relayer": {
+      "types": "./dist/relayer.d.ts",
+      "import": "./dist/relayer.js"
+    },
+    "./domains": {
+      "types": "./dist/domains.d.ts",
+      "import": "./dist/domains.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "pqtc-relayer": "./dist/relayer.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "pnpm build && node --test test/*.test.ts",
+    "relay": "node dist/relayer.js"
+  },
+  "dependencies": {
+    "@noble/hashes": "2.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.7.2",
+    "typescript": "5.9.3"
+  }
+}
