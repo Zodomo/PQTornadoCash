@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "candidateId": "C10-fri",
+  "classification": "RESEARCH_ONLY_NOT_SECURITY_QUALIFIED",
+  "results": [
+    {
+      "id": "no-sp10-compression-relation",
+      "status": "FAILED_GATE",
+      "consequence": "SP-50 retains the frozen v0.3/H0 relation and evaluates parameter changes only."
+    },
+    {
+      "id": "log-blowup-2",
+      "profile": "b2-q111-c16x16-f0-r4",
+      "status": "UNBUILDABLE",
+      "reason": "For a ZK profile, degree 7 exceeds the 2^2 buildable limit. The independent calculator must reject the manifest."
+    },
+    {
+      "id": "q32-floor",
+      "profile": "b4-q32-c16x16-f0-r4",
+      "status": "SECURITY_BELOW_100",
+      "reason": "Generated best-proven security is calculator-derived and below 100 bits; conjectural random-words is ineligible."
+    },
+    {
+      "id": "q48-floor",
+      "profile": "b4-q48-c16x16-f0-r4",
+      "status": "SECURITY_BELOW_100",
+      "reason": "The q48 counterfactual does not reach the accepted 100-bit generated-proven methodology."
+    },
+    {
+      "id": "production-codec-exactness",
+      "status": "NOT_EVALUATED",
+      "reason": "The frozen production codec accepts only registered SecurityProfile tags and cannot encode arbitrary C10 profiles. Broad-grid production proof/ABI bytes are therefore labeled PROJECTED."
+    },
+    {
+      "id": "evm-exactness",
+      "status": "NOT_EVALUATED",
+      "reason": "No production verifier accepts C10 parameter tags. EVM execution gas is a 60-run baseline projection, never exact or verified."
+    },
+    {
+      "id": "security-qualification",
+      "status": "FAILED_OPEN_GATES",
+      "reason": "External cryptographic, QROM, MMCS, transcript, conditional-theorem re-review, and advisory gates remain open or failed."
+    }
+  ]
+}

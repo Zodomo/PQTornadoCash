@@ -1,0 +1,4584 @@
+{
+  "classification": "UNREVIEWED_RESEARCH_RESULT",
+  "composition": null,
+  "global_omissions": [
+    "The custom KeccakPair512 transcript and full Fiat-Shamir transform have no complete QROM proof.",
+    "The MMCS cap is a supplied assumption, not structural cryptanalysis.",
+    "External cryptographic review, correlated-agreement review, transcript review, MMCS review, and advisory closure remain open or failed.",
+    "This manifest is a C10 research sweep point and is not a production parameter registration.",
+    "No complete Fiat-Shamir/QROM composition theorem is claimed.",
+    "No structural analysis of the configured field, hash, or MMCS is performed by this calculator.",
+    "The random-words result omits the batched-opening proximity term exactly as the pinned implementation does."
+  ],
+  "independent_human_acceptance": false,
+  "manifest": {
+    "batch_count_derivation": "relation_plus_quotient_plus_hiding",
+    "challenge_field_bits": 120,
+    "commit_grinding_bits": 16,
+    "extension_field_bits": 124,
+    "fri_log_blowup": 5,
+    "fri_log_final_poly_len": 0,
+    "fri_max_log_arity": 1,
+    "fri_num_queries": 48,
+    "hiding_degree_padding_bits": 1,
+    "hiding_random_functions": 4,
+    "is_zk": true,
+    "logical_trace_height": 256,
+    "max_combo": 2,
+    "max_constraint_degree": 7,
+    "mmcs_binding_bits_classical": 128,
+    "mmcs_binding_bits_quantum": 128,
+    "mmcs_construction": "KeccakPair512 manifest-assumed binding cap",
+    "model_version": 1,
+    "num_batched_functions": 210,
+    "num_constraints": 1186,
+    "omissions": [
+      "The custom KeccakPair512 transcript and full Fiat-Shamir transform have no complete QROM proof.",
+      "The MMCS cap is a supplied assumption, not structural cryptanalysis.",
+      "External cryptographic review, correlated-agreement review, transcript review, MMCS review, and advisory closure remain open or failed.",
+      "This manifest is a C10 research sweep point and is not a production parameter registration."
+    ],
+    "plonky3_commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+    "profile_id": "C10-b5-q48-c16x16-f0-r4",
+    "proof_degree_bits": 9,
+    "query_grinding_bits": 16,
+    "quotient_chunks": 16,
+    "relation_width": 190
+  },
+  "model_version": 1,
+  "multi_target_scenarios": [
+    {
+      "ldr": {
+        "assumptions": [
+          "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+        ],
+        "available": true,
+        "bottlenecks": [
+          {
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 82.340828758,
+            "quantum_bits": 82.340828758,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 106.047830196,
+            "quantum_bits": 98.047830196,
+            "term": "fri-commit-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 103.690533301,
+            "quantum_bits": 103.690533301,
+            "term": "deep-ali"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 105.480756783,
+            "quantum_bits": 105.480756783,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 125.325163776,
+            "quantum_bits": 117.325163776,
+            "term": "fri-query-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 120.0,
+            "quantum_bits": 120.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 128.0,
+            "quantum_bits": 128.0,
+            "term": "mmcs-binding"
+          }
+        ],
+        "classical_bits": 82.340828758,
+        "floor_classical_bits": 82,
+        "floor_quantum_bits": 82,
+        "proof_status": "conditional-theorem-johnson-correlated-agreement",
+        "proximity_m": 3,
+        "quantum_bits": 82.340828758,
+        "regime": "ldr",
+        "target_count_log2": 0,
+        "terms": [
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 105.480756783,
+            "formula": "b = log2(|F|) - log2(L+) - log2(num_constraints)",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16",
+            "inputs": {
+              "field_bits": 120.0,
+              "list_size": 19.79898987322333,
+              "num_constraints": 1186
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 105.480756783,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 103.690533301,
+            "formula": "b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28",
+            "inputs": {
+              "field_bits": 120.0,
+              "k": 512,
+              "list_size": 19.79898987322333,
+              "max_combo": 2,
+              "max_constraint_degree": 7
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 103.690533301,
+            "term": "deep-ali"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 125.325163776,
+            "formula": "b = -num_queries*log2(alpha) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:196-202",
+            "inputs": {
+              "alpha": 0.20623947784607638,
+              "configured_grinding_bits": 16,
+              "num_queries": 48
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 117.325163776,
+            "term": "fri-query-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 106.047830196,
+            "formula": "b = min(BCHKS25 linear bound, 2024/1553 n/q bound) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:145-193; ePrint 2025/2055 Thm. 4.2",
+            "inputs": {
+              "alpha": 0.20623947784607638,
+              "bchks25_base_bits": 90.047830196,
+              "configured_grinding_bits": 16,
+              "gamma": 0.7937605221539237,
+              "m": 3,
+              "n": 16384,
+              "n_over_q_base_bits": 99.692557026,
+              "rho": 0.03125
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 98.047830196,
+            "term": "fri-commit-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 82.340828758,
+            "formula": "b = log2(|F|) - log2(2*(m+1/2)^5*n/(3*rho^(3/2))) - log2(num_functions-1)",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/assumption.rs:126-245; security/src/stark.rs:104-145",
+            "inputs": {
+              "dominant_term_only": true,
+              "field_bits": 120,
+              "m": 3,
+              "n_log2": 14,
+              "num_batched_functions": 210,
+              "rho": 0.03125
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50.",
+              "Pinned implementation keeps only the BCHKS25 dominant term; documented subdominant terms are omitted as negligible."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 82.340828758,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "deterministic final-polynomial degree/length check; no probabilistic error term",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "declared_bound": 1,
+              "fri_log_final_poly_len": 0
+            },
+            "omissions": [],
+            "proof_status": "deterministic-check",
+            "quantum_bits": null,
+            "term": "fri-final-phase"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI commit challenge"
+            },
+            "omissions": [
+              "Already included in fri-commit-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "commit-grinding-adjustment"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI query challenge"
+            },
+            "omissions": [
+              "Already included in fri-query-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "query-grinding-adjustment"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 120.0,
+            "formula": "b <= conservative challenge-field budget",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "challenge_field_bits": 120,
+              "extension_field_bits": 124
+            },
+            "omissions": [],
+            "proof_status": "assumption",
+            "quantum_bits": 120.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 128.0,
+            "formula": "b <= stated MMCS binding security",
+            "formula_source": "Manifest assumption; not derived by p3-security",
+            "inputs": {
+              "construction": "KeccakPair512 manifest-assumed binding cap"
+            },
+            "omissions": [
+              "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
+            ],
+            "proof_status": "assumption-unreviewed",
+            "quantum_bits": 128.0,
+            "term": "mmcs-binding"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits",
+            "formula_source": "Plonky3 pinned uni-stark/src/security.rs:249-251,326-330",
+            "inputs": {
+              "hiding_degree_padding_bits": 1,
+              "is_zk": true,
+              "logical_degree_bits": 8,
+              "logical_trace_height": 256,
+              "proof_degree_bits": 9
+            },
+            "omissions": [],
+            "proof_status": "accounting-input",
+            "quantum_bits": null,
+            "term": "hiding-degree-padding"
+          }
+        ]
+      },
+      "method": "conservative union bound across 2^target_count_log2 proof-forgery targets",
+      "random_words": {
+        "assumptions": [
+          "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path. Actual num_batched_functions is recorded per term."
+        ],
+        "available": true,
+        "bottlenecks": [
+          {
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 107.997888224,
+            "quantum_bits": 107.997888224,
+            "term": "deep-ali"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 109.788111705,
+            "quantum_bits": 109.788111705,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 121.999911948,
+            "quantum_bits": 113.999911948,
+            "term": "fri-commit-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 120.0,
+            "quantum_bits": 120.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 128.0,
+            "quantum_bits": 128.0,
+            "term": "mmcs-binding"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 252.378434324,
+            "quantum_bits": 244.378434324,
+            "term": "fri-query-phase"
+          }
+        ],
+        "classical_bits": 107.997888224,
+        "floor_classical_bits": 107,
+        "floor_quantum_bits": 107,
+        "proof_status": "conjectural-random-words",
+        "proximity_m": null,
+        "quantum_bits": 107.997888224,
+        "regime": "random-words",
+        "target_count_log2": 0,
+        "terms": [
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 109.788111705,
+            "formula": "b = log2(|F|) - log2(L+) - log2(num_constraints)",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16",
+            "inputs": {
+              "field_bits": 120.0,
+              "list_size": 1.0,
+              "num_constraints": 1186
+            },
+            "omissions": [],
+            "proof_status": "conjectural-random-words",
+            "quantum_bits": 109.788111705,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 107.997888224,
+            "formula": "b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28",
+            "inputs": {
+              "field_bits": 120.0,
+              "k": 512,
+              "list_size": 1.0,
+              "max_combo": 2,
+              "max_constraint_degree": 7
+            },
+            "omissions": [],
+            "proof_status": "conjectural-random-words",
+            "quantum_bits": 107.997888224,
+            "term": "deep-ali"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 252.378434324,
+            "formula": "b = num_queries*(-log2(rho+eta)) + grinding; eta=((log2(e)+log_blowup)*rho)/field_bits",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:80-99; ePrint 2025/2010 sec. 1.5",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "eta": 0.0016777851668981676,
+              "field_bits": 120,
+              "num_queries": 48,
+              "rho": 0.03125
+            },
+            "omissions": [],
+            "proof_status": "conjectural-random-words",
+            "quantum_bits": 244.378434324,
+            "term": "fri-query-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 121.999911948,
+            "formula": "b = log2(|F|) - log2((folding-1)*(n+1)) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:101-143",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "field_bits": 120,
+              "folding_factor": 2,
+              "n": 16384,
+              "pinned_security_num_layers_guard": 14
+            },
+            "omissions": [],
+            "proof_status": "proven-within-conjectural-composite",
+            "quantum_bits": 113.999911948,
+            "term": "fri-commit-phase"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "no accepted random-words analogue in pinned implementation",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/stark.rs:28-101,147-231,279-340",
+            "inputs": {
+              "num_batched_functions": 210
+            },
+            "omissions": [
+              "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path. Actual num_batched_functions=210; this result is optimistic."
+            ],
+            "proof_status": "omitted-unmodeled",
+            "quantum_bits": null,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "deterministic final-polynomial degree/length check; no probabilistic error term",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "declared_bound": 1,
+              "fri_log_final_poly_len": 0
+            },
+            "omissions": [],
+            "proof_status": "deterministic-check",
+            "quantum_bits": null,
+            "term": "fri-final-phase"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI commit challenge"
+            },
+            "omissions": [
+              "Already included in fri-commit-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "commit-grinding-adjustment"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI query challenge"
+            },
+            "omissions": [
+              "Already included in fri-query-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "query-grinding-adjustment"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 120.0,
+            "formula": "b <= conservative challenge-field budget",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "challenge_field_bits": 120,
+              "extension_field_bits": 124
+            },
+            "omissions": [],
+            "proof_status": "assumption",
+            "quantum_bits": 120.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 128.0,
+            "formula": "b <= stated MMCS binding security",
+            "formula_source": "Manifest assumption; not derived by p3-security",
+            "inputs": {
+              "construction": "KeccakPair512 manifest-assumed binding cap"
+            },
+            "omissions": [
+              "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
+            ],
+            "proof_status": "assumption-unreviewed",
+            "quantum_bits": 128.0,
+            "term": "mmcs-binding"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits",
+            "formula_source": "Plonky3 pinned uni-stark/src/security.rs:249-251,326-330",
+            "inputs": {
+              "hiding_degree_padding_bits": 1,
+              "is_zk": true,
+              "logical_degree_bits": 8,
+              "logical_trace_height": 256,
+              "proof_degree_bits": 9
+            },
+            "omissions": [],
+            "proof_status": "accounting-input",
+            "quantum_bits": null,
+            "term": "hiding-degree-padding"
+          }
+        ]
+      },
+      "target_count_log2": 0,
+      "udr": {
+        "assumptions": [],
+        "available": true,
+        "bottlenecks": [
+          {
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 61.860885625,
+            "quantum_bits": 53.860885625,
+            "term": "fri-query-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 98.292640868,
+            "quantum_bits": 98.292640868,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 107.997888224,
+            "quantum_bits": 107.997888224,
+            "term": "deep-ali"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 109.788111705,
+            "quantum_bits": 109.788111705,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 121.999911948,
+            "quantum_bits": 113.999911948,
+            "term": "fri-commit-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 120.0,
+            "quantum_bits": 120.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 128.0,
+            "quantum_bits": 128.0,
+            "term": "mmcs-binding"
+          }
+        ],
+        "classical_bits": 61.860885625,
+        "floor_classical_bits": 61,
+        "floor_quantum_bits": 53,
+        "proof_status": "proven-no-decoding-conjecture",
+        "proximity_m": null,
+        "quantum_bits": 53.860885625,
+        "regime": "udr",
+        "target_count_log2": 0,
+        "terms": [
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 109.788111705,
+            "formula": "b = log2(|F|) - log2(L+) - log2(num_constraints)",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16",
+            "inputs": {
+              "field_bits": 120.0,
+              "list_size": 1.0,
+              "num_constraints": 1186
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 109.788111705,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 107.997888224,
+            "formula": "b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28",
+            "inputs": {
+              "field_bits": 120.0,
+              "k": 512,
+              "list_size": 1.0,
+              "max_combo": 2,
+              "max_constraint_degree": 7
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 107.997888224,
+            "term": "deep-ali"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 61.860885625,
+            "formula": "b = -num_queries*log2(alpha) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:196-202",
+            "inputs": {
+              "alpha": 0.51568603515625,
+              "configured_grinding_bits": 16,
+              "num_queries": 48
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 53.860885625,
+            "term": "fri-query-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 121.999911948,
+            "formula": "b = log2(|F|) - log2((folding-1)*(n+1)) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:101-143",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "field_bits": 120,
+              "folding_factor": 2,
+              "n": 16384,
+              "pinned_security_num_layers_guard": 14
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 113.999911948,
+            "term": "fri-commit-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 98.292640868,
+            "formula": "b = log2(|F|) - (log_degree + log_inv_rate + log2(num_functions-1))",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/assumption.rs:126-245; security/src/stark.rs:104-145",
+            "inputs": {
+              "field_bits": 120,
+              "log_degree": 9,
+              "log_inv_rate": 5,
+              "num_batched_functions": 210
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 98.292640868,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "deterministic final-polynomial degree/length check; no probabilistic error term",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "declared_bound": 1,
+              "fri_log_final_poly_len": 0
+            },
+            "omissions": [],
+            "proof_status": "deterministic-check",
+            "quantum_bits": null,
+            "term": "fri-final-phase"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI commit challenge"
+            },
+            "omissions": [
+              "Already included in fri-commit-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "commit-grinding-adjustment"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI query challenge"
+            },
+            "omissions": [
+              "Already included in fri-query-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "query-grinding-adjustment"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 120.0,
+            "formula": "b <= conservative challenge-field budget",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "challenge_field_bits": 120,
+              "extension_field_bits": 124
+            },
+            "omissions": [],
+            "proof_status": "assumption",
+            "quantum_bits": 120.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 128.0,
+            "formula": "b <= stated MMCS binding security",
+            "formula_source": "Manifest assumption; not derived by p3-security",
+            "inputs": {
+              "construction": "KeccakPair512 manifest-assumed binding cap"
+            },
+            "omissions": [
+              "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
+            ],
+            "proof_status": "assumption-unreviewed",
+            "quantum_bits": 128.0,
+            "term": "mmcs-binding"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits",
+            "formula_source": "Plonky3 pinned uni-stark/src/security.rs:249-251,326-330",
+            "inputs": {
+              "hiding_degree_padding_bits": 1,
+              "is_zk": true,
+              "logical_degree_bits": 8,
+              "logical_trace_height": 256,
+              "proof_degree_bits": 9
+            },
+            "omissions": [],
+            "proof_status": "accounting-input",
+            "quantum_bits": null,
+            "term": "hiding-degree-padding"
+          }
+        ]
+      }
+    },
+    {
+      "ldr": {
+        "assumptions": [
+          "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+        ],
+        "available": true,
+        "bottlenecks": [
+          {
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 62.340828758,
+            "quantum_bits": 62.340828758,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 86.047830196,
+            "quantum_bits": 78.047830196,
+            "term": "fri-commit-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 83.690533301,
+            "quantum_bits": 83.690533301,
+            "term": "deep-ali"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 85.480756783,
+            "quantum_bits": 85.480756783,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 105.325163776,
+            "quantum_bits": 97.325163776,
+            "term": "fri-query-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 100.0,
+            "quantum_bits": 100.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 108.0,
+            "quantum_bits": 108.0,
+            "term": "mmcs-binding"
+          }
+        ],
+        "classical_bits": 62.340828758,
+        "floor_classical_bits": 62,
+        "floor_quantum_bits": 62,
+        "proof_status": "conditional-theorem-johnson-correlated-agreement",
+        "proximity_m": 3,
+        "quantum_bits": 62.340828758,
+        "regime": "ldr",
+        "target_count_log2": 20,
+        "terms": [
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 85.480756783,
+            "formula": "b = log2(|F|) - log2(L+) - log2(num_constraints)",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16",
+            "inputs": {
+              "field_bits": 120.0,
+              "list_size": 19.79898987322333,
+              "num_constraints": 1186
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 85.480756783,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 83.690533301,
+            "formula": "b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28",
+            "inputs": {
+              "field_bits": 120.0,
+              "k": 512,
+              "list_size": 19.79898987322333,
+              "max_combo": 2,
+              "max_constraint_degree": 7
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 83.690533301,
+            "term": "deep-ali"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 105.325163776,
+            "formula": "b = -num_queries*log2(alpha) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:196-202",
+            "inputs": {
+              "alpha": 0.20623947784607638,
+              "configured_grinding_bits": 16,
+              "num_queries": 48
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 97.325163776,
+            "term": "fri-query-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 86.047830196,
+            "formula": "b = min(BCHKS25 linear bound, 2024/1553 n/q bound) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:145-193; ePrint 2025/2055 Thm. 4.2",
+            "inputs": {
+              "alpha": 0.20623947784607638,
+              "bchks25_base_bits": 90.047830196,
+              "configured_grinding_bits": 16,
+              "gamma": 0.7937605221539237,
+              "m": 3,
+              "n": 16384,
+              "n_over_q_base_bits": 99.692557026,
+              "rho": 0.03125
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 78.047830196,
+            "term": "fri-commit-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 62.340828758,
+            "formula": "b = log2(|F|) - log2(2*(m+1/2)^5*n/(3*rho^(3/2))) - log2(num_functions-1)",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/assumption.rs:126-245; security/src/stark.rs:104-145",
+            "inputs": {
+              "dominant_term_only": true,
+              "field_bits": 120,
+              "m": 3,
+              "n_log2": 14,
+              "num_batched_functions": 210,
+              "rho": 0.03125
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50.",
+              "Pinned implementation keeps only the BCHKS25 dominant term; documented subdominant terms are omitted as negligible."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 62.340828758,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "deterministic final-polynomial degree/length check; no probabilistic error term",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "declared_bound": 1,
+              "fri_log_final_poly_len": 0
+            },
+            "omissions": [],
+            "proof_status": "deterministic-check",
+            "quantum_bits": null,
+            "term": "fri-final-phase"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI commit challenge"
+            },
+            "omissions": [
+              "Already included in fri-commit-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "commit-grinding-adjustment"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI query challenge"
+            },
+            "omissions": [
+              "Already included in fri-query-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "query-grinding-adjustment"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 100.0,
+            "formula": "b <= conservative challenge-field budget",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "challenge_field_bits": 120,
+              "extension_field_bits": 124
+            },
+            "omissions": [],
+            "proof_status": "assumption",
+            "quantum_bits": 100.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 108.0,
+            "formula": "b <= stated MMCS binding security",
+            "formula_source": "Manifest assumption; not derived by p3-security",
+            "inputs": {
+              "construction": "KeccakPair512 manifest-assumed binding cap"
+            },
+            "omissions": [
+              "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
+            ],
+            "proof_status": "assumption-unreviewed",
+            "quantum_bits": 108.0,
+            "term": "mmcs-binding"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits",
+            "formula_source": "Plonky3 pinned uni-stark/src/security.rs:249-251,326-330",
+            "inputs": {
+              "hiding_degree_padding_bits": 1,
+              "is_zk": true,
+              "logical_degree_bits": 8,
+              "logical_trace_height": 256,
+              "proof_degree_bits": 9
+            },
+            "omissions": [],
+            "proof_status": "accounting-input",
+            "quantum_bits": null,
+            "term": "hiding-degree-padding"
+          }
+        ]
+      },
+      "method": "conservative union bound across 2^target_count_log2 proof-forgery targets",
+      "random_words": {
+        "assumptions": [
+          "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path. Actual num_batched_functions is recorded per term."
+        ],
+        "available": true,
+        "bottlenecks": [
+          {
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 87.997888224,
+            "quantum_bits": 87.997888224,
+            "term": "deep-ali"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 89.788111705,
+            "quantum_bits": 89.788111705,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 101.999911948,
+            "quantum_bits": 93.999911948,
+            "term": "fri-commit-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 100.0,
+            "quantum_bits": 100.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 108.0,
+            "quantum_bits": 108.0,
+            "term": "mmcs-binding"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 232.378434324,
+            "quantum_bits": 224.378434324,
+            "term": "fri-query-phase"
+          }
+        ],
+        "classical_bits": 87.997888224,
+        "floor_classical_bits": 87,
+        "floor_quantum_bits": 87,
+        "proof_status": "conjectural-random-words",
+        "proximity_m": null,
+        "quantum_bits": 87.997888224,
+        "regime": "random-words",
+        "target_count_log2": 20,
+        "terms": [
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 89.788111705,
+            "formula": "b = log2(|F|) - log2(L+) - log2(num_constraints)",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16",
+            "inputs": {
+              "field_bits": 120.0,
+              "list_size": 1.0,
+              "num_constraints": 1186
+            },
+            "omissions": [],
+            "proof_status": "conjectural-random-words",
+            "quantum_bits": 89.788111705,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 87.997888224,
+            "formula": "b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28",
+            "inputs": {
+              "field_bits": 120.0,
+              "k": 512,
+              "list_size": 1.0,
+              "max_combo": 2,
+              "max_constraint_degree": 7
+            },
+            "omissions": [],
+            "proof_status": "conjectural-random-words",
+            "quantum_bits": 87.997888224,
+            "term": "deep-ali"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 232.378434324,
+            "formula": "b = num_queries*(-log2(rho+eta)) + grinding; eta=((log2(e)+log_blowup)*rho)/field_bits",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:80-99; ePrint 2025/2010 sec. 1.5",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "eta": 0.0016777851668981676,
+              "field_bits": 120,
+              "num_queries": 48,
+              "rho": 0.03125
+            },
+            "omissions": [],
+            "proof_status": "conjectural-random-words",
+            "quantum_bits": 224.378434324,
+            "term": "fri-query-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 101.999911948,
+            "formula": "b = log2(|F|) - log2((folding-1)*(n+1)) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:101-143",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "field_bits": 120,
+              "folding_factor": 2,
+              "n": 16384,
+              "pinned_security_num_layers_guard": 14
+            },
+            "omissions": [],
+            "proof_status": "proven-within-conjectural-composite",
+            "quantum_bits": 93.999911948,
+            "term": "fri-commit-phase"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "no accepted random-words analogue in pinned implementation",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/stark.rs:28-101,147-231,279-340",
+            "inputs": {
+              "num_batched_functions": 210
+            },
+            "omissions": [
+              "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path. Actual num_batched_functions=210; this result is optimistic."
+            ],
+            "proof_status": "omitted-unmodeled",
+            "quantum_bits": null,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "deterministic final-polynomial degree/length check; no probabilistic error term",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "declared_bound": 1,
+              "fri_log_final_poly_len": 0
+            },
+            "omissions": [],
+            "proof_status": "deterministic-check",
+            "quantum_bits": null,
+            "term": "fri-final-phase"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI commit challenge"
+            },
+            "omissions": [
+              "Already included in fri-commit-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "commit-grinding-adjustment"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI query challenge"
+            },
+            "omissions": [
+              "Already included in fri-query-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "query-grinding-adjustment"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 100.0,
+            "formula": "b <= conservative challenge-field budget",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "challenge_field_bits": 120,
+              "extension_field_bits": 124
+            },
+            "omissions": [],
+            "proof_status": "assumption",
+            "quantum_bits": 100.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 108.0,
+            "formula": "b <= stated MMCS binding security",
+            "formula_source": "Manifest assumption; not derived by p3-security",
+            "inputs": {
+              "construction": "KeccakPair512 manifest-assumed binding cap"
+            },
+            "omissions": [
+              "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
+            ],
+            "proof_status": "assumption-unreviewed",
+            "quantum_bits": 108.0,
+            "term": "mmcs-binding"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits",
+            "formula_source": "Plonky3 pinned uni-stark/src/security.rs:249-251,326-330",
+            "inputs": {
+              "hiding_degree_padding_bits": 1,
+              "is_zk": true,
+              "logical_degree_bits": 8,
+              "logical_trace_height": 256,
+              "proof_degree_bits": 9
+            },
+            "omissions": [],
+            "proof_status": "accounting-input",
+            "quantum_bits": null,
+            "term": "hiding-degree-padding"
+          }
+        ]
+      },
+      "target_count_log2": 20,
+      "udr": {
+        "assumptions": [],
+        "available": true,
+        "bottlenecks": [
+          {
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 41.860885625,
+            "quantum_bits": 33.860885625,
+            "term": "fri-query-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 78.292640868,
+            "quantum_bits": 78.292640868,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 87.997888224,
+            "quantum_bits": 87.997888224,
+            "term": "deep-ali"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 89.788111705,
+            "quantum_bits": 89.788111705,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 101.999911948,
+            "quantum_bits": 93.999911948,
+            "term": "fri-commit-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 100.0,
+            "quantum_bits": 100.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 108.0,
+            "quantum_bits": 108.0,
+            "term": "mmcs-binding"
+          }
+        ],
+        "classical_bits": 41.860885625,
+        "floor_classical_bits": 41,
+        "floor_quantum_bits": 33,
+        "proof_status": "proven-no-decoding-conjecture",
+        "proximity_m": null,
+        "quantum_bits": 33.860885625,
+        "regime": "udr",
+        "target_count_log2": 20,
+        "terms": [
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 89.788111705,
+            "formula": "b = log2(|F|) - log2(L+) - log2(num_constraints)",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16",
+            "inputs": {
+              "field_bits": 120.0,
+              "list_size": 1.0,
+              "num_constraints": 1186
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 89.788111705,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 87.997888224,
+            "formula": "b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28",
+            "inputs": {
+              "field_bits": 120.0,
+              "k": 512,
+              "list_size": 1.0,
+              "max_combo": 2,
+              "max_constraint_degree": 7
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 87.997888224,
+            "term": "deep-ali"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 41.860885625,
+            "formula": "b = -num_queries*log2(alpha) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:196-202",
+            "inputs": {
+              "alpha": 0.51568603515625,
+              "configured_grinding_bits": 16,
+              "num_queries": 48
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 33.860885625,
+            "term": "fri-query-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 101.999911948,
+            "formula": "b = log2(|F|) - log2((folding-1)*(n+1)) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:101-143",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "field_bits": 120,
+              "folding_factor": 2,
+              "n": 16384,
+              "pinned_security_num_layers_guard": 14
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 93.999911948,
+            "term": "fri-commit-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 78.292640868,
+            "formula": "b = log2(|F|) - (log_degree + log_inv_rate + log2(num_functions-1))",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/assumption.rs:126-245; security/src/stark.rs:104-145",
+            "inputs": {
+              "field_bits": 120,
+              "log_degree": 9,
+              "log_inv_rate": 5,
+              "num_batched_functions": 210
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 78.292640868,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "deterministic final-polynomial degree/length check; no probabilistic error term",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "declared_bound": 1,
+              "fri_log_final_poly_len": 0
+            },
+            "omissions": [],
+            "proof_status": "deterministic-check",
+            "quantum_bits": null,
+            "term": "fri-final-phase"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI commit challenge"
+            },
+            "omissions": [
+              "Already included in fri-commit-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "commit-grinding-adjustment"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI query challenge"
+            },
+            "omissions": [
+              "Already included in fri-query-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "query-grinding-adjustment"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 100.0,
+            "formula": "b <= conservative challenge-field budget",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "challenge_field_bits": 120,
+              "extension_field_bits": 124
+            },
+            "omissions": [],
+            "proof_status": "assumption",
+            "quantum_bits": 100.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 108.0,
+            "formula": "b <= stated MMCS binding security",
+            "formula_source": "Manifest assumption; not derived by p3-security",
+            "inputs": {
+              "construction": "KeccakPair512 manifest-assumed binding cap"
+            },
+            "omissions": [
+              "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
+            ],
+            "proof_status": "assumption-unreviewed",
+            "quantum_bits": 108.0,
+            "term": "mmcs-binding"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits",
+            "formula_source": "Plonky3 pinned uni-stark/src/security.rs:249-251,326-330",
+            "inputs": {
+              "hiding_degree_padding_bits": 1,
+              "is_zk": true,
+              "logical_degree_bits": 8,
+              "logical_trace_height": 256,
+              "proof_degree_bits": 9
+            },
+            "omissions": [],
+            "proof_status": "accounting-input",
+            "quantum_bits": null,
+            "term": "hiding-degree-padding"
+          }
+        ]
+      }
+    },
+    {
+      "ldr": {
+        "assumptions": [
+          "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+        ],
+        "available": true,
+        "bottlenecks": [
+          {
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 50.340828758,
+            "quantum_bits": 50.340828758,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 74.047830196,
+            "quantum_bits": 66.047830196,
+            "term": "fri-commit-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 71.690533301,
+            "quantum_bits": 71.690533301,
+            "term": "deep-ali"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 73.480756783,
+            "quantum_bits": 73.480756783,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 93.325163776,
+            "quantum_bits": 85.325163776,
+            "term": "fri-query-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 88.0,
+            "quantum_bits": 88.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 96.0,
+            "quantum_bits": 96.0,
+            "term": "mmcs-binding"
+          }
+        ],
+        "classical_bits": 50.340828758,
+        "floor_classical_bits": 50,
+        "floor_quantum_bits": 50,
+        "proof_status": "conditional-theorem-johnson-correlated-agreement",
+        "proximity_m": 3,
+        "quantum_bits": 50.340828758,
+        "regime": "ldr",
+        "target_count_log2": 32,
+        "terms": [
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 73.480756783,
+            "formula": "b = log2(|F|) - log2(L+) - log2(num_constraints)",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16",
+            "inputs": {
+              "field_bits": 120.0,
+              "list_size": 19.79898987322333,
+              "num_constraints": 1186
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 73.480756783,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 71.690533301,
+            "formula": "b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28",
+            "inputs": {
+              "field_bits": 120.0,
+              "k": 512,
+              "list_size": 19.79898987322333,
+              "max_combo": 2,
+              "max_constraint_degree": 7
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 71.690533301,
+            "term": "deep-ali"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 93.325163776,
+            "formula": "b = -num_queries*log2(alpha) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:196-202",
+            "inputs": {
+              "alpha": 0.20623947784607638,
+              "configured_grinding_bits": 16,
+              "num_queries": 48
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 85.325163776,
+            "term": "fri-query-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 74.047830196,
+            "formula": "b = min(BCHKS25 linear bound, 2024/1553 n/q bound) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:145-193; ePrint 2025/2055 Thm. 4.2",
+            "inputs": {
+              "alpha": 0.20623947784607638,
+              "bchks25_base_bits": 90.047830196,
+              "configured_grinding_bits": 16,
+              "gamma": 0.7937605221539237,
+              "m": 3,
+              "n": 16384,
+              "n_over_q_base_bits": 99.692557026,
+              "rho": 0.03125
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 66.047830196,
+            "term": "fri-commit-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 50.340828758,
+            "formula": "b = log2(|F|) - log2(2*(m+1/2)^5*n/(3*rho^(3/2))) - log2(num_functions-1)",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/assumption.rs:126-245; security/src/stark.rs:104-145",
+            "inputs": {
+              "dominant_term_only": true,
+              "field_bits": 120,
+              "m": 3,
+              "n_log2": 14,
+              "num_batched_functions": 210,
+              "rho": 0.03125
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50.",
+              "Pinned implementation keeps only the BCHKS25 dominant term; documented subdominant terms are omitted as negligible."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 50.340828758,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "deterministic final-polynomial degree/length check; no probabilistic error term",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "declared_bound": 1,
+              "fri_log_final_poly_len": 0
+            },
+            "omissions": [],
+            "proof_status": "deterministic-check",
+            "quantum_bits": null,
+            "term": "fri-final-phase"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI commit challenge"
+            },
+            "omissions": [
+              "Already included in fri-commit-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "commit-grinding-adjustment"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI query challenge"
+            },
+            "omissions": [
+              "Already included in fri-query-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "query-grinding-adjustment"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 88.0,
+            "formula": "b <= conservative challenge-field budget",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "challenge_field_bits": 120,
+              "extension_field_bits": 124
+            },
+            "omissions": [],
+            "proof_status": "assumption",
+            "quantum_bits": 88.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 96.0,
+            "formula": "b <= stated MMCS binding security",
+            "formula_source": "Manifest assumption; not derived by p3-security",
+            "inputs": {
+              "construction": "KeccakPair512 manifest-assumed binding cap"
+            },
+            "omissions": [
+              "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
+            ],
+            "proof_status": "assumption-unreviewed",
+            "quantum_bits": 96.0,
+            "term": "mmcs-binding"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits",
+            "formula_source": "Plonky3 pinned uni-stark/src/security.rs:249-251,326-330",
+            "inputs": {
+              "hiding_degree_padding_bits": 1,
+              "is_zk": true,
+              "logical_degree_bits": 8,
+              "logical_trace_height": 256,
+              "proof_degree_bits": 9
+            },
+            "omissions": [],
+            "proof_status": "accounting-input",
+            "quantum_bits": null,
+            "term": "hiding-degree-padding"
+          }
+        ]
+      },
+      "method": "conservative union bound across 2^target_count_log2 proof-forgery targets",
+      "random_words": {
+        "assumptions": [
+          "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path. Actual num_batched_functions is recorded per term."
+        ],
+        "available": true,
+        "bottlenecks": [
+          {
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 75.997888224,
+            "quantum_bits": 75.997888224,
+            "term": "deep-ali"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 77.788111705,
+            "quantum_bits": 77.788111705,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 89.999911948,
+            "quantum_bits": 81.999911948,
+            "term": "fri-commit-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 88.0,
+            "quantum_bits": 88.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 96.0,
+            "quantum_bits": 96.0,
+            "term": "mmcs-binding"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 220.378434324,
+            "quantum_bits": 212.378434324,
+            "term": "fri-query-phase"
+          }
+        ],
+        "classical_bits": 75.997888224,
+        "floor_classical_bits": 75,
+        "floor_quantum_bits": 75,
+        "proof_status": "conjectural-random-words",
+        "proximity_m": null,
+        "quantum_bits": 75.997888224,
+        "regime": "random-words",
+        "target_count_log2": 32,
+        "terms": [
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 77.788111705,
+            "formula": "b = log2(|F|) - log2(L+) - log2(num_constraints)",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16",
+            "inputs": {
+              "field_bits": 120.0,
+              "list_size": 1.0,
+              "num_constraints": 1186
+            },
+            "omissions": [],
+            "proof_status": "conjectural-random-words",
+            "quantum_bits": 77.788111705,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 75.997888224,
+            "formula": "b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28",
+            "inputs": {
+              "field_bits": 120.0,
+              "k": 512,
+              "list_size": 1.0,
+              "max_combo": 2,
+              "max_constraint_degree": 7
+            },
+            "omissions": [],
+            "proof_status": "conjectural-random-words",
+            "quantum_bits": 75.997888224,
+            "term": "deep-ali"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 220.378434324,
+            "formula": "b = num_queries*(-log2(rho+eta)) + grinding; eta=((log2(e)+log_blowup)*rho)/field_bits",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:80-99; ePrint 2025/2010 sec. 1.5",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "eta": 0.0016777851668981676,
+              "field_bits": 120,
+              "num_queries": 48,
+              "rho": 0.03125
+            },
+            "omissions": [],
+            "proof_status": "conjectural-random-words",
+            "quantum_bits": 212.378434324,
+            "term": "fri-query-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 89.999911948,
+            "formula": "b = log2(|F|) - log2((folding-1)*(n+1)) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:101-143",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "field_bits": 120,
+              "folding_factor": 2,
+              "n": 16384,
+              "pinned_security_num_layers_guard": 14
+            },
+            "omissions": [],
+            "proof_status": "proven-within-conjectural-composite",
+            "quantum_bits": 81.999911948,
+            "term": "fri-commit-phase"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "no accepted random-words analogue in pinned implementation",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/stark.rs:28-101,147-231,279-340",
+            "inputs": {
+              "num_batched_functions": 210
+            },
+            "omissions": [
+              "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path. Actual num_batched_functions=210; this result is optimistic."
+            ],
+            "proof_status": "omitted-unmodeled",
+            "quantum_bits": null,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "deterministic final-polynomial degree/length check; no probabilistic error term",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "declared_bound": 1,
+              "fri_log_final_poly_len": 0
+            },
+            "omissions": [],
+            "proof_status": "deterministic-check",
+            "quantum_bits": null,
+            "term": "fri-final-phase"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI commit challenge"
+            },
+            "omissions": [
+              "Already included in fri-commit-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "commit-grinding-adjustment"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI query challenge"
+            },
+            "omissions": [
+              "Already included in fri-query-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "query-grinding-adjustment"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 88.0,
+            "formula": "b <= conservative challenge-field budget",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "challenge_field_bits": 120,
+              "extension_field_bits": 124
+            },
+            "omissions": [],
+            "proof_status": "assumption",
+            "quantum_bits": 88.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 96.0,
+            "formula": "b <= stated MMCS binding security",
+            "formula_source": "Manifest assumption; not derived by p3-security",
+            "inputs": {
+              "construction": "KeccakPair512 manifest-assumed binding cap"
+            },
+            "omissions": [
+              "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
+            ],
+            "proof_status": "assumption-unreviewed",
+            "quantum_bits": 96.0,
+            "term": "mmcs-binding"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits",
+            "formula_source": "Plonky3 pinned uni-stark/src/security.rs:249-251,326-330",
+            "inputs": {
+              "hiding_degree_padding_bits": 1,
+              "is_zk": true,
+              "logical_degree_bits": 8,
+              "logical_trace_height": 256,
+              "proof_degree_bits": 9
+            },
+            "omissions": [],
+            "proof_status": "accounting-input",
+            "quantum_bits": null,
+            "term": "hiding-degree-padding"
+          }
+        ]
+      },
+      "target_count_log2": 32,
+      "udr": {
+        "assumptions": [],
+        "available": true,
+        "bottlenecks": [
+          {
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 29.860885625,
+            "quantum_bits": 21.860885625,
+            "term": "fri-query-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 66.292640868,
+            "quantum_bits": 66.292640868,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 75.997888224,
+            "quantum_bits": 75.997888224,
+            "term": "deep-ali"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 77.788111705,
+            "quantum_bits": 77.788111705,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 89.999911948,
+            "quantum_bits": 81.999911948,
+            "term": "fri-commit-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 88.0,
+            "quantum_bits": 88.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 96.0,
+            "quantum_bits": 96.0,
+            "term": "mmcs-binding"
+          }
+        ],
+        "classical_bits": 29.860885625,
+        "floor_classical_bits": 29,
+        "floor_quantum_bits": 21,
+        "proof_status": "proven-no-decoding-conjecture",
+        "proximity_m": null,
+        "quantum_bits": 21.860885625,
+        "regime": "udr",
+        "target_count_log2": 32,
+        "terms": [
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 77.788111705,
+            "formula": "b = log2(|F|) - log2(L+) - log2(num_constraints)",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16",
+            "inputs": {
+              "field_bits": 120.0,
+              "list_size": 1.0,
+              "num_constraints": 1186
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 77.788111705,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 75.997888224,
+            "formula": "b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28",
+            "inputs": {
+              "field_bits": 120.0,
+              "k": 512,
+              "list_size": 1.0,
+              "max_combo": 2,
+              "max_constraint_degree": 7
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 75.997888224,
+            "term": "deep-ali"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 29.860885625,
+            "formula": "b = -num_queries*log2(alpha) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:196-202",
+            "inputs": {
+              "alpha": 0.51568603515625,
+              "configured_grinding_bits": 16,
+              "num_queries": 48
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 21.860885625,
+            "term": "fri-query-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 89.999911948,
+            "formula": "b = log2(|F|) - log2((folding-1)*(n+1)) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:101-143",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "field_bits": 120,
+              "folding_factor": 2,
+              "n": 16384,
+              "pinned_security_num_layers_guard": 14
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 81.999911948,
+            "term": "fri-commit-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 66.292640868,
+            "formula": "b = log2(|F|) - (log_degree + log_inv_rate + log2(num_functions-1))",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/assumption.rs:126-245; security/src/stark.rs:104-145",
+            "inputs": {
+              "field_bits": 120,
+              "log_degree": 9,
+              "log_inv_rate": 5,
+              "num_batched_functions": 210
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 66.292640868,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "deterministic final-polynomial degree/length check; no probabilistic error term",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "declared_bound": 1,
+              "fri_log_final_poly_len": 0
+            },
+            "omissions": [],
+            "proof_status": "deterministic-check",
+            "quantum_bits": null,
+            "term": "fri-final-phase"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI commit challenge"
+            },
+            "omissions": [
+              "Already included in fri-commit-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "commit-grinding-adjustment"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI query challenge"
+            },
+            "omissions": [
+              "Already included in fri-query-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "query-grinding-adjustment"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 88.0,
+            "formula": "b <= conservative challenge-field budget",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "challenge_field_bits": 120,
+              "extension_field_bits": 124
+            },
+            "omissions": [],
+            "proof_status": "assumption",
+            "quantum_bits": 88.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 96.0,
+            "formula": "b <= stated MMCS binding security",
+            "formula_source": "Manifest assumption; not derived by p3-security",
+            "inputs": {
+              "construction": "KeccakPair512 manifest-assumed binding cap"
+            },
+            "omissions": [
+              "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
+            ],
+            "proof_status": "assumption-unreviewed",
+            "quantum_bits": 96.0,
+            "term": "mmcs-binding"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits",
+            "formula_source": "Plonky3 pinned uni-stark/src/security.rs:249-251,326-330",
+            "inputs": {
+              "hiding_degree_padding_bits": 1,
+              "is_zk": true,
+              "logical_degree_bits": 8,
+              "logical_trace_height": 256,
+              "proof_degree_bits": 9
+            },
+            "omissions": [],
+            "proof_status": "accounting-input",
+            "quantum_bits": null,
+            "term": "hiding-degree-padding"
+          }
+        ]
+      }
+    },
+    {
+      "ldr": {
+        "assumptions": [
+          "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+        ],
+        "available": true,
+        "bottlenecks": [
+          {
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 42.340828758,
+            "quantum_bits": 42.340828758,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 66.047830196,
+            "quantum_bits": 58.047830196,
+            "term": "fri-commit-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 63.690533301,
+            "quantum_bits": 63.690533301,
+            "term": "deep-ali"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 65.480756783,
+            "quantum_bits": 65.480756783,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 85.325163776,
+            "quantum_bits": 77.325163776,
+            "term": "fri-query-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 80.0,
+            "quantum_bits": 80.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 88.0,
+            "quantum_bits": 88.0,
+            "term": "mmcs-binding"
+          }
+        ],
+        "classical_bits": 42.340828758,
+        "floor_classical_bits": 42,
+        "floor_quantum_bits": 42,
+        "proof_status": "conditional-theorem-johnson-correlated-agreement",
+        "proximity_m": 3,
+        "quantum_bits": 42.340828758,
+        "regime": "ldr",
+        "target_count_log2": 40,
+        "terms": [
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 65.480756783,
+            "formula": "b = log2(|F|) - log2(L+) - log2(num_constraints)",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16",
+            "inputs": {
+              "field_bits": 120.0,
+              "list_size": 19.79898987322333,
+              "num_constraints": 1186
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 65.480756783,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 63.690533301,
+            "formula": "b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28",
+            "inputs": {
+              "field_bits": 120.0,
+              "k": 512,
+              "list_size": 19.79898987322333,
+              "max_combo": 2,
+              "max_constraint_degree": 7
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 63.690533301,
+            "term": "deep-ali"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 85.325163776,
+            "formula": "b = -num_queries*log2(alpha) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:196-202",
+            "inputs": {
+              "alpha": 0.20623947784607638,
+              "configured_grinding_bits": 16,
+              "num_queries": 48
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 77.325163776,
+            "term": "fri-query-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 66.047830196,
+            "formula": "b = min(BCHKS25 linear bound, 2024/1553 n/q bound) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:145-193; ePrint 2025/2055 Thm. 4.2",
+            "inputs": {
+              "alpha": 0.20623947784607638,
+              "bchks25_base_bits": 90.047830196,
+              "configured_grinding_bits": 16,
+              "gamma": 0.7937605221539237,
+              "m": 3,
+              "n": 16384,
+              "n_over_q_base_bits": 99.692557026,
+              "rho": 0.03125
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 58.047830196,
+            "term": "fri-commit-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 42.340828758,
+            "formula": "b = log2(|F|) - log2(2*(m+1/2)^5*n/(3*rho^(3/2))) - log2(num_functions-1)",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/assumption.rs:126-245; security/src/stark.rs:104-145",
+            "inputs": {
+              "dominant_term_only": true,
+              "field_bits": 120,
+              "m": 3,
+              "n_log2": 14,
+              "num_batched_functions": 210,
+              "rho": 0.03125
+            },
+            "omissions": [
+              "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50.",
+              "Pinned implementation keeps only the BCHKS25 dominant term; documented subdominant terms are omitted as negligible."
+            ],
+            "proof_status": "conditional-theorem-johnson-correlated-agreement",
+            "quantum_bits": 42.340828758,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "deterministic final-polynomial degree/length check; no probabilistic error term",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "declared_bound": 1,
+              "fri_log_final_poly_len": 0
+            },
+            "omissions": [],
+            "proof_status": "deterministic-check",
+            "quantum_bits": null,
+            "term": "fri-final-phase"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI commit challenge"
+            },
+            "omissions": [
+              "Already included in fri-commit-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "commit-grinding-adjustment"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI query challenge"
+            },
+            "omissions": [
+              "Already included in fri-query-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "query-grinding-adjustment"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 80.0,
+            "formula": "b <= conservative challenge-field budget",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "challenge_field_bits": 120,
+              "extension_field_bits": 124
+            },
+            "omissions": [],
+            "proof_status": "assumption",
+            "quantum_bits": 80.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 88.0,
+            "formula": "b <= stated MMCS binding security",
+            "formula_source": "Manifest assumption; not derived by p3-security",
+            "inputs": {
+              "construction": "KeccakPair512 manifest-assumed binding cap"
+            },
+            "omissions": [
+              "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
+            ],
+            "proof_status": "assumption-unreviewed",
+            "quantum_bits": 88.0,
+            "term": "mmcs-binding"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits",
+            "formula_source": "Plonky3 pinned uni-stark/src/security.rs:249-251,326-330",
+            "inputs": {
+              "hiding_degree_padding_bits": 1,
+              "is_zk": true,
+              "logical_degree_bits": 8,
+              "logical_trace_height": 256,
+              "proof_degree_bits": 9
+            },
+            "omissions": [],
+            "proof_status": "accounting-input",
+            "quantum_bits": null,
+            "term": "hiding-degree-padding"
+          }
+        ]
+      },
+      "method": "conservative union bound across 2^target_count_log2 proof-forgery targets",
+      "random_words": {
+        "assumptions": [
+          "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path. Actual num_batched_functions is recorded per term."
+        ],
+        "available": true,
+        "bottlenecks": [
+          {
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 67.997888224,
+            "quantum_bits": 67.997888224,
+            "term": "deep-ali"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 69.788111705,
+            "quantum_bits": 69.788111705,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 81.999911948,
+            "quantum_bits": 73.999911948,
+            "term": "fri-commit-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 80.0,
+            "quantum_bits": 80.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 88.0,
+            "quantum_bits": 88.0,
+            "term": "mmcs-binding"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 212.378434324,
+            "quantum_bits": 204.378434324,
+            "term": "fri-query-phase"
+          }
+        ],
+        "classical_bits": 67.997888224,
+        "floor_classical_bits": 67,
+        "floor_quantum_bits": 67,
+        "proof_status": "conjectural-random-words",
+        "proximity_m": null,
+        "quantum_bits": 67.997888224,
+        "regime": "random-words",
+        "target_count_log2": 40,
+        "terms": [
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 69.788111705,
+            "formula": "b = log2(|F|) - log2(L+) - log2(num_constraints)",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16",
+            "inputs": {
+              "field_bits": 120.0,
+              "list_size": 1.0,
+              "num_constraints": 1186
+            },
+            "omissions": [],
+            "proof_status": "conjectural-random-words",
+            "quantum_bits": 69.788111705,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 67.997888224,
+            "formula": "b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28",
+            "inputs": {
+              "field_bits": 120.0,
+              "k": 512,
+              "list_size": 1.0,
+              "max_combo": 2,
+              "max_constraint_degree": 7
+            },
+            "omissions": [],
+            "proof_status": "conjectural-random-words",
+            "quantum_bits": 67.997888224,
+            "term": "deep-ali"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 212.378434324,
+            "formula": "b = num_queries*(-log2(rho+eta)) + grinding; eta=((log2(e)+log_blowup)*rho)/field_bits",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:80-99; ePrint 2025/2010 sec. 1.5",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "eta": 0.0016777851668981676,
+              "field_bits": 120,
+              "num_queries": 48,
+              "rho": 0.03125
+            },
+            "omissions": [],
+            "proof_status": "conjectural-random-words",
+            "quantum_bits": 204.378434324,
+            "term": "fri-query-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 81.999911948,
+            "formula": "b = log2(|F|) - log2((folding-1)*(n+1)) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:101-143",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "field_bits": 120,
+              "folding_factor": 2,
+              "n": 16384,
+              "pinned_security_num_layers_guard": 14
+            },
+            "omissions": [],
+            "proof_status": "proven-within-conjectural-composite",
+            "quantum_bits": 73.999911948,
+            "term": "fri-commit-phase"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "no accepted random-words analogue in pinned implementation",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/stark.rs:28-101,147-231,279-340",
+            "inputs": {
+              "num_batched_functions": 210
+            },
+            "omissions": [
+              "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path. Actual num_batched_functions=210; this result is optimistic."
+            ],
+            "proof_status": "omitted-unmodeled",
+            "quantum_bits": null,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "deterministic final-polynomial degree/length check; no probabilistic error term",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "declared_bound": 1,
+              "fri_log_final_poly_len": 0
+            },
+            "omissions": [],
+            "proof_status": "deterministic-check",
+            "quantum_bits": null,
+            "term": "fri-final-phase"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI commit challenge"
+            },
+            "omissions": [
+              "Already included in fri-commit-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "commit-grinding-adjustment"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI query challenge"
+            },
+            "omissions": [
+              "Already included in fri-query-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "query-grinding-adjustment"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 80.0,
+            "formula": "b <= conservative challenge-field budget",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "challenge_field_bits": 120,
+              "extension_field_bits": 124
+            },
+            "omissions": [],
+            "proof_status": "assumption",
+            "quantum_bits": 80.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 88.0,
+            "formula": "b <= stated MMCS binding security",
+            "formula_source": "Manifest assumption; not derived by p3-security",
+            "inputs": {
+              "construction": "KeccakPair512 manifest-assumed binding cap"
+            },
+            "omissions": [
+              "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
+            ],
+            "proof_status": "assumption-unreviewed",
+            "quantum_bits": 88.0,
+            "term": "mmcs-binding"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits",
+            "formula_source": "Plonky3 pinned uni-stark/src/security.rs:249-251,326-330",
+            "inputs": {
+              "hiding_degree_padding_bits": 1,
+              "is_zk": true,
+              "logical_degree_bits": 8,
+              "logical_trace_height": 256,
+              "proof_degree_bits": 9
+            },
+            "omissions": [],
+            "proof_status": "accounting-input",
+            "quantum_bits": null,
+            "term": "hiding-degree-padding"
+          }
+        ]
+      },
+      "target_count_log2": 40,
+      "udr": {
+        "assumptions": [],
+        "available": true,
+        "bottlenecks": [
+          {
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 21.860885625,
+            "quantum_bits": 13.860885625,
+            "term": "fri-query-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 58.292640868,
+            "quantum_bits": 58.292640868,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 67.997888224,
+            "quantum_bits": 67.997888224,
+            "term": "deep-ali"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 69.788111705,
+            "quantum_bits": 69.788111705,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 81.999911948,
+            "quantum_bits": 73.999911948,
+            "term": "fri-commit-phase"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 80.0,
+            "quantum_bits": 80.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 88.0,
+            "quantum_bits": 88.0,
+            "term": "mmcs-binding"
+          }
+        ],
+        "classical_bits": 21.860885625,
+        "floor_classical_bits": 21,
+        "floor_quantum_bits": 13,
+        "proof_status": "proven-no-decoding-conjecture",
+        "proximity_m": null,
+        "quantum_bits": 13.860885625,
+        "regime": "udr",
+        "target_count_log2": 40,
+        "terms": [
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 69.788111705,
+            "formula": "b = log2(|F|) - log2(L+) - log2(num_constraints)",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16",
+            "inputs": {
+              "field_bits": 120.0,
+              "list_size": 1.0,
+              "num_constraints": 1186
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 69.788111705,
+            "term": "air-random-linear-combination"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 67.997888224,
+            "formula": "b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28",
+            "inputs": {
+              "field_bits": 120.0,
+              "k": 512,
+              "list_size": 1.0,
+              "max_combo": 2,
+              "max_constraint_degree": 7
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 67.997888224,
+            "term": "deep-ali"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": true,
+              "quantum": true
+            },
+            "classical_bits": 21.860885625,
+            "formula": "b = -num_queries*log2(alpha) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:196-202",
+            "inputs": {
+              "alpha": 0.51568603515625,
+              "configured_grinding_bits": 16,
+              "num_queries": 48
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 13.860885625,
+            "term": "fri-query-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 81.999911948,
+            "formula": "b = log2(|F|) - log2((folding-1)*(n+1)) + grinding",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:101-143",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "field_bits": 120,
+              "folding_factor": 2,
+              "n": 16384,
+              "pinned_security_num_layers_guard": 14
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 73.999911948,
+            "term": "fri-commit-phase"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 58.292640868,
+            "formula": "b = log2(|F|) - (log_degree + log_inv_rate + log2(num_functions-1))",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/assumption.rs:126-245; security/src/stark.rs:104-145",
+            "inputs": {
+              "field_bits": 120,
+              "log_degree": 9,
+              "log_inv_rate": 5,
+              "num_batched_functions": 210
+            },
+            "omissions": [],
+            "proof_status": "proven",
+            "quantum_bits": 58.292640868,
+            "term": "batched-opening-proximity"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "deterministic final-polynomial degree/length check; no probabilistic error term",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "declared_bound": 1,
+              "fri_log_final_poly_len": 0
+            },
+            "omissions": [],
+            "proof_status": "deterministic-check",
+            "quantum_bits": null,
+            "term": "fri-final-phase"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI commit challenge"
+            },
+            "omissions": [
+              "Already included in fri-commit-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "commit-grinding-adjustment"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 16.0,
+            "formula": "query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+            "inputs": {
+              "configured_grinding_bits": 16,
+              "site": "FRI query challenge"
+            },
+            "omissions": [
+              "Already included in fri-query-phase; informational row, not an independent binding term."
+            ],
+            "proof_status": "cost-model-adjustment",
+            "quantum_bits": 8.0,
+            "term": "query-grinding-adjustment"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 80.0,
+            "formula": "b <= conservative challenge-field budget",
+            "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+            "inputs": {
+              "challenge_field_bits": 120,
+              "extension_field_bits": 124
+            },
+            "omissions": [],
+            "proof_status": "assumption",
+            "quantum_bits": 80.0,
+            "term": "challenge-field-ceiling"
+          },
+          {
+            "applies": true,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": 88.0,
+            "formula": "b <= stated MMCS binding security",
+            "formula_source": "Manifest assumption; not derived by p3-security",
+            "inputs": {
+              "construction": "KeccakPair512 manifest-assumed binding cap"
+            },
+            "omissions": [
+              "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
+            ],
+            "proof_status": "assumption-unreviewed",
+            "quantum_bits": 88.0,
+            "term": "mmcs-binding"
+          },
+          {
+            "applies": false,
+            "binding": {
+              "classical": false,
+              "quantum": false
+            },
+            "classical_bits": null,
+            "formula": "proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits",
+            "formula_source": "Plonky3 pinned uni-stark/src/security.rs:249-251,326-330",
+            "inputs": {
+              "hiding_degree_padding_bits": 1,
+              "is_zk": true,
+              "logical_degree_bits": 8,
+              "logical_trace_height": 256,
+              "proof_degree_bits": 9
+            },
+            "omissions": [],
+            "proof_status": "accounting-input",
+            "quantum_bits": null,
+            "term": "hiding-degree-padding"
+          }
+        ]
+      }
+    }
+  ],
+  "pinned_plonky3_commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+  "profile_id": "C10-b5-q48-c16x16-f0-r4",
+  "review": {
+    "independent_human_acceptance": false,
+    "prior_verdicts": [
+      {
+        "findings": 5,
+        "round": "initial",
+        "verdict": "REJECT_METHOD"
+      },
+      {
+        "findings": 1,
+        "round": "corrective-1",
+        "verdict": "REJECT_METHOD"
+      }
+    ],
+    "status": "two-method-reviews-rejected-six-findings-corrected-pending-re-review"
+  },
+  "security_qualified_candidate": false,
+  "single_target": {
+    "best_proven": {
+      "classical_bits": 82.340828758,
+      "classical_proof_status": "conditional-theorem-johnson-correlated-agreement",
+      "conditional_assumptions": [
+        "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+      ],
+      "floor_classical_bits": 82,
+      "floor_quantum_bits": 82,
+      "quantum_bits": 82.340828758,
+      "quantum_proof_status": "conditional-theorem-johnson-correlated-agreement",
+      "selected_classical_regime": "ldr",
+      "selected_quantum_regime": "ldr",
+      "selection": "max(UDR,LDR), because each is an independent valid theorem bound"
+    },
+    "ldr": {
+      "assumptions": [
+        "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+      ],
+      "available": true,
+      "bottlenecks": [
+        {
+          "binding": {
+            "classical": true,
+            "quantum": true
+          },
+          "classical_bits": 82.340828758,
+          "quantum_bits": 82.340828758,
+          "term": "batched-opening-proximity"
+        },
+        {
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 106.047830196,
+          "quantum_bits": 98.047830196,
+          "term": "fri-commit-phase"
+        },
+        {
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 103.690533301,
+          "quantum_bits": 103.690533301,
+          "term": "deep-ali"
+        },
+        {
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 105.480756783,
+          "quantum_bits": 105.480756783,
+          "term": "air-random-linear-combination"
+        },
+        {
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 125.325163776,
+          "quantum_bits": 117.325163776,
+          "term": "fri-query-phase"
+        },
+        {
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 120.0,
+          "quantum_bits": 120.0,
+          "term": "challenge-field-ceiling"
+        },
+        {
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 128.0,
+          "quantum_bits": 128.0,
+          "term": "mmcs-binding"
+        }
+      ],
+      "classical_bits": 82.340828758,
+      "floor_classical_bits": 82,
+      "floor_quantum_bits": 82,
+      "proof_status": "conditional-theorem-johnson-correlated-agreement",
+      "proximity_m": 3,
+      "quantum_bits": 82.340828758,
+      "regime": "ldr",
+      "terms": [
+        {
+          "applies": true,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 105.480756783,
+          "formula": "b = log2(|F|) - log2(L+) - log2(num_constraints)",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16",
+          "inputs": {
+            "field_bits": 120.0,
+            "list_size": 19.79898987322333,
+            "num_constraints": 1186
+          },
+          "omissions": [
+            "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+          ],
+          "proof_status": "conditional-theorem-johnson-correlated-agreement",
+          "quantum_bits": 105.480756783,
+          "term": "air-random-linear-combination"
+        },
+        {
+          "applies": true,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 103.690533301,
+          "formula": "b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28",
+          "inputs": {
+            "field_bits": 120.0,
+            "k": 512,
+            "list_size": 19.79898987322333,
+            "max_combo": 2,
+            "max_constraint_degree": 7
+          },
+          "omissions": [
+            "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+          ],
+          "proof_status": "conditional-theorem-johnson-correlated-agreement",
+          "quantum_bits": 103.690533301,
+          "term": "deep-ali"
+        },
+        {
+          "applies": true,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 125.325163776,
+          "formula": "b = -num_queries*log2(alpha) + grinding",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:196-202",
+          "inputs": {
+            "alpha": 0.20623947784607638,
+            "configured_grinding_bits": 16,
+            "num_queries": 48
+          },
+          "omissions": [
+            "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+          ],
+          "proof_status": "conditional-theorem-johnson-correlated-agreement",
+          "quantum_bits": 117.325163776,
+          "term": "fri-query-phase"
+        },
+        {
+          "applies": true,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 106.047830196,
+          "formula": "b = min(BCHKS25 linear bound, 2024/1553 n/q bound) + grinding",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:145-193; ePrint 2025/2055 Thm. 4.2",
+          "inputs": {
+            "alpha": 0.20623947784607638,
+            "bchks25_base_bits": 90.047830196,
+            "configured_grinding_bits": 16,
+            "gamma": 0.7937605221539237,
+            "m": 3,
+            "n": 16384,
+            "n_over_q_base_bits": 99.692557026,
+            "rho": 0.03125
+          },
+          "omissions": [
+            "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+          ],
+          "proof_status": "conditional-theorem-johnson-correlated-agreement",
+          "quantum_bits": 98.047830196,
+          "term": "fri-commit-phase"
+        },
+        {
+          "applies": true,
+          "binding": {
+            "classical": true,
+            "quantum": true
+          },
+          "classical_bits": 82.340828758,
+          "formula": "b = log2(|F|) - log2(2*(m+1/2)^5*n/(3*rho^(3/2))) - log2(num_functions-1)",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/assumption.rs:126-245; security/src/stark.rs:104-145",
+          "inputs": {
+            "dominant_term_only": true,
+            "field_bits": 120,
+            "m": 3,
+            "n_log2": 14,
+            "num_batched_functions": 210,
+            "rho": 0.03125
+          },
+          "omissions": [
+            "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50.",
+            "Pinned implementation keeps only the BCHKS25 dominant term; documented subdominant terms are omitted as negligible."
+          ],
+          "proof_status": "conditional-theorem-johnson-correlated-agreement",
+          "quantum_bits": 82.340828758,
+          "term": "batched-opening-proximity"
+        },
+        {
+          "applies": false,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": null,
+          "formula": "deterministic final-polynomial degree/length check; no probabilistic error term",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+          "inputs": {
+            "declared_bound": 1,
+            "fri_log_final_poly_len": 0
+          },
+          "omissions": [],
+          "proof_status": "deterministic-check",
+          "quantum_bits": null,
+          "term": "fri-final-phase"
+        },
+        {
+          "applies": false,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 16.0,
+          "formula": "commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+          "inputs": {
+            "configured_grinding_bits": 16,
+            "site": "FRI commit challenge"
+          },
+          "omissions": [
+            "Already included in fri-commit-phase; informational row, not an independent binding term."
+          ],
+          "proof_status": "cost-model-adjustment",
+          "quantum_bits": 8.0,
+          "term": "commit-grinding-adjustment"
+        },
+        {
+          "applies": false,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 16.0,
+          "formula": "query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+          "inputs": {
+            "configured_grinding_bits": 16,
+            "site": "FRI query challenge"
+          },
+          "omissions": [
+            "Already included in fri-query-phase; informational row, not an independent binding term."
+          ],
+          "proof_status": "cost-model-adjustment",
+          "quantum_bits": 8.0,
+          "term": "query-grinding-adjustment"
+        },
+        {
+          "applies": true,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 120.0,
+          "formula": "b <= conservative challenge-field budget",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+          "inputs": {
+            "challenge_field_bits": 120,
+            "extension_field_bits": 124
+          },
+          "omissions": [],
+          "proof_status": "assumption",
+          "quantum_bits": 120.0,
+          "term": "challenge-field-ceiling"
+        },
+        {
+          "applies": true,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 128.0,
+          "formula": "b <= stated MMCS binding security",
+          "formula_source": "Manifest assumption; not derived by p3-security",
+          "inputs": {
+            "construction": "KeccakPair512 manifest-assumed binding cap"
+          },
+          "omissions": [
+            "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
+          ],
+          "proof_status": "assumption-unreviewed",
+          "quantum_bits": 128.0,
+          "term": "mmcs-binding"
+        },
+        {
+          "applies": false,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": null,
+          "formula": "proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits",
+          "formula_source": "Plonky3 pinned uni-stark/src/security.rs:249-251,326-330",
+          "inputs": {
+            "hiding_degree_padding_bits": 1,
+            "is_zk": true,
+            "logical_degree_bits": 8,
+            "logical_trace_height": 256,
+            "proof_degree_bits": 9
+          },
+          "omissions": [],
+          "proof_status": "accounting-input",
+          "quantum_bits": null,
+          "term": "hiding-degree-padding"
+        }
+      ]
+    },
+    "random_words": {
+      "assumptions": [
+        "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path. Actual num_batched_functions is recorded per term."
+      ],
+      "available": true,
+      "bottlenecks": [
+        {
+          "binding": {
+            "classical": true,
+            "quantum": true
+          },
+          "classical_bits": 107.997888224,
+          "quantum_bits": 107.997888224,
+          "term": "deep-ali"
+        },
+        {
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 109.788111705,
+          "quantum_bits": 109.788111705,
+          "term": "air-random-linear-combination"
+        },
+        {
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 121.999911948,
+          "quantum_bits": 113.999911948,
+          "term": "fri-commit-phase"
+        },
+        {
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 120.0,
+          "quantum_bits": 120.0,
+          "term": "challenge-field-ceiling"
+        },
+        {
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 128.0,
+          "quantum_bits": 128.0,
+          "term": "mmcs-binding"
+        },
+        {
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 252.378434324,
+          "quantum_bits": 244.378434324,
+          "term": "fri-query-phase"
+        }
+      ],
+      "classical_bits": 107.997888224,
+      "floor_classical_bits": 107,
+      "floor_quantum_bits": 107,
+      "proof_status": "conjectural-random-words",
+      "proximity_m": null,
+      "quantum_bits": 107.997888224,
+      "regime": "random-words",
+      "terms": [
+        {
+          "applies": true,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 109.788111705,
+          "formula": "b = log2(|F|) - log2(L+) - log2(num_constraints)",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16",
+          "inputs": {
+            "field_bits": 120.0,
+            "list_size": 1.0,
+            "num_constraints": 1186
+          },
+          "omissions": [],
+          "proof_status": "conjectural-random-words",
+          "quantum_bits": 109.788111705,
+          "term": "air-random-linear-combination"
+        },
+        {
+          "applies": true,
+          "binding": {
+            "classical": true,
+            "quantum": true
+          },
+          "classical_bits": 107.997888224,
+          "formula": "b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28",
+          "inputs": {
+            "field_bits": 120.0,
+            "k": 512,
+            "list_size": 1.0,
+            "max_combo": 2,
+            "max_constraint_degree": 7
+          },
+          "omissions": [],
+          "proof_status": "conjectural-random-words",
+          "quantum_bits": 107.997888224,
+          "term": "deep-ali"
+        },
+        {
+          "applies": true,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 252.378434324,
+          "formula": "b = num_queries*(-log2(rho+eta)) + grinding; eta=((log2(e)+log_blowup)*rho)/field_bits",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:80-99; ePrint 2025/2010 sec. 1.5",
+          "inputs": {
+            "configured_grinding_bits": 16,
+            "eta": 0.0016777851668981676,
+            "field_bits": 120,
+            "num_queries": 48,
+            "rho": 0.03125
+          },
+          "omissions": [],
+          "proof_status": "conjectural-random-words",
+          "quantum_bits": 244.378434324,
+          "term": "fri-query-phase"
+        },
+        {
+          "applies": true,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 121.999911948,
+          "formula": "b = log2(|F|) - log2((folding-1)*(n+1)) + grinding",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:101-143",
+          "inputs": {
+            "configured_grinding_bits": 16,
+            "field_bits": 120,
+            "folding_factor": 2,
+            "n": 16384,
+            "pinned_security_num_layers_guard": 14
+          },
+          "omissions": [],
+          "proof_status": "proven-within-conjectural-composite",
+          "quantum_bits": 113.999911948,
+          "term": "fri-commit-phase"
+        },
+        {
+          "applies": false,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": null,
+          "formula": "no accepted random-words analogue in pinned implementation",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/stark.rs:28-101,147-231,279-340",
+          "inputs": {
+            "num_batched_functions": 210
+          },
+          "omissions": [
+            "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path. Actual num_batched_functions=210; this result is optimistic."
+          ],
+          "proof_status": "omitted-unmodeled",
+          "quantum_bits": null,
+          "term": "batched-opening-proximity"
+        },
+        {
+          "applies": false,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": null,
+          "formula": "deterministic final-polynomial degree/length check; no probabilistic error term",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+          "inputs": {
+            "declared_bound": 1,
+            "fri_log_final_poly_len": 0
+          },
+          "omissions": [],
+          "proof_status": "deterministic-check",
+          "quantum_bits": null,
+          "term": "fri-final-phase"
+        },
+        {
+          "applies": false,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 16.0,
+          "formula": "commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+          "inputs": {
+            "configured_grinding_bits": 16,
+            "site": "FRI commit challenge"
+          },
+          "omissions": [
+            "Already included in fri-commit-phase; informational row, not an independent binding term."
+          ],
+          "proof_status": "cost-model-adjustment",
+          "quantum_bits": 8.0,
+          "term": "commit-grinding-adjustment"
+        },
+        {
+          "applies": false,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 16.0,
+          "formula": "query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+          "inputs": {
+            "configured_grinding_bits": 16,
+            "site": "FRI query challenge"
+          },
+          "omissions": [
+            "Already included in fri-query-phase; informational row, not an independent binding term."
+          ],
+          "proof_status": "cost-model-adjustment",
+          "quantum_bits": 8.0,
+          "term": "query-grinding-adjustment"
+        },
+        {
+          "applies": true,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 120.0,
+          "formula": "b <= conservative challenge-field budget",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+          "inputs": {
+            "challenge_field_bits": 120,
+            "extension_field_bits": 124
+          },
+          "omissions": [],
+          "proof_status": "assumption",
+          "quantum_bits": 120.0,
+          "term": "challenge-field-ceiling"
+        },
+        {
+          "applies": true,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 128.0,
+          "formula": "b <= stated MMCS binding security",
+          "formula_source": "Manifest assumption; not derived by p3-security",
+          "inputs": {
+            "construction": "KeccakPair512 manifest-assumed binding cap"
+          },
+          "omissions": [
+            "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
+          ],
+          "proof_status": "assumption-unreviewed",
+          "quantum_bits": 128.0,
+          "term": "mmcs-binding"
+        },
+        {
+          "applies": false,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": null,
+          "formula": "proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits",
+          "formula_source": "Plonky3 pinned uni-stark/src/security.rs:249-251,326-330",
+          "inputs": {
+            "hiding_degree_padding_bits": 1,
+            "is_zk": true,
+            "logical_degree_bits": 8,
+            "logical_trace_height": 256,
+            "proof_degree_bits": 9
+          },
+          "omissions": [],
+          "proof_status": "accounting-input",
+          "quantum_bits": null,
+          "term": "hiding-degree-padding"
+        }
+      ]
+    },
+    "udr": {
+      "assumptions": [],
+      "available": true,
+      "bottlenecks": [
+        {
+          "binding": {
+            "classical": true,
+            "quantum": true
+          },
+          "classical_bits": 61.860885625,
+          "quantum_bits": 53.860885625,
+          "term": "fri-query-phase"
+        },
+        {
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 98.292640868,
+          "quantum_bits": 98.292640868,
+          "term": "batched-opening-proximity"
+        },
+        {
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 107.997888224,
+          "quantum_bits": 107.997888224,
+          "term": "deep-ali"
+        },
+        {
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 109.788111705,
+          "quantum_bits": 109.788111705,
+          "term": "air-random-linear-combination"
+        },
+        {
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 121.999911948,
+          "quantum_bits": 113.999911948,
+          "term": "fri-commit-phase"
+        },
+        {
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 120.0,
+          "quantum_bits": 120.0,
+          "term": "challenge-field-ceiling"
+        },
+        {
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 128.0,
+          "quantum_bits": 128.0,
+          "term": "mmcs-binding"
+        }
+      ],
+      "classical_bits": 61.860885625,
+      "floor_classical_bits": 61,
+      "floor_quantum_bits": 53,
+      "proof_status": "proven-no-decoding-conjecture",
+      "proximity_m": null,
+      "quantum_bits": 53.860885625,
+      "regime": "udr",
+      "terms": [
+        {
+          "applies": true,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 109.788111705,
+          "formula": "b = log2(|F|) - log2(L+) - log2(num_constraints)",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/air.rs:1-16",
+          "inputs": {
+            "field_bits": 120.0,
+            "list_size": 1.0,
+            "num_constraints": 1186
+          },
+          "omissions": [],
+          "proof_status": "proven",
+          "quantum_bits": 109.788111705,
+          "term": "air-random-linear-combination"
+        },
+        {
+          "applies": true,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 107.997888224,
+          "formula": "b = log2(|F|) - log2(L+) - log2(max_deg*(k+max_combo-1)+(k-1))",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/deep.rs:1-28",
+          "inputs": {
+            "field_bits": 120.0,
+            "k": 512,
+            "list_size": 1.0,
+            "max_combo": 2,
+            "max_constraint_degree": 7
+          },
+          "omissions": [],
+          "proof_status": "proven",
+          "quantum_bits": 107.997888224,
+          "term": "deep-ali"
+        },
+        {
+          "applies": true,
+          "binding": {
+            "classical": true,
+            "quantum": true
+          },
+          "classical_bits": 61.860885625,
+          "formula": "b = -num_queries*log2(alpha) + grinding",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:196-202",
+          "inputs": {
+            "alpha": 0.51568603515625,
+            "configured_grinding_bits": 16,
+            "num_queries": 48
+          },
+          "omissions": [],
+          "proof_status": "proven",
+          "quantum_bits": 53.860885625,
+          "term": "fri-query-phase"
+        },
+        {
+          "applies": true,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 121.999911948,
+          "formula": "b = log2(|F|) - log2((folding-1)*(n+1)) + grinding",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/fri.rs:101-143",
+          "inputs": {
+            "configured_grinding_bits": 16,
+            "field_bits": 120,
+            "folding_factor": 2,
+            "n": 16384,
+            "pinned_security_num_layers_guard": 14
+          },
+          "omissions": [],
+          "proof_status": "proven",
+          "quantum_bits": 113.999911948,
+          "term": "fri-commit-phase"
+        },
+        {
+          "applies": true,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 98.292640868,
+          "formula": "b = log2(|F|) - (log_degree + log_inv_rate + log2(num_functions-1))",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/assumption.rs:126-245; security/src/stark.rs:104-145",
+          "inputs": {
+            "field_bits": 120,
+            "log_degree": 9,
+            "log_inv_rate": 5,
+            "num_batched_functions": 210
+          },
+          "omissions": [],
+          "proof_status": "proven",
+          "quantum_bits": 98.292640868,
+          "term": "batched-opening-proximity"
+        },
+        {
+          "applies": false,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": null,
+          "formula": "deterministic final-polynomial degree/length check; no probabilistic error term",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+          "inputs": {
+            "declared_bound": 1,
+            "fri_log_final_poly_len": 0
+          },
+          "omissions": [],
+          "proof_status": "deterministic-check",
+          "quantum_bits": null,
+          "term": "fri-final-phase"
+        },
+        {
+          "applies": false,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 16.0,
+          "formula": "commit-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+          "inputs": {
+            "configured_grinding_bits": 16,
+            "site": "FRI commit challenge"
+          },
+          "omissions": [
+            "Already included in fri-commit-phase; informational row, not an independent binding term."
+          ],
+          "proof_status": "cost-model-adjustment",
+          "quantum_bits": 8.0,
+          "term": "commit-grinding-adjustment"
+        },
+        {
+          "applies": false,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 16.0,
+          "formula": "query-phase delta bits = g classically; g/2 under the configured Grover-style quantum model",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: security/src/grinding.rs:1-54",
+          "inputs": {
+            "configured_grinding_bits": 16,
+            "site": "FRI query challenge"
+          },
+          "omissions": [
+            "Already included in fri-query-phase; informational row, not an independent binding term."
+          ],
+          "proof_status": "cost-model-adjustment",
+          "quantum_bits": 8.0,
+          "term": "query-grinding-adjustment"
+        },
+        {
+          "applies": true,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 120.0,
+          "formula": "b <= conservative challenge-field budget",
+          "formula_source": "Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c: uni-stark/src/security.rs:174-183,244-279,283-349",
+          "inputs": {
+            "challenge_field_bits": 120,
+            "extension_field_bits": 124
+          },
+          "omissions": [],
+          "proof_status": "assumption",
+          "quantum_bits": 120.0,
+          "term": "challenge-field-ceiling"
+        },
+        {
+          "applies": true,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": 128.0,
+          "formula": "b <= stated MMCS binding security",
+          "formula_source": "Manifest assumption; not derived by p3-security",
+          "inputs": {
+            "construction": "KeccakPair512 manifest-assumed binding cap"
+          },
+          "omissions": [
+            "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
+          ],
+          "proof_status": "assumption-unreviewed",
+          "quantum_bits": 128.0,
+          "term": "mmcs-binding"
+        },
+        {
+          "applies": false,
+          "binding": {
+            "classical": false,
+            "quantum": false
+          },
+          "classical_bits": null,
+          "formula": "proof_degree_bits = logical_degree_bits + hiding_degree_padding_bits",
+          "formula_source": "Plonky3 pinned uni-stark/src/security.rs:249-251,326-330",
+          "inputs": {
+            "hiding_degree_padding_bits": 1,
+            "is_zk": true,
+            "logical_degree_bits": 8,
+            "logical_trace_height": 256,
+            "proof_degree_bits": 9
+          },
+          "omissions": [],
+          "proof_status": "accounting-input",
+          "quantum_bits": null,
+          "term": "hiding-degree-padding"
+        }
+      ]
+    }
+  }
+}

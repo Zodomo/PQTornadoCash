@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "candidateId": "C10-fri",
+  "workPackage": "SP-50",
+  "classification": "RESEARCH_ONLY_NOT_SECURITY_QUALIFIED",
+  "relation": "frozen-v0.3-H0-WithdrawalAir",
+  "securityQualified": false,
+  "productionChange": false,
+  "winner": null,
+  "winnerStatus": "TWO_TX_FAIL",
+  "focusedCommand": "python3 research/fri-pareto/run.py",
+  "metadataOnlyCommand": "python3 research/fri-pareto/run.py --metadata-only",
+  "freshProofsPerAnchor": 2,
+  "entropy": "operating-system",
+  "anchorMeasurementStatus": "PASS_NATIVE_TWO_FRESH_DISTINCT_PROOFS_EACH",
+  "anchors": [
+    "b4-q32-c16x16-f0-r4",
+    "b4-q48-c16x16-f0-r4",
+    "b3-q111-c16x16-f0-r4"
+  ],
+  "securityMethod": "independent calculator single_target.best_proven.floor_quantum_bits",
+  "projectionLabel": "PROJECTED_BASELINE_REGRESSION_NOT_MEASURED",
+  "q32GeneratedProvenFloorBits": 56,
+  "q48GeneratedProvenFloorBits": 81,
+  "minimum100Profile": "b3-q111-c16x16-f0-r4",
+  "openGates": [
+    "external-cryptographic-review",
+    "complete-QROM-Fiat-Shamir-proof",
+    "MMCS-structural-analysis",
+    "transcript-review",
+    "conditional-theorem-correlated-agreement-re-review",
+    "advisory-closure"
+  ]
+}

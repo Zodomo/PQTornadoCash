@@ -1,0 +1,1158 @@
+{
+  "baselineDistribution": "research/candidates/v03-baseline/gas/measured-summary.json",
+  "calculator": "research/security-model/calculator/security_calculator.py",
+  "classification": "RESEARCH_ONLY_NOT_SECURITY_QUALIFIED",
+  "minimum100Profile": "b3-q111-c16x16-f0-r4",
+  "nondominatedProfiles": [
+    "b3-q111-c16x16-f0-r2"
+  ],
+  "paretoFronts": [
+    [
+      "b3-q111-c16x16-f0-r2"
+    ],
+    [
+      "b3-q111-c16x16-f0-r4",
+      "b3-q111-c20x20-f0-r4"
+    ],
+    [
+      "b3-q111-c16x16-f1-r4"
+    ],
+    [
+      "b3-q112-c16x16-f0-r4",
+      "b3-q111-c16x16-f0-r6"
+    ]
+  ],
+  "projectionStatus": "All broad-grid proof, timing, RSS, ABI, and gas values are PROJECTED; only fresh anchor files are measured.",
+  "q32Floor": 56,
+  "q48Floor": 81,
+  "rows": [
+    {
+      "buildable": false,
+      "profileId": "b2-q111-c16x16-f0-r4",
+      "rejection": "security-calculator: max_constraint_degree 7 exceeds buildable zk limit 4",
+      "securityQualified": false
+    },
+    {
+      "bestGeneratedProvenBits": 87,
+      "bestGeneratedProvenBitsExact": 87.62710061,
+      "buildable": true,
+      "conditionalAssumptions": [],
+      "gateStatus": "SECURITY_BELOW_100",
+      "generatedProofStatus": "proven-no-decoding-conjecture",
+      "parameters": {
+        "commitPow": 16,
+        "id": "b3-q96-c16x16-f0-r4",
+        "logBlowup": 3,
+        "logFinalPoly": 0,
+        "queries": 96,
+        "queryPow": 16,
+        "randomCodewords": 4
+      },
+      "profileId": "b3-q96-c16x16-f0-r4",
+      "projection": {
+        "abiCalldataABytes": 262229,
+        "abiCalldataBBytes": 251507,
+        "activeCombinedOneTransactionGas": 61993412,
+        "baseline": {
+          "logBlowup": 4,
+          "proofBytesP50": 208940,
+          "q": 32,
+          "runs": 60
+        },
+        "evidenceClass": "PROJECTED_BASELINE_REGRESSION_NOT_MEASURED",
+        "formulaVersion": 1,
+        "gasA": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 10459550,
+            "eip7825Margin": -16968683,
+            "projectedGas": 33745899
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 25194984,
+            "eip7825Margin": -16968683,
+            "projectedGas": 33745899
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 16803656,
+            "eip7825Margin": -16968683,
+            "projectedGas": 33745899
+          }
+        },
+        "gasB": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 10032740,
+            "eip7825Margin": -11491297,
+            "projectedGas": 28268513
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 24165672,
+            "eip7825Margin": -11491297,
+            "projectedGas": 28268513
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 16117448,
+            "eip7825Margin": -11491297,
+            "projectedGas": 28268513
+          }
+        },
+        "partABytes": 261911,
+        "partBBytes": 251157,
+        "productionCodecProofBytes": 513068,
+        "projectedPeakRssBytes": 23586406,
+        "projectedProverMs": 725.962,
+        "transactionShapeStatus": "TWO_TX_FAIL"
+      },
+      "securityQualified": false,
+      "securityReport": "security/b3-q96-c16x16-f0-r4.json"
+    },
+    {
+      "bestGeneratedProvenBits": 99,
+      "bestGeneratedProvenBitsExact": 99.239386115,
+      "buildable": true,
+      "conditionalAssumptions": [],
+      "gateStatus": "SECURITY_BELOW_100",
+      "generatedProofStatus": "proven-no-decoding-conjecture",
+      "parameters": {
+        "commitPow": 16,
+        "id": "b3-q110-c16x16-f0-r4",
+        "logBlowup": 3,
+        "logFinalPoly": 0,
+        "queries": 110,
+        "queryPow": 16,
+        "randomCodewords": 4
+      },
+      "profileId": "b3-q110-c16x16-f0-r4",
+      "projection": {
+        "abiCalldataABytes": 298935,
+        "abiCalldataBBytes": 286705,
+        "activeCombinedOneTransactionGas": 71037180,
+        "baseline": {
+          "logBlowup": 4,
+          "proofBytesP50": 208940,
+          "q": 32,
+          "runs": 60
+        },
+        "evidenceClass": "PROJECTED_BASELINE_REGRESSION_NOT_MEASURED",
+        "formulaVersion": 1,
+        "gasA": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 11920680,
+            "eip7825Margin": -21889960,
+            "projectedGas": 38667176
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 28718760,
+            "eip7825Margin": -21889960,
+            "projectedGas": 38667176
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 19152840,
+            "eip7825Margin": -21889960,
+            "projectedGas": 38667176
+          }
+        },
+        "gasB": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 11433850,
+            "eip7825Margin": -15613788,
+            "projectedGas": 32391004
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 27544680,
+            "eip7825Margin": -15613788,
+            "projectedGas": 32391004
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 18370120,
+            "eip7825Margin": -15613788,
+            "projectedGas": 32391004
+          }
+        },
+        "partABytes": 298617,
+        "partBBytes": 286355,
+        "productionCodecProofBytes": 584972,
+        "projectedPeakRssBytes": 23586406,
+        "projectedProverMs": 785.514,
+        "transactionShapeStatus": "TWO_TX_FAIL"
+      },
+      "securityQualified": false,
+      "securityReport": "security/b3-q110-c16x16-f0-r4.json"
+    },
+    {
+      "bestGeneratedProvenBits": 100,
+      "bestGeneratedProvenBitsExact": 100.06883508,
+      "buildable": true,
+      "conditionalAssumptions": [],
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "proven-no-decoding-conjecture",
+      "nondominated": false,
+      "parameters": {
+        "commitPow": 16,
+        "id": "b3-q111-c16x16-f0-r4",
+        "logBlowup": 3,
+        "logFinalPoly": 0,
+        "queries": 111,
+        "queryPow": 16,
+        "randomCodewords": 4
+      },
+      "paretoRank": 2,
+      "profileId": "b3-q111-c16x16-f0-r4",
+      "projection": {
+        "abiCalldataABytes": 301557,
+        "abiCalldataBBytes": 289219,
+        "activeCombinedOneTransactionGas": 71683164,
+        "baseline": {
+          "logBlowup": 4,
+          "proofBytesP50": 208940,
+          "q": 32,
+          "runs": 60
+        },
+        "evidenceClass": "PROJECTED_BASELINE_REGRESSION_NOT_MEASURED",
+        "formulaVersion": 1,
+        "gasA": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 12025080,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 28970472,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 19320648,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          }
+        },
+        "gasB": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 11533930,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 27786024,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 18531016,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          }
+        },
+        "partABytes": 301239,
+        "partBBytes": 288869,
+        "productionCodecProofBytes": 590108,
+        "projectedPeakRssBytes": 23586406,
+        "projectedProverMs": 789.767,
+        "transactionShapeStatus": "TWO_TX_FAIL"
+      },
+      "securityQualified": false,
+      "securityReport": "security/b3-q111-c16x16-f0-r4.json"
+    },
+    {
+      "bestGeneratedProvenBits": 100,
+      "bestGeneratedProvenBitsExact": 100.292640868,
+      "buildable": true,
+      "conditionalAssumptions": [],
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "proven-no-decoding-conjecture",
+      "nondominated": false,
+      "parameters": {
+        "commitPow": 16,
+        "id": "b3-q112-c16x16-f0-r4",
+        "logBlowup": 3,
+        "logFinalPoly": 0,
+        "queries": 112,
+        "queryPow": 16,
+        "randomCodewords": 4
+      },
+      "paretoRank": 4,
+      "profileId": "b3-q112-c16x16-f0-r4",
+      "projection": {
+        "abiCalldataABytes": 304178,
+        "abiCalldataBBytes": 291734,
+        "activeCombinedOneTransactionGas": 72329148,
+        "baseline": {
+          "logBlowup": 4,
+          "proofBytesP50": 208940,
+          "q": 32,
+          "runs": 60
+        },
+        "evidenceClass": "PROJECTED_BASELINE_REGRESSION_NOT_MEASURED",
+        "formulaVersion": 1,
+        "gasA": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 12129410,
+            "eip7825Margin": -22593000,
+            "projectedGas": 39370216
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 29222088,
+            "eip7825Margin": -22593000,
+            "projectedGas": 39370216
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 19488392,
+            "eip7825Margin": -22593000,
+            "projectedGas": 39370216
+          }
+        },
+        "gasB": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 11634050,
+            "eip7825Margin": -16202716,
+            "projectedGas": 32979932
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 28027464,
+            "eip7825Margin": -16202716,
+            "projectedGas": 32979932
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 18691976,
+            "eip7825Margin": -16202716,
+            "projectedGas": 32979932
+          }
+        },
+        "partABytes": 303860,
+        "partBBytes": 291384,
+        "productionCodecProofBytes": 595244,
+        "projectedPeakRssBytes": 23586406,
+        "projectedProverMs": 794.021,
+        "transactionShapeStatus": "TWO_TX_FAIL"
+      },
+      "securityQualified": false,
+      "securityReport": "security/b3-q112-c16x16-f0-r4.json"
+    },
+    {
+      "bestGeneratedProvenBits": 98,
+      "bestGeneratedProvenBitsExact": 98.06883508,
+      "buildable": true,
+      "conditionalAssumptions": [],
+      "gateStatus": "SECURITY_BELOW_100",
+      "generatedProofStatus": "proven-no-decoding-conjecture",
+      "parameters": {
+        "commitPow": 12,
+        "id": "b3-q111-c12x12-f0-r4",
+        "logBlowup": 3,
+        "logFinalPoly": 0,
+        "queries": 111,
+        "queryPow": 12,
+        "randomCodewords": 4
+      },
+      "profileId": "b3-q111-c12x12-f0-r4",
+      "projection": {
+        "abiCalldataABytes": 301557,
+        "abiCalldataBBytes": 289219,
+        "activeCombinedOneTransactionGas": 71683164,
+        "baseline": {
+          "logBlowup": 4,
+          "proofBytesP50": 208940,
+          "q": 32,
+          "runs": 60
+        },
+        "evidenceClass": "PROJECTED_BASELINE_REGRESSION_NOT_MEASURED",
+        "formulaVersion": 1,
+        "gasA": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 12025080,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 28970472,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 19320648,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          }
+        },
+        "gasB": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 11533930,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 27786024,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 18531016,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          }
+        },
+        "partABytes": 301239,
+        "partBBytes": 288869,
+        "productionCodecProofBytes": 590108,
+        "projectedPeakRssBytes": 23586406,
+        "projectedProverMs": 789.767,
+        "transactionShapeStatus": "TWO_TX_FAIL"
+      },
+      "securityQualified": false,
+      "securityReport": "security/b3-q111-c12x12-f0-r4.json"
+    },
+    {
+      "bestGeneratedProvenBits": 100,
+      "bestGeneratedProvenBitsExact": 100.292640868,
+      "buildable": true,
+      "conditionalAssumptions": [],
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "proven-no-decoding-conjecture",
+      "nondominated": false,
+      "parameters": {
+        "commitPow": 20,
+        "id": "b3-q111-c20x20-f0-r4",
+        "logBlowup": 3,
+        "logFinalPoly": 0,
+        "queries": 111,
+        "queryPow": 20,
+        "randomCodewords": 4
+      },
+      "paretoRank": 2,
+      "profileId": "b3-q111-c20x20-f0-r4",
+      "projection": {
+        "abiCalldataABytes": 301557,
+        "abiCalldataBBytes": 289219,
+        "activeCombinedOneTransactionGas": 71683164,
+        "baseline": {
+          "logBlowup": 4,
+          "proofBytesP50": 208940,
+          "q": 32,
+          "runs": 60
+        },
+        "evidenceClass": "PROJECTED_BASELINE_REGRESSION_NOT_MEASURED",
+        "formulaVersion": 1,
+        "gasA": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 12025080,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 28970472,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 19320648,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          }
+        },
+        "gasB": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 11533930,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 27786024,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 18531016,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          }
+        },
+        "partABytes": 301239,
+        "partBBytes": 288869,
+        "productionCodecProofBytes": 590108,
+        "projectedPeakRssBytes": 23586406,
+        "projectedProverMs": 789.767,
+        "transactionShapeStatus": "TWO_TX_FAIL"
+      },
+      "securityQualified": false,
+      "securityReport": "security/b3-q111-c20x20-f0-r4.json"
+    },
+    {
+      "bestGeneratedProvenBits": 100,
+      "bestGeneratedProvenBitsExact": 100.06883508,
+      "buildable": true,
+      "conditionalAssumptions": [],
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "proven-no-decoding-conjecture",
+      "nondominated": false,
+      "parameters": {
+        "commitPow": 16,
+        "id": "b3-q111-c16x16-f1-r4",
+        "logBlowup": 3,
+        "logFinalPoly": 1,
+        "queries": 111,
+        "queryPow": 16,
+        "randomCodewords": 4
+      },
+      "paretoRank": 3,
+      "profileId": "b3-q111-c16x16-f1-r4",
+      "projection": {
+        "abiCalldataABytes": 301565,
+        "abiCalldataBBytes": 289227,
+        "activeCombinedOneTransactionGas": 71683164,
+        "baseline": {
+          "logBlowup": 4,
+          "proofBytesP50": 208940,
+          "q": 32,
+          "runs": 60
+        },
+        "evidenceClass": "PROJECTED_BASELINE_REGRESSION_NOT_MEASURED",
+        "formulaVersion": 1,
+        "gasA": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 12025370,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 28971240,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 19321160,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          }
+        },
+        "gasB": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 11534250,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 27786792,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 18531528,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          }
+        },
+        "partABytes": 301247,
+        "partBBytes": 288877,
+        "productionCodecProofBytes": 590124,
+        "projectedPeakRssBytes": 23586406,
+        "projectedProverMs": 789.767,
+        "transactionShapeStatus": "TWO_TX_FAIL"
+      },
+      "securityQualified": false,
+      "securityReport": "security/b3-q111-c16x16-f1-r4.json"
+    },
+    {
+      "bestGeneratedProvenBits": 100,
+      "bestGeneratedProvenBitsExact": 100.06883508,
+      "buildable": true,
+      "conditionalAssumptions": [],
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "proven-no-decoding-conjecture",
+      "nondominated": true,
+      "parameters": {
+        "commitPow": 16,
+        "id": "b3-q111-c16x16-f0-r2",
+        "logBlowup": 3,
+        "logFinalPoly": 0,
+        "queries": 111,
+        "queryPow": 16,
+        "randomCodewords": 2
+      },
+      "paretoRank": 1,
+      "profileId": "b3-q111-c16x16-f0-r2",
+      "projection": {
+        "abiCalldataABytes": 292633,
+        "abiCalldataBBytes": 280663,
+        "activeCombinedOneTransactionGas": 71683164,
+        "baseline": {
+          "logBlowup": 4,
+          "proofBytesP50": 208940,
+          "q": 32,
+          "runs": 60
+        },
+        "evidenceClass": "PROJECTED_BASELINE_REGRESSION_NOT_MEASURED",
+        "formulaVersion": 1,
+        "gasA": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 11669830,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 28113768,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 18749512,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          }
+        },
+        "gasB": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 11193340,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 26964648,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 17983432,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          }
+        },
+        "partABytes": 292315,
+        "partBBytes": 280313,
+        "productionCodecProofBytes": 572628,
+        "projectedPeakRssBytes": 23586406,
+        "projectedProverMs": 789.767,
+        "transactionShapeStatus": "TWO_TX_FAIL"
+      },
+      "securityQualified": false,
+      "securityReport": "security/b3-q111-c16x16-f0-r2.json"
+    },
+    {
+      "bestGeneratedProvenBits": 100,
+      "bestGeneratedProvenBitsExact": 100.06883508,
+      "buildable": true,
+      "conditionalAssumptions": [],
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "proven-no-decoding-conjecture",
+      "nondominated": false,
+      "parameters": {
+        "commitPow": 16,
+        "id": "b3-q111-c16x16-f0-r6",
+        "logBlowup": 3,
+        "logFinalPoly": 0,
+        "queries": 111,
+        "queryPow": 16,
+        "randomCodewords": 6
+      },
+      "paretoRank": 4,
+      "profileId": "b3-q111-c16x16-f0-r6",
+      "projection": {
+        "abiCalldataABytes": 310480,
+        "abiCalldataBBytes": 297776,
+        "activeCombinedOneTransactionGas": 71683164,
+        "baseline": {
+          "logBlowup": 4,
+          "proofBytesP50": 208940,
+          "q": 32,
+          "runs": 60
+        },
+        "evidenceClass": "PROJECTED_BASELINE_REGRESSION_NOT_MEASURED",
+        "formulaVersion": 1,
+        "gasA": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 12380260,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 29827080,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 19891720,
+            "eip7825Margin": -22241480,
+            "projectedGas": 39018696
+          }
+        },
+        "gasB": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 11874560,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 28607496,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 19078664,
+            "eip7825Margin": -15908252,
+            "projectedGas": 32685468
+          }
+        },
+        "partABytes": 310162,
+        "partBBytes": 297426,
+        "productionCodecProofBytes": 607588,
+        "projectedPeakRssBytes": 23586406,
+        "projectedProverMs": 789.767,
+        "transactionShapeStatus": "TWO_TX_FAIL"
+      },
+      "securityQualified": false,
+      "securityReport": "security/b3-q111-c16x16-f0-r6.json"
+    },
+    {
+      "bestGeneratedProvenBits": 56,
+      "bestGeneratedProvenBitsExact": 56.201226486,
+      "buildable": true,
+      "conditionalAssumptions": [
+        "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+      ],
+      "gateStatus": "SECURITY_BELOW_100",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "commitPow": 16,
+        "id": "b4-q32-c16x16-f0-r4",
+        "logBlowup": 4,
+        "logFinalPoly": 0,
+        "queries": 32,
+        "queryPow": 16,
+        "randomCodewords": 4
+      },
+      "profileId": "b4-q32-c16x16-f0-r4",
+      "projection": {
+        "abiCalldataABytes": 106978,
+        "abiCalldataBBytes": 102630,
+        "activeCombinedOneTransactionGas": 30603402,
+        "baseline": {
+          "logBlowup": 4,
+          "proofBytesP50": 208940,
+          "q": 32,
+          "runs": 60
+        },
+        "evidenceClass": "PROJECTED_BASELINE_REGRESSION_NOT_MEASURED",
+        "formulaVersion": 1,
+        "gasA": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 4279480,
+            "eip7825Margin": 112574,
+            "projectedGas": 16664642
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 10290888,
+            "eip7825Margin": 112574,
+            "projectedGas": 16664642
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 6867592,
+            "eip7825Margin": 112574,
+            "projectedGas": 16664642
+          }
+        },
+        "gasB": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 4106400,
+            "eip7825Margin": 2817456,
+            "projectedGas": 13959760
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 9873480,
+            "eip7825Margin": 2817456,
+            "projectedGas": 13959760
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 6589320,
+            "eip7825Margin": 2817456,
+            "projectedGas": 13959760
+          }
+        },
+        "partABytes": 106660,
+        "partBBytes": 102280,
+        "productionCodecProofBytes": 208940,
+        "projectedPeakRssBytes": 29483008,
+        "projectedProverMs": 604.969,
+        "transactionShapeStatus": "ONE_TX_FAIL"
+      },
+      "securityQualified": false,
+      "securityReport": "security/b4-q32-c16x16-f0-r4.json"
+    },
+    {
+      "bestGeneratedProvenBits": 81,
+      "bestGeneratedProvenBitsExact": 81.580445275,
+      "buildable": true,
+      "conditionalAssumptions": [
+        "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+      ],
+      "gateStatus": "SECURITY_BELOW_100",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "commitPow": 16,
+        "id": "b4-q48-c16x16-f0-r4",
+        "logBlowup": 4,
+        "logFinalPoly": 0,
+        "queries": 48,
+        "queryPow": 16,
+        "randomCodewords": 4
+      },
+      "profileId": "b4-q48-c16x16-f0-r4",
+      "projection": {
+        "abiCalldataABytes": 155200,
+        "abiCalldataBBytes": 148872,
+        "activeCombinedOneTransactionGas": 45915601,
+        "baseline": {
+          "logBlowup": 4,
+          "proofBytesP50": 208940,
+          "q": 32,
+          "runs": 60
+        },
+        "evidenceClass": "PROJECTED_BASELINE_REGRESSION_NOT_MEASURED",
+        "formulaVersion": 1,
+        "gasA": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 6199030,
+            "eip7825Margin": -8219746,
+            "projectedGas": 24996962
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 14920200,
+            "eip7825Margin": -8219746,
+            "projectedGas": 24996962
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 9953800,
+            "eip7825Margin": -8219746,
+            "projectedGas": 24996962
+          }
+        },
+        "gasB": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 5947140,
+            "eip7825Margin": -4162423,
+            "projectedGas": 20939639
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 14312712,
+            "eip7825Margin": -4162423,
+            "projectedGas": 20939639
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 9548808,
+            "eip7825Margin": -4162423,
+            "projectedGas": 20939639
+          }
+        },
+        "partABytes": 154882,
+        "partBBytes": 148522,
+        "productionCodecProofBytes": 303404,
+        "projectedPeakRssBytes": 29483008,
+        "projectedProverMs": 695.714,
+        "transactionShapeStatus": "TWO_TX_FAIL"
+      },
+      "securityQualified": false,
+      "securityReport": "security/b4-q48-c16x16-f0-r4.json"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.840828758,
+      "buildable": true,
+      "conditionalAssumptions": [
+        "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+      ],
+      "gateStatus": "SECURITY_BELOW_100",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "commitPow": 16,
+        "id": "b4-q64-c16x16-f0-r4",
+        "logBlowup": 4,
+        "logFinalPoly": 0,
+        "queries": 64,
+        "queryPow": 16,
+        "randomCodewords": 4
+      },
+      "profileId": "b4-q64-c16x16-f0-r4",
+      "projection": {
+        "abiCalldataABytes": 203422,
+        "abiCalldataBBytes": 195114,
+        "activeCombinedOneTransactionGas": 61227802,
+        "baseline": {
+          "logBlowup": 4,
+          "proofBytesP50": 208940,
+          "q": 32,
+          "runs": 60
+        },
+        "evidenceClass": "PROJECTED_BASELINE_REGRESSION_NOT_MEASURED",
+        "formulaVersion": 1,
+        "gasA": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 8118610,
+            "eip7825Margin": -16552067,
+            "projectedGas": 33329283
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 19549512,
+            "eip7825Margin": -16552067,
+            "projectedGas": 33329283
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 13040008,
+            "eip7825Margin": -16552067,
+            "projectedGas": 33329283
+          }
+        },
+        "gasB": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 7787880,
+            "eip7825Margin": -11142303,
+            "projectedGas": 27919519
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 18751944,
+            "eip7825Margin": -11142303,
+            "projectedGas": 27919519
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 12508296,
+            "eip7825Margin": -11142303,
+            "projectedGas": 27919519
+          }
+        },
+        "partABytes": 203104,
+        "partBBytes": 194764,
+        "productionCodecProofBytes": 397868,
+        "projectedPeakRssBytes": 29483008,
+        "projectedProverMs": 786.459,
+        "transactionShapeStatus": "TWO_TX_FAIL"
+      },
+      "securityQualified": false,
+      "securityReport": "security/b4-q64-c16x16-f0-r4.json"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.840828758,
+      "buildable": true,
+      "conditionalAssumptions": [
+        "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+      ],
+      "gateStatus": "SECURITY_BELOW_100",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "commitPow": 16,
+        "id": "b4-q80-c16x16-f0-r4",
+        "logBlowup": 4,
+        "logFinalPoly": 0,
+        "queries": 80,
+        "queryPow": 16,
+        "randomCodewords": 4
+      },
+      "profileId": "b4-q80-c16x16-f0-r4",
+      "projection": {
+        "abiCalldataABytes": 251644,
+        "abiCalldataBBytes": 241356,
+        "activeCombinedOneTransactionGas": 76540003,
+        "baseline": {
+          "logBlowup": 4,
+          "proofBytesP50": 208940,
+          "q": 32,
+          "runs": 60
+        },
+        "evidenceClass": "PROJECTED_BASELINE_REGRESSION_NOT_MEASURED",
+        "formulaVersion": 1,
+        "gasA": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 10038190,
+            "eip7825Margin": -24884388,
+            "projectedGas": 41661604
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 24178824,
+            "eip7825Margin": -24884388,
+            "projectedGas": 41661604
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 16126216,
+            "eip7825Margin": -24884388,
+            "projectedGas": 41661604
+          }
+        },
+        "gasB": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 9628650,
+            "eip7825Margin": -18122183,
+            "projectedGas": 34899399
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 23191176,
+            "eip7825Margin": -18122183,
+            "projectedGas": 34899399
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 15467784,
+            "eip7825Margin": -18122183,
+            "projectedGas": 34899399
+          }
+        },
+        "partABytes": 251326,
+        "partBBytes": 241006,
+        "productionCodecProofBytes": 492332,
+        "projectedPeakRssBytes": 29483008,
+        "projectedProverMs": 877.204,
+        "transactionShapeStatus": "TWO_TX_FAIL"
+      },
+      "securityQualified": false,
+      "securityReport": "security/b4-q80-c16x16-f0-r4.json"
+    },
+    {
+      "bestGeneratedProvenBits": 80,
+      "bestGeneratedProvenBitsExact": 80.527978361,
+      "buildable": true,
+      "conditionalAssumptions": [
+        "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+      ],
+      "gateStatus": "SECURITY_BELOW_100",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "commitPow": 16,
+        "id": "b5-q38-c16x16-f0-r4",
+        "logBlowup": 5,
+        "logFinalPoly": 0,
+        "queries": 38,
+        "queryPow": 16,
+        "randomCodewords": 4
+      },
+      "profileId": "b5-q38-c16x16-f0-r4",
+      "projection": {
+        "abiCalldataABytes": 139959,
+        "abiCalldataBBytes": 134257,
+        "activeCombinedOneTransactionGas": 59983686,
+        "baseline": {
+          "logBlowup": 4,
+          "proofBytesP50": 208940,
+          "q": 32,
+          "runs": 60
+        },
+        "evidenceClass": "PROJECTED_BASELINE_REGRESSION_NOT_MEASURED",
+        "formulaVersion": 1,
+        "gasA": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 5592330,
+            "eip7825Margin": -15875066,
+            "projectedGas": 32652282
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 13457064,
+            "eip7825Margin": -15875066,
+            "projectedGas": 32652282
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 8978376,
+            "eip7825Margin": -15875066,
+            "projectedGas": 32652282
+          }
+        },
+        "gasB": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 5365360,
+            "eip7825Margin": -10575188,
+            "projectedGas": 27352404
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 12909672,
+            "eip7825Margin": -10575188,
+            "projectedGas": 27352404
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 8613448,
+            "eip7825Margin": -10575188,
+            "projectedGas": 27352404
+          }
+        },
+        "partABytes": 139641,
+        "partBBytes": 133907,
+        "productionCodecProofBytes": 273548,
+        "projectedPeakRssBytes": 41276211,
+        "projectedProverMs": 958.497,
+        "transactionShapeStatus": "TWO_TX_FAIL"
+      },
+      "securityQualified": false,
+      "securityReport": "security/b5-q38-c16x16-f0-r4.json"
+    },
+    {
+      "bestGeneratedProvenBits": 82,
+      "bestGeneratedProvenBitsExact": 82.340828758,
+      "buildable": true,
+      "conditionalAssumptions": [
+        "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+      ],
+      "gateStatus": "SECURITY_BELOW_100",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "commitPow": 16,
+        "id": "b5-q48-c16x16-f0-r4",
+        "logBlowup": 5,
+        "logFinalPoly": 0,
+        "queries": 48,
+        "queryPow": 16,
+        "randomCodewords": 4
+      },
+      "profileId": "b5-q48-c16x16-f0-r4",
+      "projection": {
+        "abiCalldataABytes": 174018,
+        "abiCalldataBBytes": 166918,
+        "activeCombinedOneTransactionGas": 75774393,
+        "baseline": {
+          "logBlowup": 4,
+          "proofBytesP50": 208940,
+          "q": 32,
+          "runs": 60
+        },
+        "evidenceClass": "PROJECTED_BASELINE_REGRESSION_NOT_MEASURED",
+        "formulaVersion": 1,
+        "gasA": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 6948120,
+            "eip7825Margin": -24467772,
+            "projectedGas": 41244988
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 16726728,
+            "eip7825Margin": -24467772,
+            "projectedGas": 41244988
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 11158152,
+            "eip7825Margin": -24467772,
+            "projectedGas": 41244988
+          }
+        },
+        "gasB": {
+          "active_eip7623_10_40": {
+            "calldataFloorGas": 6665500,
+            "eip7825Margin": -17773189,
+            "projectedGas": 34550405
+          },
+          "draft_unscheduled_96_96": {
+            "calldataFloorGas": 16045128,
+            "eip7825Margin": -17773189,
+            "projectedGas": 34550405
+          },
+          "scheduled_unactivated_64_64": {
+            "calldataFloorGas": 10703752,
+            "eip7825Margin": -17773189,
+            "projectedGas": 34550405
+          }
+        },
+        "partABytes": 173700,
+        "partBBytes": 166568,
+        "productionCodecProofBytes": 340268,
+        "projectedPeakRssBytes": 41276211,
+        "projectedProverMs": 1043.571,
+        "transactionShapeStatus": "TWO_TX_FAIL"
+      },
+      "securityQualified": false,
+      "securityReport": "security/b5-q48-c16x16-f0-r4.json"
+    }
+  ],
+  "schemaVersion": 1,
+  "winner": null,
+  "winnerStatus": "TWO_TX_FAIL"
+}

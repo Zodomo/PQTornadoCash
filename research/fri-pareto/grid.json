@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "candidateId": "C10-fri",
+  "classification": "RESEARCH_ONLY_NOT_SECURITY_QUALIFIED",
+  "plonky3Commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+  "baseManifest": "../security-model/manifests/v03-q32.json",
+  "baselineDistribution": "../candidates/v03-baseline/gas/measured-summary.json",
+  "anchorProfiles": ["b4-q32-c16x16-f0-r4", "b4-q48-c16x16-f0-r4", "b3-q111-c16x16-f0-r4"],
+  "profiles": [
+    {"id":"b2-q111-c16x16-f0-r4","logBlowup":2,"queries":111,"commitPow":16,"queryPow":16,"logFinalPoly":0,"randomCodewords":4,"expectedBuildable":false},
+    {"id":"b3-q96-c16x16-f0-r4","logBlowup":3,"queries":96,"commitPow":16,"queryPow":16,"logFinalPoly":0,"randomCodewords":4},
+    {"id":"b3-q110-c16x16-f0-r4","logBlowup":3,"queries":110,"commitPow":16,"queryPow":16,"logFinalPoly":0,"randomCodewords":4},
+    {"id":"b3-q111-c16x16-f0-r4","logBlowup":3,"queries":111,"commitPow":16,"queryPow":16,"logFinalPoly":0,"randomCodewords":4},
+    {"id":"b3-q112-c16x16-f0-r4","logBlowup":3,"queries":112,"commitPow":16,"queryPow":16,"logFinalPoly":0,"randomCodewords":4},
+    {"id":"b3-q111-c12x12-f0-r4","logBlowup":3,"queries":111,"commitPow":12,"queryPow":12,"logFinalPoly":0,"randomCodewords":4},
+    {"id":"b3-q111-c20x20-f0-r4","logBlowup":3,"queries":111,"commitPow":20,"queryPow":20,"logFinalPoly":0,"randomCodewords":4},
+    {"id":"b3-q111-c16x16-f1-r4","logBlowup":3,"queries":111,"commitPow":16,"queryPow":16,"logFinalPoly":1,"randomCodewords":4},
+    {"id":"b3-q111-c16x16-f0-r2","logBlowup":3,"queries":111,"commitPow":16,"queryPow":16,"logFinalPoly":0,"randomCodewords":2},
+    {"id":"b3-q111-c16x16-f0-r6","logBlowup":3,"queries":111,"commitPow":16,"queryPow":16,"logFinalPoly":0,"randomCodewords":6},
+    {"id":"b4-q32-c16x16-f0-r4","logBlowup":4,"queries":32,"commitPow":16,"queryPow":16,"logFinalPoly":0,"randomCodewords":4},
+    {"id":"b4-q48-c16x16-f0-r4","logBlowup":4,"queries":48,"commitPow":16,"queryPow":16,"logFinalPoly":0,"randomCodewords":4},
+    {"id":"b4-q64-c16x16-f0-r4","logBlowup":4,"queries":64,"commitPow":16,"queryPow":16,"logFinalPoly":0,"randomCodewords":4},
+    {"id":"b4-q80-c16x16-f0-r4","logBlowup":4,"queries":80,"commitPow":16,"queryPow":16,"logFinalPoly":0,"randomCodewords":4},
+    {"id":"b5-q38-c16x16-f0-r4","logBlowup":5,"queries":38,"commitPow":16,"queryPow":16,"logFinalPoly":0,"randomCodewords":4},
+    {"id":"b5-q48-c16x16-f0-r4","logBlowup":5,"queries":48,"commitPow":16,"queryPow":16,"logFinalPoly":0,"randomCodewords":4}
+  ]
+}
