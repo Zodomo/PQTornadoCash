@@ -1,0 +1,41 @@
+{
+  "schema": "pqtc-external-cryptanalysis-review-status-v1",
+  "packet_id": "sp10-sp30-digest-security-2026-09-04",
+  "classification": "INTERNAL_PACKET_READY_EXTERNAL_REVIEW_OPEN",
+  "candidate_disposition": "NO_AIR_CANDIDATE",
+  "security_qualified_candidate_count": 0,
+  "external_review_complete": false,
+  "integration_authorized": false,
+  "deployment_authorized": false,
+  "coverage": {
+    "required_topics": 11,
+    "required_topics_complete": true,
+    "reviewer_checklist_items": 8,
+    "reviewer_checklist_complete": true,
+    "hash_pinned_local_sources": 28,
+    "retained_external_source_pins": 8,
+    "compressed_vectors_referenced_not_duplicated": true
+  },
+  "packet": {
+    "path": "research/cryptanalysis/review-packet/REVIEW_PACKET.md",
+    "sha256": "6ab17b27a89d61541a7834060f68ff3ae31e517d89f8c02ff42d57c55d19b184"
+  },
+  "verification": {
+    "command": "python3 research/cryptanalysis/review-packet/assemble.py --check",
+    "result": "PASS",
+    "all_local_paths_and_hashes_resolve": true,
+    "deterministic_assembly_matches": true
+  },
+  "open_gates": [
+    "independent external cryptographic review",
+    "exact constrained-lane algebraic analysis",
+    "width-32 round-skip applicability and complexity",
+    "complete two-branch Keccak composition and truncation reduction",
+    "full SP-30 claim-boundary state-machine enforcement",
+    "Rust/Solidity/TypeScript mutation and parity execution",
+    "complete continuation binding implementation",
+    "Fiat-Shamir/QROM and zero-knowledge status",
+    "accepted complete >=100-bit AIR/FRI profile",
+    "defensible protocol-lifetime multi-target populations"
+  ]
+}
