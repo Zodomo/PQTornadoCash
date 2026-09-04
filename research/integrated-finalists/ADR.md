@@ -12,7 +12,7 @@ The local records do not contain a security-qualified fixed compression, an impl
 
 ## Decision
 
-Use a deterministic, fail-closed checker over hash-pinned local evidence. For every required component, separately evaluate semantic, hiding, security, native, EVM, calldata, gas, and source-binding gates. Exact equality to the coded pass predicate is required. Missing or null evidence is non-passing, never zero and never an implied success. A bundle with an alternative inner/backend group needs one alternative that passes all eight gates.
+Use a deterministic, fail-closed checker over hash-pinned local evidence. For every required component, separately evaluate semantic, hiding, security, native, EVM, calldata, gas, and source-binding gates. A gate passes only when its status predicate and a separately pinned finalist-grade result predicate both match exactly. Missing or null evidence is non-passing, never zero and never an implied success. A bundle with an alternative inner/backend group needs one alternative that passes all eight gates.
 
 No bundle passes. Therefore:
 
@@ -24,7 +24,7 @@ No bundle passes. Therefore:
 - no isolated gas delta or projection is combined into an integrated metric; and
 - SP-80 concludes `CURRENT_RESEARCH_FRONTIER_NO_VIABLE_NEXT_BUILD` rather than forcing a winner.
 
-`check.py` keeps predicates in executable code and hashes in `manifest.json`. Changing a status/result file without updating its pin fails the hash check. Updating a pin alone cannot change the coded predicate. Changing a blocked gate to `PASS` in the generated result fails exact deterministic recomputation; `--self-test` exercises that mutation.
+`check.py` keeps predicates and the exact evidence-path catalog in executable code and hashes in `manifest.json`. Normal checks verify the plan, checker, package inputs, and every status/manifest/result pin. Changing a pinned file fails the hash check. Deliberate refresh can update hashes only at the fixed paths and cannot change predicates. Changing a blocked gate to `PASS` in the generated result fails recomputation; independently, changing every two-call status predicate to `PASS` still fails because the separately pinned result remains `FAIL_PROJECTION_AND_NOT_EVALUATED_FULL_PATH`. `--self-test` exercises both mutations.
 
 ## Bundle decisions
 

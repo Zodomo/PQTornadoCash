@@ -77,16 +77,28 @@
         "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
       }
     },
+    "evidenceAssertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "observed", "jsonPointer", "evidence"],
+      "properties": {
+        "required": {},
+        "observed": {},
+        "jsonPointer": {"type": "string", "minLength": 1},
+        "evidence": {"$ref": "#/$defs/hashRecord"}
+      }
+    },
     "gate": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["state", "required", "observed", "jsonPointer", "evidence"],
+      "required": ["state", "required", "observed", "jsonPointer", "evidence", "resultAssertion"],
       "properties": {
         "state": {"enum": ["PASS", "BLOCKED", "MISSING"]},
         "required": {},
         "observed": {},
         "jsonPointer": {"type": "string", "minLength": 1},
-        "evidence": {"$ref": "#/$defs/hashRecord"}
+        "evidence": {"$ref": "#/$defs/hashRecord"},
+        "resultAssertion": {"$ref": "#/$defs/evidenceAssertion"}
       }
     },
     "component": {
@@ -126,7 +138,7 @@
     "blocker": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["component", "gate", "state", "required", "observed", "jsonPointer", "evidence"],
+      "required": ["component", "gate", "state", "required", "observed", "jsonPointer", "evidence", "resultAssertion"],
       "properties": {
         "component": {"type": "string", "minLength": 1},
         "gate": {"type": "string", "minLength": 1},
@@ -134,7 +146,8 @@
         "required": {},
         "observed": {},
         "jsonPointer": {"type": ["string", "null"]},
-        "evidence": {"oneOf": [{"$ref": "#/$defs/hashRecord"}, {"type": "null"}]}
+        "evidence": {"oneOf": [{"$ref": "#/$defs/hashRecord"}, {"type": "null"}]},
+        "resultAssertion": {"oneOf": [{"$ref": "#/$defs/evidenceAssertion"}, {"type": "null"}]}
       }
     },
     "checklistItem": {

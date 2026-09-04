@@ -21,19 +21,19 @@ Normal `--check` and `--write` are fail-closed against the committed pins. After
 python3 research/integrated-finalists/check.py --refresh-source-hashes
 ```
 
-The refresh mode cannot add, remove, or redirect a prerequisite record and cannot alter executable pass predicates. It recomputes hashes for the fixed catalog, then runs the same zero-finalist evaluation; a changed status that actually passed every predicate would stop at the required zero-frontier assertion rather than silently preserve this conclusion.
+The refresh mode cannot add, remove, or redirect a prerequisite record and cannot alter executable pass predicates. It recomputes hashes for the hard-coded fixed catalog, then runs the same zero-finalist evaluation; a changed status and result that actually passed every predicate would stop at the required zero-frontier assertion rather than silently preserve this conclusion.
 
 The checker:
 
 1. loads every prerequisite's local status, manifest, and result record from `manifest.json`;
 2. verifies the exact SHA-256 pin before using a record;
-3. evaluates semantic, hiding, security, native, EVM, calldata, gas, and source-binding predicates by exact equality;
+3. requires exact agreement between each gate's status predicate and an independently pinned finalist-grade result predicate;
 4. treats a missing pointer, missing file, null, benchmark-only label, projection, and open review as non-passing;
 5. requires all direct components and at least one all-gates-passing member of each alternative group;
 6. requires bundles A-F exactly once, the complete thirteen-item prototype checklist, and the fixed zero-finalist conclusion; and
-7. mutates the first blocked component gate to `PASS` and proves exact recomputation rejects it.
+7. both mutates an output gate to `PASS` and mutates every two-call status predicate to `PASS` while retaining its failed result, proving both mutations remain rejected.
 
-`outputs/results.json` is the complete matrix and evidence ledger. Every component entry includes its exact status/manifest/result path and SHA-256, every gate includes the decisive JSON pointer, required value, observed value, and evidence pin, and every bundle includes last completed stage, blockers, omitted prototype requirements, and revival conditions. `status.json` pins the result, schema, and manifest.
+`outputs/results.json` is the complete matrix and evidence ledger. Every component entry includes its exact status/manifest/result path and SHA-256; every gate includes separate status and result JSON pointers, required/observed values, and evidence pins; and every bundle includes last completed stage, blockers, omitted prototype requirements, and revival conditions. `status.json` pins the result, schema, and manifest.
 
 ## Bundle matrix
 

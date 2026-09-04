@@ -172,6 +172,107 @@ COMPONENT_RULES: dict[str, dict[str, Any]] = {
     },
 }
 
+# A status claim is necessary but never sufficient. Every gate also requires an
+# exact finalist-grade assertion from the separately pinned result record.
+RESULT_RULES: dict[str, tuple[str, Any]] = {
+    "fixed_compression": ("/integrationEligible", True),
+    "air_geometry": ("/status", "PASS"),
+    "transcript": ("/integrationAllowed", True),
+    "hiding_fri": ("/classification", "FINALIST_SECURITY_QUALIFIED"),
+    "hvzk_whir": ("/pqtc_measurement", True),
+    "structured_relation": ("/status", "PASS"),
+    "spartan_whir": ("/execution_status", "PASS"),
+    "recursion": ("/gate_status", "PASS"),
+    "flock_veil": ("/gate_status", "PASS"),
+    "two_call_state": ("/status", "PASS"),
+    "runtime_binding": ("/deploymentReady", True),
+    "public_statement": ("/productionReady", True),
+    "digest_width": ("/decision", "ADOPT"),
+    "cryptanalysis_review": ("/externalReviewComplete", True),
+}
+
+EVIDENCE_PATHS: dict[str, dict[str, str]] = {
+    "fixed_compression": {
+        "status": "research/candidates/hash-compression-common/status.json",
+        "manifest": "research/candidates/hash-compression-common/manifest.json",
+        "result": "research/candidates/hash-compression-common/measurement-hashes.json",
+    },
+    "air_geometry": {
+        "status": "research/candidates/air-geometry/status.json",
+        "manifest": "research/candidates/air-geometry/manifest.json",
+        "result": "research/candidates/air-geometry/results.json",
+    },
+    "transcript": {
+        "status": "research/cryptanalysis/transcript/status.json",
+        "manifest": "research/cryptanalysis/transcript/manifest.json",
+        "result": "research/cryptanalysis/transcript/focused-run.json",
+    },
+    "hiding_fri": {
+        "status": "research/fri-pareto/status.json",
+        "manifest": "research/fri-pareto/manifests/b3-q111-c16x16-f0-r4.json",
+        "result": "research/fri-pareto/outputs/anchors-summary.json",
+    },
+    "hvzk_whir": {
+        "status": "research/candidates/C20-hvzk-whir/status.json",
+        "manifest": "research/candidates/C20-hvzk-whir/manifest.json",
+        "result": "research/candidates/C20-hvzk-whir/outputs/latest.json",
+    },
+    "structured_relation": {
+        "status": "research/candidates/structured-relation/status.json",
+        "manifest": "research/candidates/structured-relation/manifest.json",
+        "result": "research/candidates/structured-relation/results.json",
+    },
+    "spartan_whir": {
+        "status": "research/candidates/C50-spartan-whir/status.json",
+        "manifest": "research/candidates/C50-spartan-whir/manifest.json",
+        "result": "research/candidates/C50-spartan-whir/outputs/native/result.json",
+    },
+    "recursion": {
+        "status": "research/candidates/C60-recursion/status.json",
+        "manifest": "research/candidates/C60-recursion/manifest.json",
+        "result": "research/candidates/C60-recursion/outputs/architecture-smoke/result.json",
+    },
+    "flock_veil": {
+        "status": "research/candidates/C70-flock-veil/status.json",
+        "manifest": "research/candidates/C70-flock-veil/manifest.json",
+        "result": "research/candidates/C70-flock-veil/outputs/flock-benchmark/result.json",
+    },
+    "two_call_state": {
+        "status": "research/two-call-state/status.json",
+        "manifest": "research/two-call-state/manifest.json",
+        "result": "research/two-call-state/outputs/results.json",
+    },
+    "runtime_binding": {
+        "status": "research/runtime-binding/status.json",
+        "manifest": "research/runtime-binding/manifest.json",
+        "result": "research/runtime-binding/results.json",
+    },
+    "public_statement": {
+        "status": "research/public-statement/status.json",
+        "manifest": "research/public-statement/manifest.json",
+        "result": "research/public-statement/results.json",
+    },
+    "digest_width": {
+        "status": "research/digest-width/status.json",
+        "manifest": "research/digest-width/manifest.json",
+        "result": "research/digest-width/results.json",
+    },
+    "cryptanalysis_review": {
+        "status": "research/cryptanalysis/review-packet/status.json",
+        "manifest": "research/cryptanalysis/review-packet/manifest.json",
+        "result": "research/cryptanalysis/review-packet/REVIEW_PACKET.md",
+    },
+}
+
+PACKAGE_INPUT_PATHS = (
+    "research/integrated-finalists/check.py",
+    "research/integrated-finalists/result.schema.json",
+    "research/integrated-finalists/assumptions.json",
+    "research/integrated-finalists/negative-results.json",
+    "research/integrated-finalists/ADR.md",
+    "research/integrated-finalists/README.md",
+)
+
 CHECKLIST = (
     "note generation",
     "commitment/nullifier derivation",
@@ -295,6 +396,19 @@ def pointer(document: Any, value: str) -> Any:
         current = current[token]
     return current
 
+def set_pointer(document: dict[str, Any], value: str, replacement: Any) -> None:
+    current = document
+    tokens = value.removeprefix("/").split("/")
+    for token in tokens[:-1]:
+        token = token.replace("~1", "/").replace("~0", "~")
+        child = current.get(token)
+        if not isinstance(child, dict):
+            child = {}
+            current[token] = child
+        current = child
+    final = tokens[-1].replace("~1", "/").replace("~0", "~")
+    current[final] = replacement
+
 
 def printable(value: Any) -> Any:
     return None if value is MISSING else value
@@ -304,8 +418,28 @@ def load_and_verify_manifest() -> tuple[dict[str, Any], dict[str, dict[str, Any]
     manifest = load_json(MANIFEST_PATH)
     if manifest.get("schema") != "pqtc.sp80.eligibility-manifest.v1":
         raise ValueError("unexpected SP-80 manifest schema")
-    if set(manifest.get("components", {})) != set(COMPONENT_RULES):
+    if set(manifest.get("components", {})) != set(COMPONENT_RULES) or set(COMPONENT_RULES) != set(EVIDENCE_PATHS):
         raise ValueError("manifest component set does not match executable rules")
+
+    plan = manifest.get("plan")
+    if not isinstance(plan, dict) or plan.get("path") != "PQTC_NEXT_GENERATION_RESEARCH_PLAN.md":
+        raise ValueError("unexpected plan path")
+    if plan.get("sha256") != sha256(ROOT / plan["path"]):
+        raise ValueError("plan hash mismatch")
+    checker = manifest.get("eligibilityChecker")
+    checker_path = "research/integrated-finalists/check.py"
+    if not isinstance(checker, dict) or checker.get("path") != checker_path:
+        raise ValueError("unexpected eligibility checker path")
+    if checker.get("sha256") != sha256(ROOT / checker_path):
+        raise ValueError("eligibility checker hash mismatch")
+    package_inputs = manifest.get("packageInputs")
+    if not isinstance(package_inputs, list) or [record.get("path") for record in package_inputs] != list(PACKAGE_INPUT_PATHS):
+        raise ValueError("package input catalog changed")
+    for record in package_inputs:
+        relative = record["path"]
+        if record.get("sha256") != sha256(ROOT / relative):
+            raise ValueError(f"package input hash mismatch for {relative}")
+
     documents: dict[str, dict[str, Any]] = {}
     for component_id, component in manifest["components"].items():
         records = component.get("records")
@@ -314,17 +448,17 @@ def load_and_verify_manifest() -> tuple[dict[str, Any], dict[str, dict[str, Any]
         documents[component_id] = {}
         for role, record in records.items():
             relative = record.get("path")
+            expected_path = EVIDENCE_PATHS[component_id][role]
             expected_hash = record.get("sha256")
-            if not isinstance(relative, str) or not isinstance(expected_hash, str):
-                raise ValueError(f"{component_id}/{role}: path and sha256 are required")
+            if relative != expected_path or not isinstance(expected_hash, str):
+                raise ValueError(f"{component_id}/{role}: fixed path and sha256 are required")
             path = ROOT / relative
             if not path.is_file():
                 raise ValueError(f"{component_id}/{role}: missing evidence {relative}")
             actual_hash = sha256(path)
             if actual_hash != expected_hash:
                 raise ValueError(f"{component_id}/{role}: hash mismatch for {relative}")
-            if role in {"status", "manifest"}:
-                documents[component_id][role] = load_json(path)
+            documents[component_id][role] = load_json(path) if path.suffix == ".json" else path.read_text(encoding="utf-8")
     return manifest, documents
 
 
@@ -332,12 +466,20 @@ def evaluate_components(manifest: dict[str, Any], documents: dict[str, dict[str,
     evaluated: dict[str, Any] = {}
     for component_id, spec in COMPONENT_RULES.items():
         gates: dict[str, Any] = {}
+        result_pointer, result_expected = RESULT_RULES[component_id]
+        result_actual = pointer(documents[component_id]["result"], result_pointer)
+        result_pass = result_actual is not MISSING and result_actual is not None and result_actual == result_expected
+        result_record = manifest["components"][component_id]["records"]["result"]
         for gate in GATES:
             role, json_pointer, expected = spec["rules"][gate]
             actual = pointer(documents[component_id][role], json_pointer)
-            state = "PASS" if actual is not MISSING and actual is not None and actual == expected else (
-                "MISSING" if actual is MISSING or actual is None else "BLOCKED"
-            )
+            status_pass = actual is not MISSING and actual is not None and actual == expected
+            if status_pass and result_pass:
+                state = "PASS"
+            elif actual is MISSING or actual is None or result_actual is MISSING or result_actual is None:
+                state = "MISSING"
+            else:
+                state = "BLOCKED"
             evidence_record = manifest["components"][component_id]["records"][role]
             gates[gate] = {
                 "state": state,
@@ -345,6 +487,12 @@ def evaluate_components(manifest: dict[str, Any], documents: dict[str, dict[str,
                 "observed": printable(actual),
                 "jsonPointer": json_pointer,
                 "evidence": {"path": evidence_record["path"], "sha256": evidence_record["sha256"]},
+                "resultAssertion": {
+                    "required": result_expected,
+                    "observed": printable(result_actual),
+                    "jsonPointer": result_pointer,
+                    "evidence": {"path": result_record["path"], "sha256": result_record["sha256"]},
+                },
             }
         evaluated[component_id] = {
             "name": spec["name"],
@@ -390,6 +538,7 @@ def evaluate_bundles(manifest: dict[str, Any], components: dict[str, Any]) -> li
                     "observed": "zero qualifying alternatives",
                     "jsonPointer": None,
                     "evidence": None,
+                    "resultAssertion": None,
                 })
         eligible = not blockers
         evidence_component, evidence_role = bundle["lastEvidence"]
@@ -456,7 +605,7 @@ def build_result() -> dict[str, Any]:
         "metricClaims": [],
         "prototypeClaims": [],
         "mutationDefense": {
-            "mutation": "set the first blocked component gate state in a valid result to PASS",
+            "mutation": "mutate a blocked gate in the output to PASS, and separately mutate every two-call status predicate to PASS while retaining its failed result",
             "expected": "REJECT",
             "status": "PASS",
         },
@@ -489,8 +638,20 @@ def mutation_self_test() -> None:
     try:
         validate_result(mutated)
     except ValueError:
-        return
-    raise ValueError("blocked-component PASS mutation was accepted")
+        pass
+    else:
+        raise ValueError("blocked-component PASS output mutation was accepted")
+
+    manifest, documents = load_and_verify_manifest()
+    status_mutated = copy.deepcopy(documents)
+    component_id = "two_call_state"
+    status_document = status_mutated[component_id]["status"]
+    status_document["status"] = "PASS"
+    for _gate, (_role, json_pointer, expected) in COMPONENT_RULES[component_id]["rules"].items():
+        set_pointer(status_document, json_pointer, expected)
+    evaluated = evaluate_components(manifest, status_mutated)[component_id]
+    if evaluated["eligible"] or any(gate["state"] == "PASS" for gate in evaluated["gates"].values()):
+        raise ValueError("PASS-mutated status overrode the separately pinned failed result")
 
 
 def refresh_source_hashes() -> None:
@@ -498,7 +659,7 @@ def refresh_source_hashes() -> None:
     manifest = load_json(MANIFEST_PATH)
     if manifest.get("schema") != "pqtc.sp80.eligibility-manifest.v1":
         raise ValueError("unexpected SP-80 manifest schema")
-    if set(manifest.get("components", {})) != set(COMPONENT_RULES):
+    if set(manifest.get("components", {})) != set(COMPONENT_RULES) or set(COMPONENT_RULES) != set(EVIDENCE_PATHS):
         raise ValueError("manifest component set does not match executable rules")
     for component_id, component in manifest["components"].items():
         records = component.get("records")
@@ -506,8 +667,8 @@ def refresh_source_hashes() -> None:
             raise ValueError(f"{component_id}: refusing to refresh anything but the fixed status/manifest/result set")
         for role, record in records.items():
             relative = record.get("path")
-            if not isinstance(relative, str):
-                raise ValueError(f"{component_id}/{role}: fixed path is required")
+            if relative != EVIDENCE_PATHS[component_id][role]:
+                raise ValueError(f"{component_id}/{role}: refusing to refresh a redirected evidence path")
             path = ROOT / relative
             if not path.is_file():
                 raise ValueError(f"{component_id}/{role}: missing evidence {relative}")
@@ -522,12 +683,10 @@ def refresh_source_hashes() -> None:
         raise ValueError("refusing to refresh an unexpected checker path")
     checker["sha256"] = sha256(ROOT / expected_checker_path)
     package_inputs = manifest.get("packageInputs")
-    if not isinstance(package_inputs, list):
-        raise ValueError("packageInputs must be a fixed list")
+    if not isinstance(package_inputs, list) or [record.get("path") for record in package_inputs] != list(PACKAGE_INPUT_PATHS):
+        raise ValueError("refusing to refresh a changed package input catalog")
     for record in package_inputs:
-        relative = record.get("path") if isinstance(record, dict) else None
-        if not isinstance(relative, str):
-            raise ValueError("package input path is required")
+        relative = record["path"]
         path = ROOT / relative
         if not path.is_file():
             raise ValueError(f"missing package input {relative}")

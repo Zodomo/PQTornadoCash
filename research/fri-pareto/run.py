@@ -205,6 +205,7 @@ def analytical_filter(grid: dict[str, Any], base: dict[str, Any], baseline: dict
     build_reasons: dict[str, int] = {}
     proof_survivors: list[dict[str, Any]] = []
     near_misses: list[dict[str, Any]] = []
+    proof_floor_misses: list[dict[str, Any]] = []
 
     def generated_best(q: int, blowup: int, log_arity: int, final_log: int, commit_pow: int, query_pow: int, random_words: int) -> dict[str, Any]:
         security_point = {
@@ -298,6 +299,17 @@ def analytical_filter(grid: dict[str, Any], base: dict[str, Any], baseline: dict
             continue
         if projected["completeCalldataBytes"] > grid["planGates"]["completeCalldataBytesMax"]:
             counts["proof_floor"] += 1
+            proof_floor_misses.append({
+                "profileId": f"q{q}-b{blowup}-fold{fold}-final{final['id']}-cg{commit_pow}-qg{query_pow}-r{random_words}-s{salts}-cap{cap_height}",
+                "parameters": point, "bestGeneratedProvenBits": bits,
+                "bestGeneratedProvenBitsExact": best["quantum_bits"],
+                "generatedProofStatus": best["quantum_proof_status"],
+                "projectedCompleteCalldataBytes": projected["completeCalldataBytes"],
+                "projectedCalldataOverageBytes": projected["completeCalldataBytes"] - grid["planGates"]["completeCalldataBytesMax"],
+                "gateStatus": projected["transactionShapeStatus"],
+                "rejection": "proof_floor_complete_calldata_over_128kib",
+                "projection": projected,
+            })
             continue
         profile_id = (
             f"q{q}-b{blowup}-fold{fold}-final{final['id']}-"
@@ -312,6 +324,14 @@ def analytical_filter(grid: dict[str, Any], base: dict[str, Any], baseline: dict
             "gateStatus": projected["transactionShapeStatus"],
             "securityQualified": False,
         })
+    proof_floor_frontier: list[dict[str, Any]] = []
+    for candidate in proof_floor_misses:
+        if any(dominates(existing, candidate) for existing in proof_floor_frontier):
+            continue
+        proof_floor_frontier = [existing for existing in proof_floor_frontier if not dominates(candidate, existing)]
+        proof_floor_frontier.append(candidate)
+    proof_floor_frontier.sort(key=lambda row: (row["projectedCalldataOverageBytes"], -row["bestGeneratedProvenBitsExact"], row["profileId"]))
+    proof_floor_misses = proof_floor_frontier
     frontier: list[dict[str, Any]] = []
     for candidate in proof_survivors:
         if any(dominates(existing, candidate) for existing in frontier):
@@ -327,11 +347,11 @@ def analytical_filter(grid: dict[str, Any], base: dict[str, Any], baseline: dict
         "classification": "RESEARCH_ONLY_NOT_SECURITY_QUALIFIED",
         "dimensions": dimensions,
         "dimensionCardinalities": {
-            "queries": 6, "logBlowup": 4, "foldFactors": 4, "finalPolynomialLengths": 5,
+            "queries": 7, "logBlowup": 4, "foldFactors": 4, "finalPolynomialLengths": 5,
             "commitGrindingBits": 5, "queryGrindingBits": 5, "reviewedHidingRandomCodewords": 4,
             "mmcsSaltElements": 3, "capHeights": 3,
         },
-        "cartesianCountFormula": "6*4*4*5*5*5*4*3*3=432000",
+        "cartesianCountFormula": "7*4*4*5*5*5*4*3*3=504000",
         "exactCartesianCount": exact_count,
         "securityCalculatorEvaluations": len(upper_security_cache) + len(exact_security_cache),
         "securityFilterMethod": "Independent calculator UDR/LDR at the grid-maximum 32/32 grinding first; when that generated-proven upper bound is below 100, all 25 lower-grinding combinations reject without redundant evaluation.",
@@ -343,7 +363,7 @@ def analytical_filter(grid: dict[str, Any], base: dict[str, Any], baseline: dict
             "proof_floor": {"predicate": "projected complete calldata exceeds 131072 bytes", "rejectionCount": counts["proof_floor"]},
             "dominated": {"predicate": "another surviving point is no worse in generated-proven bits, bytes, time, RSS, A/B shape, and active/64/96 gas and strictly better in at least one", "rejectionCount": counts["dominated"]},
         },
-        "retainedRejectedFrontierProfiles": near_misses,
+        "retainedRejectedFrontierProfiles": proof_floor_misses,
         "rejectionCounts": counts,
         "unbuildableReasons": build_reasons,
         "retainedProfiles": sorted(frontier, key=lambda row: (-row["bestGeneratedProvenBitsExact"], row["projection"]["completeCalldataBytes"], row["profileId"])),
@@ -352,7 +372,7 @@ def analytical_filter(grid: dict[str, Any], base: dict[str, Any], baseline: dict
         "retainedGateSummary": {
             "oneTransactionPass": 0,
             "robustTwoTransactionPass": 0,
-            "twoTransactionFail": sum(row["gateStatus"] == "TWO_TX_FAIL" for row in near_misses),
+            "twoTransactionFail": sum(row["gateStatus"] == "TWO_TX_FAIL" for row in proof_floor_misses),
             "reason": "Null/unmeasured complete-transaction gas cannot pass; projected values are bounds only.",
         },
         "winner": None,

@@ -24,4 +24,4 @@ Active Osaka uses EIP-7623 10/40 calldata floors and the EIP-7825 `2^24` transac
 
 ## Consequences
 
-The q32 and q48 anchors remain security failures. The calculator-minimum buildable 100-bit point is blowup 3, q111 under the generated proven method, but transaction feasibility can still reject it. External cryptographic review, QROM/Fiat-Shamir review, MMCS analysis, transcript review, correlated-agreement review where applicable, and advisory closure remain mandatory and unresolved.
+The q32 and q48 anchors remain security failures. The analytical product includes q111 crossed with every fold/final/grinding/random-codeword/salt/cap value while retaining all required q24–q64 rows. Of 504,000 points, 493,200 fail the 100-bit generated-proven floor and the remaining 10,800 fail the 128 KiB projected proof/calldata floor; 120 nondominated rejected q111 records are retained. No Cartesian point is benchmarked, and only the measured q111 control remains measured. External cryptographic review, QROM/Fiat-Shamir review, MMCS analysis, transcript review, correlated-agreement review where applicable, and advisory closure remain mandatory and unresolved.
