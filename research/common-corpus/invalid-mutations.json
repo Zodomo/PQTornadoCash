@@ -1,0 +1,821 @@
+{
+  "application": "Apply operations as RFC 6902 JSON Patch to the named base case; validate the resulting semantic witness.",
+  "corpusVersion": 1,
+  "mutations": [
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "unsupported-version",
+      "expectedOutcome": {
+        "errorCode": "UNSUPPORTED_CORPUS_VERSION",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-000",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/corpusVersion",
+          "value": 2
+        }
+      ],
+      "semanticField": "corpusVersion"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "missing",
+      "expectedOutcome": {
+        "errorCode": "MISSING_CORPUS_VERSION",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-001",
+      "operations": [
+        {
+          "op": "remove",
+          "path": "/corpusVersion"
+        }
+      ],
+      "semanticField": "corpusVersion"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "empty",
+      "expectedOutcome": {
+        "errorCode": "INVALID_CASE_ID",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-002",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/caseId",
+          "value": ""
+        }
+      ],
+      "semanticField": "caseId"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "uniqueness",
+      "expectedOutcome": {
+        "errorCode": "DUPLICATE_CASE_ID",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-003",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/caseId",
+          "value": "swc-v1-025"
+        }
+      ],
+      "semanticField": "caseId"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "zero",
+      "expectedOutcome": {
+        "errorCode": "CHAIN_ID_OUT_OF_RANGE",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-004",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/chainId",
+          "value": "0"
+        }
+      ],
+      "semanticField": "chainId"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "non-decimal",
+      "expectedOutcome": {
+        "errorCode": "INVALID_CHAIN_ID_ENCODING",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-005",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/chainId",
+          "value": "1e3"
+        }
+      ],
+      "semanticField": "chainId"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "short",
+      "expectedOutcome": {
+        "errorCode": "INVALID_POOL_ADDRESS_LENGTH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-006",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/poolAddress",
+          "value": "0x00000000000000000000000000000000000000"
+        }
+      ],
+      "semanticField": "poolAddress"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "long",
+      "expectedOutcome": {
+        "errorCode": "INVALID_POOL_ADDRESS_LENGTH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-007",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/poolAddress",
+          "value": "0x000000000000000000000000000000000000000000"
+        }
+      ],
+      "semanticField": "poolAddress"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "non-hex",
+      "expectedOutcome": {
+        "errorCode": "INVALID_POOL_ADDRESS_ENCODING",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-008",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/poolAddress",
+          "value": "0xgggggggggggggggggggggggggggggggggggggggg"
+        }
+      ],
+      "semanticField": "poolAddress"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "zero",
+      "expectedOutcome": {
+        "errorCode": "DENOMINATION_OUT_OF_RANGE",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-009",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/denomination",
+          "value": "0"
+        }
+      ],
+      "semanticField": "denomination"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "non-decimal",
+      "expectedOutcome": {
+        "errorCode": "INVALID_DENOMINATION_ENCODING",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-010",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/denomination",
+          "value": "-1"
+        }
+      ],
+      "semanticField": "denomination"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "empty",
+      "expectedOutcome": {
+        "errorCode": "INVALID_PROTOCOL_SEMANTIC_VERSION",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-011",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/protocolSemanticVersion",
+          "value": ""
+        }
+      ],
+      "semanticField": "protocolSemanticVersion"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "unsupported",
+      "expectedOutcome": {
+        "errorCode": "UNSUPPORTED_PROTOCOL_SEMANTIC_VERSION",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-012",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/protocolSemanticVersion",
+          "value": "pqtc-withdrawal-semantics-v2"
+        }
+      ],
+      "semanticField": "protocolSemanticVersion"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "below-required",
+      "expectedOutcome": {
+        "errorCode": "INVALID_TREE_DEPTH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-013",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/treeDepth",
+          "value": 19
+        }
+      ],
+      "semanticField": "treeDepth"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "above-required",
+      "expectedOutcome": {
+        "errorCode": "INVALID_TREE_DEPTH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-014",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/treeDepth",
+          "value": 21
+        }
+      ],
+      "semanticField": "treeDepth"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "short",
+      "expectedOutcome": {
+        "errorCode": "INVALID_NULLIFIER_SECRET_LENGTH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-015",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/nullifierSecretBytes",
+          "value": "0x00000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "semanticField": "nullifierSecretBytes"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "long",
+      "expectedOutcome": {
+        "errorCode": "INVALID_NULLIFIER_SECRET_LENGTH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-016",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/nullifierSecretBytes",
+          "value": "0x000000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "semanticField": "nullifierSecretBytes"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "non-hex",
+      "expectedOutcome": {
+        "errorCode": "INVALID_NULLIFIER_SECRET_ENCODING",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-017",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/nullifierSecretBytes",
+          "value": "0xzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+        }
+      ],
+      "semanticField": "nullifierSecretBytes"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "short",
+      "expectedOutcome": {
+        "errorCode": "INVALID_TRAPDOOR_LENGTH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-018",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/trapdoorBytes",
+          "value": "0x00000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "semanticField": "trapdoorBytes"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "long",
+      "expectedOutcome": {
+        "errorCode": "INVALID_TRAPDOOR_LENGTH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-019",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/trapdoorBytes",
+          "value": "0x000000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "semanticField": "trapdoorBytes"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "non-hex",
+      "expectedOutcome": {
+        "errorCode": "INVALID_TRAPDOOR_ENCODING",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-020",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/trapdoorBytes",
+          "value": "0xzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+        }
+      ],
+      "semanticField": "trapdoorBytes"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "below-zero",
+      "expectedOutcome": {
+        "errorCode": "LEAF_INDEX_OUT_OF_RANGE",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-021",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/leafIndex",
+          "value": -1
+        }
+      ],
+      "semanticField": "leafIndex"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "at-capacity",
+      "expectedOutcome": {
+        "errorCode": "LEAF_INDEX_OUT_OF_RANGE",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-022",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/leafIndex",
+          "value": 1048576
+        }
+      ],
+      "semanticField": "leafIndex"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "path-relation",
+      "expectedOutcome": {
+        "errorCode": "LEAF_INDEX_PATH_MISMATCH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-023",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/leafIndex",
+          "value": 25
+        }
+      ],
+      "semanticField": "leafIndex"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "short",
+      "expectedOutcome": {
+        "errorCode": "PATH_LENGTH_MISMATCH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-024",
+      "operations": [
+        {
+          "op": "remove",
+          "path": "/pathBits/19"
+        }
+      ],
+      "semanticField": "pathBits"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "long",
+      "expectedOutcome": {
+        "errorCode": "PATH_LENGTH_MISMATCH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-025",
+      "operations": [
+        {
+          "op": "add",
+          "path": "/pathBits/-",
+          "value": 0
+        }
+      ],
+      "semanticField": "pathBits"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "non-bit",
+      "expectedOutcome": {
+        "errorCode": "INVALID_PATH_BIT",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-026",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/pathBits/0",
+          "value": 2
+        }
+      ],
+      "semanticField": "pathBits"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "leaf-index-relation",
+      "expectedOutcome": {
+        "errorCode": "LEAF_INDEX_PATH_MISMATCH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-027",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/pathBits/0",
+          "value": 0
+        }
+      ],
+      "semanticField": "pathBits"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "short",
+      "expectedOutcome": {
+        "errorCode": "SIBLING_COUNT_MISMATCH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-028",
+      "operations": [
+        {
+          "op": "remove",
+          "path": "/siblingSeeds/19"
+        }
+      ],
+      "semanticField": "siblingSeeds"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "long",
+      "expectedOutcome": {
+        "errorCode": "SIBLING_COUNT_MISMATCH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-029",
+      "operations": [
+        {
+          "op": "add",
+          "path": "/siblingSeeds/-",
+          "value": "0x0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "semanticField": "siblingSeeds"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "element-short",
+      "expectedOutcome": {
+        "errorCode": "INVALID_SIBLING_SEED_LENGTH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-030",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/siblingSeeds/0",
+          "value": "0x00000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "semanticField": "siblingSeeds"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "element-long",
+      "expectedOutcome": {
+        "errorCode": "INVALID_SIBLING_SEED_LENGTH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-031",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/siblingSeeds/0",
+          "value": "0x000000000000000000000000000000000000000000000000000000000000000000"
+        }
+      ],
+      "semanticField": "siblingSeeds"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "element-non-hex",
+      "expectedOutcome": {
+        "errorCode": "INVALID_SIBLING_SEED_ENCODING",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-032",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/siblingSeeds/0",
+          "value": "0xzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+        }
+      ],
+      "semanticField": "siblingSeeds"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "short",
+      "expectedOutcome": {
+        "errorCode": "INVALID_RECIPIENT_LENGTH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-033",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/recipient",
+          "value": "0x00000000000000000000000000000000000000"
+        }
+      ],
+      "semanticField": "recipient"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "long",
+      "expectedOutcome": {
+        "errorCode": "INVALID_RECIPIENT_LENGTH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-034",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/recipient",
+          "value": "0x000000000000000000000000000000000000000000"
+        }
+      ],
+      "semanticField": "recipient"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "non-hex",
+      "expectedOutcome": {
+        "errorCode": "INVALID_RECIPIENT_ENCODING",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-035",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/recipient",
+          "value": "0xgggggggggggggggggggggggggggggggggggggggg"
+        }
+      ],
+      "semanticField": "recipient"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "short",
+      "expectedOutcome": {
+        "errorCode": "INVALID_RELAYER_LENGTH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-036",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/relayer",
+          "value": "0x00000000000000000000000000000000000000"
+        }
+      ],
+      "semanticField": "relayer"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "long",
+      "expectedOutcome": {
+        "errorCode": "INVALID_RELAYER_LENGTH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-037",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/relayer",
+          "value": "0x000000000000000000000000000000000000000000"
+        }
+      ],
+      "semanticField": "relayer"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "non-hex",
+      "expectedOutcome": {
+        "errorCode": "INVALID_RELAYER_ENCODING",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-038",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/relayer",
+          "value": "0xgggggggggggggggggggggggggggggggggggggggg"
+        }
+      ],
+      "semanticField": "relayer"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "below-zero",
+      "expectedOutcome": {
+        "errorCode": "FEE_OUT_OF_RANGE",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-039",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/fee",
+          "value": "-1"
+        }
+      ],
+      "semanticField": "fee"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "above-denomination",
+      "expectedOutcome": {
+        "errorCode": "FEE_EXCEEDS_DENOMINATION",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-040",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/fee",
+          "value": "1000000000000000001"
+        }
+      ],
+      "semanticField": "fee"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "non-decimal",
+      "expectedOutcome": {
+        "errorCode": "INVALID_FEE_ENCODING",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-041",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/fee",
+          "value": "1e3"
+        }
+      ],
+      "semanticField": "fee"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "relation-short",
+      "expectedOutcome": {
+        "errorCode": "PATH_LENGTH_MISMATCH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-042",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/treeDepth",
+          "value": 21
+        }
+      ],
+      "semanticField": "treeDepth/pathBits"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "relation-long",
+      "expectedOutcome": {
+        "errorCode": "PATH_LENGTH_MISMATCH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-043",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/treeDepth",
+          "value": 19
+        }
+      ],
+      "semanticField": "treeDepth/pathBits"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "relation-short",
+      "expectedOutcome": {
+        "errorCode": "SIBLING_COUNT_MISMATCH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-044",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/treeDepth",
+          "value": 21
+        }
+      ],
+      "semanticField": "treeDepth/siblingSeeds"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "relation-long",
+      "expectedOutcome": {
+        "errorCode": "SIBLING_COUNT_MISMATCH",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-045",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/treeDepth",
+          "value": 19
+        }
+      ],
+      "semanticField": "treeDepth/siblingSeeds"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "exclusive-upper-bound",
+      "expectedOutcome": {
+        "errorCode": "LEAF_INDEX_OUT_OF_RANGE",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-046",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/leafIndex",
+          "value": 1048576
+        }
+      ],
+      "semanticField": "leafIndex/treeDepth"
+    },
+    {
+      "baseCaseId": "swc-v1-024",
+      "boundary": "strictly-above",
+      "expectedOutcome": {
+        "errorCode": "FEE_EXCEEDS_DENOMINATION",
+        "valid": false
+      },
+      "mutationId": "invalid-v1-047",
+      "operations": [
+        {
+          "op": "replace",
+          "path": "/denomination",
+          "value": "219249359758979976"
+        }
+      ],
+      "semanticField": "fee/denomination"
+    }
+  ],
+  "negativeOutcomePolicy": "Every listed mutation MUST be rejected with the listed stable error category; no normalization or silent reduction is permitted.",
+  "recordType": "SemanticWithdrawalInvalidMutations"
+}

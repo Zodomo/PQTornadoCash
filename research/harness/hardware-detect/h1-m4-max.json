@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "1",
+  "hardwareClass": "H1_CONTINUITY",
+  "hardware": {
+    "hardware_id": "H1-MAC16-5-M4MAX-48G",
+    "model": "MacBook Pro Mac16,5 (MX313LL/A)",
+    "cpu_model": "Apple M4 Max",
+    "physical_cores": 16,
+    "logical_cores": 16,
+    "performance_cores": 12,
+    "efficiency_cores": 4,
+    "simultaneous_multithreading": false,
+    "microcode": null,
+    "microcode_note": "Apple Silicon microcode revision is not exposed by the recorded tools.",
+    "ram_bytes": 51539607552,
+    "ram_description": "48 GB unified memory; type/speed not exposed by system_profiler SPHardwareDataType",
+    "architecture": "arm64",
+    "cpu_features": [
+      "Apple ARM64",
+      "NEON"
+    ]
+  },
+  "operatingSystem": {
+    "name": "macOS",
+    "version": "15.7.9",
+    "build": "24G830",
+    "kernel": "Darwin 24.6.0; xnu-11417.140.69.711.44~1/RELEASE_ARM64_T6041"
+  },
+  "benchmarkConditions": {
+    "power_mode": "not explicitly pinned",
+    "cpu_affinity": "not pinned; macOS scheduler",
+    "thermal_state": "pmset reported no recorded thermal or performance warning",
+    "allocator": "platform/default unless a run record states otherwise",
+    "parallel_thread_count_default": 16,
+    "other_benchmark_jobs": "recorded per run",
+    "rustflags": [],
+    "target_features": "native defaults unless a run record states otherwise"
+  },
+  "toolchain": {
+    "rustc": "rustc 1.97.0 (2d8144b78 2026-07-07); LLVM 22.1.6",
+    "cargo": "cargo 1.97.0 (c980f4866 2026-06-30)",
+    "solc": "0.8.30 selected by foundry.toml; standalone solc not on PATH",
+    "foundry": "forge 1.7.1, commit 4072e48705af9d93e3c0f6e29e93b5e9a40caed8",
+    "node": "24.19.0",
+    "package_manager": "pnpm 11.20.0",
+    "docker": "29.6.2 build dfc4efb",
+    "evm_revision": "prague",
+    "solc_optimizer_runs": 200,
+    "via_ir": true,
+    "rustflags": [],
+    "container_image": "pqtc-v03-research-baseline:latest",
+    "container_manifest_list_sha256": "f9fc6e3f3ae0254a73286538cc4e61f975d88c67388f41d387d3a40f814d3ac3",
+    "container_platform_manifest_sha256": "000bd45738f434e90438ad73fa72c765d53f0b2d617232b7628948ec8411fea4",
+    "node_base_image_sha256": "4196d66a565c6f195728d9952f161f4adfe2ad753052a08b7ec7f1c5a6bda42b",
+    "rust_base_image_sha256": "8fa55b2f3ddf97471ab6a767bfa3f37e6bad0986ba823e75fea57e2a2a5c3073"
+  },
+  "privacy": {
+    "serial_number_recorded": false,
+    "hardware_uuid_recorded": false,
+    "provisioning_udid_recorded": false,
+    "reason": "Device identifiers are irrelevant to reproducibility and are private."
+  },
+  "unavailableRequiredClasses": [
+    {
+      "hardwareClass": "H2_COMMODITY",
+      "status": "UNAVAILABLE_IN_CURRENT_EXECUTION_ENVIRONMENT",
+      "requiredFor": "finalist qualification"
+    },
+    {
+      "hardwareClass": "H3_HIGH_END",
+      "status": "UNAVAILABLE_IN_CURRENT_EXECUTION_ENVIRONMENT",
+      "requiredFor": "finalist qualification"
+    }
+  ]
+}

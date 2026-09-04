@@ -1,0 +1,141 @@
+{
+  "artifactDigests": {
+    "invalid-mutations.json": {
+      "keccak256": "1d5174e8825c3d3a62584c3afe990508b729cae964ef6255f58c8c7852e6c56a",
+      "sha256": "f910fdc222beb8ad62098349650ef7e3a8f106480636d33eb404ad8225dd10a1"
+    },
+    "semantic-cases.json": {
+      "keccak256": "e76665e15e3ecdc43d61ee6430694c4d471560d59f7a40c279263402125d68a5",
+      "sha256": "04de8cec2e4c21e346048f0f8fdf60b5346f0c9487dcc56c077814c0b59d40ec"
+    }
+  },
+  "candidateMappingResponsibility": {
+    "nonChoice": "This corpus deliberately specifies no candidate field modulus, endianness, hash-to-field algorithm, commitment hash, or candidate-specific encoding.",
+    "owner": "candidate implementation",
+    "requirement": "Treat nullifierSecretBytes, trapdoorBytes, siblingSeeds, and rejection-sampling draws as byte strings. Each candidate MUST document and implement an unbiased map to its own canonical field, secret, or digest domain; it MUST record every rejected draw and mapping failure and MUST NOT silently apply modular reduction."
+  },
+  "corpusVersion": 1,
+  "counts": {
+    "fullyRandomCases": 128,
+    "invalidMutations": 48,
+    "rejectionSamplingTriggerCases": 4,
+    "semanticCases": 256,
+    "structuredCases": 128,
+    "treeHistorySequences": 19
+  },
+  "coverage": {
+    "caseClassCounts": {
+      "fee-equals-denomination": 1,
+      "fee-large-nonzero": 1,
+      "fee-small-nonzero": 1,
+      "fee-zero": 1,
+      "fully-random": 128,
+      "high-field-byte-value": 2,
+      "leaf-index-0": 1,
+      "leaf-index-1": 2,
+      "leaf-index-2": 2,
+      "leaf-index-3": 3,
+      "leaf-index-maximum-20-bit": 1,
+      "leaf-index-power": 20,
+      "leaf-index-power-minus-one": 22,
+      "leaf-index-power-plus-one": 21,
+      "low-field-byte-value": 2,
+      "path-all-one": 1,
+      "path-all-zero": 1,
+      "path-alternating-0101": 1,
+      "path-alternating-1010": 1,
+      "path-random": 128,
+      "recipient-few-zero-bytes": 1,
+      "recipient-many-zero-bytes": 1,
+      "rejection-sampling-retry-trigger": 4,
+      "relayer-few-zero-bytes": 1,
+      "relayer-many-zero-bytes": 1,
+      "repeated-sibling-prefix": 1,
+      "structured": 128
+    },
+    "invalidMutationFieldCounts": {
+      "caseId": 2,
+      "chainId": 2,
+      "corpusVersion": 2,
+      "denomination": 2,
+      "fee": 3,
+      "fee/denomination": 1,
+      "leafIndex": 3,
+      "leafIndex/treeDepth": 1,
+      "nullifierSecretBytes": 3,
+      "pathBits": 4,
+      "poolAddress": 3,
+      "protocolSemanticVersion": 2,
+      "recipient": 3,
+      "relayer": 3,
+      "siblingSeeds": 5,
+      "trapdoorBytes": 3,
+      "treeDepth": 2,
+      "treeDepth/pathBits": 2,
+      "treeDepth/siblingSeeds": 2
+    },
+    "powerOfTwoBoundaryExponents": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "treeHistoryLengths": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      7,
+      8,
+      15,
+      16,
+      31,
+      32,
+      63,
+      64,
+      255,
+      256,
+      1023,
+      1024,
+      4095,
+      4096
+    ]
+  },
+  "digestAlgorithms": {
+    "keccak256": "Ethereum Keccak-256 with legacy domain suffix 0x01; explicitly not NIST SHA3-256",
+    "sha256": "FIPS 180-4 SHA-256"
+  },
+  "generator": {
+    "path": "research/common-corpus/generators/generate.py",
+    "runtime": "Python 3 standard library; no locale, clock, OS-randomness, or network inputs",
+    "sourceDigests": {
+      "keccak256": "0213816cf076451c5272e492f3b1d33f68e68e64c536da9deee551346f31d607",
+      "sha256": "aa3fe0f593352ea0f5e59e68eddb2b515a5526834f7f265a51e2186931e91ce0"
+    },
+    "version": "1.0.0"
+  },
+  "recordType": "SemanticCorpusManifest",
+  "reproducibility": {
+    "command": "python3 research/common-corpus/generators/generate.py --check",
+    "deterministicByteGenerator": "SHA-256(domain || seed || label || uint32be(counter))",
+    "jsonSerialization": "UTF-8, sorted keys, two-space indentation, ensure_ascii=true, LF final newline",
+    "seedHex": "ab84f7821e9d3c5b3906c89bb6385f4fb4a4c6a5fb684977b85dcae88c5c9781",
+    "writeCommand": "python3 research/common-corpus/generators/generate.py"
+  }
+}
