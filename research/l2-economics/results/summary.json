@@ -1,4 +1,11 @@
 {
+  "SP71_product_gate": "NOT_EVALUATED_NOT_PASSED",
+  "SP71_product_gate_blockers": [
+    "NO_EXACT_SELECTED_L2_VERIFIER_RECEIPTS",
+    "NO_LIVE_COST_RATIO",
+    "NO_APPLICATION_SEMANTICS_EVIDENCE"
+  ],
+  "admission_sweep_gate": "FAIL",
   "baseline_feasibility_rows": 360,
   "compression": {
     "arbitrum_brotli_level_1": "NOT_EVALUATED_MISSING_PINNED_NITRO_EXECUTABLE",
@@ -24,8 +31,14 @@
     "op-mainnet": "PROJECTED_SIZE_ADMISSIBLE",
     "scroll-mainnet": "PROJECTED_SIZE_ADMISSIBLE"
   },
+  "package_status": "INCOMPLETE_REQUIRED_NETWORK_MEASUREMENTS",
   "payload_transaction_rows": 48,
   "pqtc_receipt_evidence": "NOT_EVALUATED_NO_SELECTED_L2_VERIFIER_RECEIPT",
+  "required_network_measurements": {
+    "arbitrum_family_testnet": "NOT_EVALUATED_EXACT_VERIFIER_UNAVAILABLE",
+    "ethereum_local_testnet": "NOT_EVALUATED_EXACT_VERIFIER_UNAVAILABLE",
+    "op_family_testnet": "NOT_EVALUATED_EXACT_VERIFIER_UNAVAILABLE"
+  },
   "research_private_key_classification": "PUBLIC_ANVIL_HARDHAT_TEST_KEY_NEVER_PRODUCTION",
   "research_signer_address": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
   "schema": "pqtc-sp71-l2-results-v1",

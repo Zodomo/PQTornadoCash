@@ -10,9 +10,21 @@
     },
     {
       "id": "complete-80-210-kib-range",
-      "status": "SP71_GATE_FAIL",
+      "status": "ADMISSION_SWEEP_GATE_FAIL",
       "result": "No selected ordinary sequencer supports the complete required calldata range.",
       "consequence": "Fee tuning cannot repair ordinary-path byte rejection."
+    },
+    {
+      "id": "sp71-product-gate",
+      "status": "NOT_EVALUATED_NOT_PASSED",
+      "result": "The >=90% user-cost improvement plus application-semantics gate cannot be evaluated.",
+      "consequence": "Exact selected-L2 verifier receipts, a live cost ratio, and application-semantics evidence are absent; the admission-sweep failure is not the product-gate result."
+    },
+    {
+      "id": "required-network-measurements",
+      "status": "INCOMPLETE_REQUIRED_NETWORK_MEASUREMENTS",
+      "result": "Ethereum local/testnet, OP-family testnet, and Arbitrum-family testnet measurements required by the plan are absent.",
+      "consequence": "Do not attempt live acquisition without the exact verifier and authorized measurement setup; retain this as a blocker."
     },
     {
       "id": "local-admission-receipts",

@@ -1,0 +1,1118 @@
+{
+  "cartesianCountFormula": "6*4*4*5*5*5*4*3*3=432000",
+  "classification": "RESEARCH_ONLY_NOT_SECURITY_QUALIFIED",
+  "dimensionCardinalities": {
+    "capHeights": 3,
+    "commitGrindingBits": 5,
+    "finalPolynomialLengths": 5,
+    "foldFactors": 4,
+    "logBlowup": 4,
+    "mmcsSaltElements": 3,
+    "queries": 6,
+    "queryGrindingBits": 5,
+    "reviewedHidingRandomCodewords": 4
+  },
+  "dimensions": {
+    "capHeights": [
+      0,
+      1,
+      2
+    ],
+    "commitGrindingBits": [
+      0,
+      8,
+      16,
+      24,
+      32
+    ],
+    "finalPolynomialLengths": [
+      {
+        "id": "1",
+        "logLength": 0
+      },
+      {
+        "id": "4",
+        "logLength": 2
+      },
+      {
+        "id": "16",
+        "logLength": 4
+      },
+      {
+        "id": "64",
+        "logLength": 6
+      },
+      {
+        "id": "backend-recommended",
+        "logLength": 0
+      }
+    ],
+    "foldFactors": [
+      2,
+      4,
+      8,
+      16
+    ],
+    "logBlowup": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "mmcsSaltElements": [
+      4,
+      8,
+      12
+    ],
+    "queries": [
+      24,
+      32,
+      40,
+      48,
+      56,
+      64
+    ],
+    "queryGrindingBits": [
+      0,
+      8,
+      16,
+      24,
+      32
+    ],
+    "reviewedHidingRandomCodewords": [
+      2,
+      4,
+      6,
+      8
+    ]
+  },
+  "exactCartesianCount": 432000,
+  "exactPlanGates": {
+    "completeCalldataBytesMax": 131072,
+    "nullOrUnmeasuredCompleteTransactionPasses": false,
+    "oneTransactionCompleteCallGasMax": 14000000,
+    "scenarios": [
+      "active_eip7623_10_40",
+      "scheduled_unactivated_64_64",
+      "draft_unscheduled_96_96"
+    ],
+    "twoTransactionPartAGasMax": 12000000,
+    "twoTransactionPartBGasMax": 12000000,
+    "twoTransactionTotalGasMax": 20000000
+  },
+  "filterDefinitions": {
+    "challenge_ceiling": {
+      "predicate": "generated best-proven exact bits reaches the 120-bit challenge ceiling",
+      "rejectionCount": 0
+    },
+    "dominated": {
+      "predicate": "another surviving point is no worse in generated-proven bits, bytes, time, RSS, A/B shape, and active/64/96 gas and strictly better in at least one",
+      "rejectionCount": 0
+    },
+    "proof_floor": {
+      "predicate": "projected complete calldata exceeds 131072 bytes",
+      "rejectionCount": 0
+    },
+    "security_below_100": {
+      "predicate": "independent-calculator generated best-proven floor < 100",
+      "rejectionCount": 432000
+    },
+    "unbuildable": {
+      "predicate": "degree > 2^blowup, fold log arity > available depth, cap > LDE height, or non-hiding parameters",
+      "rejectionCount": 0
+    }
+  },
+  "filterOrder": [
+    "unbuildable",
+    "security_below_100",
+    "challenge_ceiling",
+    "proof_floor",
+    "dominated",
+    "retained"
+  ],
+  "nearMisses": [
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "64",
+        "foldFactor": 8,
+        "logBlowup": 4,
+        "logFinalPoly": 6,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 293016,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "64",
+        "foldFactor": 16,
+        "logBlowup": 4,
+        "logFinalPoly": 6,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 293016,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "4",
+        "foldFactor": 16,
+        "logBlowup": 4,
+        "logFinalPoly": 2,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 298328,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "16",
+        "foldFactor": 8,
+        "logBlowup": 4,
+        "logFinalPoly": 4,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 298520,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "16",
+        "foldFactor": 16,
+        "logBlowup": 4,
+        "logFinalPoly": 4,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 298520,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "64",
+        "foldFactor": 4,
+        "logBlowup": 4,
+        "logFinalPoly": 6,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 299288,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "1",
+        "foldFactor": 8,
+        "logBlowup": 4,
+        "logFinalPoly": 0,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 304552,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "backend-recommended",
+        "foldFactor": 8,
+        "logBlowup": 4,
+        "logFinalPoly": 0,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 304552,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "1",
+        "foldFactor": 16,
+        "logBlowup": 4,
+        "logFinalPoly": 0,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 304552,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "backend-recommended",
+        "foldFactor": 16,
+        "logBlowup": 4,
+        "logFinalPoly": 0,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 304552,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "4",
+        "foldFactor": 8,
+        "logBlowup": 4,
+        "logFinalPoly": 2,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 304600,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "16",
+        "foldFactor": 4,
+        "logBlowup": 4,
+        "logFinalPoly": 4,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 304792,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "64",
+        "foldFactor": 2,
+        "logBlowup": 4,
+        "logFinalPoly": 6,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 305560,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "4",
+        "foldFactor": 4,
+        "logBlowup": 4,
+        "logFinalPoly": 2,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 310872,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "1",
+        "foldFactor": 4,
+        "logBlowup": 4,
+        "logFinalPoly": 0,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 317096,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "backend-recommended",
+        "foldFactor": 4,
+        "logBlowup": 4,
+        "logFinalPoly": 0,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 317096,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "16",
+        "foldFactor": 2,
+        "logBlowup": 4,
+        "logFinalPoly": 4,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 317336,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "4",
+        "foldFactor": 2,
+        "logBlowup": 4,
+        "logFinalPoly": 2,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 329688,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "64",
+        "foldFactor": 8,
+        "logBlowup": 4,
+        "logFinalPoly": 6,
+        "queries": 64,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 331864,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "64",
+        "foldFactor": 16,
+        "logBlowup": 4,
+        "logFinalPoly": 6,
+        "queries": 64,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 331864,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "4",
+        "foldFactor": 16,
+        "logBlowup": 4,
+        "logFinalPoly": 2,
+        "queries": 64,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 338072,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "16",
+        "foldFactor": 8,
+        "logBlowup": 4,
+        "logFinalPoly": 4,
+        "queries": 64,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 338264,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "16",
+        "foldFactor": 16,
+        "logBlowup": 4,
+        "logFinalPoly": 4,
+        "queries": 64,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 338264,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "64",
+        "foldFactor": 4,
+        "logBlowup": 4,
+        "logFinalPoly": 6,
+        "queries": 64,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 339032,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    }
+  ],
+  "rejectionCounts": {
+    "challenge_ceiling": 0,
+    "dominated": 0,
+    "proof_floor": 0,
+    "retained": 0,
+    "security_below_100": 432000,
+    "unbuildable": 0
+  },
+  "retainedGateSummary": {
+    "oneTransactionPass": 0,
+    "reason": "Null/unmeasured complete-transaction gas cannot pass; projected values are bounds only.",
+    "robustTwoTransactionPass": 0,
+    "twoTransactionFail": 24
+  },
+  "retainedProfiles": [],
+  "retainedRejectedFrontierProfiles": [
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "64",
+        "foldFactor": 8,
+        "logBlowup": 4,
+        "logFinalPoly": 6,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 293016,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "64",
+        "foldFactor": 16,
+        "logBlowup": 4,
+        "logFinalPoly": 6,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 293016,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "4",
+        "foldFactor": 16,
+        "logBlowup": 4,
+        "logFinalPoly": 2,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 298328,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "16",
+        "foldFactor": 8,
+        "logBlowup": 4,
+        "logFinalPoly": 4,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 298520,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "16",
+        "foldFactor": 16,
+        "logBlowup": 4,
+        "logFinalPoly": 4,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 298520,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "64",
+        "foldFactor": 4,
+        "logBlowup": 4,
+        "logFinalPoly": 6,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 299288,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "1",
+        "foldFactor": 8,
+        "logBlowup": 4,
+        "logFinalPoly": 0,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 304552,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "backend-recommended",
+        "foldFactor": 8,
+        "logBlowup": 4,
+        "logFinalPoly": 0,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 304552,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "1",
+        "foldFactor": 16,
+        "logBlowup": 4,
+        "logFinalPoly": 0,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 304552,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "backend-recommended",
+        "foldFactor": 16,
+        "logBlowup": 4,
+        "logFinalPoly": 0,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 304552,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "4",
+        "foldFactor": 8,
+        "logBlowup": 4,
+        "logFinalPoly": 2,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 304600,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "16",
+        "foldFactor": 4,
+        "logBlowup": 4,
+        "logFinalPoly": 4,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 304792,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "64",
+        "foldFactor": 2,
+        "logBlowup": 4,
+        "logFinalPoly": 6,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 305560,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "4",
+        "foldFactor": 4,
+        "logBlowup": 4,
+        "logFinalPoly": 2,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 310872,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "1",
+        "foldFactor": 4,
+        "logBlowup": 4,
+        "logFinalPoly": 0,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 317096,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "backend-recommended",
+        "foldFactor": 4,
+        "logBlowup": 4,
+        "logFinalPoly": 0,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 317096,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "16",
+        "foldFactor": 2,
+        "logBlowup": 4,
+        "logFinalPoly": 4,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 317336,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "4",
+        "foldFactor": 2,
+        "logBlowup": 4,
+        "logFinalPoly": 2,
+        "queries": 56,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 329688,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "64",
+        "foldFactor": 8,
+        "logBlowup": 4,
+        "logFinalPoly": 6,
+        "queries": 64,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 331864,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "64",
+        "foldFactor": 16,
+        "logBlowup": 4,
+        "logFinalPoly": 6,
+        "queries": 64,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 331864,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "4",
+        "foldFactor": 16,
+        "logBlowup": 4,
+        "logFinalPoly": 2,
+        "queries": 64,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 338072,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "16",
+        "foldFactor": 8,
+        "logBlowup": 4,
+        "logFinalPoly": 4,
+        "queries": 64,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 338264,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "16",
+        "foldFactor": 16,
+        "logBlowup": 4,
+        "logFinalPoly": 4,
+        "queries": 64,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 338264,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    },
+    {
+      "bestGeneratedProvenBits": 84,
+      "bestGeneratedProvenBitsExact": 84.854700933,
+      "gateStatus": "TWO_TX_FAIL",
+      "generatedProofStatus": "conditional-theorem-johnson-correlated-agreement",
+      "parameters": {
+        "capHeight": 0,
+        "commitPow": 32,
+        "finalPolynomialId": "64",
+        "foldFactor": 4,
+        "logBlowup": 4,
+        "logFinalPoly": 6,
+        "queries": 64,
+        "queryPow": 32,
+        "randomCodewords": 2,
+        "saltElements": 8
+      },
+      "projectedCompleteCalldataBytes": 339032,
+      "rejection": "security_below_100_even_at_maximum_grid_grinding"
+    }
+  ],
+  "schemaVersion": 1,
+  "securityCalculatorEvaluations": 1536,
+  "securityFilterMethod": "Independent calculator UDR/LDR at the grid-maximum 32/32 grinding first; when that generated-proven upper bound is below 100, all 25 lower-grinding combinations reject without redundant evaluation.",
+  "securityQualifiedProfiles": 0,
+  "unbuildableReasons": {},
+  "winner": null
+}

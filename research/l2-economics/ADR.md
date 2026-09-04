@@ -1,4 +1,4 @@
-# ADR: SP-71 ordinary L2 admission and fee-model gate
+# ADR: SP-71 ordinary L2 admission sweep and fee-model evidence
 
 ## Context
 
@@ -6,13 +6,15 @@ SP-71 asks whether OP Mainnet Karst, Arbitrum One ArbOS61/Nitro v3.11.3, or Scro
 
 ## Decision
 
-The SP-71 ordinary-path gate **fails**. Retain this as a source-proven negative result:
+The package-specific `admission_sweep_gate` **fails**. Retain this as a source-proven negative result:
 
 - OP ordinary pools cap the signed transaction at 131,072 bytes.
 - Arbitrum's ordinary sequencer default caps it at 95,000 bytes.
 - Scroll's regular mining rule caps it at 116,736 bytes.
 - Every generated 210 KiB payload necessarily produces a signed transaction above all three limits. No full-node launch is required to prove those rejections.
 - The generated 80 KiB transactions are below every selected byte cap, but that is an admission projection. Faithful local tx-pool errors/receipts remain an independent reproduction task.
+
+The separate SP-71 product gate asks whether user cost improves by at least 90% while application semantics remain supported. Its result is **`NOT_EVALUATED_NOT_PASSED`**: this offline package has no exact selected-L2 verifier receipts, no live cost ratio, and no application-semantics evidence. Required Ethereum local/testnet, OP-family testnet, and Arbitrum-family testnet measurements are also absent, so package status is `INCOMPLETE_REQUIRED_NETWORK_MEASUREMENTS`. No live acquisition is attempted without the exact verifier. The admission-sweep failure must not be relabeled as the SP-71 product-gate result.
 
 Do not select an unchunked ordinary direct-sequencer design for the full range. Chunking, delayed/enforced messages, or a bridge-mediated design changes the protocol/product and needs a separate decision plus end-to-end local reproduction.
 
@@ -33,4 +35,4 @@ The H1 Apple M4 Max distribution is retained as source measurement input. H2 CI 
 
 ## Consequences
 
-The package closes the offline formula and admission experiment with a negative gate, while deliberately making no local inclusion, live-price, proof-latency, withdrawal-latency, deployment-fit, or PQTC-receipt claim. A later admission reproduction may launch the pinned clients, but it cannot reverse a byte-limit rejection for the existing 210 KiB ordinary transaction shape.
+The package closes the offline formula and admission experiment with a negative admission-sweep result. The SP-71 product gate remains `NOT_EVALUATED_NOT_PASSED`, while the package deliberately makes no local inclusion, live-price/cost-ratio, application-semantics, proof-latency, withdrawal-latency, deployment-fit, or PQTC-receipt claim. A later admission reproduction may launch the pinned clients, but it cannot reverse a byte-limit rejection for the existing 210 KiB ordinary transaction shape.

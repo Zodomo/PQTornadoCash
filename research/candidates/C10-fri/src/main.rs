@@ -163,10 +163,10 @@ fn validate_manifest(m: &Manifest) -> Result<()> {
     ensure!(m.num_batched_functions == m.relation_width + m.quotient_chunks + m.hiding_random_functions, "batch count does not match relation + quotient + hiding");
     ensure!(m.batch_count_derivation == "relation_plus_quotient_plus_hiding", "unsupported batch-count derivation");
     ensure!(m.fri_log_blowup >= 3 && m.max_constraint_degree <= (1usize << m.fri_log_blowup), "profile is not buildable by the hiding FRI degree rule");
-    ensure!(m.fri_max_log_arity == 1, "only the frozen binary fold schedule is supported");
+    ensure!(m.fri_max_log_arity >= 1 && m.fri_max_log_arity <= 4 && m.fri_max_log_arity <= m.proof_degree_bits + m.fri_log_blowup - m.fri_log_final_poly_len, "FRI fold arity is not buildable");
     ensure!(m.fri_num_queries > 0 && m.fri_num_queries <= u16::MAX as usize, "query count is out of range");
     ensure!(m.fri_log_final_poly_len < m.proof_degree_bits, "final polynomial log length is not buildable");
-    ensure!(m.commit_grinding_bits <= 31 && m.query_grinding_bits <= 31, "grinding bits exceed fail-closed research limit 31");
+    ensure!(m.commit_grinding_bits <= 32 && m.query_grinding_bits <= 32, "grinding bits exceed fail-closed research limit 32");
     ensure!(m.extension_field_bits == 124 && m.challenge_field_bits == 120, "field security declarations differ from the frozen model");
     ensure!(m.mmcs_binding_bits_classical == 128 && m.mmcs_binding_bits_quantum == 128, "MMCS assumed binding cap differs from the frozen model");
     ensure!(!m.omissions.is_empty(), "security omissions must remain explicit");

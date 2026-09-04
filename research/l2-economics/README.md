@@ -2,9 +2,9 @@
 
 Snapshot: **2026-09-04**. This package is offline: it queried no public RPC, sent no testnet/mainnet transaction, used no production key, and reports no live price. `sources.json` pins the official inputs; `matrix.json` is the machine-readable rule matrix.
 
-## Gate result
+## Admission sweep and SP-71 product gate
 
-**FAIL for an unchunked ordinary-sequencer design spanning 80–210 KiB.** All selected networks are projected byte-admissible at 80 KiB. None admits the generated 210 KiB signed transaction on its ordinary sequencer path:
+The package-specific **`admission_sweep_gate=FAIL`** for an unchunked ordinary-sequencer design spanning 80–210 KiB. All selected networks are projected byte-admissible at 80 KiB. None admits the generated 210 KiB signed transaction on its ordinary sequencer path:
 
 | Network / active rules | Chain ID | Exact ordinary signed-tx boundary | Per-tx gas rule | 80 KiB | 210 KiB |
 |---|---:|---:|---:|---|---|
@@ -13,6 +13,8 @@ Snapshot: **2026-09-04**. This package is offline: it queried no public RPC, sen
 | Scroll Mainnet Feynman | 534,352 | 116,736 bytes | current header state; 10,000,000 explicit scenario | projected size-admissible | source-proven size rejection |
 
 The comparison is against the **complete serialized signed EIP-1559 transaction**, not calldata alone. Deposit, delayed, enforced, and L1-message routes are distinct and are not inferred from ordinary-path behavior. A full-node launch is unnecessary after the 210 KiB source-proven size rejection; faithful local admission errors/receipts for below-limit cases remain an independent reproduction task.
+
+This is not the SP-71 product-gate result. The separate `SP71_product_gate`, which requires at least 90% user-cost improvement plus preserved application semantics, is **`NOT_EVALUATED_NOT_PASSED`**. Exact selected-L2 verifier receipts, a live cost ratio, and application-semantics evidence are absent by design. Required Ethereum local/testnet, OP-family testnet, and Arbitrum-family testnet measurements are also missing; package completion status is therefore `INCOMPLETE_REQUIRED_NETWORK_MEASUREMENTS`. No live acquisition is attempted without the exact verifier.
 
 ## Deterministic transaction corpus
 

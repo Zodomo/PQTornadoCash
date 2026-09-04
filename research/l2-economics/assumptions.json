@@ -18,6 +18,8 @@
     {"id":"hardware-h3","statement":"H3 commodity 16-core/64 GiB is unavailable and NOT_EVALUATED."},
     {"id":"hash-name-collision","statement":"Hardware profile labels H1/H2/H3 in this package do not refer to hash candidates research/candidates/H1, H2, or H3."},
     {"id":"deployment","statement":"Active runtime/initcode limits are checked at 24,576/49,152 bytes, but no exact verifier bytecode artifact was supplied, so artifact-specific deployment feasibility is NOT_EVALUATED."},
-    {"id":"security","statement":"Finality and withdrawal entries describe pinned protocol assumptions, not measured wall-clock latency or guarantees under dishonest operators/governance."}
+    {"id":"security","statement":"Finality and withdrawal entries describe pinned protocol assumptions, not measured wall-clock latency or guarantees under dishonest operators/governance."},
+    {"id":"product-gate","statement":"The package admission sweep is not the SP-71 >=90% user-cost plus application-semantics gate; that product gate is NOT_EVALUATED_NOT_PASSED without exact verifier receipts, a live cost ratio, and application-semantics evidence."},
+    {"id":"required-networks","statement":"Ethereum local/testnet, OP-family testnet, and Arbitrum-family testnet measurements required by the plan are absent. No live acquisition is attempted without the exact verifier and authorized setup."}
   ]
 }

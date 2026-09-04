@@ -64,9 +64,21 @@
       "evm_notes": "24,576-byte runtime and 49,152-byte initcode limits; RIPEMD-160 and BLAKE2F disabled, MODEXP components limited to 32 bytes, no blob opcodes/EIP-4788"
     }
   },
-  "ordinary_path_range_gate": {
+  "admission_sweep_gate": {
+    "result": "FAIL",
     "80_kib": {"op-mainnet":"PROJECTED_SIZE_ADMISSIBLE","arbitrum-one":"PROJECTED_SIZE_ADMISSIBLE","scroll-mainnet":"PROJECTED_SIZE_ADMISSIBLE"},
     "210_kib": {"op-mainnet":"PROJECTED_SIZE_REJECTED","arbitrum-one":"PROJECTED_SIZE_REJECTED","scroll-mainnet":"PROJECTED_SIZE_REJECTED"},
     "conclusion": "No selected ordinary sequencer admits the complete 80-210 KiB range."
+  },
+  "SP71_product_gate": {
+    "result": "NOT_EVALUATED_NOT_PASSED",
+    "threshold": "at least 90% user-cost improvement with application semantics preserved",
+    "blockers": ["no exact selected-L2 verifier receipts", "no live cost ratio", "no application-semantics evidence"]
+  },
+  "required_network_measurements": {
+    "status": "INCOMPLETE_REQUIRED_NETWORK_MEASUREMENTS",
+    "ethereum_local_testnet": "NOT_EVALUATED_EXACT_VERIFIER_UNAVAILABLE",
+    "op_family_testnet": "NOT_EVALUATED_EXACT_VERIFIER_UNAVAILABLE",
+    "arbitrum_family_testnet": "NOT_EVALUATED_EXACT_VERIFIER_UNAVAILABLE"
   }
 }

@@ -2,13 +2,23 @@
   "schema": "pqtc-sp71-l2-status-v1",
   "snapshot_date": "2026-09-04",
   "ticket": "SP-71",
-  "status": "COMPLETE_NEGATIVE_GATE_RESULT",
-  "gate": {
-    "question": "Does any selected ordinary L2 sequencer admit the complete deterministic 80-210 KiB transaction range while preserving a reproducible fee and verifier evidence path?",
+  "status": "INCOMPLETE_REQUIRED_NETWORK_MEASUREMENTS",
+  "admission_sweep_gate": {
+    "question": "Does any selected ordinary L2 sequencer admit the complete deterministic 80-210 KiB transaction range?",
     "result": "FAIL",
     "reason": "Every selected ordinary sequencer source-proven byte limit rejects the generated 210 KiB signed transactions; no selected network supports the complete range.",
     "80_kib": "PROJECTED_SIZE_ADMISSIBLE_ON_ALL_SELECTED_ORDINARY_PATHS",
     "210_kib": "PROJECTED_SIZE_REJECTED_ON_ALL_SELECTED_ORDINARY_PATHS"
+  },
+  "SP71_product_gate": {
+    "question": "Does the selected route reduce user cost by at least 90% while preserving application semantics?",
+    "result": "NOT_EVALUATED_NOT_PASSED",
+    "blockers": [
+      "No exact selected-L2 verifier receipts.",
+      "No live cost ratio.",
+      "No application-semantics evidence.",
+      "Required Ethereum local/testnet, OP-family testnet, and Arbitrum-family testnet measurements are absent."
+    ]
   },
   "evidence": {
     "signed_transactions": "GENERATED_AND_HASHED",
@@ -21,10 +31,13 @@
     "hardware_h2": "NOT_EVALUATED_PROFILE_UNAVAILABLE",
     "hardware_h3": "NOT_EVALUATED_PROFILE_UNAVAILABLE",
     "local_admission": "NOT_EVALUATED_INDEPENDENT_REPRODUCTION_TASK",
+    "ethereum_local_testnet_measurements": "NOT_EVALUATED_EXACT_VERIFIER_UNAVAILABLE",
+    "op_family_testnet_measurements": "NOT_EVALUATED_EXACT_VERIFIER_UNAVAILABLE",
+    "arbitrum_family_testnet_measurements": "NOT_EVALUATED_EXACT_VERIFIER_UNAVAILABLE",
     "pqtc_receipts": "NOT_EVALUATED_NONE_CAPTURED",
     "deployment_code_size": "NOT_EVALUATED_NO_EXACT_VERIFIER_ARTIFACT"
   },
-  "decision": "Do not select an ordinary direct-sequencer route for an unchunked 210 KiB witness. Any chunked or non-ordinary route requires a separate design and faithful local reproduction.",
+  "decision": "Retain the ordinary 210 KiB size rejection, but do not mark SP-71 passed or complete. Required network measurements and product-gate evidence remain unavailable; any chunked or non-ordinary route requires separate design and faithful reproduction.",
   "prohibitions": [
     "Do not describe projected admission as a receipt.",
     "Do not describe no-op calldata gas as verifier execution.",

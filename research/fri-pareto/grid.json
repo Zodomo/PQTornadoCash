@@ -6,6 +6,32 @@
   "baseManifest": "../security-model/manifests/v03-q32.json",
   "baselineDistribution": "../candidates/v03-baseline/gas/measured-summary.json",
   "anchorProfiles": ["b4-q32-c16x16-f0-r4", "b4-q48-c16x16-f0-r4", "b3-q111-c16x16-f0-r4"],
+  "analyticalCartesian": {
+    "queries": [24, 32, 40, 48, 56, 64],
+    "logBlowup": [3, 4, 5, 6],
+    "foldFactors": [2, 4, 8, 16],
+    "finalPolynomialLengths": [
+      {"id": "1", "logLength": 0},
+      {"id": "4", "logLength": 2},
+      {"id": "16", "logLength": 4},
+      {"id": "64", "logLength": 6},
+      {"id": "backend-recommended", "logLength": 0}
+    ],
+    "commitGrindingBits": [0, 8, 16, 24, 32],
+    "queryGrindingBits": [0, 8, 16, 24, 32],
+    "reviewedHidingRandomCodewords": [2, 4, 6, 8],
+    "mmcsSaltElements": [4, 8, 12],
+    "capHeights": [0, 1, 2]
+  },
+  "planGates": {
+    "oneTransactionCompleteCallGasMax": 14000000,
+    "twoTransactionPartAGasMax": 12000000,
+    "twoTransactionPartBGasMax": 12000000,
+    "twoTransactionTotalGasMax": 20000000,
+    "completeCalldataBytesMax": 131072,
+    "scenarios": ["active_eip7623_10_40", "scheduled_unactivated_64_64", "draft_unscheduled_96_96"],
+    "nullOrUnmeasuredCompleteTransactionPasses": false
+  },
   "profiles": [
     {"id":"b2-q111-c16x16-f0-r4","logBlowup":2,"queries":111,"commitPow":16,"queryPow":16,"logFinalPoly":0,"randomCodewords":4,"expectedBuildable":false},
     {"id":"b3-q96-c16x16-f0-r4","logBlowup":3,"queries":96,"commitPow":16,"queryPow":16,"logFinalPoly":0,"randomCodewords":4},
