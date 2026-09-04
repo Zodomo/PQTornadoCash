@@ -1,0 +1,82 @@
+{
+  "schema": "pqtc.sp91.independent-reproduction.v1",
+  "spike": "SP-91",
+  "timestamp_utc": "2026-09-04T20:29:32Z",
+  "snapshot": {
+    "repository": "PQTornado",
+    "commit": "e318928de5a5aff0bb0a4c0f92c03cb8eea13830",
+    "checkout": "clean detached worktree",
+    "baseline_tag": "pqtc-v0.3-research-baseline"
+  },
+  "scope": {
+    "finalists": 0,
+    "reproduced_claim": "OUTCOME_D: no new full build yet",
+    "frontier_status": "CURRENT_RESEARCH_FRONTIER_NO_VIABLE_NEXT_BUILD",
+    "recommendation": "RECOMMEND_ADDITIONAL_TARGETED_RESEARCH",
+    "network_actions": 0,
+    "secret_inputs": 0
+  },
+  "checks": [
+    {
+      "command": "python3 research/reproduction/reproduce.py all-safe",
+      "status": "PASS",
+      "facts": {
+        "manifest_files": 1886,
+        "minimum_candidates": 11,
+        "candidate_artifacts": 22,
+        "json_documents": 8,
+        "subprocesses": 0,
+        "live_chain_actions": 0
+      }
+    },
+    {
+      "command": "python3 research/run-records/reproduce.py check",
+      "status": "PASS",
+      "facts": {
+        "authoritative_v03_records": 60,
+        "new_run_records": 47,
+        "deterministic_outputs": 54
+      }
+    },
+    {
+      "command": "python3 research/report-synthesis/generate.py --check",
+      "status": "PASS",
+      "facts": {
+        "deterministic_outputs": 79,
+        "scorecards": 62,
+        "pareto_axes": 8
+      }
+    },
+    {
+      "command": "python3 research/integrated-finalists/check.py",
+      "status": "PASS",
+      "facts": {
+        "bundles": 6,
+        "eligible_bundles": 0,
+        "mutation_rejection": "PASS"
+      }
+    },
+    {
+      "command": "python3 research/candidates/air-geometry/check.py",
+      "status": "PASS",
+      "facts": {
+        "decision": "STOPPED_BY_DEPENDENCY",
+        "stopped_air_dispositions": 8
+      }
+    },
+    {
+      "command": "python3 research/candidates/structured-relation/check.py",
+      "status": "PASS",
+      "facts": {
+        "decision": "STOPPED_BY_DEPENDENCY",
+        "stopped_air_dispositions": 8
+      }
+    }
+  ],
+  "result": "PASS",
+  "limitations": [
+    "There was no eligible finalist to reproduce as a fresh integrated proof, verifier, or transaction.",
+    "This run independently reproduced the fail-closed evidence chain and the zero-finalist decision from a clean snapshot.",
+    "External cryptographic review remains open and is not replaced by this reproduction."
+  ]
+}
