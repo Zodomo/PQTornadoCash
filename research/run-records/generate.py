@@ -629,7 +629,7 @@ def expected_outputs() -> tuple[dict[str, bytes], list[tuple[dict[str, Any], str
 def stale_generated(expected: dict[str, bytes]) -> list[str]:
     expected_paths = set(expected)
     actual = {path.relative_to(ROOT).as_posix() for path in RUNS.glob("research-*.json")}
-    actual.update(path.relative_to(ROOT).as_posix() for path in SUMMARIES.glob("*.csv") if path.name != "v03-distribution.csv")
+    actual.update(path.relative_to(ROOT).as_posix() for path in SUMMARIES.glob("*.csv") if path.name in {"relation-geometry.csv", "proof-ledger.csv", "evm-gas.csv", "prover.csv", "security.csv", "run-index.csv"})
     actual_manifest = HERE / "evidence-manifest.json"
     if actual_manifest.exists():
         actual.add(actual_manifest.relative_to(ROOT).as_posix())
