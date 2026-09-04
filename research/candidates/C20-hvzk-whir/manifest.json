@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "candidateId": "C20",
+  "spikeId": "SP-51",
+  "name": "Pinned native HidingWhirPcs upstream smoke",
+  "status": "DEFERRED",
+  "evidenceClass": "UPSTREAM_BASELINE_NOT_PQTC",
+  "runCommand": "./research/candidates/C20-hvzk-whir/run-focused.sh",
+  "resultSchema": "result.schema.json",
+  "upstream": {
+    "repository": "https://github.com/Plonky3/Plonky3",
+    "version": "0.6.0",
+    "commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+    "license": "MIT OR Apache-2.0",
+    "licenseGate": "CLEAR_FOR_RESEARCH_RECHECK_BEFORE_INTEGRATION"
+  },
+  "smoke": {
+    "api": "HidingWhirPcs",
+    "completeCommitOpenVerify": true,
+    "deterministicPublicProxy": true,
+    "freshOsSeededCryptoRngMasks": true,
+    "repeatProofDifferenceRequired": true,
+    "captures": ["proof_bytes", "prover_time_ns", "native_verify_time_ns", "peak_rss_bytes", "hiding_base_case_security_report"]
+  },
+  "frozenRelationControl": {
+    "identifier": "frozen-v0.3/H0",
+    "acceptedWave1CompressionCandidate": false,
+    "poolModel": "fixed-denomination native ETH; one note per withdrawal",
+    "applicationTree": {"arity": 2, "depth": 20},
+    "applicationHash": "P2BB512-v1; BabyBear Poseidon2 width 16; rate 4; capacity 12",
+    "applicationDigest": {"babyBearElements": 16, "encodedBytes": 64},
+    "withdrawalAir": {"rows": 256, "columns": 190, "constraints": 1186, "maxDegree": 7},
+    "applicationHashPermutations": 240,
+    "merklePathPermutations": 220,
+    "batchedOpeningFunctions": 210,
+    "publicStatementMustBind": ["scope", "root", "nullifier", "recipient", "relayer", "fee"],
+    "semanticCorpus": {"path": "research/common-corpus", "version": 1, "semanticCases": 256, "invalidMutations": 48, "semanticCasesSha256": "04de8cec2e4c21e346048f0f8fdf60b5346f0c9487dcc56c077814c0b59d40ec", "invalidMutationsSha256": "f910fdc222beb8ad62098349650ef7e3a8f106480636d33eb404ad8225dd10a1", "candidateMappingStatus": "NOT_IMPLEMENTED"},
+    "implementedByThisSmoke": false
+  },
+  "inheritanceMap": {
+    "noteEntropyAndEncoding": "NOT_IMPLEMENTED",
+    "applicationDigest": "REFERENCED_FROZEN_H0_ONLY",
+    "hashMode": "REFERENCED_FROZEN_H0_ONLY",
+    "treeArityDepth": "REFERENCED_FROZEN_H0_ONLY",
+    "publicStatement": "NOT_IMPLEMENTED",
+    "airOrR1csRelation": "NOT_IMPLEMENTED",
+    "baseChallengeField": "UPSTREAM_SMOKE_BABYBEAR_QUARTIC",
+    "pcsLdt": "REPLACED_BY_UPSTREAM_HIDING_WHIR_SMOKE",
+    "hidingConstruction": "UPSTREAM_HVZK_WHIR",
+    "proofMmcs": "UPSTREAM_POSEIDON2_MERKLE",
+    "transcript": "UPSTREAM_DUPLEX_CHALLENGER_NOT_PQTC_CODEC",
+    "proofCodec": "POSTCARD_MEASUREMENT_ONLY",
+    "evmVerifier": "MISSING",
+    "checkpointModel": "NOT_IMPLEMENTED",
+    "deploymentManifest": "NOT_IMPLEMENTED"
+  },
+  "integrationGate": {
+    "result": "DEFERRED",
+    "blockers": ["SP-02 native malformed-proof panic", "SP-10 has no accepted relation", "matching EVM verifier missing", "exact-transcript QROM reduction missing", "external cryptographic review not performed"]
+  },
+  "pqtcMeasurement": false
+}

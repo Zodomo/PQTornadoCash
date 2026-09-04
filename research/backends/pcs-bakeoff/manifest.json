@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "package": "pcs-bakeoff",
+  "status": "COMPLETE_NON_PQTC_CONTROLS",
+  "runCommand": "./research/backends/pcs-bakeoff/run-focused.sh",
+  "resultSchema": "result.schema.json",
+  "inputs": [
+    "research/candidates/C20-hvzk-whir/outputs/latest.json",
+    "research/candidates/C30-stir/outputs/latest.json",
+    "research/candidates/C40-circle/outputs/latest.json"
+  ],
+  "upstream": {
+    "repository": "https://github.com/Plonky3/Plonky3",
+    "version": "0.6.0",
+    "commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+    "license": "MIT OR Apache-2.0",
+    "licenseGate": "CLEAR_FOR_RESEARCH_RECHECK_BEFORE_INTEGRATION"
+  },
+  "relationControl": {
+    "identifier": "frozen-v0.3/H0",
+    "acceptedSp10RelationAvailable": false,
+    "requirements": {
+      "poolModel": "fixed-denomination native ETH; one note per withdrawal",
+      "tree": "binary depth 20",
+      "applicationHash": "P2BB512-v1",
+      "applicationDigestBabyBearElements": 16,
+      "withdrawalAir": "256 rows x 190 columns; 1186 constraints; maximum degree 7",
+      "publicStatement": ["scope", "root", "nullifier", "recipient", "relayer", "fee"],
+      "commonCorpus": {"path": "research/common-corpus", "version": 1, "semanticCases": 256, "invalidMutations": 48, "semanticCasesSha256": "04de8cec2e4c21e346048f0f8fdf60b5346f0c9487dcc56c077814c0b59d40ec", "invalidMutationsSha256": "f910fdc222beb8ad62098349650ef7e3a8f106480636d33eb404ad8225dd10a1", "candidateMappingsImplemented": false}
+    },
+    "implementedByInputs": false
+  },
+  "classificationRules": {
+    "C20": "DEFERRED despite hiding upstream smoke",
+    "C30": "BENCHMARK_ONLY non-hiding lower bound",
+    "C40": "DEFERRED no-code source watch",
+    "upstreamMeasurements": "UPSTREAM_BASELINE_NOT_PQTC",
+    "privacyFinalistRequiresHiding": true
+  },
+  "pqtcMeasurement": false
+}

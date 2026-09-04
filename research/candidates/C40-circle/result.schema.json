@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pqtornado.invalid/research/C40-circle/result.schema.json",
+  "title": "C40 pinned CirclePcs source-watch result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "candidate_id", "spike_id", "status", "evidence_class", "upstream", "source_api_checks", "promotion_checks", "implementation_action", "native_proof_executed", "reason", "relation_gate", "privacy_finalist", "pqtc_measurement"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "candidate_id": {"const": "C40"},
+    "spike_id": {"const": "SP-53"},
+    "status": {"const": "DEFERRED"},
+    "evidence_class": {"const": "SOURCE_WATCH_NOT_MEASUREMENT"},
+    "upstream": {
+      "type": "object",
+      "required": ["repository", "commit", "package", "api", "source_path", "source_sha256", "source_pin_verified"],
+      "properties": {
+        "commit": {"const": "3152b14a89067c83775a8076cc262ffc48a1fd7c"},
+        "api": {"const": "CirclePcs"},
+        "source_sha256": {"const": "51e2140ab4f0840362a30f5a37fbac9ba598e7c31ddc2de01a7932b170dd7aff"},
+        "source_pin_verified": {"const": true}
+      }
+    },
+    "source_api_checks": {
+      "type": "object",
+      "required": ["circle_pcs_implements_pcs", "value_field_requires_complex_extendable", "zk", "hiding", "hiding_circle_pcs_exposed"],
+      "properties": {
+        "circle_pcs_implements_pcs": {"const": true},
+        "value_field_requires_complex_extendable": {"const": true},
+        "zk": {"const": false},
+        "hiding": {"const": false},
+        "hiding_circle_pcs_exposed": {"const": false}
+      }
+    },
+    "promotion_checks": {
+      "type": "object",
+      "required": ["public_source", "precise_security_paper", "working_native_prover_verifier_in_upstream", "documented_noninteractive_hiding_construction", "compatible_frozen_h0_field_relation", "credible_matching_evm_verifier", "comparable_non_hiding_lower_bound_without_relation_translation"],
+      "properties": {
+        "documented_noninteractive_hiding_construction": {"const": false},
+        "compatible_frozen_h0_field_relation": {"const": false},
+        "credible_matching_evm_verifier": {"const": false},
+        "comparable_non_hiding_lower_bound_without_relation_translation": {"const": false}
+      }
+    },
+    "implementation_action": {"const": "NO_CODE"},
+    "native_proof_executed": {"const": false},
+    "reason": {"type": "string", "minLength": 1},
+    "relation_gate": {
+      "type": "object",
+      "required": ["accepted_sp10_relation_available", "control_relation", "upstream_smoke_implements_relation"],
+      "properties": {
+        "accepted_sp10_relation_available": {"const": false},
+        "control_relation": {"const": "frozen-v0.3/H0"},
+        "upstream_smoke_implements_relation": {"const": false}
+      }
+    },
+    "privacy_finalist": {"const": false},
+    "pqtc_measurement": {"const": false}
+  }
+}

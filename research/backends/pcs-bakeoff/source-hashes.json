@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "SHA-256",
+  "upstreamPin": {
+    "repository": "https://github.com/Plonky3/Plonky3",
+    "commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c"
+  },
+  "candidateSourceHashes": {
+    "C20": "research/candidates/C20-hvzk-whir/source-hashes.json",
+    "C30": "research/candidates/C30-stir/source-hashes.json",
+    "C40": "research/candidates/C40-circle/source-hashes.json"
+  },
+  "localFiles": [
+    {"path": "run-focused.py", "sha256": "f3f82b20090a8b6a6b68f60fa7fb627e3c77ccb395d3f9d4a80123abefaabe80"},
+    {"path": "validate-result.py", "sha256": "fc2cb7e75e0af62cbe68fc765613e2753418d834f4fba055306250b6019faf5a"}
+  ],
+  "note": "Candidate focused runners independently verify security-relevant pinned upstream source before producing inputs."
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pqtornado.invalid/research/pcs-bakeoff/result.schema.json",
+  "title": "PCS bakeoff classification summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "package", "status", "evidence_class", "upstream_pin", "relation_control", "accepted_sp10_relation_available", "comparability", "candidates", "privacy_finalists", "eligible_for_pqtc_ranking", "pqtc_measurement"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "package": {"const": "pcs-bakeoff"},
+    "status": {"const": "COMPLETE_NON_PQTC_CONTROLS"},
+    "evidence_class": {"const": "UPSTREAM_BASELINE_NOT_PQTC_AND_SOURCE_WATCH"},
+    "upstream_pin": {"const": "3152b14a89067c83775a8076cc262ffc48a1fd7c"},
+    "relation_control": {"const": "frozen-v0.3/H0"},
+    "accepted_sp10_relation_available": {"const": false},
+    "comparability": {
+      "type": "object",
+      "required": ["c20_c30_matched_public_polynomial_elements", "c20_c30_matched_opened_points", "same_complete_pqtc_relation", "security_models_matched", "timing_benchmark_claimed"],
+      "properties": {
+        "c20_c30_matched_public_polynomial_elements": {"const": 4096},
+        "c20_c30_matched_opened_points": {"const": 1},
+        "same_complete_pqtc_relation": {"const": false},
+        "security_models_matched": {"const": false},
+        "timing_benchmark_claimed": {"const": false}
+      }
+    },
+    "candidates": {
+      "type": "object",
+      "required": ["C20", "C30", "C40"],
+      "properties": {
+        "C20": {"type": "object", "properties": {"status": {"const": "DEFERRED"}, "repeat_proofs_differ": {"const": true}, "zk": {"const": true}, "pqtc_measurement": {"const": false}}},
+        "C30": {"type": "object", "properties": {"status": {"const": "BENCHMARK_ONLY"}, "verified": {"const": true}, "zk": {"const": false}, "pqtc_measurement": {"const": false}}},
+        "C40": {"type": "object", "properties": {"status": {"const": "DEFERRED"}, "implementation_action": {"const": "NO_CODE"}, "zk": {"const": false}, "pqtc_measurement": {"const": false}}}
+      }
+    },
+    "privacy_finalists": {"type": "array", "maxItems": 0},
+    "eligible_for_pqtc_ranking": {"type": "array", "maxItems": 0},
+    "pqtc_measurement": {"const": false}
+  }
+}

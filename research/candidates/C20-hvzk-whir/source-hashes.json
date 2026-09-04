@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "algorithm": "SHA-256",
+  "repository": "https://github.com/Plonky3/Plonky3",
+  "commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+  "files": [
+    {"path": "whir/src/pcs/zk/adapter.rs", "sha256": "b4d77a18897723ddd9d6b8c33c8cdd1bbfb97681001b6372314006d294e1aaf3", "purpose": "HidingWhirPcs API and CryptoRng gate"},
+    {"path": "whir/src/pcs/zk/config.rs", "sha256": "156b1d59ae13968775eee35fd2b4e3c29730f5ffac2557f0a605d4c5bd91eeca", "purpose": "complete hiding configuration"},
+    {"path": "whir/src/pcs/zk/security.rs", "sha256": "0e5ea33efa701fbfd29c2367da588e462a9241a636d0019f640e1e0aec886c9f", "purpose": "diagnostic hiding base-case report"},
+    {"path": "whir/src/pcs/zk/proof.rs", "sha256": "0bd7137da9590ee8068d377737f8b180dbc9a1729073bbb4955e967ff6cff402", "purpose": "complete serializable hiding proof shape"}
+  ],
+  "localAdapterFiles": [
+    {"path": "adapter/Cargo.toml", "sha256": "522099b7b055d681c5ebe1b78c7756f7d1e516939a13c98bd734ff15edbc1c5c"},
+    {"path": "adapter/Cargo.lock", "sha256": "f7386963dd603ee0934fb106c3848050240f65b34521c6069af3852ab43763d6"},
+    {"path": "adapter/src/main.rs", "sha256": "ba3fd03e1122b8c3a80080ab659835da59809c9c556642dfe17ab7d3b35d0728"}
+  ],
+  "verifiedBy": "run-focused.sh before compilation"
+}

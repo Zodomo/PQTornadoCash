@@ -1,0 +1,245 @@
+{
+  "candidate_id": "C20",
+  "compiled_api_checks": {
+    "fresh_os_seed_per_proof": true,
+    "hiding_whir_pcs": true,
+    "rng_trait_gate": "CryptoRng + Send + Sync",
+    "rng_type": "rand::rngs::StdRng",
+    "zk": true
+  },
+  "evidence_class": "UPSTREAM_BASELINE_NOT_PQTC",
+  "integration_gates": {
+    "exact_transcript_qrom_reduction": "MISSING",
+    "external_cryptographic_review": "NOT_PERFORMED",
+    "matching_evm_verifier": "MISSING",
+    "sp02_native_malformed_proof_panic": "FAIL",
+    "sp10_accepted_relation": "MISSING"
+  },
+  "measurement_label": "UPSTREAM_BASELINE_NOT_PQTC",
+  "peak_rss_bytes": 6389760,
+  "pqtc_measurement": false,
+  "proxy_geometry": {
+    "implements_frozen_pqtc_relation": false,
+    "matched_with_candidate": "C30",
+    "num_variables": 12,
+    "opened_points": 1,
+    "polynomial_elements": 4096,
+    "public_data": true
+  },
+  "relation_gate": {
+    "accepted_sp10_relation_available": false,
+    "control_relation": "frozen-v0.3/H0",
+    "upstream_smoke_implements_relation": false
+  },
+  "repeat_proofs_differ": true,
+  "runs": [
+    {
+      "native_verify_time_ns": 1127083,
+      "proof_bytes": 36815,
+      "proof_sha256": "0dd8d6e276580406b9651f21b8f02a0c05563e74bb3776c15150f34c918cb08d",
+      "prover_time_ns": 5625791,
+      "verified": true
+    },
+    {
+      "native_verify_time_ns": 1139250,
+      "proof_bytes": 36719,
+      "proof_sha256": "99e8aabfde0910ad22f4913c9c66a558404b108ff5c9aa5f10fd69ab79cbfee6",
+      "prover_time_ns": 5499083,
+      "verified": true
+    }
+  ],
+  "schema_version": 1,
+  "security_report": {
+    "assumption": "CapacityBound",
+    "field_order_log2_estimate": 123.62756238530045,
+    "field_order_log2_floor": 123,
+    "gamma_round": {
+      "combined": {
+        "bits": 0.0,
+        "classification": "Conditional",
+        "vacuous": true
+      },
+      "mca_sum": {
+        "bits": 101.62822335566207,
+        "classification": "Conditional",
+        "vacuous": false
+      },
+      "product_list": {
+        "classification": "Conditional",
+        "log2_size": 213.2576153233692
+      },
+      "product_list_over_field": {
+        "bits": 0.0,
+        "classification": "Conditional",
+        "vacuous": true
+      }
+    },
+    "mask_groups": [
+      {
+        "analysis_log_inv_rate": 1,
+        "analysis_radius": 0.475,
+        "domain_size": 128,
+        "dyadic_dimension": 64,
+        "effective_queries": 37,
+        "mca": {
+          "bits": 107.67807190511263,
+          "classification": "Conditional",
+          "vacuous": false
+        },
+        "message_len": 4,
+        "paired_list": {
+          "classification": "Conditional",
+          "log2_size": 76.98495147190988
+        },
+        "query_miss": {
+          "bits": 34.39559486801828,
+          "classification": "Proven",
+          "vacuous": false
+        },
+        "randomized_dimension": 41,
+        "randomized_rate": 0.3203125,
+        "randomness_len": 37,
+        "requested_queries": 37,
+        "role": {
+          "SumcheckMask": {
+            "round": 0
+          }
+        },
+        "width": 4
+      },
+      {
+        "analysis_log_inv_rate": 1,
+        "analysis_radius": 0.475,
+        "domain_size": 128,
+        "dyadic_dimension": 64,
+        "effective_queries": 37,
+        "mca": {
+          "bits": 109.67807190511263,
+          "classification": "Conditional",
+          "vacuous": false
+        },
+        "message_len": 18,
+        "paired_list": {
+          "classification": "Conditional",
+          "log2_size": 24.643856189774723
+        },
+        "query_miss": {
+          "bits": 34.39559486801828,
+          "classification": "Proven",
+          "vacuous": false
+        },
+        "randomized_dimension": 55,
+        "randomized_rate": 0.4296875,
+        "randomness_len": 37,
+        "requested_queries": 37,
+        "role": {
+          "CodeSwitchMask": {
+            "round": 0
+          }
+        },
+        "width": 1
+      },
+      {
+        "analysis_log_inv_rate": 1,
+        "analysis_radius": 0.475,
+        "domain_size": 128,
+        "dyadic_dimension": 64,
+        "effective_queries": 37,
+        "mca": {
+          "bits": 107.67807190511263,
+          "classification": "Conditional",
+          "vacuous": false
+        },
+        "message_len": 4,
+        "paired_list": {
+          "classification": "Conditional",
+          "log2_size": 76.98495147190988
+        },
+        "query_miss": {
+          "bits": 34.39559486801828,
+          "classification": "Proven",
+          "vacuous": false
+        },
+        "randomized_dimension": 41,
+        "randomized_rate": 0.3203125,
+        "randomness_len": 37,
+        "requested_queries": 37,
+        "role": {
+          "SumcheckMask": {
+            "round": 1
+          }
+        },
+        "width": 4
+      }
+    ],
+    "query_round": {
+      "before_pow": {
+        "bits": 34.39559486801828,
+        "classification": "Proven",
+        "vacuous": false
+      },
+      "masks_before_pow_bits": [
+        34.39559486801828,
+        34.39559486801828,
+        34.39559486801828
+      ],
+      "shared_pow_bits": 0,
+      "source_before_pow_bits": 35.36649604897742,
+      "source_with_pow": {
+        "bits": 35.36649604897742,
+        "classification": "Proven",
+        "vacuous": false
+      },
+      "weakest_before_pow_bits": 34.39559486801828,
+      "with_pow": {
+        "bits": 34.39559486801828,
+        "classification": "Proven",
+        "vacuous": false
+      }
+    },
+    "round_by_round": {
+      "bits": 0.0,
+      "classification": "Conditional",
+      "vacuous": true
+    },
+    "source": {
+      "analysis_log_inv_rate": 4,
+      "analysis_radius": 0.934375,
+      "domain_size": 512,
+      "dyadic_dimension": 32,
+      "effective_queries": 9,
+      "mca": {
+        "bits": 101.67807190511263,
+        "classification": "Conditional",
+        "vacuous": false
+      },
+      "message_len": 16,
+      "paired_list": {
+        "classification": "Conditional",
+        "log2_size": 34.64385618977472
+      },
+      "query_miss": {
+        "bits": 35.36649604897742,
+        "classification": "Proven",
+        "vacuous": false
+      },
+      "randomized_dimension": 25,
+      "randomized_rate": 0.048828125,
+      "randomness_len": 9,
+      "requested_queries": 9,
+      "role": "Source",
+      "width": 1
+    },
+    "target_bits": 32
+  },
+  "security_report_scope": "UPSTREAM_DIAGNOSTIC_HIDING_BASE_CASE_ONLY_NOT_END_TO_END",
+  "spike_id": "SP-51",
+  "status": "DEFERRED",
+  "upstream": {
+    "api": "HidingWhirPcs",
+    "commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+    "package": "p3-whir",
+    "repository": "https://github.com/Plonky3/Plonky3",
+    "source_hashes_verified_by_runner": true
+  }
+}

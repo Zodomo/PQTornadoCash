@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pqtornado.invalid/research/C20-hvzk-whir/result.schema.json",
+  "title": "C20 pinned upstream HidingWhirPcs smoke result",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schema_version", "candidate_id", "spike_id", "status", "evidence_class", "measurement_label", "upstream", "compiled_api_checks", "proxy_geometry", "runs", "repeat_proofs_differ", "peak_rss_bytes", "security_report_scope", "security_report", "relation_gate", "integration_gates", "pqtc_measurement"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "candidate_id": {"const": "C20"},
+    "spike_id": {"const": "SP-51"},
+    "status": {"const": "DEFERRED"},
+    "evidence_class": {"const": "UPSTREAM_BASELINE_NOT_PQTC"},
+    "measurement_label": {"const": "UPSTREAM_BASELINE_NOT_PQTC"},
+    "upstream": {
+      "type": "object",
+      "required": ["repository", "commit", "package", "api", "source_hashes_verified_by_runner"],
+      "properties": {
+        "commit": {"const": "3152b14a89067c83775a8076cc262ffc48a1fd7c"},
+        "api": {"const": "HidingWhirPcs"},
+        "source_hashes_verified_by_runner": {"const": true}
+      }
+    },
+    "compiled_api_checks": {
+      "type": "object",
+      "required": ["hiding_whir_pcs", "rng_trait_gate", "fresh_os_seed_per_proof", "zk"],
+      "properties": {
+        "hiding_whir_pcs": {"const": true},
+        "rng_trait_gate": {"const": "CryptoRng + Send + Sync"},
+        "fresh_os_seed_per_proof": {"const": true},
+        "zk": {"const": true}
+      }
+    },
+    "proxy_geometry": {
+      "type": "object",
+      "required": ["public_data", "num_variables", "polynomial_elements", "opened_points", "implements_frozen_pqtc_relation"],
+      "properties": {
+        "public_data": {"const": true},
+        "num_variables": {"const": 12},
+        "polynomial_elements": {"const": 4096},
+        "opened_points": {"const": 1},
+        "implements_frozen_pqtc_relation": {"const": false}
+      }
+    },
+    "runs": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["verified", "proof_bytes", "proof_sha256", "prover_time_ns", "native_verify_time_ns"],
+        "properties": {
+          "verified": {"const": true},
+          "proof_bytes": {"type": "integer", "minimum": 1},
+          "proof_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "prover_time_ns": {"type": "integer", "minimum": 1},
+          "native_verify_time_ns": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "repeat_proofs_differ": {"const": true},
+    "peak_rss_bytes": {"type": "integer", "minimum": 1},
+    "security_report_scope": {"const": "UPSTREAM_DIAGNOSTIC_HIDING_BASE_CASE_ONLY_NOT_END_TO_END"},
+    "security_report": {"type": "object"},
+    "relation_gate": {
+      "type": "object",
+      "required": ["accepted_sp10_relation_available", "control_relation", "upstream_smoke_implements_relation"],
+      "properties": {
+        "accepted_sp10_relation_available": {"const": false},
+        "control_relation": {"const": "frozen-v0.3/H0"},
+        "upstream_smoke_implements_relation": {"const": false}
+      }
+    },
+    "pqtc_measurement": {"const": false}
+  }
+}

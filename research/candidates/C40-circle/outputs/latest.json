@@ -1,0 +1,42 @@
+{
+  "candidate_id": "C40",
+  "evidence_class": "SOURCE_WATCH_NOT_MEASUREMENT",
+  "implementation_action": "NO_CODE",
+  "native_proof_executed": false,
+  "pqtc_measurement": false,
+  "privacy_finalist": false,
+  "promotion_checks": {
+    "comparable_non_hiding_lower_bound_without_relation_translation": false,
+    "compatible_frozen_h0_field_relation": false,
+    "credible_matching_evm_verifier": false,
+    "documented_noninteractive_hiding_construction": false,
+    "precise_security_paper": true,
+    "public_source": true,
+    "working_native_prover_verifier_in_upstream": true
+  },
+  "reason": "Pinned CirclePcs is non-hiding and requires ComplexExtendable values; frozen H0 uses BabyBear/two-adic geometry, so a matched lower bound would require an unaccepted relation/field translation.",
+  "relation_gate": {
+    "accepted_sp10_relation_available": false,
+    "control_relation": "frozen-v0.3/H0",
+    "upstream_smoke_implements_relation": false
+  },
+  "schema_version": 1,
+  "source_api_checks": {
+    "circle_pcs_implements_pcs": true,
+    "hiding": false,
+    "hiding_circle_pcs_exposed": false,
+    "value_field_requires_complex_extendable": true,
+    "zk": false
+  },
+  "spike_id": "SP-53",
+  "status": "DEFERRED",
+  "upstream": {
+    "api": "CirclePcs",
+    "commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+    "package": "p3-circle",
+    "repository": "https://github.com/Plonky3/Plonky3",
+    "source_path": "circle/src/pcs.rs",
+    "source_pin_verified": true,
+    "source_sha256": "51e2140ab4f0840362a30f5a37fbac9ba598e7c31ddc2de01a7932b170dd7aff"
+  }
+}
