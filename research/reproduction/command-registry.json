@@ -1,0 +1,2139 @@
+{
+  "candidates": {
+    "C00": {
+      "actionEntrypoints": {
+        "build": [
+          [
+            "cargo",
+            "build",
+            "--locked",
+            "--offline",
+            "--release",
+            "--manifest-path",
+            "research/candidates/v03-baseline/native/Cargo.toml"
+          ]
+        ],
+        "corpus": [
+          [
+            "research/candidates/v03-baseline/native/target/release/v03-baseline-reproducer",
+            "prepare",
+            "--corpus",
+            "research/common-corpus/semantic-cases.json",
+            "--out",
+            "research/reproduction/.work/C00/corpus"
+          ]
+        ],
+        "prove": [
+          [
+            "research/candidates/v03-baseline/native/target/release/v03-baseline-reproducer",
+            "prove",
+            "--input",
+            "research/reproduction/.work/C00/corpus/{derived_input}",
+            "--out",
+            "research/reproduction/.work/C00/proofs/{run_id}"
+          ]
+        ],
+        "report": [
+          [
+            "python3",
+            "research/harness/benchctl/benchctl.py",
+            "summary",
+            "{60_authoritative_v03_run_records}",
+            "--output",
+            "research/reproduction/.work/C00/gas-and-proof-summary.csv",
+            "--candidate-output",
+            "research/reproduction/.work/C00/candidate-summary.csv",
+            "--schema",
+            "benchmark-run.schema.json"
+          ]
+        ],
+        "security": [
+          [
+            "python3",
+            "research/security-model/calculator/security_calculator.py",
+            "calculate",
+            "research/security-model/manifests/v03-q32.json",
+            "--format",
+            "json"
+          ]
+        ],
+        "verify-evm": [
+          [
+            "forge",
+            "test",
+            "--root",
+            ".",
+            "--match-test",
+            "testArbitraryGeneratedFixtureThroughCompletePoolCalls",
+            "-vvvv"
+          ]
+        ],
+        "verify-native": [
+          [
+            "research/candidates/v03-baseline/native/target/release/v03-baseline-reproducer",
+            "verify",
+            "--input",
+            "{derived_input}",
+            "--proof",
+            "{retained_proof}"
+          ]
+        ]
+      },
+      "actions": {
+        "build": "AVAILABLE",
+        "corpus": "AVAILABLE",
+        "prove": "AVAILABLE",
+        "report": "AVAILABLE",
+        "security": "AVAILABLE",
+        "verify-evm": "AVAILABLE",
+        "verify-native": "AVAILABLE"
+      },
+      "eligibleFinalist": false,
+      "packages": [
+        "research/candidates/v03-baseline"
+      ],
+      "pinnedArtifacts": [
+        "research/candidates/v03-baseline/manifest.json",
+        "research/candidates/v03-baseline/status.json",
+        "research/candidates/v03-baseline/vectors/derived/jobs.json"
+      ],
+      "prerequisites": {
+        "build": [
+          "cargo",
+          "offline Cargo cache",
+          "frozen native/Cargo.lock"
+        ],
+        "corpus": [
+          "C00 build output",
+          "research/common-corpus/semantic-cases.json"
+        ],
+        "prove": [
+          "C00 build output",
+          "retained canonical derived inputs",
+          "OS entropy"
+        ],
+        "report": [
+          "python3",
+          "benchmark-run.schema.json",
+          "exactly 60 authoritative research/runs/v03-*.json records"
+        ],
+        "security": [
+          "python3",
+          "research/security-model/manifests/v03-q32.json"
+        ],
+        "verify-evm": [
+          "forge",
+          "local Foundry/Anvil EVM only",
+          "60 retained exact A/B fixtures",
+          "client=anvil"
+        ],
+        "verify-native": [
+          "C00 build output",
+          "60 retained proof directories",
+          "--all"
+        ]
+      },
+      "title": "Frozen v0.3 P2BB512 / horizontal AIR / hiding FRI q32 baseline"
+    },
+    "C01": {
+      "actionEntrypoints": {
+        "build": [],
+        "corpus": [],
+        "prove": [],
+        "report": [],
+        "security": [
+          [
+            "python3",
+            "research/security-model/calculator/security_calculator.py",
+            "calculate",
+            "research/security-model/manifests/v02-style-q48-width190.json",
+            "--format",
+            "json"
+          ]
+        ],
+        "verify-evm": [],
+        "verify-native": []
+      },
+      "actions": {
+        "build": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "corpus": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "prove": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "report": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "security": "AVAILABLE",
+        "verify-evm": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-native": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST"
+      },
+      "eligibleFinalist": false,
+      "packages": [
+        "research/candidates/v03-baseline",
+        "research/security-model"
+      ],
+      "pinnedArtifacts": [
+        "research/security-model/manifests/v02-style-q48-width190.json"
+      ],
+      "prerequisites": {
+        "build": [
+          "eligible integrated finalist"
+        ],
+        "corpus": [
+          "eligible integrated finalist"
+        ],
+        "prove": [
+          "eligible integrated finalist"
+        ],
+        "report": [
+          "eligible integrated finalist"
+        ],
+        "security": [
+          "python3",
+          "research/security-model/manifests/v02-style-q48-width190.json"
+        ],
+        "verify-evm": [
+          "eligible integrated finalist"
+        ],
+        "verify-native": [
+          "eligible integrated finalist"
+        ]
+      },
+      "title": "Frozen v0.3 relation with q48 security/gas comparator"
+    },
+    "C10": {
+      "actionEntrypoints": {
+        "build": [],
+        "corpus": [],
+        "prove": [],
+        "report": [],
+        "security": [],
+        "verify-evm": [],
+        "verify-native": []
+      },
+      "actions": {
+        "build": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "corpus": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "prove": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "report": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "security": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-evm": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-native": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST"
+      },
+      "eligibleFinalist": false,
+      "packages": [
+        "research/candidates/hash-compression-common",
+        "research/candidates/structured-relation",
+        "research/candidates/air-geometry"
+      ],
+      "pinnedArtifacts": [
+        "research/candidates/H3/manifest.json",
+        "research/candidates/structured-relation/status.json",
+        "research/candidates/air-geometry/status.json"
+      ],
+      "prerequisites": {
+        "build": [
+          "eligible integrated finalist"
+        ],
+        "corpus": [
+          "eligible integrated finalist"
+        ],
+        "prove": [
+          "eligible integrated finalist"
+        ],
+        "report": [
+          "eligible integrated finalist"
+        ],
+        "security": [
+          "eligible integrated finalist"
+        ],
+        "verify-evm": [
+          "eligible integrated finalist"
+        ],
+        "verify-native": [
+          "eligible integrated finalist"
+        ]
+      },
+      "title": "Width-24 compression with best vertical AIR and hiding FRI"
+    },
+    "C11": {
+      "actionEntrypoints": {
+        "build": [],
+        "corpus": [],
+        "prove": [],
+        "report": [],
+        "security": [],
+        "verify-evm": [],
+        "verify-native": []
+      },
+      "actions": {
+        "build": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "corpus": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "prove": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "report": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "security": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-evm": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-native": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST"
+      },
+      "eligibleFinalist": false,
+      "packages": [
+        "research/candidates/hash-compression-common",
+        "research/candidates/structured-relation",
+        "research/candidates/air-geometry"
+      ],
+      "pinnedArtifacts": [
+        "research/candidates/H7/manifest.json",
+        "research/candidates/structured-relation/status.json",
+        "research/candidates/air-geometry/status.json"
+      ],
+      "prerequisites": {
+        "build": [
+          "eligible integrated finalist"
+        ],
+        "corpus": [
+          "eligible integrated finalist"
+        ],
+        "prove": [
+          "eligible integrated finalist"
+        ],
+        "report": [
+          "eligible integrated finalist"
+        ],
+        "security": [
+          "eligible integrated finalist"
+        ],
+        "verify-evm": [
+          "eligible integrated finalist"
+        ],
+        "verify-native": [
+          "eligible integrated finalist"
+        ]
+      },
+      "title": "Width-32 twelve-field compression with best vertical AIR and hiding FRI"
+    },
+    "C12": {
+      "actionEntrypoints": {
+        "build": [],
+        "corpus": [],
+        "prove": [],
+        "report": [],
+        "security": [],
+        "verify-evm": [],
+        "verify-native": []
+      },
+      "actions": {
+        "build": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "corpus": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "prove": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "report": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "security": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-evm": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-native": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST"
+      },
+      "eligibleFinalist": false,
+      "packages": [
+        "research/candidates/hash-compression-common",
+        "research/candidates/structured-relation",
+        "research/candidates/air-geometry"
+      ],
+      "pinnedArtifacts": [
+        "research/candidates/H7/manifest.json",
+        "research/candidates/structured-relation/results.json",
+        "research/candidates/air-geometry/results.json"
+      ],
+      "prerequisites": {
+        "build": [
+          "eligible integrated finalist"
+        ],
+        "corpus": [
+          "eligible integrated finalist"
+        ],
+        "prove": [
+          "eligible integrated finalist"
+        ],
+        "report": [
+          "eligible integrated finalist"
+        ],
+        "security": [
+          "eligible integrated finalist"
+        ],
+        "verify-evm": [
+          "eligible integrated finalist"
+        ],
+        "verify-native": [
+          "eligible integrated finalist"
+        ]
+      },
+      "title": "Width-32 twelve-field compression with second AIR geometry and hiding FRI"
+    },
+    "C20": {
+      "actionEntrypoints": {
+        "build": [],
+        "corpus": [],
+        "prove": [],
+        "report": [],
+        "security": [],
+        "verify-evm": [],
+        "verify-native": []
+      },
+      "actions": {
+        "build": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "corpus": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "prove": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "report": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "security": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-evm": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-native": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST"
+      },
+      "eligibleFinalist": false,
+      "packages": [
+        "research/candidates/C20-hvzk-whir"
+      ],
+      "pinnedArtifacts": [
+        "research/candidates/C20-hvzk-whir/manifest.json",
+        "research/candidates/C20-hvzk-whir/status.json"
+      ],
+      "prerequisites": {
+        "build": [
+          "eligible integrated finalist"
+        ],
+        "corpus": [
+          "eligible integrated finalist"
+        ],
+        "prove": [
+          "eligible integrated finalist"
+        ],
+        "report": [
+          "eligible integrated finalist"
+        ],
+        "security": [
+          "eligible integrated finalist"
+        ],
+        "verify-evm": [
+          "eligible integrated finalist"
+        ],
+        "verify-native": [
+          "eligible integrated finalist"
+        ]
+      },
+      "title": "Top relation and AIR with HVZK-WHIR backend"
+    },
+    "C21": {
+      "actionEntrypoints": {
+        "build": [],
+        "corpus": [],
+        "prove": [],
+        "report": [],
+        "security": [],
+        "verify-evm": [],
+        "verify-native": []
+      },
+      "actions": {
+        "build": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "corpus": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "prove": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "report": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "security": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-evm": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-native": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST"
+      },
+      "eligibleFinalist": false,
+      "packages": [
+        "research/candidates/C50-spartan-whir"
+      ],
+      "pinnedArtifacts": [
+        "research/candidates/C50-spartan-whir/manifest.json",
+        "research/candidates/C50-spartan-whir/status.json"
+      ],
+      "prerequisites": {
+        "build": [
+          "eligible integrated finalist"
+        ],
+        "corpus": [
+          "eligible integrated finalist"
+        ],
+        "prove": [
+          "eligible integrated finalist"
+        ],
+        "report": [
+          "eligible integrated finalist"
+        ],
+        "security": [
+          "eligible integrated finalist"
+        ],
+        "verify-evm": [
+          "eligible integrated finalist"
+        ],
+        "verify-native": [
+          "eligible integrated finalist"
+        ]
+      },
+      "title": "Structured R1CS/CCS with Spartan-WHIR plus ZK"
+    },
+    "C22": {
+      "actionEntrypoints": {
+        "build": [],
+        "corpus": [],
+        "prove": [],
+        "report": [],
+        "security": [],
+        "verify-evm": [],
+        "verify-native": []
+      },
+      "actions": {
+        "build": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "corpus": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "prove": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "report": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "security": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-evm": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-native": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST"
+      },
+      "eligibleFinalist": false,
+      "packages": [
+        "research/candidates/C60-recursion"
+      ],
+      "pinnedArtifacts": [
+        "research/candidates/C60-recursion/manifest.json",
+        "research/candidates/C60-recursion/status.json"
+      ],
+      "prerequisites": {
+        "build": [
+          "eligible integrated finalist"
+        ],
+        "corpus": [
+          "eligible integrated finalist"
+        ],
+        "prove": [
+          "eligible integrated finalist"
+        ],
+        "report": [
+          "eligible integrated finalist"
+        ],
+        "security": [
+          "eligible integrated finalist"
+        ],
+        "verify-evm": [
+          "eligible integrated finalist"
+        ],
+        "verify-native": [
+          "eligible integrated finalist"
+        ]
+      },
+      "title": "Top inner proof with recursive transparent outer verifier"
+    },
+    "C23": {
+      "actionEntrypoints": {
+        "build": [],
+        "corpus": [],
+        "prove": [],
+        "report": [],
+        "security": [],
+        "verify-evm": [],
+        "verify-native": []
+      },
+      "actions": {
+        "build": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "corpus": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "prove": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "report": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "security": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-evm": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-native": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST"
+      },
+      "eligibleFinalist": false,
+      "packages": [
+        "research/candidates/C70-flock-veil"
+      ],
+      "pinnedArtifacts": [
+        "research/candidates/C70-flock-veil/manifest.json",
+        "research/candidates/C70-flock-veil/status.json"
+      ],
+      "prerequisites": {
+        "build": [
+          "eligible integrated finalist"
+        ],
+        "corpus": [
+          "eligible integrated finalist"
+        ],
+        "prove": [
+          "eligible integrated finalist"
+        ],
+        "report": [
+          "eligible integrated finalist"
+        ],
+        "security": [
+          "eligible integrated finalist"
+        ],
+        "verify-evm": [
+          "eligible integrated finalist"
+        ],
+        "verify-native": [
+          "eligible integrated finalist"
+        ]
+      },
+      "title": "Original Keccak relation with Flock/VEIL repeated R1CS"
+    },
+    "C30": {
+      "actionEntrypoints": {
+        "build": [],
+        "corpus": [],
+        "prove": [],
+        "report": [],
+        "security": [],
+        "verify-evm": [],
+        "verify-native": []
+      },
+      "actions": {
+        "build": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "corpus": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "prove": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "report": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "security": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-evm": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-native": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST"
+      },
+      "eligibleFinalist": false,
+      "packages": [
+        "research/aggregation"
+      ],
+      "pinnedArtifacts": [
+        "research/aggregation/manifest.json",
+        "research/aggregation/status.json"
+      ],
+      "prerequisites": {
+        "build": [
+          "eligible integrated finalist"
+        ],
+        "corpus": [
+          "eligible integrated finalist"
+        ],
+        "prove": [
+          "eligible integrated finalist"
+        ],
+        "report": [
+          "eligible integrated finalist"
+        ],
+        "security": [
+          "eligible integrated finalist"
+        ],
+        "verify-evm": [
+          "eligible integrated finalist"
+        ],
+        "verify-native": [
+          "eligible integrated finalist"
+        ]
+      },
+      "title": "Aggregate proof batch N=16"
+    },
+    "C40": {
+      "actionEntrypoints": {
+        "build": [],
+        "corpus": [],
+        "prove": [],
+        "report": [],
+        "security": [],
+        "verify-evm": [],
+        "verify-native": []
+      },
+      "actions": {
+        "build": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "corpus": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "prove": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "report": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "security": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-evm": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+        "verify-native": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST"
+      },
+      "eligibleFinalist": false,
+      "packages": [
+        "research/two-call-state"
+      ],
+      "pinnedArtifacts": [
+        "research/two-call-state/manifest.json",
+        "research/two-call-state/status.json"
+      ],
+      "prerequisites": {
+        "build": [
+          "eligible integrated finalist"
+        ],
+        "corpus": [
+          "eligible integrated finalist"
+        ],
+        "prove": [
+          "eligible integrated finalist"
+        ],
+        "report": [
+          "eligible integrated finalist"
+        ],
+        "security": [
+          "eligible integrated finalist"
+        ],
+        "verify-evm": [
+          "eligible integrated finalist"
+        ],
+        "verify-native": [
+          "eligible integrated finalist"
+        ]
+      },
+      "title": "Bounded-checkpoint two-call fallback"
+    }
+  },
+  "components": {
+    "C10-fri": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "build": [
+          [
+            "cargo",
+            "build",
+            "--locked",
+            "--release",
+            "--manifest-path",
+            "research/candidates/C10-fri/Cargo.toml"
+          ]
+        ]
+      },
+      "package": "research/candidates/C10-fri",
+      "prerequisites": [
+        "cargo",
+        "research/candidates/C10-fri/Cargo.toml"
+      ]
+    },
+    "C20-hvzk-whir": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "research/candidates/C20-hvzk-whir/run-focused.sh"
+          ]
+        ]
+      },
+      "package": "research/candidates/C20-hvzk-whir",
+      "prerequisites": [
+        "sh",
+        "git",
+        "cargo",
+        "python3",
+        "network access to pinned Plonky3 commit"
+      ]
+    },
+    "C30-stir": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "research/candidates/C30-stir/run-focused.sh"
+          ]
+        ]
+      },
+      "package": "research/candidates/C30-stir",
+      "prerequisites": [
+        "sh",
+        "git",
+        "cargo",
+        "python3",
+        "network access to pinned Plonky3 commit"
+      ]
+    },
+    "C40-circle": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "research/candidates/C40-circle/run-focused.sh"
+          ]
+        ]
+      },
+      "package": "research/candidates/C40-circle",
+      "prerequisites": [
+        "sh",
+        "git",
+        "cargo",
+        "python3",
+        "network access to pinned upstream source"
+      ]
+    },
+    "C50-spartan-whir": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "native": [
+          [
+            "python3",
+            "research/candidates/C50-spartan-whir/run.py",
+            "native"
+          ]
+        ],
+        "solidity": [
+          [
+            "python3",
+            "research/candidates/C50-spartan-whir/run.py",
+            "solidity"
+          ]
+        ],
+        "solidityGas": [
+          [
+            "python3",
+            "research/candidates/C50-spartan-whir/run.py",
+            "solidity-gas"
+          ]
+        ],
+        "sourceCheck": [
+          [
+            "python3",
+            "research/candidates/C50-spartan-whir/run.py",
+            "source-check"
+          ]
+        ]
+      },
+      "package": "research/candidates/C50-spartan-whir",
+      "prerequisites": [
+        "python3",
+        "git",
+        "cargo",
+        "forge",
+        "network access to pinned upstream source"
+      ]
+    },
+    "C60-recursion": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "architectureSmoke": [
+          [
+            "python3",
+            "research/candidates/C60-recursion/run.py",
+            "architecture-smoke"
+          ]
+        ],
+        "sourceCheck": [
+          [
+            "python3",
+            "research/candidates/C60-recursion/run.py",
+            "source-check"
+          ]
+        ]
+      },
+      "package": "research/candidates/C60-recursion",
+      "prerequisites": [
+        "python3",
+        "git",
+        "cargo",
+        "network access to pinned upstream source"
+      ]
+    },
+    "C70-flock-veil": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "flockBenchmark": [
+          [
+            "python3",
+            "research/candidates/C70-flock-veil/run.py",
+            "flock-benchmark"
+          ]
+        ],
+        "sourceCheck": [
+          [
+            "python3",
+            "research/candidates/C70-flock-veil/run.py",
+            "source-check"
+          ]
+        ],
+        "veilPocRoot": [
+          [
+            "python3",
+            "research/candidates/C70-flock-veil/run.py",
+            "veil-poc",
+            "--example",
+            "root"
+          ]
+        ]
+      },
+      "package": "research/candidates/C70-flock-veil",
+      "prerequisites": [
+        "python3",
+        "git",
+        "cargo",
+        "network access to pinned upstream source"
+      ]
+    },
+    "F0": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "native": [
+          [
+            "cargo",
+            "run",
+            "--release",
+            "--locked",
+            "--manifest-path",
+            "research/candidates/field-bakeoff-common/native/Cargo.toml",
+            "--",
+            "--iterations",
+            "64",
+            "--rows",
+            "256",
+            "--columns",
+            "190",
+            "--out",
+            "research/candidates/field-bakeoff-common/outputs/native-latest.json"
+          ]
+        ],
+        "solidity": [
+          [
+            "python3",
+            "research/candidates/field-bakeoff-common/solidity/run_bench.py",
+            "--out",
+            "research/candidates/field-bakeoff-common/outputs/solidity-latest.json"
+          ]
+        ]
+      },
+      "package": "research/candidates/F0",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge",
+        "research/candidates/F0/manifest.json"
+      ]
+    },
+    "F1": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "native": [
+          [
+            "cargo",
+            "run",
+            "--release",
+            "--locked",
+            "--manifest-path",
+            "research/candidates/field-bakeoff-common/native/Cargo.toml",
+            "--",
+            "--iterations",
+            "64",
+            "--rows",
+            "256",
+            "--columns",
+            "190",
+            "--out",
+            "research/candidates/field-bakeoff-common/outputs/native-latest.json"
+          ]
+        ],
+        "solidity": [
+          [
+            "python3",
+            "research/candidates/field-bakeoff-common/solidity/run_bench.py",
+            "--out",
+            "research/candidates/field-bakeoff-common/outputs/solidity-latest.json"
+          ]
+        ]
+      },
+      "package": "research/candidates/F1",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge",
+        "research/candidates/F1/manifest.json"
+      ]
+    },
+    "F2": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "native": [
+          [
+            "cargo",
+            "run",
+            "--release",
+            "--locked",
+            "--manifest-path",
+            "research/candidates/field-bakeoff-common/native/Cargo.toml",
+            "--",
+            "--iterations",
+            "64",
+            "--rows",
+            "256",
+            "--columns",
+            "190",
+            "--out",
+            "research/candidates/field-bakeoff-common/outputs/native-latest.json"
+          ]
+        ],
+        "solidity": [
+          [
+            "python3",
+            "research/candidates/field-bakeoff-common/solidity/run_bench.py",
+            "--out",
+            "research/candidates/field-bakeoff-common/outputs/solidity-latest.json"
+          ]
+        ]
+      },
+      "package": "research/candidates/F2",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge",
+        "research/candidates/F2/manifest.json"
+      ]
+    },
+    "F3": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "native": [
+          [
+            "cargo",
+            "run",
+            "--release",
+            "--locked",
+            "--manifest-path",
+            "research/candidates/field-bakeoff-common/native/Cargo.toml",
+            "--",
+            "--iterations",
+            "64",
+            "--rows",
+            "256",
+            "--columns",
+            "190",
+            "--out",
+            "research/candidates/field-bakeoff-common/outputs/native-latest.json"
+          ]
+        ],
+        "solidity": [
+          [
+            "python3",
+            "research/candidates/field-bakeoff-common/solidity/run_bench.py",
+            "--out",
+            "research/candidates/field-bakeoff-common/outputs/solidity-latest.json"
+          ]
+        ]
+      },
+      "package": "research/candidates/F3",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge",
+        "research/candidates/F3/manifest.json"
+      ]
+    },
+    "F4": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "native": [
+          [
+            "cargo",
+            "run",
+            "--release",
+            "--locked",
+            "--manifest-path",
+            "research/candidates/field-bakeoff-common/native/Cargo.toml",
+            "--",
+            "--iterations",
+            "64",
+            "--rows",
+            "256",
+            "--columns",
+            "190",
+            "--out",
+            "research/candidates/field-bakeoff-common/outputs/native-latest.json"
+          ]
+        ],
+        "solidity": [
+          [
+            "python3",
+            "research/candidates/field-bakeoff-common/solidity/run_bench.py",
+            "--out",
+            "research/candidates/field-bakeoff-common/outputs/solidity-latest.json"
+          ]
+        ]
+      },
+      "package": "research/candidates/F4",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge",
+        "research/candidates/F4/manifest.json"
+      ]
+    },
+    "F5": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "native": [
+          [
+            "cargo",
+            "run",
+            "--release",
+            "--locked",
+            "--manifest-path",
+            "research/candidates/field-bakeoff-common/native/Cargo.toml",
+            "--",
+            "--iterations",
+            "64",
+            "--rows",
+            "256",
+            "--columns",
+            "190",
+            "--out",
+            "research/candidates/field-bakeoff-common/outputs/native-latest.json"
+          ]
+        ],
+        "solidity": [
+          [
+            "python3",
+            "research/candidates/field-bakeoff-common/solidity/run_bench.py",
+            "--out",
+            "research/candidates/field-bakeoff-common/outputs/solidity-latest.json"
+          ]
+        ]
+      },
+      "package": "research/candidates/F5",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge",
+        "research/candidates/F5/manifest.json"
+      ]
+    },
+    "H0": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "nativeDiagnosticsAndGas": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "benchmark",
+            "--samples",
+            "1000"
+          ]
+        ],
+        "vectorsAndParity": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "vectors-parity"
+          ]
+        ]
+      },
+      "package": "research/candidates/H0",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "node",
+        "pnpm",
+        "forge",
+        "research/candidates/H0/manifest.json"
+      ]
+    },
+    "H1": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "nativeDiagnosticsAndGas": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "benchmark",
+            "--samples",
+            "1000"
+          ]
+        ],
+        "vectorsAndParity": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "vectors-parity"
+          ]
+        ]
+      },
+      "package": "research/candidates/H1",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "node",
+        "pnpm",
+        "forge",
+        "research/candidates/H1/manifest.json"
+      ]
+    },
+    "H2": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "nativeDiagnosticsAndGas": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "benchmark",
+            "--samples",
+            "1000"
+          ]
+        ],
+        "vectorsAndParity": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "vectors-parity"
+          ]
+        ]
+      },
+      "package": "research/candidates/H2",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "node",
+        "pnpm",
+        "forge",
+        "research/candidates/H2/manifest.json"
+      ]
+    },
+    "H3": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "nativeDiagnosticsAndGas": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "benchmark",
+            "--samples",
+            "1000"
+          ]
+        ],
+        "vectorsAndParity": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "vectors-parity"
+          ]
+        ]
+      },
+      "package": "research/candidates/H3",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "node",
+        "pnpm",
+        "forge",
+        "research/candidates/H3/manifest.json"
+      ]
+    },
+    "H4": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "nativeDiagnosticsAndGas": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "benchmark",
+            "--samples",
+            "1000"
+          ]
+        ],
+        "vectorsAndParity": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "vectors-parity"
+          ]
+        ]
+      },
+      "package": "research/candidates/H4",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "node",
+        "pnpm",
+        "forge",
+        "research/candidates/H4/manifest.json"
+      ]
+    },
+    "H5": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "nativeDiagnosticsAndGas": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "benchmark",
+            "--samples",
+            "1000"
+          ]
+        ],
+        "vectorsAndParity": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "vectors-parity"
+          ]
+        ]
+      },
+      "package": "research/candidates/H5",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "node",
+        "pnpm",
+        "forge",
+        "research/candidates/H5/manifest.json"
+      ]
+    },
+    "H6": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "nativeDiagnosticsAndGas": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "benchmark",
+            "--samples",
+            "1000"
+          ]
+        ],
+        "vectorsAndParity": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "vectors-parity"
+          ]
+        ]
+      },
+      "package": "research/candidates/H6",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "node",
+        "pnpm",
+        "forge",
+        "research/candidates/H6/manifest.json"
+      ]
+    },
+    "H7": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "nativeDiagnosticsAndGas": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "benchmark",
+            "--samples",
+            "1000"
+          ]
+        ],
+        "vectorsAndParity": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "vectors-parity"
+          ]
+        ]
+      },
+      "package": "research/candidates/H7",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "node",
+        "pnpm",
+        "forge",
+        "research/candidates/H7/manifest.json"
+      ]
+    },
+    "SP-01-security-model": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "q32": [
+          [
+            "python3",
+            "research/security-model/calculator/security_calculator.py",
+            "calculate",
+            "research/security-model/manifests/v03-q32.json",
+            "--format",
+            "json"
+          ]
+        ],
+        "q48width190": [
+          [
+            "python3",
+            "research/security-model/calculator/security_calculator.py",
+            "calculate",
+            "research/security-model/manifests/v02-style-q48-width190.json",
+            "--format",
+            "json"
+          ]
+        ]
+      },
+      "package": "research/security-model",
+      "prerequisites": [
+        "python3"
+      ]
+    },
+    "SP-02-advisories": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "regressions": [
+          [
+            "python3",
+            "research/advisories/run_regressions.py"
+          ]
+        ]
+      },
+      "package": "research/advisories",
+      "prerequisites": [
+        "python3"
+      ]
+    },
+    "SP-30-transcript": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "python3",
+            "research/cryptanalysis/transcript/run-focused.py"
+          ]
+        ]
+      },
+      "package": "research/cryptanalysis/transcript",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "node",
+        "forge"
+      ]
+    },
+    "SP-50-fri-pareto": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "metadataOnly": [
+          [
+            "python3",
+            "research/fri-pareto/run.py",
+            "--metadata-only",
+            "--repetitions",
+            "2"
+          ]
+        ]
+      },
+      "package": "research/fri-pareto",
+      "prerequisites": [
+        "python3"
+      ]
+    },
+    "SP-70-aggregation": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "run": [
+          [
+            "python3",
+            "research/aggregation/run.py"
+          ]
+        ]
+      },
+      "package": "research/aggregation",
+      "prerequisites": [
+        "python3",
+        "forge"
+      ]
+    },
+    "SP-71-l2-economics": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "check": [
+          [
+            "python3",
+            "research/l2-economics/generate.py",
+            "--check"
+          ]
+        ]
+      },
+      "package": "research/l2-economics",
+      "prerequisites": [
+        "python3"
+      ]
+    },
+    "SP-72-two-call-state": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "run": [
+          [
+            "python3",
+            "research/two-call-state/run.py"
+          ]
+        ]
+      },
+      "package": "research/two-call-state",
+      "prerequisites": [
+        "python3",
+        "forge"
+      ]
+    },
+    "SP-73-prover-operations": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "check": [
+          [
+            "python3",
+            "research/prover-operations/analyze.py"
+          ]
+        ]
+      },
+      "package": "research/prover-operations",
+      "prerequisites": [
+        "python3"
+      ]
+    },
+    "SP-80-integrated-finalists": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "check": [
+          [
+            "python3",
+            "research/integrated-finalists/check.py",
+            "--check"
+          ]
+        ]
+      },
+      "package": "research/integrated-finalists",
+      "prerequisites": [
+        "python3"
+      ]
+    },
+    "T0": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "python3",
+            "research/cryptanalysis/transcript/run-focused.py"
+          ]
+        ]
+      },
+      "package": "research/candidates/T0",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "node",
+        "forge",
+        "research/candidates/T0/manifest.json"
+      ]
+    },
+    "T1": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "python3",
+            "research/cryptanalysis/transcript/run-focused.py"
+          ]
+        ]
+      },
+      "package": "research/candidates/T1",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "node",
+        "forge",
+        "research/candidates/T1/manifest.json"
+      ]
+    },
+    "T2": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "python3",
+            "research/cryptanalysis/transcript/run-focused.py"
+          ]
+        ]
+      },
+      "package": "research/candidates/T2",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "node",
+        "forge",
+        "research/candidates/T2/manifest.json"
+      ]
+    },
+    "T3": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "python3",
+            "research/cryptanalysis/transcript/run-focused.py"
+          ]
+        ]
+      },
+      "package": "research/candidates/T3",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "node",
+        "forge",
+        "research/candidates/T3/manifest.json"
+      ]
+    },
+    "V1": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--repetitions",
+            "2000"
+          ]
+        ],
+        "metadataOnly": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--metadata-only"
+          ]
+        ]
+      },
+      "package": "research/candidates/V1",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge",
+        "research/candidates/V1/manifest.json"
+      ]
+    },
+    "V2": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--repetitions",
+            "2000"
+          ]
+        ],
+        "metadataOnly": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--metadata-only"
+          ]
+        ]
+      },
+      "package": "research/candidates/V2",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge",
+        "research/candidates/V2/manifest.json"
+      ]
+    },
+    "V3": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--repetitions",
+            "2000"
+          ]
+        ],
+        "metadataOnly": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--metadata-only"
+          ]
+        ]
+      },
+      "package": "research/candidates/V3",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge",
+        "research/candidates/V3/manifest.json"
+      ]
+    },
+    "V4": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--repetitions",
+            "2000"
+          ]
+        ],
+        "metadataOnly": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--metadata-only"
+          ]
+        ]
+      },
+      "package": "research/candidates/V4",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge",
+        "research/candidates/V4/manifest.json"
+      ]
+    },
+    "V5": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--repetitions",
+            "2000"
+          ]
+        ],
+        "metadataOnly": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--metadata-only"
+          ]
+        ]
+      },
+      "package": "research/candidates/V5",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge",
+        "research/candidates/V5/manifest.json"
+      ]
+    },
+    "V6": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--repetitions",
+            "2000"
+          ]
+        ],
+        "metadataOnly": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--metadata-only"
+          ]
+        ]
+      },
+      "package": "research/candidates/V6",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge",
+        "research/candidates/V6/manifest.json"
+      ]
+    },
+    "V7": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--repetitions",
+            "2000"
+          ]
+        ],
+        "metadataOnly": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--metadata-only"
+          ]
+        ]
+      },
+      "package": "research/candidates/V7",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge",
+        "research/candidates/V7/manifest.json"
+      ]
+    },
+    "V8": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--repetitions",
+            "2000"
+          ]
+        ],
+        "metadataOnly": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--metadata-only"
+          ]
+        ]
+      },
+      "package": "research/candidates/V8",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge",
+        "research/candidates/V8/manifest.json"
+      ]
+    },
+    "V9": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--repetitions",
+            "2000"
+          ]
+        ],
+        "metadataOnly": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--metadata-only"
+          ]
+        ]
+      },
+      "package": "research/candidates/V9",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge",
+        "research/candidates/V9/manifest.json"
+      ]
+    },
+    "air-geometry": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "check": [
+          [
+            "python3",
+            "research/candidates/air-geometry/check.py"
+          ]
+        ]
+      },
+      "package": "research/candidates/air-geometry",
+      "prerequisites": [
+        "python3",
+        "research/candidates/air-geometry/manifest.json"
+      ]
+    },
+    "common-corpus": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "check": [
+          [
+            "python3",
+            "research/common-corpus/generators/generate.py",
+            "--check"
+          ]
+        ]
+      },
+      "package": "research/common-corpus",
+      "prerequisites": [
+        "python3"
+      ]
+    },
+    "deposit-batching": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "run": [
+          [
+            "python3",
+            "research/candidates/deposit-batching/run.py"
+          ]
+        ]
+      },
+      "package": "research/candidates/deposit-batching",
+      "prerequisites": [
+        "python3",
+        "forge",
+        "research/candidates/deposit-batching/manifest.json"
+      ]
+    },
+    "digest-width": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "check": [
+          [
+            "python3",
+            "research/digest-width/run.py"
+          ]
+        ]
+      },
+      "package": "research/digest-width",
+      "prerequisites": [
+        "python3"
+      ]
+    },
+    "economic-throughput": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "run": [
+          [
+            "python3",
+            "research/economic-throughput/run.py"
+          ]
+        ]
+      },
+      "package": "research/economic-throughput",
+      "prerequisites": [
+        "python3"
+      ]
+    },
+    "field-bakeoff-common": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "native": [
+          [
+            "cargo",
+            "run",
+            "--release",
+            "--locked",
+            "--manifest-path",
+            "research/candidates/field-bakeoff-common/native/Cargo.toml",
+            "--",
+            "--iterations",
+            "64",
+            "--rows",
+            "256",
+            "--columns",
+            "190",
+            "--out",
+            "research/candidates/field-bakeoff-common/outputs/native-latest.json"
+          ]
+        ],
+        "solidity": [
+          [
+            "python3",
+            "research/candidates/field-bakeoff-common/solidity/run_bench.py",
+            "--out",
+            "research/candidates/field-bakeoff-common/outputs/solidity-latest.json"
+          ]
+        ]
+      },
+      "package": "research/candidates/field-bakeoff-common",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge"
+      ]
+    },
+    "formal-assurance": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "check": [
+          [
+            "python3",
+            "research/formal-assurance/run.py",
+            "--check"
+          ]
+        ]
+      },
+      "package": "research/formal-assurance",
+      "prerequisites": [
+        "python3"
+      ]
+    },
+    "hash-compression-common": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "benchmark": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "benchmark",
+            "--samples",
+            "1000"
+          ]
+        ],
+        "checkPackagedVectors": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "vectors-package-check"
+          ]
+        ],
+        "packageVectors": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "vectors-package"
+          ]
+        ],
+        "parity": [
+          [
+            "python3",
+            "research/candidates/hash-compression-common/run.py",
+            "vectors-parity"
+          ]
+        ]
+      },
+      "package": "research/candidates/hash-compression-common",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "node",
+        "pnpm",
+        "forge"
+      ]
+    },
+    "merkle-shape": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "run": [
+          [
+            "python3",
+            "research/candidates/merkle-shape/run.py"
+          ]
+        ]
+      },
+      "package": "research/candidates/merkle-shape",
+      "prerequisites": [
+        "python3",
+        "forge",
+        "research/candidates/merkle-shape/manifest.json"
+      ]
+    },
+    "proof-length": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "check": [
+          [
+            "python3",
+            "research/proof-length/check.py"
+          ]
+        ]
+      },
+      "package": "research/proof-length",
+      "prerequisites": [
+        "python3"
+      ]
+    },
+    "public-statement": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "check": [
+          [
+            "python3",
+            "research/public-statement/check.py"
+          ]
+        ]
+      },
+      "package": "research/public-statement",
+      "prerequisites": [
+        "python3"
+      ]
+    },
+    "runtime-binding": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "check": [
+          [
+            "python3",
+            "research/runtime-binding/binding.py",
+            "check"
+          ]
+        ]
+      },
+      "package": "research/runtime-binding",
+      "prerequisites": [
+        "python3"
+      ]
+    },
+    "structured-relation": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "check": [
+          [
+            "python3",
+            "research/candidates/structured-relation/check.py"
+          ]
+        ]
+      },
+      "package": "research/candidates/structured-relation",
+      "prerequisites": [
+        "python3",
+        "research/candidates/structured-relation/manifest.json"
+      ]
+    },
+    "v03-baseline": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "build": [
+          [
+            "cargo",
+            "build",
+            "--locked",
+            "--offline",
+            "--release",
+            "--manifest-path",
+            "research/candidates/v03-baseline/native/Cargo.toml"
+          ]
+        ],
+        "generateAll": [
+          [
+            "python3",
+            "research/candidates/v03-baseline/scripts/generate-all.py"
+          ]
+        ],
+        "verifyAll": [
+          [
+            "python3",
+            "research/candidates/v03-baseline/scripts/verify-all.py"
+          ]
+        ],
+        "verifyNative": [
+          [
+            "python3",
+            "research/candidates/v03-baseline/scripts/verify-all.py",
+            "--native-only"
+          ]
+        ]
+      },
+      "package": "research/candidates/v03-baseline",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge",
+        "frozen v0.3 sources and parameters"
+      ]
+    },
+    "verifier-optimization-common": {
+      "candidateActionAvailability": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "entrypoints": {
+        "focusedRun": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--repetitions",
+            "2000"
+          ]
+        ],
+        "metadataOnly": [
+          [
+            "python3",
+            "research/candidates/verifier-optimization-common/run-focused.py",
+            "--metadata-only"
+          ]
+        ]
+      },
+      "package": "research/candidates/verifier-optimization-common",
+      "prerequisites": [
+        "python3",
+        "cargo",
+        "forge"
+      ]
+    }
+  },
+  "policy": {
+    "eligibleFinalists": 0,
+    "liveChainActions": false,
+    "secretInputs": false,
+    "shellEvaluation": false,
+    "unsupportedStatus": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST"
+  },
+  "schema": "pqtc.reproduction.command-registry.v1"
+}

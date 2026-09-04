@@ -1,0 +1,271 @@
+{
+  "artifacts": [
+    {
+      "bytes": 1387,
+      "description": "Primary retained evidence for this run",
+      "digests": {
+        "keccak256": "3f9030860b6d877269d901229052f250e79940bb279d3d2e834a41260781b622",
+        "sha256": "9e84045da5b1e79fc62e381f81ef946601839538acf0262f6a17df8cd03b72c0"
+      },
+      "media_type": "application/json",
+      "path": "research/aggregation/outputs/foundry-components.json"
+    },
+    {
+      "bytes": 104844,
+      "description": null,
+      "digests": {
+        "keccak256": "1fc7d3b7f14c0e2d71a8c073f7cd3671e56b540f75300ee959ba4b760b9c70f0",
+        "sha256": "81e110572fded278d5bfc3066b39196aa84a439c06ba1412c289c7591989163a"
+      },
+      "media_type": "application/json",
+      "path": "research/aggregation/outputs/results.json"
+    },
+    {
+      "bytes": 2900,
+      "description": null,
+      "digests": {
+        "keccak256": "472d211cd75c3b63a3e66dfc3a1c942d2ce3ce090b4f126fe1b4d95f1a91144c",
+        "sha256": "b7313d4950b91df216f9857a30e2958713b0c5967998ef96ea064f32a90b0a82"
+      },
+      "media_type": "application/json",
+      "path": "research/harness/hardware-detect/h1-m4-max.json"
+    }
+  ],
+  "candidate_id": "SP-70",
+  "evm": {
+    "calldata_floor_metrics": {
+      "N1": {
+        "active_floor": 25190,
+        "bytes": 356,
+        "nonzero_bytes": 21,
+        "uniform64_floor": 43784,
+        "uniform96_floor": 55176,
+        "zero_bytes": 335
+      },
+      "N16": {
+        "active_floor": 65540,
+        "bytes": 3716,
+        "nonzero_bytes": 246,
+        "uniform64_floor": 258824,
+        "uniform96_floor": 377736,
+        "zero_bytes": 3470
+      },
+      "N2": {
+        "active_floor": 27880,
+        "bytes": 580,
+        "nonzero_bytes": 36,
+        "uniform64_floor": 58120,
+        "uniform96_floor": 76680,
+        "zero_bytes": 544
+      },
+      "N32": {
+        "active_floor": 108580,
+        "bytes": 7300,
+        "nonzero_bytes": 486,
+        "uniform64_floor": 488200,
+        "uniform96_floor": 721800,
+        "zero_bytes": 6814
+      },
+      "N4": {
+        "active_floor": 33260,
+        "bytes": 1028,
+        "nonzero_bytes": 66,
+        "uniform64_floor": 86792,
+        "uniform96_floor": 119688,
+        "zero_bytes": 962
+      },
+      "N64": {
+        "active_floor": 194660,
+        "bytes": 14468,
+        "nonzero_bytes": 966,
+        "uniform64_floor": 946952,
+        "uniform96_floor": 1409928,
+        "zero_bytes": 13502
+      },
+      "N8": {
+        "active_floor": 44020,
+        "bytes": 1924,
+        "nonzero_bytes": 126,
+        "uniform64_floor": 144136,
+        "uniform96_floor": 205704,
+        "zero_bytes": 1798
+      }
+    },
+    "chain_config_hash": null,
+    "client": "Foundry local EVM",
+    "client_version": "NOT_EVALUATED",
+    "component_gas": {
+      "N1.nullifier": 23581,
+      "N1.same_user_pull_credit": 45807,
+      "N1.unrelated_user_pull_credit": 45807,
+      "N16.nullifier": 387798,
+      "N16.same_user_pull_credit": 65999,
+      "N16.unrelated_user_pull_credit": 722999,
+      "N2.nullifier": 46682,
+      "N2.same_user_pull_credit": 47170,
+      "N2.unrelated_user_pull_credit": 90970,
+      "N32.nullifier": 818629,
+      "N32.same_user_pull_credit": 87462,
+      "N32.unrelated_user_pull_credit": 1445262,
+      "N4.nullifier": 93374,
+      "N4.same_user_pull_credit": 49873,
+      "N4.unrelated_user_pull_credit": 181273,
+      "N64.nullifier": 1811596,
+      "N64.same_user_pull_credit": 130365,
+      "N64.unrelated_user_pull_credit": 2889765,
+      "N8.nullifier": 188787,
+      "N8.same_user_pull_credit": 55256,
+      "N8.unrelated_user_pull_credit": 361856,
+      "successful_pull_claim": 32656
+    },
+    "deployment_gas": 0,
+    "execution_gas": 0,
+    "gas_scenarios": [
+      {
+        "floor_gas": 0,
+        "floor_is_binding": false,
+        "name": "ACTIVE_EIP7623",
+        "total_gas": 0,
+        "tx_cap_margin": 0
+      },
+      {
+        "floor_gas": 0,
+        "floor_is_binding": false,
+        "name": "FUTURE_EIP7976_64_64",
+        "total_gas": 0,
+        "tx_cap_margin": 0
+      },
+      {
+        "floor_gas": 0,
+        "floor_is_binding": false,
+        "name": "DRAFT_EIP8311_96_96",
+        "total_gas": 0,
+        "tx_cap_margin": 0
+      }
+    ],
+    "initcode_bytes": 0,
+    "measured": true,
+    "measurement_status": "MEASURED_COMPONENTS_ONLY_NO_COMPLETE_TRANSACTION_OR_CALLDATA_SCHEDULE",
+    "receipt_block": null,
+    "receipt_gas_used": 0,
+    "runtime_bytes": 0,
+    "standard_intrinsic_gas": 0,
+    "transaction_gas_limit": 0,
+    "transaction_hash": null
+  },
+  "git": {
+    "branch_or_tag": null,
+    "commit": "aff4d015f3f092b71f7c63071c884f8819ca05aa",
+    "dirty": true,
+    "repository": "PQTornado",
+    "submodules": {}
+  },
+  "hardware": {
+    "allocator": "platform/default unless a run record states otherwise",
+    "architecture": "arm64",
+    "cpu_affinity": "not pinned; macOS scheduler",
+    "cpu_features": [
+      "Apple ARM64",
+      "NEON"
+    ],
+    "cpu_model": "Apple M4 Max",
+    "hardware_id": "H1-MAC16-5-M4MAX-48G",
+    "kernel": "Darwin 24.6.0; xnu-11417.140.69.711.44~1/RELEASE_ARM64_T6041",
+    "logical_cores": 16,
+    "os": "macOS 15.7.9 (24G830)",
+    "physical_cores": 16,
+    "power_mode": "not explicitly pinned",
+    "ram_bytes": 51539607552,
+    "threads_used": 16
+  },
+  "proof_bytes": {
+    "abi_calldata_bytes": 0,
+    "measurement_status": "NOT_APPLICABLE_NO_PROOF_OUTPUT",
+    "nonzero_bytes": 0,
+    "raw_proof_bytes": 0,
+    "sections": {},
+    "zero_bytes": 0
+  },
+  "proof_system": {
+    "base_field": "NOT_EVALUATED",
+    "challenge_field": "NOT_EVALUATED",
+    "classical_wrapper": false,
+    "hiding": false,
+    "hiding_construction": null,
+    "name": "NOT_EVALUATED",
+    "transcript": "NOT_EVALUATED",
+    "trusted_setup": false
+  },
+  "protocol": {
+    "asset": "native ETH",
+    "case_id": "foundry-components",
+    "denomination_wei": "1000000000000000000",
+    "scenario_status": "NOT_EVALUATED_UNLESS_SOURCE_ARTIFACT_STATES_OTHERWISE",
+    "semantic_version": "research-non-finalist",
+    "transaction_shape": "OTHER",
+    "tree_arity": 2,
+    "tree_depth": 20
+  },
+  "prover": {
+    "cold_or_warm": "NOT_APPLICABLE",
+    "cpu_ms": null,
+    "measurement_status": "NOT_EVALUATED",
+    "native_verify_ms": null,
+    "peak_rss_bytes": null,
+    "phase_ms": {},
+    "success": true,
+    "wall_ms": null
+  },
+  "relation": {
+    "active_rows": 0,
+    "base_degree_bits": 0,
+    "batched_functions": 0,
+    "constraint_count": 0,
+    "hiding_degree_bits": 0,
+    "kind": "OTHER",
+    "logical_rows": 0,
+    "max_degree": 0,
+    "measurement_status": "NOT_EVALUATED_SCHEMA_V1_STRUCTURAL_ZEROS_EXCLUDED_FROM_SUMMARIES",
+    "padded_rows": 0,
+    "padding_rows": 0,
+    "preprocessed_width": 0,
+    "quotient_chunks": 0,
+    "trace_width": 0
+  },
+  "result": {
+    "confounders": [],
+    "failure_reason": null,
+    "gate_status": "DEFERRED",
+    "notes": [
+      "Non-finalist research evidence; zero-valued schema-v1 sentinels marked NOT_EVALUATED are never emitted as measurements.",
+      "EXACT_FOUNDRY_GASLEFT_DELTA_COMPONENTS_NOT_FULL_SETTLEMENT",
+      "EXACT_ABI_CALL_WITH_EMPTY_OUTER_PROOF_NOT_FULL_AGGREGATE_CALLDATA"
+    ],
+    "success": true
+  },
+  "run_id": "research-sp70-sp-70-foundry-components",
+  "schema_version": "1",
+  "security": {
+    "classification": "BENCHMARK_ONLY",
+    "external_review": null,
+    "lowest_accepted_bits": null,
+    "qrom_status": "NOT_EVALUATED",
+    "terms": [],
+    "zk_status": "NOT_EVALUATED"
+  },
+  "spike_id": "SP-70",
+  "timestamp_utc": "2026-09-04T19:33:36Z",
+  "toolchain": {
+    "cargo": "cargo 1.97.0 (c980f4866 2026-06-30)",
+    "container_image_digest": "sha256:000bd45738f434e90438ad73fa72c765d53f0b2d617232b7628948ec8411fea4",
+    "evm_revision": "prague",
+    "foundry": "forge 1.7.1, commit 4072e48705af9d93e3c0f6e29e93b5e9a40caed8",
+    "node": "24.19.0",
+    "package_manager": "pnpm 11.20.0",
+    "rustc": "rustc 1.97.0 (2d8144b78 2026-07-07); LLVM 22.1.6",
+    "rustflags": [],
+    "solc": "0.8.30 selected by foundry.toml; standalone solc not on PATH",
+    "solc_optimizer_runs": 200,
+    "via_ir": true
+  }
+}

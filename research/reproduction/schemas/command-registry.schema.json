@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pqtc.reproduction.command-registry.schema.v1",
+  "title": "PQTC reproduction command registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "policy", "candidates", "components"],
+  "properties": {
+    "schema": {"const": "pqtc.reproduction.command-registry.v1"},
+    "policy": {
+      "type": "object",
+      "required": ["unsupportedStatus", "eligibleFinalists", "liveChainActions", "secretInputs", "shellEvaluation"],
+      "properties": {
+        "unsupportedStatus": {"const": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST"},
+        "eligibleFinalists": {"const": 0},
+        "liveChainActions": {"const": false},
+        "secretInputs": {"const": false},
+        "shellEvaluation": {"const": false}
+      }
+    },
+    "candidates": {
+      "type": "object",
+      "required": ["C00", "C01", "C10", "C11", "C12", "C20", "C21", "C22", "C23", "C30", "C40"],
+      "additionalProperties": {"$ref": "#/$defs/candidate"}
+    },
+    "components": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/component"}
+    }
+  },
+  "$defs": {
+    "availability": {"enum": ["AVAILABLE", "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST"]},
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "eligibleFinalist", "packages", "pinnedArtifacts", "actions", "actionEntrypoints", "prerequisites"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "eligibleFinalist": {"const": false},
+        "packages": {"type": "array", "minItems": 1, "items": {"type": "string"}, "uniqueItems": true},
+        "pinnedArtifacts": {"type": "array", "minItems": 1, "items": {"type": "string"}, "uniqueItems": true},
+        "actions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["build", "corpus", "prove", "verify-native", "verify-evm", "security", "report"],
+          "properties": {
+            "build": {"$ref": "#/$defs/availability"},
+            "corpus": {"$ref": "#/$defs/availability"},
+            "prove": {"$ref": "#/$defs/availability"},
+            "verify-native": {"$ref": "#/$defs/availability"},
+            "verify-evm": {"$ref": "#/$defs/availability"},
+            "security": {"$ref": "#/$defs/availability"},
+            "report": {"$ref": "#/$defs/availability"}
+          }
+        },
+        "actionEntrypoints": {"$ref": "#/$defs/actionEntrypoints"},
+        "prerequisites": {"$ref": "#/$defs/actionPrerequisites"}
+      }
+    },
+    "actionEntrypoints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["build", "corpus", "prove", "verify-native", "verify-evm", "security", "report"],
+      "properties": {
+        "build": {"$ref": "#/$defs/commandList"},
+        "corpus": {"$ref": "#/$defs/commandList"},
+        "prove": {"$ref": "#/$defs/commandList"},
+        "verify-native": {"$ref": "#/$defs/commandList"},
+        "verify-evm": {"$ref": "#/$defs/commandList"},
+        "security": {"$ref": "#/$defs/commandList"},
+        "report": {"$ref": "#/$defs/commandList"}
+      }
+    },
+    "actionPrerequisites": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["build", "corpus", "prove", "verify-native", "verify-evm", "security", "report"],
+      "properties": {
+        "build": {"$ref": "#/$defs/stringList"},
+        "corpus": {"$ref": "#/$defs/stringList"},
+        "prove": {"$ref": "#/$defs/stringList"},
+        "verify-native": {"$ref": "#/$defs/stringList"},
+        "verify-evm": {"$ref": "#/$defs/stringList"},
+        "security": {"$ref": "#/$defs/stringList"},
+        "report": {"$ref": "#/$defs/stringList"}
+      }
+    },
+    "commandList": {
+      "type": "array",
+      "items": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+    },
+    "stringList": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string"}
+    },
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["package", "entrypoints", "prerequisites", "candidateActionAvailability"],
+      "properties": {
+        "package": {"type": "string", "minLength": 1},
+        "entrypoints": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+          }
+        },
+        "prerequisites": {"type": "array", "items": {"type": "string"}},
+        "candidateActionAvailability": {"const": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST"}
+      }
+    }
+  }
+}

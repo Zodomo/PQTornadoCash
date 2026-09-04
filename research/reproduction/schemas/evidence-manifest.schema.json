@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pqtc.reproduction.evidence-manifest.schema.v1",
+  "title": "PQTC deterministic evidence manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "hashAlgorithm", "inventoryPolicy", "roots", "exclusions", "files"],
+  "properties": {
+    "schema": {"const": "pqtc.reproduction.evidence-manifest.v1"},
+    "hashAlgorithm": {"const": "sha256"},
+    "inventoryPolicy": {"const": "PINNED_FILES_ALLOW_ADDITIONS"},
+    "roots": {"type": "array", "minItems": 1, "items": {"type": "string"}, "uniqueItems": true},
+    "exclusions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["directories", "names", "secretNames", "temporarySuffixes", "manifestExcludesItself"],
+      "properties": {
+        "directories": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "names": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "secretNames": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "temporarySuffixes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "manifestExcludesItself": {"const": true}
+      }
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "bytes", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1, "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"},
+          "bytes": {"type": "integer", "minimum": 0},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    }
+  }
+}

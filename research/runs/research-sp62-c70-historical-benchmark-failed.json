@@ -1,0 +1,199 @@
+{
+  "artifacts": [
+    {
+      "bytes": 1108,
+      "description": "Primary retained evidence for this run",
+      "digests": {
+        "keccak256": "16f0f87d68c121ca5ec60ea08dc88fc11f60758c264a5f0f4a2aee883e2b46b0",
+        "sha256": "68e5c32f5df7770715fe7528206455c86559c79e2b4c816c705d3c8289c01723"
+      },
+      "media_type": "application/json",
+      "path": "research/candidates/C70-flock-veil/outputs/flock-benchmark/result.json"
+    },
+    {
+      "bytes": 3185,
+      "description": null,
+      "digests": {
+        "keccak256": "17be8690ece198d98f62a1be904ff3774aceffdcf3e5e988e12fa4648a145a50",
+        "sha256": "9a2da03677f48da394bfbccd4db4512817590187e81e7ca62af41f1960f910c3"
+      },
+      "media_type": "text/plain",
+      "path": "research/candidates/C70-flock-veil/outputs/flock-benchmark/stderr.log"
+    },
+    {
+      "bytes": 146,
+      "description": null,
+      "digests": {
+        "keccak256": "dfd170a9a383a04997abfc7b77817d9a52851591eaf56cb9c420c8399dd5c7eb",
+        "sha256": "08f298fa09504603823ff50b9d6b05aec1cb37e34c9216592ac1069efc631592"
+      },
+      "media_type": "text/plain",
+      "path": "research/candidates/C70-flock-veil/outputs/flock-benchmark/stdout.log"
+    },
+    {
+      "bytes": 2900,
+      "description": null,
+      "digests": {
+        "keccak256": "472d211cd75c3b63a3e66dfc3a1c942d2ce3ce090b4f126fe1b4d95f1a91144c",
+        "sha256": "b7313d4950b91df216f9857a30e2958713b0c5967998ef96ea064f32a90b0a82"
+      },
+      "media_type": "application/json",
+      "path": "research/harness/hardware-detect/h1-m4-max.json"
+    }
+  ],
+  "candidate_id": "C70",
+  "evm": {
+    "chain_config_hash": null,
+    "client": "NOT_EVALUATED",
+    "client_version": "NOT_EVALUATED",
+    "component_gas": {},
+    "deployment_gas": 0,
+    "execution_gas": 0,
+    "gas_scenarios": [
+      {
+        "floor_gas": 0,
+        "floor_is_binding": false,
+        "name": "ACTIVE_EIP7623",
+        "total_gas": 0,
+        "tx_cap_margin": 0
+      },
+      {
+        "floor_gas": 0,
+        "floor_is_binding": false,
+        "name": "FUTURE_EIP7976_64_64",
+        "total_gas": 0,
+        "tx_cap_margin": 0
+      },
+      {
+        "floor_gas": 0,
+        "floor_is_binding": false,
+        "name": "DRAFT_EIP8311_96_96",
+        "total_gas": 0,
+        "tx_cap_margin": 0
+      }
+    ],
+    "initcode_bytes": 0,
+    "measured": false,
+    "measurement_status": "NOT_EVALUATED_SCHEMA_V1_STRUCTURAL_ZEROS_EXCLUDED_FROM_SUMMARIES",
+    "receipt_block": null,
+    "receipt_gas_used": 0,
+    "runtime_bytes": 0,
+    "standard_intrinsic_gas": 0,
+    "transaction_gas_limit": 0,
+    "transaction_hash": null
+  },
+  "git": {
+    "branch_or_tag": null,
+    "commit": "aff4d015f3f092b71f7c63071c884f8819ca05aa",
+    "dirty": true,
+    "repository": "PQTornado",
+    "submodules": {}
+  },
+  "hardware": {
+    "allocator": "platform/default unless a run record states otherwise",
+    "architecture": "arm64",
+    "cpu_affinity": "not pinned; macOS scheduler",
+    "cpu_features": [
+      "Apple ARM64",
+      "NEON"
+    ],
+    "cpu_model": "Apple M4 Max",
+    "hardware_id": "H1-MAC16-5-M4MAX-48G",
+    "kernel": "Darwin 24.6.0; xnu-11417.140.69.711.44~1/RELEASE_ARM64_T6041",
+    "logical_cores": 16,
+    "os": "macOS 15.7.9 (24G830)",
+    "physical_cores": 16,
+    "power_mode": "not explicitly pinned",
+    "ram_bytes": 51539607552,
+    "threads_used": 16
+  },
+  "proof_bytes": {
+    "abi_calldata_bytes": 0,
+    "measurement_status": "NOT_APPLICABLE_NO_PROOF_OUTPUT",
+    "nonzero_bytes": 0,
+    "raw_proof_bytes": 0,
+    "sections": {},
+    "zero_bytes": 0
+  },
+  "proof_system": {
+    "base_field": "NOT_EVALUATED",
+    "challenge_field": "NOT_EVALUATED",
+    "classical_wrapper": false,
+    "hiding": false,
+    "hiding_construction": null,
+    "name": "NOT_EVALUATED",
+    "transcript": "NOT_EVALUATED",
+    "trusted_setup": false
+  },
+  "protocol": {
+    "asset": "native ETH",
+    "case_id": "historical-benchmark-failed",
+    "denomination_wei": "1000000000000000000",
+    "scenario_status": "NOT_EVALUATED_UNLESS_SOURCE_ARTIFACT_STATES_OTHERWISE",
+    "semantic_version": "research-non-finalist",
+    "transaction_shape": "OTHER",
+    "tree_arity": 2,
+    "tree_depth": 20
+  },
+  "prover": {
+    "cold_or_warm": "NOT_APPLICABLE",
+    "cpu_ms": null,
+    "measurement_status": "NOT_EVALUATED",
+    "native_verify_ms": null,
+    "peak_rss_bytes": null,
+    "phase_ms": {},
+    "success": false,
+    "wall_ms": null
+  },
+  "relation": {
+    "active_rows": 0,
+    "base_degree_bits": 0,
+    "batched_functions": 0,
+    "constraint_count": 0,
+    "hiding_degree_bits": 0,
+    "kind": "OTHER",
+    "logical_rows": 0,
+    "max_degree": 0,
+    "measurement_status": "NOT_EVALUATED_SCHEMA_V1_STRUCTURAL_ZEROS_EXCLUDED_FROM_SUMMARIES",
+    "padded_rows": 0,
+    "padding_rows": 0,
+    "preprocessed_width": 0,
+    "quotient_chunks": 0,
+    "trace_width": 0
+  },
+  "result": {
+    "confounders": [],
+    "failure_reason": "Pinned batch-44 benchmark panicked because no Ligerito m=21 fast-profile security configuration exists",
+    "gate_status": "FAIL",
+    "notes": [
+      "Non-finalist research evidence; zero-valued schema-v1 sentinels marked NOT_EVALUATED are never emitted as measurements.",
+      "FAILED"
+    ],
+    "success": false
+  },
+  "run_id": "research-sp62-c70-historical-benchmark-failed",
+  "schema_version": "1",
+  "security": {
+    "classification": "BENCHMARK_ONLY",
+    "external_review": null,
+    "lowest_accepted_bits": null,
+    "qrom_status": "NOT_EVALUATED",
+    "terms": [],
+    "zk_status": "NOT_EVALUATED"
+  },
+  "spike_id": "SP-62",
+  "timestamp_utc": "2026-09-04T18:32:41.539514Z",
+  "toolchain": {
+    "cargo": "cargo 1.97.0 (c980f4866 2026-06-30)",
+    "container_image_digest": "sha256:000bd45738f434e90438ad73fa72c765d53f0b2d617232b7628948ec8411fea4",
+    "evm_revision": "prague",
+    "foundry": "forge 1.7.1, commit 4072e48705af9d93e3c0f6e29e93b5e9a40caed8",
+    "node": "24.19.0",
+    "package_manager": "pnpm 11.20.0",
+    "rustc": "rustc 1.97.0 (2d8144b78 2026-07-07); LLVM 22.1.6",
+    "rustflags": [],
+    "solc": "0.8.30 selected by foundry.toml; standalone solc not on PATH",
+    "solc_optimizer_runs": 200,
+    "via_ir": true
+  }
+}

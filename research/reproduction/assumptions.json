@@ -1,0 +1,37 @@
+{
+  "schema": "pqtc.reproduction.assumptions.v1",
+  "assumptions": [
+    {
+      "id": "A1",
+      "statement": "research/integrated-finalists/status.json is authoritative for finalist eligibility.",
+      "observedValue": {
+        "eligibleCount": 0,
+        "finalistCount": 0,
+        "status": "CURRENT_RESEARCH_FRONTIER_NO_VIABLE_NEXT_BUILD"
+      },
+      "consequence": "Every non-baseline integrated action fails closed; component entrypoints remain evidence-only."
+    },
+    {
+      "id": "A2",
+      "statement": "The 60 research/runs/v03-*.json records and retained C00 proof directories are authoritative baseline evidence.",
+      "consequence": "Reproduction writes fresh proofs only below excluded research/reproduction/.work and never rewrites authoritative records."
+    },
+    {
+      "id": "A3",
+      "statement": "The frozen C00 native prover's recorded operating-system entropy source and immediate native/codec checks are the executable hiding-proof witness.",
+      "consequence": "The prove action rejects missing, repeated, retained, unverified, or differently sourced proof metadata."
+    },
+    {
+      "id": "A4",
+      "statement": "Foundry's local embedded EVM is the only permitted EVM execution route in this package.",
+      "consequence": "verify-evm accepts only client=anvil and exposes no RPC URL, key, broadcast, deploy, or live-chain option."
+    },
+    {
+      "id": "A5",
+      "statement": "New files under manifest roots may be added by concurrent evidence work.",
+      "consequence": "Manifest verification checks every pinned listed file and permits additions; regeneration is required to pin additions."
+    }
+  ],
+  "nullPolicy": "Unknown and unmeasured values remain absent or explicit NOT_EVALUATED; they are never converted to numeric zero.",
+  "researchOnly": true
+}

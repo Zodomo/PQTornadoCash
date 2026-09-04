@@ -1,0 +1,33 @@
+{
+  "schema": "pqtc.reproduction.negative-results.v1",
+  "results": [
+    {
+      "id": "NR-01",
+      "status": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "scope": ["C10", "C11", "C12", "C20", "C21", "C22", "C23", "C30", "C40"],
+      "reason": "No eligible integrated finalist exists; component measurements cannot be relabeled as build, corpus, hiding-proof, native-verifier, EVM-verifier, security, or report evidence for an integrated candidate.",
+      "successPermitted": false
+    },
+    {
+      "id": "NR-02",
+      "status": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+      "scope": ["C01:build", "C01:corpus", "C01:prove", "C01:verify-native", "C01:verify-evm", "C01:report"],
+      "reason": "C01 is a q48 security comparator, not an implemented q48 integrated prover/verifier. Only its pinned security calculation is executable.",
+      "successPermitted": false
+    },
+    {
+      "id": "NR-03",
+      "status": "FORBIDDEN",
+      "scope": ["live-chain", "broadcast", "deployment", "secret-input"],
+      "reason": "The reproduction package is offline and research-only. It has no RPC URL, private-key, keystore, broadcast, or deployment action.",
+      "successPermitted": false
+    },
+    {
+      "id": "NR-04",
+      "status": "NOT_INTEGRATED",
+      "scope": ["component entrypoints"],
+      "reason": "Component commands preserve experimental and failed evidence but are not candidate action implementations and never make a finalist eligible.",
+      "successPermitted": false
+    }
+  ]
+}

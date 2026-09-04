@@ -1,0 +1,31 @@
+{
+  "schema": "pqtc.reproduction.package-manifest.v1",
+  "package": "research/reproduction",
+  "entrypoint": "python3 research/reproduction/reproduce.py",
+  "planSection": 25,
+  "researchOnly": true,
+  "deploymentAuthorized": false,
+  "eligibleFinalists": 0,
+  "files": {
+    "registry": "research/reproduction/command-registry.json",
+    "evidenceManifest": "research/reproduction/evidence-manifest.json",
+    "status": "research/reproduction/status.json",
+    "assumptions": "research/reproduction/assumptions.json",
+    "negativeResults": "research/reproduction/negative-results.json",
+    "adr": "research/reproduction/ADR.md",
+    "readme": "research/reproduction/README.md",
+    "schemas": [
+      "research/reproduction/schemas/command-registry.schema.json",
+      "research/reproduction/schemas/evidence-manifest.schema.json",
+      "research/reproduction/schemas/result.schema.json"
+    ]
+  },
+  "policies": {
+    "unsupported": "NOT_AVAILABLE_NO_ELIGIBLE_FINALIST",
+    "noLiveChain": true,
+    "noSecrets": true,
+    "authoritativeRunRecordMutation": false,
+    "manifestHash": "sha256",
+    "manifestSelfExcluded": true
+  }
+}
