@@ -51,6 +51,22 @@ def artifact(run_dir,name,key,media,description,meta):
     value=meta[key]; data=(run_dir/name).read_bytes()
     return {"path":str((run_dir/name).relative_to(ROOT)),"bytes":value["bytes"],"media_type":media,"digests":{"sha256":hashlib.sha256(data).hexdigest(),"keccak256":value["keccak256"]},"description":description}
 
+def security_from_sp01():
+    report=json.loads((ROOT/"research/security-model/v03-q32.json").read_text())
+    labels=[
+      ("FRI random-words","random_words","CONJECTURAL","CONJECTURAL"),
+      ("FRI list-decoding regime","ldr","PROVEN","CONDITIONAL"),
+      ("FRI unique-decoding regime","udr","PROVEN","UNCONDITIONAL"),
+    ]
+    terms=[]
+    for name,key,classification,theorem_regime in labels:
+        regime=report["single_target"][key]
+        omissions=sorted({omission for term in regime["terms"] for omission in term["omissions"]})
+        terms.append({"name":name,"model":key.replace("_","-"),"formula_source":"research/security-model/v03-q32.json","classical_bits":regime["floor_classical_bits"],"quantum_bits":regime["floor_quantum_bits"],"proven_or_conjectural":classification,"proof_status":regime["proof_status"],"theorem_regime":theorem_regime,"assumptions":regime["assumptions"],"multi_target_count_log2":None,"binding":key=="ldr","omitted_terms":omissions,"notes":[f"Exact generated classical result: {regime['classical_bits']:.9f} bits",f"Exact generated quantum result: {regime['quantum_bits']:.9f} bits"]})
+    return {"classification":"PQ_ORIENTED_RESEARCH","terms":terms,"lowest_accepted_bits":report["single_target"]["best_proven"]["floor_classical_bits"],"qrom_status":"No complete QROM proof for custom transcript/composition","zk_status":"Hiding enabled; full independent ZK proof outstanding","external_review":"OPEN","independent_human_acceptance":False,"internal_methodology_review":report["review"],"omissions":report["global_omissions"],"security_qualified_candidate":False}
+
+
+
 def run_record(job,run_dir,meta,wall,rss,hw,tools):
     evm=json.loads((run_dir/"evm.json").read_text())
     case_id=job.get("case_id","fixed-baseline")
@@ -65,7 +81,7 @@ def run_record(job,run_dir,meta,wall,rss,hw,tools):
       artifact(run_dir,"part-b.calldata","calldata_b","application/vnd.ethereum.calldata","Exact withdraw calldata including consumer-bound verification ID",meta),
     ]
     null_reason="NOT_EVALUATED: EVM execution is performed by verify-all.sh after proof generation; schema-required numeric fields use zero only as an explicit unmeasured sentinel"
-    scenarios=[{"name":name,"floor_gas":0,"total_gas":0,"tx_cap_margin":0,"floor_is_binding":False} for name in ["ACTIVE_EIP7623","SCENARIO_EIP7976_64_PER_BYTE","SCENARIO_EIP8311_96_PER_BYTE"]]
+    scenarios=[{"name":name,"floor_gas":0,"total_gas":0,"tx_cap_margin":0,"floor_is_binding":False} for name in ["ACTIVE_EIP7623","FUTURE_EIP7976_64_64","DRAFT_EIP8311_96_96"]]
     return {
       "schema_version":"1","run_id":job["run_id"],"candidate_id":"C00/v03-baseline","spike_id":"SP-00","timestamp_utc":datetime.now(timezone.utc).isoformat(),
       "git":{"repository":str(ROOT),"commit":BASELINE,"dirty":bool(subprocess.run(["git","status","--porcelain","--untracked-files=no"],cwd=ROOT,text=True,capture_output=True,check=True).stdout.strip()),"branch_or_tag":"pqtc-v0.3-research-baseline","submodules":{}},
@@ -74,10 +90,7 @@ def run_record(job,run_dir,meta,wall,rss,hw,tools):
       "application_hash":{"candidate":"P2BB512-v1","family":"Poseidon2","field":"BabyBear","mode":"rate-4 sponge","state_width":16,"rate":4,"capacity":12,"digest_fields":16,"digest_bytes":64,"domain_scheme":"v0.3 typed tags plus byte/element length and aux","review_status":"independent structural cryptanalysis outstanding"},
       "relation":{"kind":"AIR","logical_rows":256,"padded_rows":256,"trace_width":190,"constraint_count":1186,"max_degree":7,"quotient_chunks":16,"batched_functions":210,"base_degree_bits":8,"hiding_degree_bits":9,"active_rows":244,"padding_rows":12,"nonzero_count_status":"NOT_EVALUATED: frozen AIR does not expose this count"},
       "proof_system":{"name":"Plonky3 hiding two-adic FRI STARK q32","base_field":"BabyBear","challenge_field":"degree-4 BabyBear extension","challenge_field_bits":120,"pcs_or_ldt":"hiding two-adic FRI","hiding":True,"hiding_construction":"four random codewords and eight MMCS salt fields per leaf","trusted_setup":False,"classical_wrapper":False,"query_count":32,"log_blowup":4,"fold_schedule":"nine binary rounds","final_polynomial_length":1,"commit_grinding_bits_configured":16,"query_grinding_bits_configured":16,"random_codewords":4,"salt_fields":8,"transcript":"KeccakPair512","mmcs_digest_bytes":64},
-      "security":{"classification":"PQ_ORIENTED_RESEARCH","terms":[
-        {"name":"FRI random-words","model":"generated v0.3 conjecture","formula_source":"parameters/sepolia-v0.3/security-analysis.json","classical_bits":107,"quantum_bits":None,"proven_or_conjectural":"CONJECTURAL","multi_target_count_log2":None,"binding":False,"omitted_terms":["unbounded multi-target proof volume"],"notes":["Not a proven 100-bit claim"]},
-        {"name":"FRI best proven","model":"list decoding","formula_source":"parameters/sepolia-v0.3/security-analysis.json","classical_bits":56,"quantum_bits":None,"proven_or_conjectural":"PROVEN","multi_target_count_log2":None,"binding":True,"omitted_terms":[],"notes":["Unique-decoding bound is 37 bits"]}],
-        "lowest_accepted_bits":56,"qrom_status":"No complete QROM proof for custom transcript/composition","zk_status":"Hiding enabled; full independent ZK proof outstanding","external_review":None},
+      "security":security_from_sp01(),
       "prover":{"success":True,"cold_or_warm":"WARM","wall_ms":wall,"cpu_ms":None,"peak_rss_bytes":rss,"native_verify_ms":meta["native_verify_ms"],"proof_only_ms":meta["prove_ms"],"peak_rss_status":None if rss is not None else "NOT_EVALUATED: /usr/bin/time RSS unsupported on this platform"},
       "proof_bytes":{"raw_proof_bytes":meta["raw_proof_bytes"],"abi_calldata_bytes":meta["abi_calldata_bytes"],"zero_bytes":meta["zero_bytes"],"nonzero_bytes":meta["nonzero_bytes"],"unique_query_indices":meta["unique_query_indices"],"sections":meta["sections"],"frontier_status":meta["frontier_status"],"calldata_zero_bytes":meta["calldata_zero_bytes"],"calldata_nonzero_bytes":meta["calldata_nonzero_bytes"]},
       "evm":{"measured":False,"client":"NOT_EVALUATED","client_version":"NOT_EVALUATED","chain_config_hash":None,"execution_gas":0,"standard_intrinsic_gas":0,"receipt_gas_used":0,"transaction_gas_limit":0,"gas_scenarios":scenarios,"runtime_bytes":0,"initcode_bytes":0,"deployment_gas":0,"component_gas":{},"opcode_counts":{},"transaction_hash":None,"receipt_block":None,"measurement_status":null_reason},

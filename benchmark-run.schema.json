@@ -221,6 +221,9 @@
         "multi_target_count_log2": { "type": ["number", "null"] },
         "binding": { "type": "boolean" },
         "omitted_terms": { "type": "array", "items": { "type": "string" } },
+        "proof_status": { "type": "string" },
+        "assumptions": { "type": "array", "items": { "type": "string" } },
+        "theorem_regime": { "enum": ["CONJECTURAL", "CONDITIONAL", "UNCONDITIONAL"] },
         "notes": { "type": "array", "items": { "type": "string" } }
       }
     },
@@ -288,7 +291,7 @@
       "additionalProperties": false,
       "required": ["name", "floor_gas", "total_gas", "tx_cap_margin"],
       "properties": {
-        "name": { "enum": ["ACTIVE_EIP7623", "SCENARIO_EIP7976_64_PER_BYTE", "SCENARIO_EIP8311_96_PER_BYTE"] },
+        "name": { "enum": ["ACTIVE_EIP7623", "FUTURE_EIP7976_64_64", "DRAFT_EIP8311_96_96"] },
         "floor_gas": { "$ref": "#/$defs/nonnegativeInteger" },
         "total_gas": { "$ref": "#/$defs/nonnegativeInteger" },
         "tx_cap_margin": { "type": "integer" },
@@ -308,7 +311,17 @@
         "standard_intrinsic_gas": { "$ref": "#/$defs/nonnegativeInteger" },
         "receipt_gas_used": { "$ref": "#/$defs/nonnegativeInteger" },
         "transaction_gas_limit": { "$ref": "#/$defs/nonnegativeInteger" },
-        "gas_scenarios": { "type": "array", "items": { "$ref": "#/$defs/gasScenario" }, "minItems": 3 },
+        "gas_scenarios": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/gasScenario" },
+          "minItems": 3,
+          "maxItems": 3,
+          "allOf": [
+            { "contains": { "type": "object", "properties": { "name": { "const": "ACTIVE_EIP7623" } }, "required": ["name"] } },
+            { "contains": { "type": "object", "properties": { "name": { "const": "FUTURE_EIP7976_64_64" } }, "required": ["name"] } },
+            { "contains": { "type": "object", "properties": { "name": { "const": "DRAFT_EIP8311_96_96" } }, "required": ["name"] } }
+          ]
+        },
         "runtime_bytes": { "$ref": "#/$defs/nonnegativeInteger" },
         "initcode_bytes": { "$ref": "#/$defs/nonnegativeInteger" },
         "deployment_gas": { "$ref": "#/$defs/nonnegativeInteger" },

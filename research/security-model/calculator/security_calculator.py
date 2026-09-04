@@ -26,6 +26,33 @@ RANDOM_BATCH_OMISSION = (
     "Random-words does not model the batched-opening proximity term; "
     "num_batched_functions is ignored by the pinned conjectural path."
 )
+INTERNAL_REVIEW_STATUS = "ACCEPT_METHOD_WITH_LIMITATIONS"
+INTERNAL_REVIEW_LIMITATIONS = [
+    "This is internal code/methodology review, not external human cryptographic acceptance.",
+    "Conjectural random-words and conditional Johnson-bound labels remain binding limitations.",
+    "No protocol or candidate qualification follows from methodology acceptance.",
+]
+
+
+def _review_metadata() -> dict[str, Any]:
+    return {
+        "status": "ACCEPTED_WITH_LIMITATIONS",
+        "final": {
+            "round": "corrective-2",
+            "reviewer": "SecurityModelReview",
+            "verdict": INTERNAL_REVIEW_STATUS,
+            "findings": 0,
+            "limitations": list(INTERNAL_REVIEW_LIMITATIONS),
+        },
+        "history": [
+            {"round": "initial", "verdict": "REJECT_METHOD", "findings": 5},
+            {"round": "corrective-1", "verdict": "REJECT_METHOD", "findings": 1},
+            {"round": "corrective-2", "verdict": INTERNAL_REVIEW_STATUS, "findings": 0},
+        ],
+        "historical_findings_resolved": 6,
+        "external_cryptographic_review": "OPEN",
+        "independent_human_acceptance": False,
+    }
 
 SOURCES = {
     "air": f"Plonky3 {PINNED_COMMIT}: security/src/air.rs:1-16",
@@ -652,14 +679,7 @@ def calculate(manifest: dict[str, Any]) -> dict[str, Any]:
             "No structural analysis of the configured field, hash, or MMCS is performed by this calculator.",
             "The random-words result omits the batched-opening proximity term exactly as the pinned implementation does.",
         ],
-        "review": {
-            "status": "two-method-reviews-rejected-six-findings-corrected-pending-re-review",
-            "prior_verdicts": [
-                {"round": "initial", "verdict": "REJECT_METHOD", "findings": 5},
-                {"round": "corrective-1", "verdict": "REJECT_METHOD", "findings": 1},
-            ],
-            "independent_human_acceptance": False,
-        },
+        "review": _review_metadata(),
     }
 
 
@@ -701,7 +721,11 @@ def render_csv(report: dict[str, Any], target_log2: int = 0) -> str:
 
 def render_table(report: dict[str, Any], target_log2: int = 0) -> str:
     scenario = next(x for x in report["multi_target_scenarios"] if x["target_count_log2"] == target_log2)
-    lines = [f"Profile: {report['profile_id']}  targets: 2^{target_log2}  status: UNREVIEWED", ""]
+    lines = [
+        f"Profile: {report['profile_id']}  targets: 2^{target_log2}  external status: UNREVIEWED",
+        f"Internal methodology: {report['review']['final']['verdict']}; external cryptographic review: OPEN",
+        "",
+    ]
     for regime_name in ("random_words", "udr", "ldr"):
         regime = scenario[regime_name]
         lines.append(f"[{regime_name}] classical={regime['classical_bits']:.3f} quantum={regime['quantum_bits']:.3f}")
@@ -775,7 +799,7 @@ def target_profiles(
                         "target_recommendation": (
                             "excluded-conjectural-and-batched-opening-unmodeled"
                             if regime == "random_words"
-                            else "pending-independent-re-review"
+                            else "internal-method-accepted-with-limitations-external-cryptographic-review-open"
                         ),
                     }
                     if regime == "random_words":
@@ -815,7 +839,7 @@ def target_profiles(
                 "target_recommendation": (
                     "excluded-conjectural-and-batched-opening-unmodeled"
                     if regime == "random_words"
-                    else "pending-independent-re-review"
+                    else "internal-method-accepted-with-limitations-external-cryptographic-review-open"
                 ),
                 "batching_omission": (
                     {
@@ -837,7 +861,9 @@ def target_profiles(
     return {
         "profile_id": base["profile_id"],
         "classification": "UNREVIEWED_RESEARCH_RESULT",
-        "review_status": "two-method-reviews-rejected-six-findings-corrected-pending-re-review",
+        "review": _review_metadata(),
+        "external_cryptographic_review": "OPEN",
+        "independent_human_acceptance": False,
         "random_words_eligible_for_target_recommendation": False,
         "search_objective": "minimize fri_num_queries, then fri_log_blowup",
         "search_bounds": {

@@ -2,30 +2,38 @@
   "blocked": true,
   "candidate_id": "C00/v03-baseline",
   "deployment_code_size_gates": "PASS_EIP170_AND_EIP3860",
-  "deployment_gas": "INTERNAL_CREATE_MEASURED; TOP_LEVEL_NOT_EVALUATED",
+  "deployment_gas": "FAIL_INTERNAL_CREATE_OVER_EIP7825_CAP; TOP_LEVEL_NOT_EVALUATED",
   "deposit": "PASS_EXACT_REPORT_MATCH",
   "evm_verification": "PASS",
-  "gate_failure_reason": "Nine valid fresh part-A calls exceed 16,777,216 gas; missing top-level deployment/mined-receipt evidence cannot reverse this observed failure.",
+  "gate_failure_reason": "SP-00 FAIL: nine valid fresh part-A calls exceed 16,777,216 gas; the pool's 18,873,630-gas internal CREATE exceeds the cap; the -1.036% Part-B total-gas delta lacks isolated attribution; top-level deployment and mined receipts remain NOT_EVALUATED.",
   "gate_status": "FAIL",
   "native_verification": "PASS",
   "negative_results": [
-    "q32 has only 56 best generated proven bits and 37 unique-decoding bits",
     "valid-proof maximum frontier and gas are not established",
     "Docker context does not exclude .env",
     "TypeScript does not consume the claimed 1,000 generated vectors",
     "deployment manifest has no runtime code hashes",
     "no audit or public-network receipt exists",
-    "Pinned geth t8n also rejects retained v03-fixed-01 under the transaction cap; structured failure evidence is retained."
+    "q32 has a 56-bit conditional list-decoding result requiring Johnson correlated agreement and a 37-bit unconditional unique-decoding result; external cryptographic review remains OPEN.",
+    "Pinned geth t8n rejects retained v03-fixed-01 under the transaction cap; structured failure evidence is retained.",
+    "Pool internal CREATE used 18,873,630 gas, 2,096,414 above the active transaction cap; exact top-level deployment remains NOT_EVALUATED.",
+    "Part-B total-gas p50 is -1.036% versus the report; harness/compiler versus proof-variation attribution is not isolated."
   ],
   "no_code": false,
-  "opcode_profile": "COMPONENT_PROFILE_PASS; PASS_T8N_SIMULATION",
+  "opcode_profile": "COMPONENT_PROFILE_PASS; PARTIAL_COVERAGE: PASS_1_FAIL_1_NOT_EVALUATED_58",
   "parameter_regeneration": "PASS",
   "part_a_eip7825": "FAIL_9_OF_60",
   "part_b_eip7825": "PASS_60_OF_60",
+  "part_b_report_delta": "FAIL_UNEXPLAINED_NEGATIVE_1.036_PERCENT",
   "proof_generation": "PASS",
   "public_network": "PROHIBITED",
-  "second_client": "PASS_T8N_SIMULATION_NOT_MINED",
+  "second_client": "PARTIAL_COVERAGE: PASS_1_FAIL_1_NOT_EVALUATED_58",
   "source_identity": "PASS",
   "spike_id": "SP-00",
-  "status_policy": "Commands fail closed. Metrics remain NOT_EVALUATED or schema-required zero sentinels until measured; historic report numbers are not relabeled as fresh measurements."
+  "status_policy": "Commands fail closed. Metrics remain NOT_EVALUATED or schema-required zero sentinels until measured; historic report numbers are not relabeled as fresh measurements.",
+  "t8n_coverage": {
+    "FAIL": 1,
+    "NOT_EVALUATED": 58,
+    "PASS": 1
+  }
 }

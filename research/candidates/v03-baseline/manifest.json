@@ -1,7 +1,7 @@
 {
   "candidateId": "C00/v03-baseline",
   "spikeId": "SP-00",
-  "status": "NOT_EVALUATED",
+  "status": "FAIL",
   "baseline": {
     "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
     "tag": "pqtc-v0.3-research-baseline",
@@ -60,12 +60,15 @@
   "noCode": false,
   "blocked": true,
   "blockers": [
-    "strict security target is not met by the 56-bit best proven v0.3 bound",
-    "complete QROM and independent ZK analyses are absent",
+    "SP-00 fails because 9/60 valid fresh Part-A transactions exceed the 16,777,216-gas EIP-7825 cap",
+    "the pool's measured internal CREATE uses 18,873,630 gas, already 2,096,414 over the active transaction cap; exact top-level deployment gas remains NOT_EVALUATED",
+    "the Part-B total-gas p50 delta is -1.036% versus the report and the harness/compiler versus proof-variation contribution has not been isolated",
+    "strict security target is not met by the 56-bit conditional list-decoding bound; the unconditional unique-decoding bound is 37 bits",
+    "complete QROM and independent ZK analyses are absent and external cryptographic review remains OPEN",
     "deployment runtime hashes are absent from the frozen manifest",
     "valid-proof worst-case frontier and gas are unproven",
     "abandoned checkpoint storage economics are unresolved",
-    "no audit, public-network receipt, or second-client evidence is pre-existing"
+    "no audit or public-network receipt exists; t8n coverage is one simulated PASS, one simulated FAIL, and 58 NOT_EVALUATED"
   ],
   "publicNetworkExecution": "PROHIBITED",
   "productionSecrets": "PROHIBITED"

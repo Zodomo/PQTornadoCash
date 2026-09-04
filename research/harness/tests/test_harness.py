@@ -90,8 +90,8 @@ def valid_run() -> dict[str, object]:
             "receipt_gas_used": 0,
             "gas_scenarios": [
                 {"name": "ACTIVE_EIP7623", "floor_gas": 21000, "total_gas": 21000, "tx_cap_margin": 16756216},
-                {"name": "SCENARIO_EIP7976_64_PER_BYTE", "floor_gas": 21000, "total_gas": 21000, "tx_cap_margin": 16756216},
-                {"name": "SCENARIO_EIP8311_96_PER_BYTE", "floor_gas": 21000, "total_gas": 21000, "tx_cap_margin": 16756216},
+                {"name": "FUTURE_EIP7976_64_64", "floor_gas": 21000, "total_gas": 21000, "tx_cap_margin": 16756216},
+                {"name": "DRAFT_EIP8311_96_96", "floor_gas": 21000, "total_gas": 21000, "tx_cap_margin": 16756216},
             ],
             "runtime_bytes": 0,
         },
@@ -111,8 +111,8 @@ class GasScheduleTests(unittest.TestCase):
         result = calculate_scenarios(1000, 0, 0)
         scenarios = {item["name"]: item for item in result["gas_scenarios"]}
         self.assertEqual(scenarios["ACTIVE_EIP7623"]["total_gas"], 31_000)
-        self.assertEqual(scenarios["SCENARIO_EIP7976_64_PER_BYTE"]["total_gas"], 85_000)
-        self.assertEqual(scenarios["SCENARIO_EIP8311_96_PER_BYTE"]["total_gas"], 117_000)
+        self.assertEqual(scenarios["FUTURE_EIP7976_64_64"]["total_gas"], 85_000)
+        self.assertEqual(scenarios["DRAFT_EIP8311_96_96"]["total_gas"], 117_000)
 
     def test_creation_charges_are_in_standard_branch(self) -> None:
         result = calculate_scenarios(1, 1, 0, is_contract_creation=True)
@@ -169,6 +169,19 @@ class SchemaAndSummaryTests(unittest.TestCase):
         errors = validate_document(run, schema)
         self.assertTrue(any(item["keyword"] == "required" and "proof_bytes" in item["message"] for item in errors))
         self.assertTrue(any(item["path"] == "$.spike_id" and item["keyword"] == "pattern" for item in errors))
+
+    def test_root_schema_requires_each_gas_schedule_exactly_once(self) -> None:
+        schema = load_json(REPOSITORY / "benchmark-run.schema.json")
+        run = valid_run()
+        scenarios = run["evm"]["gas_scenarios"]
+        scenarios[2] = dict(scenarios[0])
+        errors = validate_document(run, schema)
+        self.assertTrue(any(item["path"] == "$.evm.gas_scenarios" and item["keyword"] == "contains" for item in errors))
+
+        run = valid_run()
+        run["evm"]["gas_scenarios"].append(dict(run["evm"]["gas_scenarios"][0]))
+        errors = validate_document(run, schema)
+        self.assertTrue(any(item["path"] == "$.evm.gas_scenarios" and item["keyword"] == "maxItems" for item in errors))
 
     def test_csv_retains_negative_outcome_and_source_digests(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

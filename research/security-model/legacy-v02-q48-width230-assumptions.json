@@ -3653,8 +3653,20 @@
   "pinned_plonky3_commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
   "profile_id": "legacy-v02-q48-width230-assumptions-not-equivalent",
   "review": {
-    "independent_human_acceptance": false,
-    "prior_verdicts": [
+    "external_cryptographic_review": "OPEN",
+    "final": {
+      "findings": 0,
+      "limitations": [
+        "This is internal code/methodology review, not external human cryptographic acceptance.",
+        "Conjectural random-words and conditional Johnson-bound labels remain binding limitations.",
+        "No protocol or candidate qualification follows from methodology acceptance."
+      ],
+      "reviewer": "SecurityModelReview",
+      "round": "corrective-2",
+      "verdict": "ACCEPT_METHOD_WITH_LIMITATIONS"
+    },
+    "historical_findings_resolved": 6,
+    "history": [
       {
         "findings": 5,
         "round": "initial",
@@ -3664,9 +3676,15 @@
         "findings": 1,
         "round": "corrective-1",
         "verdict": "REJECT_METHOD"
+      },
+      {
+        "findings": 0,
+        "round": "corrective-2",
+        "verdict": "ACCEPT_METHOD_WITH_LIMITATIONS"
       }
     ],
-    "status": "two-method-reviews-rejected-six-findings-corrected-pending-re-review"
+    "independent_human_acceptance": false,
+    "status": "ACCEPTED_WITH_LIMITATIONS"
   },
   "security_qualified_candidate": false,
   "single_target": {

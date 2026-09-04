@@ -78,6 +78,8 @@ def validate_document(document: Any, schema: dict[str, Any]) -> list[dict[str, s
         if "$ref" in current:
             visit(value, _resolve_pointer(schema, current["$ref"]), path)
             return
+        for branch in current.get("allOf", []):
+            visit(value, branch, path)
         if "const" in current and value != current["const"]:
             error(path, "const", f"must equal {current['const']!r}")
         if "enum" in current and value not in current["enum"]:
@@ -112,11 +114,24 @@ def validate_document(document: Any, schema: dict[str, Any]) -> list[dict[str, s
         if isinstance(value, list):
             if "minItems" in current and len(value) < current["minItems"]:
                 error(path, "minItems", f"must contain at least {current['minItems']} items")
+            if "maxItems" in current and len(value) > current["maxItems"]:
+                error(path, "maxItems", f"must contain at most {current['maxItems']} items")
+            contains = current.get("contains")
+            if isinstance(contains, dict):
+                matches = 0
+                for item in value:
+                    candidate_errors = len(errors)
+                    visit(item, contains, path)
+                    if len(errors) == candidate_errors:
+                        matches += 1
+                    else:
+                        del errors[candidate_errors:]
+                if matches == 0:
+                    error(path, "contains", "must contain an item matching the required schema")
             items = current.get("items")
             if isinstance(items, dict):
                 for index, item in enumerate(value):
                     visit(item, items, f"{path}[{index}]")
-
         if isinstance(value, str):
             if "minLength" in current and len(value) < current["minLength"]:
                 error(path, "minLength", f"must contain at least {current['minLength']} characters")

@@ -1,0 +1,99 @@
+{
+  "checkpoint": 1,
+  "reviewer": "BaselineCheckpointReview",
+  "finding_count": 8,
+  "corrections": [
+    {
+      "finding": 1,
+      "title": "Scope t8n status to the runs actually simulated",
+      "resolution": "Run-scoped t8n status is PASS only for v03-fixed-19, FAIL for v03-fixed-01, and NOT_EVALUATED for the other 58; aggregate coverage records all three counts without promoting the passing fixture.",
+      "evidence": [
+        "research/candidates/v03-baseline/scripts/synthesize-measurements.py",
+        "research/candidates/v03-baseline/gas/measured-summary.json",
+        "research/runs/v03-fixed-19.json",
+        "research/runs/v03-fixed-01.json",
+        "research/summaries/v03-distribution.csv"
+      ]
+    },
+    {
+      "finding": 2,
+      "title": "Emit the accepted corrective review in security artifacts",
+      "resolution": "Generated calculator artifacts now include corrective-2 ACCEPT_METHOD_WITH_LIMITATIONS, its three limitations, prior rejected rounds, external cryptographic review OPEN, and independent_human_acceptance=false.",
+      "evidence": [
+        "research/security-model/calculator/security_calculator.py",
+        "research/security-model/v03-q32.json",
+        "research/security-model/v02-q48.json",
+        "research/security-model/legacy-v02-q48-width230-assumptions.json",
+        "research/security-model/target-profiles.json"
+      ]
+    },
+    {
+      "finding": 3,
+      "title": "Propagate SP-01 limitations into all baseline run records",
+      "resolution": "All 60 run records are generated from the q32 SP-01 artifact with 107-bit conjectural random-words, 56-bit conditional LDR and Johnson assumption, 37-bit quantum UDR under the unconditional theorem regime, retained omissions, internal review limitations, and external review OPEN.",
+      "evidence": [
+        "benchmark-run.schema.json",
+        "research/candidates/v03-baseline/scripts/generate-all.py",
+        "research/candidates/v03-baseline/scripts/synthesize-measurements.py",
+        "research/runs/v03-fixed-01.json"
+      ]
+    },
+    {
+      "finding": 4,
+      "title": "Update GHSA dispositions after focused regressions ran",
+      "resolution": "Each of the five GHSA rows records its executed PASS while preserving its residual-risk qualification; the unresolved native malformed-proof panic remains FAIL at the SP-02 gate.",
+      "evidence": [
+        "research/advisories/README.md",
+        "research/advisories/regression-results.json"
+      ]
+    },
+    {
+      "finding": 5,
+      "title": "Reconcile the baseline manifest with SP-00",
+      "resolution": "The baseline manifest is FAIL and carries the 9/60 Part-A cap failures, over-cap internal CREATE, top-level NOT_EVALUATED evidence, unattributed Part-B delta, and all pre-existing conservative blockers.",
+      "evidence": [
+        "research/candidates/v03-baseline/manifest.json",
+        "research/candidates/v03-baseline/status.json"
+      ]
+    },
+    {
+      "finding": 6,
+      "title": "Retain the unexplained report delta as an SP-00 blocker",
+      "resolution": "The -1.036% Part-B total-gas p50 delta and missing harness/compiler versus proof-variation attribution are blockers in status, manifest, measured summary, ADR, README, and every run record.",
+      "evidence": [
+        "research/candidates/v03-baseline/status.json",
+        "research/candidates/v03-baseline/manifest.json",
+        "research/candidates/v03-baseline/gas/measured-summary.json",
+        "research/candidates/v03-baseline/ADR.md",
+        "research/runs/v03-fixed-01.json"
+      ]
+    },
+    {
+      "finding": 7,
+      "title": "Require one record for each gas schedule",
+      "resolution": "The schema and focused semantic validator require exactly three records containing the unique names ACTIVE_EIP7623, FUTURE_EIP7976_64_64, and DRAFT_EIP8311_96_96; generators and all 60 records use that exact set for Parts A and B.",
+      "evidence": [
+        "benchmark-run.schema.json",
+        "research/harness/report-generator/schema_validator.py",
+        "research/harness/gas-schedules/gas_schedules.py",
+        "research/candidates/v03-baseline/scripts/verify-all.py",
+        "research/runs/v03-fixed-01.json"
+      ]
+    },
+    {
+      "finding": 8,
+      "title": "Mark the pool deployment gas blocker as FAIL",
+      "resolution": "The measured 18,873,630-gas internal CREATE is FAIL against the 16,777,216 active cap in status, summary, manifest, and every run; exact top-level deployment remains separately NOT_EVALUATED.",
+      "evidence": [
+        "research/candidates/v03-baseline/status.json",
+        "research/candidates/v03-baseline/gas/measured-summary.json",
+        "research/candidates/v03-baseline/deployment-gas.md",
+        "research/candidates/v03-baseline/manifest.json",
+        "research/runs/v03-fixed-01.json"
+      ]
+    }
+  ],
+  "external_cryptographic_review": "OPEN",
+  "independent_human_acceptance": false,
+  "project_wide_validation_run": false
+}

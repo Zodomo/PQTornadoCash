@@ -106,6 +106,7 @@
       "pool_b_execution": 12338033,
       "pool_b_standard_intrinsic": 1696916
     },
+    "deployment_component_status": "FAIL_INTERNAL_CREATE_OVER_EIP7825_CAP",
     "deployment_gas": 0,
     "deployment_gas_status": "NOT_EVALUATED: no creation transaction/receipt and initcode zero/nonzero byte distribution is absent",
     "deposit_execution_gas": 13991021,
@@ -124,24 +125,25 @@
       {
         "floor_gas": 6462216,
         "floor_is_binding": false,
-        "name": "SCENARIO_EIP7976_64_PER_BYTE",
+        "name": "FUTURE_EIP7976_64_64",
         "total_gas": 16444932,
         "tx_cap_margin": 332284
       },
       {
         "floor_gas": 9682824,
         "floor_is_binding": false,
-        "name": "SCENARIO_EIP8311_96_PER_BYTE",
+        "name": "DRAFT_EIP8311_96_96",
         "total_gas": 16444932,
         "tx_cap_margin": 332284
       }
     ],
     "initcode_bytes": 12867,
+    "internal_create_eip7825_status": "FAIL",
     "internal_create_observed_gas": 18873630,
     "measured": true,
     "measurement_status": "PASS: complete pool A/B calls; top-level receipt fields remain NOT_EVALUATED because Foundry test execution is not a mined transaction",
     "opcode_counts": {},
-    "opcode_status": "PASS_T8N_SIMULATION",
+    "opcode_status": "NOT_EVALUATED",
     "part_b_gas_scenarios": [
       {
         "floor_gas": 4210790,
@@ -153,14 +155,14 @@
       {
         "floor_gas": 6765320,
         "floor_is_binding": false,
-        "name": "SCENARIO_EIP7976_64_PER_BYTE",
+        "name": "FUTURE_EIP7976_64_64",
         "total_gas": 14034949,
         "tx_cap_margin": 2742267
       },
       {
         "floor_gas": 10137480,
         "floor_is_binding": false,
-        "name": "SCENARIO_EIP8311_96_PER_BYTE",
+        "name": "DRAFT_EIP8311_96_96",
         "total_gas": 14034949,
         "tx_cap_margin": 2742267
       }
@@ -170,8 +172,9 @@
     "receipt_status": "SIMULATION_ONLY: no mined receipt",
     "runtime_bytes": 7494,
     "runtime_status": "NOT_EVALUATED by this command; use measure-deployment.sh",
-    "second_client_status": "PASS_T8N_SIMULATION_NOT_MINED",
+    "second_client_status": "NOT_EVALUATED",
     "standard_intrinsic_gas": 1621260,
+    "t8n_status": "NOT_EVALUATED",
     "transaction_gas_limit": 16777216,
     "transaction_hash": null
   },
@@ -271,9 +274,11 @@
     "confounders": [
       "The 60-run maximum is empirical, not a formal valid-proof frontier/gas bound",
       "No mined receipt",
-      "Top-level creation transaction gas is NOT_EVALUATED"
+      "Top-level creation transaction gas is NOT_EVALUATED",
+      "Part-B total-gas p50 differs from the report by -1.036%; harness/compiler versus proof-variation attribution is not isolated",
+      "Second-client and raw opcode counts are NOT_EVALUATED for this run"
     ],
-    "failure_reason": "Nine of 60 valid fresh part-A transactions exceed the EIP-7825 cap; top-level pool deployment and mined-receipt evidence remain incomplete.",
+    "failure_reason": "SP-00 FAIL: 9/60 valid fresh part-A transactions exceed the EIP-7825 cap; pool internal CREATE gas exceeds the cap; the -1.036% Part-B total-gas delta lacks isolated attribution; top-level pool deployment and mined receipts remain NOT_EVALUATED.",
     "gate_status": "FAIL",
     "notes": [
       "Native proof and codec round trip verified",
@@ -282,7 +287,9 @@
       "Candidate gate fails on observed EIP-7825 part-A violations",
       "Complete pool-facing A/B simulation passed in Foundry",
       "Deployment code/initcode sizes and internal new-expression gas were measured separately",
-      "Deposit execution gas exactly matches the report"
+      "Deposit execution gas exactly matches the report",
+      "Pinned geth t8n simulation is NOT_EVALUATED for this run",
+      "Pool internal CREATE gas exceeds the active transaction cap"
     ],
     "success": true
   },
@@ -290,39 +297,126 @@
   "schema_version": "1",
   "security": {
     "classification": "PQ_ORIENTED_RESEARCH",
-    "external_review": null,
+    "external_review": "OPEN",
+    "independent_human_acceptance": false,
+    "internal_methodology_review": {
+      "external_cryptographic_review": "OPEN",
+      "final": {
+        "findings": 0,
+        "limitations": [
+          "This is internal code/methodology review, not external human cryptographic acceptance.",
+          "Conjectural random-words and conditional Johnson-bound labels remain binding limitations.",
+          "No protocol or candidate qualification follows from methodology acceptance."
+        ],
+        "reviewer": "SecurityModelReview",
+        "round": "corrective-2",
+        "verdict": "ACCEPT_METHOD_WITH_LIMITATIONS"
+      },
+      "historical_findings_resolved": 6,
+      "history": [
+        {
+          "findings": 5,
+          "round": "initial",
+          "verdict": "REJECT_METHOD"
+        },
+        {
+          "findings": 1,
+          "round": "corrective-1",
+          "verdict": "REJECT_METHOD"
+        },
+        {
+          "findings": 0,
+          "round": "corrective-2",
+          "verdict": "ACCEPT_METHOD_WITH_LIMITATIONS"
+        }
+      ],
+      "independent_human_acceptance": false,
+      "status": "ACCEPTED_WITH_LIMITATIONS"
+    },
     "lowest_accepted_bits": 56,
+    "omissions": [
+      "The custom KeccakPair512 transcript and full Fiat-Shamir transform have no complete QROM proof.",
+      "The MMCS cap is a supplied assumption, not structural cryptanalysis.",
+      "Zero knowledge is not graded; padding is recorded only for soundness-domain accounting.",
+      "No complete Fiat-Shamir/QROM composition theorem is claimed.",
+      "No structural analysis of the configured field, hash, or MMCS is performed by this calculator.",
+      "The random-words result omits the batched-opening proximity term exactly as the pinned implementation does."
+    ],
     "qrom_status": "No complete QROM proof for custom transcript/composition",
+    "security_qualified_candidate": false,
     "terms": [
       {
+        "assumptions": [
+          "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path. Actual num_batched_functions is recorded per term."
+        ],
         "binding": false,
         "classical_bits": 107,
-        "formula_source": "parameters/sepolia-v0.3/security-analysis.json",
-        "model": "generated v0.3 conjecture",
+        "formula_source": "research/security-model/v03-q32.json",
+        "model": "random-words",
         "multi_target_count_log2": null,
         "name": "FRI random-words",
         "notes": [
-          "Not a proven 100-bit claim"
+          "Exact generated classical result: 107.997888224 bits",
+          "Exact generated quantum result: 107.997888224 bits"
         ],
         "omitted_terms": [
-          "unbounded multi-target proof volume"
+          "Already included in fri-commit-phase; informational row, not an independent binding term.",
+          "Already included in fri-query-phase; informational row, not an independent binding term.",
+          "Random-words does not model the batched-opening proximity term; num_batched_functions is ignored by the pinned conjectural path. Actual num_batched_functions=210; this result is optimistic.",
+          "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
         ],
+        "proof_status": "conjectural-random-words",
         "proven_or_conjectural": "CONJECTURAL",
-        "quantum_bits": null
+        "quantum_bits": 107,
+        "theorem_regime": "CONJECTURAL"
       },
       {
+        "assumptions": [
+          "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50."
+        ],
         "binding": true,
         "classical_bits": 56,
-        "formula_source": "parameters/sepolia-v0.3/security-analysis.json",
-        "model": "list decoding",
+        "formula_source": "research/security-model/v03-q32.json",
+        "model": "ldr",
         "multi_target_count_log2": null,
-        "name": "FRI best proven",
+        "name": "FRI list-decoding regime",
         "notes": [
-          "Unique-decoding bound is 37 bits"
+          "Exact generated classical result: 56.201226486 bits",
+          "Exact generated quantum result: 56.201226486 bits"
         ],
-        "omitted_terms": [],
+        "omitted_terms": [
+          "Already included in fri-commit-phase; informational row, not an independent binding term.",
+          "Already included in fri-query-phase; informational row, not an independent binding term.",
+          "Pinned implementation keeps only the BCHKS25 dominant term; documented subdominant terms are omitted as negligible.",
+          "Requires mutual correlated agreement up to the Johnson bound, as stated by pinned security/src/assumption.rs:45-50.",
+          "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
+        ],
+        "proof_status": "conditional-theorem-johnson-correlated-agreement",
         "proven_or_conjectural": "PROVEN",
-        "quantum_bits": null
+        "quantum_bits": 56,
+        "theorem_regime": "CONDITIONAL"
+      },
+      {
+        "assumptions": [],
+        "binding": false,
+        "classical_bits": 45,
+        "formula_source": "research/security-model/v03-q32.json",
+        "model": "udr",
+        "multi_target_count_log2": null,
+        "name": "FRI unique-decoding regime",
+        "notes": [
+          "Exact generated classical result: 45.190582247 bits",
+          "Exact generated quantum result: 37.190582247 bits"
+        ],
+        "omitted_terms": [
+          "Already included in fri-commit-phase; informational row, not an independent binding term.",
+          "Already included in fri-query-phase; informational row, not an independent binding term.",
+          "This generic cap is not a structural analysis or a complete Fiat-Shamir/QROM composition theorem."
+        ],
+        "proof_status": "proven-no-decoding-conjecture",
+        "proven_or_conjectural": "PROVEN",
+        "quantum_bits": 37,
+        "theorem_regime": "UNCONDITIONAL"
       }
     ],
     "zk_status": "Hiding enabled; full independent ZK proof outstanding"

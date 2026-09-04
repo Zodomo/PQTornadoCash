@@ -20,8 +20,8 @@ from schema_validator import SchemaLoadError, load_json, validate_document
 _CHUNK_SIZE = 1024 * 1024
 _SCENARIO_COLUMNS = {
     "ACTIVE_EIP7623": "gas_active",
-    "SCENARIO_EIP7976_64_PER_BYTE": "gas_64",
-    "SCENARIO_EIP8311_96_PER_BYTE": "gas_96",
+    "FUTURE_EIP7976_64_64": "gas_64",
+    "DRAFT_EIP8311_96_96": "gas_96",
 }
 _MEDIA_TYPES = {
     ".csv": "text/csv",

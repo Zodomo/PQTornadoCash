@@ -19,8 +19,8 @@ def schedule(data: bytes, execution: int):
     rows=[]
     for name,floor in [
       ("ACTIVE_EIP7623",21_000+10*tokens),
-      ("SCENARIO_EIP7976_64_PER_BYTE",21_000+64*len(data)),
-      ("SCENARIO_EIP8311_96_PER_BYTE",21_000+96*len(data))]:
+      ("FUTURE_EIP7976_64_64",21_000+64*len(data)),
+      ("DRAFT_EIP8311_96_96",21_000+96*len(data))]:
         total=max(standard_total,floor)
         rows.append({"name":name,"floor_gas":floor,"total_gas":total,"tx_cap_margin":CAP-total,"floor_is_binding":floor>standard_total})
     return standard_intrinsic,rows

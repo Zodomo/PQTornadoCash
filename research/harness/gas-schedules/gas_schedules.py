@@ -17,8 +17,8 @@ DEFAULT_TX_CAP = 16_777_216
 
 SCENARIOS = (
     ("ACTIVE_EIP7623", "weighted_tokens", 10),
-    ("SCENARIO_EIP7976_64_PER_BYTE", "bytes", 64),
-    ("SCENARIO_EIP8311_96_PER_BYTE", "bytes", 96),
+    ("FUTURE_EIP7976_64_64", "bytes", 64),
+    ("DRAFT_EIP8311_96_96", "bytes", 96),
 )
 
 

@@ -49,6 +49,33 @@ def replace_section(text:str,heading:str,next_heading:str,body:str)->str:
     start=text.index(heading); end=text.index(next_heading,start)
     return text[:start]+heading+"\n\n"+body.rstrip()+"\n\n"+text[end:]
 
+REQUIRED_SCENARIOS=("ACTIVE_EIP7623","FUTURE_EIP7976_64_64","DRAFT_EIP8311_96_96")
+
+def normalize_scenarios(scenarios:list[dict],run_id:str,part:str)->list[dict]:
+    normalized=[]
+    for scenario in scenarios:
+        name=scenario.get("name")
+        if name is None: raise SystemExit(f"unknown {part} gas scenario for {run_id}: {scenario.get('name')}")
+        normalized.append({**scenario,"name":name})
+    names=[scenario["name"] for scenario in normalized]
+    if len(names)!=3 or set(names)!=set(REQUIRED_SCENARIOS): raise SystemExit(f"incomplete or duplicate {part} gas schedules for {run_id}: {names}")
+    return normalized
+
+def security_from_sp01()->dict:
+    report=json.loads((ROOT/"research/security-model/v03-q32.json").read_text())
+    labels=[
+        ("FRI random-words","random_words","CONJECTURAL","CONJECTURAL"),
+        ("FRI list-decoding regime","ldr","PROVEN","CONDITIONAL"),
+        ("FRI unique-decoding regime","udr","PROVEN","UNCONDITIONAL"),
+    ]
+    terms=[]
+    for name,key,classification,theorem_regime in labels:
+        regime=report["single_target"][key]
+        omissions=sorted({omission for term in regime["terms"] for omission in term["omissions"]})
+        terms.append({"name":name,"model":key.replace("_","-"),"formula_source":"research/security-model/v03-q32.json","classical_bits":regime["floor_classical_bits"],"quantum_bits":regime["floor_quantum_bits"],"proven_or_conjectural":classification,"proof_status":regime["proof_status"],"theorem_regime":theorem_regime,"assumptions":regime["assumptions"],"multi_target_count_log2":None,"binding":key=="ldr","omitted_terms":omissions,"notes":[f"Exact generated classical result: {regime['classical_bits']:.9f} bits",f"Exact generated quantum result: {regime['quantum_bits']:.9f} bits"]})
+    return {"classification":"PQ_ORIENTED_RESEARCH","terms":terms,"lowest_accepted_bits":report["single_target"]["best_proven"]["floor_classical_bits"],"qrom_status":"No complete QROM proof for custom transcript/composition","zk_status":"Hiding enabled; full independent ZK proof outstanding","external_review":"OPEN","independent_human_acceptance":False,"internal_methodology_review":report["review"],"omissions":report["global_omissions"],"security_qualified_candidate":False}
+
+
 run_paths=sorted(RUNS.glob("v03-*.json"))
 trace_paths=sorted(TRACE_DIR.glob("v03-*.trace.log"))
 if len(run_paths)!=60 or len(trace_paths)!=60: raise SystemExit(f"expected 60 runs/traces, got {len(run_paths)}/{len(trace_paths)}")
@@ -67,8 +94,11 @@ t8n_failure_paths=sorted((CAND/"gas/t8n").glob("*/failure-evidence.json"))
 t8n_failures=[json.loads(path.read_text()) for path in t8n_failure_paths]
 for evidence in t8n_failures:
     if evidence.get("outcome")!="FAIL" or not any(receipt.get("status")!=1 for receipt in evidence.get("receipts",[])): raise SystemExit(f"invalid t8n failure evidence: {evidence.get('run_id')}")
-raw_opcode_status="PASS_T8N_SIMULATION" if t8n_evidence else "NOT_EVALUATED"
-second_client_status="PASS_T8N_SIMULATION_NOT_MINED" if t8n_evidence else "NOT_EVALUATED"
+t8n_pass_by_run={evidence["run_id"]:evidence for evidence in t8n_evidence}
+t8n_fail_by_run={evidence["run_id"]:evidence for evidence in t8n_failures}
+if set(t8n_pass_by_run)&set(t8n_fail_by_run): raise SystemExit("a run cannot have both passing and failing t8n evidence")
+t8n_not_evaluated_count=len(run_paths)-len(t8n_pass_by_run)-len(t8n_fail_by_run)
+t8n_coverage_status=f"PARTIAL_COVERAGE: PASS_{len(t8n_pass_by_run)}_FAIL_{len(t8n_fail_by_run)}_NOT_EVALUATED_{t8n_not_evaluated_count}"
 opcode_totals=collections.Counter()
 for evidence in t8n_evidence:
     for profile in evidence["opcode_profiles"]: opcode_totals.update(profile["opcode_counts"])
@@ -80,22 +110,41 @@ for path in run_paths:
     a=trace_metric(trace,"V03_POOL_A_EXECUTION_GAS"); b=trace_metric(trace,"V03_POOL_B_EXECUTION_GAS")
     ia=trace_metric(trace,"V03_POOL_A_STANDARD_INTRINSIC_GAS"); ib=trace_metric(trace,"V03_POOL_B_STANDARD_INTRINSIC_GAS")
     if a!=run["evm"]["component_gas"]["pool_a_execution"] or b!=run["evm"]["component_gas"]["pool_b_execution"] or ia!=run["evm"]["component_gas"]["pool_a_standard_intrinsic"] or ib!=run["evm"]["component_gas"]["pool_b_standard_intrinsic"]: raise SystemExit(f"run/trace gas mismatch: {run_id}")
-    a_total=run["evm"]["gas_scenarios"][0]["total_gas"]; b_total=run["evm"]["part_b_gas_scenarios"][0]["total_gas"]
-    run["evm"].update({"runtime_bytes":pool_deploy["runtime_bytes"],"initcode_bytes":pool_deploy["initcode_bytes"],"deployment_gas":0,"deployment_gas_status":pool_deploy["top_level_deployment_status"],"internal_create_observed_gas":pool_deploy["observed_internal_new_expression_gas"],"code_deposit_gas":pool_deploy["code_deposit_gas"],"eip170_status":pool_deploy["eip170_status"],"eip3860_status":pool_deploy["eip3860_status"],"opcode_status":raw_opcode_status,"second_client_status":second_client_status,"receipt_status":"SIMULATION_ONLY: no mined receipt","deposit_status":"PASS_EXACT_REPORT_MATCH","deposit_execution_gas":REPORT["deposit_execution"]})
-    run["result"].update({"gate_status":"FAIL","failure_reason":"Nine of 60 valid fresh part-A transactions exceed the EIP-7825 cap; top-level pool deployment and mined-receipt evidence remain incomplete."})
-    run["result"]["confounders"]=["The 60-run maximum is empirical, not a formal valid-proof frontier/gas bound","No mined receipt","Top-level creation transaction gas is NOT_EVALUATED"]+(["Second-client and raw opcode counts are NOT_EVALUATED"] if not t8n_evidence else [])
-    generated_notes={"Complete pool-facing A/B simulation passed in Foundry","Deployment code/initcode sizes and internal new-expression gas were measured separately","Candidate gate fails on observed EIP-7825 part-A violations","Deposit execution gas exactly matches the report"}
-    base_notes=[note for note in run["result"]["notes"] if "EVM and deployment" not in note and "deployment and opcode gates" not in note and note not in generated_notes]
+    run["evm"]["gas_scenarios"]=normalize_scenarios(run["evm"]["gas_scenarios"],run_id,"part-A")
+    run["evm"]["part_b_gas_scenarios"]=normalize_scenarios(run["evm"]["part_b_gas_scenarios"],run_id,"part-B")
+    a_total=next(scenario["total_gas"] for scenario in run["evm"]["gas_scenarios"] if scenario["name"]=="ACTIVE_EIP7623")
+    b_total=next(scenario["total_gas"] for scenario in run["evm"]["part_b_gas_scenarios"] if scenario["name"]=="ACTIVE_EIP7623")
+    if run_id in t8n_pass_by_run:
+        t8n_status="PASS"
+        opcode_status="PASS_T8N_SIMULATION"
+        client_status="PASS_T8N_SIMULATION_NOT_MINED"
+        t8n_note="Pinned geth t8n simulation passed for this run; it is not mined evidence"
+    elif run_id in t8n_fail_by_run:
+        t8n_status="FAIL"
+        opcode_status="FAIL_T8N_SIMULATION"
+        client_status="FAIL_T8N_SIMULATION_NOT_MINED"
+        t8n_note="Pinned geth t8n simulation failed for this run under the transaction cap"
+    else:
+        t8n_status="NOT_EVALUATED"
+        opcode_status="NOT_EVALUATED"
+        client_status="NOT_EVALUATED"
+        t8n_note="Pinned geth t8n simulation is NOT_EVALUATED for this run"
+    run["security"]=security_from_sp01()
+    run["evm"].update({"runtime_bytes":pool_deploy["runtime_bytes"],"initcode_bytes":pool_deploy["initcode_bytes"],"deployment_gas":0,"deployment_gas_status":pool_deploy["top_level_deployment_status"],"deployment_component_status":"FAIL_INTERNAL_CREATE_OVER_EIP7825_CAP","internal_create_observed_gas":pool_deploy["observed_internal_new_expression_gas"],"internal_create_eip7825_status":"FAIL","code_deposit_gas":pool_deploy["code_deposit_gas"],"eip170_status":pool_deploy["eip170_status"],"eip3860_status":pool_deploy["eip3860_status"],"t8n_status":t8n_status,"opcode_status":opcode_status,"second_client_status":client_status,"receipt_status":"SIMULATION_ONLY: no mined receipt","deposit_status":"PASS_EXACT_REPORT_MATCH","deposit_execution_gas":REPORT["deposit_execution"]})
+    run["result"].update({"gate_status":"FAIL","failure_reason":"SP-00 FAIL: 9/60 valid fresh part-A transactions exceed the EIP-7825 cap; pool internal CREATE gas exceeds the cap; the -1.036% Part-B total-gas delta lacks isolated attribution; top-level pool deployment and mined receipts remain NOT_EVALUATED."})
+    run["result"]["confounders"]=["The 60-run maximum is empirical, not a formal valid-proof frontier/gas bound","No mined receipt","Top-level creation transaction gas is NOT_EVALUATED","Part-B total-gas p50 differs from the report by -1.036%; harness/compiler versus proof-variation attribution is not isolated"]+(["Second-client and raw opcode counts are NOT_EVALUATED for this run"] if t8n_status=="NOT_EVALUATED" else [])
+    generated_notes={"Complete pool-facing A/B simulation passed in Foundry","Deployment code/initcode sizes and internal new-expression gas were measured separately","Pool internal CREATE gas exceeds the active transaction cap","Candidate gate fails on observed EIP-7825 part-A violations","Deposit execution gas exactly matches the report",t8n_note}
+    base_notes=[note for note in run["result"]["notes"] if "EVM and deployment" not in note and "deployment and opcode gates" not in note and "Pinned geth t8n simulation" not in note and note not in generated_notes]
     run["result"]["notes"]=base_notes+sorted(generated_notes)
     path.write_text(json.dumps(run,indent=2,sort_keys=True)+"\n")
-    records.append({"candidate_id":"C00/v03-baseline","run_id":run_id,"kind":run["protocol"]["semantic_source_kind"],"case_id":run["protocol"]["case_id"],"prove_wall_ms":run["prover"]["wall_ms"],"proof_only_ms":run["prover"]["proof_only_ms"],"native_verify_ms":run["prover"]["native_verify_ms"],"peak_rss_bytes":run["prover"]["peak_rss_bytes"],"raw_proof_bytes":run["proof_bytes"]["raw_proof_bytes"],"abi_calldata_bytes":run["proof_bytes"]["abi_calldata_bytes"],"zero_bytes":run["proof_bytes"]["zero_bytes"],"nonzero_bytes":run["proof_bytes"]["nonzero_bytes"],"unique_query_indices":run["proof_bytes"]["unique_query_indices"],"frontier_digests":"NOT_EVALUATED","evm_a_execution_gas":a,"evm_b_execution_gas":b,"evm_a_total_gas":a_total,"evm_b_total_gas":b_total,"evm_a_eip7825_status":"PASS" if a_total<=CAP else "FAIL","evm_b_eip7825_status":"PASS" if b_total<=CAP else "FAIL","evm_status":"PASS","gate_status":"FAIL"})
+    records.append({"candidate_id":"C00/v03-baseline","run_id":run_id,"kind":run["protocol"]["semantic_source_kind"],"case_id":run["protocol"]["case_id"],"prove_wall_ms":run["prover"]["wall_ms"],"proof_only_ms":run["prover"]["proof_only_ms"],"native_verify_ms":run["prover"]["native_verify_ms"],"peak_rss_bytes":run["prover"]["peak_rss_bytes"],"raw_proof_bytes":run["proof_bytes"]["raw_proof_bytes"],"abi_calldata_bytes":run["proof_bytes"]["abi_calldata_bytes"],"zero_bytes":run["proof_bytes"]["zero_bytes"],"nonzero_bytes":run["proof_bytes"]["nonzero_bytes"],"unique_query_indices":run["proof_bytes"]["unique_query_indices"],"frontier_digests":"NOT_EVALUATED","evm_a_execution_gas":a,"evm_b_execution_gas":b,"evm_a_total_gas":a_total,"evm_b_total_gas":b_total,"evm_a_eip7825_status":"PASS" if a_total<=CAP else "FAIL","evm_b_eip7825_status":"PASS" if b_total<=CAP else "FAIL","evm_status":"PASS","t8n_status":t8n_status,"second_client_status":client_status,"gate_status":"FAIL"})
 
 stats={name:distribution([row[field] for row in records]) for name,field in FIELDS.items()}
 report_comparison={}
 for name,field in [("part_a_execution","a_execution"),("part_a_total","a_total"),("part_b_execution","b_execution"),("part_b_total","b_total")]:
     median=stats[field]["p50"]; report=REPORT[field]; delta=median-report; percent=delta/report*100
     report_comparison[name]={"engineering_report":report,"reproduced_p50":median,"reproduced_min":stats[field]["min"],"reproduced_max":stats[field]["max"],"delta":delta,"delta_percent":percent,"within_one_percent":abs(percent)<=1}
-summary={"candidate_id":"C00/v03-baseline","gate_status":"FAIL","run_count":60,"native_pass_count":60,"foundry_ab_pass_count":60,"part_a_eip7825_fail_count":sum(row["evm_a_eip7825_status"]=="FAIL" for row in records),"part_b_eip7825_fail_count":sum(row["evm_b_eip7825_status"]=="FAIL" for row in records),"distribution_method":"population stddev; percentiles use linear interpolation at (n-1)*p","distributions":stats,"report_comparison":report_comparison,"report_deposit_execution_gas":REPORT["deposit_execution"],"reproduced_deposit_execution_gas":REPORT["deposit_execution"],"deposit_delta_gas":0,"deposit_delta_percent":0.0,"deposit_measurement_status":"PASS_EXACT_REPORT_MATCH","deployment":deploy,"raw_opcode_counts_status":raw_opcode_status,"raw_opcode_totals":dict(sorted(opcode_totals.items())) if t8n_evidence else None,"second_client_status":second_client_status,"t8n_evidence_paths":[str(path.relative_to(ROOT)) for path in t8n_paths],"top_level_deployment_status":pool_deploy["top_level_deployment_status"],"failure_reasons":["9/60 valid part-A transactions exceed EIP-7825","pool internal new-expression gas exceeds 2^24, while top-level creation remains unmeasured","top-level creation and mined-receipt evidence remain incomplete"]}
+summary={"candidate_id":"C00/v03-baseline","gate_status":"FAIL","run_count":60,"native_pass_count":60,"foundry_ab_pass_count":60,"part_a_eip7825_fail_count":sum(row["evm_a_eip7825_status"]=="FAIL" for row in records),"part_b_eip7825_fail_count":sum(row["evm_b_eip7825_status"]=="FAIL" for row in records),"distribution_method":"population stddev; percentiles use linear interpolation at (n-1)*p","distributions":stats,"report_comparison":report_comparison,"report_deposit_execution_gas":REPORT["deposit_execution"],"reproduced_deposit_execution_gas":REPORT["deposit_execution"],"deposit_delta_gas":0,"deposit_delta_percent":0.0,"deposit_measurement_status":"PASS_EXACT_REPORT_MATCH","deployment":deploy,"deployment_gas_status":"FAIL_INTERNAL_CREATE_OVER_EIP7825_CAP","raw_opcode_counts_status":t8n_coverage_status,"raw_opcode_totals":dict(sorted(opcode_totals.items())) if t8n_evidence else None,"second_client_status":t8n_coverage_status,"t8n_coverage":{"PASS":len(t8n_pass_by_run),"FAIL":len(t8n_fail_by_run),"NOT_EVALUATED":t8n_not_evaluated_count},"t8n_by_run":{run_id:("PASS" if run_id in t8n_pass_by_run else "FAIL" if run_id in t8n_fail_by_run else "NOT_EVALUATED") for run_id in sorted(path.stem for path in run_paths)},"t8n_evidence_paths":[str(path.relative_to(ROOT)) for path in t8n_paths],"top_level_deployment_status":pool_deploy["top_level_deployment_status"],"failure_reasons":["9/60 valid part-A transactions exceed EIP-7825","pool internal new-expression gas exceeds 2^24, while top-level creation remains unmeasured","Part-B total-gas p50 differs from the report by -1.036%; harness/compiler versus proof-variation attribution is not isolated","top-level creation and mined-receipt evidence remain incomplete"]}
 summary["t8n_failed_simulations"]=[{"run_id":evidence["run_id"],"receipts":evidence["receipts"]} for evidence in t8n_failures]
 OUT.write_text(json.dumps(summary,indent=2,sort_keys=True)+"\n")
 columns=list(records[0])
@@ -103,20 +152,24 @@ with SUMMARY.open("w",newline="") as handle:
     writer=csv.DictWriter(handle,fieldnames=columns); writer.writeheader(); writer.writerows(records)
 
 status=json.loads((CAND/"status.json").read_text())
-status.update({"gate_status":"FAIL","parameter_regeneration":"PASS","proof_generation":"PASS","native_verification":"PASS","evm_verification":"PASS","deployment_gas":"INTERNAL_CREATE_MEASURED; TOP_LEVEL_NOT_EVALUATED","deployment_code_size_gates":"PASS_EIP170_AND_EIP3860","opcode_profile":"COMPONENT_PROFILE_PASS; "+raw_opcode_status,"second_client":second_client_status,"deposit":"PASS_EXACT_REPORT_MATCH","part_a_eip7825":"FAIL_9_OF_60","part_b_eip7825":"PASS_60_OF_60","blocked":True,"gate_failure_reason":"Nine valid fresh part-A calls exceed 16,777,216 gas; missing top-level deployment/mined-receipt evidence cannot reverse this observed failure."})
-t8n_failure_note="Pinned geth t8n also rejects retained v03-fixed-01 under the transaction cap; structured failure evidence is retained."
-status["negative_results"]=[note for note in status.get("negative_results",[]) if note!=t8n_failure_note]+([t8n_failure_note] if t8n_failures else [])
+status.update({"gate_status":"FAIL","parameter_regeneration":"PASS","proof_generation":"PASS","native_verification":"PASS","evm_verification":"PASS","deployment_gas":"FAIL_INTERNAL_CREATE_OVER_EIP7825_CAP; TOP_LEVEL_NOT_EVALUATED","deployment_code_size_gates":"PASS_EIP170_AND_EIP3860","opcode_profile":"COMPONENT_PROFILE_PASS; "+t8n_coverage_status,"second_client":t8n_coverage_status,"t8n_coverage":{"PASS":len(t8n_pass_by_run),"FAIL":len(t8n_fail_by_run),"NOT_EVALUATED":t8n_not_evaluated_count},"deposit":"PASS_EXACT_REPORT_MATCH","part_a_eip7825":"FAIL_9_OF_60","part_b_eip7825":"PASS_60_OF_60","part_b_report_delta":"FAIL_UNEXPLAINED_NEGATIVE_1.036_PERCENT","blocked":True,"gate_failure_reason":"SP-00 FAIL: nine valid fresh part-A calls exceed 16,777,216 gas; the pool's 18,873,630-gas internal CREATE exceeds the cap; the -1.036% Part-B total-gas delta lacks isolated attribution; top-level deployment and mined receipts remain NOT_EVALUATED."})
+negative_notes=[
+    "q32 has a 56-bit conditional list-decoding result requiring Johnson correlated agreement and a 37-bit unconditional unique-decoding result; external cryptographic review remains OPEN.",
+    "Pinned geth t8n rejects retained v03-fixed-01 under the transaction cap; structured failure evidence is retained.",
+    "Pool internal CREATE used 18,873,630 gas, 2,096,414 above the active transaction cap; exact top-level deployment remains NOT_EVALUATED.",
+    "Part-B total-gas p50 is -1.036% versus the report; harness/compiler versus proof-variation attribution is not isolated.",
+]
+status["negative_results"]=[note for note in status.get("negative_results",[]) if not note.startswith("q32 has") and not note.startswith("Pinned geth t8n") and not note.startswith("Pool internal CREATE") and not note.startswith("Part-B total-gas p50")]+negative_notes
 (CAND/"status.json").write_text(json.dumps(status,indent=2,sort_keys=True)+"\n")
 
 d=CAND/"deployment-gas.md"; deployment_rows="\n".join(f"| `{name}` | {v['initcode_bytes']:,} | {v['runtime_bytes']:,} | {v['code_deposit_gas']:,} | {v['observed_internal_new_expression_gas']:,} | {v['eip170_status']} | {v['eip3860_status']} | {v['internal_new_vs_eip7825_margin']:,} |" for name,v in deploy.items())
 d.write_text("# C00 deployment gas\n\n**Measured component status: FAIL for the pool's internal EIP-7825 comparison; top-level deployment remains NOT_EVALUATED.** Source: retained `gas/deployment-profile.log`, Solc 0.8.30 / Foundry 1.7.1.\n\n| Contract | Initcode bytes | Runtime bytes | Exact code-deposit gas | Observed internal `new` gas | EIP-170 | EIP-3860 | Margin vs 2^24 |\n|---|---:|---:|---:|---:|---|---|---:|\n"+deployment_rows+"\n\nAll four runtimes are at most 24,576 bytes (EIP-170) and all four initcodes are at most 49,152 bytes (EIP-3860). Code-deposit gas is exact at 200 gas/runtime byte. EIP-3860 word metering is retained in `gas/measured-summary.json`. Constructor execution gas is not separately observable in this harness.\n\nThe pool's observed internal Solidity `new` expression used 18,873,630 gas, 2,096,414 above 16,777,216. This is a real local internal-CREATE measurement and a deployment blocker. It is **not** a mined creation receipt or an exact top-level creation-transaction total: initcode zero/nonzero byte counts, top-level intrinsic gas, and a receipt are absent. Those top-level fields remain `NOT_EVALUATED`, rather than being inferred.\n")
 
 o=CAND/"opcode-profile.md"
-opcode_detail=(f"go-ethereum t8n evidence is retained for {len(t8n_evidence)} passing fixture(s), with two sequential successful simulated receipts per fixture and {sum(opcode_totals.values()):,} aggregated opcode steps. The pinned client identity and per-transaction opcode maps are retained in each `gas/t8n/*/evidence.json`. {len(t8n_failures)} additional capped simulation failure(s) remain visible in `failure-evidence.json`; they do not weaken the candidate's FAIL gate. Raw multi-gigabyte JSONL is deleted only after deterministic aggregation. These are deterministic Prague state-transition simulations, not mined receipts." if t8n_evidence else "`gas/opcode-counts.json` and `gas/t8n/*/evidence.json` are absent; no raw opcode count has been accepted. `run-geth-t8n.sh` is the pinned sequential-state route.")
+opcode_detail=f"go-ethereum t8n coverage is run-scoped: {len(t8n_pass_by_run)} PASS (`v03-fixed-19`), {len(t8n_fail_by_run)} FAIL (`v03-fixed-01`), and {t8n_not_evaluated_count} NOT_EVALUATED. The passing fixture has two sequential successful simulated receipts and {sum(opcode_totals.values()):,} aggregated opcode steps. Pinned client identity and per-transaction opcode maps remain in its `evidence.json`; the capped failure remains in `failure-evidence.json`. Raw multi-gigabyte JSONL is deleted only after deterministic aggregation. These are deterministic Prague state-transition simulations, not mined receipts."
 o.write_text(f"""# C00 opcode and component profile
 
-**Component status: PASS for 60 Foundry A/B simulations. Raw opcode-count status: {raw_opcode_status}.**
-
+**Component status: PASS for 60 Foundry A/B simulations. t8n coverage: {t8n_coverage_status}.**
 The retained `gas/evm/v03-*.trace.log` set contains 60 complete call traces. Every trace records a passing pool-facing A/B execution, and the synthesizer byte-checks the four gas values against its run JSON. Part A execution ranges from {stats['a_execution']['min']:,} to {stats['a_execution']['max']:,} gas (p50 {stats['a_execution']['p50']:,}); part B ranges from {stats['b_execution']['min']:,} to {stats['b_execution']['max']:,} (p50 {stats['b_execution']['p50']:,}).
 
 {opcode_detail}
@@ -130,8 +183,8 @@ measured_body=f"""Sixty fresh q32 proofs were generated and verified natively; a
 
 Against the report, p50 deltas are {report_comparison['part_a_execution']['delta_percent']:.3f}% (A execution), {report_comparison['part_a_total']['delta_percent']:.3f}% (A total), {report_comparison['part_b_execution']['delta_percent']:.3f}% (B execution), and {report_comparison['part_b_total']['delta_percent']:.3f}% (B total). The B-total delta exceeds 1%. The exact cause is not isolated: fresh query/calldata variation and current harness/compiler instrumentation both differ from the single report fixture, so no stronger attribution is made. Reproduced deposit execution gas is exactly 13,991,021, matching the report.
 
-Deployment profiling establishes EIP-170/EIP-3860 code-size passes. Pool internal `new` gas is 18,873,630, above 2^24; exact top-level creation transaction gas remains NOT_EVALUATED. Raw opcode status is {raw_opcode_status}; second-client status is {second_client_status}. Any t8n receipt is explicitly a simulation, not mined evidence."""
+Deployment profiling establishes EIP-170/EIP-3860 code-size passes. Pool internal `new` gas is 18,873,630, above 2^24 and therefore FAIL for the active deployment cap; exact top-level creation transaction gas remains NOT_EVALUATED. t8n coverage is run-scoped: one PASS (`v03-fixed-19`), one FAIL (`v03-fixed-01`), and 58 NOT_EVALUATED. Any passing t8n receipt is explicitly a simulation, not mined evidence."""
 adr=replace_section(adr,"## Measurements","## Gate result",measured_body)
-gate_body="`FAIL`. Native, deposit, and Foundry correctness passed, but 9/60 observed valid part-A transactions exceed EIP-7825. Missing top-level creation and mined-receipt evidence remain visible and cannot convert an observed cap failure into PASS."
+gate_body="`FAIL`. Native, deposit, and Foundry correctness passed, but 9/60 observed valid part-A transactions exceed EIP-7825, the pool's internal CREATE alone exceeds that cap, and the -1.036% Part-B total-gas delta remains unattributed. Top-level creation and mined-receipt evidence remain NOT_EVALUATED and cannot convert these observed blockers into PASS."
 adr=replace_section(adr,"## Gate result","## Decision and compatibility",gate_body); adr_path.write_text(adr)
-print(json.dumps({"ok":True,"runs":60,"traces":60,"gate":"FAIL","part_a_cap_failures":summary["part_a_eip7825_fail_count"],"summary":str(OUT.relative_to(ROOT))},sort_keys=True))
+print(json.dumps({"ok":True,"runs":60,"traces":60,"gate":"FAIL","part_a_cap_failures":summary["part_a_eip7825_fail_count"],"t8n_coverage":summary["t8n_coverage"],"summary":str(OUT.relative_to(ROOT))},sort_keys=True))
