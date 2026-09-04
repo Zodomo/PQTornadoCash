@@ -1,0 +1,29 @@
+{
+  "recordType": "PublicStatementStudyStatus",
+  "status": "RESEARCH_COMPLETE",
+  "checker": "PASS",
+  "fieldCoverage": "64_OF_64",
+  "semanticCorpus": "256_OF_256_ACCEPTED",
+  "invalidMutations": "48_OF_48_REJECTED_WITH_EXPECTED_REASON",
+  "bindingMutations": "33_OF_33_REJECTED",
+  "minimalSafe": {
+    "decision": "PROCEED_RESEARCH_ONLY",
+    "layout": "eight u32be lanes per bytes32; retain 64 decoded fields",
+    "actualV03Compatibility": false,
+    "productionReady": false
+  },
+  "aggressive": {
+    "decision": "STOP",
+    "layout": "one constrained 512-bit digest over all 64 ordered fields",
+    "actualV03Compatibility": false,
+    "blockers": [
+      "changed AIR not implemented",
+      "exact changed constraint/trace/performance results unavailable",
+      "leakage analysis unavailable",
+      "independent audit unavailable",
+      "security gate not passed"
+    ]
+  },
+  "overallOutcome": "PROCEED_MINIMAL_RESEARCH_ONLY_STOP_AGGRESSIVE",
+  "qualification": "No security, deployment, audit, or public-network qualification."
+}

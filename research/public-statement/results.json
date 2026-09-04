@@ -1,0 +1,286 @@
+{
+  "bindingMutationCount": 33,
+  "bindingMutations": [
+    {
+      "layout": "v03-direct",
+      "mutation": "cross-scope-chain",
+      "rejected": true
+    },
+    {
+      "layout": "v03-direct",
+      "mutation": "cross-scope-consumer-pool",
+      "rejected": true
+    },
+    {
+      "layout": "v03-direct",
+      "mutation": "cross-scope-denomination",
+      "rejected": true
+    },
+    {
+      "layout": "v03-direct",
+      "mutation": "cross-scope-version",
+      "rejected": true
+    },
+    {
+      "layout": "v03-direct",
+      "mutation": "cross-root-path",
+      "rejected": true
+    },
+    {
+      "layout": "v03-direct",
+      "mutation": "cross-root-siblings",
+      "rejected": true
+    },
+    {
+      "layout": "v03-direct",
+      "mutation": "cross-nullifier-secret",
+      "rejected": true
+    },
+    {
+      "layout": "v03-direct",
+      "mutation": "cross-recipient",
+      "rejected": true
+    },
+    {
+      "layout": "v03-direct",
+      "mutation": "cross-relayer",
+      "rejected": true
+    },
+    {
+      "layout": "v03-direct",
+      "mutation": "cross-scope-parameter",
+      "rejected": true
+    },
+    {
+      "layout": "v03-direct",
+      "mutation": "cross-fee",
+      "rejected": true
+    },
+    {
+      "layout": "minimal-safe-packed",
+      "mutation": "cross-scope-chain",
+      "rejected": true
+    },
+    {
+      "layout": "minimal-safe-packed",
+      "mutation": "cross-scope-consumer-pool",
+      "rejected": true
+    },
+    {
+      "layout": "minimal-safe-packed",
+      "mutation": "cross-scope-denomination",
+      "rejected": true
+    },
+    {
+      "layout": "minimal-safe-packed",
+      "mutation": "cross-scope-version",
+      "rejected": true
+    },
+    {
+      "layout": "minimal-safe-packed",
+      "mutation": "cross-root-path",
+      "rejected": true
+    },
+    {
+      "layout": "minimal-safe-packed",
+      "mutation": "cross-root-siblings",
+      "rejected": true
+    },
+    {
+      "layout": "minimal-safe-packed",
+      "mutation": "cross-nullifier-secret",
+      "rejected": true
+    },
+    {
+      "layout": "minimal-safe-packed",
+      "mutation": "cross-recipient",
+      "rejected": true
+    },
+    {
+      "layout": "minimal-safe-packed",
+      "mutation": "cross-relayer",
+      "rejected": true
+    },
+    {
+      "layout": "minimal-safe-packed",
+      "mutation": "cross-scope-parameter",
+      "rejected": true
+    },
+    {
+      "layout": "minimal-safe-packed",
+      "mutation": "cross-fee",
+      "rejected": true
+    },
+    {
+      "layout": "aggressive-statement-digest",
+      "mutation": "cross-scope-chain",
+      "rejected": true
+    },
+    {
+      "layout": "aggressive-statement-digest",
+      "mutation": "cross-scope-consumer-pool",
+      "rejected": true
+    },
+    {
+      "layout": "aggressive-statement-digest",
+      "mutation": "cross-scope-denomination",
+      "rejected": true
+    },
+    {
+      "layout": "aggressive-statement-digest",
+      "mutation": "cross-scope-version",
+      "rejected": true
+    },
+    {
+      "layout": "aggressive-statement-digest",
+      "mutation": "cross-root-path",
+      "rejected": true
+    },
+    {
+      "layout": "aggressive-statement-digest",
+      "mutation": "cross-root-siblings",
+      "rejected": true
+    },
+    {
+      "layout": "aggressive-statement-digest",
+      "mutation": "cross-nullifier-secret",
+      "rejected": true
+    },
+    {
+      "layout": "aggressive-statement-digest",
+      "mutation": "cross-recipient",
+      "rejected": true
+    },
+    {
+      "layout": "aggressive-statement-digest",
+      "mutation": "cross-relayer",
+      "rejected": true
+    },
+    {
+      "layout": "aggressive-statement-digest",
+      "mutation": "cross-scope-parameter",
+      "rejected": true
+    },
+    {
+      "layout": "aggressive-statement-digest",
+      "mutation": "cross-fee",
+      "rejected": true
+    }
+  ],
+  "corpus": {
+    "invalidFailures": [],
+    "invalidMutationsChecked": 48,
+    "invalidMutationsRejectedWithExpectedReason": 48,
+    "semanticCasesAccepted": 256,
+    "semanticCasesChecked": 256,
+    "validFailures": []
+  },
+  "exactSourceFacts": {
+    "aggressiveCombinedByteReductionPerRegistryCallAndProofPart": 2176,
+    "aggressiveDigestAbiByteReductionPerRegistryCall": 1984,
+    "aggressiveDigestAbiBytesPerRegistryCallAsBytes32Pair": 64,
+    "aggressiveDigestCanonicalBytesPerProofHeader": 64,
+    "aggressiveDigestFields": 16,
+    "aggressiveDigestHeaderByteReductionPerProofPart": 192,
+    "minimalPackedAbiByteReductionPerRegistryCall": 1792,
+    "minimalPackedAbiBytesPerRegistryCall": 256,
+    "minimalPackedProofHeaderByteReduction": 0,
+    "sourceLevelPublicEqualityEmissions": {
+      "nullifier": 16,
+      "payout": 16,
+      "root": 16,
+      "scope": 32,
+      "total": 80
+    },
+    "v03AbiBytesForUint32ArrayPerRegistryCall": 2048,
+    "v03AirPublicInputs": 64,
+    "v03CanonicalPublicBytesPerProofHeader": 256,
+    "v03CommonHeaderBytes": 338,
+    "v03Constraints": 1186,
+    "v03PublicFields": 64,
+    "v03TraceColumns": 190
+  },
+  "fieldMap": {
+    "allHaveDisposition": true,
+    "count": 64
+  },
+  "layoutChecks": {
+    "changedLayoutsV03Compatible": false,
+    "layoutAndVersionDomainsDistinct": true,
+    "minimalPackingRoundTrip": true,
+    "reorderingRejected": true
+  },
+  "measurementLabels": {
+    "EXACT_SOURCE": "constant or count directly derivable from frozen source",
+    "MEASURED": "computed by this checker from checked-in artifacts",
+    "PROJECTED": "requires an unimplemented changed-layout AIR/ABI/codec"
+  },
+  "operationAssessments": [
+    {
+      "lostIfRemoved": {
+        "nullifier": [
+          "spent-state identity",
+          "replay protection"
+        ],
+        "payout": [
+          "recipient",
+          "relayer",
+          "fee",
+          "transfer amounts"
+        ],
+        "root": [
+          "state-root membership"
+        ],
+        "scope": [
+          "consumer",
+          "note-scope",
+          "nullifier-scope",
+          "cross-chain replay",
+          "version",
+          "parameter"
+        ]
+      },
+      "operation": "removal",
+      "preservesRequiredBindings": false,
+      "testedDisposition": "REJECT"
+    },
+    {
+      "condition": "scope and payout may be recomputed from complete semantic inputs but must be injected unchanged into the existing 64 AIR/transcript fields; root and nullifier remain transaction-selected",
+      "operation": "derivation",
+      "preservesRequiredBindings": true,
+      "testedDisposition": "BOUNDARY_ONLY"
+    },
+    {
+      "condition": "all 64 ordered fields are a constrained, versioned preimage; structural oracle mutations passed but cryptographic/AIR/security gates did not",
+      "operation": "digest-commitment",
+      "preservesRequiredBindings": true,
+      "testedDisposition": "CONDITIONAL_STOP"
+    },
+    {
+      "condition": "eight canonical u32be lanes per bytes32, exact unpack and order, new version/domain",
+      "operation": "packing",
+      "preservesRequiredBindings": true,
+      "testedDisposition": "PROCEED_RESEARCH_ONLY"
+    },
+    {
+      "condition": "no byte benefit; only a complete new-version remap could be unambiguous",
+      "mutationRejected": true,
+      "operation": "reordering",
+      "preservesRequiredBindings": false,
+      "testedDisposition": "REJECT_V03"
+    }
+  ],
+  "outcome": "PROCEED_MINIMAL_RESEARCH_ONLY_STOP_AGGRESSIVE",
+  "passed": true,
+  "projectedFacts": {
+    "aggressiveConstraintDelta": "PROJECTED; no changed AIR implemented",
+    "aggressivePermutationDelta": "PROJECTED +19 active Poseidon permutations for a 64-field-to-16-field statement hash using the current rate-4 schedule; current 240 active rows would exceed the 256-row trace",
+    "aggressiveTraceColumns": "PROJECTED unchanged at 190 only if existing work columns are reused",
+    "calldataGas": "PROJECTED/content-dependent; byte counts are exact but zero/nonzero byte mix and execution overhead are not"
+  },
+  "recordType": "PublicStatementStudyResults",
+  "sourceHashes": {
+    "checked": true,
+    "failures": []
+  }
+}

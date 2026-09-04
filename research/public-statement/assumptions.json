@@ -1,0 +1,31 @@
+{
+  "recordType": "PublicStatementStudyAssumptions",
+  "baseline": {
+    "candidateId": "C00/v03-baseline",
+    "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+    "profile": "sepolia-v0.3",
+    "tag": "pqtc-v0.3-research-baseline"
+  },
+  "facts": [
+    "A v0.3 Digest512 is sixteen canonical big-endian BabyBear u32 limbs.",
+    "The public order is scope, root, nullifier hash, payout digest.",
+    "The pool address is the statement consumer and is bound through scope.",
+    "A layout change requires a new selector, codec/layout version, statement domain, and parameter manifest.",
+    "Static ABI array elements each occupy one 32-byte ABI word regardless of uint32 width."
+  ],
+  "checkerModel": {
+    "candidateNeutral": true,
+    "hash": "SHA-512 structural dependency oracle only",
+    "nonClaims": [
+      "SHA-512 is not a proposed algebraic statement hash.",
+      "Oracle outputs are u32 chunks, not claimed canonical candidate field elements.",
+      "Mutation rejection demonstrates dependency coverage, not collision resistance or proof-system soundness."
+    ],
+    "parameterHandling": "The common corpus intentionally omits candidate parameter IDs; the checker injects an explicit abstract parameter-domain token and mutates it to test scope binding."
+  },
+  "measurementPolicy": {
+    "exact": "Only checked-in constants, source-level counts, and fixed-width byte arithmetic.",
+    "projected": "All changed-AIR constraints/columns/performance, calldata gas, and unimplemented layout behavior."
+  },
+  "securityScope": "No security, audit, leakage, deployment, or public-network qualification is conferred."
+}

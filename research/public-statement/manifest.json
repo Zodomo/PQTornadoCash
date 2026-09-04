@@ -1,0 +1,45 @@
+{
+  "recordType": "PublicStatementStudyManifest",
+  "studyId": "SP-PUBLIC-STATEMENT",
+  "title": "v0.3 public-statement minimization",
+  "researchOnly": true,
+  "productionCodeChanged": false,
+  "ownedPath": "research/public-statement/**",
+  "baseline": {
+    "candidateId": "C00/v03-baseline",
+    "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+    "tag": "pqtc-v0.3-research-baseline",
+    "parameterId": "0x35adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62ab7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea07779"
+  },
+  "inputs": [
+    "research/common-corpus/semantic-cases.json",
+    "research/common-corpus/invalid-mutations.json",
+    "frozen Rust statement/hash/AIR/transcript/codec sources",
+    "frozen Solidity pool/registry/hash/codec sources"
+  ],
+  "artifacts": {
+    "README.md": "source-backed report and disposition",
+    "ADR.md": "decision record",
+    "assumptions.json": "model boundaries",
+    "check.py": "executable candidate-neutral checker and generator",
+    "field-map.json": "one disposition for every public index",
+    "results.json": "machine-readable measured and projected results",
+    "negative-results.json": "preserved failed or unsupported approaches",
+    "source-hashes.json": "SHA-256 source pins",
+    "status.json": "proceed/stop gate"
+  },
+  "reproduce": "python3 research/public-statement/check.py",
+  "regenerate": "python3 research/public-statement/check.py --write",
+  "variants": {
+    "minimalSafe": {
+      "id": "minimal-safe-packed",
+      "actualV03Compatibility": false,
+      "disposition": "PROCEED_RESEARCH_ONLY"
+    },
+    "aggressive": {
+      "id": "aggressive-statement-digest",
+      "actualV03Compatibility": false,
+      "disposition": "STOP"
+    }
+  }
+}

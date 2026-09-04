@@ -1,0 +1,60 @@
+{
+  "recordType": "PublicStatementNegativeResults",
+  "results": [
+    {
+      "approach": "remove scope limbs",
+      "outcome": "REJECT",
+      "reason": "Silently removes chain/pool consumer/denomination/depth/version/parameter binding from note and nullifier semantics."
+    },
+    {
+      "approach": "remove root limbs",
+      "outcome": "REJECT",
+      "reason": "Silently removes the proven Merkle root selected by the pool's knownRoots state check."
+    },
+    {
+      "approach": "remove nullifier limbs",
+      "outcome": "REJECT",
+      "reason": "Silently disconnects proof validity from the spent-nullifier state transition and replay protection."
+    },
+    {
+      "approach": "remove payout limbs",
+      "outcome": "REJECT",
+      "reason": "Silently disconnects proof validity from recipient, relayer, fee, and transfer amounts."
+    },
+    {
+      "approach": "derive scope or payout only at pool boundary",
+      "outcome": "NO_STATEMENT_REDUCTION",
+      "reason": "The AIR and transcript still require the identical values; this can only change their ABI transport."
+    },
+    {
+      "approach": "reorder fields",
+      "outcome": "REJECT",
+      "reason": "Saves zero bytes and changes AIR/transcript/codec interpretation unless every consumer migrates under a new version/domain."
+    },
+    {
+      "approach": "pack without canonical lane checks",
+      "outcome": "REJECT",
+      "reason": "Decoded lanes must remain below the BabyBear modulus before entering AIR, transcript, codec, or statement-key logic."
+    },
+    {
+      "approach": "replace 64 fields by an unconstrained digest",
+      "outcome": "REJECT",
+      "reason": "A digest that is not constrained to the complete ordered preimage removes semantic binding rather than compressing it."
+    },
+    {
+      "approach": "naive in-AIR 64-field statement hash",
+      "outcome": "STOP_PROJECTED",
+      "reason": "The current rate-4 schedule projects 19 added active permutations; 240 + 19 exceeds the 256-row trace. No changed AIR or exact constraint count exists."
+    },
+    {
+      "approach": "claim calldata gas from byte counts",
+      "outcome": "NOT_MEASURED",
+      "reason": "Gas depends on zero/nonzero bytes, decoding, hashing, memory, and verifier changes; only fixed-width byte counts are exact."
+    },
+    {
+      "approach": "claim cryptographic safety from mutation tests",
+      "outcome": "REJECT",
+      "reason": "The checker proves dependency coverage only; leakage, collisions, proof soundness, audit, and the project security gate remain unresolved."
+    }
+  ]
+}
