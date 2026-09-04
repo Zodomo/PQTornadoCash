@@ -1,0 +1,25 @@
+{
+  "schema": "sp72-assumptions-v1",
+  "candidate": "SP-72",
+  "inherited": [
+    "Frozen v0.3 verifier relation, q32 profile, transcript, BabyBear modulus, and proof semantics are unchanged.",
+    "The retained asymmetric-split rows are component-model projections from research/candidates/V9/outputs/benchmark.json, not a new proof implementation or replay.",
+    "The active transaction gas cap is 2^24; the robust gate is each call <=12000000 and A+B <=20000000 under active, uniform64, and uniform96 scenarios.",
+    "External cryptographic acceptance remains OPEN and no SP-72 candidate is security-qualified."
+  ],
+  "state_model": [
+    "Expiry uses block.number and is reached at block.number >= expiresAt.",
+    "The immutable consumer reconstructs statement bindings and is the only registry begin/complete caller.",
+    "A root authority is present only to exercise bounded root-history aging in the research consumer; it cannot mutate checkpoints.",
+    "Full-width means two independently retained bytes32 limbs for each statement, global-data, checkpoint, proof, continuation, and root binding.",
+    "The mock verifier proves only deterministic binding behavior and supplies no cryptographic evidence.",
+    "Logical storage byte counts are slots times 32 and exclude Merkle-Patricia-tree and client database overhead."
+  ],
+  "gas_model": [
+    "Prague EIP-2200, EIP-2929, and EIP-3529 opcode terms are exact under the listed access-order and nonzero-word assumptions.",
+    "Gas-cap decisions use gross delete cost and never subtract refund accrual.",
+    "Foundry gasleft values, when outputs/harness-gas.json exists, measure the state harness plus binding mock and exclude the v0.3 verifier.",
+    "No harness measurement is added to retained V9 projections because the replaced v0.3 state overhead is not isolated on a canonical full path.",
+    "Wall-clock recovery uses an explicit 12-second-per-block projection; recovery in blocks is exact for the configured TTL."
+  ]
+}

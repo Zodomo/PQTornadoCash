@@ -1,0 +1,19 @@
+{
+  "schema": "sp72-state-invariants-v1",
+  "invariants": [
+    {"id": "I01_ONE_PER_NULLIFIER", "predicate": "cardinality(checkpoints[nullifierKey]) <= 1", "enforced_by": ["mapping key is full-nullifier digest key", "BEGIN_DIFFERENT_ACTIVE reverts"]},
+    {"id": "I02_IMMUTABLE_CONSUMER", "predicate": "begin.caller == complete.caller == immutable consumer", "enforced_by": ["onlyConsumer modifier", "constructor immutable"]},
+    {"id": "I03_BOUNDED_LIFETIME", "predicate": "expiresAt == createdAt + ttlBlocks", "enforced_by": ["immutable nonzero ttlBlocks", "uint64 overflow rejection"]},
+    {"id": "I04_PERMISSIONLESS_CLEANUP", "predicate": "forall caller, expired(checkpoint) implies cleanup(caller) may erase it", "enforced_by": ["cleanup has no caller restriction"]},
+    {"id": "I05_REPLACE_ONLY_EXPIRED", "predicate": "different binding replacement succeeds only at block.number >= expiresAt", "enforced_by": ["ACTIVE_CHECKPOINT guard"]},
+    {"id": "I06_ROOT_PIN_ACCOUNTING", "predicate": "rootPinCount[root] == count(checkpoints whose stored root equals root)", "enforced_by": ["increment after successful begin", "decrement on complete, cleanup, and expired replacement", "transaction rollback"]},
+    {"id": "I07_FULL_WIDTH_BINDINGS", "predicate": "statement, globalData, checkpoint, proof, continuation, and root each retain and compare two bytes32 limbs", "enforced_by": ["FixedBindings and Checkpoint layouts", "_same compares all twelve limbs"]},
+    {"id": "I08_FIXED_CONTINUATION", "predicate": "checkpoint storage contains no bytes, arrays, mappings, offsets, proof fragments, or witness fields", "enforced_by": ["Checkpoint consists of one packed metadata word and six Digest512 values"]},
+    {"id": "I09_NO_REUSABLE_FACT", "predicate": "successful B leaves no verification-success mapping consumable by a later call", "enforced_by": ["complete deletes checkpoint", "consumer spends and transfers in same transaction"]},
+    {"id": "I10_ATOMIC_B", "predicate": "payment failure implies checkpoint active and nullifier unspent", "enforced_by": ["EVM transaction rollback", "consumer nonReentrant modifier"]},
+    {"id": "I11_SPLIT_IMMUTABLE", "predicate": "8 <= split <= 16 and every A/B verifier call uses constructor-selected split", "enforced_by": ["constructor validation", "immutable split"]},
+    {"id": "I12_EXACT_FRONT_RUN_IDEMPOTENT", "predicate": "identical active A changes neither expiry nor live-state cardinality", "enforced_by": ["BEGIN_IDENTICAL_ACTIVE"]},
+    {"id": "I13_NO_EXPIRED_B", "predicate": "block.number >= expiresAt implies complete reverts", "enforced_by": ["CheckpointExpired guard"]},
+    {"id": "I14_STATEMENT_OWNERSHIP", "predicate": "statement commits to chain id, pool address, both nullifier limbs, both root limbs, recipient, and amount", "enforced_by": ["AtomicTwoCallPool._bindings"]}
+  ]
+}

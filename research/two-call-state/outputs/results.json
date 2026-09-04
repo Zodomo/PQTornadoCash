@@ -1,0 +1,612 @@
+{
+  "attacks": {
+    "cleanup_front_run": {
+      "reason": "CHECKPOINT_NOT_EXPIRED",
+      "status": "PASS_BOUNDARY_ENFORCED"
+    },
+    "direct_registry_arbitrary_consumer": {
+      "reason": "UNAUTHORIZED_CONSUMER",
+      "status": "PASS_REJECTED"
+    },
+    "exact_part_a_front_run": {
+      "reason": "RECIPIENT_STATEMENT_BOUND",
+      "status": "PASS_IDEMPOTENT"
+    },
+    "expired_proof_replay": {
+      "reason": "CHECKPOINT_EXPIRED",
+      "status": "PASS_REJECTED"
+    },
+    "many_valid_part_a_one_note": {
+      "reason": "ACTIVE_CHECKPOINT",
+      "status": "PASS_REJECTED"
+    },
+    "mixed_a_b_proofs": {
+      "reason": "BINDING_MISMATCH",
+      "status": "PASS_REJECTED"
+    },
+    "part_b_payment_revert": {
+      "reason": "PAYMENT_REVERT",
+      "status": "PASS_ATOMIC_ROLLBACK"
+    },
+    "reentrancy": {
+      "reason": "REENTRANT_CALL",
+      "status": "PASS_REJECTED"
+    },
+    "replacement_race": {
+      "reason": "ACTIVE_CHECKPOINT",
+      "status": "PASS_FIRST_VALID_WINS"
+    },
+    "root_aging": {
+      "reason": "ROOT_PINNED",
+      "status": "PASS_PINNED_UNTIL_CLEANUP"
+    }
+  },
+  "candidate": "SP-72",
+  "gate": {
+    "active_gas_cap": 16777216,
+    "decision": "DO_NOT_PROMOTE",
+    "external_cryptographic_acceptance": "OPEN",
+    "integrated_exact_full_path": "NOT_EVALUATED",
+    "part_a_and_b_limit": 12000000,
+    "projection_arithmetic": "FAIL",
+    "total_limit": 20000000
+  },
+  "harness_overhead": {
+    "cleanup_gross_gas": 6671,
+    "measurement_class": "EXACT_FOUNDRY_GASLEFT_DELTA",
+    "part_a_gas": 357199,
+    "part_b_gross_gas": 78039,
+    "schema": "sp72-foundry-harness-gas-v1",
+    "scope": "state harness plus binding mock; excludes v0.3 verifier",
+    "status": "MEASURED"
+  },
+  "live_state_growth": {
+    "active_transaction_gas_cap": 16777216,
+    "attack_preconditions": [
+      "distinct unspent nullifiers",
+      "valid Part A proofs",
+      "transactions included"
+    ],
+    "budgets": [
+      {
+        "budget_eth": 1,
+        "checkpoint_attributable_live_slots": 112,
+        "gas_price_gwei": 10,
+        "logical_live_bytes_including_shared_counter": 3616,
+        "logical_live_slots_including_shared_counter": 113,
+        "max_distinct_valid_part_a": 8
+      },
+      {
+        "budget_eth": 1,
+        "checkpoint_attributable_live_slots": 56,
+        "gas_price_gwei": 20,
+        "logical_live_bytes_including_shared_counter": 1824,
+        "logical_live_slots_including_shared_counter": 57,
+        "max_distinct_valid_part_a": 4
+      },
+      {
+        "budget_eth": 1,
+        "checkpoint_attributable_live_slots": 14,
+        "gas_price_gwei": 50,
+        "logical_live_bytes_including_shared_counter": 480,
+        "logical_live_slots_including_shared_counter": 15,
+        "max_distinct_valid_part_a": 1
+      },
+      {
+        "budget_eth": 10,
+        "checkpoint_attributable_live_slots": 1232,
+        "gas_price_gwei": 10,
+        "logical_live_bytes_including_shared_counter": 39456,
+        "logical_live_slots_including_shared_counter": 1233,
+        "max_distinct_valid_part_a": 88
+      },
+      {
+        "budget_eth": 10,
+        "checkpoint_attributable_live_slots": 616,
+        "gas_price_gwei": 20,
+        "logical_live_bytes_including_shared_counter": 19744,
+        "logical_live_slots_including_shared_counter": 617,
+        "max_distinct_valid_part_a": 44
+      },
+      {
+        "budget_eth": 10,
+        "checkpoint_attributable_live_slots": 238,
+        "gas_price_gwei": 50,
+        "logical_live_bytes_including_shared_counter": 7648,
+        "logical_live_slots_including_shared_counter": 239,
+        "max_distinct_valid_part_a": 17
+      },
+      {
+        "budget_eth": 100,
+        "checkpoint_attributable_live_slots": 12446,
+        "gas_price_gwei": 10,
+        "logical_live_bytes_including_shared_counter": 398304,
+        "logical_live_slots_including_shared_counter": 12447,
+        "max_distinct_valid_part_a": 889
+      },
+      {
+        "budget_eth": 100,
+        "checkpoint_attributable_live_slots": 6216,
+        "gas_price_gwei": 20,
+        "logical_live_bytes_including_shared_counter": 198944,
+        "logical_live_slots_including_shared_counter": 6217,
+        "max_distinct_valid_part_a": 444
+      },
+      {
+        "budget_eth": 100,
+        "checkpoint_attributable_live_slots": 2478,
+        "gas_price_gwei": 50,
+        "logical_live_bytes_including_shared_counter": 79328,
+        "logical_live_slots_including_shared_counter": 2479,
+        "max_distinct_valid_part_a": 177
+      }
+    ],
+    "cheapest_projected_part_a_gas": 11248096,
+    "classification": "PROJECTION_FROM_RETAINED_V03_PART_A_GAS",
+    "max_creations_per_block_under_cap": 1,
+    "note": "Counts include the one shared activeCheckpointCount slot when nonzero; trie/database overhead is excluded and one nullifier cannot contribute more than one live checkpoint.",
+    "ttl_blocks": 256,
+    "unbudgeted_ttl_window_checkpoint_attributable_slots": 3584,
+    "unbudgeted_ttl_window_logical_bytes_including_shared_counter": 114720,
+    "unbudgeted_ttl_window_logical_slots_including_shared_counter": 3585,
+    "unbudgeted_ttl_window_max_checkpoints": 256
+  },
+  "recovery_latency": {
+    "assumed_seconds_per_block": 12,
+    "exact_blocks": 256,
+    "permissionless_action_at_block": "created_at + ttl_blocks",
+    "projected_seconds": 3072,
+    "wall_clock_classification": "PROJECTION"
+  },
+  "schema": "sp72-two-call-state-results-v1",
+  "security_qualified": false,
+  "state_machine": {
+    "attacks_passed": 10,
+    "attacks_total": 10,
+    "executable_model": "model.py",
+    "invariants": "invariants.json",
+    "solidity_harness": "solidity/src/RobustTwoCallState.sol",
+    "transition_table": "transitions.json"
+  },
+  "status": "FAIL_PROJECTION_AND_NOT_EVALUATED_FULL_PATH",
+  "storage": {
+    "checkpoint_struct_slots": 13,
+    "fixed_size_only": true,
+    "gas_schedule": {
+      "assumptions": [
+        "all 13 checkpoint words are nonzero",
+        "new checkpoint mapping words are cold; metadata was warmed by existence read",
+        "new distinct root pin and active-count words are cold-read then warm-written",
+        "complete matched all checkpoint words before delete",
+        "cleanup warmed metadata and both root words before delete"
+      ],
+      "cap_accounting_uses_refund": false,
+      "classification": "EXACT_PROTOCOL_SCHEDULE_MODEL",
+      "cleanup_delete_storage_gas_gross": 100200,
+      "clear_refund_accrual": 4800,
+      "cold_slot_surcharge": 2100,
+      "delete_refund_accrual_15_words": 72000,
+      "fork": "Prague",
+      "part_a_storage_gas": 329400,
+      "part_b_delete_storage_gas_gross": 79200,
+      "sstore_reset_nonzero_to_zero_gross": 5000,
+      "sstore_set_zero_to_nonzero": 20000
+    },
+    "incremental_root_pin_slots_worst_case": 1,
+    "live_slots_per_checkpoint_worst_case": 14,
+    "proof_bytes_stored": false,
+    "reusable_fact_stored": false
+  },
+  "verifier_profile": {
+    "arithmetic_gate": "FAIL",
+    "best_minimum_margin": {
+      "air_placement": "A",
+      "call_gate_margin": -3344877,
+      "split": [
+        12,
+        20
+      ],
+      "total_gate_margin": -10670391
+    },
+    "classification": "PROJECTION_ONLY",
+    "integrated_full_path_gate": "NOT_EVALUATED",
+    "reason": "No SP-72 integration with the frozen verifier/proof fixture exists; retained V9 rows are projections, not measurements.",
+    "rows": [
+      {
+        "air_placement": "A",
+        "arithmetic_gate": "FAIL",
+        "call_gate_margin": -4583840,
+        "classification": "PROJECTION_RETAINED_V03_COMPONENT_MODEL",
+        "split": [
+          8,
+          24
+        ],
+        "total_gate_margin": -10695583,
+        "totals": {
+          "active": {
+            "part_a": 14111743,
+            "part_b": 16583840,
+            "total": 30695583
+          },
+          "uniform64": {
+            "part_a": 14111743,
+            "part_b": 16583840,
+            "total": 30695583
+          },
+          "uniform96": {
+            "part_a": 14111743,
+            "part_b": 16583840,
+            "total": 30695583
+          }
+        }
+      },
+      {
+        "air_placement": "B",
+        "arithmetic_gate": "FAIL",
+        "call_gate_margin": -7447487,
+        "classification": "PROJECTION_RETAINED_V03_COMPONENT_MODEL",
+        "split": [
+          8,
+          24
+        ],
+        "total_gate_margin": -10695583,
+        "totals": {
+          "active": {
+            "part_a": 11248096,
+            "part_b": 19447487,
+            "total": 30695583
+          },
+          "uniform64": {
+            "part_a": 11248096,
+            "part_b": 19447487,
+            "total": 30695583
+          },
+          "uniform96": {
+            "part_a": 11248096,
+            "part_b": 19447487,
+            "total": 30695583
+          }
+        }
+      },
+      {
+        "air_placement": "A",
+        "arithmetic_gate": "FAIL",
+        "call_gate_margin": -3964356,
+        "classification": "PROJECTION_RETAINED_V03_COMPONENT_MODEL",
+        "split": [
+          10,
+          22
+        ],
+        "total_gate_margin": -10682999,
+        "totals": {
+          "active": {
+            "part_a": 14718643,
+            "part_b": 15964356,
+            "total": 30682999
+          },
+          "uniform64": {
+            "part_a": 14718643,
+            "part_b": 15964356,
+            "total": 30682999
+          },
+          "uniform96": {
+            "part_a": 14718643,
+            "part_b": 15964356,
+            "total": 30682999
+          }
+        }
+      },
+      {
+        "air_placement": "B",
+        "arithmetic_gate": "FAIL",
+        "call_gate_margin": -6828003,
+        "classification": "PROJECTION_RETAINED_V03_COMPONENT_MODEL",
+        "split": [
+          10,
+          22
+        ],
+        "total_gate_margin": -10682999,
+        "totals": {
+          "active": {
+            "part_a": 11854996,
+            "part_b": 18828003,
+            "total": 30682999
+          },
+          "uniform64": {
+            "part_a": 11854996,
+            "part_b": 18828003,
+            "total": 30682999
+          },
+          "uniform96": {
+            "part_a": 11854996,
+            "part_b": 18828003,
+            "total": 30682999
+          }
+        }
+      },
+      {
+        "air_placement": "A",
+        "arithmetic_gate": "FAIL",
+        "call_gate_margin": -3344877,
+        "classification": "PROJECTION_RETAINED_V03_COMPONENT_MODEL",
+        "split": [
+          12,
+          20
+        ],
+        "total_gate_margin": -10670391,
+        "totals": {
+          "active": {
+            "part_a": 15325514,
+            "part_b": 15344877,
+            "total": 30670391
+          },
+          "uniform64": {
+            "part_a": 15325514,
+            "part_b": 15344877,
+            "total": 30670391
+          },
+          "uniform96": {
+            "part_a": 15325514,
+            "part_b": 15344877,
+            "total": 30670391
+          }
+        }
+      },
+      {
+        "air_placement": "B",
+        "arithmetic_gate": "FAIL",
+        "call_gate_margin": -6208524,
+        "classification": "PROJECTION_RETAINED_V03_COMPONENT_MODEL",
+        "split": [
+          12,
+          20
+        ],
+        "total_gate_margin": -10670391,
+        "totals": {
+          "active": {
+            "part_a": 12461867,
+            "part_b": 18208524,
+            "total": 30670391
+          },
+          "uniform64": {
+            "part_a": 12461867,
+            "part_b": 18208524,
+            "total": 30670391
+          },
+          "uniform96": {
+            "part_a": 12461867,
+            "part_b": 18208524,
+            "total": 30670391
+          }
+        }
+      },
+      {
+        "air_placement": "A",
+        "arithmetic_gate": "FAIL",
+        "call_gate_margin": -3628958,
+        "classification": "PROJECTION_RETAINED_V03_COMPONENT_MODEL",
+        "split": [
+          13,
+          19
+        ],
+        "total_gate_margin": -10664099,
+        "totals": {
+          "active": {
+            "part_a": 15628958,
+            "part_b": 15035141,
+            "total": 30664099
+          },
+          "uniform64": {
+            "part_a": 15628958,
+            "part_b": 15035141,
+            "total": 30664099
+          },
+          "uniform96": {
+            "part_a": 15628958,
+            "part_b": 15035141,
+            "total": 30664099
+          }
+        }
+      },
+      {
+        "air_placement": "B",
+        "arithmetic_gate": "FAIL",
+        "call_gate_margin": -5898788,
+        "classification": "PROJECTION_RETAINED_V03_COMPONENT_MODEL",
+        "split": [
+          13,
+          19
+        ],
+        "total_gate_margin": -10664099,
+        "totals": {
+          "active": {
+            "part_a": 12765311,
+            "part_b": 17898788,
+            "total": 30664099
+          },
+          "uniform64": {
+            "part_a": 12765311,
+            "part_b": 17898788,
+            "total": 30664099
+          },
+          "uniform96": {
+            "part_a": 12765311,
+            "part_b": 17898788,
+            "total": 30664099
+          }
+        }
+      },
+      {
+        "air_placement": "A",
+        "arithmetic_gate": "FAIL",
+        "call_gate_margin": -3932414,
+        "classification": "PROJECTION_RETAINED_V03_COMPONENT_MODEL",
+        "split": [
+          14,
+          18
+        ],
+        "total_gate_margin": -10657807,
+        "totals": {
+          "active": {
+            "part_a": 15932414,
+            "part_b": 14725393,
+            "total": 30657807
+          },
+          "uniform64": {
+            "part_a": 15932414,
+            "part_b": 14725393,
+            "total": 30657807
+          },
+          "uniform96": {
+            "part_a": 15932414,
+            "part_b": 14725393,
+            "total": 30657807
+          }
+        }
+      },
+      {
+        "air_placement": "B",
+        "arithmetic_gate": "FAIL",
+        "call_gate_margin": -5589040,
+        "classification": "PROJECTION_RETAINED_V03_COMPONENT_MODEL",
+        "split": [
+          14,
+          18
+        ],
+        "total_gate_margin": -10657807,
+        "totals": {
+          "active": {
+            "part_a": 13068767,
+            "part_b": 17589040,
+            "total": 30657807
+          },
+          "uniform64": {
+            "part_a": 13068767,
+            "part_b": 17589040,
+            "total": 30657807
+          },
+          "uniform96": {
+            "part_a": 13068767,
+            "part_b": 17589040,
+            "total": 30657807
+          }
+        }
+      },
+      {
+        "air_placement": "A",
+        "arithmetic_gate": "FAIL",
+        "call_gate_margin": -4235858,
+        "classification": "PROJECTION_RETAINED_V03_COMPONENT_MODEL",
+        "split": [
+          15,
+          17
+        ],
+        "total_gate_margin": -10651515,
+        "totals": {
+          "active": {
+            "part_a": 16235858,
+            "part_b": 14415657,
+            "total": 30651515
+          },
+          "uniform64": {
+            "part_a": 16235858,
+            "part_b": 14415657,
+            "total": 30651515
+          },
+          "uniform96": {
+            "part_a": 16235858,
+            "part_b": 14415657,
+            "total": 30651515
+          }
+        }
+      },
+      {
+        "air_placement": "B",
+        "arithmetic_gate": "FAIL",
+        "call_gate_margin": -5279304,
+        "classification": "PROJECTION_RETAINED_V03_COMPONENT_MODEL",
+        "split": [
+          15,
+          17
+        ],
+        "total_gate_margin": -10651515,
+        "totals": {
+          "active": {
+            "part_a": 13372211,
+            "part_b": 17279304,
+            "total": 30651515
+          },
+          "uniform64": {
+            "part_a": 13372211,
+            "part_b": 17279304,
+            "total": 30651515
+          },
+          "uniform96": {
+            "part_a": 13372211,
+            "part_b": 17279304,
+            "total": 30651515
+          }
+        }
+      },
+      {
+        "air_placement": "A",
+        "arithmetic_gate": "FAIL",
+        "call_gate_margin": -4539302,
+        "classification": "PROJECTION_RETAINED_V03_COMPONENT_MODEL",
+        "split": [
+          16,
+          16
+        ],
+        "total_gate_margin": -10645211,
+        "totals": {
+          "active": {
+            "part_a": 16539302,
+            "part_b": 14105909,
+            "total": 30645211
+          },
+          "uniform64": {
+            "part_a": 16539302,
+            "part_b": 14105909,
+            "total": 30645211
+          },
+          "uniform96": {
+            "part_a": 16539302,
+            "part_b": 14105909,
+            "total": 30645211
+          }
+        }
+      },
+      {
+        "air_placement": "B",
+        "arithmetic_gate": "FAIL",
+        "call_gate_margin": -4969556,
+        "classification": "PROJECTION_RETAINED_V03_COMPONENT_MODEL",
+        "split": [
+          16,
+          16
+        ],
+        "total_gate_margin": -10645211,
+        "totals": {
+          "active": {
+            "part_a": 13675655,
+            "part_b": 16969556,
+            "total": 30645211
+          },
+          "uniform64": {
+            "part_a": 13675655,
+            "part_b": 16969556,
+            "total": 30645211
+          },
+          "uniform96": {
+            "part_a": 13675655,
+            "part_b": 16969556,
+            "total": 30645211
+          }
+        }
+      }
+    ],
+    "source": "research/candidates/V9/outputs/benchmark.json",
+    "source_full_path_status": null,
+    "source_sha256": "c87a4c686012f87a2bdecf1f6a3ff91b612ba72cc8840838c14469a04dad325d"
+  }
+}

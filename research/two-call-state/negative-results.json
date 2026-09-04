@@ -1,0 +1,42 @@
+{
+  "schema": "sp72-negative-results-v1",
+  "candidate": "SP-72",
+  "results": [
+    {
+      "id": "NR01",
+      "status": "FAIL_PROJECTION",
+      "claim": "A retained v0.3 split clears the robust gas gate.",
+      "evidence": "Every retained V9 split/AIR-placement row violates at least one 12000000 per-call limit and the 20000000 total limit."
+    },
+    {
+      "id": "NR02",
+      "status": "NOT_EVALUATED",
+      "claim": "The SP-72 state machine is exactly bound to a complete frozen verifier execution.",
+      "evidence": "No integrated SP-72 verifier/proof fixture exists; Solidity uses an explicitly non-cryptographic binding mock."
+    },
+    {
+      "id": "NR03",
+      "status": "NOT_EVALUATED",
+      "claim": "Full A/B transaction gas equals a sum of harness measurements and retained verifier projections.",
+      "evidence": "The old v0.3 state overhead is not isolated, so summing would double-count unknown terms."
+    },
+    {
+      "id": "NR04",
+      "status": "FAIL",
+      "claim": "Refunds make B or cleanup fit a gas cap.",
+      "evidence": "All cap accounting uses gross gas and reports refund accrual separately."
+    },
+    {
+      "id": "NR05",
+      "status": "NOT_EVALUATED",
+      "claim": "SP-72 changes proof security or constitutes external cryptographic acceptance.",
+      "evidence": "The proof relation is frozen and external acceptance remains OPEN."
+    },
+    {
+      "id": "NR06",
+      "status": "REJECTED_DESIGN",
+      "claim": "Store proof bytes, witnesses, dynamic continuation data, or a reusable verification fact.",
+      "evidence": "The checkpoint schema is one metadata word plus six two-slot digests; completion deletes it atomically."
+    }
+  ]
+}

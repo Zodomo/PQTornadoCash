@@ -1,0 +1,15 @@
+{
+  "schema": "sp72-attack-coverage-v1",
+  "attacks": [
+    {"id": "A01", "name": "many valid Part A proofs for one note with different hiding randomness", "solidity_test": "testAttack_ManyValidPartAForOneNoteHasOneLiveCheckpoint", "model_result": "many_valid_part_a_one_note", "safe_outcome": "different active binding reverts; cardinality remains one"},
+    {"id": "A02", "name": "direct registry calls by arbitrary consumers", "solidity_test": "testAttack_DirectRegistryCallByArbitraryConsumerRejected", "model_result": "direct_registry_arbitrary_consumer", "safe_outcome": "unauthorized consumer reverts"},
+    {"id": "A03", "name": "expired proof replay", "solidity_test": "testAttack_ExpiredProofReplayRejectedBeforeAndAfterCleanup", "model_result": "expired_proof_replay", "safe_outcome": "expired and erased checkpoints cannot complete"},
+    {"id": "A04", "name": "replacement races", "solidity_test": "testAttack_ReplacementRaceFirstValidReplacementWins", "model_result": "replacement_race", "safe_outcome": "first valid replacement wins; later different A reverts"},
+    {"id": "A05", "name": "exact Part A front-run", "solidity_test": "testAttack_ExactPartAFrontRunIsIdempotentAndCannotRedirectPayment", "model_result": "exact_part_a_front_run", "safe_outcome": "identical A is idempotent and recipient remains statement-bound"},
+    {"id": "A06", "name": "mixed A/B proofs", "solidity_test": "testAttack_MixedPartAAndPartBProofsRejectedWithoutDeletingState", "model_result": "mixed_a_b_proofs", "safe_outcome": "any two-slot binding mismatch reverts without deletion"},
+    {"id": "A07", "name": "root aging", "solidity_test": "testAttack_RootAgingBlockedWhilePinnedThenAllowedAfterExpiryCleanup", "model_result": "root_aging", "safe_outcome": "active root is pinned; cleanup releases it"},
+    {"id": "A08", "name": "B payment revert", "solidity_test": "testAttack_PaymentRevertRollsBackVerificationAndNullifier", "model_result": "part_b_payment_revert", "safe_outcome": "verification deletion and nullifier spend roll back"},
+    {"id": "A09", "name": "reentrancy", "solidity_test": "testAttack_ReentrantPaymentCannotCompleteTwice", "model_result": "reentrancy", "safe_outcome": "consumer lock prevents a second completion/payment"},
+    {"id": "A10", "name": "cleanup front-running", "solidity_test": "testAttack_CleanupFrontRunFailsBeforeExpiryAndCannotBlockReplacement", "model_result": "cleanup_front_run", "safe_outcome": "early cleanup reverts; expiry cleanup cannot prevent replacement"}
+  ]
+}

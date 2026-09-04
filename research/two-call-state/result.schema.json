@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sp72-two-call-state-results-v1",
+  "type": "object",
+  "required": ["schema", "candidate", "status", "security_qualified", "state_machine", "attacks", "storage", "harness_overhead", "verifier_profile", "live_state_growth", "recovery_latency", "gate"],
+  "properties": {
+    "schema": {"const": "sp72-two-call-state-results-v1"},
+    "candidate": {"const": "SP-72"},
+    "security_qualified": {"const": false},
+    "state_machine": {
+      "type": "object",
+      "required": ["attacks_passed", "attacks_total", "transition_table", "invariants"],
+      "properties": {
+        "attacks_passed": {"const": 10},
+        "attacks_total": {"const": 10},
+        "transition_table": {"type": "string"},
+        "invariants": {"type": "string"}
+      }
+    },
+    "attacks": {
+      "type": "object",
+      "minProperties": 10,
+      "maxProperties": 10,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["status", "reason"]
+      }
+    },
+    "storage": {
+      "type": "object",
+      "required": ["checkpoint_struct_slots", "live_slots_per_checkpoint_worst_case", "fixed_size_only", "proof_bytes_stored", "reusable_fact_stored", "gas_schedule"],
+      "properties": {
+        "checkpoint_struct_slots": {"const": 13},
+        "live_slots_per_checkpoint_worst_case": {"const": 14},
+        "fixed_size_only": {"const": true},
+        "proof_bytes_stored": {"const": false},
+        "reusable_fact_stored": {"const": false}
+      }
+    },
+    "verifier_profile": {
+      "type": "object",
+      "required": ["classification", "rows", "arithmetic_gate", "integrated_full_path_gate"],
+      "properties": {
+        "classification": {"const": "PROJECTION_ONLY"},
+        "rows": {"type": "array", "minItems": 14, "maxItems": 14},
+        "arithmetic_gate": {"const": "FAIL"},
+        "integrated_full_path_gate": {"const": "NOT_EVALUATED"}
+      }
+    },
+    "gate": {
+      "type": "object",
+      "required": ["active_gas_cap", "part_a_and_b_limit", "total_limit", "projection_arithmetic", "integrated_exact_full_path", "external_cryptographic_acceptance", "decision"],
+      "properties": {
+        "active_gas_cap": {"const": 16777216},
+        "part_a_and_b_limit": {"const": 12000000},
+        "total_limit": {"const": 20000000},
+        "projection_arithmetic": {"const": "FAIL"},
+        "integrated_exact_full_path": {"const": "NOT_EVALUATED"},
+        "external_cryptographic_acceptance": {"const": "OPEN"},
+        "decision": {"const": "DO_NOT_PROMOTE"}
+      }
+    }
+  }
+}

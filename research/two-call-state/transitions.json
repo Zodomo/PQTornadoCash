@@ -1,0 +1,77 @@
+{
+  "schema": "sp72-state-transitions-v1",
+  "clock": "block.number",
+  "expiry_boundary": "expired iff block.number >= expiresAt",
+  "states": [
+    {"id": "EMPTY", "predicate": "checkpoint.expiresAt == 0"},
+    {"id": "ACTIVE", "predicate": "checkpoint.expiresAt != 0 && block.number < checkpoint.expiresAt"},
+    {"id": "EXPIRED", "predicate": "checkpoint.expiresAt != 0 && block.number >= checkpoint.expiresAt"},
+    {"id": "SPENT", "predicate": "consumer.nullifierSpent[nullifierKey] == true"}
+  ],
+  "transitions": [
+    {
+      "id": "BEGIN_NEW",
+      "from": "EMPTY",
+      "to": "ACTIVE",
+      "caller": "immutable consumer",
+      "guards": ["unspent nullifier", "known root", "all six two-slot bindings nonzero", "Part A binding verifier accepts"],
+      "effects": ["store exactly 13 fixed checkpoint slots", "increment root pin count", "increment active checkpoint count", "expiresAt = block.number + ttlBlocks"]
+    },
+    {
+      "id": "BEGIN_IDENTICAL_ACTIVE",
+      "from": "ACTIVE",
+      "to": "ACTIVE",
+      "caller": "immutable consumer",
+      "guards": ["all stored bindings exactly equal"],
+      "effects": ["return original expiresAt", "no verifier call", "no storage mutation"]
+    },
+    {
+      "id": "BEGIN_DIFFERENT_ACTIVE",
+      "from": "ACTIVE",
+      "to": "ACTIVE",
+      "caller": "immutable consumer",
+      "guards": ["any stored binding differs"],
+      "effects": ["revert ACTIVE_CHECKPOINT", "no storage mutation"]
+    },
+    {
+      "id": "REPLACE_EXPIRED",
+      "from": "EXPIRED",
+      "to": "ACTIVE",
+      "caller": "immutable consumer",
+      "guards": ["unspent nullifier", "known replacement root", "Part A binding verifier accepts"],
+      "effects": ["erase old fixed checkpoint", "decrement old root pin", "store replacement", "increment replacement root pin", "active checkpoint count unchanged"]
+    },
+    {
+      "id": "COMPLETE",
+      "from": "ACTIVE",
+      "to": "SPENT",
+      "caller": "immutable consumer",
+      "guards": ["all six stored bindings exactly equal", "Part B binding verifier accepts", "consumer payment succeeds"],
+      "effects": ["erase checkpoint before returning from registry", "decrement root pin", "consumer marks nullifier spent", "consumer transfers value in same transaction"]
+    },
+    {
+      "id": "COMPLETE_PAYMENT_REVERT",
+      "from": "ACTIVE",
+      "to": "ACTIVE",
+      "caller": "immutable consumer",
+      "guards": ["verification accepts", "payment call reverts or returns false"],
+      "effects": ["entire transaction reverts", "checkpoint deletion rolls back", "nullifier write rolls back", "no value movement"]
+    },
+    {
+      "id": "CLEANUP",
+      "from": "EXPIRED",
+      "to": "EMPTY",
+      "caller": "any address",
+      "guards": ["block.number >= expiresAt"],
+      "effects": ["erase fixed checkpoint", "decrement root pin", "decrement active checkpoint count"]
+    },
+    {
+      "id": "EARLY_CLEANUP",
+      "from": "ACTIVE",
+      "to": "ACTIVE",
+      "caller": "any address",
+      "guards": ["block.number < expiresAt"],
+      "effects": ["revert CHECKPOINT_NOT_EXPIRED", "no storage mutation"]
+    }
+  ]
+}

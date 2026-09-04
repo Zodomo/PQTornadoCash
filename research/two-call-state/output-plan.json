@@ -1,0 +1,31 @@
+{
+  "schema": "sp72-output-plan-v1",
+  "artifacts": [
+    {
+      "path": "outputs/results.json",
+      "producer": "python3 research/two-call-state/run.py",
+      "required": true,
+      "classification": "deterministic model plus retained projections",
+      "schema": "result.schema.json"
+    },
+    {
+      "path": "outputs/harness-gas.json",
+      "producer": "cd research/two-call-state/solidity && forge test --match-test testMeasureRetainedHarnessOverhead",
+      "required": false,
+      "classification": "exact Foundry gasleft delta for harness plus binding mock; excludes verifier",
+      "required_fields": ["schema", "measurement_class", "scope", "part_a_gas", "part_b_gross_gas", "cleanup_gross_gas"]
+    },
+    {
+      "path": "source-hashes.json",
+      "producer": "python3 research/two-call-state/run.py",
+      "required": true,
+      "classification": "SHA-256 source and dependency inventory"
+    }
+  ],
+  "retention_rules": [
+    "Never add harness overhead to retained v0.3 projections without an isolated replaced-cost term.",
+    "Never subtract refund accrual for a gas-cap decision.",
+    "Keep exact measurements, protocol schedule terms, and projections in separate fields.",
+    "Absent complete verifier integration keeps the full-path gate NOT_EVALUATED."
+  ]
+}
