@@ -19,17 +19,61 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
-BASELINE = {
-    "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+HISTORIC_BASELINE = {
+    "source": "historic report comparator; never used as the projection anchor",
     "executionGas": {"partA": 14891070, "partB": 12356373},
+    "totalGas": {"partA": 16539302, "partB": 14105909},
     "registryExecutionGas": {"partA": 14056853, "partB": 11470158},
     "abiBytes": {"partA": 102308, "partB": 108644},
     "proofBytes": {"partA": 101990, "partB": 108294},
     "zeroBytes": {"partA": 808, "partB": 814},
-    "runtimeBytes": None,
-    "proverNs": None,
-    "nativeVerifierNs": None,
 }
+
+
+def load_canonical_baseline() -> dict:
+    run_path = ROOT / "research/runs/v03-fixed-01.json"
+    if not run_path.is_file():
+        raise RuntimeError(f"source-bound canonical run is required: {run_path}")
+    raw = run_path.read_bytes()
+    run = json.loads(raw)
+    if run.get("candidate_id") != "C00/v03-baseline":
+        raise RuntimeError("canonical run has wrong candidate_id")
+    if run.get("git", {}).get("commit") != "00f829001999ee66da6fd5161c4c205c07d0b937":
+        raise RuntimeError("canonical run is not bound to the frozen v0.3 commit")
+    artifacts = {Path(a["path"]).name: a for a in run["artifacts"]}
+    required = ("part-a.pqtc", "part-b.pqtc", "part-a.calldata", "part-b.calldata")
+    if any(name not in artifacts for name in required):
+        raise RuntimeError("canonical run omits proof/calldata artifacts")
+    exact = {}
+    for name in required:
+        path = ROOT / artifacts[name]["path"]
+        data = path.read_bytes()
+        digest = hashlib.sha256(data).hexdigest()
+        if len(data) != artifacts[name]["bytes"] or digest != artifacts[name]["digests"]["sha256"]:
+            raise RuntimeError(f"canonical artifact mismatch: {name}")
+        exact[name] = {"bytes": len(data), "zeroBytes": data.count(0), "sha256": digest}
+    gas_a = {row["name"]: row["total_gas"] for row in run["evm"]["gas_scenarios"]}
+    gas_b = {row["name"]: row["total_gas"] for row in run["evm"]["part_b_gas_scenarios"]}
+    return {
+        "source": {"kind": "source-bound canonical run", "record": str(run_path.relative_to(ROOT)), "recordSha256": hashlib.sha256(raw).hexdigest(), "commit": run["git"]["commit"]},
+        "executionGas": {"partA": run["evm"]["component_gas"]["pool_a_execution"], "partB": run["evm"]["component_gas"]["pool_b_execution"]},
+        "totalGas": {"partA": gas_a["ACTIVE_EIP7623"], "partB": gas_b["ACTIVE_EIP7623"]},
+        "scenarioGas": {
+            "partA": {"active": gas_a["ACTIVE_EIP7623"], "uniform64": gas_a["FUTURE_EIP7976_64_64"], "uniform96": gas_a["DRAFT_EIP8311_96_96"]},
+            "partB": {"active": gas_b["ACTIVE_EIP7623"], "uniform64": gas_b["FUTURE_EIP7976_64_64"], "uniform96": gas_b["DRAFT_EIP8311_96_96"]},
+        },
+        "registryExecutionGas": None,
+        "abiBytes": {"partA": exact["part-a.calldata"]["bytes"], "partB": exact["part-b.calldata"]["bytes"]},
+        "proofBytes": {"partA": exact["part-a.pqtc"]["bytes"], "partB": exact["part-b.pqtc"]["bytes"]},
+        "zeroBytes": {"partA": exact["part-a.calldata"]["zeroBytes"], "partB": exact["part-b.calldata"]["zeroBytes"]},
+        "runtimeBytes": run["evm"]["runtime_bytes"],
+        "proverNs": round(run["prover"]["proof_only_ms"] * 1_000_000),
+        "nativeVerifierNs": round(run["prover"]["native_verify_ms"] * 1_000_000),
+        "artifacts": exact,
+    }
+
+
+BASELINE = load_canonical_baseline()
 CANDIDATES = {
     "V1": ("Streaming alpha accumulation", "Horner and forward streaming eliminate the power vector; reverse Horner is permitted only where coefficient order is fixed before alpha."),
     "V2": ("Checked inverse witnesses", "Witnesses are accepted only for denominators whose nonzero obligation is independently enforced. Zero-legal batch and selector legs retain native handling."),
@@ -100,23 +144,21 @@ def calldata_models(execution: int, total_bytes: int, zero_bytes: int) -> dict:
 
 
 def split_model() -> list[dict]:
-    # Query-dependent component is the report's input-MMCS + DEEP-X + FRI total,
-    # distributed over 32 positions. Fixed terms are solved so 16/16 exactly
-    # reproduces the frozen registry A/B values. Pool overhead remains unchanged.
+    # Query-dependent component is the explicitly named historic component
+    # profile (input-MMCS + DEEP-X + FRI), distributed over 32 positions.
+    # Fixed terms are solved against the source-bound canonical run, so 16/16
+    # reproduces its exact pool A/B execution rather than the historic fixture.
     query_total = 1_751_463 + 2_483_581 + 2_523_737
     per_query = query_total / 32
     air = 2_863_647
-    reg_a, reg_b = 14_056_853, 11_470_158
-    fixed_a = reg_a - 16 * per_query - air
-    fixed_b = reg_b - 16 * per_query
-    pool_a_overhead = 14_891_070 - reg_a
-    pool_b_overhead = 12_356_373 - reg_b
+    fixed_a = BASELINE["executionGas"]["partA"] - 16 * per_query - air
+    fixed_b = BASELINE["executionGas"]["partB"] - 16 * per_query
     rows = []
     for a in (8, 10, 12, 13, 14, 15, 16):
         b = 32 - a
         for placement in ("A", "B"):
-            ea = round(fixed_a + a * per_query + (air if placement == "A" else 0) + pool_a_overhead)
-            eb = round(fixed_b + b * per_query + (air if placement == "B" else 0) + pool_b_overhead)
+            ea = round(fixed_a + a * per_query + (air if placement == "A" else 0))
+            eb = round(fixed_b + b * per_query + (air if placement == "B" else 0))
             # Proof bytes are linearly allocated only for sensitivity; shared 9,208 B
             # remains in both calls. It is a projection, not a codec measurement.
             pa = round(9208 + (BASELINE["proofBytes"]["partA"] - 9208) * a / 16)
@@ -273,7 +315,7 @@ def write_candidate(cid: str, native: dict | None, solidity: dict | None) -> Non
     measured = native is not None and solidity is not None
     manifest = {
         "candidateId": cid, "spikeId": "SP-31", "title": title, "status": "BENCHMARK_ONLY",
-        "baseline": "C00/v03-baseline at 00f829001999ee66da6fd5161c4c205c07d0b937",
+        "baseline": "source-bound C00/v03-baseline run research/runs/v03-fixed-01.json at 00f829001999ee66da6fd5161c4c205c07d0b937",
         "plonky3Commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
         "canonicalFixture": canonical_fixture_observation(),
 
@@ -308,7 +350,7 @@ def write_candidate(cid: str, native: dict | None, solidity: dict | None) -> Non
     sources = [HERE / "Cargo.toml", HERE / "src/main.rs", HERE / "solidity/foundry.toml", HERE / "solidity/src/VerifierOptimizationBench.sol", HERE / "solidity/test/VerifierOptimization.t.sol", HERE / "run-focused.py"]
     dump(directory / "source-hashes.json", {"algorithm": "sha256", "files": {str(p.relative_to(ROOT)): sha256(p) for p in sources}})
     decision = "PENDING: remain BENCHMARK_ONLY until a canonical full-path replay establishes a gate."
-    (directory / "ADR.md").write_text(f"# {cid}: {title}\n\n## Status\n\n{decision}\n\n## Context\n\nSP-31 requires this optimization in isolation and in a non-additive combined package against the frozen v0.3 baseline. The canonical generated proof fixture is not checked in, so kernel measurements cannot be relabeled as transaction measurements.\n\n## Decision\n\nUse the shared Rust/Solidity kernels and fail-closed driver. Preserve canonical encodings and protocol ordering. {assumption}\n\n## Gate\n\nKeep only with at least 2% measured complete-verifier savings, removal of a known security risk, or material measured worst-case proof-byte reduction. Small V3+V4 work may be grouped only as a simplifying combination. No custody code is changed.\n")
+    (directory / "ADR.md").write_text(f"# {cid}: {title}\n\n## Status\n\n{decision}\n\n## Context\n\nSP-31 requires this optimization in isolation and in a non-additive combined package against the frozen v0.3 baseline. Projections are anchored to the source-bound canonical v03-fixed-01 run; the historic report fixture is retained only as a named comparator. The kernels are not integrated into a full verifier, so their measurements cannot be relabeled as transaction measurements.\n\n## Decision\n\nUse the shared Rust/Solidity kernels and fail-closed driver. Preserve canonical encodings and protocol ordering. {assumption}\n\n## Gate\n\nKeep only with at least 2% measured complete-verifier savings, removal of a known security risk, or material measured worst-case proof-byte reduction. Small V3+V4 work may be grouped only as a simplifying combination. No custody code is changed.\n")
 
 
 def write_combined(native: dict | None, solidity: dict | None, transcript_hash: str | None) -> None:
@@ -318,14 +360,15 @@ def write_combined(native: dict | None, solidity: dict | None, transcript_hash: 
         "schema": "pqtc-sp31-combined-report-v1", "status": "BENCHMARK_ONLY",
         "measured": {"scope": "isolated Rust and Solidity kernels", "available": measured, "native": native, "solidity": solidity, "forgeTranscriptSha256": transcript_hash},
         "canonicalFixture": canonical_fixture_observation(),
-        "projected": {"scope": "explicit frozen-component and calldata-floor models only", "querySplits": split_model(), "mmcs": exact_tables(native)},
-        "completeTransaction": {"measured": None, "reason": "canonical full-path fixture unavailable", "combinedSavings": None, "reasonCombined": "isolated microbenchmarks overlap and are deliberately not summed"},
+        "baseline": {"projectionAnchor": BASELINE, "historicComparator": HISTORIC_BASELINE},
+        "projected": {"scope": "source-bound canonical run plus explicitly named historic component model; calldata-floor values recomputed from exact current bytes", "querySplits": split_model(), "mmcs": exact_tables(native)},
+        "completeTransaction": {"measured": None, "reason": "canonical baseline is observed, but no optimized full-verifier path exists", "combinedSavings": None, "reasonCombined": "isolated microbenchmarks overlap and are deliberately not summed"},
         "candidateOutputs": outputs,
         "simplifyingCombinations": [{"members": ["V3", "V4"], "reason": "one bounded calldata-consumption loop removes both the parse pass and memory copy without introducing another abstraction"}],
         "gatePolicy": ">=2% measured full verifier saving, security-risk removal, or material measured worst-case byte reduction",
     }
     dump(HERE / "outputs" / "combined.json", report)
-    dump(HERE / "outputs" / "baseline-reference.json", BASELINE)
+    dump(HERE / "outputs" / "baseline-reference.json", {"projectionAnchor": BASELINE, "historicComparator": HISTORIC_BASELINE})
     dump(HERE / "status.json", {"status": "BENCHMARK_ONLY", "isolatedMeasurements": "PASS" if measured else "NOT_EVALUATED", "fullPath": "NOT_EVALUATED", "combinedGate": "PENDING_FULL_PATH", "noAdditiveClaim": True})
     dump(HERE / "manifest.json", {"candidateId": "SP-31/V1-V9", "status": "BENCHMARK_ONLY", "command": "python3 research/candidates/verifier-optimization-common/run-focused.py", "paths": list(CANDIDATES), "plonky3Commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c", "custodyIntegration": False})
     (HERE / "ADR.md").write_text(
@@ -333,16 +376,16 @@ def write_combined(native: dict | None, solidity: dict | None, transcript_hash: 
         "## Status\n\nBENCHMARK_ONLY. No custody integration is authorized.\n\n"
         "## Decision\n\nRun V1-V9 from one fail-closed command. Keep measured isolated kernels and explicit component projections in separate JSON fields. "
         "Do not add overlapping microbenchmarks. V3+V4 is the only predeclared simplifying combination. "
-        "A complete-transaction gate remains pending because the frozen canonical proof fixture and an isolated full-verifier variant are unavailable.\n"
+        "A complete-transaction gate remains pending because no isolated optimized full-verifier variant exists; the source-bound canonical baseline is observed and used for projections.\n"
     )
     (HERE / "assumptions.md").write_text(
         "# SP-31 combined assumptions\n\n"
-        "- Baseline gas and byte values are historic frozen fixture facts, not measurements produced by this package.\n"
-        "- The V9 model allocates the reported MMCS, DEEP-X, and FRI component total uniformly over 32 query positions and solves fixed terms to reproduce 16/16.\n"
-        "- The 64/96 schedules are uniform per-byte floors; each total is the maximum of the standard path and its floor.\n"
-        "- A canonical complete proof is used only when a compatible full-path verifier experiment exists. None is integrated here.\n"
+        "- The projection anchor is the source-bound v03-fixed-01 run and its hash-checked proof/calldata files; historic report values are only a named comparator.\n"
+        "- The V9 model allocates the explicitly named historic MMCS, DEEP-X, and FRI component total uniformly over 32 query positions, then solves fixed terms to reproduce the current canonical 16/16 execution values.\n"
+        "- The active/64/96 schedules are recomputed from current exact calldata bytes and zero counts; each total is the maximum of the standard path and its floor.\n"
+        "- The canonical proof is consumed for baseline bytes, hashes, and gas. No optimized full verifier is integrated, so no full-path savings are claimed.\n"
     )
-    dump(HERE / "negative-results.json", {"package": "SP-31", "results": ["No canonical generated proof is checked in.", "Dynamic full-verifier opcode counts remain unavailable.", "384/320-bit digest truncation lacks external review.", "No individual candidate has passed the complete-verifier gate.", "Isolated kernel savings are not summed."]})
+    dump(HERE / "negative-results.json", {"package": "SP-31", "results": ["Canonical v03-fixed-01 is consumed as the projection anchor, but no optimized full-verifier path exists.", "Dynamic full-verifier opcode counts remain unavailable.", "384/320-bit digest truncation lacks external review.", "No individual candidate has passed the complete-verifier gate.", "Isolated kernel savings are not summed."]})
 
 
 def validate() -> None:
@@ -350,6 +393,11 @@ def validate() -> None:
     assert combined["completeTransaction"]["combinedSavings"] is None
     assert len(combined["projected"]["querySplits"]) == 14
     assert [r["split"] for r in combined["projected"]["querySplits"][::2]] == [[8,24],[10,22],[12,20],[13,19],[14,18],[15,17],[16,16]]
+    baseline_rows = [r for r in combined["projected"]["querySplits"] if r["split"] == [16, 16] and r["airPlacement"] == "A"]
+    assert len(baseline_rows) == 1
+    assert baseline_rows[0]["executionGas"] == [BASELINE["executionGas"]["partA"], BASELINE["executionGas"]["partB"]]
+    assert BASELINE["proofBytes"] == {"partA": 108326, "partB": 103878}
+    assert BASELINE["totalGas"] == {"partA": 16742112, "partB": 13943756}
     for cid in CANDIDATES:
         directory = HERE.parent / cid
         for name in ("manifest.json", "status.json", "assumptions.json", "assumptions.md", "negative-results.json", "source-hashes.json", "ADR.md", "outputs/benchmark.json"):

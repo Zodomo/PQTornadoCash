@@ -4,6 +4,138 @@
   "status": "BENCHMARK_ONLY",
   "noCode": false,
   "completeProofClaimed": false,
+  "nativeTimingEvidence": {
+    "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+    "commonProtocolComparable": false,
+    "warmupIterations": 0,
+    "distribution": "fixed wrapping-u64 mixer, not common protocol corpus",
+    "rankingUse": "PROHIBITED"
+  },
+  "protocolLayerMatrix": {
+    "complete": true,
+    "defaultRule": "NO_UNLISTED_COMPONENT_IS_INHERITED_OR_CHANGED",
+    "candidateId": "F4",
+    "layers": {
+      "noteEntropyAndEncoding": {
+        "component": "noteEntropyAndEncoding",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "applicationDigest": {
+        "component": "applicationDigest",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "hashMode": {
+        "component": "hashMode",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "treeArityDepth": {
+        "component": "treeArityDepth",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "publicStatement": {
+        "component": "publicStatement",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "relation": {
+        "component": "relation",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "hidingConstruction": {
+        "component": "hidingConstruction",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "proofMmcs": {
+        "component": "proofMmcs",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "transcript": {
+        "component": "transcript",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "proofCodec": {
+        "component": "proofCodec",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "evmVerifier": {
+        "component": "evmVerifier",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "checkpointModel": {
+        "component": "checkpointModel",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "deploymentManifest": {
+        "component": "deploymentManifest",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "custodyContracts": {
+        "component": "custodyContracts",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "economicModel": {
+        "component": "economicModel",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "securityTargetAndCalculators": {
+        "component": "securityTargetAndCalculators",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "commonProtocolCorpus": {
+        "component": "commonProtocolCorpus",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "baseChallengeField": {
+        "component": "baseChallengeField",
+        "researchDisposition": "ALTERNATIVE_MEASURED_IN_ISOLATED_SP40_HARNESS",
+        "frozenV03RuntimeValue": "BabyBear / degree-four extension",
+        "candidateResearchValue": "Mersenne31 / degree 4 / i^2 + 1; u^2 - (2+i) (QM31 tower)",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "pcsLdt": {
+        "component": "pcsLdt",
+        "researchDisposition": "COMPATIBILITY_ONLY_NO_CONFIGURATION_INSTANTIATED",
+        "frozenV03RuntimeValue": "hiding two-adic FRI",
+        "candidateResearchValue": "Mersenne31 base multiplicative domains have only two-adicity one. The pinned compatible route is the complex/circle backend; QM31 supplies a four-dimensional challenge field over Mersenne31.",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      }
+    }
+  },
   "pinnedPlonky3Commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
   "field": {
     "base": "Mersenne31",
@@ -32,10 +164,10 @@
   "compatibility": "Mersenne31 base multiplicative domains have only two-adicity one. The pinned compatible route is the complex/circle backend; QM31 supplies a four-dimensional challenge field over Mersenne31.",
   "fieldSpecificAttackReview": "Circle-domain soundness, complex conjugation/tower subfields, and Mersenne reduction canonicality require backend-specific analysis. A multiplicative-FRI argument cannot be reused unchanged.",
   "implementationMaturity": "MEDIUM_BACKEND_SPECIFIC: pinned circle, complex DFT, QM31, and Poseidon2 code exist, but the frozen relation and EVM verifier are not circle ports.",
-  "paretoStatus": "UNRANKED_MEASUREMENTS_AND_COMPLETE_PROOF_REQUIRED",
+  "paretoStatus": "UNRANKED_DIAGNOSTIC_TIMINGS_NOT_GATE_EVIDENCE",
   "gate": {
     "passed": false,
-    "reason": "No candidate may pass on microbench and byte floors alone; complete proof bytes, total EVM gas, prover time, soundness, and maturity are not all evidenced."
+    "reason": "Native timings are diagnostic rather than common-protocol comparable, and complete proof bytes, total EVM gas, prover time, soundness, and maturity are not all evidenced."
   },
   "artifacts": [
     "ADR.md",

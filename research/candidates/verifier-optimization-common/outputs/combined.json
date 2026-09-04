@@ -1,42 +1,177 @@
 {
+  "baseline": {
+    "historicComparator": {
+      "abiBytes": {
+        "partA": 102308,
+        "partB": 108644
+      },
+      "executionGas": {
+        "partA": 14891070,
+        "partB": 12356373
+      },
+      "proofBytes": {
+        "partA": 101990,
+        "partB": 108294
+      },
+      "registryExecutionGas": {
+        "partA": 14056853,
+        "partB": 11470158
+      },
+      "source": "historic report comparator; never used as the projection anchor",
+      "totalGas": {
+        "partA": 16539302,
+        "partB": 14105909
+      },
+      "zeroBytes": {
+        "partA": 808,
+        "partB": 814
+      }
+    },
+    "projectionAnchor": {
+      "abiBytes": {
+        "partA": 108644,
+        "partB": 104228
+      },
+      "artifacts": {
+        "part-a.calldata": {
+          "bytes": 108644,
+          "sha256": "af6a132e60ed7879b36ed2ca79d671714475faf2555d499af74b57b01addf03e",
+          "zeroBytes": 798
+        },
+        "part-a.pqtc": {
+          "bytes": 108326,
+          "sha256": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+          "zeroBytes": 656
+        },
+        "part-b.calldata": {
+          "bytes": 104228,
+          "sha256": "3b42e9cbe0af2c24a4eebf0fc381b4f31b0b4a58222fe951c5a3142c3bab11ad",
+          "zeroBytes": 807
+        },
+        "part-b.pqtc": {
+          "bytes": 103878,
+          "sha256": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701",
+          "zeroBytes": 666
+        }
+      },
+      "executionGas": {
+        "partA": 14992384,
+        "partB": 12264792
+      },
+      "nativeVerifierNs": 2313708,
+      "proofBytes": {
+        "partA": 108326,
+        "partB": 103878
+      },
+      "proverNs": 658422625,
+      "registryExecutionGas": null,
+      "runtimeBytes": 7494,
+      "scenarioGas": {
+        "partA": {
+          "active": 16742112,
+          "uniform64": 16742112,
+          "uniform96": 16742112
+        },
+        "partB": {
+          "active": 13943756,
+          "uniform64": 13943756,
+          "uniform96": 13943756
+        }
+      },
+      "source": {
+        "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+        "kind": "source-bound canonical run",
+        "record": "research/runs/v03-fixed-01.json",
+        "recordSha256": "1ea312cd9ef70e08e85b9503bfbe58a1435a49c86da043f05bf4d27b6e824c20"
+      },
+      "totalGas": {
+        "partA": 16742112,
+        "partB": 13943756
+      },
+      "zeroBytes": {
+        "partA": 798,
+        "partB": 807
+      }
+    }
+  },
   "candidateOutputs": {
     "V1": {
       "active64And96Baseline": {
         "partA": {
-          "active": 16539302,
-          "uniform64": 16539302,
-          "uniform96": 16539302
+          "active": 16742112,
+          "uniform64": 16742112,
+          "uniform96": 16742112
         },
         "partB": {
-          "active": 14105909,
-          "uniform64": 14105909,
-          "uniform96": 14105909
+          "active": 13943756,
+          "uniform64": 13943756,
+          "uniform96": 13943756
         }
       },
       "baselineCompleteTransaction": {
         "abiBytes": {
-          "partA": 102308,
-          "partB": 108644
+          "partA": 108644,
+          "partB": 104228
+        },
+        "artifacts": {
+          "part-a.calldata": {
+            "bytes": 108644,
+            "sha256": "af6a132e60ed7879b36ed2ca79d671714475faf2555d499af74b57b01addf03e",
+            "zeroBytes": 798
+          },
+          "part-a.pqtc": {
+            "bytes": 108326,
+            "sha256": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+            "zeroBytes": 656
+          },
+          "part-b.calldata": {
+            "bytes": 104228,
+            "sha256": "3b42e9cbe0af2c24a4eebf0fc381b4f31b0b4a58222fe951c5a3142c3bab11ad",
+            "zeroBytes": 807
+          },
+          "part-b.pqtc": {
+            "bytes": 103878,
+            "sha256": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701",
+            "zeroBytes": 666
+          }
         },
         "executionGas": {
-          "partA": 14891070,
-          "partB": 12356373
+          "partA": 14992384,
+          "partB": 12264792
         },
-        "nativeVerifierNs": null,
+        "nativeVerifierNs": 2313708,
         "proofBytes": {
-          "partA": 101990,
-          "partB": 108294
+          "partA": 108326,
+          "partB": 103878
         },
-        "proverNs": null,
-        "registryExecutionGas": {
-          "partA": 14056853,
-          "partB": 11470158
+        "proverNs": 658422625,
+        "registryExecutionGas": null,
+        "runtimeBytes": 7494,
+        "scenarioGas": {
+          "partA": {
+            "active": 16742112,
+            "uniform64": 16742112,
+            "uniform96": 16742112
+          },
+          "partB": {
+            "active": 13943756,
+            "uniform64": 13943756,
+            "uniform96": 13943756
+          }
         },
-        "runtimeBytes": null,
-        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "source": {
+          "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+          "kind": "source-bound canonical run",
+          "record": "research/runs/v03-fixed-01.json",
+          "recordSha256": "1ea312cd9ef70e08e85b9503bfbe58a1435a49c86da043f05bf4d27b6e824c20"
+        },
+        "totalGas": {
+          "partA": 16742112,
+          "partB": 13943756
+        },
         "zeroBytes": {
-          "partA": 808,
-          "partB": 814
+          "partA": 798,
+          "partB": 807
         }
       },
       "calldataDeltaBytes": 0,
@@ -64,18 +199,18 @@
       "measurementScope": "isolated kernels only",
       "nativeMeasured": {
         "hornerMultiplications": 256,
-        "hornerNs": 4281250,
+        "hornerNs": 4130875,
         "materializedBytes": 2048,
         "materializedMultiplications": 511,
-        "materializedNs": 3209208,
+        "materializedNs": 2957958,
         "streamedBytes": 0,
         "streamedMultiplications": 512,
-        "streamedNs": 2418000
+        "streamedNs": 2388750
       },
       "nativeVerifierDelta": {
         "baselineKey": "materializedNs",
         "candidateKey": "hornerNs",
-        "nanosecondsDelta": 1072042,
+        "nanosecondsDelta": 1172917,
         "scope": "native isolated kernel"
       },
       "noMicrobenchmarkSumClaim": true,
@@ -120,40 +255,80 @@
     "V2": {
       "active64And96Baseline": {
         "partA": {
-          "active": 16539302,
-          "uniform64": 16539302,
-          "uniform96": 16539302
+          "active": 16742112,
+          "uniform64": 16742112,
+          "uniform96": 16742112
         },
         "partB": {
-          "active": 14105909,
-          "uniform64": 14105909,
-          "uniform96": 14105909
+          "active": 13943756,
+          "uniform64": 13943756,
+          "uniform96": 13943756
         }
       },
       "baselineCompleteTransaction": {
         "abiBytes": {
-          "partA": 102308,
-          "partB": 108644
+          "partA": 108644,
+          "partB": 104228
+        },
+        "artifacts": {
+          "part-a.calldata": {
+            "bytes": 108644,
+            "sha256": "af6a132e60ed7879b36ed2ca79d671714475faf2555d499af74b57b01addf03e",
+            "zeroBytes": 798
+          },
+          "part-a.pqtc": {
+            "bytes": 108326,
+            "sha256": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+            "zeroBytes": 656
+          },
+          "part-b.calldata": {
+            "bytes": 104228,
+            "sha256": "3b42e9cbe0af2c24a4eebf0fc381b4f31b0b4a58222fe951c5a3142c3bab11ad",
+            "zeroBytes": 807
+          },
+          "part-b.pqtc": {
+            "bytes": 103878,
+            "sha256": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701",
+            "zeroBytes": 666
+          }
         },
         "executionGas": {
-          "partA": 14891070,
-          "partB": 12356373
+          "partA": 14992384,
+          "partB": 12264792
         },
-        "nativeVerifierNs": null,
+        "nativeVerifierNs": 2313708,
         "proofBytes": {
-          "partA": 101990,
-          "partB": 108294
+          "partA": 108326,
+          "partB": 103878
         },
-        "proverNs": null,
-        "registryExecutionGas": {
-          "partA": 14056853,
-          "partB": 11470158
+        "proverNs": 658422625,
+        "registryExecutionGas": null,
+        "runtimeBytes": 7494,
+        "scenarioGas": {
+          "partA": {
+            "active": 16742112,
+            "uniform64": 16742112,
+            "uniform96": 16742112
+          },
+          "partB": {
+            "active": 13943756,
+            "uniform64": 13943756,
+            "uniform96": 13943756
+          }
         },
-        "runtimeBytes": null,
-        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "source": {
+          "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+          "kind": "source-bound canonical run",
+          "record": "research/runs/v03-fixed-01.json",
+          "recordSha256": "1ea312cd9ef70e08e85b9503bfbe58a1435a49c86da043f05bf4d27b6e824c20"
+        },
+        "totalGas": {
+          "partA": 16742112,
+          "partB": 13943756
+        },
         "zeroBytes": {
-          "partA": 808,
-          "partB": 814
+          "partA": 798,
+          "partB": 807
         }
       },
       "calldataDeltaBytes": {
@@ -222,15 +397,15 @@
       "measurementScope": "isolated kernels only",
       "nativeMeasured": {
         "checkedMultiplicationsPerInverse": 1,
-        "checkedWitnessNs": 2500,
+        "checkedWitnessNs": 4250,
         "exponentiationMultiplicationsPerInverse": 61,
-        "exponentiationNs": 525416,
+        "exponentiationNs": 748500,
         "witnessBytes": 128
       },
       "nativeVerifierDelta": {
         "baselineKey": "exponentiationNs",
         "candidateKey": "checkedWitnessNs",
-        "nanosecondsDelta": -522916,
+        "nanosecondsDelta": -744250,
         "scope": "native isolated kernel"
       },
       "noMicrobenchmarkSumClaim": true,
@@ -275,40 +450,80 @@
     "V3": {
       "active64And96Baseline": {
         "partA": {
-          "active": 16539302,
-          "uniform64": 16539302,
-          "uniform96": 16539302
+          "active": 16742112,
+          "uniform64": 16742112,
+          "uniform96": 16742112
         },
         "partB": {
-          "active": 14105909,
-          "uniform64": 14105909,
-          "uniform96": 14105909
+          "active": 13943756,
+          "uniform64": 13943756,
+          "uniform96": 13943756
         }
       },
       "baselineCompleteTransaction": {
         "abiBytes": {
-          "partA": 102308,
-          "partB": 108644
+          "partA": 108644,
+          "partB": 104228
+        },
+        "artifacts": {
+          "part-a.calldata": {
+            "bytes": 108644,
+            "sha256": "af6a132e60ed7879b36ed2ca79d671714475faf2555d499af74b57b01addf03e",
+            "zeroBytes": 798
+          },
+          "part-a.pqtc": {
+            "bytes": 108326,
+            "sha256": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+            "zeroBytes": 656
+          },
+          "part-b.calldata": {
+            "bytes": 104228,
+            "sha256": "3b42e9cbe0af2c24a4eebf0fc381b4f31b0b4a58222fe951c5a3142c3bab11ad",
+            "zeroBytes": 807
+          },
+          "part-b.pqtc": {
+            "bytes": 103878,
+            "sha256": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701",
+            "zeroBytes": 666
+          }
         },
         "executionGas": {
-          "partA": 14891070,
-          "partB": 12356373
+          "partA": 14992384,
+          "partB": 12264792
         },
-        "nativeVerifierNs": null,
+        "nativeVerifierNs": 2313708,
         "proofBytes": {
-          "partA": 101990,
-          "partB": 108294
+          "partA": 108326,
+          "partB": 103878
         },
-        "proverNs": null,
-        "registryExecutionGas": {
-          "partA": 14056853,
-          "partB": 11470158
+        "proverNs": 658422625,
+        "registryExecutionGas": null,
+        "runtimeBytes": 7494,
+        "scenarioGas": {
+          "partA": {
+            "active": 16742112,
+            "uniform64": 16742112,
+            "uniform96": 16742112
+          },
+          "partB": {
+            "active": 13943756,
+            "uniform64": 13943756,
+            "uniform96": 13943756
+          }
         },
-        "runtimeBytes": null,
-        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "source": {
+          "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+          "kind": "source-bound canonical run",
+          "record": "research/runs/v03-fixed-01.json",
+          "recordSha256": "1ea312cd9ef70e08e85b9503bfbe58a1435a49c86da043f05bf4d27b6e824c20"
+        },
+        "totalGas": {
+          "partA": 16742112,
+          "partB": 13943756
+        },
         "zeroBytes": {
-          "partA": 808,
-          "partB": 814
+          "partA": 798,
+          "partB": 807
         }
       },
       "calldataDeltaBytes": 0,
@@ -335,15 +550,15 @@
       },
       "measurementScope": "isolated kernels only",
       "nativeMeasured": {
-        "fusedParseDotNs": 1907208,
+        "fusedParseDotNs": 1866541,
         "fusedScratchBytes": 0,
-        "separateParseDotNs": 823958,
+        "separateParseDotNs": 873625,
         "separateScratchBytes": 2048
       },
       "nativeVerifierDelta": {
         "baselineKey": "separateParseDotNs",
         "candidateKey": "fusedParseDotNs",
-        "nanosecondsDelta": 1083250,
+        "nanosecondsDelta": 992916,
         "scope": "native isolated kernel"
       },
       "noMicrobenchmarkSumClaim": true,
@@ -382,40 +597,80 @@
     "V4": {
       "active64And96Baseline": {
         "partA": {
-          "active": 16539302,
-          "uniform64": 16539302,
-          "uniform96": 16539302
+          "active": 16742112,
+          "uniform64": 16742112,
+          "uniform96": 16742112
         },
         "partB": {
-          "active": 14105909,
-          "uniform64": 14105909,
-          "uniform96": 14105909
+          "active": 13943756,
+          "uniform64": 13943756,
+          "uniform96": 13943756
         }
       },
       "baselineCompleteTransaction": {
         "abiBytes": {
-          "partA": 102308,
-          "partB": 108644
+          "partA": 108644,
+          "partB": 104228
+        },
+        "artifacts": {
+          "part-a.calldata": {
+            "bytes": 108644,
+            "sha256": "af6a132e60ed7879b36ed2ca79d671714475faf2555d499af74b57b01addf03e",
+            "zeroBytes": 798
+          },
+          "part-a.pqtc": {
+            "bytes": 108326,
+            "sha256": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+            "zeroBytes": 656
+          },
+          "part-b.calldata": {
+            "bytes": 104228,
+            "sha256": "3b42e9cbe0af2c24a4eebf0fc381b4f31b0b4a58222fe951c5a3142c3bab11ad",
+            "zeroBytes": 807
+          },
+          "part-b.pqtc": {
+            "bytes": 103878,
+            "sha256": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701",
+            "zeroBytes": 666
+          }
         },
         "executionGas": {
-          "partA": 14891070,
-          "partB": 12356373
+          "partA": 14992384,
+          "partB": 12264792
         },
-        "nativeVerifierNs": null,
+        "nativeVerifierNs": 2313708,
         "proofBytes": {
-          "partA": 101990,
-          "partB": 108294
+          "partA": 108326,
+          "partB": 103878
         },
-        "proverNs": null,
-        "registryExecutionGas": {
-          "partA": 14056853,
-          "partB": 11470158
+        "proverNs": 658422625,
+        "registryExecutionGas": null,
+        "runtimeBytes": 7494,
+        "scenarioGas": {
+          "partA": {
+            "active": 16742112,
+            "uniform64": 16742112,
+            "uniform96": 16742112
+          },
+          "partB": {
+            "active": 13943756,
+            "uniform64": 13943756,
+            "uniform96": 13943756
+          }
         },
-        "runtimeBytes": null,
-        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "source": {
+          "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+          "kind": "source-bound canonical run",
+          "record": "research/runs/v03-fixed-01.json",
+          "recordSha256": "1ea312cd9ef70e08e85b9503bfbe58a1435a49c86da043f05bf4d27b6e824c20"
+        },
+        "totalGas": {
+          "partA": 16742112,
+          "partB": 13943756
+        },
         "zeroBytes": {
-          "partA": 808,
-          "partB": 814
+          "partA": 798,
+          "partB": 807
         }
       },
       "calldataDeltaBytes": 0,
@@ -444,13 +699,13 @@
       "nativeMeasured": {
         "boundedScratchBytes": 0,
         "copyBytes": 2048,
-        "copyEvaluateNs": 2280209,
-        "sliceEvaluateNs": 2215875
+        "copyEvaluateNs": 2133625,
+        "sliceEvaluateNs": 2081458
       },
       "nativeVerifierDelta": {
         "baselineKey": "copyEvaluateNs",
         "candidateKey": "sliceEvaluateNs",
-        "nanosecondsDelta": -64334,
+        "nanosecondsDelta": -52167,
         "scope": "native isolated kernel"
       },
       "noMicrobenchmarkSumClaim": true,
@@ -488,40 +743,80 @@
     "V5": {
       "active64And96Baseline": {
         "partA": {
-          "active": 16539302,
-          "uniform64": 16539302,
-          "uniform96": 16539302
+          "active": 16742112,
+          "uniform64": 16742112,
+          "uniform96": 16742112
         },
         "partB": {
-          "active": 14105909,
-          "uniform64": 14105909,
-          "uniform96": 14105909
+          "active": 13943756,
+          "uniform64": 13943756,
+          "uniform96": 13943756
         }
       },
       "baselineCompleteTransaction": {
         "abiBytes": {
-          "partA": 102308,
-          "partB": 108644
+          "partA": 108644,
+          "partB": 104228
+        },
+        "artifacts": {
+          "part-a.calldata": {
+            "bytes": 108644,
+            "sha256": "af6a132e60ed7879b36ed2ca79d671714475faf2555d499af74b57b01addf03e",
+            "zeroBytes": 798
+          },
+          "part-a.pqtc": {
+            "bytes": 108326,
+            "sha256": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+            "zeroBytes": 656
+          },
+          "part-b.calldata": {
+            "bytes": 104228,
+            "sha256": "3b42e9cbe0af2c24a4eebf0fc381b4f31b0b4a58222fe951c5a3142c3bab11ad",
+            "zeroBytes": 807
+          },
+          "part-b.pqtc": {
+            "bytes": 103878,
+            "sha256": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701",
+            "zeroBytes": 666
+          }
         },
         "executionGas": {
-          "partA": 14891070,
-          "partB": 12356373
+          "partA": 14992384,
+          "partB": 12264792
         },
-        "nativeVerifierNs": null,
+        "nativeVerifierNs": 2313708,
         "proofBytes": {
-          "partA": 101990,
-          "partB": 108294
+          "partA": 108326,
+          "partB": 103878
         },
-        "proverNs": null,
-        "registryExecutionGas": {
-          "partA": 14056853,
-          "partB": 11470158
+        "proverNs": 658422625,
+        "registryExecutionGas": null,
+        "runtimeBytes": 7494,
+        "scenarioGas": {
+          "partA": {
+            "active": 16742112,
+            "uniform64": 16742112,
+            "uniform96": 16742112
+          },
+          "partB": {
+            "active": 13943756,
+            "uniform64": 13943756,
+            "uniform96": 13943756
+          }
         },
-        "runtimeBytes": null,
-        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "source": {
+          "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+          "kind": "source-bound canonical run",
+          "record": "research/runs/v03-fixed-01.json",
+          "recordSha256": "1ea312cd9ef70e08e85b9503bfbe58a1435a49c86da043f05bf4d27b6e824c20"
+        },
+        "totalGas": {
+          "partA": 16742112,
+          "partB": 13943756
+        },
         "zeroBytes": {
-          "partA": 808,
-          "partB": 814
+          "partA": 798,
+          "partB": 807
         }
       },
       "calldataDeltaBytes": {
@@ -552,16 +847,16 @@
       },
       "measurementScope": "isolated kernels only",
       "nativeMeasured": {
-        "calldataCheckedNs": 176834,
+        "calldataCheckedNs": 172083,
         "calldataTableBytes": 128,
-        "derivedNs": 916,
-        "fixedReadNs": 5250,
+        "derivedNs": 834,
+        "fixedReadNs": 6709,
         "fixedTableBytes": 128
       },
       "nativeVerifierDelta": {
         "baselineKey": "fixedReadNs",
         "candidateKey": "derivedNs",
-        "nanosecondsDelta": -4334,
+        "nanosecondsDelta": -5875,
         "scope": "native isolated kernel"
       },
       "noMicrobenchmarkSumClaim": true,
@@ -607,40 +902,80 @@
     "V6": {
       "active64And96Baseline": {
         "partA": {
-          "active": 16539302,
-          "uniform64": 16539302,
-          "uniform96": 16539302
+          "active": 16742112,
+          "uniform64": 16742112,
+          "uniform96": 16742112
         },
         "partB": {
-          "active": 14105909,
-          "uniform64": 14105909,
-          "uniform96": 14105909
+          "active": 13943756,
+          "uniform64": 13943756,
+          "uniform96": 13943756
         }
       },
       "baselineCompleteTransaction": {
         "abiBytes": {
-          "partA": 102308,
-          "partB": 108644
+          "partA": 108644,
+          "partB": 104228
+        },
+        "artifacts": {
+          "part-a.calldata": {
+            "bytes": 108644,
+            "sha256": "af6a132e60ed7879b36ed2ca79d671714475faf2555d499af74b57b01addf03e",
+            "zeroBytes": 798
+          },
+          "part-a.pqtc": {
+            "bytes": 108326,
+            "sha256": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+            "zeroBytes": 656
+          },
+          "part-b.calldata": {
+            "bytes": 104228,
+            "sha256": "3b42e9cbe0af2c24a4eebf0fc381b4f31b0b4a58222fe951c5a3142c3bab11ad",
+            "zeroBytes": 807
+          },
+          "part-b.pqtc": {
+            "bytes": 103878,
+            "sha256": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701",
+            "zeroBytes": 666
+          }
         },
         "executionGas": {
-          "partA": 14891070,
-          "partB": 12356373
+          "partA": 14992384,
+          "partB": 12264792
         },
-        "nativeVerifierNs": null,
+        "nativeVerifierNs": 2313708,
         "proofBytes": {
-          "partA": 101990,
-          "partB": 108294
+          "partA": 108326,
+          "partB": 103878
         },
-        "proverNs": null,
-        "registryExecutionGas": {
-          "partA": 14056853,
-          "partB": 11470158
+        "proverNs": 658422625,
+        "registryExecutionGas": null,
+        "runtimeBytes": 7494,
+        "scenarioGas": {
+          "partA": {
+            "active": 16742112,
+            "uniform64": 16742112,
+            "uniform96": 16742112
+          },
+          "partB": {
+            "active": 13943756,
+            "uniform64": 13943756,
+            "uniform96": 13943756
+          }
         },
-        "runtimeBytes": null,
-        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "source": {
+          "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+          "kind": "source-bound canonical run",
+          "record": "research/runs/v03-fixed-01.json",
+          "recordSha256": "1ea312cd9ef70e08e85b9503bfbe58a1435a49c86da043f05bf4d27b6e824c20"
+        },
+        "totalGas": {
+          "partA": 16742112,
+          "partB": 13943756
+        },
         "zeroBytes": {
-          "partA": 808,
-          "partB": 814
+          "partA": 798,
+          "partB": 807
         }
       },
       "calldataDeltaBytes": {
@@ -672,17 +1007,17 @@
       },
       "measurementScope": "isolated kernels only",
       "nativeMeasured": {
-        "checkedSuppliedNs": 17625,
-        "exponentiationNs": 143416,
-        "fixedTable8Ns": 1250,
+        "checkedSuppliedNs": 16542,
+        "exponentiationNs": 137125,
+        "fixedTable8Ns": 1166,
         "fixedTableBytes": 32,
-        "incrementalNs": 125,
+        "incrementalNs": 84,
         "suppliedPointBytes": 128
       },
       "nativeVerifierDelta": {
         "baselineKey": "exponentiationNs",
         "candidateKey": "incrementalNs",
-        "nanosecondsDelta": -143291,
+        "nanosecondsDelta": -137041,
         "scope": "native isolated kernel"
       },
       "noMicrobenchmarkSumClaim": true,
@@ -732,40 +1067,80 @@
     "V7": {
       "active64And96Baseline": {
         "partA": {
-          "active": 16539302,
-          "uniform64": 16539302,
-          "uniform96": 16539302
+          "active": 16742112,
+          "uniform64": 16742112,
+          "uniform96": 16742112
         },
         "partB": {
-          "active": 14105909,
-          "uniform64": 14105909,
-          "uniform96": 14105909
+          "active": 13943756,
+          "uniform64": 13943756,
+          "uniform96": 13943756
         }
       },
       "baselineCompleteTransaction": {
         "abiBytes": {
-          "partA": 102308,
-          "partB": 108644
+          "partA": 108644,
+          "partB": 104228
+        },
+        "artifacts": {
+          "part-a.calldata": {
+            "bytes": 108644,
+            "sha256": "af6a132e60ed7879b36ed2ca79d671714475faf2555d499af74b57b01addf03e",
+            "zeroBytes": 798
+          },
+          "part-a.pqtc": {
+            "bytes": 108326,
+            "sha256": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+            "zeroBytes": 656
+          },
+          "part-b.calldata": {
+            "bytes": 104228,
+            "sha256": "3b42e9cbe0af2c24a4eebf0fc381b4f31b0b4a58222fe951c5a3142c3bab11ad",
+            "zeroBytes": 807
+          },
+          "part-b.pqtc": {
+            "bytes": 103878,
+            "sha256": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701",
+            "zeroBytes": 666
+          }
         },
         "executionGas": {
-          "partA": 14891070,
-          "partB": 12356373
+          "partA": 14992384,
+          "partB": 12264792
         },
-        "nativeVerifierNs": null,
+        "nativeVerifierNs": 2313708,
         "proofBytes": {
-          "partA": 101990,
-          "partB": 108294
+          "partA": 108326,
+          "partB": 103878
         },
-        "proverNs": null,
-        "registryExecutionGas": {
-          "partA": 14056853,
-          "partB": 11470158
+        "proverNs": 658422625,
+        "registryExecutionGas": null,
+        "runtimeBytes": 7494,
+        "scenarioGas": {
+          "partA": {
+            "active": 16742112,
+            "uniform64": 16742112,
+            "uniform96": 16742112
+          },
+          "partB": {
+            "active": 13943756,
+            "uniform64": 13943756,
+            "uniform96": 13943756
+          }
         },
-        "runtimeBytes": null,
-        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "source": {
+          "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+          "kind": "source-bound canonical run",
+          "record": "research/runs/v03-fixed-01.json",
+          "recordSha256": "1ea312cd9ef70e08e85b9503bfbe58a1435a49c86da043f05bf4d27b6e824c20"
+        },
+        "totalGas": {
+          "partA": 16742112,
+          "partB": 13943756
+        },
         "zeroBytes": {
-          "partA": 808,
-          "partB": 814
+          "partA": 798,
+          "partB": 807
         }
       },
       "calldataDeltaBytes": "same as variant-specific frontier proof-byte delta",
@@ -892,40 +1267,80 @@
     "V8": {
       "active64And96Baseline": {
         "partA": {
-          "active": 16539302,
-          "uniform64": 16539302,
-          "uniform96": 16539302
+          "active": 16742112,
+          "uniform64": 16742112,
+          "uniform96": 16742112
         },
         "partB": {
-          "active": 14105909,
-          "uniform64": 14105909,
-          "uniform96": 14105909
+          "active": 13943756,
+          "uniform64": 13943756,
+          "uniform96": 13943756
         }
       },
       "baselineCompleteTransaction": {
         "abiBytes": {
-          "partA": 102308,
-          "partB": 108644
+          "partA": 108644,
+          "partB": 104228
+        },
+        "artifacts": {
+          "part-a.calldata": {
+            "bytes": 108644,
+            "sha256": "af6a132e60ed7879b36ed2ca79d671714475faf2555d499af74b57b01addf03e",
+            "zeroBytes": 798
+          },
+          "part-a.pqtc": {
+            "bytes": 108326,
+            "sha256": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+            "zeroBytes": 656
+          },
+          "part-b.calldata": {
+            "bytes": 104228,
+            "sha256": "3b42e9cbe0af2c24a4eebf0fc381b4f31b0b4a58222fe951c5a3142c3bab11ad",
+            "zeroBytes": 807
+          },
+          "part-b.pqtc": {
+            "bytes": 103878,
+            "sha256": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701",
+            "zeroBytes": 666
+          }
         },
         "executionGas": {
-          "partA": 14891070,
-          "partB": 12356373
+          "partA": 14992384,
+          "partB": 12264792
         },
-        "nativeVerifierNs": null,
+        "nativeVerifierNs": 2313708,
         "proofBytes": {
-          "partA": 101990,
-          "partB": 108294
+          "partA": 108326,
+          "partB": 103878
         },
-        "proverNs": null,
-        "registryExecutionGas": {
-          "partA": 14056853,
-          "partB": 11470158
+        "proverNs": 658422625,
+        "registryExecutionGas": null,
+        "runtimeBytes": 7494,
+        "scenarioGas": {
+          "partA": {
+            "active": 16742112,
+            "uniform64": 16742112,
+            "uniform96": 16742112
+          },
+          "partB": {
+            "active": 13943756,
+            "uniform64": 13943756,
+            "uniform96": 13943756
+          }
         },
-        "runtimeBytes": null,
-        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "source": {
+          "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+          "kind": "source-bound canonical run",
+          "record": "research/runs/v03-fixed-01.json",
+          "recordSha256": "1ea312cd9ef70e08e85b9503bfbe58a1435a49c86da043f05bf4d27b6e824c20"
+        },
+        "totalGas": {
+          "partA": 16742112,
+          "partB": 13943756
+        },
         "zeroBytes": {
-          "partA": 808,
-          "partB": 814
+          "partA": 798,
+          "partB": 807
         }
       },
       "calldataDeltaBytes": {
@@ -967,15 +1382,15 @@
       "measurementScope": "isolated kernels only",
       "nativeMeasured": {
         "elements": 256,
-        "pack31Ns": 1676959,
+        "pack31Ns": 1661917,
         "packed31Bytes": 992,
         "u32Bytes": 1024,
-        "u32ReadNs": 206584
+        "u32ReadNs": 193584
       },
       "nativeVerifierDelta": {
         "baselineKey": "u32ReadNs",
         "candidateKey": "pack31Ns",
-        "nanosecondsDelta": 1470375,
+        "nanosecondsDelta": 1468333,
         "scope": "native isolated kernel"
       },
       "noMicrobenchmarkSumClaim": true,
@@ -999,7 +1414,7 @@
         "per256CanonicalFields": -32
       },
       "proverDelta": {
-        "nanosecondsDelta": 1676959,
+        "nanosecondsDelta": 1661917,
         "scope": "isolated pack256 kernel"
       },
       "runtimeByteDelta": {
@@ -1022,40 +1437,80 @@
     "V9": {
       "active64And96Baseline": {
         "partA": {
-          "active": 16539302,
-          "uniform64": 16539302,
-          "uniform96": 16539302
+          "active": 16742112,
+          "uniform64": 16742112,
+          "uniform96": 16742112
         },
         "partB": {
-          "active": 14105909,
-          "uniform64": 14105909,
-          "uniform96": 14105909
+          "active": 13943756,
+          "uniform64": 13943756,
+          "uniform96": 13943756
         }
       },
       "baselineCompleteTransaction": {
         "abiBytes": {
-          "partA": 102308,
-          "partB": 108644
+          "partA": 108644,
+          "partB": 104228
+        },
+        "artifacts": {
+          "part-a.calldata": {
+            "bytes": 108644,
+            "sha256": "af6a132e60ed7879b36ed2ca79d671714475faf2555d499af74b57b01addf03e",
+            "zeroBytes": 798
+          },
+          "part-a.pqtc": {
+            "bytes": 108326,
+            "sha256": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+            "zeroBytes": 656
+          },
+          "part-b.calldata": {
+            "bytes": 104228,
+            "sha256": "3b42e9cbe0af2c24a4eebf0fc381b4f31b0b4a58222fe951c5a3142c3bab11ad",
+            "zeroBytes": 807
+          },
+          "part-b.pqtc": {
+            "bytes": 103878,
+            "sha256": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701",
+            "zeroBytes": 666
+          }
         },
         "executionGas": {
-          "partA": 14891070,
-          "partB": 12356373
+          "partA": 14992384,
+          "partB": 12264792
         },
-        "nativeVerifierNs": null,
+        "nativeVerifierNs": 2313708,
         "proofBytes": {
-          "partA": 101990,
-          "partB": 108294
+          "partA": 108326,
+          "partB": 103878
         },
-        "proverNs": null,
-        "registryExecutionGas": {
-          "partA": 14056853,
-          "partB": 11470158
+        "proverNs": 658422625,
+        "registryExecutionGas": null,
+        "runtimeBytes": 7494,
+        "scenarioGas": {
+          "partA": {
+            "active": 16742112,
+            "uniform64": 16742112,
+            "uniform96": 16742112
+          },
+          "partB": {
+            "active": 13943756,
+            "uniform64": 13943756,
+            "uniform96": 13943756
+          }
         },
-        "runtimeBytes": null,
-        "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+        "source": {
+          "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+          "kind": "source-bound canonical run",
+          "record": "research/runs/v03-fixed-01.json",
+          "recordSha256": "1ea312cd9ef70e08e85b9503bfbe58a1435a49c86da043f05bf4d27b6e824c20"
+        },
+        "totalGas": {
+          "partA": 16742112,
+          "partB": 13943756
+        },
         "zeroBytes": {
-          "partA": 808,
-          "partB": 814
+          "partA": 798,
+          "partB": 807
         }
       },
       "calldataDeltaBytes": 0,
@@ -1067,17 +1522,17 @@
           {
             "airPlacement": "A",
             "executionGas": [
-              13201375,
-              14046068
+              13302689,
+              13954487
             ],
-            "minimumMarginActive": 193376,
+            "minimumMarginActive": 390797,
             "projectedAbiBytes": [
-              55917,
-              158187
+              59085,
+              151563
             ],
             "projectedProofBytes": [
-              55599,
-              157837
+              58767,
+              151213
             ],
             "split": [
               8,
@@ -1085,33 +1540,33 @@
             ],
             "totalGas": {
               "active": [
-                14111743,
-                16583840
+                14263841,
+                16386419
               ],
               "uniform64": [
-                14111743,
-                16583840
+                14263841,
+                16386419
               ],
               "uniform96": [
-                14111743,
-                16583840
+                14263841,
+                16386419
               ]
             }
           },
           {
             "airPlacement": "B",
             "executionGas": [
-              10337728,
-              16909715
+              10439042,
+              16818134
             ],
-            "minimumMarginActive": -2670271,
+            "minimumMarginActive": -2472850,
             "projectedAbiBytes": [
-              55917,
-              158187
+              59085,
+              151563
             ],
             "projectedProofBytes": [
-              55599,
-              157837
+              58767,
+              151213
             ],
             "split": [
               8,
@@ -1119,33 +1574,33 @@
             ],
             "totalGas": {
               "active": [
-                11248096,
-                19447487
+                11400194,
+                19250066
               ],
               "uniform64": [
-                11248096,
-                19447487
+                11400194,
+                19250066
               ],
               "uniform96": [
-                11248096,
-                19447487
+                11400194,
+                19250066
               ]
             }
           },
           {
             "airPlacement": "A",
             "executionGas": [
-              13623799,
-              13623644
+              13725113,
+              13532063
             ],
-            "minimumMarginActive": 812860,
+            "minimumMarginActive": 1001473,
             "projectedAbiBytes": [
-              67515,
-              145801
+              71475,
+              139729
             ],
             "projectedProofBytes": [
-              67197,
-              145451
+              71157,
+              139379
             ],
             "split": [
               10,
@@ -1153,33 +1608,33 @@
             ],
             "totalGas": {
               "active": [
-                14718643,
-                15964356
+                14883413,
+                15775743
               ],
               "uniform64": [
-                14718643,
-                15964356
+                14883413,
+                15775743
               ],
               "uniform96": [
-                14718643,
-                15964356
+                14883413,
+                15775743
               ]
             }
           },
           {
             "airPlacement": "B",
             "executionGas": [
-              10760152,
-              16487291
+              10861466,
+              16395710
             ],
-            "minimumMarginActive": -2050787,
+            "minimumMarginActive": -1862174,
             "projectedAbiBytes": [
-              67515,
-              145801
+              71475,
+              139729
             ],
             "projectedProofBytes": [
-              67197,
-              145451
+              71157,
+              139379
             ],
             "split": [
               10,
@@ -1187,33 +1642,33 @@
             ],
             "totalGas": {
               "active": [
-                11854996,
-                18828003
+                12019766,
+                18639390
               ],
               "uniform64": [
-                11854996,
-                18828003
+                12019766,
+                18639390
               ],
               "uniform96": [
-                11854996,
-                18828003
+                12019766,
+                18639390
               ]
             }
           },
           {
             "airPlacement": "A",
             "executionGas": [
-              14046222,
-              13201221
+              14147536,
+              13109640
             ],
-            "minimumMarginActive": 1432339,
+            "minimumMarginActive": 1274248,
             "projectedAbiBytes": [
-              79112,
-              133416
+              83864,
+              127896
             ],
             "projectedProofBytes": [
-              78794,
-              133066
+              83546,
+              127546
             ],
             "split": [
               12,
@@ -1221,33 +1676,33 @@
             ],
             "totalGas": {
               "active": [
-                15325514,
-                15344877
+                15502968,
+                15165096
               ],
               "uniform64": [
-                15325514,
-                15344877
+                15502968,
+                15165096
               ],
               "uniform96": [
-                15325514,
-                15344877
+                15502968,
+                15165096
               ]
             }
           },
           {
             "airPlacement": "B",
             "executionGas": [
-              11182575,
-              16064868
+              11283889,
+              15973287
             ],
-            "minimumMarginActive": -1431308,
+            "minimumMarginActive": -1251527,
             "projectedAbiBytes": [
-              79112,
-              133416
+              83864,
+              127896
             ],
             "projectedProofBytes": [
-              78794,
-              133066
+              83546,
+              127546
             ],
             "split": [
               12,
@@ -1255,33 +1710,33 @@
             ],
             "totalGas": {
               "active": [
-                12461867,
-                18208524
+                12639321,
+                18028743
               ],
               "uniform64": [
-                12461867,
-                18208524
+                12639321,
+                18028743
               ],
               "uniform96": [
-                12461867,
-                18208524
+                12639321,
+                18028743
               ]
             }
           },
           {
             "airPlacement": "A",
             "executionGas": [
-              14257434,
-              12990009
+              14358748,
+              12898428
             ],
-            "minimumMarginActive": 1148258,
+            "minimumMarginActive": 964456,
             "projectedAbiBytes": [
-              84911,
-              127223
+              90059,
+              121979
             ],
             "projectedProofBytes": [
-              84593,
-              126873
+              89741,
+              121629
             ],
             "split": [
               13,
@@ -1289,33 +1744,33 @@
             ],
             "totalGas": {
               "active": [
-                15628958,
-                15035141
+                15812760,
+                14859764
               ],
               "uniform64": [
-                15628958,
-                15035141
+                15812760,
+                14859764
               ],
               "uniform96": [
-                15628958,
-                15035141
+                15812760,
+                14859764
               ]
             }
           },
           {
             "airPlacement": "B",
             "executionGas": [
-              11393787,
-              15853656
+              11495101,
+              15762075
             ],
-            "minimumMarginActive": -1121572,
+            "minimumMarginActive": -946195,
             "projectedAbiBytes": [
-              84911,
-              127223
+              90059,
+              121979
             ],
             "projectedProofBytes": [
-              84593,
-              126873
+              89741,
+              121629
             ],
             "split": [
               13,
@@ -1323,33 +1778,33 @@
             ],
             "totalGas": {
               "active": [
-                12765311,
-                17898788
+                12949113,
+                17723411
               ],
               "uniform64": [
-                12765311,
-                17898788
+                12949113,
+                17723411
               ],
               "uniform96": [
-                12765311,
-                17898788
+                12949113,
+                17723411
               ]
             }
           },
           {
             "airPlacement": "A",
             "executionGas": [
-              14468646,
-              12778797
+              14569960,
+              12687216
             ],
-            "minimumMarginActive": 844802,
+            "minimumMarginActive": 654676,
             "projectedAbiBytes": [
-              90710,
-              121030
+              96254,
+              116062
             ],
             "projectedProofBytes": [
-              90392,
-              120680
+              95936,
+              115712
             ],
             "split": [
               14,
@@ -1357,33 +1812,33 @@
             ],
             "totalGas": {
               "active": [
-                15932414,
-                14725393
+                16122540,
+                14554420
               ],
               "uniform64": [
-                15932414,
-                14725393
+                16122540,
+                14554420
               ],
               "uniform96": [
-                15932414,
-                14725393
+                16122540,
+                14554420
               ]
             }
           },
           {
             "airPlacement": "B",
             "executionGas": [
-              11604999,
-              15642444
+              11706313,
+              15550863
             ],
-            "minimumMarginActive": -811824,
+            "minimumMarginActive": -640851,
             "projectedAbiBytes": [
-              90710,
-              121030
+              96254,
+              116062
             ],
             "projectedProofBytes": [
-              90392,
-              120680
+              95936,
+              115712
             ],
             "split": [
               14,
@@ -1391,33 +1846,33 @@
             ],
             "totalGas": {
               "active": [
-                13068767,
-                17589040
+                13258893,
+                17418067
               ],
               "uniform64": [
-                13068767,
-                17589040
+                13258893,
+                17418067
               ],
               "uniform96": [
-                13068767,
-                17589040
+                13258893,
+                17418067
               ]
             }
           },
           {
             "airPlacement": "A",
             "executionGas": [
-              14679858,
-              12567585
+              14781172,
+              12476004
             ],
-            "minimumMarginActive": 541358,
+            "minimumMarginActive": 344884,
             "projectedAbiBytes": [
-              96509,
-              114837
+              102449,
+              110145
             ],
             "projectedProofBytes": [
-              96191,
-              114487
+              102131,
+              109795
             ],
             "split": [
               15,
@@ -1425,33 +1880,33 @@
             ],
             "totalGas": {
               "active": [
-                16235858,
-                14415657
+                16432332,
+                14249088
               ],
               "uniform64": [
-                16235858,
-                14415657
+                16432332,
+                14249088
               ],
               "uniform96": [
-                16235858,
-                14415657
+                16432332,
+                14249088
               ]
             }
           },
           {
             "airPlacement": "B",
             "executionGas": [
-              11816211,
-              15431232
+              11917525,
+              15339651
             ],
-            "minimumMarginActive": -502088,
+            "minimumMarginActive": -335519,
             "projectedAbiBytes": [
-              96509,
-              114837
+              102449,
+              110145
             ],
             "projectedProofBytes": [
-              96191,
-              114487
+              102131,
+              109795
             ],
             "split": [
               15,
@@ -1459,33 +1914,33 @@
             ],
             "totalGas": {
               "active": [
-                13372211,
-                17279304
+                13568685,
+                17112735
               ],
               "uniform64": [
-                13372211,
-                17279304
+                13568685,
+                17112735
               ],
               "uniform96": [
-                13372211,
-                17279304
+                13568685,
+                17112735
               ]
             }
           },
           {
             "airPlacement": "A",
             "executionGas": [
-              14891070,
-              12356373
+              14992384,
+              12264792
             ],
-            "minimumMarginActive": 237914,
+            "minimumMarginActive": 35104,
             "projectedAbiBytes": [
-              102308,
-              108644
+              108644,
+              104228
             ],
             "projectedProofBytes": [
-              101990,
-              108294
+              108326,
+              103878
             ],
             "split": [
               16,
@@ -1493,33 +1948,33 @@
             ],
             "totalGas": {
               "active": [
-                16539302,
-                14105909
+                16742112,
+                13943756
               ],
               "uniform64": [
-                16539302,
-                14105909
+                16742112,
+                13943756
               ],
               "uniform96": [
-                16539302,
-                14105909
+                16742112,
+                13943756
               ]
             }
           },
           {
             "airPlacement": "B",
             "executionGas": [
-              12027423,
-              15220020
+              12128737,
+              15128439
             ],
-            "minimumMarginActive": -192340,
+            "minimumMarginActive": -30187,
             "projectedAbiBytes": [
-              102308,
-              108644
+              108644,
+              104228
             ],
             "projectedProofBytes": [
-              101990,
-              108294
+              108326,
+              103878
             ],
             "split": [
               16,
@@ -1527,16 +1982,16 @@
             ],
             "totalGas": {
               "active": [
-                13675655,
-                16969556
+                13878465,
+                16807403
               ],
               "uniform64": [
-                13675655,
-                16969556
+                13878465,
+                16807403
               ],
               "uniform96": [
-                13675655,
-                16969556
+                13878465,
+                16807403
               ]
             }
           }
@@ -1655,13 +2110,13 @@
   "completeTransaction": {
     "combinedSavings": null,
     "measured": null,
-    "reason": "canonical full-path fixture unavailable",
+    "reason": "canonical baseline is observed, but no optimized full-verifier path exists",
     "reasonCombined": "isolated microbenchmarks overlap and are deliberately not summed"
   },
   "gatePolicy": ">=2% measured full verifier saving, security-risk removal, or material measured worst-case byte reduction",
   "measured": {
     "available": true,
-    "forgeTranscriptSha256": "80c6bab81dddc47b959742e784cd593b7bc9153c26c0b4e21fb794e6e0f518e1",
+    "forgeTranscriptSha256": "7b7e78d6e27449eba73e5be1e4d253f606648eac57ae5ea09c8e111a51eebfd5",
     "native": {
       "babyBearModulus": 2013265921,
       "checksums": 530080236,
@@ -1669,46 +2124,46 @@
       "measurements": {
         "V1": {
           "hornerMultiplications": 256,
-          "hornerNs": 4281250,
+          "hornerNs": 4130875,
           "materializedBytes": 2048,
           "materializedMultiplications": 511,
-          "materializedNs": 3209208,
+          "materializedNs": 2957958,
           "streamedBytes": 0,
           "streamedMultiplications": 512,
-          "streamedNs": 2418000
+          "streamedNs": 2388750
         },
         "V2": {
           "checkedMultiplicationsPerInverse": 1,
-          "checkedWitnessNs": 2500,
+          "checkedWitnessNs": 4250,
           "exponentiationMultiplicationsPerInverse": 61,
-          "exponentiationNs": 525416,
+          "exponentiationNs": 748500,
           "witnessBytes": 128
         },
         "V3": {
-          "fusedParseDotNs": 1907208,
+          "fusedParseDotNs": 1866541,
           "fusedScratchBytes": 0,
-          "separateParseDotNs": 823958,
+          "separateParseDotNs": 873625,
           "separateScratchBytes": 2048
         },
         "V4": {
           "boundedScratchBytes": 0,
           "copyBytes": 2048,
-          "copyEvaluateNs": 2280209,
-          "sliceEvaluateNs": 2215875
+          "copyEvaluateNs": 2133625,
+          "sliceEvaluateNs": 2081458
         },
         "V5": {
-          "calldataCheckedNs": 176834,
+          "calldataCheckedNs": 172083,
           "calldataTableBytes": 128,
-          "derivedNs": 916,
-          "fixedReadNs": 5250,
+          "derivedNs": 834,
+          "fixedReadNs": 6709,
           "fixedTableBytes": 128
         },
         "V6": {
-          "checkedSuppliedNs": 17625,
-          "exponentiationNs": 143416,
-          "fixedTable8Ns": 1250,
+          "checkedSuppliedNs": 16542,
+          "exponentiationNs": 137125,
+          "fixedTable8Ns": 1166,
           "fixedTableBytes": 32,
-          "incrementalNs": 125,
+          "incrementalNs": 84,
           "suppliedPointBytes": 128
         },
         "V7": {
@@ -1722,10 +2177,10 @@
         },
         "V8": {
           "elements": 256,
-          "pack31Ns": 1676959,
+          "pack31Ns": 1661917,
           "packed31Bytes": 992,
           "u32Bytes": 1024,
-          "u32ReadNs": 206584
+          "u32ReadNs": 193584
         },
         "V9": {
           "model": "evaluated by package driver with AIR segment placement",
@@ -1875,17 +2330,17 @@
       {
         "airPlacement": "A",
         "executionGas": [
-          13201375,
-          14046068
+          13302689,
+          13954487
         ],
-        "minimumMarginActive": 193376,
+        "minimumMarginActive": 390797,
         "projectedAbiBytes": [
-          55917,
-          158187
+          59085,
+          151563
         ],
         "projectedProofBytes": [
-          55599,
-          157837
+          58767,
+          151213
         ],
         "split": [
           8,
@@ -1893,33 +2348,33 @@
         ],
         "totalGas": {
           "active": [
-            14111743,
-            16583840
+            14263841,
+            16386419
           ],
           "uniform64": [
-            14111743,
-            16583840
+            14263841,
+            16386419
           ],
           "uniform96": [
-            14111743,
-            16583840
+            14263841,
+            16386419
           ]
         }
       },
       {
         "airPlacement": "B",
         "executionGas": [
-          10337728,
-          16909715
+          10439042,
+          16818134
         ],
-        "minimumMarginActive": -2670271,
+        "minimumMarginActive": -2472850,
         "projectedAbiBytes": [
-          55917,
-          158187
+          59085,
+          151563
         ],
         "projectedProofBytes": [
-          55599,
-          157837
+          58767,
+          151213
         ],
         "split": [
           8,
@@ -1927,33 +2382,33 @@
         ],
         "totalGas": {
           "active": [
-            11248096,
-            19447487
+            11400194,
+            19250066
           ],
           "uniform64": [
-            11248096,
-            19447487
+            11400194,
+            19250066
           ],
           "uniform96": [
-            11248096,
-            19447487
+            11400194,
+            19250066
           ]
         }
       },
       {
         "airPlacement": "A",
         "executionGas": [
-          13623799,
-          13623644
+          13725113,
+          13532063
         ],
-        "minimumMarginActive": 812860,
+        "minimumMarginActive": 1001473,
         "projectedAbiBytes": [
-          67515,
-          145801
+          71475,
+          139729
         ],
         "projectedProofBytes": [
-          67197,
-          145451
+          71157,
+          139379
         ],
         "split": [
           10,
@@ -1961,33 +2416,33 @@
         ],
         "totalGas": {
           "active": [
-            14718643,
-            15964356
+            14883413,
+            15775743
           ],
           "uniform64": [
-            14718643,
-            15964356
+            14883413,
+            15775743
           ],
           "uniform96": [
-            14718643,
-            15964356
+            14883413,
+            15775743
           ]
         }
       },
       {
         "airPlacement": "B",
         "executionGas": [
-          10760152,
-          16487291
+          10861466,
+          16395710
         ],
-        "minimumMarginActive": -2050787,
+        "minimumMarginActive": -1862174,
         "projectedAbiBytes": [
-          67515,
-          145801
+          71475,
+          139729
         ],
         "projectedProofBytes": [
-          67197,
-          145451
+          71157,
+          139379
         ],
         "split": [
           10,
@@ -1995,33 +2450,33 @@
         ],
         "totalGas": {
           "active": [
-            11854996,
-            18828003
+            12019766,
+            18639390
           ],
           "uniform64": [
-            11854996,
-            18828003
+            12019766,
+            18639390
           ],
           "uniform96": [
-            11854996,
-            18828003
+            12019766,
+            18639390
           ]
         }
       },
       {
         "airPlacement": "A",
         "executionGas": [
-          14046222,
-          13201221
+          14147536,
+          13109640
         ],
-        "minimumMarginActive": 1432339,
+        "minimumMarginActive": 1274248,
         "projectedAbiBytes": [
-          79112,
-          133416
+          83864,
+          127896
         ],
         "projectedProofBytes": [
-          78794,
-          133066
+          83546,
+          127546
         ],
         "split": [
           12,
@@ -2029,33 +2484,33 @@
         ],
         "totalGas": {
           "active": [
-            15325514,
-            15344877
+            15502968,
+            15165096
           ],
           "uniform64": [
-            15325514,
-            15344877
+            15502968,
+            15165096
           ],
           "uniform96": [
-            15325514,
-            15344877
+            15502968,
+            15165096
           ]
         }
       },
       {
         "airPlacement": "B",
         "executionGas": [
-          11182575,
-          16064868
+          11283889,
+          15973287
         ],
-        "minimumMarginActive": -1431308,
+        "minimumMarginActive": -1251527,
         "projectedAbiBytes": [
-          79112,
-          133416
+          83864,
+          127896
         ],
         "projectedProofBytes": [
-          78794,
-          133066
+          83546,
+          127546
         ],
         "split": [
           12,
@@ -2063,33 +2518,33 @@
         ],
         "totalGas": {
           "active": [
-            12461867,
-            18208524
+            12639321,
+            18028743
           ],
           "uniform64": [
-            12461867,
-            18208524
+            12639321,
+            18028743
           ],
           "uniform96": [
-            12461867,
-            18208524
+            12639321,
+            18028743
           ]
         }
       },
       {
         "airPlacement": "A",
         "executionGas": [
-          14257434,
-          12990009
+          14358748,
+          12898428
         ],
-        "minimumMarginActive": 1148258,
+        "minimumMarginActive": 964456,
         "projectedAbiBytes": [
-          84911,
-          127223
+          90059,
+          121979
         ],
         "projectedProofBytes": [
-          84593,
-          126873
+          89741,
+          121629
         ],
         "split": [
           13,
@@ -2097,33 +2552,33 @@
         ],
         "totalGas": {
           "active": [
-            15628958,
-            15035141
+            15812760,
+            14859764
           ],
           "uniform64": [
-            15628958,
-            15035141
+            15812760,
+            14859764
           ],
           "uniform96": [
-            15628958,
-            15035141
+            15812760,
+            14859764
           ]
         }
       },
       {
         "airPlacement": "B",
         "executionGas": [
-          11393787,
-          15853656
+          11495101,
+          15762075
         ],
-        "minimumMarginActive": -1121572,
+        "minimumMarginActive": -946195,
         "projectedAbiBytes": [
-          84911,
-          127223
+          90059,
+          121979
         ],
         "projectedProofBytes": [
-          84593,
-          126873
+          89741,
+          121629
         ],
         "split": [
           13,
@@ -2131,33 +2586,33 @@
         ],
         "totalGas": {
           "active": [
-            12765311,
-            17898788
+            12949113,
+            17723411
           ],
           "uniform64": [
-            12765311,
-            17898788
+            12949113,
+            17723411
           ],
           "uniform96": [
-            12765311,
-            17898788
+            12949113,
+            17723411
           ]
         }
       },
       {
         "airPlacement": "A",
         "executionGas": [
-          14468646,
-          12778797
+          14569960,
+          12687216
         ],
-        "minimumMarginActive": 844802,
+        "minimumMarginActive": 654676,
         "projectedAbiBytes": [
-          90710,
-          121030
+          96254,
+          116062
         ],
         "projectedProofBytes": [
-          90392,
-          120680
+          95936,
+          115712
         ],
         "split": [
           14,
@@ -2165,33 +2620,33 @@
         ],
         "totalGas": {
           "active": [
-            15932414,
-            14725393
+            16122540,
+            14554420
           ],
           "uniform64": [
-            15932414,
-            14725393
+            16122540,
+            14554420
           ],
           "uniform96": [
-            15932414,
-            14725393
+            16122540,
+            14554420
           ]
         }
       },
       {
         "airPlacement": "B",
         "executionGas": [
-          11604999,
-          15642444
+          11706313,
+          15550863
         ],
-        "minimumMarginActive": -811824,
+        "minimumMarginActive": -640851,
         "projectedAbiBytes": [
-          90710,
-          121030
+          96254,
+          116062
         ],
         "projectedProofBytes": [
-          90392,
-          120680
+          95936,
+          115712
         ],
         "split": [
           14,
@@ -2199,33 +2654,33 @@
         ],
         "totalGas": {
           "active": [
-            13068767,
-            17589040
+            13258893,
+            17418067
           ],
           "uniform64": [
-            13068767,
-            17589040
+            13258893,
+            17418067
           ],
           "uniform96": [
-            13068767,
-            17589040
+            13258893,
+            17418067
           ]
         }
       },
       {
         "airPlacement": "A",
         "executionGas": [
-          14679858,
-          12567585
+          14781172,
+          12476004
         ],
-        "minimumMarginActive": 541358,
+        "minimumMarginActive": 344884,
         "projectedAbiBytes": [
-          96509,
-          114837
+          102449,
+          110145
         ],
         "projectedProofBytes": [
-          96191,
-          114487
+          102131,
+          109795
         ],
         "split": [
           15,
@@ -2233,33 +2688,33 @@
         ],
         "totalGas": {
           "active": [
-            16235858,
-            14415657
+            16432332,
+            14249088
           ],
           "uniform64": [
-            16235858,
-            14415657
+            16432332,
+            14249088
           ],
           "uniform96": [
-            16235858,
-            14415657
+            16432332,
+            14249088
           ]
         }
       },
       {
         "airPlacement": "B",
         "executionGas": [
-          11816211,
-          15431232
+          11917525,
+          15339651
         ],
-        "minimumMarginActive": -502088,
+        "minimumMarginActive": -335519,
         "projectedAbiBytes": [
-          96509,
-          114837
+          102449,
+          110145
         ],
         "projectedProofBytes": [
-          96191,
-          114487
+          102131,
+          109795
         ],
         "split": [
           15,
@@ -2267,33 +2722,33 @@
         ],
         "totalGas": {
           "active": [
-            13372211,
-            17279304
+            13568685,
+            17112735
           ],
           "uniform64": [
-            13372211,
-            17279304
+            13568685,
+            17112735
           ],
           "uniform96": [
-            13372211,
-            17279304
+            13568685,
+            17112735
           ]
         }
       },
       {
         "airPlacement": "A",
         "executionGas": [
-          14891070,
-          12356373
+          14992384,
+          12264792
         ],
-        "minimumMarginActive": 237914,
+        "minimumMarginActive": 35104,
         "projectedAbiBytes": [
-          102308,
-          108644
+          108644,
+          104228
         ],
         "projectedProofBytes": [
-          101990,
-          108294
+          108326,
+          103878
         ],
         "split": [
           16,
@@ -2301,33 +2756,33 @@
         ],
         "totalGas": {
           "active": [
-            16539302,
-            14105909
+            16742112,
+            13943756
           ],
           "uniform64": [
-            16539302,
-            14105909
+            16742112,
+            13943756
           ],
           "uniform96": [
-            16539302,
-            14105909
+            16742112,
+            13943756
           ]
         }
       },
       {
         "airPlacement": "B",
         "executionGas": [
-          12027423,
-          15220020
+          12128737,
+          15128439
         ],
-        "minimumMarginActive": -192340,
+        "minimumMarginActive": -30187,
         "projectedAbiBytes": [
-          102308,
-          108644
+          108644,
+          104228
         ],
         "projectedProofBytes": [
-          101990,
-          108294
+          108326,
+          103878
         ],
         "split": [
           16,
@@ -2335,21 +2790,21 @@
         ],
         "totalGas": {
           "active": [
-            13675655,
-            16969556
+            13878465,
+            16807403
           ],
           "uniform64": [
-            13675655,
-            16969556
+            13878465,
+            16807403
           ],
           "uniform96": [
-            13675655,
-            16969556
+            13878465,
+            16807403
           ]
         }
       }
     ],
-    "scope": "explicit frozen-component and calldata-floor models only"
+    "scope": "source-bound canonical run plus explicitly named historic component model; calldata-floor values recomputed from exact current bytes"
   },
   "schema": "pqtc-sp31-combined-report-v1",
   "simplifyingCombinations": [

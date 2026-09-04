@@ -20,6 +20,72 @@
     "sharedSolidity": "../../cryptanalysis/transcript/solidity/TranscriptResearch.sol",
     "sharedTypescript": "../../cryptanalysis/transcript/typescript/transcript.ts"
   },
+  "inheritanceMatrix": {
+    "noteEncoding": {
+      "disposition": "INHERITED",
+      "compatibility": "Frozen v0.3 pqtc-note-v3 encoding is unchanged and is not exercised by this transcript harness."
+    },
+    "applicationDigest": {
+      "disposition": "INHERITED",
+      "compatibility": "Frozen P2BB512-v1 application digest and typed application domains are unchanged; transcript K512 research does not replace application hashing."
+    },
+    "applicationMode": {
+      "disposition": "INHERITED",
+      "compatibility": "Frozen rate-4 Poseidon2 application sponge mode, width, capacity, and output width are unchanged."
+    },
+    "tree": {
+      "disposition": "INHERITED",
+      "compatibility": "Frozen v0.3 Merkle tree, leaf/node domains, depth, and root representation are unchanged."
+    },
+    "publicStatement": {
+      "disposition": "INHERITED",
+      "compatibility": "Frozen four-Digest512 withdrawal statement and its 64 canonical BabyBear public values are retained byte-for-byte."
+    },
+    "relation": {
+      "disposition": "INHERITED",
+      "compatibility": "Frozen 256-row, 190-column withdrawal AIR and all constraints are unchanged."
+    },
+    "baseField": {
+      "disposition": "INHERITED",
+      "compatibility": "BabyBear modulus and canonical big-endian field encoding remain unchanged."
+    },
+    "challengeField": {
+      "disposition": "INHERITED",
+      "compatibility": "Degree-4 BabyBear extension, coefficient basis order, and rejection sampling remain unchanged."
+    },
+    "pcs": {
+      "disposition": "INHERITED",
+      "compatibility": "Frozen hiding two-adic FRI PCS, query counts, folding schedule, and grinding parameters are unchanged."
+    },
+    "hiding": {
+      "disposition": "INHERITED",
+      "compatibility": "Frozen four random codewords and eight MMCS salt fields per leaf remain unchanged."
+    },
+    "mmcs": {
+      "disposition": "INHERITED",
+      "compatibility": "Frozen 512-bit Keccak MMCS commitments, cap width, salts, leaf hashing, and node compression are unchanged."
+    },
+    "transcript": {
+      "disposition": "REPLACED",
+      "compatibility": "T1 is a standalone research transcript grammar and is not wire- or challenge-compatible with frozen v0.3; no production caller is migrated."
+    },
+    "proofCodec": {
+      "disposition": "INHERITED",
+      "compatibility": "Frozen v0.3 Part A/B codec and widths are used only as baseline/continuation evidence; no candidate transcript is integrated into or proven compatible with that codec."
+    },
+    "evmVerifier": {
+      "disposition": "INHERITED",
+      "compatibility": "Frozen production verifier and pool entry points are untouched; the standalone prefix gas harness is not a verifier replacement."
+    },
+    "checkpointModel": {
+      "disposition": "INHERITED",
+      "compatibility": "Frozen checkpoint field layout and A/B position model are reference inputs; alternate transcript states would change checkpoint contents and compatibility is not established."
+    },
+    "deploymentManifest": {
+      "disposition": "INHERITED",
+      "compatibility": "Frozen sepolia-v0.3 parameters and deployment manifest remain authoritative; no candidate address, artifact, or deployment is proposed."
+    }
+  },
   "vectors": {
     "transcript": "vectors/transcript.json",
     "misuse": "vectors/misuse.json",

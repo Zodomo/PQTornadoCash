@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import statistics
 from dataclasses import replace
 from pathlib import Path
 
@@ -116,6 +117,57 @@ def source_hashes() -> dict[str, object]:
     }
     return {"schema": "sp12-source-hashes-v1", "files": files, "dependencies": dependencies}
 
+def apply_foundry_artifact(result: dict[str, object]) -> dict[str, object]:
+    path = HERE / "outputs/foundry-gas.json"
+    if not path.exists():
+        return {
+            "queue_user_deposit_gas": "NOT_EVALUATED_COMPLETE_TRANSACTION",
+            "queue_enqueue_diagnostic": "NOT_EVALUATED",
+            "foundry_artifact_sha256": None,
+        }
+    raw = json.loads(path.read_text())
+    if raw.get("schema") != "sp12-foundry-queue-gas-v1":
+        raise AssertionError("unexpected SP-12 Foundry artifact schema")
+    if raw.get("measurement_class") != "ISOLATED_ENQUEUE_GASLEFT_DIAGNOSTIC":
+        raise AssertionError("SP-12 Foundry artifact has an unsafe measurement label")
+    if raw.get("indices") != list(range(256)):
+        raise AssertionError("SP-12 enqueue diagnostic is not exactly 0..255")
+    samples = raw.get("enqueue_gas")
+    if not isinstance(samples, list) or len(samples) != 256 or any(
+        not isinstance(value, int) or value <= 0 for value in samples
+    ):
+        raise AssertionError("invalid SP-12 isolated enqueue diagnostic")
+    median = int(statistics.median(samples))
+    result["costs"]["queue_enqueue_diagnostic"] = {
+        "p50": median,
+        "best": min(samples),
+        "worst": max(samples),
+        "samples": samples,
+        "status": "PASS_ISOLATED_ENQUEUE_DIAGNOSTIC",
+        "measurement_class": "ISOLATED_ENQUEUE_GASLEFT_DIAGNOSTIC_NOT_TRANSACTION_GAS",
+        "omitted_components": ["transaction_intrinsic_gas", "calldata_gas", "EIP-7623_floor", "receipt"],
+    }
+    result["foundry_harness"].update({
+        "status": "PASS_ISOLATED_ENQUEUE_DIAGNOSTIC",
+        "retained_output": "outputs/foundry-gas.json",
+        "artifact_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+    })
+    for row in result["economics"].values():
+        row["queue_enqueue_diagnostic_p50"] = median
+        row["break_even_vs_direct"] = "NOT_EVALUATED"
+    return {
+        "queue_user_deposit_gas": "NOT_EVALUATED_COMPLETE_TRANSACTION",
+        "queue_enqueue_diagnostic": "PASS_ISOLATED_ENQUEUE_DIAGNOSTIC",
+        "foundry_artifact_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+    }
+
+
+def write_json_atomic(path: Path, value: object) -> None:
+    temporary = path.with_name(f".{path.name}.tmp")
+    temporary.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+    temporary.replace(path)
+
+
 
 def main() -> None:
     baseline = json.loads(DIRECT.read_text())
@@ -164,7 +216,13 @@ def main() -> None:
                 "sp10_crosscheck_source": "research/candidates/hash-compression-common/gas/results.json",
                 "sp10_crosscheck_status": "PASS_EXACT_MATCH",
             },
-            "queue_user_deposit_gas": {"value": None, "status": "NOT_EVALUATED", "measurement_class": "NOT_EVALUATED"},
+            "queue_user_deposit_gas": {
+                "value": None,
+                "status": "NOT_EVALUATED_COMPLETE_TRANSACTION",
+                "measurement_class": "NOT_EVALUATED",
+                "missing_components": ["transaction_intrinsic_gas", "calldata_gas", "EIP-7623_floor", "receipt"],
+            },
+            "queue_enqueue_diagnostic": {"status": "NOT_EVALUATED", "measurement_class": "NOT_EVALUATED"},
             "batch_finalizer_gas": {str(batch): None for batch in BATCH_SIZES},
             "batch_finalizer_status": "NOT_EVALUATED_NO_PROOF_BACKEND",
             "logical_state": {
@@ -201,8 +259,13 @@ def main() -> None:
         },
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
-    (HERE / "source-hashes.json").write_text(json.dumps(source_hashes(), indent=2, sort_keys=True) + "\n")
+    status_updates = apply_foundry_artifact(result)
+    status_path = HERE / "status.json"
+    status = json.loads(status_path.read_text())
+    status.update(status_updates)
+    write_json_atomic(OUT, result)
+    write_json_atomic(status_path, status)
+    write_json_atomic(HERE / "source-hashes.json", source_hashes())
     print(json.dumps(result, sort_keys=True))
 
 

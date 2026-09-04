@@ -10,11 +10,11 @@ Compare unbounded root membership with a 64-root ring, and constructor-computed 
 
 `model.py` implements generalized incremental frontiers and an independent padded-tree recomputation. `run.py` checks 1,000 frozen corpus records for identity/order/digest integrity, runs 256 commitment-derived inserts at arities 2/4/8, compares every incremental root with independent recomputation, and emits exact logical transitions for 0..255 and every $2^k-1,2^k$ boundary through $k=20$.
 
-The SHA-512 model compressor is explicitly not H0. Exact H0 corpus recomputation remains assigned to the canonical frozen Foundry path. `solidity/test/AccumulatorGas.t.sol` prepares gas-left measurements for binary bounded/unbounded insertion sweeps, deployment/runtime, and synthetic boundaries. Synthetic loading changes only benchmark state and makes no root-provenance claim.
+The SHA-512 model compressor is explicitly not H0. The canonical Foundry parity test recomputes all 1,000 frozen roots and, only after every assertion passes, retains `outputs/foundry-parity.json` with the compiler profile, case count, PASS status, and SHA-256 corpus identity. The main generator reports parity PASS only after strict artifact validation; a missing artifact is `NOT_EVALUATED`. `solidity/test/AccumulatorGas.t.sol` separately records isolated gas-left deltas for binary bounded/unbounded calls, internal `new` expressions, and synthetic boundaries. Those diagnostics omit transaction intrinsic gas, calldata gas, the EIP-7623 floor, and receipts; synthetic loading also makes no root-provenance claim.
 
 ## Measurement labels
 
-SP-10 H0/H3/H5/H6 values are copied as `EXACT_RETAINED_SP10_FOUNDRY`. Frontier writes, capacity, witness bytes, and relation hashes are `EXACT_LOGICAL_MODEL`. Variant gas is `NOT_EVALUATED` until the isolated Foundry command writes and the strict parser ingests all samples. No projection is called a measurement.
+SP-10 H0/H3/H5/H6 values are copied as `EXACT_RETAINED_SP10_FOUNDRY`. Frontier writes, capacity, witness bytes, and relation hashes are `EXACT_LOGICAL_MODEL`. Retained SP-11 gas-left values are `ISOLATED_CALL_GASLEFT_DIAGNOSTIC_NOT_TRANSACTION_GAS`; complete insertion and deployment transactions remain `NOT_EVALUATED`. The main generator validates and preserves any retained Foundry artifact, so rerunning it cannot silently erase diagnostics while leaving a passing status.
 
 ## Consequences
 

@@ -208,6 +208,16 @@ fn vectors(corpus_path: &Path, output_path: &Path) -> Result<(), String> {
     Ok(())
 }
 
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+struct NativeDiagnosticBundle<T> {
+    schema: &'static str,
+    classification: &'static str,
+    comparable_common_protocol_benchmark: bool,
+    protocol_gaps: [&'static str; 5],
+    distributions: Vec<T>,
+}
+
 fn benches(output_path: &Path, samples: usize) -> Result<(), String> {
     let mut results = Vec::new();
     for candidate in Candidate::EXECUTABLE {
@@ -219,8 +229,21 @@ fn benches(output_path: &Path, samples: usize) -> Result<(), String> {
         }
     }
     if let Some(parent) = output_path.parent() { fs::create_dir_all(parent).map_err(|e| e.to_string())?; }
-    fs::write(output_path, serde_json::to_vec_pretty(&results).map_err(|e| e.to_string())?).map_err(|e| e.to_string())?;
-    println!("measured {} operation distributions with {} samples each", results.len(), samples);
+    let bundle = NativeDiagnosticBundle {
+        schema: "sp10-native-diagnostic-v2",
+        classification: "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+        comparable_common_protocol_benchmark: false,
+        protocol_gaps: [
+            "no warmup phase",
+            "p90 not recorded",
+            "p99 not recorded",
+            "standard deviation not recorded",
+            "less than 10 seconds of measured work",
+        ],
+        distributions: results,
+    };
+    fs::write(output_path, serde_json::to_vec_pretty(&bundle).map_err(|e| e.to_string())?).map_err(|e| e.to_string())?;
+    println!("measured {} diagnostic operation distributions with {} samples each", bundle.distributions.len(), samples);
     Ok(())
 }
 

@@ -2,6 +2,7 @@
 """Generate the six SP-40 evidence packages from reviewed metadata."""
 from __future__ import annotations
 
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -77,6 +78,65 @@ DATA = {
 def dump(path: Path, value: object) -> None:
     path.write_text(json.dumps(value, indent=2) + "\n")
 
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def frozen(component: str) -> dict:
+    return {
+        "component": component,
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": False,
+        "silentInheritance": False,
+    }
+
+
+def protocol_matrix(candidate: str, d: dict) -> dict:
+    matrix = {
+        name: frozen(name)
+        for name in [
+            "noteEntropyAndEncoding",
+            "applicationDigest",
+            "hashMode",
+            "treeArityDepth",
+            "publicStatement",
+            "relation",
+            "hidingConstruction",
+            "proofMmcs",
+            "transcript",
+            "proofCodec",
+            "evmVerifier",
+            "checkpointModel",
+            "deploymentManifest",
+            "custodyContracts",
+            "economicModel",
+            "securityTargetAndCalculators",
+            "commonProtocolCorpus",
+        ]
+    }
+    matrix["baseChallengeField"] = {
+        "component": "baseChallengeField",
+        "researchDisposition": "ALTERNATIVE_MEASURED_IN_ISOLATED_SP40_HARNESS",
+        "frozenV03RuntimeValue": "BabyBear / degree-four extension",
+        "candidateResearchValue": f"{d['base']} / degree {d['degree']} / {d['poly']}",
+        "integratedByCandidate": False,
+        "silentInheritance": False,
+    }
+    matrix["pcsLdt"] = {
+        "component": "pcsLdt",
+        "researchDisposition": "COMPATIBILITY_ONLY_NO_CONFIGURATION_INSTANTIATED",
+        "frozenV03RuntimeValue": "hiding two-adic FRI",
+        "candidateResearchValue": d["compat"],
+        "integratedByCandidate": False,
+        "silentInheritance": False,
+    }
+    return {
+        "complete": True,
+        "defaultRule": "NO_UNLISTED_COMPONENT_IS_INHERITED_OR_CHANGED",
+        "candidateId": candidate,
+        "layers": matrix,
+    }
+
 
 def main() -> None:
     for candidate, d in DATA.items():
@@ -87,12 +147,30 @@ def main() -> None:
         base_bytes = 8 if candidate == "F3" else 32 if candidate == "F5" else 4
         ext_bytes = base_bytes * d["degree"]
         source_hashes = {**d["source"], **COMMON_HASHES}
+        local_paths = [
+            ROOT / "field-bakeoff-common/native/Cargo.lock",
+            ROOT / "field-bakeoff-common/native/src/main.rs",
+            ROOT / "field-bakeoff-common/solidity/src/FieldBakeoff.sol",
+            ROOT / "field-bakeoff-common/solidity/test/FieldBakeoff.t.sol",
+            ROOT / "field-bakeoff-common/outputs/native-latest.json",
+            ROOT / "field-bakeoff-common/outputs/solidity-latest.json",
+            ROOT / "field-bakeoff-common/outputs/projection-latest.json",
+            path / "vectors.json",
+        ]
         manifest = {
             "candidateId": candidate,
             "spikeId": "SP-40",
             "status": "BENCHMARK_ONLY",
             "noCode": False,
             "completeProofClaimed": False,
+            "nativeTimingEvidence": {
+                "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+                "commonProtocolComparable": False,
+                "warmupIterations": 0,
+                "distribution": "fixed wrapping-u64 mixer, not common protocol corpus",
+                "rankingUse": "PROHIBITED",
+            },
+            "protocolLayerMatrix": protocol_matrix(candidate, d),
             "pinnedPlonky3Commit": PIN,
             "field": {
                 "base": d["base"], "modulus": str(d["p"]), "modulusBitsCeil": d["p"].bit_length(),
@@ -114,8 +192,8 @@ def main() -> None:
             "compatibility": d["compat"],
             "fieldSpecificAttackReview": d["attacks"],
             "implementationMaturity": d["maturity"],
-            "paretoStatus": "UNRANKED_MEASUREMENTS_AND_COMPLETE_PROOF_REQUIRED",
-            "gate": {"passed": False, "reason": "No candidate may pass on microbench and byte floors alone; complete proof bytes, total EVM gas, prover time, soundness, and maturity are not all evidenced."},
+            "paretoStatus": "UNRANKED_DIAGNOSTIC_TIMINGS_NOT_GATE_EVIDENCE",
+            "gate": {"passed": False, "reason": "Native timings are diagnostic rather than common-protocol comparable, and complete proof bytes, total EVM gas, prover time, soundness, and maturity are not all evidenced."},
             "artifacts": ["ADR.md", "assumptions.md", "negative-results.md", "status.json", "vectors.json", "source-evidence.json", "../field-bakeoff-common/native/Cargo.lock", "../field-bakeoff-common/native/src/main.rs", "../field-bakeoff-common/solidity/src/FieldBakeoff.sol", "../field-bakeoff-common/solidity/test/FieldBakeoff.t.sol", "../field-bakeoff-common/outputs/native-latest.json", "../field-bakeoff-common/outputs/solidity-latest.json", "../field-bakeoff-common/outputs/projection-latest.json"],
             "commands": {
                 "native": "cargo run --release --locked --manifest-path research/candidates/field-bakeoff-common/native/Cargo.toml -- --iterations 64 --rows 256 --columns 190 --out research/candidates/field-bakeoff-common/outputs/native-latest.json",
@@ -129,21 +207,58 @@ def main() -> None:
             "candidateId": candidate, "status": "BENCHMARK_ONLY", "gate": "NOT_PASSED", "paretoStatus": manifest["paretoStatus"],
             "completeProof": "NOT_ATTEMPTED_IN_SP40_MICROBENCH", "evmCompleteVerification": "NOT_ATTEMPTED",
             "nativeOutput": "../field-bakeoff-common/outputs/native-latest.json", "solidityOutput": "../field-bakeoff-common/outputs/solidity-latest.json",
-            "measuredEvidence": ["native arithmetic, FFT/LDE, permutation, scaling, and process RSS", "Solidity arithmetic and canonicality gas", "deterministic vectors", "encoding and opened-row byte/gas floors"],
+            "measuredEvidence": ["native smoke diagnostics classified DIAGNOSTIC_NOT_COMMON_PROTOCOL", "Solidity isolated-kernel gas diagnostics", "deterministic vectors", "encoding and opened-row byte/gas floors"],
             "unmeasuredGates": ["complete proof bytes", "complete EVM execution gas", "prover time on a ported relation", "complete protocol soundness", "audited implementation maturity"],
         })
         dump(path / "source-evidence.json", {
             "pinnedCommit": PIN, "hashAlgorithm": "SHA-256", "repository": "https://github.com/Plonky3/Plonky3",
             "files": [{"path": name, "sha256": digest} for name, digest in source_hashes.items()],
+            "localEvidence": [
+                {"path": str(local.relative_to(ROOT)), "sha256": sha256(local)}
+                for local in local_paths
+            ],
             "generator": "research/candidates/field-bakeoff-common/generate_packages.py",
             "claims": {"compatibility": d["compat"], "parameterAvailability": d["parameters"]},
         })
-        (path / "ADR.md").write_text(f"""# ADR: {candidate} remains research-only\n\n## Context\n\nSP-40 reopens the field stack without changing the frozen v0.3 custody protocol. {d['compat']} {d['parameters']}\n\n## Decision\n\nRetain {candidate} as `BENCHMARK_ONLY`. Run the shared native and Solidity kernels and compare the resulting evidence, but do not integrate this field into the prover, proof codec, verifier, or contracts. `vectors.json` is deterministic arithmetic evidence, not a proof measurement.\n\n## Gate\n\nThe candidate advances only if it is nondominated across complete proof bytes, total EVM execution gas, prover time, soundness ceiling, and implementation maturity. Those dimensions are not all available in SP-40, so the gate is not passed and Pareto rank is unassigned. No complete-proof result is claimed.\n\n## Consequences\n\n- Canonical encoding and 64/96-row floors can be compared now.\n- A later relation/backend spike must port and prove the selected geometry before any total-cost claim.\n- Unsupported PCS or parameter paths stop with the source-backed reasons in `source-evidence.json`; no local constants are invented.\n""")
+        (path / "ADR.md").write_text(f"""# ADR: {candidate} remains research-only\n\n## Context\n\nSP-40 reopens the field stack without changing the frozen v0.3 custody protocol. {d['compat']} {d['parameters']}\n\n## Decision\n\nRetain {candidate} as `BENCHMARK_ONLY`. The native output is classified `DIAGNOSTIC_NOT_COMMON_PROTOCOL`: it has no common-protocol corpus distribution or warmup phase, and scalar samples can be timer-overhead-scale. It may prove executability only; cross-candidate ranking and nondominance use are prohibited. The isolated Solidity gas output is likewise not a complete verifier result. Do not integrate this field into the prover, proof codec, verifier, or contracts.\n\n## Protocol-layer disposition\n\n`manifest.json.protocolLayerMatrix` explicitly lists every frozen or investigated layer. No unlisted layer is silently inherited or changed. Only the candidate field arithmetic is measured in isolation; even that alternative is not integrated.\n\n## Gate\n\nThe candidate advances only if it is nondominated across common-protocol complete proof bytes, total EVM execution gas, prover time, soundness ceiling, and implementation maturity. Those dimensions are not available here, so the gate is not passed and Pareto rank is unassigned. No complete-proof result is claimed.\n\n## Consequences\n\n- Deterministic arithmetic vectors and 64/96-row encoding floors remain valid non-timing evidence.\n- A later common-protocol run must define distributions, warmup, repetition policy, and a ported relation/backend before timing comparison.\n- Unsupported PCS or parameter paths stop with source-backed reasons in `source-evidence.json`; no local constants are invented.\n""")
         (path / "assumptions.md").write_text(f"""# {candidate} assumptions\n\n- Modulus: `{d['p']}`; challenge construction: `{d['poly']}`.\n- Canonical base width is {base_bytes} bytes; extension width is {ext_bytes} bytes. Raw vectors are fixed-width big-endian; ABI uses one 32-byte word per coefficient.\n- The deterministic input mixer is specified in `vectors.json`; it is not a randomness or entropy source.\n- Challenge cardinality is approximately {challenge_bits:.9f} bits (floor {floor_bits}). The reported conservative entropy budget is only that cardinality floor, not a FRI, Fiat-Shamir, hiding, QROM, or complete-proof bound.\n- Base/challenge two-adicity is {d['baseAdicity']}/{d['extAdicity']}. Domain feasibility still depends on the selected backend and blowup.\n- Opened-row floors use 190 columns and EIP-2028 byte prices (4 gas zero, 16 gas nonzero), with no envelope, authentication, FRI, memory, or intrinsic transaction cost.\n- The 256-row frozen geometry and any explicitly supplied SP-20 geometry are relation inputs, not evidence that the relation was ported.\n- No public network, RPC, `.env`, live key, classical wrapper, or alternate encoding is used.\n""")
         negatives = "\n".join(f"- {x}" for x in d["negative"])
-        (path / "negative-results.md").write_text(f"""# {candidate} negative results and stops\n\n{negatives}\n- PCS commit/open/verify is not benchmarked because SP-40 does not freeze the required hash/MMCS/transcript/PCS tuple; selecting one would add a protocol decision.\n- Peak RSS is process-wide rather than per-operation, and thread-scaling includes worker creation; neither is a complete prover resource result.\n- No complete hiding proof, complete verifier gas, proof byte count, or Pareto win is claimed.\n\nThese stops are gates, not zero-cost entries. Unsupported or unmeasured work must not be converted into a favorable score.\n""")
-        (path / "README.md").write_text(f"""# {candidate}: {d['base']} / degree {d['degree']}\n\nStatus: **BENCHMARK_ONLY**. Challenge field: `{d['poly']}`.\n\nThis package contains the candidate manifest, decision record, assumptions, negative results, pinned-source hashes, and deterministic vectors. Shared executable Rust and Solidity kernels live in `../field-bakeoff-common/`. Run commands are recorded in `manifest.json`. Encoding and 64/96 opened-row floors are generated in `../field-bakeoff-common/outputs/projection-latest.json`.\n\n{d['maturity']}\n\nNo complete proof, production compatibility, deployment readiness, or Pareto victory is asserted.\n""")
+        (path / "negative-results.md").write_text(f"""# {candidate} negative results and stops\n\n{negatives}\n- Native timings are `DIAGNOSTIC_NOT_COMMON_PROTOCOL`: no common-protocol input distribution or warmup was used, and scalar samples can be timer-overhead-scale. They cannot support ranking, nondominance, or a gate pass.\n- PCS commit/open/verify is not benchmarked because SP-40 does not freeze the required hash/MMCS/transcript/PCS tuple; selecting one would add a protocol decision.\n- Peak RSS is process-wide rather than per-operation, and thread-scaling includes worker creation; neither is a complete prover resource result.\n- No complete hiding proof, complete verifier gas, proof byte count, or Pareto win is claimed.\n\nThese stops are gates, not zero-cost entries. Unsupported or unmeasured work must not be converted into a favorable score.\n""")
+        (path / "README.md").write_text(f"""# {candidate}: {d['base']} / degree {d['degree']}\n\nStatus: **BENCHMARK_ONLY**. Challenge field: `{d['poly']}`.\n\nThis package contains the candidate manifest, explicit no-silent-inheritance protocol matrix, decision record, assumptions, negative results, refreshed source/evidence hashes, and deterministic vectors. Shared executable Rust and Solidity kernels live in `../field-bakeoff-common/`. Native timing is `DIAGNOSTIC_NOT_COMMON_PROTOCOL` and cannot rank candidates. Encoding and 64/96 opened-row floors are generated in `../field-bakeoff-common/outputs/projection-latest.json`.\n\n{d['maturity']}\n\nNo complete proof, production compatibility, deployment readiness, nondominance, or Pareto victory is asserted.\n""")
 
+
+    native_output = ROOT / "field-bakeoff-common/outputs/native-latest.json"
+    solidity_output = ROOT / "field-bakeoff-common/outputs/solidity-latest.json"
+    projection_output = ROOT / "field-bakeoff-common/outputs/projection-latest.json"
+    native_data = json.loads(native_output.read_text())
+    solidity_data = json.loads(solidity_output.read_text())
+    dump(ROOT / "field-bakeoff-common/status.json", {
+        "spikeId": "SP-40",
+        "status": "BENCHMARK_ONLY",
+        "gate": "NOT_PASSED",
+        "paretoSelection": "NONE",
+        "completeProofClaimed": False,
+        "nativeTimingClassification": native_data["measurementClassification"],
+        "nativeCommonProtocolComparable": native_data["commonProtocolComparable"],
+        "solidityMeasurementCount": len(solidity_data["measurements"]),
+        "retainedOutputs": [
+            {"path": str(output.relative_to(ROOT)), "sha256": sha256(output)}
+            for output in [native_output, solidity_output, projection_output]
+        ],
+        "candidates": [
+            {
+                "candidateId": candidate,
+                "status": "BENCHMARK_ONLY",
+                "gate": "NOT_PASSED",
+                "paretoStatus": "UNRANKED_DIAGNOSTIC_TIMINGS_NOT_GATE_EVIDENCE",
+                "manifestSha256": sha256(ROOT / candidate / "manifest.json"),
+                "statusSha256": sha256(ROOT / candidate / "status.json"),
+                "sourceEvidenceSha256": sha256(ROOT / candidate / "source-evidence.json"),
+            }
+            for candidate in DATA
+        ],
+        "generatedBy": "research/candidates/field-bakeoff-common/generate_packages.py",
+    })
 
 if __name__ == "__main__":
     main()

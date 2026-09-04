@@ -2,6 +2,7 @@
 
 - The base field cannot run the frozen multiplicative two-adic FFT/FRI path beyond size two; a circle-backend port is mandatory.
 - The approximately 124-bit challenge space is below a strict 128-bit uniform challenge target.
+- Native timings are `DIAGNOSTIC_NOT_COMMON_PROTOCOL`: no common-protocol input distribution or warmup was used, and scalar samples can be timer-overhead-scale. They cannot support ranking, nondominance, or a gate pass.
 - PCS commit/open/verify is not benchmarked because SP-40 does not freeze the required hash/MMCS/transcript/PCS tuple; selecting one would add a protocol decision.
 - Peak RSS is process-wide rather than per-operation, and thread-scaling includes worker creation; neither is a complete prover resource result.
 - No complete hiding proof, complete verifier gas, proof byte count, or Pareto win is claimed.

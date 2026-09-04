@@ -27,6 +27,13 @@ contract CorpusParityTest is Test {
             assertEq(root.left, expected.left, "root left mismatch");
             assertEq(root.right, expected.right, "root right mismatch");
         }
+        string memory object = "sp11-parity";
+        vm.serializeString(object, "schema", "sp11-foundry-parity-v1");
+        vm.serializeString(object, "profile", "solc-0.8.30_prague_viaIR_optimizer-runs-200");
+        vm.serializeUint(object, "cases", 1000);
+        vm.serializeString(object, "status", "PASS");
+        string memory output = vm.serializeBytes32(object, "corpus_sha256", sha256(bytes(json)));
+        vm.writeJson(output, "../outputs/foundry-parity.json");
     }
 
     function _insert(Digest512 memory current, uint32 index) private returns (Digest512 memory) {

@@ -82,6 +82,107 @@ def must_reject(label: str, action, error: type[BaseException]) -> str:
     except error:
         return label
     raise AssertionError(f"safety mutation accepted: {label}")
+def apply_foundry_artifact(result: dict[str, object]) -> dict[str, object]:
+    path = HERE / "outputs/foundry-gas.json"
+    if not path.exists():
+        return {
+            "gas_sweep": "NOT_EVALUATED_COMPLETE_TRANSACTIONS",
+            "foundry_artifact_sha256": None,
+        }
+    raw = json.loads(path.read_text())
+    if raw.get("schema") != "sp11-foundry-gas-v1":
+        raise AssertionError("unexpected SP-11 Foundry artifact schema")
+    if raw.get("measurement_class") != "ISOLATED_CALL_GASLEFT_DIAGNOSTIC":
+        raise AssertionError("SP-11 Foundry artifact has an unsafe measurement label")
+    if raw.get("indices_0_255") != list(range(256)):
+        raise AssertionError("SP-11 Foundry sweep is not exactly 0..255")
+    expected_boundaries = [value for k in range(21) for value in ((1 << k) - 1, 1 << k)]
+    if raw.get("boundary_indices") != expected_boundaries:
+        raise AssertionError("SP-11 Foundry boundary set is incomplete")
+    if raw.get("boundary_insert_accepted") != [True] * 41 + [False]:
+        raise AssertionError("SP-11 capacity boundary behavior mismatch")
+    for variant, key, deployment_key, runtime_key in (
+        (result["variants"][0], "unbounded_insert_gas_0_255", "unbounded_deployment_gas", "unbounded_runtime_bytes"),
+        (result["variants"][1], "bounded_insert_gas_0_255", "bounded_deployment_gas", "bounded_runtime_bytes"),
+    ):
+        values = raw.get(key)
+        if not isinstance(values, list) or len(values) != 256 or any(
+            not isinstance(value, int) or value <= 0 for value in values
+        ):
+            raise AssertionError("invalid SP-11 isolated call diagnostic")
+        variant["foundry_gas"]["isolated_call_diagnostic"] = {
+            "status": "PASS_ISOLATED_GASLEFT_DIAGNOSTIC",
+            "measurement_class": "ISOLATED_CALL_GASLEFT_DIAGNOSTIC_NOT_TRANSACTION_GAS",
+            "samples": values,
+            "best": min(values),
+            "worst": max(values),
+            "omitted_components": ["transaction_intrinsic_gas", "calldata_gas", "EIP-7623_floor", "receipt"],
+        }
+        variant["foundry_gas"]["deployment_diagnostic"] = {
+            "value": raw[deployment_key],
+            "runtime_bytes": raw[runtime_key],
+            "measurement_class": "INTERNAL_NEW_EXPRESSION_DIAGNOSTIC_NOT_DEPLOYMENT_TRANSACTION",
+        }
+    result["foundry_harness"].update({
+        "status": "PASS_ISOLATED_DIAGNOSTICS_COMPLETE_TRANSACTIONS_NOT_EVALUATED",
+        "retained_output": "outputs/foundry-gas.json",
+        "artifact_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        "boundary_diagnostic": {
+            "indices": raw["boundary_indices"],
+            "gasleft_deltas": raw["unbounded_boundary_gas"],
+            "accepted": raw["boundary_insert_accepted"],
+            "measurement_class": "ISOLATED_CALL_GASLEFT_DIAGNOSTIC_NOT_TRANSACTION_GAS",
+        },
+        "complete_transaction_gas": {
+            "status": "NOT_EVALUATED",
+            "omitted_components": ["transaction_intrinsic_gas", "calldata_gas", "EIP-7623_floor", "receipt"],
+        },
+    })
+    return {
+        "gas_sweep": "PASS_ISOLATED_DIAGNOSTIC_COMPLETE_TRANSACTIONS_NOT_EVALUATED",
+        "foundry_artifact_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+    }
+
+def apply_parity_artifact(result: dict[str, object]) -> dict[str, object]:
+    path = HERE / "outputs/foundry-parity.json"
+    if not path.exists():
+        result["corpus"]["h0_root_recomputation"] = "NOT_EVALUATED"
+        return {
+            "h0_corpus_parity": "NOT_EVALUATED",
+            "foundry_parity_artifact_sha256": None,
+        }
+    raw = json.loads(path.read_text())
+    expected_corpus_hash = "0x" + hashlib.sha256(CORPUS.read_bytes()).hexdigest()
+    expected = {
+        "schema": "sp11-foundry-parity-v1",
+        "profile": "solc-0.8.30_prague_viaIR_optimizer-runs-200",
+        "cases": 1000,
+        "status": "PASS",
+        "corpus_sha256": expected_corpus_hash,
+    }
+    if raw != expected:
+        raise AssertionError("SP-11 Foundry parity artifact failed strict validation")
+    artifact_hash = hashlib.sha256(path.read_bytes()).hexdigest()
+    result["corpus"]["h0_root_recomputation"] = "PASS_EXACT_FOUNDRY_1000_OF_1000"
+    result["corpus"]["foundry_parity"] = {
+        **raw,
+        "retained_output": "outputs/foundry-parity.json",
+        "artifact_sha256": artifact_hash,
+    }
+    result["foundry_harness"]["parity_status"] = "PASS_EXACT_FOUNDRY_1000_OF_1000"
+    return {
+        "h0_corpus_parity": "PASS_EXACT_FOUNDRY_1000_OF_1000",
+        "foundry_parity_artifact_sha256": artifact_hash,
+    }
+
+
+
+def write_json_atomic(path: Path, value: object) -> None:
+    temporary = path.with_name(f".{path.name}.tmp")
+    temporary.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
+    temporary.replace(path)
+
+
 
 def main() -> None:
     gas = json.loads(GAS.read_text())
@@ -190,7 +291,10 @@ def main() -> None:
                 "best_frontier_writes": min(row["frontier_writes"] for row in sweep),
                 "worst_frontier_writes": max(row["frontier_writes"] for row in sweep),
             },
-            "foundry_gas": {"status": "NOT_EVALUATED", "best": None, "worst": None},
+            "foundry_gas": {
+                "complete_transaction": {"status": "NOT_EVALUATED", "best": None, "worst": None},
+                "isolated_call_diagnostic": {"status": "NOT_EVALUATED", "best": None, "worst": None},
+            },
             "security_gate": "PASS_H0_ONLY" if shape.arity == 2 else "FAIL_NO_ACCEPTED_ARITY_COMPRESSOR",
         })
 
@@ -206,7 +310,7 @@ def main() -> None:
             "sha256": hashlib.sha256(CORPUS.read_bytes()).hexdigest(),
             "records_validated": 1000,
             "h0_expected_root_sequence_integrity": "PASS_FORMAT_ORDER_UNIQUENESS",
-            "h0_root_recomputation": "NOT_EVALUATED_BY_PYTHON_MODEL; CANONICAL_FOUNDRY_HARNESS_PREPARED",
+            "h0_root_recomputation": "NOT_EVALUATED",
             "model_incremental_vs_independent_full_tree": model_parity,
         },
         "root_history_semantics": root_history_semantics,
@@ -239,9 +343,15 @@ def main() -> None:
         },
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n")
-    hashes = source_hashes()
-    (HERE / "source-hashes.json").write_text(json.dumps(hashes, indent=2, sort_keys=True) + "\n")
+    status_updates = apply_foundry_artifact(result)
+    status_updates.update(apply_parity_artifact(result))
+    status_path = HERE / "status.json"
+    status = json.loads(status_path.read_text())
+    status.update(status_updates)
+    status["complete_transaction_gas"] = "NOT_EVALUATED"
+    write_json_atomic(OUT, result)
+    write_json_atomic(status_path, status)
+    write_json_atomic(HERE / "source-hashes.json", source_hashes())
     print(json.dumps(result, sort_keys=True))
 
 

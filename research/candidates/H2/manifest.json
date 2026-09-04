@@ -1,10 +1,13 @@
 {
-  "schema": "pqtc-sp10-candidate-manifest-v1",
+  "schema": "pqtc-sp10-candidate-manifest-v2",
   "candidateId": "H2",
   "title": "Width-16 wide-output construction stop",
   "immutableDefinition": "No executable primitive: no published/reviewed multi-permutation width-16 Poseidon2 wide-output mode was found.",
   "outputFields": null,
-  "proposedOutputRange": [10, 12],
+  "proposedOutputRange": [
+    10,
+    12
+  ],
   "status": "DEFERRED",
   "stageAResult": "STOPPED_NO_REVIEWED_MODE",
   "researchOnly": true,
@@ -12,6 +15,32 @@
   "implementation": null,
   "commands": {
     "vectorsAndParity": "python3 research/candidates/hash-compression-common/run.py vectors-parity",
-    "measuredBenchmarks": "python3 research/candidates/hash-compression-common/run.py benchmark --samples 1000"
+    "nativeDiagnosticsAndGas": "python3 research/candidates/hash-compression-common/run.py benchmark --samples 1000"
+  },
+  "noSilentInheritancePolicy": "Every system layer is explicit; NOT_EVALUATED conveys no inheritance or compatibility claim.",
+  "noSilentInheritanceMatrix": {
+    "noteEncoding": "NOT_EVALUATED",
+    "applicationDigestMode": "NOT_EVALUATED_NO_REVIEWED_MODE",
+    "tree": "NOT_EVALUATED",
+    "statement": "NOT_EVALUATED_NO_INHERITANCE_CLAIM",
+    "relation": "NOT_EVALUATED_NO_INHERITANCE_CLAIM",
+    "fields": "BABYBEAR_PRIMITIVE_ONLY_PROTOCOL_FIELD_CUTOVER_NOT_EVALUATED",
+    "pcsAndHiding": "NOT_EVALUATED_NO_INHERITANCE_CLAIM",
+    "mmcsTranscriptCodec": "NOT_EVALUATED_NO_INHERITANCE_CLAIM",
+    "evmVerifier": "HASH_KERNEL_MICROBENCHMARK_ONLY_NOT_A_VERIFIER",
+    "checkpoint": "NOT_EVALUATED_NO_INHERITANCE_CLAIM",
+    "deploymentManifest": "NOT_CREATED_NOT_DEPLOYABLE"
+  },
+  "nativeTimingEvidence": {
+    "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+    "samplesPerDistribution": 1000,
+    "comparableCommonProtocolBenchmark": false,
+    "gaps": [
+      "no warmup phase",
+      "p90 not recorded",
+      "p99 not recorded",
+      "standard deviation not recorded",
+      "less than 10 seconds of measured work"
+    ]
   }
 }

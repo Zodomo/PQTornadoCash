@@ -166,6 +166,10 @@ def main() -> None:
         if any(values["evmRuntimeCodeBytes"] != runtime_bytes for values in evm.values()):
             raise RuntimeError("runtime EXTCODESIZE disagrees with Foundry artifact")
         write_measurements(evm, initcode_bytes, runtime_bytes)
+        # Remove build artifacts before hashing so source-hashes never name ephemeral files.
+        shutil.rmtree(TEMP, ignore_errors=True)
+        shutil.rmtree(SOLIDITY / "out", ignore_errors=True)
+        shutil.rmtree(SOLIDITY / "cache", ignore_errors=True)
         run(["node", "--experimental-strip-types", "research/cryptanalysis/transcript/typescript/generate-metadata.ts"])
         write_focused_status()
         # Status changes after metadata hashing, so refresh hashes once more.

@@ -46,7 +46,7 @@ contract AccumulatorGasTest is Test {
 
         string memory object = "sp11";
         vm.serializeString(object, "schema", "sp11-foundry-gas-v1");
-        vm.serializeString(object, "measurement_class", "EXACT_FOUNDRY_GASLEFT_DELTA");
+        vm.serializeString(object, "measurement_class", "ISOLATED_CALL_GASLEFT_DIAGNOSTIC");
         vm.serializeUint(object, "unbounded_deployment_gas", unboundedDeployment);
         vm.serializeUint(object, "bounded_deployment_gas", boundedDeployment);
         vm.serializeUint(object, "unbounded_runtime_bytes", address(unbounded).code.length);

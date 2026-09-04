@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""One-command SP-10 vectors/parity and measured benchmark entry point."""
+"""One-command SP-10 vector/parity, native diagnostic, and gas entry point."""
 from __future__ import annotations
 
 import argparse
@@ -64,6 +64,9 @@ def refresh_measurement_hashes() -> None:
     records = artifact_hashes(outputs) if outputs else []
     for record, path in zip(records, outputs, strict=True):
         record["path"] = str(path.relative_to(ROOT))
+        if path == NATIVE:
+            record["classification"] = "DIAGNOSTIC_NOT_COMMON_PROTOCOL"
+            record["comparableCommonProtocolBenchmark"] = False
     payload = {"schema": "sp10-measurement-hashes-v2", "vectors": vector_package, "outputs": records}
     MEASUREMENT_HASHES.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
 
@@ -100,7 +103,12 @@ def package_vectors() -> None:
             },
             "verificationCoverage": {
                 "rustTypeScriptParity": {"status": "PASS", "vectors": 18_146},
-                "solidityParity": {"status": "ANCHOR_ONLY", "vectors": 8, "fullBundleCovered": False},
+                "solidityParity": {
+                    "status": "NOT_EVALUATED_FULL_REQUIRED_COVERAGE",
+                    "requiredVectors": 10_000,
+                    "anchorVectorsObserved": 8,
+                    "fullBundleCovered": False,
+                },
                 "fullThreeLanguageParity": "NOT_EVALUATED",
                 "requiredMisuseSuite": "NOT_EVALUATED",
                 "constantComparison": "NOT_RETAINED",
@@ -293,6 +301,7 @@ def benchmark(samples: int) -> None:
     print(json.dumps({
         "ok": True,
         "native": str(NATIVE.relative_to(ROOT)),
+        "nativeClassification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
         "gas": str(GAS.relative_to(ROOT)),
         "gasResults": str(GAS_RESULTS.relative_to(ROOT)),
         "samplesPerCandidate": samples,

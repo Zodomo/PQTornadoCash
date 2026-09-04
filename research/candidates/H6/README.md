@@ -14,7 +14,7 @@ Layout exercise: lanes 0..27 generic payload; 28 role; 29 version; 30 shape=28; 
 
 ## Decision
 
-Use d=14 as the conservative-output comparator; d=15 is rejected because controls do not fit. The Stage A result is `PASS_STAGE_A_BENCHMARK_ONLY`. Exact blockers are retained in `security/manifest.json`; benchmark speed cannot remove them.
+Use d=14 as the conservative-output comparator; d=15 is rejected because controls do not fit. The Stage A result is `NOT_EVALUATED_FULL_SOLIDITY_PARITY_AND_MISUSE`. Exact blockers are retained in `security/manifest.json`; benchmark speed cannot remove them.
 
 ## Commands
 

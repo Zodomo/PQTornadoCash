@@ -14,7 +14,7 @@ Layout exercise: lanes 0..19 generic payload; 20 role; 21 version; 22 shape=20; 
 
 ## Decision
 
-Execute primitive and layout benchmarks only. Complete application-role parity is `NOT_EVALUATED`. The Stage A result is `PASS_STAGE_A_BENCHMARK_ONLY`; exact blockers are retained in `security/manifest.json`.
+Execute primitive and layout benchmarks only. Complete application-role parity is `NOT_EVALUATED`. The Stage A result is `NOT_EVALUATED_FULL_SOLIDITY_PARITY_AND_MISUSE`; exact blockers are retained in `security/manifest.json`.
 
 ## Commands
 

@@ -2,6 +2,7 @@
 
 - Five coefficient extension operations and openings are structurally more expensive for the EVM than degree-four candidates.
 - No complete frozen-relation proof or PCS configuration has been produced for this stack.
+- Native timings are `DIAGNOSTIC_NOT_COMMON_PROTOCOL`: no common-protocol input distribution or warmup was used, and scalar samples can be timer-overhead-scale. They cannot support ranking, nondominance, or a gate pass.
 - PCS commit/open/verify is not benchmarked because SP-40 does not freeze the required hash/MMCS/transcript/PCS tuple; selecting one would add a protocol decision.
 - Peak RSS is process-wide rather than per-operation, and thread-scaling includes worker creation; neither is a complete prover resource result.
 - No complete hiding proof, complete verifier gas, proof byte count, or Pareto win is claimed.

@@ -14,7 +14,7 @@ Layout exercise: lanes 0..23 generic payload; 24 role; 25 version; 26 shape=24; 
 
 ## Decision
 
-Highest-priority research hypothesis; never security-qualified by this package. The Stage A result is `PASS_STAGE_A_BENCHMARK_ONLY`. Exact blockers are retained in `security/manifest.json`; benchmark speed cannot remove them.
+Highest-priority research hypothesis; never security-qualified by this package. The Stage A result is `NOT_EVALUATED_FULL_SOLIDITY_PARITY_AND_MISUSE`. Exact blockers are retained in `security/manifest.json`; benchmark speed cannot remove them.
 
 ## Commands
 

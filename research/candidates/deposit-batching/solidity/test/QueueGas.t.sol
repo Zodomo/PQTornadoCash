@@ -29,7 +29,7 @@ contract QueueGasTest is Test {
         assertEq(queue.pendingCount(), 256);
         string memory object = "sp12";
         vm.serializeString(object, "schema", "sp12-foundry-queue-gas-v1");
-        vm.serializeString(object, "measurement_class", "EXACT_FOUNDRY_GASLEFT_DELTA");
+        vm.serializeString(object, "measurement_class", "ISOLATED_ENQUEUE_GASLEFT_DIAGNOSTIC");
         vm.serializeUint(object, "indices", _range256());
         string memory json = vm.serializeUint(object, "enqueue_gas", samples);
         vm.writeJson(json, "../outputs/foundry-gas.json");

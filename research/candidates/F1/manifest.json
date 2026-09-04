@@ -4,6 +4,138 @@
   "status": "BENCHMARK_ONLY",
   "noCode": false,
   "completeProofClaimed": false,
+  "nativeTimingEvidence": {
+    "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+    "commonProtocolComparable": false,
+    "warmupIterations": 0,
+    "distribution": "fixed wrapping-u64 mixer, not common protocol corpus",
+    "rankingUse": "PROHIBITED"
+  },
+  "protocolLayerMatrix": {
+    "complete": true,
+    "defaultRule": "NO_UNLISTED_COMPONENT_IS_INHERITED_OR_CHANGED",
+    "candidateId": "F1",
+    "layers": {
+      "noteEntropyAndEncoding": {
+        "component": "noteEntropyAndEncoding",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "applicationDigest": {
+        "component": "applicationDigest",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "hashMode": {
+        "component": "hashMode",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "treeArityDepth": {
+        "component": "treeArityDepth",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "publicStatement": {
+        "component": "publicStatement",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "relation": {
+        "component": "relation",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "hidingConstruction": {
+        "component": "hidingConstruction",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "proofMmcs": {
+        "component": "proofMmcs",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "transcript": {
+        "component": "transcript",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "proofCodec": {
+        "component": "proofCodec",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "evmVerifier": {
+        "component": "evmVerifier",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "checkpointModel": {
+        "component": "checkpointModel",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "deploymentManifest": {
+        "component": "deploymentManifest",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "custodyContracts": {
+        "component": "custodyContracts",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "economicModel": {
+        "component": "economicModel",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "securityTargetAndCalculators": {
+        "component": "securityTargetAndCalculators",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "commonProtocolCorpus": {
+        "component": "commonProtocolCorpus",
+        "researchDisposition": "EXPLICITLY_UNCHANGED_FROZEN_V03_OUT_OF_SCOPE",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "baseChallengeField": {
+        "component": "baseChallengeField",
+        "researchDisposition": "ALTERNATIVE_MEASURED_IN_ISOLATED_SP40_HARNESS",
+        "frozenV03RuntimeValue": "BabyBear / degree-four extension",
+        "candidateResearchValue": "KoalaBear / degree 4 / x^4 - 3",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      },
+      "pcsLdt": {
+        "component": "pcsLdt",
+        "researchDisposition": "COMPATIBILITY_ONLY_NO_CONFIGURATION_INSTANTIATED",
+        "frozenV03RuntimeValue": "hiding two-adic FRI",
+        "candidateResearchValue": "Pinned p3-koala-bear implements the degree-four binomial extension and the generic p3-dft/p3-fri multiplicative-domain interfaces.",
+        "integratedByCandidate": false,
+        "silentInheritance": false
+      }
+    }
+  },
   "pinnedPlonky3Commit": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
   "field": {
     "base": "KoalaBear",
@@ -32,10 +164,10 @@
   "compatibility": "Pinned p3-koala-bear implements the degree-four binomial extension and the generic p3-dft/p3-fri multiplicative-domain interfaces.",
   "fieldSpecificAttackReview": "The same small-characteristic, subfield-challenge, and algebraic-permutation analyses required for BabyBear remain required; no candidate-specific break is asserted.",
   "implementationMaturity": "HIGH_LIBRARY_MEDIUM_INTEGRATION: optimized pinned field and permutation code exist; the frozen PQTornado relation has not been ported.",
-  "paretoStatus": "UNRANKED_MEASUREMENTS_AND_COMPLETE_PROOF_REQUIRED",
+  "paretoStatus": "UNRANKED_DIAGNOSTIC_TIMINGS_NOT_GATE_EVIDENCE",
   "gate": {
     "passed": false,
-    "reason": "No candidate may pass on microbench and byte floors alone; complete proof bytes, total EVM gas, prover time, soundness, and maturity are not all evidenced."
+    "reason": "Native timings are diagnostic rather than common-protocol comparable, and complete proof bytes, total EVM gas, prover time, soundness, and maturity are not all evidenced."
   },
   "artifacts": [
     "ADR.md",

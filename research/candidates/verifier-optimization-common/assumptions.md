@@ -1,6 +1,6 @@
 # SP-31 combined assumptions
 
-- Baseline gas and byte values are historic frozen fixture facts, not measurements produced by this package.
-- The V9 model allocates the reported MMCS, DEEP-X, and FRI component total uniformly over 32 query positions and solves fixed terms to reproduce 16/16.
-- The 64/96 schedules are uniform per-byte floors; each total is the maximum of the standard path and its floor.
-- A canonical complete proof is used only when a compatible full-path verifier experiment exists. None is integrated here.
+- The projection anchor is the source-bound v03-fixed-01 run and its hash-checked proof/calldata files; historic report values are only a named comparator.
+- The V9 model allocates the explicitly named historic MMCS, DEEP-X, and FRI component total uniformly over 32 query positions, then solves fixed terms to reproduce the current canonical 16/16 execution values.
+- The active/64/96 schedules are recomputed from current exact calldata bytes and zero counts; each total is the maximum of the standard path and its floor.
+- The canonical proof is consumed for baseline bytes, hashes, and gas. No optimized full verifier is integrated, so no full-path savings are claimed.

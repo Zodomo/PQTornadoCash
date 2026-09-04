@@ -1,40 +1,80 @@
 {
   "active64And96Baseline": {
     "partA": {
-      "active": 16539302,
-      "uniform64": 16539302,
-      "uniform96": 16539302
+      "active": 16742112,
+      "uniform64": 16742112,
+      "uniform96": 16742112
     },
     "partB": {
-      "active": 14105909,
-      "uniform64": 14105909,
-      "uniform96": 14105909
+      "active": 13943756,
+      "uniform64": 13943756,
+      "uniform96": 13943756
     }
   },
   "baselineCompleteTransaction": {
     "abiBytes": {
-      "partA": 102308,
-      "partB": 108644
+      "partA": 108644,
+      "partB": 104228
+    },
+    "artifacts": {
+      "part-a.calldata": {
+        "bytes": 108644,
+        "sha256": "af6a132e60ed7879b36ed2ca79d671714475faf2555d499af74b57b01addf03e",
+        "zeroBytes": 798
+      },
+      "part-a.pqtc": {
+        "bytes": 108326,
+        "sha256": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+        "zeroBytes": 656
+      },
+      "part-b.calldata": {
+        "bytes": 104228,
+        "sha256": "3b42e9cbe0af2c24a4eebf0fc381b4f31b0b4a58222fe951c5a3142c3bab11ad",
+        "zeroBytes": 807
+      },
+      "part-b.pqtc": {
+        "bytes": 103878,
+        "sha256": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701",
+        "zeroBytes": 666
+      }
     },
     "executionGas": {
-      "partA": 14891070,
-      "partB": 12356373
+      "partA": 14992384,
+      "partB": 12264792
     },
-    "nativeVerifierNs": null,
+    "nativeVerifierNs": 2313708,
     "proofBytes": {
-      "partA": 101990,
-      "partB": 108294
+      "partA": 108326,
+      "partB": 103878
     },
-    "proverNs": null,
-    "registryExecutionGas": {
-      "partA": 14056853,
-      "partB": 11470158
+    "proverNs": 658422625,
+    "registryExecutionGas": null,
+    "runtimeBytes": 7494,
+    "scenarioGas": {
+      "partA": {
+        "active": 16742112,
+        "uniform64": 16742112,
+        "uniform96": 16742112
+      },
+      "partB": {
+        "active": 13943756,
+        "uniform64": 13943756,
+        "uniform96": 13943756
+      }
     },
-    "runtimeBytes": null,
-    "source": "frozen historic v0.3 local fixture; not remeasured by SP-31",
+    "source": {
+      "commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+      "kind": "source-bound canonical run",
+      "record": "research/runs/v03-fixed-01.json",
+      "recordSha256": "1ea312cd9ef70e08e85b9503bfbe58a1435a49c86da043f05bf4d27b6e824c20"
+    },
+    "totalGas": {
+      "partA": 16742112,
+      "partB": 13943756
+    },
     "zeroBytes": {
-      "partA": 808,
-      "partB": 814
+      "partA": 798,
+      "partB": 807
     }
   },
   "calldataDeltaBytes": {
@@ -103,15 +143,15 @@
   "measurementScope": "isolated kernels only",
   "nativeMeasured": {
     "checkedMultiplicationsPerInverse": 1,
-    "checkedWitnessNs": 2500,
+    "checkedWitnessNs": 4250,
     "exponentiationMultiplicationsPerInverse": 61,
-    "exponentiationNs": 525416,
+    "exponentiationNs": 748500,
     "witnessBytes": 128
   },
   "nativeVerifierDelta": {
     "baselineKey": "exponentiationNs",
     "candidateKey": "checkedWitnessNs",
-    "nanosecondsDelta": -522916,
+    "nanosecondsDelta": -744250,
     "scope": "native isolated kernel"
   },
   "noMicrobenchmarkSumClaim": true,

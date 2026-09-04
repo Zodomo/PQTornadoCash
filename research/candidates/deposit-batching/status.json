@@ -3,6 +3,7 @@
   "amortized_break_even": "NOT_EVALUATED",
   "candidate": "SP-12",
   "disposition": "DEFERRED_STOP",
+  "foundry_artifact_sha256": "432183e302287c07fc1d58b223bd593b325c238997036f74c10bf548f45d5a70",
   "permissionless": true,
   "privileged_key": false,
   "promotion_blockers": [
@@ -10,7 +11,8 @@
     "measured positive amortized gas at an accepted batch size"
   ],
   "proof_metrics": "NOT_EVALUATED",
-  "queue_user_deposit_gas": "PASS_EXACT_FOUNDRY_GASLEFT_DELTA",
+  "queue_enqueue_diagnostic": "PASS_ISOLATED_ENQUEUE_DIAGNOSTIC",
+  "queue_user_deposit_gas": "NOT_EVALUATED_COMPLETE_TRANSACTION",
   "safety_mutations": "PASS_ALL_REJECTED",
   "schema": "sp12-status-v1",
   "state_machine": "PASS_ALL_BATCH_SIZES",

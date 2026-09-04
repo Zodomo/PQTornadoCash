@@ -14,7 +14,7 @@ Layout exercise: absorbed message begins role, version, shape, level. Published 
 
 ## Decision
 
-Measure the published sponge as a non-Poseidon comparator; never wrap it as a compressor. The Stage A result is `PASS_STAGE_A_BENCHMARK_ONLY`. Exact blockers are retained in `security/manifest.json`; benchmark speed cannot remove them.
+Measure the published sponge as a non-Poseidon comparator; never wrap it as a compressor. The Stage A result is `NOT_EVALUATED_FULL_SOLIDITY_PARITY_AND_MISUSE`. Exact blockers are retained in `security/manifest.json`; benchmark speed cannot remove them.
 
 ## Commands
 

@@ -2,7 +2,7 @@
   "schema": "pqtc-candidate-status-v1",
   "candidateId": "H7",
   "status": "BENCHMARK_ONLY",
-  "stageAResult": "PASS_STAGE_A_BENCHMARK_ONLY",
+  "stageAResult": "NOT_EVALUATED_FULL_SOLIDITY_PARITY_AND_MISUSE",
   "custodyEligibility": "PROHIBITED",
   "securityQualified": false,
   "independentCryptanalysis": "MISSING",
@@ -10,7 +10,7 @@
     "Different field and sponge mode are explicit performance confounds.",
     "It is not a BabyBear drop-in compressor.",
     "No PQTC-specific independent application/transcript review exists.",
-    "Full three-language parity is not established; Solidity covers 8 suite-wide anchor vectors only.",
+    "Full three-language parity is not established; Solidity covers 8 suite-wide anchor vectors, not the required 10,000.",
     "The required misuse suite was not evaluated.",
     "The prior constant-comparison run was not retained as an artifact."
   ],
@@ -61,9 +61,10 @@
       "vectors": 18146
     },
     "solidityParity": {
-      "status": "ANCHOR_ONLY",
-      "vectors": 8,
-      "fullBundleCovered": false
+      "status": "NOT_EVALUATED_FULL_REQUIRED_COVERAGE",
+      "fullBundleCovered": false,
+      "requiredVectors": 10000,
+      "anchorVectorsObserved": 8
     },
     "fullThreeLanguageParity": "NOT_EVALUATED",
     "requiredMisuseSuite": "NOT_EVALUATED",
@@ -79,5 +80,18 @@
     "scopeRole": "NOT_EVALUATED",
     "emptyLeafRole": "NOT_EVALUATED",
     "statementRole": "NOT_EVALUATED"
-  }
+  },
+  "nativeTimingEvidence": {
+    "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+    "samplesPerDistribution": 1000,
+    "comparableCommonProtocolBenchmark": false,
+    "gaps": [
+      "no warmup phase",
+      "p90 not recorded",
+      "p99 not recorded",
+      "standard deviation not recorded",
+      "less than 10 seconds of measured work"
+    ]
+  },
+  "noSilentInheritanceMatrix": "research/candidates/H7/manifest.json#noSilentInheritanceMatrix"
 }

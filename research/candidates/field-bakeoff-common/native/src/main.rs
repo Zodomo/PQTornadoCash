@@ -81,6 +81,11 @@ struct RunReport {
     complete_proof_claimed: bool,
     pinned_plonky3_commit: &'static str,
     iterations: usize,
+    measurement_classification: &'static str,
+    common_protocol_comparable: bool,
+    warmup_iterations: usize,
+    input_distribution: &'static str,
+    timing_caveat: &'static str,
     process_peak_rss_bytes: u64,
     candidates: Vec<CandidateReport>,
 }
@@ -348,6 +353,11 @@ fn main() {
         complete_proof_claimed: false,
         pinned_plonky3_commit: PINNED_PLONKY3,
         iterations: args.iterations,
+        measurement_classification: "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+        common_protocol_comparable: false,
+        warmup_iterations: 0,
+        input_distribution: "fixed wrapping-u64 mixer; not the frozen common-protocol corpus distribution",
+        timing_caveat: "64-iteration scalar samples can be timer-overhead-scale; values are smoke diagnostics only and cannot support cross-candidate ranking or nondominance",
         process_peak_rss_bytes: peak_rss_bytes(),
         candidates: vec![f0, f1, f2, f3, f4, f5],
     };

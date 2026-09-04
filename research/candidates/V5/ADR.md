@@ -6,7 +6,7 @@ PENDING: remain BENCHMARK_ONLY until a canonical full-path replay establishes a 
 
 ## Context
 
-SP-31 requires this optimization in isolation and in a non-additive combined package against the frozen v0.3 baseline. The canonical generated proof fixture is not checked in, so kernel measurements cannot be relabeled as transaction measurements.
+SP-31 requires this optimization in isolation and in a non-additive combined package against the frozen v0.3 baseline. Projections are anchored to the source-bound canonical v03-fixed-01 run; the historic report fixture is retained only as a named comparator. The kernels are not integrated into a full verifier, so their measurements cannot be relabeled as transaction measurements.
 
 ## Decision
 

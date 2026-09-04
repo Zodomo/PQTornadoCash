@@ -12,6 +12,8 @@ cargo run --release --locked --manifest-path research/candidates/field-bakeoff-c
 
 `--rows` and `--columns` are the parameterized relation geometry inputs. The defaults reproduce the frozen 256-row, 190-column v0.3 geometry. An SP-20-selected geometry may be supplied explicitly; the runner does not label any geometry “best” on its own.
 
+The emitted native timings are classified `DIAGNOSTIC_NOT_COMMON_PROTOCOL`. The run has zero warmup iterations, uses the local deterministic mixer rather than the common-protocol corpus distribution, and includes scalar samples at timer-overhead scale. It proves that the kernels execute; it MUST NOT be used for project-comparable performance ranking, nondominance, or a field-selection gate.
+
 ## Solidity command
 
 From the repository root:
@@ -44,6 +46,6 @@ The Rust and Solidity runners use the same wrapping-u64 input mixer and the same
 
 ## Scope boundaries
 
-The native runner measures identical base/extension arithmetic, extension-by-base, dot products, base and extension batch inversion, Horner evaluation, and a binary FRI fold for F0–F5. It also invokes pinned Plonky3 FFT/LDE and default Poseidon2 constructors where those exact APIs exist. F4 uses the pinned complex FFT path. PCS commit/open/verify is deliberately not instantiated: the pinned PCS APIs are generic and SP-40 does not freeze a hash/MMCS/transcript/PCS parameter tuple. Selecting one here would be a protocol change rather than a field microbenchmark. The report records process-wide peak RSS and 1/2/4-thread dot-product scaling; thread creation is included, and neither value is represented as a complete prover resource measurement.
+The native runner exercises identical base/extension arithmetic, extension-by-base, dot products, base and extension batch inversion, Horner evaluation, and a binary FRI fold for F0–F5. It also invokes pinned Plonky3 FFT/LDE and default Poseidon2 constructors where those exact APIs exist. F4 uses the pinned complex FFT path. These are diagnostic smoke measurements, not common-protocol benchmarks. PCS commit/open/verify is deliberately not instantiated: the pinned PCS APIs are generic and SP-40 does not freeze a hash/MMCS/transcript/PCS parameter tuple. Selecting one here would be a protocol change rather than a field microbenchmark. The report records process-wide peak RSS and 1/2/4-thread dot-product scaling; thread creation is included, and neither value is represented as a complete prover resource measurement.
 
 The Solidity kernels use `addmod`/`mulmod`, canonical coefficient inputs, big-endian fixed-width raw encoding, and ordinary ABI dynamic-array encoding. They are intentionally isolated from production sources.

@@ -2,14 +2,14 @@
   "candidateId": "F4",
   "status": "BENCHMARK_ONLY",
   "gate": "NOT_PASSED",
-  "paretoStatus": "UNRANKED_MEASUREMENTS_AND_COMPLETE_PROOF_REQUIRED",
+  "paretoStatus": "UNRANKED_DIAGNOSTIC_TIMINGS_NOT_GATE_EVIDENCE",
   "completeProof": "NOT_ATTEMPTED_IN_SP40_MICROBENCH",
   "evmCompleteVerification": "NOT_ATTEMPTED",
   "nativeOutput": "../field-bakeoff-common/outputs/native-latest.json",
   "solidityOutput": "../field-bakeoff-common/outputs/solidity-latest.json",
   "measuredEvidence": [
-    "native arithmetic, FFT/LDE, permutation, scaling, and process RSS",
-    "Solidity arithmetic and canonicality gas",
+    "native smoke diagnostics classified DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+    "Solidity isolated-kernel gas diagnostics",
     "deterministic vectors",
     "encoding and opened-row byte/gas floors"
   ],

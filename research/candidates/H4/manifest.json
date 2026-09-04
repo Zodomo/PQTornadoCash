@@ -1,5 +1,5 @@
 {
-  "schema": "pqtc-sp10-candidate-manifest-v1",
+  "schema": "pqtc-sp10-candidate-manifest-v2",
   "candidateId": "H4",
   "title": "Width-24 d=11 primitive with documented layout failure",
   "immutableDefinition": "Trunc_11(Poseidon2_BabyBear_24(x)+x), first eleven lanes",
@@ -15,6 +15,32 @@
   },
   "commands": {
     "vectorsAndParity": "python3 research/candidates/hash-compression-common/run.py vectors-parity",
-    "measuredBenchmarks": "python3 research/candidates/hash-compression-common/run.py benchmark --samples 1000"
+    "nativeDiagnosticsAndGas": "python3 research/candidates/hash-compression-common/run.py benchmark --samples 1000"
+  },
+  "noSilentInheritancePolicy": "Every system layer is explicit; NOT_EVALUATED conveys no inheritance or compatibility claim.",
+  "noSilentInheritanceMatrix": {
+    "noteEncoding": "NOT_EVALUATED",
+    "applicationDigestMode": "PRIMITIVE_ONLY_APPLICATION_LAYOUT_DOES_NOT_FIT",
+    "tree": "NOT_EVALUATED",
+    "statement": "NOT_EVALUATED_NO_INHERITANCE_CLAIM",
+    "relation": "NOT_EVALUATED_NO_INHERITANCE_CLAIM",
+    "fields": "BABYBEAR_PRIMITIVE_ONLY_PROTOCOL_FIELD_CUTOVER_NOT_EVALUATED",
+    "pcsAndHiding": "NOT_EVALUATED_NO_INHERITANCE_CLAIM",
+    "mmcsTranscriptCodec": "NOT_EVALUATED_NO_INHERITANCE_CLAIM",
+    "evmVerifier": "HASH_KERNEL_MICROBENCHMARK_ONLY_NOT_A_VERIFIER",
+    "checkpoint": "NOT_EVALUATED_NO_INHERITANCE_CLAIM",
+    "deploymentManifest": "NOT_CREATED_NOT_DEPLOYABLE"
+  },
+  "nativeTimingEvidence": {
+    "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+    "samplesPerDistribution": 1000,
+    "comparableCommonProtocolBenchmark": false,
+    "gaps": [
+      "no warmup phase",
+      "p90 not recorded",
+      "p99 not recorded",
+      "standard deviation not recorded",
+      "less than 10 seconds of measured work"
+    ]
   }
 }

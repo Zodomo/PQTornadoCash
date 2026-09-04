@@ -1,11 +1,11 @@
 {
-  "schema": "pqtc-sp10-candidate-manifest-v1",
+  "schema": "pqtc-sp10-candidate-manifest-v2",
   "candidateId": "H7",
   "title": "Published RPO-M31 sponge comparator",
   "immutableDefinition": "RPO-M31 over p=2^31-1, width 24, rate 16, capacity 8, alpha 5/inverse, seven rounds and concluding linear/constants step",
   "outputFields": 16,
   "status": "BENCHMARK_ONLY",
-  "stageAResult": "PASS_STAGE_A_BENCHMARK_ONLY",
+  "stageAResult": "NOT_EVALUATED_FULL_SOLIDITY_PARITY_AND_MISUSE",
   "researchOnly": true,
   "securityQualified": false,
   "implementation": {
@@ -15,6 +15,32 @@
   },
   "commands": {
     "vectorsAndParity": "python3 research/candidates/hash-compression-common/run.py vectors-parity",
-    "measuredBenchmarks": "python3 research/candidates/hash-compression-common/run.py benchmark --samples 1000"
+    "nativeDiagnosticsAndGas": "python3 research/candidates/hash-compression-common/run.py benchmark --samples 1000"
+  },
+  "noSilentInheritancePolicy": "Every system layer is explicit; NOT_EVALUATED conveys no inheritance or compatibility claim.",
+  "noSilentInheritanceMatrix": {
+    "noteEncoding": "PRIMITIVE_LAYOUT_INCOMPLETE_SCOPE_AND_SEMANTIC_WIDTHS_OMITTED",
+    "applicationDigestMode": "PUBLISHED_RPO_M31_SPONGE_COMPARATOR_LAYOUT_ONLY_NO_COMPRESSOR",
+    "tree": "SYNTHETIC_DEPTH20_HASH_PATH_ONLY_NOT_PROTOCOL_TREE",
+    "statement": "NOT_EVALUATED_NO_INHERITANCE_CLAIM",
+    "relation": "NOT_EVALUATED_NO_INHERITANCE_CLAIM",
+    "fields": "M31_PRIMITIVE_ONLY_PROTOCOL_FIELD_CUTOVER_NOT_EVALUATED",
+    "pcsAndHiding": "NOT_EVALUATED_NO_INHERITANCE_CLAIM",
+    "mmcsTranscriptCodec": "NOT_EVALUATED_NO_INHERITANCE_CLAIM",
+    "evmVerifier": "HASH_KERNEL_MICROBENCHMARK_ONLY_NOT_A_VERIFIER",
+    "checkpoint": "NOT_EVALUATED_NO_INHERITANCE_CLAIM",
+    "deploymentManifest": "NOT_CREATED_NOT_DEPLOYABLE"
+  },
+  "nativeTimingEvidence": {
+    "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+    "samplesPerDistribution": 1000,
+    "comparableCommonProtocolBenchmark": false,
+    "gaps": [
+      "no warmup phase",
+      "p90 not recorded",
+      "p99 not recorded",
+      "standard deviation not recorded",
+      "less than 10 seconds of measured work"
+    ]
   }
 }

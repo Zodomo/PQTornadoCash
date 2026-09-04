@@ -14,11 +14,11 @@
     "H0": "BASELINE_ONLY",
     "H1": "FAIL_NEGATIVE_CONTROL",
     "H2": "STOPPED_NO_REVIEWED_MODE",
-    "H3": "BENCHMARK_ONLY",
+    "H3": "NOT_EVALUATED_FULL_SOLIDITY_PARITY_AND_MISUSE",
     "H4": "PRIMITIVE_ONLY_LAYOUT_FAIL",
-    "H5": "BENCHMARK_ONLY",
-    "H6": "BENCHMARK_ONLY",
-    "H7": "PUBLISHED_SPONGE_COMPARATOR_ONLY"
+    "H5": "NOT_EVALUATED_FULL_SOLIDITY_PARITY_AND_MISUSE",
+    "H6": "NOT_EVALUATED_FULL_SOLIDITY_PARITY_AND_MISUSE",
+    "H7": "NOT_EVALUATED_FULL_SOLIDITY_PARITY_AND_MISUSE"
   },
   "measuredEvidence": "research/candidates/hash-compression-common/measurement-hashes.json",
   "verdict": "NO_AIR_CANDIDATE",
@@ -32,10 +32,23 @@
     },
     "solidityParity": {
       "fullBundleCovered": false,
-      "status": "ANCHOR_ONLY",
-      "vectors": 8
+      "status": "NOT_EVALUATED_FULL_REQUIRED_COVERAGE",
+      "requiredVectors": 10000,
+      "anchorVectorsObserved": 8
     }
   },
   "internalReview": "research/candidates/hash-compression-common/internal-review.json",
-  "vectorArtifact": "research/candidates/hash-compression-common/vectors/cross-language.json.zst"
+  "vectorArtifact": "research/candidates/hash-compression-common/vectors/cross-language.json.zst",
+  "nativeTimingEvidence": {
+    "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+    "samplesPerDistribution": 1000,
+    "comparableCommonProtocolBenchmark": false,
+    "gaps": [
+      "no warmup phase",
+      "p90 not recorded",
+      "p99 not recorded",
+      "standard deviation not recorded",
+      "less than 10 seconds of measured work"
+    ]
+  }
 }

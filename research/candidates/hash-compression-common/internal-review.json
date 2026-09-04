@@ -42,5 +42,11 @@
       "resolution": "H0 compression is null; inherited d=7 feed-forward measurement belongs to H1 negative control"
     }
   ],
-  "promotionRule": "All five gates must pass; no candidate passes every gate."
+  "promotionRule": "All five gates must pass; no candidate passes every gate.",
+  "checkpoint2": {
+    "verdict": "NO_AIR_CANDIDATE",
+    "stageA": "H3/H5/H6/H7 NOT_EVALUATED because full Solidity 10k parity and misuse coverage are missing",
+    "nativeTimings": "DIAGNOSTIC_NOT_COMMON_PROTOCOL; missing warmup/p90/p99/stddev and less than 10 seconds measured work",
+    "noSilentInheritance": "Explicit 11-layer matrix present in every H0-H7 manifest; NOT_EVALUATED conveys no inheritance claim"
+  }
 }

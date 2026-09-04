@@ -11,8 +11,8 @@
   ],
   "entrypoint": "python3 research/candidates/merkle-shape/run.py",
   "machine_output": "research/candidates/merkle-shape/outputs/results.json",
-  "optional_exact_gas_command": "cd research/candidates/merkle-shape/solidity && ./run-gas.sh",
-  "optional_exact_parity_command": "cd research/candidates/merkle-shape/solidity && ./run-parity.sh",
+  "isolated_gas_diagnostic_command": "cd research/candidates/merkle-shape/solidity && ./run-gas.sh",
+  "exact_parity_command": "cd research/candidates/merkle-shape/solidity && ./run-parity.sh",
   "models": ["binary-depth20", "quaternary-depth10", "octal-depth7"],
-  "measurement_policy": "Exact retained measurements and executable logical counts are labeled separately from projections and NOT_EVALUATED fields."
+  "measurement_policy": "Gas-left and internal-new values are isolated diagnostics, not complete transaction gas; intrinsic, calldata, EIP-7623 floor, and receipt evidence remain NOT_EVALUATED."
 }

@@ -9,6 +9,30 @@ const descriptions: Record<string, { title: string; construction: string; decisi
   T2: { title: "item-digest plus state", construction: "A typed, length-delimited item K512 digest followed by a K512 state update.", decision: "REJECTED_EFFICIENCY", reason: "The extra item digest increases Keccak work without an evidenced full-path benefit." },
   T3: { title: "challenge-boundary frame", construction: "Typed claims are framed and flushed once immediately before each challenge boundary.", decision: "T3_EXTERNAL_REVIEW_ONLY", reason: "Independent review permits external study only and blocks integration: candidate APIs lack a claim/boundary state machine, mutation/parity evidence is incomplete, and the full-width continuation redesign is not implemented." },
 };
+function inheritanceMatrix(candidate: string): Record<string, { disposition: "INHERITED" | "MODIFIED" | "REPLACED"; compatibility: string }> {
+  const transcript = candidate === "T0"
+    ? { disposition: "INHERITED" as const, compatibility: "Production-compatible mode exactly replays frozen v0.3 Transcript512; the separate versioned research mode is not integrated." }
+    : { disposition: "REPLACED" as const, compatibility: `${candidate} is a standalone research transcript grammar and is not wire- or challenge-compatible with frozen v0.3; no production caller is migrated.` };
+  return {
+    noteEncoding: { disposition: "INHERITED", compatibility: "Frozen v0.3 pqtc-note-v3 encoding is unchanged and is not exercised by this transcript harness." },
+    applicationDigest: { disposition: "INHERITED", compatibility: "Frozen P2BB512-v1 application digest and typed application domains are unchanged; transcript K512 research does not replace application hashing." },
+    applicationMode: { disposition: "INHERITED", compatibility: "Frozen rate-4 Poseidon2 application sponge mode, width, capacity, and output width are unchanged." },
+    tree: { disposition: "INHERITED", compatibility: "Frozen v0.3 Merkle tree, leaf/node domains, depth, and root representation are unchanged." },
+    publicStatement: { disposition: "INHERITED", compatibility: "Frozen four-Digest512 withdrawal statement and its 64 canonical BabyBear public values are retained byte-for-byte." },
+    relation: { disposition: "INHERITED", compatibility: "Frozen 256-row, 190-column withdrawal AIR and all constraints are unchanged." },
+    baseField: { disposition: "INHERITED", compatibility: "BabyBear modulus and canonical big-endian field encoding remain unchanged." },
+    challengeField: { disposition: "INHERITED", compatibility: "Degree-4 BabyBear extension, coefficient basis order, and rejection sampling remain unchanged." },
+    pcs: { disposition: "INHERITED", compatibility: "Frozen hiding two-adic FRI PCS, query counts, folding schedule, and grinding parameters are unchanged." },
+    hiding: { disposition: "INHERITED", compatibility: "Frozen four random codewords and eight MMCS salt fields per leaf remain unchanged." },
+    mmcs: { disposition: "INHERITED", compatibility: "Frozen 512-bit Keccak MMCS commitments, cap width, salts, leaf hashing, and node compression are unchanged." },
+    transcript,
+    proofCodec: { disposition: "INHERITED", compatibility: "Frozen v0.3 Part A/B codec and widths are used only as baseline/continuation evidence; no candidate transcript is integrated into or proven compatible with that codec." },
+    evmVerifier: { disposition: "INHERITED", compatibility: "Frozen production verifier and pool entry points are untouched; the standalone prefix gas harness is not a verifier replacement." },
+    checkpointModel: { disposition: "INHERITED", compatibility: "Frozen checkpoint field layout and A/B position model are reference inputs; alternate transcript states would change checkpoint contents and compatibility is not established." },
+    deploymentManifest: { disposition: "INHERITED", compatibility: "Frozen sepolia-v0.3 parameters and deployment manifest remain authoritative; no candidate address, artifact, or deployment is proposed." },
+  };
+}
+
 
 function filesBelow(directory: string): string[] {
   return readdirSync(directory).flatMap((name) => {
@@ -25,6 +49,7 @@ for (const [candidate, info] of Object.entries(descriptions)) {
     baseline: { release: "v0.3", plonky3: "3152b14a89067c83775a8076cc262ffc48a1fd7c", graph: "../../cryptanalysis/transcript/claim-challenge-graph.json", exactT0Replay: "../../cryptanalysis/transcript/v03-conformance.json" },
     grammar: "../../cryptanalysis/transcript/grammar.json", specification: "../../cryptanalysis/transcript/SPEC.md",
     implementations: { rust: "rust/src/lib.rs", solidity: "solidity/Candidate.sol", typescript: "typescript/index.ts", sharedRust: "../../cryptanalysis/transcript/rust/transcript.rs", sharedSolidity: "../../cryptanalysis/transcript/solidity/TranscriptResearch.sol", sharedTypescript: "../../cryptanalysis/transcript/typescript/transcript.ts" },
+    inheritanceMatrix: inheritanceMatrix(candidate),
     vectors: { transcript: "vectors/transcript.json", misuse: "vectors/misuse.json", coverage: ["every absorb", "every squeeze", "reorder", "truncation", "count", "trailing zero", "type substitution", "challenge before claim", "digest half swap", "A/B half swap", "cross-proof mixing"] },
     measurements: { output: "measurements/transcript.json", measuredFields: Object.keys(measurement.measured), unmeasuredFields: Object.keys(measurement.explicitlyUnmeasured) },
     gate: { result: info.decision, integrationBlocked: true, internalReview: "T3_EXTERNAL_REVIEW_ONLY", blockers: ["primitive APIs do not enforce the claim/boundary state machine and permit premature sample calls", "TypeScript misuse labels are out-of-band rather than a serialized-grammar oracle", "Rust/Solidity mutation and cross-language parity execution are absent", "full-width continuation redesign is not implemented; identifiers remain bytes32", "single-slot key collision overwrite and hashed-record comparison remain unresolved"], reason: info.reason },

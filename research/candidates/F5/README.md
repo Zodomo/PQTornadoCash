@@ -2,8 +2,8 @@
 
 Status: **BENCHMARK_ONLY**. Challenge field: `none (base-field challenge)`.
 
-This package contains the candidate manifest, decision record, assumptions, negative results, pinned-source hashes, and deterministic vectors. Shared executable Rust and Solidity kernels live in `../field-bakeoff-common/`. Run commands are recorded in `manifest.json`. Encoding and 64/96 opened-row floors are generated in `../field-bakeoff-common/outputs/projection-latest.json`.
+This package contains the candidate manifest, explicit no-silent-inheritance protocol matrix, decision record, assumptions, negative results, refreshed source/evidence hashes, and deterministic vectors. Shared executable Rust and Solidity kernels live in `../field-bakeoff-common/`. Native timing is `DIAGNOSTIC_NOT_COMMON_PROTOCOL` and cannot rank candidates. Encoding and 64/96 opened-row floors are generated in `../field-bakeoff-common/outputs/projection-latest.json`.
 
 MEDIUM_FIELD_LOW_STACK: pinned scalar arithmetic exists; no frozen PQTornado application permutation, PCS, Solidity codec, or complete proof uses this field.
 
-No complete proof, production compatibility, deployment readiness, or Pareto victory is asserted.
+No complete proof, production compatibility, deployment readiness, nondominance, or Pareto victory is asserted.

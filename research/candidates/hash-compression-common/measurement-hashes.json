@@ -1,10 +1,12 @@
 {
   "outputs": [
     {
-      "bytes": 267824,
-      "ethereumKeccak256": "1002bac939e297baa33ca6bdb42a49da2dde9ee8a65a941a99e78b7408e87fe0",
+      "bytes": 312698,
+      "classification": "DIAGNOSTIC_NOT_COMMON_PROTOCOL",
+      "comparableCommonProtocolBenchmark": false,
+      "ethereumKeccak256": "73b7521f3f91215c9e27d4be5fce30cea2d2cc1923db76caaaf7301d6ba88e2f",
       "path": "research/candidates/hash-compression-common/native/distributions.json",
-      "sha256": "bc8da9fab918b055776939b334f47546fcc7771b6578c3172229319a5a476ab9"
+      "sha256": "91c0663fe11ae4562755dadf7af21837ea41723fdd6005300c5eb7ae98b3e9ff"
     },
     {
       "bytes": 17040,
@@ -13,10 +15,10 @@
       "sha256": "ca194786d41d213670ed0cfc2658f71910ed609ae559837846b4183f4356ed27"
     },
     {
-      "bytes": 12619,
-      "ethereumKeccak256": "d330aa0a358f3796c50dce84fbc1295b493a3e5750b13a3a99a1974aeeae7ea2",
+      "bytes": 12690,
+      "ethereumKeccak256": "1a02f2f72bc8e6ee03492f56389f7561045c5a7e4c0e855ca1dbf695f84f8599",
       "path": "research/candidates/hash-compression-common/gas/results.json",
-      "sha256": "3e7150ec8cd90ba5d9365ddfb81692d2c50a70b8a33cb0bb60b77a5adc9cf9e6"
+      "sha256": "05f543ef50b9d7b266e9fe089107b951108b4a1906e5fb706c92876847064afc"
     }
   ],
   "schema": "sp10-measurement-hashes-v2",
@@ -67,9 +69,10 @@
         "vectors": 18146
       },
       "solidityParity": {
+        "anchorVectorsObserved": 8,
         "fullBundleCovered": false,
-        "status": "ANCHOR_ONLY",
-        "vectors": 8
+        "requiredVectors": 10000,
+        "status": "NOT_EVALUATED_FULL_REQUIRED_COVERAGE"
       }
     }
   }
