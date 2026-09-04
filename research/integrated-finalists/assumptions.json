@@ -1,0 +1,40 @@
+{
+  "schema": "pqtc.sp80.assumptions.v1",
+  "scope": "SP-80 only; evaluate required bundles A-F and build only after every prerequisite gate passes",
+  "researchCutoff": "2026-09-04",
+  "decisionPolicy": {
+    "requiredComponentGates": [
+      "semantic",
+      "hiding",
+      "security",
+      "native",
+      "evm",
+      "calldata",
+      "gas",
+      "source_binding"
+    ],
+    "passRule": "Exact equality to the executable gate predicate is required for every direct component. An any-of backend/inner-proof group requires at least one component passing all eight gates.",
+    "missingOrNull": "NON_PASSING",
+    "benchmarkOnly": "NON_PASSING",
+    "upstreamToyOrControl": "NON_PASSING",
+    "projection": "NON_PASSING",
+    "isolatedGasDelta": "NON_PASSING_FOR_INTEGRATED_GAS",
+    "externalReviewOpen": "NON_PASSING",
+    "partialPrototype": "PROHIBITED"
+  },
+  "evidenceBoundary": {
+    "authority": "Only hash-pinned local status, manifest, and result records listed in manifest.json are inputs.",
+    "statusPrecedence": "A PASS from a narrower smoke/build/control does not override a blocked integration or finalist status.",
+    "sourceBindingMeaning": "A bundle needs deployment-ready proof-system/deployment identity binding; source pins alone are insufficient.",
+    "measurements": "SP-80 performs no benchmark and makes no new metric claim. Existing component measurements retain their original labels.",
+    "prototype": "No note, proof, verifier, pool, payment, or state code is implemented in this package because eligible count is zero."
+  },
+  "bundleInterpretation": {
+    "A": "The direct-FRI path requires promoted compression, implemented AIR, reviewed transcript, hiding FRI, and common integration gates.",
+    "B": "The HVZK-WHIR path also requires the exact PQTC relation and a matching modular EVM verifier; the upstream smoke is not that path.",
+    "C": "The Spartan path requires an implemented repeated structured relation and full EVM Spartan/HVZK verification; standalone WHIR is not sufficient.",
+    "D": "Best hiding inner proof is an any-of group, but an alternative qualifies only by passing all eight gates before recursion is considered.",
+    "E": "The plan explicitly conditions a full build on SP-62 passing; Flock is STOP and VEIL PoCs are non-PQTC controls.",
+    "F": "The fallback requires a security-qualified exact-PQTC proof that intrinsically needs two calls plus full-path SP-72 binding; the state-only harness cannot substitute."
+  }
+}

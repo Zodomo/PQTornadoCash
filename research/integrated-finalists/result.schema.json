@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pqtc.sp80.eligibility-result.v1",
+  "title": "SP-80 integrated finalist eligibility result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "spike",
+    "eligibilityPolicy",
+    "components",
+    "bundles",
+    "summary",
+    "decision",
+    "metricClaims",
+    "prototypeClaims",
+    "mutationDefense"
+  ],
+  "properties": {
+    "schema": {"const": "pqtc.sp80.eligibility-result.v1"},
+    "spike": {"const": "SP-80"},
+    "eligibilityPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requiredGates", "rule"],
+      "properties": {
+        "requiredGates": {
+          "const": ["semantic", "hiding", "security", "native", "evm", "calldata", "gas", "source_binding"]
+        },
+        "rule": {"type": "string", "minLength": 1}
+      }
+    },
+    "components": {
+      "type": "object",
+      "minProperties": 14,
+      "maxProperties": 14,
+      "additionalProperties": {"$ref": "#/$defs/component"}
+    },
+    "bundles": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "prefixItems": [
+        {"$ref": "#/$defs/bundleA"},
+        {"$ref": "#/$defs/bundleB"},
+        {"$ref": "#/$defs/bundleC"},
+        {"$ref": "#/$defs/bundleD"},
+        {"$ref": "#/$defs/bundleE"},
+        {"$ref": "#/$defs/bundleF"}
+      ],
+      "items": false
+    },
+    "summary": {
+      "const": {"bundleCount": 6, "eligibleCount": 0, "finalistCount": 0, "prototypeCount": 0}
+    },
+    "decision": {"const": "CURRENT_RESEARCH_FRONTIER_NO_VIABLE_NEXT_BUILD"},
+    "metricClaims": {"const": []},
+    "prototypeClaims": {"const": []},
+    "mutationDefense": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mutation", "expected", "status"],
+      "properties": {
+        "mutation": {"type": "string", "minLength": 1},
+        "expected": {"const": "REJECT"},
+        "status": {"const": "PASS"}
+      }
+    }
+  },
+  "$defs": {
+    "hashRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "required", "observed", "jsonPointer", "evidence"],
+      "properties": {
+        "state": {"enum": ["PASS", "BLOCKED", "MISSING"]},
+        "required": {},
+        "observed": {},
+        "jsonPointer": {"type": "string", "minLength": 1},
+        "evidence": {"$ref": "#/$defs/hashRecord"}
+      }
+    },
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "eligible", "records", "gates"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "eligible": {"type": "boolean"},
+        "records": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "manifest", "result"],
+          "properties": {
+            "status": {"$ref": "#/$defs/hashRecord"},
+            "manifest": {"$ref": "#/$defs/hashRecord"},
+            "result": {"$ref": "#/$defs/hashRecord"}
+          }
+        },
+        "gates": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["semantic", "hiding", "security", "native", "evm", "calldata", "gas", "source_binding"],
+          "properties": {
+            "semantic": {"$ref": "#/$defs/gate"},
+            "hiding": {"$ref": "#/$defs/gate"},
+            "security": {"$ref": "#/$defs/gate"},
+            "native": {"$ref": "#/$defs/gate"},
+            "evm": {"$ref": "#/$defs/gate"},
+            "calldata": {"$ref": "#/$defs/gate"},
+            "gas": {"$ref": "#/$defs/gate"},
+            "source_binding": {"$ref": "#/$defs/gate"}
+          }
+        }
+      }
+    },
+    "blocker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component", "gate", "state", "required", "observed", "jsonPointer", "evidence"],
+      "properties": {
+        "component": {"type": "string", "minLength": 1},
+        "gate": {"type": "string", "minLength": 1},
+        "state": {"enum": ["BLOCKED", "MISSING"]},
+        "required": {},
+        "observed": {},
+        "jsonPointer": {"type": ["string", "null"]},
+        "evidence": {"oneOf": [{"$ref": "#/$defs/hashRecord"}, {"type": "null"}]}
+      }
+    },
+    "checklistItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requirement", "implemented", "evidencePath", "reason"],
+      "properties": {
+        "requirement": {"type": "string", "minLength": 1},
+        "implemented": {"const": false},
+        "evidencePath": {"type": "null"},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    },
+    "alternativeGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["anyOf", "passing", "state"],
+      "properties": {
+        "anyOf": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "passing": {"const": []},
+        "state": {"const": "BLOCKED"}
+      }
+    },
+    "bundle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bundleId",
+        "name",
+        "eligible",
+        "finalist",
+        "prototypeImplemented",
+        "requiredComponents",
+        "alternativeGroups",
+        "lastCompletedStage",
+        "lastCompletedStageEvidence",
+        "blockingGates",
+        "omittedPrototypeRequirements",
+        "revivalConditions"
+      ],
+      "properties": {
+        "bundleId": {"enum": ["A", "B", "C", "D", "E", "F"]},
+        "name": {"type": "string", "minLength": 1},
+        "eligible": {"const": false},
+        "finalist": {"const": false},
+        "prototypeImplemented": {"const": false},
+        "requiredComponents": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "alternativeGroups": {"type": "array", "items": {"$ref": "#/$defs/alternativeGroup"}},
+        "lastCompletedStage": {"type": "string", "minLength": 1},
+        "lastCompletedStageEvidence": {"$ref": "#/$defs/hashRecord"},
+        "blockingGates": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/blocker"}},
+        "omittedPrototypeRequirements": {
+          "type": "array",
+          "minItems": 13,
+          "maxItems": 13,
+          "items": {"$ref": "#/$defs/checklistItem"}
+        },
+        "revivalConditions": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "bundleA": {"allOf": [{"$ref": "#/$defs/bundle"}, {"properties": {"bundleId": {"const": "A"}}}]},
+    "bundleB": {"allOf": [{"$ref": "#/$defs/bundle"}, {"properties": {"bundleId": {"const": "B"}}}]},
+    "bundleC": {"allOf": [{"$ref": "#/$defs/bundle"}, {"properties": {"bundleId": {"const": "C"}}}]},
+    "bundleD": {"allOf": [{"$ref": "#/$defs/bundle"}, {"properties": {"bundleId": {"const": "D"}}}]},
+    "bundleE": {"allOf": [{"$ref": "#/$defs/bundle"}, {"properties": {"bundleId": {"const": "E"}}}]},
+    "bundleF": {"allOf": [{"$ref": "#/$defs/bundle"}, {"properties": {"bundleId": {"const": "F"}}}]}
+  }
+}
