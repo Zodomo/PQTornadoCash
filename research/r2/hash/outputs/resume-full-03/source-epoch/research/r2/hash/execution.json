@@ -1,0 +1,34 @@
+{
+  "work_package": "R2-02",
+  "implementation_status": "resume runner prepared; Main exclusively executes",
+  "specification": "spec.json",
+  "correctness": "unknown pending full recorded run",
+  "privacy": "synthetic unfunded inputs only; not a hiding proof system",
+  "security": "security-not-qualified",
+  "performance": "unknown pending matched complete-operation receipts",
+  "stage": "resume implementation handoff",
+  "promotion": "not-promoted",
+  "commands_from_repository_root": [
+    "python3 -B research/r2/execute.py --output research/r2/hash/runs/resume-full-01 --timeout 86400 --env CARGO_BUILD_JOBS=4 --env RAYON_NUM_THREADS=1 -- python3 -B research/r2/hash/run.py --output research/r2/hash/outputs/resume-full-01 --build --rpc-url http://127.0.0.1:18545 --diagnostic-rpc-url http://127.0.0.1:18546 --vectors 10010 --chunk 2 --native-repetitions 30 --trace --plonky3 /Users/zodomo/.cargo/git/checkouts/plonky3-7d8a3b21a665a86f/3152b14"
+  ],
+  "individual_runners_after_build": {
+    "rust_jsonl_stdin": "research/r2/hash/outputs/resume-full-01/native/pqtc-r2-hash",
+    "typescript_jsonl_stdin": "node --experimental-strip-types research/r2/hash/reference.ts",
+    "matrix_and_constant_extraction": "research/r2/hash/outputs/resume-full-01/native/constants",
+    "constants_comparison_separate_optional_run": "python3 -B research/r2/hash/compare_constants.py --plonky3 /Users/zodomo/.cargo/git/checkouts/plonky3-7d8a3b21a665a86f/3152b14 --binary research/r2/hash/outputs/resume-full-01/native/constants --output research/r2/hash/outputs/resume-constants-02"
+  },
+  "wire_request": {"config":"R2-H5-complete-v1","role":4,"level":0,"payload":[0,1,2,3,4,5,6,7,8,9,10,11]},
+  "output_root": "outputs/resume-full-01 (must not already exist; use a new resume-* name for each attempt)",
+  "output_paths_relative_to_output_root": [
+    "results.json", "commands.json", "source-hashes.json", "source-epoch/", "artifact-ledger.json",
+    "constants/comparison.json", "constants/source-epoch/", "vectors.jsonl", "parity.jsonl", "mapping-ledger.jsonl", "misuse.json",
+    "benchmarks.json", "operation-counts.json", "native-R2-H0-v03.json", "native-R2-H5-complete-v1.json", "native/", "solidity-out/",
+    "capped-local-top-level-deployments.json", "capped-local-top-level-deposit.json",
+    "diagnostic-unpromotable-deployments.json", "diagnostic-unpromotable-deposit.json", "bytecode/", "initcode/", "traces/"
+  ],
+  "full_role_corpus": "10010 deterministic random/edge complete-role vectors, plus scope/note/nullifier/empty/payout/node20/statement outputs for both configurations over all 256 frozen synthetic cases (13824 more role evaluations; 23834 shared requests total if the corpus is unchanged). Bounded chunks compare Rust reference+optimized, TypeScript, and all five Solidity tiers. SHA256 rejection draws are retained without modulo reduction.",
+  "local_policy": "Main owns loopback Anvil daemons at18545 (Osaka capped) and18546 (Prague diagnostic); chain31337 and public default development account0 are mandatory. No wallet, dotenv reads, public RPC, code/initcode cap overrides, or real denomination. --build uses fresh /tmp Cargo and Foundry roots, locked offline dependencies and locally installed solc0.8.30; only final binaries/artifacts are copied into the new output. Cast runs in fresh /tmp cwd. Historical target/out/output paths are not written. Python3.11+ required for streaming artifact hashing.",
+  "benchmark_policy": "Run serially after source preparation and outside proof timing windows. --trace retains implementation deployment, pool constructor (including failed receipts), first/second deposits, each role and twenty-level opcode attribution. eth_estimateGas, receipts and native per-role latency remain separate. Native binary size includes both Rust tiers and is not a per-tier text-section delta. Traces overlap and do not establish causal constant-access savings by themselves.",
+  "source_epoch_policy": "Do not run generate.py for this resume. Existing constants.rs/constants.json/H5Permutation.sol remain unchanged. compare_constants.py regenerates upstream constants into retained stdout without modifying generated sources. Runner snapshots selected source inputs before building. H0/H5 relation identifiers and diagnostic selectors are unchanged.",
+  "optional_H6": "Entry only after H5 complete semantics, constants/full-role parity, misuse and matched-tier complete-operation measurements exist, and only as one bounded width32/d14 margin comparator. No current need is asserted; not implemented or executed by this handoff. Diagnostic selector11 is deliberately wrong truncation, NOT a complete H6 construction. External security review is not an execution permission gate."
+}

@@ -1,0 +1,55 @@
+{
+  "architecture": "arm64",
+  "command": [
+    "python3",
+    "-B",
+    "research/r2/models/gas_fit.py",
+    "--solc",
+    "/Users/zodomo/Library/Application Support/svm/0.8.30/solc-0.8.30",
+    "--node-provenance",
+    "research/r2/governance/resume-node-provenance.json",
+    "--output",
+    "research/r2/models/outputs/resume-component-gas-02"
+  ],
+  "cwd": "/Users/zodomo/code/PQTornado",
+  "environment": {
+    "HOME": "/Users/zodomo",
+    "LC_ALL": "C",
+    "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+    "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+    "TZ": "UTC"
+  },
+  "logs": {
+    "stderr.log": {
+      "bytes": 777,
+      "sha256": "2533e525aba2d190b0be5325934276208c0b9a0fa6c42c5094ff1e1d4de6a2ad"
+    },
+    "stdout.log": {
+      "bytes": 150,
+      "sha256": "fe05ac3afc7aa533ef7f9a383e2aa7610814fe5cb33f02250d6dd183e1afb59f"
+    }
+  },
+  "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+  "returncode": 0,
+  "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+  "rss_unit": "bytes",
+  "schema": "pqtc.r2.command-run.v1",
+  "scope": "local non-custodial research command; success is execution, not artifact qualification",
+  "started_utc": "2026-09-05T02:22:13.379061+00:00",
+  "timed_out": false,
+  "timeout_seconds": 7200,
+  "timing_command": [
+    "/usr/bin/time",
+    "-l",
+    "python3",
+    "-B",
+    "research/r2/models/gas_fit.py",
+    "--solc",
+    "/Users/zodomo/Library/Application Support/svm/0.8.30/solc-0.8.30",
+    "--node-provenance",
+    "research/r2/governance/resume-node-provenance.json",
+    "--output",
+    "research/r2/models/outputs/resume-component-gas-02"
+  ],
+  "wall_seconds": 42.25472645799164
+}

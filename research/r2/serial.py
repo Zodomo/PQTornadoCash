@@ -33,7 +33,9 @@ def main():
             continue
         if Path(name).name != name or name in ('.', '..'):
             raise ValueError('unsafe command id')
-        argv = [sys.executable, str(ROOT / 'research/r2/execute.py'), '--output', str(out / name), '--timeout', str(args.timeout), '--env', 'RAYON_NUM_THREADS=1', '--', *command['argv']]
+        environment = {'RAYON_NUM_THREADS': '1', **command.get('env', {})}
+        flags = [item for key, value in environment.items() for item in ('--env', f'{key}={value}')]
+        argv = [sys.executable, str(ROOT / 'research/r2/execute.py'), '--output', str(out / name), '--timeout', str(args.timeout), *flags, '--', *command['argv']]
         result = subprocess.run(argv, cwd=ROOT)
         records.append({'id': name, 'exit_status': result.returncode, 'command_record': str((out / name / 'command.json').relative_to(ROOT)), 'scope': 'Command outcome; inspect domain artifacts for proof/correctness/measurement result'})
         (out / 'results.json').write_text(json.dumps(records, indent=2) + '\n')

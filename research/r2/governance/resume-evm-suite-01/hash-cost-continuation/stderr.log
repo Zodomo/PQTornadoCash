@@ -1,0 +1,60 @@
+Traceback (most recent call last):
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 377, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 370, in main
+    if diagnostic is not primary:result['diagnostic_deposit']=deposit_measurements(diagnostic,addresses,native,a.trace)
+                                                              ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 227, in deposit_measurements
+    dep=rpc.transact(data,pool);record.update(scope=scope,initial_root=initial,leaf=leaf,deposit_receipt=dep)
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 67, in transact
+    receipt=self.call('eth_getTransactionReceipt',[txhash])
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 46, in call
+    with urllib.request.urlopen(urllib.request.Request(self.url,data,{'Content-Type':'application/json'}),timeout=600)as response:result=json.load(response)
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 187, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 487, in open
+    response = self._open(req, data)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 504, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 464, in _call_chain
+    result = func(*args)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 1350, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 1325, in do_open
+    r = h.getresponse()
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socket.py", line 729, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+ConnectionResetError: [Errno 54] Connection reset by peer
+      108.37 real        27.30 user         3.31 sys
+           359858176  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+             1076036  page reclaims
+               15877  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                1280  messages sent
+                 639  messages received
+                  85  signals received
+                3651  voluntary context switches
+               44961  involuntary context switches
+          2913876357  instructions retired
+          1653868773  cycles elapsed
+            36340576  peak memory footprint

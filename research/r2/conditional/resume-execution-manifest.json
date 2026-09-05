@@ -1,0 +1,151 @@
+{
+  "commands": [
+    {
+      "id": "gates",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-gates-01",
+        "--",
+        "python3",
+        "-B",
+        "research/r2/conditional/gates.py",
+        "--evidence",
+        "research/r2/conditional/resume-gate-evidence.json",
+        "--output",
+        "research/r2/conditional/outputs/resume-gates-01.json"
+      ]
+    },
+    {
+      "id": "native-l2",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-native-l2-01",
+        "--",
+        "python3",
+        "-B",
+        "research/r2/conditional/l2_payload.py",
+        "--payloads",
+        "research/r2/conditional/resume-payloads.json",
+        "--output",
+        "research/r2/conditional/outputs/resume-native-l2-01.json"
+      ]
+    },
+    {
+      "id": "hardware-t1",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-hardware-t1-01",
+        "--",
+        "python3",
+        "-B",
+        "research/r2/conditional/hardware.py",
+        "--candidate",
+        "C1",
+        "--geometry",
+        "decomposed",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--threads",
+        "1",
+        "--samples",
+        "30",
+        "--toolchain",
+        "1.97.0",
+        "--build-root",
+        "research/r2/conditional/resume-build/portable",
+        "--run-root",
+        "research/r2/conditional/outputs/resume-portable-C1-t1",
+        "--output",
+        "research/r2/conditional/outputs/resume-hardware-t1-01.json"
+      ]
+    },
+    {
+      "id": "hardware-t4",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-hardware-t4-01",
+        "--",
+        "python3",
+        "-B",
+        "research/r2/conditional/hardware.py",
+        "--candidate",
+        "C1",
+        "--geometry",
+        "decomposed",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--threads",
+        "4",
+        "--samples",
+        "30",
+        "--toolchain",
+        "1.97.0",
+        "--build-root",
+        "research/r2/conditional/resume-build/portable",
+        "--run-root",
+        "research/r2/conditional/outputs/resume-portable-C1-t4",
+        "--output",
+        "research/r2/conditional/outputs/resume-hardware-t4-01.json"
+      ]
+    },
+    {
+      "id": "portable-build",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-portable-build-01",
+        "--env",
+        "RUSTFLAGS=-C target-cpu=generic",
+        "--env",
+        "CARGO_BUILD_JOBS=4",
+        "--",
+        "cargo",
+        "+1.97.0",
+        "build",
+        "--locked",
+        "--offline",
+        "--release",
+        "--manifest-path",
+        "research/r2/air/rust/Cargo.toml",
+        "--target-dir",
+        "research/r2/conditional/resume-build/portable"
+      ]
+    },
+    {
+      "id": "compiler",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-compiler-01",
+        "--",
+        "rustc",
+        "+1.97.0",
+        "-vV"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+Compiling 1 files with Solc 0.8.30
+Solc 0.8.30 finished in 142.80ms
+Compiler run successful!
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+   ╭▸ src/AirCost.sol:32:25
+   │
+32 │             uint256 a = uint32(instruction >> 32);
+   │                         ━━━━━━━━━━━━━━━━━━━━━━━━━
+   │
+   ├ note: consider disabling this lint if you're certain the cast is safe
+   │       
+   │       // casting to 'uint32' is safe because [explain why]
+   │       // forge-lint: disable-next-line(unsafe-typecast)
+   │       
+   │       
+   ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+
+warning[unsafe-typecast]: typecasts that can truncate values should be checked
+   ╭▸ src/AirCost.sol:33:25
+   │
+33 │             uint256 b = uint32(instruction);
+   │                         ━━━━━━━━━━━━━━━━━━━
+   │
+   ├ note: consider disabling this lint if you're certain the cast is safe
+   │       
+   │       // casting to 'uint32' is safe because [explain why]
+   │       // forge-lint: disable-next-line(unsafe-typecast)
+   │       
+   │       
+   ╰ help: https://book.getfoundry.sh/reference/forge/forge-lint#unsafe-typecast
+

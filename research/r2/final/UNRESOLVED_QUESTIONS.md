@@ -1,25 +1,146 @@
-# Open research during resumed execution
+# Explicitly unresolved research
 
-Research resumed from `bc71758`; original halt questions are archived under `../governance/halt-bc71758/`. Further independent/security review remains deferred, not an execution gate. R2-05 remains explicitly deferred. The complete acceptance criteria remain in `pqtc-independent-review/FOLLOW_UP_RESEARCH_PLAN.md`.
+This is an incomplete return with recorded dispositions, not full plan acceptance. R2-05 and reviews remain user-deferred.
 
-| Owner | Open question and smallest next experiment | Dependency | Decision affected |
-|---|---|---|---|
-| R2-06 | C0 grid completed:20 verified proofs,10 configurations,zero byte residual. Continue AIR anchors and held-out EVM fitting. | AIR rebuild after source repairs; new output directories. | Measured byte/gas frontier; do not fit native time to EVM gas. |
-| R2-01 | Candidate adapter executed:83304 term rows and72 native rows. Theorem-specific batching interpretation and composition remain open. | External review deferred separately. | Conditional normalization; no theorem acceptance inferred. |
-| R2-02 | Execute constants comparison, 10000-vector three-language role parity, misuse cases and matched implementation tiers. | Isolated Foundry workspaces and disposable local nodes. | Whether H5 is implemented consistently and reduces actual hash/deposit cost. |
-| R2-03 | Run the remaining bounded H0 geometries, actual mutation proofs and repeated fixed/varied witness timings. | Existing geometry runner. | Whether vertical scheduling improves the frozen relation. |
-| R2-04 | Execute the verified C0 postcard exporter, matched-input controls, H5 public-context study and repeated C2/C3 measurements. | Exporter compiled; C2/C3 proof artifacts exist. | Same-codec, same-input causal comparison rather than a codec or public-work difference. |
-| R2-03/R2-04 | Execute the exported AIR arithmetic on EVM and reconcile arithmetic versus program/calldata overhead. | Existing generated program and real verifier evaluation vector. | Actual verifier cost; arithmetic-only results are not full proof verification. |
-| R2-05 | Execute q32 and q48 transcript proofs, cross-language parity, phase errors, replay and checkpoint lifecycle. | Explicitly deferred by user; do not resume automatically. | Complete typed-epoch/full-width continuation correctness and cost. |
-| R2-07 | Execute the exact non-hiding H0 control and bounded hiding trace-opening repair at 32, then 128; retain demonstrated barriers. | Both binaries compiled; commands in `../backend/commands.json`. | Whether a complete hiding same-relation backend is reachable; a non-hiding control does not answer it. |
-| R2-07 | Execute the standalone Solidity harness repair and record license/provenance unknowns. | Native/backend entry conditions in the full plan. | EVM reachability and incorporation eligibility, separately. |
-| R2-08 | Exercise the scope-correct constructor generator with signed capped CREATE and deposit histories. | Generator and receiver source remain unexecuted. | Whether the original constructor limit can be removed without changing scope semantics. |
-| R2-08 | Complete at most two actual-verifier pipelines; measure one-call and declared split choices under real gas forwarding. | A complete selected proof/verifier path; no mock verifier. | Practical transaction feasibility and total withdrawal cost. |
-| R2-08 | Run malformed prefix, replay, expiry/replacement, payout rollback/reentrancy and checkpoint censorship cases. | New lifecycle pipeline, not only frozen positive controls. | State safety and bounded reservation behavior. |
-| R2-08 | Run the prescribed 100-proof workload and constrained-memory/worst-case controls. | Stable implementation and serial timing. | Operational distribution and resource ceilings. |
-| R2-09 | Evaluate recursion, proof-only aggregation and STIR/Circle entry conditions; execute only eligible bounded branches. | Exact inner-proof and hiding requirements from the plan. | Whether a conditional branch merits further work. |
-| R2-09 | Measure portable native proofs; commodity hardware remains unavailable unless a real machine is supplied. | Available local arm64 portable build; no configured remote host or x86 emulator found. | Portability and hardware sensitivity, not simulated commodity performance. |
-| R2-09 | Retest exact new proof payloads and pinned L2 rules after new candidate bytes exist. | Retained-envelope transport diagnostics already ran. | Transport eligibility and fees; not L2 verifier execution. |
-| R2-10 | Complete comparative matrices, dispositions and final return; revisit all 20 findings and independent checkpoints. | Remaining executable packages and user's review timing. | Final architecture decision and whether a full engineering specification is warranted. |
+## R2-00
 
-The Flock search inspected 64 existing local commits without finding a supported M21 configuration. Revisit only with a concrete supported upstream candidate; do not invent a security preset. Missing results remain null/UNKNOWN, not failures. Source-only implementations remain unverified until exercised.
+- **claim**: New C0 distribution canonical sub-section instrumentation and fresh full operational distribution are not claimed; retained detailed canonical ledgers remain authoritative.
+- **build choice impact**: Prevents accepting the corresponding complete-path cost, operational, or qualification claim.
+- **current evidence**: Retained clean baseline and 11 ledger/Foundry controls; 30 fixed plus 30 varied fresh C0 proofs with verified postcard export; historical samples remain separate.
+- **evidence**: research/r2/air/outputs/resume-causal-distributions-01/summary.json
+- **missing artifact or theorem**: New C0 distribution canonical sub-section instrumentation and fresh full operational distribution are not claimed; retained detailed canonical ledgers remain authoritative.
+- **smallest decisive experiment**: Instrument canonical sub-sections of one new fixed and one varied C0 distribution proof; extend only if required for a new codec comparison.
+- **reviewer**: R2-00 independent reviewer (deferred by user; not execution permission)
+- **reopen condition**: Concrete missing input or supported adapter, or explicit user resumption where deferred; no inferred approval.
+- **dependent tasks**: Only consumers of this exact missing claim.
+- **independent work**: Other source-pinned local experiments may proceed; no security-review response is needed for measurement.
+
+## R2-01
+
+- **claim**: Theorem batching-object interpretation, QROM/lifetime/MMCS and hiding composition are unresolved; reviews deferred independently.
+- **build choice impact**: Prevents accepting the corresponding complete-path cost, operational, or qualification claim.
+- **current evidence**: 83304 term rows, 72 pinned rows, all four candidate inventories and three calculators executed; numeric commitment-ID repair checked.
+- **evidence**: research/r2/security/outputs/resume-shapes-02/results.json
+- **missing artifact or theorem**: Theorem batching-object interpretation, QROM/lifetime/MMCS and hiding composition are unresolved; reviews deferred independently.
+- **smallest decisive experiment**: Resolve exact batching-object theorem interpretation and losses for the measured C2 q101/b4 configuration.
+- **reviewer**: R2-01 independent reviewer (deferred by user; not execution permission)
+- **reopen condition**: Concrete missing input or supported adapter, or explicit user resumption where deferred; no inferred approval.
+- **dependent tasks**: security qualification, not sandbox measurements
+- **independent work**: Other source-pinned local experiments may proceed; no security-review response is needed for measurement.
+
+## R2-02
+
+- **claim**: Complete diagnostic opcode attribution was interrupted; traces remain partial. No H6 comparator entered: optional branch not required for completed H5 comparison.
+- **build choice impact**: Prevents accepting the corresponding complete-path cost, operational, or qualification claim.
+- **current evidence**: 23322 shared full-role vectors, 51 actual misuse cases, constants comparison, five deployed tiers, 50 benchmark rows and constructor/deposit receipts. Source-matched parity reused after verified source hashes.
+- **evidence**: research/r2/hash/outputs/resume-costs-06/results.json
+- **missing artifact or theorem**: Complete diagnostic opcode attribution was interrupted; traces remain partial. No H6 comparator entered: optional branch not required for completed H5 comparison.
+- **smallest decisive experiment**: Retain full per-op trace of a bounded isolated H0Optimized/H5Straight compression pair on a fresh node; do not trace a billion-gas constructor.
+- **reviewer**: R2-02 independent reviewer (deferred by user; not execution permission)
+- **reopen condition**: Concrete missing input or supported adapter, or explicit user resumption where deferred; no inferred approval.
+- **dependent tasks**: Only consumers of this exact missing claim.
+- **independent work**: Other source-pinned local experiments may proceed; no security-review response is needed for measurement.
+
+## R2-03
+
+- **claim**: Unreachable normalized H0 vertical settings remain unavailable in declared sweep, not fixed controls relabeled secure. Arithmetic tape is not a complete verifier.
+- **build choice impact**: Prevents accepting the corresponding complete-path cost, operational, or qualification claim.
+- **current evidence**: Three H0 geometries proved; invalid-trace proofs, public/config mutations and fresh verification executed; primary 30 fixed/30 varied distribution; all evaluator tapes verified in Solidity diagnostics.
+- **evidence**: research/r2/air/outputs/resume-C1-mutations/results.json
+- **missing artifact or theorem**: Unreachable normalized H0 vertical settings remain unavailable in declared sweep, not fixed controls relabeled secure. Arithmetic tape is not a complete verifier.
+- **smallest decisive experiment**: No further geometry sweep; compare a generated non-interpreted evaluator only if full-verifier work needs it.
+- **reviewer**: R2-03 independent reviewer (deferred by user; not execution permission)
+- **reopen condition**: Concrete missing input or supported adapter, or explicit user resumption where deferred; no inferred approval.
+- **dependent tasks**: Only consumers of this exact missing claim.
+- **independent work**: Other source-pinned local experiments may proceed; no security-review response is needed for measurement.
+
+## R2-04
+
+- **claim**: Complete new-candidate EVM codec/verifier gas remains unknown; taped evaluator cap failures do not prove an optimized verifier impossible.
+- **build choice impact**: Prevents accepting the corresponding complete-path cost, operational, or qualification claim.
+- **current evidence**: Complete H5 horizontal and vertical relations, public-context study, native mutations, matched fixed/varied distributions and seven Solidity evaluator parity experiments executed.
+- **evidence**: research/r2/air/outputs/resume-causal-distributions-01/summary.json
+- **missing artifact or theorem**: Complete new-candidate EVM codec/verifier gas remains unknown; taped evaluator cap failures do not prove an optimized verifier impossible.
+- **smallest decisive experiment**: Measure an exact C2 proof through a real local codec/verifier, not the interpreter tape.
+- **reviewer**: R2-04 independent reviewer (deferred by user; not execution permission)
+- **reopen condition**: Concrete missing input or supported adapter, or explicit user resumption where deferred; no inferred approval.
+- **dependent tasks**: Only consumers of this exact missing claim.
+- **independent work**: Other source-pinned local experiments may proceed; no security-review response is needed for measurement.
+
+## R2-05
+
+- **claim**: All changed-transcript state machine, full codec/verifier integration and dependent lifecycle experiments explicitly deferred by user.
+- **build choice impact**: Prevents accepting the corresponding complete-path cost, operational, or qualification claim.
+- **current evidence**: Retained typed epoch/full-width binding sources and previous compiled q32 state only; no changed-transcript execution resumed.
+- **evidence**: research/r2/transcript/INCOMPLETE.json
+- **missing artifact or theorem**: All changed-transcript state machine, full codec/verifier integration and dependent lifecycle experiments explicitly deferred by user.
+- **smallest decisive experiment**: Wait for explicit user resumption; then run the retained changed-transcript integrated proof.
+- **reviewer**: R2-05 independent reviewer (deferred by user; not execution permission)
+- **reopen condition**: Concrete missing input or supported adapter, or explicit user resumption where deferred; no inferred approval.
+- **dependent tasks**: new transcript-dependent full paths and lifecycle checks
+- **independent work**: Other source-pinned local experiments may proceed; no security-review response is needed for measurement.
+
+## R2-06
+
+- **claim**: Complete EVM gas stays unknown; component models prioritize only within domain. Field continuation not entered: no nonoverlapping complete narrow-verifier arithmetic inventory.
+- **build choice impact**: Prevents accepting the corresponding complete-path cost, operational, or qualification claim.
+- **current evidence**: 76 verified anchors, exact typed codecs, separated native frontiers, measured opening/hash gas with predeclared held-out q48 and rank diagnostics; field gate executed.
+- **evidence**: research/r2/models/outputs/resume-component-gas-02/fits.json
+- **missing artifact or theorem**: Complete EVM gas stays unknown; component models prioritize only within domain. Field continuation not entered: no nonoverlapping complete narrow-verifier arithmetic inventory.
+- **smallest decisive experiment**: Obtain nonoverlapping complete narrow-verifier arithmetic attribution before entering one alternate extension.
+- **reviewer**: R2-06 independent reviewer (deferred by user; not execution permission)
+- **reopen condition**: Concrete missing input or supported adapter, or explicit user resumption where deferred; no inferred approval.
+- **dependent tasks**: Only consumers of this exact missing claim.
+- **independent work**: Other source-pinned local experiments may proceed; no security-review response is needed for measurement.
+
+## R2-07
+
+- **claim**: Complete hiding outer zerocheck/prescribed-point adapter is absent; opening-only proof reveals requested synthetic limbs and is not a private withdrawal. No full hiding EVM claim; licenses unresolved.
+- **build choice impact**: Prevents accepting the corresponding complete-path cost, operational, or qualification claim.
+- **current evidence**: Both exact PCS trait barriers, serialized non-hiding H0 proof after degree repair, two opening-only controls, and 128-bit zero-PoW derivation errors executed. Standalone upstream verifier reached actual 31856-byte code-size barrier.
+- **evidence**: research/r2/backend/outputs/resume-h0-degree-32/results.json
+- **missing artifact or theorem**: Complete hiding outer zerocheck/prescribed-point adapter is absent; opening-only proof reveals requested synthetic limbs and is not a private withdrawal. No full hiding EVM claim; licenses unresolved.
+- **smallest decisive experiment**: Implement the actual outer hiding zerocheck and prescribed-point adapter; an opening-only wrapper is not a repair.
+- **reviewer**: R2-07 independent reviewer (deferred by user; not execution permission)
+- **reopen condition**: Concrete missing input or supported adapter, or explicit user resumption where deferred; no inferred approval.
+- **dependent tasks**: Only consumers of this exact missing claim.
+- **independent work**: Other source-pinned local experiments may proceed; no security-review response is needed for measurement.
+
+## R2-08
+
+- **claim**: No new constructor/payout/checkpoint/100-proof operational campaign; source preparation incomplete. Dependent new full local pipeline remains unknown.
+- **build choice impact**: Prevents accepting the corresponding complete-path cost, operational, or qualification claim.
+- **current evidence**: Retained containment/history evidence; new operational source preparation ended with provider cyber_policy interruption, recorded without gas/security inference.
+- **evidence**: research/r2/operations/RESUME_INCOMPLETE.json
+- **missing artifact or theorem**: No new constructor/payout/checkpoint/100-proof operational campaign; source preparation incomplete. Dependent new full local pipeline remains unknown.
+- **smallest decisive experiment**: Resume incomplete source preparation and execute the first deposit-backed retained-proof operational control.
+- **reviewer**: R2-08 independent reviewer (deferred by user; not execution permission)
+- **reopen condition**: Concrete missing input or supported adapter, or explicit user resumption where deferred; no inferred approval.
+- **dependent tasks**: complete local finalist selection
+- **independent work**: Other source-pinned local experiments may proceed; no security-review response is needed for measurement.
+
+## R2-09
+
+- **claim**: Commodity x86 host/executable unavailable. Flock supported M21 preset absent in bounded search; STIR/Circle hiding and recursion/aggregation exact outer paths absent. Transport is not L2 execution or actual fees.
+- **build choice impact**: Prevents accepting the corresponding complete-path cost, operational, or qualification claim.
+- **current evidence**: Pinned conditional gates and exact five-native-payload transport executed; portable generic ARM build and 64 verified process-cold/warm proofs at requested thread settings 1/4.
+- **evidence**: research/r2/conditional/outputs/resume-portable-summary.json
+- **missing artifact or theorem**: Commodity x86 host/executable unavailable. Flock supported M21 preset absent in bounded search; STIR/Circle hiding and recursion/aggregation exact outer paths absent. Transport is not L2 execution or actual fees.
+- **smallest decisive experiment**: Provide an explicit public/local commodity-x86 host or compatible executable; retain the same corpus and build pin.
+- **reviewer**: R2-09 independent reviewer (deferred by user; not execution permission)
+- **reopen condition**: Concrete missing input or supported adapter, or explicit user resumption where deferred; no inferred approval.
+- **dependent tasks**: Only consumers of this exact missing claim.
+- **independent work**: Other source-pinned local experiments may proceed; no security-review response is needed for measurement.
+
+## R2-10
+
+- **claim**: Review checkpoints remain deferred; no final decision category is asserted without its required evidence. Full engineering specification not warranted by this return.
+- **build choice impact**: Prevents accepting the corresponding complete-path cost, operational, or qualification claim.
+- **current evidence**: Final report, matrices, all original finding identities, complete plan-text disposition ledger, provenance and retained-record validation.
+- **evidence**: research/r2/final/TARGETED_RESEARCH_REPORT.md
+- **missing artifact or theorem**: Review checkpoints remain deferred; no final decision category is asserted without its required evidence. Full engineering specification not warranted by this return.
+- **smallest decisive experiment**: Revisit allowed final decisions after the interrupted operational path and deferred integration/review checkpoints are explicitly reopened or further dispositioned.
+- **reviewer**: R2-10 independent reviewer (deferred by user; not execution permission)
+- **reopen condition**: Concrete missing input or supported adapter, or explicit user resumption where deferred; no inferred approval.
+- **dependent tasks**: Only consumers of this exact missing claim.
+- **independent work**: Other source-pinned local experiments may proceed; no security-review response is needed for measurement.

@@ -1,6 +1,6 @@
 {
   "objective": "Execute the entire R2.0 targeted experimental integration plan, retain real local proof and EVM evidence or specific demonstrated barriers with bounded repairs, track all independent findings, and return the normative research handoff.",
-  "status": "research_in_progress",
+  "status": "research_return_with_dispositions",
   "plan": "pqtc-independent-review/FOLLOW_UP_RESEARCH_PLAN.md",
   "return_template": "pqtc-independent-review/RESEARCH_RETURN_TEMPLATE.md",
   "review_findings": "pqtc-independent-review/FINDINGS.json",
@@ -8,12 +8,20 @@
   "reviewed_commit": "e51a5c5ccc4f50e0beb07cdf04d7f8dd258c7997",
   "authorization": "ISOLATED_LOCAL_RESEARCH_ONLY",
   "security_qualification": "SECURITY_NOT_QUALIFIED",
-  "prohibited": ["public-chain signing or deployment", "real-value custody", "classical cryptographic wrappers", "trusted verifier service", "untrusted witness disclosure", "rewriting historical evidence"],
+  "prohibited": [
+    "public-chain signing or deployment",
+    "real-value custody",
+    "classical cryptographic wrappers",
+    "trusted verifier service",
+    "untrusted witness disclosure",
+    "rewriting historical evidence"
+  ],
   "measurement_permission_independent_of_promotion": true,
   "push_progress_commits": true,
   "pause_reason": null,
   "resume_entrypoint": "research/r2/RESUME.md",
   "checkpoint_status": "research/r2/governance/resume-status.json",
-  "execution_running": true,
-  "final_research_decision": null
+  "execution_running": false,
+  "final_research_decision": null,
+  "final_architecture_decision": null
 }

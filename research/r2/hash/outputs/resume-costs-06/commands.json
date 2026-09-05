@@ -1,0 +1,71 @@
+[
+  {
+    "argv": [
+      "cargo",
+      "build",
+      "--release",
+      "--locked",
+      "--offline",
+      "--manifest-path",
+      "/Users/zodomo/code/PQTornado/research/r2/hash/rust/Cargo.toml"
+    ],
+    "cwd": "/tmp/pqtc-r2-hash-native-etsct8l1",
+    "exit": 0,
+    "elapsed_ns": 8260480166,
+    "stdout": "cargo-build.stdout",
+    "stderr": "cargo-build.stderr"
+  },
+  {
+    "argv": [
+      "forge",
+      "build",
+      "--offline",
+      "--root",
+      "/tmp/pqtc-r2-hash-forge-zhvpflpq"
+    ],
+    "cwd": "/tmp/pqtc-r2-hash-forge-zhvpflpq",
+    "exit": 0,
+    "elapsed_ns": 3832358375,
+    "stdout": "forge-build.stdout",
+    "stderr": "forge-build.stderr"
+  },
+  {
+    "argv": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/zodomo/code/PQTornado/research/r2/hash/compare_constants.py",
+      "--plonky3",
+      "/Users/zodomo/.cargo/git/checkouts/plonky3-7d8a3b21a665a86f/3152b14",
+      "--binary",
+      "/Users/zodomo/code/PQTornado/research/r2/hash/outputs/resume-costs-06/native/constants",
+      "--output",
+      "/Users/zodomo/code/PQTornado/research/r2/hash/outputs/resume-costs-06/constants"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado/research/r2/hash",
+    "exit": 0,
+    "elapsed_ns": 1648026583,
+    "stdout": "constants-comparison.stdout",
+    "stderr": "constants-comparison.stderr"
+  },
+  {
+    "argv": [
+      "/Users/zodomo/code/PQTornado/research/r2/hash/outputs/resume-costs-06/native/pqtc-r2-hash",
+      "30"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado/research/r2/hash",
+    "exit": 0,
+    "elapsed_ns": 7202917,
+    "stdout": "native-R2-H0-v03.stdout",
+    "stderr": "native-R2-H0-v03.stderr"
+  },
+  {
+    "argv": [
+      "/Users/zodomo/code/PQTornado/research/r2/hash/outputs/resume-costs-06/native/pqtc-r2-hash",
+      "30"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado/research/r2/hash",
+    "exit": 0,
+    "elapsed_ns": 4762875,
+    "stdout": "native-R2-H5-complete-v1.stdout",
+    "stderr": "native-R2-H5-complete-v1.stderr"
+  }
+]

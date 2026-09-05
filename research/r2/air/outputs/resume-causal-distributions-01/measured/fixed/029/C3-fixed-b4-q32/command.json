@@ -1,0 +1,59 @@
+{
+  "argv": [
+    "/usr/bin/time",
+    "-l",
+    "/Users/zodomo/code/PQTornado/research/r2/air/target/release/pqtc-r2-air",
+    "--candidate",
+    "C3",
+    "--geometry",
+    "decomposed",
+    "--profile",
+    "fixed",
+    "--queries",
+    "32",
+    "--log-blowup",
+    "4",
+    "--statement",
+    "/Users/zodomo/code/PQTornado/research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+    "--witness",
+    "/Users/zodomo/code/PQTornado/research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+    "--corpus",
+    "research/r2/corpus/semantic-cases.json",
+    "--case-index",
+    "0",
+    "--output",
+    "/Users/zodomo/code/PQTornado/research/r2/air/outputs/resume-causal-distributions-01/measured/fixed/029/C3-fixed-b4-q32"
+  ],
+  "cwd": "/Users/zodomo/code/PQTornado",
+  "environment": {
+    "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+    "HOME": "/Users/zodomo",
+    "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+    "RAYON_NUM_THREADS": "1",
+    "NO_COLOR": "1",
+    "RUST_BACKTRACE": "1"
+  },
+  "exit_status": 0,
+  "finished_utc": "2026-09-05T01:56:43.575766+00:00",
+  "wall_seconds": 1.6519644579966553,
+  "peak_rss_bytes": 289292288,
+  "measurement_class": "MEASURED",
+  "stdout_path": "stdout.log",
+  "stderr_path": "stderr.log",
+  "security": "SECURITY_NOT_QUALIFIED",
+  "input_identities": {
+    "--statement": {
+      "path": "/Users/zodomo/code/PQTornado/research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+      "sha256": "d32d6bd78f570d022303179c3eb80c579b08b9cddad3bffc48de0b65e1a16f27"
+    },
+    "--witness": {
+      "path": "/Users/zodomo/code/PQTornado/research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+      "sha256": "07a31b3f825e4651da4a087f1fb9fdba369e29354e4a2bee62d9d6d30845988e"
+    },
+    "--corpus": {
+      "path": "/Users/zodomo/code/PQTornado/research/r2/corpus/semantic-cases.json",
+      "sha256": "cfa16eac5929f8e477558fd537567e81d915afa06955b78a797c3fa66c23712b"
+    }
+  },
+  "binary_sha256": "0d961dd4a1e9eef6aaedcf3463585b579c1b284f23ac3dbe87ddc5e5bab6fec8"
+}

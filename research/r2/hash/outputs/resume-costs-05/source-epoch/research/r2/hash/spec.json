@@ -1,0 +1,41 @@
+{
+  "config_ids": ["R2-H0-v03", "R2-H5-complete-v1"],
+  "stage": "implemented-pending-execution",
+  "security": "security-not-qualified",
+  "privacy": "synthetic-unfunded-inputs-only; no privacy claim",
+  "promotion": "not-promoted",
+  "field": 2013265921,
+  "h0": "Exact frozen P2BB512-v1 tags/framing/rate4/width16/output16, not the old generic abbreviated role mode",
+  "h5": {
+    "width": 32, "digest_fields": 12, "sbox": 7, "full_rounds": 8, "partial_rounds": 30,
+    "constants": "pinned Plonky3 3152b14a89067c83775a8076cc262ffc48a1fd7c default_babybear_poseidon2_32",
+    "extraction": "output[i]=(P32(input)[i]+input[i]) mod p for i=0..11",
+    "controls": "[domain,2001,payload_count_or_public_byte_length,level_or_chunk_index]",
+    "domains": {"scope":1,"note":2,"nullifier":3,"empty":4,"node":5,"payout":6,"statement":7},
+    "roles": {
+      "note": {"0..11":"scope", "12..19":"secret", "20..27":"trapdoor", "28..31":[2,2001,28,0]},
+      "nullifier": {"0..11":"scope", "12..19":"secret", "20..23":[3,2001,20,0], "24..31":"fixed zero"},
+      "node": {"0..11":"left", "12..23":"right", "24..27":[5,2001,24,"level 0..19"], "28..31":"fixed zero"},
+      "empty": {"0..11":"scope", "12..27":"fixed zero", "28..31":[4,2001,12,0]},
+      "scope_payout_statement": {"0..11":"previous digest, initially zero", "12..27":"16 payload fields per chunk, mandatory trailing field 1 then zero padding", "28..31":"[domain,2001,length,zero-based chunk index]"}
+    },
+    "public_encodings": {
+      "scope": "129 bytes: chain_id u64 BE | pool20 | denomination u256 BE | depth u8 | protocol_version u32 BE | parameter_id64 raw bytes. Pair BE u16 fields, final odd byte shifted left8 with low8 zero. 65 fields, controls length129; 5 permutations.",
+      "payout": "recipient20 | relayer20 | fee u256 BE =72 bytes,36 BE u16 fields; controls length72;3 permutations.",
+      "statement": "scope12 | root12 | nullifier12 | payout12 canonical fields,controls length48;4 permutations. Parameter context is carried by scope.",
+      "injectivity_argument": "Fixed-width typed concatenations have a unique inverse. BE u16 pairing is invertible given fixed byte length and enforced zero low8 in odd final field. Fixed field-array widths admit unique slicing. Domain, version, length and chunk index are explicit; mandatory 1 padding gives a unique message/chunk boundary. This is injectivity of encoding, not a claim that finite digests or chained compression are injective or collision resistant. Cross-role input overlap is not ruled out by this argument and remains in security review."
+    },
+    "tree": "Depth20. zero[0]=empty(scope); zero[l+1]=node(l,zero[l],zero[l]). Node scope is transitive through scope-bound leaves, not a direct scope lane. Child order and level bound.",
+    "proof_system_reuse": "none; this is an application relation only",
+    "canonicality": "All field lanes integers0<=x<p; no modular reduction at decoding. Exactly8 fields per secret/trapdoor. Reject unknown domains, wrong counts, nonzero level except node, level>=20, public fields>65535, odd scope padding!=0.",
+    "semantic_omissions": []
+  },
+  "implementation_tiers": ["H0 generic exact-frame", "H0 frozen optimized exact-frame", "H5 generic reference", "H5 fixed-state packed constants", "H5 fixed-state straight-line constants"],
+  "diagnostic_kernel_selectors": {"8":"actual raw permutation, not an application domain", "9":"actual raw feed-forward compression, not an application domain", "10":"H5-only deliberate wrong-feed-forward fault: P[i]+x[i+1], output12", "11":"H5-only deliberate wrong-truncation fault: P[i]+x[i], output14"},
+  "fault_isolation": "Diagnostic selectors10/11 execute actual faulty extraction in Rust, TypeScript and Solidity, and are never invoked by application role or deposit implementations. No host supplied expected digest is accepted as verification.",
+  "optimized_arithmetic_bounds": "Inputs canonical<p. External matrix sums <=32p times fixed small coefficients. Internal sum<=32p plus (p-1)^2 <2^63. All generated Yul intermediates fit uint256 without wrap; every stored state lane reduced modp before next round.",
+  "deposit_envelope": "Matched standalone deposit-only experiment, not frozen pool bytecode: exact same Solidity source/ABI/storage policy for all five tiers; both digest widths stored in two words. Includes canonicality, nonzero/duplicate/capacity checks, nonreentrancy, scope-correct zeros21/frontier20, commitments, permanent knownRoots, latest root/index and indexed timestamp event. Every tier invokes hash implementation externally.",
+  "deposit_experiment_differences": ["denomination constrained to zero for unfunded research, unlike positive frozen denomination", "withdrawal registry/dependency checks deliberately absent from deposit-only constructor; no withdrawal/custody claim", "dynamic canonical-field calldata rather than frozen two-word calldata; same ABI across matched implementations; calldata accounted separately"],
+  "measurement_classes": ["native-latency", "eth_call-gas-estimate", "local-top-level-receipt", "opcode-trace-overlapping-attribution"],
+  "no_security_gate_for_measurement": true
+}

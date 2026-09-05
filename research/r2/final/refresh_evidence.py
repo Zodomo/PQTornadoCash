@@ -20,7 +20,7 @@ def main():
     active = [ROOT / p for p in state.get('active_output_roots', [])]
     paths = []
     for directory, dirs, files in (ROOT / 'research/r2').walk():
-        dirs[:] = [d for d in dirs if d not in SKIP and not d.startswith('target-') and d != 'resume-build' and directory / d not in active]
+        dirs[:] = [d for d in dirs if d not in SKIP and not d.startswith(('target-', 'resume-gas-work-')) and d != 'resume-build' and directory / d not in active]
         for name in files:
             path = directory / name
             if path in EXCLUDED or name.startswith('.env') or name == '.anchor.lock' or name.endswith('.pyc') or any(path.is_relative_to(p) for p in active):

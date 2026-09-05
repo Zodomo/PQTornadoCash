@@ -1,0 +1,256 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "pairs",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bool",
+          "name": "compress",
+          "type": "bool"
+        }
+      ],
+      "name": "nodes",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "kernelGas",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "left",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "right",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "fields",
+          "type": "bytes"
+        },
+        {
+          "internalType": "uint256",
+          "name": "alpha",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "reduce",
+          "type": "bool"
+        }
+      ],
+      "name": "opening",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "kernelGas",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "checksum",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "NonCanonicalField",
+      "type": "error"
+    }
+  ],
+  "bytecode": {
+    "linkReferences": {},
+    "object": "0x60808060405234601557610336908161001a8239f35b5f80fdfe60806040526004361015610011575f80fd5b5f3560e01c806396e38ecc146101465763f37980331461002f575f80fd5b346101355760603660031901126101355760043567ffffffffffffffff8111610135576100609036906004016102ad565b90602435906044358015158103610135575f92600385161580610139575b1561013557919061008e83610308565b505a925f925b8684106100b6576040866100a9875a906102fb565b9082519182526020820152f35b909192948582013560e01c906100cb82610308565b5083851561011c5763780000019109016378000001811015610110575b94600481018091116100fc57929190610094565b634e487b7160e01b5f52601160045260245ffd5b637800000019016100e8565b5001637800000181106100e857637800000019016100e8565b5f80fd5b50620f424085111561007e565b346101355760403660031901126101355760043567ffffffffffffffff8111610135576101779036906004016102ad565b602435918215158303610135575f915f91607f821615806102a0575b15610135575a6040519095909160a0830167ffffffffffffffff81118482101761028c576040526080808452909392919060208301903682375f945b8486106101f857606088886101e58c5a906102fb565b9160405192835260208301526040820152f35b9091929394956080878301843761020d6102db565b5f8152602081015f815281865f1461027857505050602061022c6102db565b5f81528181015f8152875190601e89015f81536041601f8b015360028301908181208552600181532090528752985b8951189801511895608081018091116100fc5794939291906101cf565b85519052606087015190529760209061025b565b634e487b7160e01b5f52604160045260245ffd5b50621e8480821115610193565b9181601f840112156101355782359167ffffffffffffffff8311610135576020838186019501011161013557565b604051906040820182811067ffffffffffffffff82111761028c57604052565b919082039182116100fc57565b63780000018110156103175790565b63c126041560e01b5f5260045260245ffdfea164736f6c634300081e000a",
+    "sourceMap": "322:1946:0:-:0;;;;;;;;;;;;;;;;;"
+  },
+  "deployedBytecode": {
+    "linkReferences": {},
+    "object": "0x60806040526004361015610011575f80fd5b5f3560e01c806396e38ecc146101465763f37980331461002f575f80fd5b346101355760603660031901126101355760043567ffffffffffffffff8111610135576100609036906004016102ad565b90602435906044358015158103610135575f92600385161580610139575b1561013557919061008e83610308565b505a925f925b8684106100b6576040866100a9875a906102fb565b9082519182526020820152f35b909192948582013560e01c906100cb82610308565b5083851561011c5763780000019109016378000001811015610110575b94600481018091116100fc57929190610094565b634e487b7160e01b5f52601160045260245ffd5b637800000019016100e8565b5001637800000181106100e857637800000019016100e8565b5f80fd5b50620f424085111561007e565b346101355760403660031901126101355760043567ffffffffffffffff8111610135576101779036906004016102ad565b602435918215158303610135575f915f91607f821615806102a0575b15610135575a6040519095909160a0830167ffffffffffffffff81118482101761028c576040526080808452909392919060208301903682375f945b8486106101f857606088886101e58c5a906102fb565b9160405192835260208301526040820152f35b9091929394956080878301843761020d6102db565b5f8152602081015f815281865f1461027857505050602061022c6102db565b5f81528181015f8152875190601e89015f81536041601f8b015360028301908181208552600181532090528752985b8951189801511895608081018091116100fc5794939291906101cf565b85519052606087015190529760209061025b565b634e487b7160e01b5f52604160045260245ffd5b50621e8480821115610193565b9181601f840112156101355782359167ffffffffffffffff8311610135576020838186019501011161013557565b604051906040820182811067ffffffffffffffff82111761028c57604052565b919082039182116100fc57565b63780000018110156103175790565b63c126041560e01b5f5260045260245ffdfea164736f6c634300081e000a",
+    "sourceMap": "322:1946:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;322:1946:0;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;693:22;:52;;;322:1946;;;;756:21;;;;;:::i;:::-;;803:9;827;322:1946;822:358;838:17;;;;;;322:1946;1209:9;1201:17;1209:9;;1201:17;;:::i;:::-;322:1946;;;;;;;;;;;857:6;906:83;;;;;;;;322:1946;906:83;1002:21;;;;:::i;:::-;-1:-1:-1;1048:121:0;;;;;133:13:1;1057:50:0;892:15:1;322:1946:0;133:13:1;510:6;;;506:18;;1048:121:0;857:6;322:1946;;;;;;;;827:9;;;;;322:1946;;;;;;;;;;;;506:18:1;-1:-1:-1;;322:1946:0;506:18:1;;1048:121:0;1140:29;322:1946;133:13:1;510:6;;1048:121:0;506:18:1;-1:-1:-1;;322:1946:0;1048:121;;322:1946;;;;693:52;719:26;736:9;719:26;;;693:52;;322:1946;;;;;;-1:-1:-1;;322:1946:0;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;1531:13;322:1946;;;;;1568:23;:52;;;322:1946;;;;1647:9;322:1946;;;;;;;;;;;;;;;;;;;;1583:3;322:1946;;;;;;;;;;;;;;;;1713:508;1729:16;;;;;;322:1946;2250:9;;2242:17;2250:9;;2242:17;;:::i;:::-;322:1946;;;;;;;;;;;;;;;1747:8;1771:86;;;;;;1583:3;1771:86;;;;;322:1946;;:::i;:::-;;;;;;;;;;1870:23;1907:236;;;;;322:1946;;;;;;:::i;:::-;;;;;;;;;;257:410:3;;;;;;322:1946:0;257:410:3;;1949:4:0;322:1946;257:410:3;;;;;;;;;;;;;;;;;;;;1907:236:0;;322:1946;;2156:19;2198:12;;322:1946;2189:21;1747:8;1583:3;322:1946;;;;;;;1718:9;;;;;;;1907:236;1982:161;;;;;;;;;;;322:1946;;1907:236;;322:1946;;;;;;;;;;;;1568:52;1595:25;1611:9;1595:25;;;1568:52;;322:1946;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;:::o;226:148:1:-;133:13;302:10;;;298:47;;226:148;:::o;298:47::-;321:24;;;;;;322:1946:0;133:13:1;321:24;"
+  },
+  "id": 0,
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "NonCanonicalField",
+          "type": "error"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes",
+              "name": "pairs",
+              "type": "bytes"
+            },
+            {
+              "internalType": "bool",
+              "name": "compress",
+              "type": "bool"
+            }
+          ],
+          "name": "nodes",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "kernelGas",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "left",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "right",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes",
+              "name": "fields",
+              "type": "bytes"
+            },
+            {
+              "internalType": "uint256",
+              "name": "alpha",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "reduce",
+              "type": "bool"
+            }
+          ],
+          "name": "opening",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "kernelGas",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "checksum",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {
+          "nodes(bytes,bool)": {
+            "notice": "Independent 128-byte node compressions, NOT a connected Merkle reconstruction. Payloads are pairs of real proof frontier digests; count comes from exact frontier work."
+          },
+          "opening(bytes,uint256,bool)": {
+            "notice": "Horner reduction of the actual opened base elements at a declared benchmark alpha. The scan control measures packed-u32 parsing plus a checksum, not zero-cost parsing."
+          }
+        },
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "src/GasComponents.sol": "GasComponents"
+      },
+      "evmVersion": "cancun",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "none"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "src/GasComponents.sol": {
+        "keccak256": "0xaf914dd90eca9f29d9d652921ac60e0b6f2a75d06f2fde5587b56d67b7b91053",
+        "license": "MIT OR Apache-2.0",
+        "urls": [
+          "bzz-raw://a5f0f1ed00f751867150879556534cc6649c2b37d4c5ae7caa34a7040416c4d5",
+          "dweb:/ipfs/QmXUrqiYiTyGr8CCKMwguBdev9sK3V5sx5cgtVJxxLE276"
+        ]
+      },
+      "src/libraries/BabyBear.sol": {
+        "keccak256": "0xd16ff462080a73f53927e6ccdb6430d2b14062ba7bc3c730419174697a0ebe2d",
+        "license": "MIT OR Apache-2.0",
+        "urls": [
+          "bzz-raw://a37b894a8744691f2aabfb10f63f7ef5faf76e77cfa2afe7dc9f3cdd28a4a66b",
+          "dweb:/ipfs/QmU23xNQJmfjNYdokiY61Ts9zgTs35UQCwKaehtFQeF4Ss"
+        ]
+      },
+      "src/libraries/Digest512.sol": {
+        "keccak256": "0xb5337fc1c2a3ee30b072d6b0febb06feb619b088a066b48fea0936c93836dbad",
+        "license": "MIT OR Apache-2.0",
+        "urls": [
+          "bzz-raw://f1c3ad3e2ffeed45aae0a649300fd0630549082fb7ec2c6b3a3ea9a8855dffd6",
+          "dweb:/ipfs/QmWBzaJLsCeAxvhwZW1qEQiVrMs1xbzZYHQAth4S68sh9X"
+        ]
+      },
+      "src/libraries/KeccakPair512.sol": {
+        "keccak256": "0x3747e41957d2974cdb55eba0f1440dad336ecf8dfb8bf574be1eed971a245b23",
+        "license": "MIT OR Apache-2.0",
+        "urls": [
+          "bzz-raw://ec03cbefd34c314a0de5dc55a65dd061f1ea85a4070868d6e99abd09158ed0c3",
+          "dweb:/ipfs/QmPSWyrCq44U4VdyhGA8VijYspheYwNFVwZr4pEyP4W4TS"
+        ]
+      }
+    },
+    "version": 1
+  },
+  "methodIdentifiers": {
+    "nodes(bytes,bool)": "96e38ecc",
+    "opening(bytes,uint256,bool)": "f3798033"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.30+commit.73712a01\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"NonCanonicalField\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"pairs\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"compress\",\"type\":\"bool\"}],\"name\":\"nodes\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"kernelGas\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"left\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"right\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"fields\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"alpha\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"reduce\",\"type\":\"bool\"}],\"name\":\"opening\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"kernelGas\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"checksum\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"nodes(bytes,bool)\":{\"notice\":\"Independent 128-byte node compressions, NOT a connected Merkle reconstruction. Payloads are pairs of real proof frontier digests; count comes from exact frontier work.\"},\"opening(bytes,uint256,bool)\":{\"notice\":\"Horner reduction of the actual opened base elements at a declared benchmark alpha. The scan control measures packed-u32 parsing plus a checksum, not zero-cost parsing.\"}},\"notice\":\"Research component workloads, NOT a PQTCC10R1 verifier or MMCS acceptance check.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/GasComponents.sol\":\"GasComponents\"},\"evmVersion\":\"cancun\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"none\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"src/GasComponents.sol\":{\"keccak256\":\"0xaf914dd90eca9f29d9d652921ac60e0b6f2a75d06f2fde5587b56d67b7b91053\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://a5f0f1ed00f751867150879556534cc6649c2b37d4c5ae7caa34a7040416c4d5\",\"dweb:/ipfs/QmXUrqiYiTyGr8CCKMwguBdev9sK3V5sx5cgtVJxxLE276\"]},\"src/libraries/BabyBear.sol\":{\"keccak256\":\"0xd16ff462080a73f53927e6ccdb6430d2b14062ba7bc3c730419174697a0ebe2d\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://a37b894a8744691f2aabfb10f63f7ef5faf76e77cfa2afe7dc9f3cdd28a4a66b\",\"dweb:/ipfs/QmU23xNQJmfjNYdokiY61Ts9zgTs35UQCwKaehtFQeF4Ss\"]},\"src/libraries/Digest512.sol\":{\"keccak256\":\"0xb5337fc1c2a3ee30b072d6b0febb06feb619b088a066b48fea0936c93836dbad\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://f1c3ad3e2ffeed45aae0a649300fd0630549082fb7ec2c6b3a3ea9a8855dffd6\",\"dweb:/ipfs/QmWBzaJLsCeAxvhwZW1qEQiVrMs1xbzZYHQAth4S68sh9X\"]},\"src/libraries/KeccakPair512.sol\":{\"keccak256\":\"0x3747e41957d2974cdb55eba0f1440dad336ecf8dfb8bf574be1eed971a245b23\",\"license\":\"MIT OR Apache-2.0\",\"urls\":[\"bzz-raw://ec03cbefd34c314a0de5dc55a65dd061f1ea85a4070868d6e99abd09158ed0c3\",\"dweb:/ipfs/QmPSWyrCq44U4VdyhGA8VijYspheYwNFVwZr4pEyP4W4TS\"]}},\"version\":1}"
+}

@@ -1,0 +1,700 @@
+{
+  "packages": [
+    "R2-03",
+    "R2-04"
+  ],
+  "checkpoint": "bc71758",
+  "status": "SOURCE_PREPARED_EXECUTION_PENDING_MAIN",
+  "validation": "No builds, tests, validation, formatters, lint, benchmarks or experiments executed in this concurrent batch. Main must build and exercise these commands serially.",
+  "changes": {
+    "research/r2/air/rust/src/runner.rs": [
+      "Require explicit --statement, --witness, --output; no legacy defaults",
+      "Validate supplied H5 case equals explicit frozen witness/corpus mapping",
+      "Reject nonempty output evidence except wrapper stdout/stderr",
+      "Separate --proof-input from fresh --output for verify",
+      "Retain negative-proofs.json; require three actual invalid-trace serialized proof rejections, not prover panics"
+    ],
+    "research/r2/air/run.py": [
+      "Require explicit input paths and fresh resume-* output; record binary/input SHA256, RSS and timing"
+    ],
+    "research/r2/air/cost.py": [
+      "Require separate fresh --output; never write retained --input",
+      "Record config/tape identities, ABI/calldata and KECCAK opcode gas scope",
+      "Execute symbolic Rust arithmetic parity and changed-tape/noncanonical-input negative controls; not proof verification"
+    ],
+    "research/r2/air/resume-distributions.py": [
+      "Serial fresh processes with excluded machine/cache warmup",
+      "Rotate candidates; 30 unique varied witnesses spanning 0..255 and 30 fixed swc-v1-000 proofs per config",
+      "Retain source/input/config/proof identities; reject duplicate proofs, config/H5 changes, missing metrics",
+      "Persist samples.jsonl and median/p95_nearest_rank/min/max prove/verify/bytes/RSS"
+    ],
+    "research/r2/air/resume-distribution-manifest.json": [
+      "Runnable C1/C2/C3 fixed b4 q32 controls; Main selects final primary geometry and normalized profiles"
+    ],
+    "research/r2/air/experiment.json": [
+      "Frozen explicit input and fresh-output command cutover; full command list in handoff"
+    ]
+  },
+  "prerequisites": [
+    {
+      "id": "build-after-batch",
+      "argv": [
+        "cargo",
+        "build",
+        "--release",
+        "--manifest-path",
+        "research/r2/air/rust/Cargo.toml"
+      ],
+      "cwd": "repository root",
+      "environment": {
+        "CARGO_TARGET_DIR": "research/r2/air/target"
+      },
+      "reason": "runner.rs is transcript configuration source-bound; rebuild creates new source epoch. Ordinary frozen Transcript512 only; R2-05 untouched."
+    },
+    {
+      "id": "matching-grid-input",
+      "models_input": "research/r2/corpus/h0/corpus/swc-v1-000",
+      "case_index": 0,
+      "warning": "h0/fixed is historical report-limb fixture, not semantic case0. Historical first C1 used legacy mapping. Preserve outputs; rerun matched C0/C1 case0 for causal comparison."
+    },
+    {
+      "id": "C2-before-case-reuse",
+      "reason": "Run resume-C2-horizontal before C3/public-context/mutation commands loading its h5-case.json. Supplied case must equal deterministic frozen witness/corpus mapping."
+    },
+    {
+      "id": "local-arithmetic-chain",
+      "launch": "Main hub start with sanitized public-dev environment only",
+      "argv": [
+        "anvil",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "18545",
+        "--chain-id",
+        "31337",
+        "--hardfork",
+        "osaka",
+        "--gas-limit",
+        "16777216"
+      ],
+      "ready": "port 18545 plus normal Anvil listening banner",
+      "isolation": "No .env or public network; cost.py compiles only copied foundry.toml and AirCost.sol under /tmp."
+    },
+    {
+      "id": "diagnostic-after-cap-failure",
+      "reason": "Optional separate high-gas Prague local control only after measured cap failure. Add --diagnostic, separate loopback RPC and fresh resume-cost-*-diagnostic output; never reinterpret as capped or full-verifier feasibility."
+    }
+  ],
+  "commands": [
+    {
+      "id": "C1-decomposed",
+      "criteria": [
+        "R2-03 bounded geometry and reference parity",
+        "R2-04 complete native proof and arithmetic tape export"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/run.py",
+        "--",
+        "--statement",
+        "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+        "--witness",
+        "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+        "--corpus",
+        "research/r2/corpus/semantic-cases.json",
+        "--case-index",
+        "0",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--candidate",
+        "C1",
+        "--geometry",
+        "decomposed",
+        "--output",
+        "research/r2/air/outputs/resume-C1-decomposed"
+      ],
+      "shell": "python3 research/r2/air/run.py -- --statement research/r2/corpus/h0/corpus/swc-v1-000/statement.json --witness research/r2/corpus/h0/corpus/swc-v1-000/witness.json --corpus research/r2/corpus/semantic-cases.json --case-index 0 --profile fixed --queries 32 --log-blowup 4 --candidate C1 --geometry decomposed --output research/r2/air/outputs/resume-C1-decomposed"
+    },
+    {
+      "id": "C1-whole-round",
+      "criteria": [
+        "R2-03 bounded geometry and reference parity",
+        "R2-04 complete native proof and arithmetic tape export"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/run.py",
+        "--",
+        "--statement",
+        "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+        "--witness",
+        "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+        "--corpus",
+        "research/r2/corpus/semantic-cases.json",
+        "--case-index",
+        "0",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--candidate",
+        "C1",
+        "--geometry",
+        "whole-round",
+        "--output",
+        "research/r2/air/outputs/resume-C1-whole-round"
+      ],
+      "shell": "python3 research/r2/air/run.py -- --statement research/r2/corpus/h0/corpus/swc-v1-000/statement.json --witness research/r2/corpus/h0/corpus/swc-v1-000/witness.json --corpus research/r2/corpus/semantic-cases.json --case-index 0 --profile fixed --queries 32 --log-blowup 4 --candidate C1 --geometry whole-round --output research/r2/air/outputs/resume-C1-whole-round"
+    },
+    {
+      "id": "C1-lanes4",
+      "criteria": [
+        "R2-03 bounded geometry and reference parity",
+        "R2-04 complete native proof and arithmetic tape export"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/run.py",
+        "--",
+        "--statement",
+        "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+        "--witness",
+        "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+        "--corpus",
+        "research/r2/corpus/semantic-cases.json",
+        "--case-index",
+        "0",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--candidate",
+        "C1",
+        "--geometry",
+        "lanes4",
+        "--output",
+        "research/r2/air/outputs/resume-C1-lanes4"
+      ],
+      "shell": "python3 research/r2/air/run.py -- --statement research/r2/corpus/h0/corpus/swc-v1-000/statement.json --witness research/r2/corpus/h0/corpus/swc-v1-000/witness.json --corpus research/r2/corpus/semantic-cases.json --case-index 0 --profile fixed --queries 32 --log-blowup 4 --candidate C1 --geometry lanes4 --output research/r2/air/outputs/resume-C1-lanes4"
+    },
+    {
+      "id": "C2-horizontal",
+      "criteria": [
+        "R2-03 bounded geometry and reference parity",
+        "R2-04 complete native proof and arithmetic tape export"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/run.py",
+        "--",
+        "--statement",
+        "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+        "--witness",
+        "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+        "--corpus",
+        "research/r2/corpus/semantic-cases.json",
+        "--case-index",
+        "0",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--candidate",
+        "C2",
+        "--output",
+        "research/r2/air/outputs/resume-C2-horizontal"
+      ],
+      "shell": "python3 research/r2/air/run.py -- --statement research/r2/corpus/h0/corpus/swc-v1-000/statement.json --witness research/r2/corpus/h0/corpus/swc-v1-000/witness.json --corpus research/r2/corpus/semantic-cases.json --case-index 0 --profile fixed --queries 32 --log-blowup 4 --candidate C2 --output research/r2/air/outputs/resume-C2-horizontal"
+    },
+    {
+      "id": "C3-decomposed",
+      "criteria": [
+        "R2-03 bounded geometry and reference parity",
+        "R2-04 complete native proof and arithmetic tape export"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/run.py",
+        "--",
+        "--statement",
+        "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+        "--witness",
+        "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+        "--corpus",
+        "research/r2/corpus/semantic-cases.json",
+        "--case-index",
+        "0",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--candidate",
+        "C3",
+        "--geometry",
+        "decomposed",
+        "--h5-case",
+        "research/r2/air/outputs/resume-C2-horizontal/h5-case.json",
+        "--output",
+        "research/r2/air/outputs/resume-C3-decomposed"
+      ],
+      "shell": "python3 research/r2/air/run.py -- --statement research/r2/corpus/h0/corpus/swc-v1-000/statement.json --witness research/r2/corpus/h0/corpus/swc-v1-000/witness.json --corpus research/r2/corpus/semantic-cases.json --case-index 0 --profile fixed --queries 32 --log-blowup 4 --candidate C3 --geometry decomposed --h5-case research/r2/air/outputs/resume-C2-horizontal/h5-case.json --output research/r2/air/outputs/resume-C3-decomposed"
+    },
+    {
+      "id": "C3-whole-round",
+      "criteria": [
+        "R2-03 bounded geometry and reference parity",
+        "R2-04 complete native proof and arithmetic tape export"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/run.py",
+        "--",
+        "--statement",
+        "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+        "--witness",
+        "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+        "--corpus",
+        "research/r2/corpus/semantic-cases.json",
+        "--case-index",
+        "0",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--candidate",
+        "C3",
+        "--geometry",
+        "whole-round",
+        "--h5-case",
+        "research/r2/air/outputs/resume-C2-horizontal/h5-case.json",
+        "--output",
+        "research/r2/air/outputs/resume-C3-whole-round"
+      ],
+      "shell": "python3 research/r2/air/run.py -- --statement research/r2/corpus/h0/corpus/swc-v1-000/statement.json --witness research/r2/corpus/h0/corpus/swc-v1-000/witness.json --corpus research/r2/corpus/semantic-cases.json --case-index 0 --profile fixed --queries 32 --log-blowup 4 --candidate C3 --geometry whole-round --h5-case research/r2/air/outputs/resume-C2-horizontal/h5-case.json --output research/r2/air/outputs/resume-C3-whole-round"
+    },
+    {
+      "id": "C3-lanes4",
+      "criteria": [
+        "R2-03 bounded geometry and reference parity",
+        "R2-04 complete native proof and arithmetic tape export"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/run.py",
+        "--",
+        "--statement",
+        "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+        "--witness",
+        "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+        "--corpus",
+        "research/r2/corpus/semantic-cases.json",
+        "--case-index",
+        "0",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--candidate",
+        "C3",
+        "--geometry",
+        "lanes4",
+        "--h5-case",
+        "research/r2/air/outputs/resume-C2-horizontal/h5-case.json",
+        "--output",
+        "research/r2/air/outputs/resume-C3-lanes4"
+      ],
+      "shell": "python3 research/r2/air/run.py -- --statement research/r2/corpus/h0/corpus/swc-v1-000/statement.json --witness research/r2/corpus/h0/corpus/swc-v1-000/witness.json --corpus research/r2/corpus/semantic-cases.json --case-index 0 --profile fixed --queries 32 --log-blowup 4 --candidate C3 --geometry lanes4 --h5-case research/r2/air/outputs/resume-C2-horizontal/h5-case.json --output research/r2/air/outputs/resume-C3-lanes4"
+    },
+    {
+      "id": "C1-mutations",
+      "criteria": [
+        "R2-03 all direct boundary-column mutations",
+        "three serialized invalid-trace native rejections",
+        "every public field and configuration substitution rejection"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/run.py",
+        "--",
+        "--statement",
+        "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+        "--witness",
+        "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+        "--corpus",
+        "research/r2/corpus/semantic-cases.json",
+        "--case-index",
+        "0",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--candidate",
+        "C1",
+        "--geometry",
+        "decomposed",
+        "--action",
+        "mutations",
+        "--mutation-proofs",
+        "--output",
+        "research/r2/air/outputs/resume-C1-mutations"
+      ],
+      "shell": "python3 research/r2/air/run.py -- --statement research/r2/corpus/h0/corpus/swc-v1-000/statement.json --witness research/r2/corpus/h0/corpus/swc-v1-000/witness.json --corpus research/r2/corpus/semantic-cases.json --case-index 0 --profile fixed --queries 32 --log-blowup 4 --candidate C1 --geometry decomposed --action mutations --mutation-proofs --output research/r2/air/outputs/resume-C1-mutations"
+    },
+    {
+      "id": "C2-mutations",
+      "criteria": [
+        "R2-03 all direct boundary-column mutations",
+        "three serialized invalid-trace native rejections",
+        "every public field and configuration substitution rejection"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/run.py",
+        "--",
+        "--statement",
+        "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+        "--witness",
+        "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+        "--corpus",
+        "research/r2/corpus/semantic-cases.json",
+        "--case-index",
+        "0",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--candidate",
+        "C2",
+        "--geometry",
+        "decomposed",
+        "--action",
+        "mutations",
+        "--mutation-proofs",
+        "--output",
+        "research/r2/air/outputs/resume-C2-mutations",
+        "--h5-case",
+        "research/r2/air/outputs/resume-C2-horizontal/h5-case.json"
+      ],
+      "shell": "python3 research/r2/air/run.py -- --statement research/r2/corpus/h0/corpus/swc-v1-000/statement.json --witness research/r2/corpus/h0/corpus/swc-v1-000/witness.json --corpus research/r2/corpus/semantic-cases.json --case-index 0 --profile fixed --queries 32 --log-blowup 4 --candidate C2 --geometry decomposed --action mutations --mutation-proofs --output research/r2/air/outputs/resume-C2-mutations --h5-case research/r2/air/outputs/resume-C2-horizontal/h5-case.json"
+    },
+    {
+      "id": "C3-mutations",
+      "criteria": [
+        "R2-03 all direct boundary-column mutations",
+        "three serialized invalid-trace native rejections",
+        "every public field and configuration substitution rejection"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/run.py",
+        "--",
+        "--statement",
+        "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+        "--witness",
+        "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+        "--corpus",
+        "research/r2/corpus/semantic-cases.json",
+        "--case-index",
+        "0",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--candidate",
+        "C3",
+        "--geometry",
+        "decomposed",
+        "--action",
+        "mutations",
+        "--mutation-proofs",
+        "--output",
+        "research/r2/air/outputs/resume-C3-mutations",
+        "--h5-case",
+        "research/r2/air/outputs/resume-C2-horizontal/h5-case.json"
+      ],
+      "shell": "python3 research/r2/air/run.py -- --statement research/r2/corpus/h0/corpus/swc-v1-000/statement.json --witness research/r2/corpus/h0/corpus/swc-v1-000/witness.json --corpus research/r2/corpus/semantic-cases.json --case-index 0 --profile fixed --queries 32 --log-blowup 4 --candidate C3 --geometry decomposed --action mutations --mutation-proofs --output research/r2/air/outputs/resume-C3-mutations --h5-case research/r2/air/outputs/resume-C2-horizontal/h5-case.json"
+    },
+    {
+      "id": "public-context",
+      "criteria": [
+        "R2-04 payout-only H0/H5/direct-u16/Keccak256 comparison, not integrated alternative proof"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/run.py",
+        "--",
+        "--statement",
+        "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+        "--witness",
+        "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+        "--corpus",
+        "research/r2/corpus/semantic-cases.json",
+        "--case-index",
+        "0",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--candidate",
+        "C2",
+        "--action",
+        "public-context",
+        "--h5-case",
+        "research/r2/air/outputs/resume-C2-horizontal/h5-case.json",
+        "--output",
+        "research/r2/air/outputs/resume-public-context"
+      ],
+      "shell": "python3 research/r2/air/run.py -- --statement research/r2/corpus/h0/corpus/swc-v1-000/statement.json --witness research/r2/corpus/h0/corpus/swc-v1-000/witness.json --corpus research/r2/corpus/semantic-cases.json --case-index 0 --profile fixed --queries 32 --log-blowup 4 --candidate C2 --action public-context --h5-case research/r2/air/outputs/resume-C2-horizontal/h5-case.json --output research/r2/air/outputs/resume-public-context"
+    },
+    {
+      "id": "fresh-verification",
+      "criteria": [
+        "fresh verification evidence without retained proof rewrite"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/run.py",
+        "--",
+        "--statement",
+        "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+        "--witness",
+        "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+        "--corpus",
+        "research/r2/corpus/semantic-cases.json",
+        "--case-index",
+        "0",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--candidate",
+        "C1",
+        "--action",
+        "verify",
+        "--proof-input",
+        "research/r2/air/outputs/resume-C1-decomposed",
+        "--output",
+        "research/r2/air/outputs/resume-C1-verification"
+      ],
+      "shell": "python3 research/r2/air/run.py -- --statement research/r2/corpus/h0/corpus/swc-v1-000/statement.json --witness research/r2/corpus/h0/corpus/swc-v1-000/witness.json --corpus research/r2/corpus/semantic-cases.json --case-index 0 --profile fixed --queries 32 --log-blowup 4 --candidate C1 --action verify --proof-input research/r2/air/outputs/resume-C1-decomposed --output research/r2/air/outputs/resume-C1-verification"
+    },
+    {
+      "id": "C1-decomposed-arithmetic",
+      "criteria": [
+        "R2-04 real exported AIR extension arithmetic parity/gas",
+        "changed tape and noncanonical input rejection; not STARK verification"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C1-decomposed",
+        "--output",
+        "research/r2/air/outputs/resume-cost-C1-decomposed",
+        "--rpc-url",
+        "http://127.0.0.1:18545"
+      ],
+      "shell": "python3 research/r2/air/cost.py --input research/r2/air/outputs/resume-C1-decomposed --output research/r2/air/outputs/resume-cost-C1-decomposed --rpc-url http://127.0.0.1:18545"
+    },
+    {
+      "id": "C1-whole-round-arithmetic",
+      "criteria": [
+        "R2-04 real exported AIR extension arithmetic parity/gas",
+        "changed tape and noncanonical input rejection; not STARK verification"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C1-whole-round",
+        "--output",
+        "research/r2/air/outputs/resume-cost-C1-whole-round",
+        "--rpc-url",
+        "http://127.0.0.1:18545"
+      ],
+      "shell": "python3 research/r2/air/cost.py --input research/r2/air/outputs/resume-C1-whole-round --output research/r2/air/outputs/resume-cost-C1-whole-round --rpc-url http://127.0.0.1:18545"
+    },
+    {
+      "id": "C1-lanes4-arithmetic",
+      "criteria": [
+        "R2-04 real exported AIR extension arithmetic parity/gas",
+        "changed tape and noncanonical input rejection; not STARK verification"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C1-lanes4",
+        "--output",
+        "research/r2/air/outputs/resume-cost-C1-lanes4",
+        "--rpc-url",
+        "http://127.0.0.1:18545"
+      ],
+      "shell": "python3 research/r2/air/cost.py --input research/r2/air/outputs/resume-C1-lanes4 --output research/r2/air/outputs/resume-cost-C1-lanes4 --rpc-url http://127.0.0.1:18545"
+    },
+    {
+      "id": "C2-horizontal-arithmetic",
+      "criteria": [
+        "R2-04 real exported AIR extension arithmetic parity/gas",
+        "changed tape and noncanonical input rejection; not STARK verification"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C2-horizontal",
+        "--output",
+        "research/r2/air/outputs/resume-cost-C2-horizontal",
+        "--rpc-url",
+        "http://127.0.0.1:18545"
+      ],
+      "shell": "python3 research/r2/air/cost.py --input research/r2/air/outputs/resume-C2-horizontal --output research/r2/air/outputs/resume-cost-C2-horizontal --rpc-url http://127.0.0.1:18545"
+    },
+    {
+      "id": "C3-decomposed-arithmetic",
+      "criteria": [
+        "R2-04 real exported AIR extension arithmetic parity/gas",
+        "changed tape and noncanonical input rejection; not STARK verification"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C3-decomposed",
+        "--output",
+        "research/r2/air/outputs/resume-cost-C3-decomposed",
+        "--rpc-url",
+        "http://127.0.0.1:18545"
+      ],
+      "shell": "python3 research/r2/air/cost.py --input research/r2/air/outputs/resume-C3-decomposed --output research/r2/air/outputs/resume-cost-C3-decomposed --rpc-url http://127.0.0.1:18545"
+    },
+    {
+      "id": "C3-whole-round-arithmetic",
+      "criteria": [
+        "R2-04 real exported AIR extension arithmetic parity/gas",
+        "changed tape and noncanonical input rejection; not STARK verification"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C3-whole-round",
+        "--output",
+        "research/r2/air/outputs/resume-cost-C3-whole-round",
+        "--rpc-url",
+        "http://127.0.0.1:18545"
+      ],
+      "shell": "python3 research/r2/air/cost.py --input research/r2/air/outputs/resume-C3-whole-round --output research/r2/air/outputs/resume-cost-C3-whole-round --rpc-url http://127.0.0.1:18545"
+    },
+    {
+      "id": "C3-lanes4-arithmetic",
+      "criteria": [
+        "R2-04 real exported AIR extension arithmetic parity/gas",
+        "changed tape and noncanonical input rejection; not STARK verification"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C3-lanes4",
+        "--output",
+        "research/r2/air/outputs/resume-cost-C3-lanes4",
+        "--rpc-url",
+        "http://127.0.0.1:18545"
+      ],
+      "shell": "python3 research/r2/air/cost.py --input research/r2/air/outputs/resume-C3-lanes4 --output research/r2/air/outputs/resume-cost-C3-lanes4 --rpc-url http://127.0.0.1:18545"
+    },
+    {
+      "id": "independent-distributions",
+      "criteria": [
+        ">=30 independent fixed and >=30 distinct varied witness proofs per selected configuration",
+        "two excluded warmup processes per mode/config",
+        "alternating candidates, stable source/config IDs, distinct proof IDs, median and p95 timing/bytes/RSS"
+      ],
+      "argv": [
+        "python3",
+        "research/r2/air/resume-distributions.py",
+        "--manifest",
+        "research/r2/air/resume-distribution-manifest.json",
+        "--samples",
+        "30",
+        "--warmup",
+        "2",
+        "--output",
+        "research/r2/air/outputs/resume-distributions-fixed-01"
+      ],
+      "shell": "python3 research/r2/air/resume-distributions.py --manifest research/r2/air/resume-distribution-manifest.json --samples 30 --warmup 2 --output research/r2/air/outputs/resume-distributions-fixed-01"
+    }
+  ],
+  "distribution_contract": {
+    "selection_owner": "Main chooses primary geometry and normalized/security parameters; manifest fixed controls do not promote anything.",
+    "warmup": "Two discarded independent processes per config/mode warm machine/filesystem caches, not reused in-process prover state. Fresh OS entropy per measured proof.",
+    "coverage": "Default three configs: 180 measured proofs plus 12 excluded distinct warmups. C0 can join same alternating schedule.",
+    "C0_command_template": "Use {input} and {output}, or {statement}/{witness}/{case_index}/{output}; C0 need not accept fake case-index flag.",
+    "artifact_contract": "Each command creates fresh output: result_file(default results.json) has native_verified=true, prove_ms, verify_ms, raw_proof_bytes, peak_rss_bytes; proof_file(default proof.postcard); configuration_file(default configuration.json) byte-stable within config. All filenames overrideable. source_files lists source/binary/lock paths.",
+    "C0_owner": "Main owns same-codec C0 exporter and result adapter; no C0 or models edits by worker.",
+    "normalized_execution": "Main writes fresh resume-* manifest with selected geometry/normalized values/security_model ID, then executes with fresh output. Fixed controls must not be relabeled normalized."
+  },
+  "remaining_criteria": [
+    {
+      "criterion": "R2-03 geometry",
+      "disposition": "Execute three C1 geometries; C2 horizontal and three bounded C3 geometries supplied. Compare actual shape, ledger, proof/timing, tape and public periodic evaluation costs; Main selects primary."
+    },
+    {
+      "criterion": "R2-03 mutation proofs",
+      "disposition": "Execute C1/C2/C3: all direct mutations, three serialized invalid-trace native rejections, every public field and config substitution. Prover panic remains coverage failure."
+    },
+    {
+      "criterion": "R2-03/R2-04 distributions",
+      "disposition": "Execute >=30 warmed fixed and >=30 distinct varied independent proofs per selected primary fixed/normalized config. Historical single observations cannot be duplicated."
+    },
+    {
+      "criterion": "R2-04 public context",
+      "disposition": "Four payout-only alternatives; H5 retains full 173 public fields and 13 additional public-role permutations. Direct-u16/Keccak are not integrated alternative proof forks."
+    },
+    {
+      "criterion": "R2-04 EVM arithmetic",
+      "disposition": "Execute exported tapes with symbolic/native parity, calldata/gas accounting and negative controls. Cap failure is measured arithmetic cost evidence, not complete verifier conclusion."
+    },
+    {
+      "criterion": "R2-04 C0 codec and models",
+      "disposition": "Main-owned same-codec C0 exporter and normalized shape/model integration remain necessary."
+    },
+    {
+      "criterion": "R2-05 changed transcript/local EVM",
+      "disposition": "EXPLICITLY_DEFERRED; not executed or modified."
+    },
+    {
+      "criterion": "security/production",
+      "disposition": "NOT_CLAIMED; deferred reviews are not permission gates."
+    }
+  ],
+  "security": "SECURITY_NOT_QUALIFIED",
+  "promotion": "NOT_AUTHORIZED"
+}

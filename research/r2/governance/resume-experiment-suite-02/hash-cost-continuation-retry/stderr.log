@@ -1,0 +1,57 @@
+Traceback (most recent call last):
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 377, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 369, in main
+    result['capped_deposit']=deposit_measurements(primary,primary_addresses,native,a.trace)
+                             ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 234, in deposit_measurements
+    second=rpc.transact(rpc.sig('deposit(uint256[])')+word(32)+array(second_leaf),pool);record['second_deposit_receipt']=second
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 67, in transact
+    receipt=self.call('eth_getTransactionReceipt',[txhash])
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 46, in call
+    with urllib.request.urlopen(urllib.request.Request(self.url,data,{'Content-Type':'application/json'}),timeout=600)as response:result=json.load(response)
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 187, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 487, in open
+    response = self._open(req, data)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 504, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 464, in _call_chain
+    result = func(*args)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 1350, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 1325, in do_open
+    r = h.getresponse()
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py", line 305, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+                             " response")
+http.client.RemoteDisconnected: Remote end closed connection without response
+       37.36 real        27.06 user         3.59 sys
+           359727104  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+             1064227  page reclaims
+               17437  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                 764  messages sent
+                 381  messages received
+                  84  signals received
+                2939  voluntary context switches
+               55448  involuntary context switches
+          2504893004  instructions retired
+          1153122569  cycles elapsed
+            33211232  peak memory footprint

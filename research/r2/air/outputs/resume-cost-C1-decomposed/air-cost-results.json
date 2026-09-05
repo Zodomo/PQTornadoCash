@@ -1,0 +1,112 @@
+{
+  "measurement_class": "EXECUTION_BLOCKED",
+  "stage": "AIR-arithmetic-cost-prototype",
+  "native_proof_verifier": false,
+  "security": "SECURITY_NOT_QUALIFIED",
+  "promotion": "NOT_AUTHORIZED",
+  "diagnostic": false,
+  "scope": "All compiled AIR constraints in BabyBear^4; caller-supplied periodic polynomial evaluations; no FRI, transcript, quotient identity, custody, or proof verification",
+  "program_bytes": 43632,
+  "opcode_inventory": [
+    {
+      "count": 29,
+      "opcode": 0
+    },
+    {
+      "count": 282,
+      "opcode": 1
+    },
+    {
+      "count": 265,
+      "opcode": 2
+    },
+    {
+      "count": 320,
+      "opcode": 3
+    },
+    {
+      "count": 1408,
+      "opcode": 4
+    },
+    {
+      "count": 1332,
+      "opcode": 5
+    }
+  ],
+  "rpc_url": "http://127.0.0.1:18545",
+  "input_path": "/Users/zodomo/code/PQTornado/research/r2/air/outputs/resume-C1-decomposed",
+  "program_sha256": "6b2ff84d94306c713cddec391e1f0ae75bd5f99e541c63bc37f266065fbfd017",
+  "vector_sha256": "e7d1b13c95c88f7f38cd8dc382aa76e7279c9977b3eddaa1e29f620641680f94",
+  "program_keccak256": "8f24670d8fa2f2b9bb19efe01424c8097f2997f2a53c4bd2f81efb1f35aead5c",
+  "configuration": {
+    "binding": {
+      "candidate": "C1",
+      "cap_height": 0,
+      "codec": "postcard-1.1.3-full-native-proof",
+      "commit_pow": 16,
+      "geometry": "Decomposed",
+      "log_blowup": 4,
+      "log_final_poly": 0,
+      "max_log_arity": 1,
+      "p3_rev": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+      "periodic_keccak256": "75d6aa01952965b8b54cd7f9f9c54da504afef70d2a050d84ed75e531099ff3a",
+      "queries": 32,
+      "query_pow": 16,
+      "random_codewords": 4,
+      "rules_keccak256": "02c27c90b67e5f13615e99dfce735edab9e6ad5dccf2492dc907bb663d997bfd",
+      "source": {
+        "h0": "9d34af0796ca54d1ebf865d578f81d4db6418d969096514f604cfd8817fb4327",
+        "h5": "1afa7e22b64b80a21ec55e949498fc3671e093039fb9069f3bd7e8a31a6cd43b",
+        "hash": "e64c2f48177a8a33d9994b68e3f5b795607c19784bdd6d72a946a180e5363e50",
+        "lib": "11a92676965fdcc8ec3d7e26e140208cb1781a3335c93c71a3fa4a445a1e0f46",
+        "runner": "1bfae466ad6faebb6cd9baecf8826e7341a95fed74a11843d7c44f1af5a7bdca"
+      },
+      "version": "R2-AIR-config-v1"
+    },
+    "experimental_id": "f2438e4844c59536e4922ab34effe4c0222ac475d65540e92a584321ede2146a1746642f17dcbc8df2206f07c51510a788def23d6f779226948fc5ae36908b2a",
+    "original_H0_statement_unchanged": true,
+    "security": "SECURITY_NOT_QUALIFIED"
+  },
+  "tape_keccak_opcode_gas": 8214,
+  "tape_keccak_cost_scope": "KECCAK256 opcode only; memory and tape calldata separately charged",
+  "compiler_command": {
+    "argv": [
+      "forge",
+      "build",
+      "--root",
+      "/tmp/pqtc-r2-air-nzg2e_im"
+    ],
+    "cwd": "/tmp/pqtc-r2-air-nzg2e_im",
+    "exit_status": 0,
+    "environment": {
+      "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+      "HOME": "/Users/zodomo",
+      "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+      "RAYON_NUM_THREADS": "1",
+      "NO_COLOR": "1",
+      "FOUNDRY_DISABLE_NIGHTLY_WARNING": "1"
+    }
+  },
+  "deployment_receipt": {
+    "type": "0x2",
+    "status": "0x1",
+    "cumulativeGasUsed": "0x7da35",
+    "logs": [],
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "transactionHash": "0x59949abb0273b4ceac33ba4e0760ff4dce4700b4ef1aac187fd60dea3cfb910a",
+    "transactionIndex": "0x0",
+    "blockHash": "0x8987cade309e4fa3d9aa9a67611d522a8ecbfe4c6124b372b85d8d95015b0c65",
+    "blockNumber": "0x14",
+    "gasUsed": "0x7da35",
+    "effectiveGasPrice": "0x5f0ce9bb",
+    "blobGasPrice": "0x1",
+    "from": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+    "to": null,
+    "contractAddress": "0x3aa5ebb10dc797cac828524e59a333d0a371443c",
+    "blockTimestamp": 1788572963
+  },
+  "initcode_bytes": 2339,
+  "runtime_bytes": 2129,
+  "error": "{\"code\": -32603, \"message\": \"EVM error OutOfGas\"}",
+  "stop_reason_class": "measured performance failure"
+}

@@ -1,0 +1,103 @@
+{
+  "reason": "All seven actual capped evaluator eth_call attempts returned OutOfGas after successful deployments; diagnostic workload is separate, not capped feasibility",
+  "commands": [
+    {
+      "id": "C1-decomposed-arithmetic-diagnostic",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C1-decomposed",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic-cost-C1-decomposed",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C1-whole-round-arithmetic-diagnostic",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C1-whole-round",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic-cost-C1-whole-round",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C1-lanes4-arithmetic-diagnostic",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C1-lanes4",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic-cost-C1-lanes4",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C2-horizontal-arithmetic-diagnostic",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C2-horizontal",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic-cost-C2-horizontal",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C3-decomposed-arithmetic-diagnostic",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C3-decomposed",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic-cost-C3-decomposed",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C3-whole-round-arithmetic-diagnostic",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C3-whole-round",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic-cost-C3-whole-round",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C3-lanes4-arithmetic-diagnostic",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C3-lanes4",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic-cost-C3-lanes4",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    }
+  ]
+}

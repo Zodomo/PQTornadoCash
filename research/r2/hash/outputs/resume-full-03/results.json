@@ -1,0 +1,107 @@
+{
+  "specification": "complete R2-H5-complete-v1; exact frozen H0 control",
+  "correctness": "pending",
+  "privacy": "synthetic-unfunded only; no hiding claim",
+  "security": "security-not-qualified",
+  "performance": "pending",
+  "stage": "execution-failed-partial-evidence-retained",
+  "promotion": "not-promoted",
+  "argv": [
+    "research/r2/hash/run.py",
+    "--output",
+    "research/r2/hash/outputs/resume-full-03",
+    "--build",
+    "--rpc-url",
+    "http://127.0.0.1:18545",
+    "--diagnostic-rpc-url",
+    "http://127.0.0.1:18546",
+    "--vectors",
+    "10010",
+    "--chunk",
+    "2",
+    "--native-repetitions",
+    "30",
+    "--trace",
+    "--plonky3",
+    "/Users/zodomo/.cargo/git/checkouts/plonky3-7d8a3b21a665a86f/3152b14"
+  ],
+  "environment": {
+    "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+    "HOME": "/Users/zodomo",
+    "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+    "CARGO_BUILD_JOBS": "4",
+    "RAYON_NUM_THREADS": "1"
+  },
+  "native_binary": {
+    "path": "/Users/zodomo/code/PQTornado/research/r2/hash/outputs/resume-full-03/native/pqtc-r2-hash",
+    "sha256": "ef3c9e0019719768c13ed346144ef80c001570f760fe2a88b942a0cc48876fad"
+  },
+  "solidity_artifacts": "/Users/zodomo/code/PQTornado/research/r2/hash/outputs/resume-full-03/solidity-out",
+  "source_corpus_sha256": "cfa16eac5929f8e477558fd537567e81d915afa06955b78a797c3fa66c23712b",
+  "endpoints": {
+    "primary": {
+      "url": "http://127.0.0.1:18545",
+      "label": "capped-local-top-level",
+      "gas_limit": 16777216,
+      "client": "anvil/v1.7.1",
+      "block": {
+        "hash": "0xe8db0305330d9297cab494e6ef8ebaa4c0f344f9229a8a4cc8c8d21c3a812595",
+        "parentHash": "0x714bee113ef95b01abfb8b6f5a4d0596dd6c0ed4c80217a614894ec7576f2a45",
+        "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+        "miner": "0x0000000000000000000000000000000000000000",
+        "stateRoot": "0x6958daf6b38433a31c185f54ed93bf259b4bea1094304438ff7ce822c193a57b",
+        "transactionsRoot": "0xd29ff964b426d5811b7fce22c5740e0ced4223c97903fd8bf3e65247eb97a4b1",
+        "receiptsRoot": "0x916607be1efc6cdfec63c499d9f194e019f1b747020213527f5e3915ba7ee051",
+        "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+        "difficulty": "0x0",
+        "number": "0x13",
+        "gasLimit": "0x1000000",
+        "gasUsed": "0x3cb906",
+        "timestamp": "0x6a9b7405",
+        "extraData": "0x",
+        "mixHash": "0x34707a34d407338c2ea22bf25276afb130c525366a249cd936e785ff563a9ae9",
+        "nonce": "0x0000000000000000",
+        "baseFeePerGas": "0x25f0389e",
+        "withdrawalsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+        "blobGasUsed": "0x0",
+        "excessBlobGas": "0x0",
+        "parentBeaconBlockRoot": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "requestsHash": "0xe3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "totalDifficulty": "0x0",
+        "size": "0x4a35",
+        "uncles": [],
+        "transactions": [
+          "0xe0343fb0e488cc5a9c2b17470b157d78a27a471008caaeec30596b771c8c8268"
+        ],
+        "withdrawals": []
+      }
+    },
+    "diagnostic": {
+      "url": "http://127.0.0.1:18546",
+      "label": "diagnostic-unpromotable",
+      "gas_limit": 1000000000
+    }
+  },
+  "parity": {
+    "checked_shared_full_roles": 23322,
+    "coverage": {
+      "R2-H0-v03/role1": 971,
+      "R2-H5-complete-v1/role1": 971,
+      "R2-H0-v03/role2": 971,
+      "R2-H5-complete-v1/role2": 971,
+      "R2-H0-v03/role3": 971,
+      "R2-H5-complete-v1/role3": 971,
+      "R2-H0-v03/role4": 971,
+      "R2-H5-complete-v1/role4": 971,
+      "R2-H0-v03/role5": 5835,
+      "R2-H5-complete-v1/role5": 5835,
+      "R2-H0-v03/role6": 971,
+      "R2-H5-complete-v1/role6": 971,
+      "R2-H0-v03/role7": 971,
+      "R2-H5-complete-v1/role7": 971
+    },
+    "chunk_size": 2
+  },
+  "misuse_cases": 51,
+  "error": "[Errno 54] Connection reset by peer"
+}

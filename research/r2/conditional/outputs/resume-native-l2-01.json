@@ -1,0 +1,3068 @@
+{
+  "schema": "pqtc.r2.conditional-native-l2.v1",
+  "measurement_status": "MEASURED",
+  "measurement_scope": "exact bytes, byte gas and local deterministic signed-envelope sizes only",
+  "payload_manifest": {
+    "schema": "pqtc.r2.conditional-native-payloads.v1",
+    "scope": "Exact complete native proof byte transports only, not EVM ABI or security qualification",
+    "payloads": [
+      {
+        "id": "R2-C1-retained-fixed-b4-q32",
+        "artifact": "research/r2/air/outputs/C1-decomposed/proof.postcard",
+        "sha256": "20921c47e83dd98d5a9727f59d8a020b100baeb9598cfed8a44a016e09728a33",
+        "codec": "postcard-1.1.3-full-native-proof",
+        "native_result": {
+          "artifact": "research/r2/air/outputs/C1-decomposed/results.json",
+          "sha256": "0e00b405b751ef6921c43a238af76ec2e7c8f1165ad6a32023deb0fed24f183f"
+        },
+        "configuration": {
+          "artifact": "research/r2/air/outputs/C1-decomposed/configuration.json",
+          "sha256": "deec4b408088154e791610818f6685158a208332970eca31e48d018f0266052e"
+        }
+      },
+      {
+        "id": "R2-C2-retained-fixed-b4-q32",
+        "artifact": "research/r2/air/outputs/C2-horizontal-02/proof.postcard",
+        "sha256": "b4dac9bce13ff2ec72653b709a467e86ecad5ffcfeeae9a539481e918bbe0613",
+        "codec": "postcard-1.1.3-full-native-proof",
+        "native_result": {
+          "artifact": "research/r2/air/outputs/C2-horizontal-02/results.json",
+          "sha256": "0127705d527dee17dd486ed50b59345acafdfd6ca1e0fded604083f24587d829"
+        },
+        "configuration": {
+          "artifact": "research/r2/air/outputs/C2-horizontal-02/configuration.json",
+          "sha256": "62c3dfdd91c3514ba13797e8946097d8053f59ff6126f706ddb8a3f588e5bb8a"
+        }
+      },
+      {
+        "id": "R2-C3-retained-fixed-b4-q32",
+        "artifact": "research/r2/air/outputs/C3-decomposed/proof.postcard",
+        "sha256": "e03ec38635d7dd5d8a35b3675ae1e59d303bf5a50b6563987546ff492d731924",
+        "codec": "postcard-1.1.3-full-native-proof",
+        "native_result": {
+          "artifact": "research/r2/air/outputs/C3-decomposed/results.json",
+          "sha256": "10e44ab079817660560bcdea727965e342005bd9ac91b4c1aa2a9d46a37e6c7c"
+        },
+        "configuration": {
+          "artifact": "research/r2/air/outputs/C3-decomposed/configuration.json",
+          "sha256": "04971986a6c1eaabcb27306393745748fb37d5294f79810aa8e2970b59094991"
+        }
+      },
+      {
+        "id": "R2-C0-resume-fixed-b4-q32-0",
+        "artifact": "research/r2/models/outputs/resume-c0-first-anchor/C0/fixed-b4-q32/0/proof-0.bin",
+        "sha256": "89d96926d8fa13bbe33e358ecee46f1e1142b42b66406815908b399961ff6305",
+        "codec": "research-canonical-raw",
+        "native_result": {
+          "artifact": "research/r2/models/outputs/resume-c0-first-anchor/C0/fixed-b4-q32/0/measurements.json",
+          "sha256": "394fd641a4f7f17a70cd19e04387a73e38afabfbb162e5059e1252269d1c58ac"
+        },
+        "configuration": {
+          "artifact": "research/r2/models/outputs/resume-c0-first-anchor/C0/fixed-b4-q32/0/manifest.json",
+          "sha256": "ccee3108347de53520095f72aa9490cc1a87c0a1945d5d23709f2e16e4a81c5f"
+        }
+      },
+      {
+        "id": "R2-C0-resume-fixed-b4-q32-1",
+        "artifact": "research/r2/models/outputs/resume-c0-first-anchor/C0/fixed-b4-q32/0/proof-1.bin",
+        "sha256": "56d70cb0be38bead819134b40d6b8cfbc8227eb933945f519bd4b36a2231b9c9",
+        "codec": "research-canonical-raw",
+        "native_result": {
+          "artifact": "research/r2/models/outputs/resume-c0-first-anchor/C0/fixed-b4-q32/0/measurements.json",
+          "sha256": "394fd641a4f7f17a70cd19e04387a73e38afabfbb162e5059e1252269d1c58ac"
+        },
+        "configuration": {
+          "artifact": "research/r2/models/outputs/resume-c0-first-anchor/C0/fixed-b4-q32/0/manifest.json",
+          "sha256": "ccee3108347de53520095f72aa9490cc1a87c0a1945d5d23709f2e16e4a81c5f"
+        }
+      }
+    ]
+  },
+  "source_inputs": {
+    "schema": "pqtc.r2.conditional-inputs.v1",
+    "origin": "RETAINED_HISTORICAL_ANCHORS_NOT_R2_CANDIDATE",
+    "run_id": "v03-fixed-01",
+    "baseline_commit": "00f829001999ee66da6fd5161c4c205c07d0b937",
+    "files": {
+      "research/l2-economics/l2_model.py": "291ebc88d9bb10fe984bbb1f7b7427b56f381044945706fd78a6d18d7fa10778",
+      "research/l2-economics/sources.json": "73e9611f3c62fd63d849a827ada50cb36445b854dcef00079b7704aad7b047b6",
+      "research/l2-economics/scenarios.json": "61759a6ad639a65cc78043df1285280c9f174b8b55a0bd41c9d553828dba7b2e",
+      "research/l2-economics/matrix.json": "d8ecb82f020eb7096411a2d5fefe37f84418f806e4dd06feac52fbd95edce302",
+      "research/harness/report-generator/keccak.py": "a3e35cf9fd8ec97052d911e6eacf74511684e621926f08f5a2a5283c06912d56",
+      "research/summaries/v03-distribution.csv": "2b59508c9c6f874d1c2ba1ef3407febbf29bd9905d3b21b1c4e533887aa40898",
+      "research/candidates/v03-baseline/native/src/main.rs": "9184b05cf59f09affed4f8fd92962f95904009f5e8fa2a0d1ee2e9e5aa64c110",
+      "research/candidates/v03-baseline/proofs/v03-fixed-01/part-a.pqtc": "690bc22d2da46384129125918269ba1888b2c20ef1b9c92801649388c545c514",
+      "research/candidates/v03-baseline/proofs/v03-fixed-01/part-b.pqtc": "7d8fe1b14ae60a8076665f7e0599839a6e2440922e759d31d1607b54636eb701",
+      "research/candidates/v03-baseline/proofs/v03-fixed-01/part-a.calldata": "af6a132e60ed7879b36ed2ca79d671714475faf2555d499af74b57b01addf03e",
+      "research/candidates/v03-baseline/proofs/v03-fixed-01/part-b.calldata": "3b42e9cbe0af2c24a4eebf0fc381b4f31b0b4a58222fe951c5a3142c3bab11ad",
+      "research/candidates/v03-baseline/proofs/v03-fixed-01/proof-metadata.json": "2e934178870be90122560c6ed074fa6668354163a77ccd22415f524dfc8530ae"
+    }
+  },
+  "chain_source_pins": {
+    "schema": "pqtc-sp71-l2-source-pins-v1",
+    "snapshot_date": "2026-09-04",
+    "network_pins": {
+      "op-mainnet": {
+        "chain_id": 10,
+        "active_rules": "Karst with Fjord/Jovian/Isthmus rules",
+        "superchain_registry_commit": "9dce5d25fb6a3d4fb372ce92dc8eed3a4a17175c",
+        "specs_commit": "210825a4e97c3887654aefa692dc9edb63fabf21",
+        "optimism_commit": "9f7eb670dbcd579ec1bf873fb643649a9af8ef9d",
+        "fastlz_commit": "344eb4025f9ae866ebf7a2ec48850f7113a97a42",
+        "sources": [
+          {
+            "id": "op-registry",
+            "url": "https://github.com/ethereum-optimism/superchain-registry/blob/9dce5d25fb6a3d4fb372ce92dc8eed3a4a17175c/superchain/configs/mainnet/op.toml",
+            "lines": "1-29"
+          },
+          {
+            "id": "op-fjord-fee",
+            "url": "https://github.com/ethereum-optimism/specs/blob/210825a4e97c3887654aefa692dc9edb63fabf21/specs/protocol/fjord/exec-engine.md",
+            "lines": "20-53"
+          },
+          {
+            "id": "op-jovian-footprint",
+            "url": "https://github.com/ethereum-optimism/specs/blob/210825a4e97c3887654aefa692dc9edb63fabf21/specs/protocol/jovian/exec-engine.md",
+            "lines": "100-174"
+          },
+          {
+            "id": "op-jovian-scalar",
+            "url": "https://github.com/ethereum-optimism/specs/blob/210825a4e97c3887654aefa692dc9edb63fabf21/specs/protocol/jovian/l1-attributes.md",
+            "lines": "39-44"
+          },
+          {
+            "id": "op-size-test",
+            "url": "https://github.com/ethereum-optimism/optimism/blob/9f7eb670dbcd579ec1bf873fb643649a9af8ef9d/op-acceptance-tests/tests/osaka_on_l2_test.go",
+            "lines": "431-438"
+          },
+          {
+            "id": "op-karst-notice",
+            "url": "https://github.com/ethereum-optimism/optimism/blob/9f7eb670dbcd579ec1bf873fb643649a9af8ef9d/docs/public-docs/notices/archive/upgrade-19.mdx",
+            "lines": "13-48"
+          },
+          {
+            "id": "op-block-gas",
+            "url": "https://github.com/ethereum-optimism/optimism/blob/9f7eb670dbcd579ec1bf873fb643649a9af8ef9d/docs/public-docs/app-developers/guides/transactions/subblocks-and-gas-usage.mdx",
+            "lines": "13-23"
+          },
+          {
+            "id": "op-fastlz",
+            "url": "https://github.com/ariya/FastLZ/blob/344eb4025f9ae866ebf7a2ec48850f7113a97a42/fastlz.c",
+            "lines": "135-506"
+          },
+          {
+            "id": "op-withdrawal",
+            "url": "https://github.com/ethereum-optimism/optimism/blob/9f7eb670dbcd579ec1bf873fb643649a9af8ef9d/docs/public-docs/app-developers/guides/bridging/messaging.mdx",
+            "lines": "120-125"
+          }
+        ]
+      },
+      "arbitrum-one": {
+        "chain_id": 42161,
+        "active_rules": "ArbOS 61 Elara / Nitro v3.11.3",
+        "nitro_tag": "v3.11.3",
+        "nitro_commit": "4130f4c50d81209ff94aa63b51ed55d3739cdaba",
+        "nitro_image": "offchainlabs/nitro-node:v3.11.3-beb2108",
+        "consensus_v61_root": "0xc10cd7ec6acaf1c441a3f6bd0900ad20f15855ba775a96f1939118cbc629dc97",
+        "docs_commit": "aa64f3ec5817f429e8391265003c6fdcdd35c4c4",
+        "sources": [
+          {
+            "id": "arbos61",
+            "url": "https://github.com/OffchainLabs/arbitrum-docs/blob/aa64f3ec5817f429e8391265003c6fdcdd35c4c4/docs/run-arbitrum-node/arbos-releases/arbos61.mdx",
+            "lines": "18-97"
+          },
+          {
+            "id": "nitro-l1-pricing",
+            "url": "https://github.com/OffchainLabs/nitro/blob/4130f4c50d81209ff94aa63b51ed55d3739cdaba/arbos/l1pricing/l1pricing.go",
+            "lines": "518-552"
+          },
+          {
+            "id": "nitro-brotli-level",
+            "url": "https://github.com/OffchainLabs/nitro/blob/4130f4c50d81209ff94aa63b51ed55d3739cdaba/arbos/arbosState/arbosstate.go",
+            "lines": "302-304,436-438"
+          },
+          {
+            "id": "nitro-sequencer-size",
+            "url": "https://github.com/OffchainLabs/nitro/blob/4130f4c50d81209ff94aa63b51ed55d3739cdaba/execution/gethexec/sequencer.go",
+            "lines": "169-214,1364-1368"
+          },
+          {
+            "id": "nitro-gas-limits",
+            "url": "https://github.com/OffchainLabs/nitro/blob/4130f4c50d81209ff94aa63b51ed55d3739cdaba/arbos/l2pricing/model.go",
+            "lines": "18-25"
+          },
+          {
+            "id": "arbitrum-parameters",
+            "url": "https://github.com/OffchainLabs/arbitrum-docs/blob/aa64f3ec5817f429e8391265003c6fdcdd35c4c4/docs/partials/_reference-chain-parameters.mdx",
+            "lines": "1-27"
+          },
+          {
+            "id": "arbitrum-finality",
+            "url": "https://github.com/OffchainLabs/arbitrum-docs/blob/aa64f3ec5817f429e8391265003c6fdcdd35c4c4/docs/how-arbitrum-works/deep-dives/finality.mdx",
+            "lines": "29-55"
+          }
+        ]
+      },
+      "scroll-mainnet": {
+        "chain_id": 534352,
+        "active_rules": "Feynman; GalileoTime=nil",
+        "orchestrator_commit": "788fdf0555c5605ae493f6072a5f98b4492b2753",
+        "l2geth_tag": "scroll-v5.9.17",
+        "l2geth_commit": "8629f088d78f6feef5abb8a6c201dc3fd633251f",
+        "da_codec_tag": "v0.10.0",
+        "da_codec_commit": "afa161a4487fe3ba600bfdb792daeb3dcc21fa25",
+        "docs_commit": "762fb923680aaea700ced619a88483a7005c4f9b",
+        "sources": [
+          {
+            "id": "scroll-pin",
+            "url": "https://github.com/scroll-tech/scroll/blob/788fdf0555c5605ae493f6072a5f98b4492b2753/Makefile",
+            "lines": "7-20"
+          },
+          {
+            "id": "scroll-config",
+            "url": "https://github.com/scroll-tech/go-ethereum/blob/8629f088d78f6feef5abb8a6c201dc3fd633251f/params/config.go",
+            "lines": "268-270,366-405"
+          },
+          {
+            "id": "scroll-size",
+            "url": "https://github.com/scroll-tech/go-ethereum/blob/8629f088d78f6feef5abb8a6c201dc3fd633251f/params/config.go",
+            "lines": "787-798"
+          },
+          {
+            "id": "scroll-pool",
+            "url": "https://github.com/scroll-tech/go-ethereum/blob/8629f088d78f6feef5abb8a6c201dc3fd633251f/core/tx_pool.go",
+            "lines": "781-790"
+          },
+          {
+            "id": "scroll-fee",
+            "url": "https://github.com/scroll-tech/go-ethereum/blob/8629f088d78f6feef5abb8a6c201dc3fd633251f/rollup/fees/rollup_fee.go",
+            "lines": "177-207,272-321,397-431"
+          },
+          {
+            "id": "scroll-codec",
+            "url": "https://github.com/scroll-tech/da-codec/blob/afa161a4487fe3ba600bfdb792daeb3dcc21fa25/encoding/codecv8.go",
+            "lines": "14-18"
+          },
+          {
+            "id": "scroll-zstd",
+            "url": "https://github.com/scroll-tech/da-codec/blob/afa161a4487fe3ba600bfdb792daeb3dcc21fa25/encoding/zstd/zstd.go",
+            "lines": "38-45"
+          },
+          {
+            "id": "scroll-precompiles",
+            "url": "https://github.com/scroll-tech/go-ethereum/blob/8629f088d78f6feef5abb8a6c201dc3fd633251f/core/vm/contracts.go",
+            "lines": "147-158"
+          },
+          {
+            "id": "scroll-finality",
+            "url": "https://github.com/scroll-tech/scroll-documentation/blob/762fb923680aaea700ced619a88483a7005c4f9b/src/content/docs/en/technology/chain/transactions.mdx",
+            "lines": "52-77"
+          },
+          {
+            "id": "scroll-euclid",
+            "url": "https://github.com/scroll-tech/scroll-documentation/blob/762fb923680aaea700ced619a88483a7005c4f9b/src/content/docs/en/technology/overview/scroll-upgrades/euclid-upgrade.mdx",
+            "lines": "72-86"
+          }
+        ]
+      }
+    },
+    "shared_sources": [
+      {
+        "id": "eip-7623",
+        "commit": "9207c6011f526bd40abd79649484a1a342585bd4",
+        "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-7623.md"
+      },
+      {
+        "id": "eip-3860",
+        "commit": "9207c6011f526bd40abd79649484a1a342585bd4",
+        "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-3860.md"
+      },
+      {
+        "id": "eip-170",
+        "commit": "9207c6011f526bd40abd79649484a1a342585bd4",
+        "url": "https://github.com/ethereum/EIPs/blob/9207c6011f526bd40abd79649484a1a342585bd4/EIPS/eip-170.md"
+      },
+      {
+        "id": "gas-rules-local",
+        "path": "research/gas-rules/rules.json",
+        "snapshot_date": "2026-09-04"
+      },
+      {
+        "id": "baseline-local",
+        "path": "research/summaries/v03-distribution.csv",
+        "classification": "H1_LOCAL_APPLE_M4_MAX_MEASURED_SOURCE"
+      }
+    ]
+  },
+  "synthetic_fee_inputs": {
+    "schema": "pqtc-sp71-synthetic-scenarios-v1",
+    "snapshot_date": "2026-09-04",
+    "classification": "SYNTHETIC_OFFLINE_INPUTS_NOT_LIVE_PRICES",
+    "precision": 1000000,
+    "scenarios": [
+      {
+        "id": "l1-1gwei-blob-1wei",
+        "l1_base_fee_wei": 1000000000,
+        "l1_blob_base_fee_wei": 1
+      },
+      {
+        "id": "l1-1gwei-blob-10wei",
+        "l1_base_fee_wei": 1000000000,
+        "l1_blob_base_fee_wei": 10
+      },
+      {
+        "id": "l1-1gwei-blob-100wei",
+        "l1_base_fee_wei": 1000000000,
+        "l1_blob_base_fee_wei": 100
+      },
+      {
+        "id": "l1-10gwei-blob-1wei",
+        "l1_base_fee_wei": 10000000000,
+        "l1_blob_base_fee_wei": 1
+      },
+      {
+        "id": "l1-10gwei-blob-10wei",
+        "l1_base_fee_wei": 10000000000,
+        "l1_blob_base_fee_wei": 10
+      },
+      {
+        "id": "l1-10gwei-blob-100wei",
+        "l1_base_fee_wei": 10000000000,
+        "l1_blob_base_fee_wei": 100
+      },
+      {
+        "id": "l1-30gwei-blob-1wei",
+        "l1_base_fee_wei": 30000000000,
+        "l1_blob_base_fee_wei": 1
+      },
+      {
+        "id": "l1-30gwei-blob-10wei",
+        "l1_base_fee_wei": 30000000000,
+        "l1_blob_base_fee_wei": 10
+      },
+      {
+        "id": "l1-30gwei-blob-100wei",
+        "l1_base_fee_wei": 30000000000,
+        "l1_blob_base_fee_wei": 100
+      },
+      {
+        "id": "l1-100gwei-blob-1wei",
+        "l1_base_fee_wei": 100000000000,
+        "l1_blob_base_fee_wei": 1
+      },
+      {
+        "id": "l1-100gwei-blob-10wei",
+        "l1_base_fee_wei": 100000000000,
+        "l1_blob_base_fee_wei": 10
+      },
+      {
+        "id": "l1-100gwei-blob-100wei",
+        "l1_base_fee_wei": 100000000000,
+        "l1_blob_base_fee_wei": 100
+      }
+    ],
+    "shared_synthetic_parameters": {
+      "l2_base_fee_wei": 20000000,
+      "priority_fee_wei": 0,
+      "op_l1_base_fee_scalar": 1000000,
+      "op_l1_blob_fee_scalar": 1000000,
+      "op_da_footprint_gas_scalar": 400,
+      "op_operator_fee_scalar": 0,
+      "op_operator_fee_constant_wei": 0,
+      "arbitrum_price_per_unit_wei": 1000000000,
+      "arbitrum_brotli_level": 1,
+      "scroll_exec_scalar": 1000000000,
+      "scroll_blob_scalar": 1000000000,
+      "scroll_penalty_threshold": 1500000000,
+      "scroll_penalty_factor": 2000000000
+    },
+    "notes": [
+      "Every number is an explicit synthetic experiment input; none is observed chain state.",
+      "Arbitrum PricePerUnit and Scroll oracle scalars are retained even though their pinned compression executables are unavailable, so those fee totals remain NOT_EVALUATED.",
+      "The OP scalar choices are synthetic and must not be described as OP Mainnet state."
+    ]
+  },
+  "signer": {
+    "address": "0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266",
+    "key": "universally public Anvil account 0, never funded",
+    "destination": "1111111111111111111111111111111111111111",
+    "value_wei": 0,
+    "network_calls": 0
+  },
+  "abi_status": "NOT_IMPLEMENTED_FOR_THESE_NATIVE_CODECS",
+  "reopen_condition": "Exact EVM proof codec and verifier ABI adapter, then source-pinned local node admission and actual data-fee implementation; no public network authorization is implied.",
+  "caveats": [
+    "No ABI selector, public-statement encoding or verifier decoder is supplied.",
+    "Postcard/research raw bytes are transport controls, not valid EVM verifier calls.",
+    "Source size and no-code gas fit are projections, not node admission or receipt evidence.",
+    "OP fee numbers are uncalibrated synthetic projections; unsupported Nitro/Scroll fees stay null.",
+    "Signed transaction bytes are not persisted; no RPC or broadcast interface exists."
+  ],
+  "payloads": [
+    {
+      "id": "R2-C1-retained-fixed-b4-q32",
+      "artifact": "research/r2/air/outputs/C1-decomposed/proof.postcard",
+      "sha256": "20921c47e83dd98d5a9727f59d8a020b100baeb9598cfed8a44a016e09728a33",
+      "codec": "postcard-1.1.3-full-native-proof",
+      "native_result": {
+        "artifact": "research/r2/air/outputs/C1-decomposed/results.json",
+        "sha256": "0e00b405b751ef6921c43a238af76ec2e7c8f1165ad6a32023deb0fed24f183f"
+      },
+      "configuration": {
+        "artifact": "research/r2/air/outputs/C1-decomposed/configuration.json",
+        "sha256": "deec4b408088154e791610818f6685158a208332970eca31e48d018f0266052e"
+      },
+      "raw_proof_bytes": 316794,
+      "raw_proof_keccak256": "24639da33ec188efcf05730696a3dea3999a04b242075e2888b51487ecb3ca07",
+      "classification": "EXACT_NATIVE_PROOF_TRANSPORT_NOT_EVM_ABI",
+      "networks": [
+        {
+          "network": "op-mainnet",
+          "source_rules": {
+            "chain_id": 10,
+            "active_release": "Karst",
+            "ordinary_signed_tx_limit_bytes": 131072,
+            "per_tx_gas_limit": 16777216,
+            "documented_block_gas_limit": 40000000,
+            "admission_rule": "serialized type-2 transaction length <= 128 KiB and gasLimit <= 2^24; deposits exempt",
+            "l1_fee_formula": "floor(max(100000000, -42585600 + 836500*fastlzSize) * (16*l1BaseFeeScalar*l1BaseFee + l1BlobFeeScalar*l1BlobBaseFee) / 1e12)",
+            "da_footprint_formula": "max(100, floor((-42585600 + 836500*fastlzSize)/1e6)) * daFootprintGasScalar; zero configured scalar maps to 400",
+            "operator_fee_formula": "gasUsed * operatorFeeScalar * 100 + operatorFeeConstant",
+            "estimator": "FastLZ of complete signed serialized transaction",
+            "estimator_status": "IMPLEMENTED_FROM_PINNED_FASTLZ_SOURCE",
+            "finality": "Sequencer inclusion is provisional; safe/finalized follows Ethereum L1",
+            "withdrawal": "Approximately seven days through the respected CANNON_KONA type-8 fault-proof game",
+            "security_assumption": "At least one honest challenger responds to an invalid claim before game clocks expire",
+            "evm_notes": "24,576-byte runtime and 49,152-byte initcode limits; Karst MODEXP/P256VERIFY/BN256-pairing behavior must be audited for the verifier"
+          },
+          "calldata_zero_bytes": 266,
+          "calldata_nonzero_bytes": 316528,
+          "eip7623_tokens": 1266378,
+          "regular_intrinsic_gas": 5086512,
+          "eip7623_floor_gas": 12684780,
+          "no_op_calldata_gas": 12684780,
+          "raw_transport_calldata_bytes": 316794,
+          "abi_calldata_bytes": null,
+          "signed_tx_bytes": 316911,
+          "signed_tx_sha256": "598d50cf3887ae94e2bb38d7349e6ba9f92dc282584d7e65ed6e3c3dd89f6d68",
+          "nonce": 7,
+          "tx_gas_limit": 16777216,
+          "source_size_admissible": false,
+          "source_no_op_gas_fits": true,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "actual_data_fee_wei": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 324396,
+              "op_estimated_size_scaled": 271314668400,
+              "op_da_footprint_gas": 108525600,
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": 4341034694671314,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 4594730294671314
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 324396,
+              "op_estimated_size_scaled": 271314668400,
+              "op_da_footprint_gas": 108525600,
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": 4341034697113146,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 4594730297113146
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 324396,
+              "op_estimated_size_scaled": 271314668400,
+              "op_da_footprint_gas": 108525600,
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": 4341034721531466,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 4594730321531466
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 324396,
+              "op_estimated_size_scaled": 271314668400,
+              "op_da_footprint_gas": 108525600,
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": 43410346944271314,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 43664042544271314
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 324396,
+              "op_estimated_size_scaled": 271314668400,
+              "op_da_footprint_gas": 108525600,
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": 43410346946713146,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 43664042546713146
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 324396,
+              "op_estimated_size_scaled": 271314668400,
+              "op_da_footprint_gas": 108525600,
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": 43410346971131466,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 43664042571131466
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 324396,
+              "op_estimated_size_scaled": 271314668400,
+              "op_da_footprint_gas": 108525600,
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": 130231040832271314,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 130484736432271314
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 324396,
+              "op_estimated_size_scaled": 271314668400,
+              "op_da_footprint_gas": 108525600,
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": 130231040834713146,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 130484736434713146
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 324396,
+              "op_estimated_size_scaled": 271314668400,
+              "op_da_footprint_gas": 108525600,
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": 130231040859131466,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 130484736459131466
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 324396,
+              "op_estimated_size_scaled": 271314668400,
+              "op_da_footprint_gas": 108525600,
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": 434103469440271314,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 434357165040271314
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 324396,
+              "op_estimated_size_scaled": 271314668400,
+              "op_da_footprint_gas": 108525600,
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": 434103469442713146,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 434357165042713146
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 324396,
+              "op_estimated_size_scaled": 271314668400,
+              "op_da_footprint_gas": 108525600,
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": 434103469467131466,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 434357165067131466
+            }
+          ]
+        },
+        {
+          "network": "arbitrum-one",
+          "source_rules": {
+            "chain_id": 42161,
+            "active_release": "ArbOS 61 Elara / Nitro v3.11.3",
+            "ordinary_signed_tx_limit_bytes": 95000,
+            "per_tx_gas_limit": 32000000,
+            "block_gas_limit": 32000000,
+            "effective_final_transaction_block_allowance": 64000000,
+            "admission_rule": "sequencer default tx.Size() <= 95000; delayed Inbox DataTooLarge boundary 117964 is a distinct route",
+            "l1_fee_formula": "compressedBytes=BrotliLevel1(signedTx); units=16*compressedBytes; posterCostWei=PricePerUnit*units; posterGas=floor(posterCostWei/L2BaseFee)",
+            "execution_fee_formula": "L2BaseFee * (executionGas + posterGas); ordinary priority fee collection inactive on One at ArbOS61 activation",
+            "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+            "finality": "Sub-second sequencer-trusting soft finality; parent-chain data finality roughly 12-15 minutes",
+            "withdrawal": "45,818 L1-block BoLD dispute window, approximately 6.4 days, then claim",
+            "security_assumption": "At least one validator checks and challenges; force inclusion period is 5,760 L1 blocks/about 24 hours",
+            "evm_notes": "Solidity runtime remains 24 KiB and initcode 49,152 bytes; 96 KiB Stylus fragments are not an ordinary Solidity-verifier escape hatch"
+          },
+          "calldata_zero_bytes": 266,
+          "calldata_nonzero_bytes": 316528,
+          "eip7623_tokens": 1266378,
+          "regular_intrinsic_gas": 5086512,
+          "eip7623_floor_gas": 12684780,
+          "no_op_calldata_gas": 12684780,
+          "raw_transport_calldata_bytes": 316794,
+          "abi_calldata_bytes": null,
+          "signed_tx_bytes": 316913,
+          "signed_tx_sha256": "06d96f36ddbb7411314fa8d549abc5947e4612d9af8a8b33a8631c9c0dd9449d",
+          "nonce": 7,
+          "tx_gas_limit": 32000000,
+          "source_size_admissible": false,
+          "source_no_op_gas_fits": true,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "actual_data_fee_wei": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            }
+          ]
+        },
+        {
+          "network": "scroll-mainnet",
+          "source_rules": {
+            "chain_id": 534352,
+            "active_release": "Feynman; Galileo inactive (GalileoTime=nil)",
+            "ordinary_signed_tx_limit_bytes": 116736,
+            "pinned_genesis_gas_limit": 10000000,
+            "current_gas_limit_status": "EXTERNAL_LIVE_VALUE_NOT_QUERIED; experiments use explicit 10,000,000 scenario",
+            "max_regular_transactions_per_block": 100,
+            "aggregate_regular_payload_limit_bytes": 122880,
+            "admission_rule": "IsValidBlockSizeForMining(tx.Size()) applies 1/0.95 against 120 KiB, giving signed tx <= 116736; gas must fit header",
+            "l1_fee_formula": "feePerByte=execScalar*l1BaseFee+blobScalar*l1BlobBaseFee; ratio=max(1e9,len(tx.data)*1e9/len(codecV8Zstd(tx.data))); penalty=1e9 if ratio>=threshold else penaltyFactor; fee=floor(feePerByte*len(signedTx)*penalty/1e18)",
+            "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+            "finality": "Confirmed is sequencer inclusion; Committed is L1-finalized batch commit; Finalized is L1-finalized validity proof",
+            "withdrawal": "Executable with Merkle proof after validity finalization; no fixed seven-day fraud window; latency is external",
+            "security_assumption": "Validity proof plus L1; Euclid enforced inclusion/emergency submission; upgrades controlled by 9-of-12 Security Council",
+            "evm_notes": "24,576-byte runtime and 49,152-byte initcode limits; RIPEMD-160 and BLAKE2F disabled, MODEXP components limited to 32 bytes, no blob opcodes/EIP-4788"
+          },
+          "calldata_zero_bytes": 266,
+          "calldata_nonzero_bytes": 316528,
+          "eip7623_tokens": 1266378,
+          "regular_intrinsic_gas": 5086512,
+          "eip7623_floor_gas": 12684780,
+          "no_op_calldata_gas": 12684780,
+          "raw_transport_calldata_bytes": 316794,
+          "abi_calldata_bytes": null,
+          "signed_tx_bytes": 316913,
+          "signed_tx_sha256": "68b5291621a084f4a16e76adc29c9adb346f447287a63964049a9c41892310d0",
+          "nonce": 7,
+          "tx_gas_limit": 10000000,
+          "source_size_admissible": false,
+          "source_no_op_gas_fits": false,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "actual_data_fee_wei": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 253695600000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R2-C2-retained-fixed-b4-q32",
+      "artifact": "research/r2/air/outputs/C2-horizontal-02/proof.postcard",
+      "sha256": "b4dac9bce13ff2ec72653b709a467e86ecad5ffcfeeae9a539481e918bbe0613",
+      "codec": "postcard-1.1.3-full-native-proof",
+      "native_result": {
+        "artifact": "research/r2/air/outputs/C2-horizontal-02/results.json",
+        "sha256": "0127705d527dee17dd486ed50b59345acafdfd6ca1e0fded604083f24587d829"
+      },
+      "configuration": {
+        "artifact": "research/r2/air/outputs/C2-horizontal-02/configuration.json",
+        "sha256": "62c3dfdd91c3514ba13797e8946097d8053f59ff6126f706ddb8a3f588e5bb8a"
+      },
+      "raw_proof_bytes": 171691,
+      "raw_proof_keccak256": "69ccd6da218e5479f0a07ab07b6883a7d82db1f8a10a071250256a3fc6021c0e",
+      "classification": "EXACT_NATIVE_PROOF_TRANSPORT_NOT_EVM_ABI",
+      "networks": [
+        {
+          "network": "op-mainnet",
+          "source_rules": {
+            "chain_id": 10,
+            "active_release": "Karst",
+            "ordinary_signed_tx_limit_bytes": 131072,
+            "per_tx_gas_limit": 16777216,
+            "documented_block_gas_limit": 40000000,
+            "admission_rule": "serialized type-2 transaction length <= 128 KiB and gasLimit <= 2^24; deposits exempt",
+            "l1_fee_formula": "floor(max(100000000, -42585600 + 836500*fastlzSize) * (16*l1BaseFeeScalar*l1BaseFee + l1BlobFeeScalar*l1BlobBaseFee) / 1e12)",
+            "da_footprint_formula": "max(100, floor((-42585600 + 836500*fastlzSize)/1e6)) * daFootprintGasScalar; zero configured scalar maps to 400",
+            "operator_fee_formula": "gasUsed * operatorFeeScalar * 100 + operatorFeeConstant",
+            "estimator": "FastLZ of complete signed serialized transaction",
+            "estimator_status": "IMPLEMENTED_FROM_PINNED_FASTLZ_SOURCE",
+            "finality": "Sequencer inclusion is provisional; safe/finalized follows Ethereum L1",
+            "withdrawal": "Approximately seven days through the respected CANNON_KONA type-8 fault-proof game",
+            "security_assumption": "At least one honest challenger responds to an invalid claim before game clocks expire",
+            "evm_notes": "24,576-byte runtime and 49,152-byte initcode limits; Karst MODEXP/P256VERIFY/BN256-pairing behavior must be audited for the verifier"
+          },
+          "calldata_zero_bytes": 536,
+          "calldata_nonzero_bytes": 171155,
+          "eip7623_tokens": 685156,
+          "regular_intrinsic_gas": 2761624,
+          "eip7623_floor_gas": 6872560,
+          "no_op_calldata_gas": 6872560,
+          "raw_transport_calldata_bytes": 171691,
+          "abi_calldata_bytes": null,
+          "signed_tx_bytes": 171808,
+          "signed_tx_sha256": "942892f79b974ec39dc5e86c0e7c1e9b5795bfb6e0fabc31b1063ef8d5d59864",
+          "nonce": 7,
+          "tx_gas_limit": 16777216,
+          "source_size_admissible": false,
+          "source_no_op_gas_fits": true,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "actual_data_fee_wei": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 172399,
+              "op_estimated_size_scaled": 144169177900,
+              "op_da_footprint_gas": 57667600,
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": 2306706846544169,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 2444158046544169
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 172399,
+              "op_estimated_size_scaled": 144169177900,
+              "op_da_footprint_gas": 57667600,
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": 2306706847841691,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 2444158047841691
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 172399,
+              "op_estimated_size_scaled": 144169177900,
+              "op_da_footprint_gas": 57667600,
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": 2306706860816917,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 2444158060816917
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 172399,
+              "op_estimated_size_scaled": 144169177900,
+              "op_da_footprint_gas": 57667600,
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": 23067068464144169,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 23204519664144169
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 172399,
+              "op_estimated_size_scaled": 144169177900,
+              "op_da_footprint_gas": 57667600,
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": 23067068465441691,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 23204519665441691
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 172399,
+              "op_estimated_size_scaled": 144169177900,
+              "op_da_footprint_gas": 57667600,
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": 23067068478416917,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 23204519678416917
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 172399,
+              "op_estimated_size_scaled": 144169177900,
+              "op_da_footprint_gas": 57667600,
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": 69201205392144169,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 69338656592144169
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 172399,
+              "op_estimated_size_scaled": 144169177900,
+              "op_da_footprint_gas": 57667600,
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": 69201205393441691,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 69338656593441691
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 172399,
+              "op_estimated_size_scaled": 144169177900,
+              "op_da_footprint_gas": 57667600,
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": 69201205406416917,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 69338656606416917
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 172399,
+              "op_estimated_size_scaled": 144169177900,
+              "op_da_footprint_gas": 57667600,
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": 230670684640144169,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 230808135840144169
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 172399,
+              "op_estimated_size_scaled": 144169177900,
+              "op_da_footprint_gas": 57667600,
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": 230670684641441691,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 230808135841441691
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 172399,
+              "op_estimated_size_scaled": 144169177900,
+              "op_da_footprint_gas": 57667600,
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": 230670684654416917,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 230808135854416917
+            }
+          ]
+        },
+        {
+          "network": "arbitrum-one",
+          "source_rules": {
+            "chain_id": 42161,
+            "active_release": "ArbOS 61 Elara / Nitro v3.11.3",
+            "ordinary_signed_tx_limit_bytes": 95000,
+            "per_tx_gas_limit": 32000000,
+            "block_gas_limit": 32000000,
+            "effective_final_transaction_block_allowance": 64000000,
+            "admission_rule": "sequencer default tx.Size() <= 95000; delayed Inbox DataTooLarge boundary 117964 is a distinct route",
+            "l1_fee_formula": "compressedBytes=BrotliLevel1(signedTx); units=16*compressedBytes; posterCostWei=PricePerUnit*units; posterGas=floor(posterCostWei/L2BaseFee)",
+            "execution_fee_formula": "L2BaseFee * (executionGas + posterGas); ordinary priority fee collection inactive on One at ArbOS61 activation",
+            "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+            "finality": "Sub-second sequencer-trusting soft finality; parent-chain data finality roughly 12-15 minutes",
+            "withdrawal": "45,818 L1-block BoLD dispute window, approximately 6.4 days, then claim",
+            "security_assumption": "At least one validator checks and challenges; force inclusion period is 5,760 L1 blocks/about 24 hours",
+            "evm_notes": "Solidity runtime remains 24 KiB and initcode 49,152 bytes; 96 KiB Stylus fragments are not an ordinary Solidity-verifier escape hatch"
+          },
+          "calldata_zero_bytes": 536,
+          "calldata_nonzero_bytes": 171155,
+          "eip7623_tokens": 685156,
+          "regular_intrinsic_gas": 2761624,
+          "eip7623_floor_gas": 6872560,
+          "no_op_calldata_gas": 6872560,
+          "raw_transport_calldata_bytes": 171691,
+          "abi_calldata_bytes": null,
+          "signed_tx_bytes": 171810,
+          "signed_tx_sha256": "a45129abacf2ac89affa6ab3ee19a9313c25927eefb9889f978331ca9ba65a38",
+          "nonce": 7,
+          "tx_gas_limit": 32000000,
+          "source_size_admissible": false,
+          "source_no_op_gas_fits": true,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "actual_data_fee_wei": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            }
+          ]
+        },
+        {
+          "network": "scroll-mainnet",
+          "source_rules": {
+            "chain_id": 534352,
+            "active_release": "Feynman; Galileo inactive (GalileoTime=nil)",
+            "ordinary_signed_tx_limit_bytes": 116736,
+            "pinned_genesis_gas_limit": 10000000,
+            "current_gas_limit_status": "EXTERNAL_LIVE_VALUE_NOT_QUERIED; experiments use explicit 10,000,000 scenario",
+            "max_regular_transactions_per_block": 100,
+            "aggregate_regular_payload_limit_bytes": 122880,
+            "admission_rule": "IsValidBlockSizeForMining(tx.Size()) applies 1/0.95 against 120 KiB, giving signed tx <= 116736; gas must fit header",
+            "l1_fee_formula": "feePerByte=execScalar*l1BaseFee+blobScalar*l1BlobBaseFee; ratio=max(1e9,len(tx.data)*1e9/len(codecV8Zstd(tx.data))); penalty=1e9 if ratio>=threshold else penaltyFactor; fee=floor(feePerByte*len(signedTx)*penalty/1e18)",
+            "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+            "finality": "Confirmed is sequencer inclusion; Committed is L1-finalized batch commit; Finalized is L1-finalized validity proof",
+            "withdrawal": "Executable with Merkle proof after validity finalization; no fixed seven-day fraud window; latency is external",
+            "security_assumption": "Validity proof plus L1; Euclid enforced inclusion/emergency submission; upgrades controlled by 9-of-12 Security Council",
+            "evm_notes": "24,576-byte runtime and 49,152-byte initcode limits; RIPEMD-160 and BLAKE2F disabled, MODEXP components limited to 32 bytes, no blob opcodes/EIP-4788"
+          },
+          "calldata_zero_bytes": 536,
+          "calldata_nonzero_bytes": 171155,
+          "eip7623_tokens": 685156,
+          "regular_intrinsic_gas": 2761624,
+          "eip7623_floor_gas": 6872560,
+          "no_op_calldata_gas": 6872560,
+          "raw_transport_calldata_bytes": 171691,
+          "abi_calldata_bytes": null,
+          "signed_tx_bytes": 171810,
+          "signed_tx_sha256": "4fe5af7c7f64b806c5dfa7a1d039908450d16cd3b9fca86cfae31f490e2143ea",
+          "nonce": 7,
+          "tx_gas_limit": 10000000,
+          "source_size_admissible": false,
+          "source_no_op_gas_fits": true,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "actual_data_fee_wei": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 137451200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R2-C3-retained-fixed-b4-q32",
+      "artifact": "research/r2/air/outputs/C3-decomposed/proof.postcard",
+      "sha256": "e03ec38635d7dd5d8a35b3675ae1e59d303bf5a50b6563987546ff492d731924",
+      "codec": "postcard-1.1.3-full-native-proof",
+      "native_result": {
+        "artifact": "research/r2/air/outputs/C3-decomposed/results.json",
+        "sha256": "10e44ab079817660560bcdea727965e342005bd9ac91b4c1aa2a9d46a37e6c7c"
+      },
+      "configuration": {
+        "artifact": "research/r2/air/outputs/C3-decomposed/configuration.json",
+        "sha256": "04971986a6c1eaabcb27306393745748fb37d5294f79810aa8e2970b59094991"
+      },
+      "raw_proof_bytes": 287584,
+      "raw_proof_keccak256": "120055c6a19ac152c268fd0ad13814d1757b1f0f530da60c8e64f23e0dc91b25",
+      "classification": "EXACT_NATIVE_PROOF_TRANSPORT_NOT_EVM_ABI",
+      "networks": [
+        {
+          "network": "op-mainnet",
+          "source_rules": {
+            "chain_id": 10,
+            "active_release": "Karst",
+            "ordinary_signed_tx_limit_bytes": 131072,
+            "per_tx_gas_limit": 16777216,
+            "documented_block_gas_limit": 40000000,
+            "admission_rule": "serialized type-2 transaction length <= 128 KiB and gasLimit <= 2^24; deposits exempt",
+            "l1_fee_formula": "floor(max(100000000, -42585600 + 836500*fastlzSize) * (16*l1BaseFeeScalar*l1BaseFee + l1BlobFeeScalar*l1BlobBaseFee) / 1e12)",
+            "da_footprint_formula": "max(100, floor((-42585600 + 836500*fastlzSize)/1e6)) * daFootprintGasScalar; zero configured scalar maps to 400",
+            "operator_fee_formula": "gasUsed * operatorFeeScalar * 100 + operatorFeeConstant",
+            "estimator": "FastLZ of complete signed serialized transaction",
+            "estimator_status": "IMPLEMENTED_FROM_PINNED_FASTLZ_SOURCE",
+            "finality": "Sequencer inclusion is provisional; safe/finalized follows Ethereum L1",
+            "withdrawal": "Approximately seven days through the respected CANNON_KONA type-8 fault-proof game",
+            "security_assumption": "At least one honest challenger responds to an invalid claim before game clocks expire",
+            "evm_notes": "24,576-byte runtime and 49,152-byte initcode limits; Karst MODEXP/P256VERIFY/BN256-pairing behavior must be audited for the verifier"
+          },
+          "calldata_zero_bytes": 324,
+          "calldata_nonzero_bytes": 287260,
+          "eip7623_tokens": 1149364,
+          "regular_intrinsic_gas": 4618456,
+          "eip7623_floor_gas": 11514640,
+          "no_op_calldata_gas": 11514640,
+          "raw_transport_calldata_bytes": 287584,
+          "abi_calldata_bytes": null,
+          "signed_tx_bytes": 287701,
+          "signed_tx_sha256": "9776ff62dab65582bb0f2e7f5f36df4c0a19e951d7410b8079db4adf3ba85e96",
+          "nonce": 7,
+          "tx_gas_limit": 16777216,
+          "source_size_admissible": false,
+          "source_no_op_gas_fits": true,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "actual_data_fee_wei": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 294202,
+              "op_estimated_size_scaled": 246057387400,
+              "op_da_footprint_gas": 98422800,
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": 3936918198646057,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 4167210998646057
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 294202,
+              "op_estimated_size_scaled": 246057387400,
+              "op_da_footprint_gas": 98422800,
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": 3936918200860573,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 4167211000860573
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 294202,
+              "op_estimated_size_scaled": 246057387400,
+              "op_da_footprint_gas": 98422800,
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": 3936918223005738,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 4167211023005738
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 294202,
+              "op_estimated_size_scaled": 246057387400,
+              "op_da_footprint_gas": 98422800,
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": 39369181984246057,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 39599474784246057
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 294202,
+              "op_estimated_size_scaled": 246057387400,
+              "op_da_footprint_gas": 98422800,
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": 39369181986460573,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 39599474786460573
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 294202,
+              "op_estimated_size_scaled": 246057387400,
+              "op_da_footprint_gas": 98422800,
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": 39369182008605738,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 39599474808605738
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 294202,
+              "op_estimated_size_scaled": 246057387400,
+              "op_da_footprint_gas": 98422800,
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": 118107545952246057,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 118337838752246057
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 294202,
+              "op_estimated_size_scaled": 246057387400,
+              "op_da_footprint_gas": 98422800,
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": 118107545954460573,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 118337838754460573
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 294202,
+              "op_estimated_size_scaled": 246057387400,
+              "op_da_footprint_gas": 98422800,
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": 118107545976605738,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 118337838776605738
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 294202,
+              "op_estimated_size_scaled": 246057387400,
+              "op_da_footprint_gas": 98422800,
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": 393691819840246057,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 393922112640246057
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 294202,
+              "op_estimated_size_scaled": 246057387400,
+              "op_da_footprint_gas": 98422800,
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": 393691819842460573,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 393922112642460573
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 294202,
+              "op_estimated_size_scaled": 246057387400,
+              "op_da_footprint_gas": 98422800,
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": 393691819864605738,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 393922112664605738
+            }
+          ]
+        },
+        {
+          "network": "arbitrum-one",
+          "source_rules": {
+            "chain_id": 42161,
+            "active_release": "ArbOS 61 Elara / Nitro v3.11.3",
+            "ordinary_signed_tx_limit_bytes": 95000,
+            "per_tx_gas_limit": 32000000,
+            "block_gas_limit": 32000000,
+            "effective_final_transaction_block_allowance": 64000000,
+            "admission_rule": "sequencer default tx.Size() <= 95000; delayed Inbox DataTooLarge boundary 117964 is a distinct route",
+            "l1_fee_formula": "compressedBytes=BrotliLevel1(signedTx); units=16*compressedBytes; posterCostWei=PricePerUnit*units; posterGas=floor(posterCostWei/L2BaseFee)",
+            "execution_fee_formula": "L2BaseFee * (executionGas + posterGas); ordinary priority fee collection inactive on One at ArbOS61 activation",
+            "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+            "finality": "Sub-second sequencer-trusting soft finality; parent-chain data finality roughly 12-15 minutes",
+            "withdrawal": "45,818 L1-block BoLD dispute window, approximately 6.4 days, then claim",
+            "security_assumption": "At least one validator checks and challenges; force inclusion period is 5,760 L1 blocks/about 24 hours",
+            "evm_notes": "Solidity runtime remains 24 KiB and initcode 49,152 bytes; 96 KiB Stylus fragments are not an ordinary Solidity-verifier escape hatch"
+          },
+          "calldata_zero_bytes": 324,
+          "calldata_nonzero_bytes": 287260,
+          "eip7623_tokens": 1149364,
+          "regular_intrinsic_gas": 4618456,
+          "eip7623_floor_gas": 11514640,
+          "no_op_calldata_gas": 11514640,
+          "raw_transport_calldata_bytes": 287584,
+          "abi_calldata_bytes": null,
+          "signed_tx_bytes": 287703,
+          "signed_tx_sha256": "9432d8356d117c8a14e300939c01a37e17060af70bd332cb3a87b0d3c6436071",
+          "nonce": 7,
+          "tx_gas_limit": 32000000,
+          "source_size_admissible": false,
+          "source_no_op_gas_fits": true,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "actual_data_fee_wei": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            }
+          ]
+        },
+        {
+          "network": "scroll-mainnet",
+          "source_rules": {
+            "chain_id": 534352,
+            "active_release": "Feynman; Galileo inactive (GalileoTime=nil)",
+            "ordinary_signed_tx_limit_bytes": 116736,
+            "pinned_genesis_gas_limit": 10000000,
+            "current_gas_limit_status": "EXTERNAL_LIVE_VALUE_NOT_QUERIED; experiments use explicit 10,000,000 scenario",
+            "max_regular_transactions_per_block": 100,
+            "aggregate_regular_payload_limit_bytes": 122880,
+            "admission_rule": "IsValidBlockSizeForMining(tx.Size()) applies 1/0.95 against 120 KiB, giving signed tx <= 116736; gas must fit header",
+            "l1_fee_formula": "feePerByte=execScalar*l1BaseFee+blobScalar*l1BlobBaseFee; ratio=max(1e9,len(tx.data)*1e9/len(codecV8Zstd(tx.data))); penalty=1e9 if ratio>=threshold else penaltyFactor; fee=floor(feePerByte*len(signedTx)*penalty/1e18)",
+            "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+            "finality": "Confirmed is sequencer inclusion; Committed is L1-finalized batch commit; Finalized is L1-finalized validity proof",
+            "withdrawal": "Executable with Merkle proof after validity finalization; no fixed seven-day fraud window; latency is external",
+            "security_assumption": "Validity proof plus L1; Euclid enforced inclusion/emergency submission; upgrades controlled by 9-of-12 Security Council",
+            "evm_notes": "24,576-byte runtime and 49,152-byte initcode limits; RIPEMD-160 and BLAKE2F disabled, MODEXP components limited to 32 bytes, no blob opcodes/EIP-4788"
+          },
+          "calldata_zero_bytes": 324,
+          "calldata_nonzero_bytes": 287260,
+          "eip7623_tokens": 1149364,
+          "regular_intrinsic_gas": 4618456,
+          "eip7623_floor_gas": 11514640,
+          "no_op_calldata_gas": 11514640,
+          "raw_transport_calldata_bytes": 287584,
+          "abi_calldata_bytes": null,
+          "signed_tx_bytes": 287703,
+          "signed_tx_sha256": "dac983850dd29f0cbdc66815fcdf9c5761cd6ad46b9b231798573418485bed54",
+          "nonce": 7,
+          "tx_gas_limit": 10000000,
+          "source_size_admissible": false,
+          "source_no_op_gas_fits": false,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "actual_data_fee_wei": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 230292800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R2-C0-resume-fixed-b4-q32-0",
+      "artifact": "research/r2/models/outputs/resume-c0-first-anchor/C0/fixed-b4-q32/0/proof-0.bin",
+      "sha256": "89d96926d8fa13bbe33e358ecee46f1e1142b42b66406815908b399961ff6305",
+      "codec": "research-canonical-raw",
+      "native_result": {
+        "artifact": "research/r2/models/outputs/resume-c0-first-anchor/C0/fixed-b4-q32/0/measurements.json",
+        "sha256": "394fd641a4f7f17a70cd19e04387a73e38afabfbb162e5059e1252269d1c58ac"
+      },
+      "configuration": {
+        "artifact": "research/r2/models/outputs/resume-c0-first-anchor/C0/fixed-b4-q32/0/manifest.json",
+        "sha256": "ccee3108347de53520095f72aa9490cc1a87c0a1945d5d23709f2e16e4a81c5f"
+      },
+      "raw_proof_bytes": 194401,
+      "raw_proof_keccak256": "9de59b58da7839b0465187f9bbc6c78d3650f241ef8ec230331b13afff7ab713",
+      "classification": "EXACT_NATIVE_PROOF_TRANSPORT_NOT_EVM_ABI",
+      "networks": [
+        {
+          "network": "op-mainnet",
+          "source_rules": {
+            "chain_id": 10,
+            "active_release": "Karst",
+            "ordinary_signed_tx_limit_bytes": 131072,
+            "per_tx_gas_limit": 16777216,
+            "documented_block_gas_limit": 40000000,
+            "admission_rule": "serialized type-2 transaction length <= 128 KiB and gasLimit <= 2^24; deposits exempt",
+            "l1_fee_formula": "floor(max(100000000, -42585600 + 836500*fastlzSize) * (16*l1BaseFeeScalar*l1BaseFee + l1BlobFeeScalar*l1BlobBaseFee) / 1e12)",
+            "da_footprint_formula": "max(100, floor((-42585600 + 836500*fastlzSize)/1e6)) * daFootprintGasScalar; zero configured scalar maps to 400",
+            "operator_fee_formula": "gasUsed * operatorFeeScalar * 100 + operatorFeeConstant",
+            "estimator": "FastLZ of complete signed serialized transaction",
+            "estimator_status": "IMPLEMENTED_FROM_PINNED_FASTLZ_SOURCE",
+            "finality": "Sequencer inclusion is provisional; safe/finalized follows Ethereum L1",
+            "withdrawal": "Approximately seven days through the respected CANNON_KONA type-8 fault-proof game",
+            "security_assumption": "At least one honest challenger responds to an invalid claim before game clocks expire",
+            "evm_notes": "24,576-byte runtime and 49,152-byte initcode limits; Karst MODEXP/P256VERIFY/BN256-pairing behavior must be audited for the verifier"
+          },
+          "calldata_zero_bytes": 17130,
+          "calldata_nonzero_bytes": 177271,
+          "eip7623_tokens": 726214,
+          "regular_intrinsic_gas": 2925856,
+          "eip7623_floor_gas": 7283140,
+          "no_op_calldata_gas": 7283140,
+          "raw_transport_calldata_bytes": 194401,
+          "abi_calldata_bytes": null,
+          "signed_tx_bytes": 194518,
+          "signed_tx_sha256": "a5a814d816f93b8a9c2ec84104d31af8e890f57c9862f4e6728a12554230602b",
+          "nonce": 7,
+          "tx_gas_limit": 16777216,
+          "source_size_admissible": false,
+          "source_no_op_gas_fits": true,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "actual_data_fee_wei": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 188457,
+              "op_estimated_size_scaled": 157601694900,
+              "op_da_footprint_gas": 63040400,
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": 2521627118557601,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 2667289918557601
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 188457,
+              "op_estimated_size_scaled": 157601694900,
+              "op_da_footprint_gas": 63040400,
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": 2521627119976016,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 2667289919976016
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 188457,
+              "op_estimated_size_scaled": 157601694900,
+              "op_da_footprint_gas": 63040400,
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": 2521627134160169,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 2667289934160169
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 188457,
+              "op_estimated_size_scaled": 157601694900,
+              "op_da_footprint_gas": 63040400,
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": 25216271184157601,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 25361933984157601
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 188457,
+              "op_estimated_size_scaled": 157601694900,
+              "op_da_footprint_gas": 63040400,
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": 25216271185576016,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 25361933985576016
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 188457,
+              "op_estimated_size_scaled": 157601694900,
+              "op_da_footprint_gas": 63040400,
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": 25216271199760169,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 25361933999760169
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 188457,
+              "op_estimated_size_scaled": 157601694900,
+              "op_da_footprint_gas": 63040400,
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": 75648813552157601,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 75794476352157601
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 188457,
+              "op_estimated_size_scaled": 157601694900,
+              "op_da_footprint_gas": 63040400,
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": 75648813553576016,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 75794476353576016
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 188457,
+              "op_estimated_size_scaled": 157601694900,
+              "op_da_footprint_gas": 63040400,
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": 75648813567760169,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 75794476367760169
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 188457,
+              "op_estimated_size_scaled": 157601694900,
+              "op_da_footprint_gas": 63040400,
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": 252162711840157601,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 252308374640157601
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 188457,
+              "op_estimated_size_scaled": 157601694900,
+              "op_da_footprint_gas": 63040400,
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": 252162711841576016,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 252308374641576016
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 188457,
+              "op_estimated_size_scaled": 157601694900,
+              "op_da_footprint_gas": 63040400,
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": 252162711855760169,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 252308374655760169
+            }
+          ]
+        },
+        {
+          "network": "arbitrum-one",
+          "source_rules": {
+            "chain_id": 42161,
+            "active_release": "ArbOS 61 Elara / Nitro v3.11.3",
+            "ordinary_signed_tx_limit_bytes": 95000,
+            "per_tx_gas_limit": 32000000,
+            "block_gas_limit": 32000000,
+            "effective_final_transaction_block_allowance": 64000000,
+            "admission_rule": "sequencer default tx.Size() <= 95000; delayed Inbox DataTooLarge boundary 117964 is a distinct route",
+            "l1_fee_formula": "compressedBytes=BrotliLevel1(signedTx); units=16*compressedBytes; posterCostWei=PricePerUnit*units; posterGas=floor(posterCostWei/L2BaseFee)",
+            "execution_fee_formula": "L2BaseFee * (executionGas + posterGas); ordinary priority fee collection inactive on One at ArbOS61 activation",
+            "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+            "finality": "Sub-second sequencer-trusting soft finality; parent-chain data finality roughly 12-15 minutes",
+            "withdrawal": "45,818 L1-block BoLD dispute window, approximately 6.4 days, then claim",
+            "security_assumption": "At least one validator checks and challenges; force inclusion period is 5,760 L1 blocks/about 24 hours",
+            "evm_notes": "Solidity runtime remains 24 KiB and initcode 49,152 bytes; 96 KiB Stylus fragments are not an ordinary Solidity-verifier escape hatch"
+          },
+          "calldata_zero_bytes": 17130,
+          "calldata_nonzero_bytes": 177271,
+          "eip7623_tokens": 726214,
+          "regular_intrinsic_gas": 2925856,
+          "eip7623_floor_gas": 7283140,
+          "no_op_calldata_gas": 7283140,
+          "raw_transport_calldata_bytes": 194401,
+          "abi_calldata_bytes": null,
+          "signed_tx_bytes": 194520,
+          "signed_tx_sha256": "31524fcbf77e40a886d70ec30b05ba743b46a23c58d616c7210dd716416a76d0",
+          "nonce": 7,
+          "tx_gas_limit": 32000000,
+          "source_size_admissible": false,
+          "source_no_op_gas_fits": true,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "actual_data_fee_wei": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            }
+          ]
+        },
+        {
+          "network": "scroll-mainnet",
+          "source_rules": {
+            "chain_id": 534352,
+            "active_release": "Feynman; Galileo inactive (GalileoTime=nil)",
+            "ordinary_signed_tx_limit_bytes": 116736,
+            "pinned_genesis_gas_limit": 10000000,
+            "current_gas_limit_status": "EXTERNAL_LIVE_VALUE_NOT_QUERIED; experiments use explicit 10,000,000 scenario",
+            "max_regular_transactions_per_block": 100,
+            "aggregate_regular_payload_limit_bytes": 122880,
+            "admission_rule": "IsValidBlockSizeForMining(tx.Size()) applies 1/0.95 against 120 KiB, giving signed tx <= 116736; gas must fit header",
+            "l1_fee_formula": "feePerByte=execScalar*l1BaseFee+blobScalar*l1BlobBaseFee; ratio=max(1e9,len(tx.data)*1e9/len(codecV8Zstd(tx.data))); penalty=1e9 if ratio>=threshold else penaltyFactor; fee=floor(feePerByte*len(signedTx)*penalty/1e18)",
+            "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+            "finality": "Confirmed is sequencer inclusion; Committed is L1-finalized batch commit; Finalized is L1-finalized validity proof",
+            "withdrawal": "Executable with Merkle proof after validity finalization; no fixed seven-day fraud window; latency is external",
+            "security_assumption": "Validity proof plus L1; Euclid enforced inclusion/emergency submission; upgrades controlled by 9-of-12 Security Council",
+            "evm_notes": "24,576-byte runtime and 49,152-byte initcode limits; RIPEMD-160 and BLAKE2F disabled, MODEXP components limited to 32 bytes, no blob opcodes/EIP-4788"
+          },
+          "calldata_zero_bytes": 17130,
+          "calldata_nonzero_bytes": 177271,
+          "eip7623_tokens": 726214,
+          "regular_intrinsic_gas": 2925856,
+          "eip7623_floor_gas": 7283140,
+          "no_op_calldata_gas": 7283140,
+          "raw_transport_calldata_bytes": 194401,
+          "abi_calldata_bytes": null,
+          "signed_tx_bytes": 194520,
+          "signed_tx_sha256": "645cb656d70310fc96aade3282fa3b17eed575d377d4ba5107f790ce22767609",
+          "nonce": 7,
+          "tx_gas_limit": 10000000,
+          "source_size_admissible": false,
+          "source_no_op_gas_fits": true,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "actual_data_fee_wei": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 145662800000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "R2-C0-resume-fixed-b4-q32-1",
+      "artifact": "research/r2/models/outputs/resume-c0-first-anchor/C0/fixed-b4-q32/0/proof-1.bin",
+      "sha256": "56d70cb0be38bead819134b40d6b8cfbc8227eb933945f519bd4b36a2231b9c9",
+      "codec": "research-canonical-raw",
+      "native_result": {
+        "artifact": "research/r2/models/outputs/resume-c0-first-anchor/C0/fixed-b4-q32/0/measurements.json",
+        "sha256": "394fd641a4f7f17a70cd19e04387a73e38afabfbb162e5059e1252269d1c58ac"
+      },
+      "configuration": {
+        "artifact": "research/r2/models/outputs/resume-c0-first-anchor/C0/fixed-b4-q32/0/manifest.json",
+        "sha256": "ccee3108347de53520095f72aa9490cc1a87c0a1945d5d23709f2e16e4a81c5f"
+      },
+      "raw_proof_bytes": 190369,
+      "raw_proof_keccak256": "38b9c4860d7179ba7ea57df4fbabcca12cb68584f6eacc014a7cf3f4449f99ed",
+      "classification": "EXACT_NATIVE_PROOF_TRANSPORT_NOT_EVM_ABI",
+      "networks": [
+        {
+          "network": "op-mainnet",
+          "source_rules": {
+            "chain_id": 10,
+            "active_release": "Karst",
+            "ordinary_signed_tx_limit_bytes": 131072,
+            "per_tx_gas_limit": 16777216,
+            "documented_block_gas_limit": 40000000,
+            "admission_rule": "serialized type-2 transaction length <= 128 KiB and gasLimit <= 2^24; deposits exempt",
+            "l1_fee_formula": "floor(max(100000000, -42585600 + 836500*fastlzSize) * (16*l1BaseFeeScalar*l1BaseFee + l1BlobFeeScalar*l1BlobBaseFee) / 1e12)",
+            "da_footprint_formula": "max(100, floor((-42585600 + 836500*fastlzSize)/1e6)) * daFootprintGasScalar; zero configured scalar maps to 400",
+            "operator_fee_formula": "gasUsed * operatorFeeScalar * 100 + operatorFeeConstant",
+            "estimator": "FastLZ of complete signed serialized transaction",
+            "estimator_status": "IMPLEMENTED_FROM_PINNED_FASTLZ_SOURCE",
+            "finality": "Sequencer inclusion is provisional; safe/finalized follows Ethereum L1",
+            "withdrawal": "Approximately seven days through the respected CANNON_KONA type-8 fault-proof game",
+            "security_assumption": "At least one honest challenger responds to an invalid claim before game clocks expire",
+            "evm_notes": "24,576-byte runtime and 49,152-byte initcode limits; Karst MODEXP/P256VERIFY/BN256-pairing behavior must be audited for the verifier"
+          },
+          "calldata_zero_bytes": 17105,
+          "calldata_nonzero_bytes": 173264,
+          "eip7623_tokens": 710161,
+          "regular_intrinsic_gas": 2861644,
+          "eip7623_floor_gas": 7122610,
+          "no_op_calldata_gas": 7122610,
+          "raw_transport_calldata_bytes": 190369,
+          "abi_calldata_bytes": null,
+          "signed_tx_bytes": 190486,
+          "signed_tx_sha256": "9fc176661133e37a36ada7d0f7fcf300f97b3fef4f4f772aec0515a68e004124",
+          "nonce": 7,
+          "tx_gas_limit": 16777216,
+          "source_size_admissible": false,
+          "source_no_op_gas_fits": true,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "actual_data_fee_wei": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 183670,
+              "op_estimated_size_scaled": 153597369400,
+              "op_da_footprint_gas": 61438800,
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": 2457557910553597,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 2600010110553597
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 183670,
+              "op_estimated_size_scaled": 153597369400,
+              "op_da_footprint_gas": 61438800,
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": 2457557911935973,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 2600010111935973
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 183670,
+              "op_estimated_size_scaled": 153597369400,
+              "op_da_footprint_gas": 61438800,
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": 2457557925759736,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 2600010125759736
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 183670,
+              "op_estimated_size_scaled": 153597369400,
+              "op_da_footprint_gas": 61438800,
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": 24575579104153597,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 24718031304153597
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 183670,
+              "op_estimated_size_scaled": 153597369400,
+              "op_da_footprint_gas": 61438800,
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": 24575579105535973,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 24718031305535973
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 183670,
+              "op_estimated_size_scaled": 153597369400,
+              "op_da_footprint_gas": 61438800,
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": 24575579119359736,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 24718031319359736
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 183670,
+              "op_estimated_size_scaled": 153597369400,
+              "op_da_footprint_gas": 61438800,
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": 73726737312153597,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 73869189512153597
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 183670,
+              "op_estimated_size_scaled": 153597369400,
+              "op_da_footprint_gas": 61438800,
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": 73726737313535973,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 73869189513535973
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 183670,
+              "op_estimated_size_scaled": 153597369400,
+              "op_da_footprint_gas": 61438800,
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": 73726737327359736,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 73869189527359736
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 183670,
+              "op_estimated_size_scaled": 153597369400,
+              "op_da_footprint_gas": 61438800,
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": 245755791040153597,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 245898243240153597
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 183670,
+              "op_estimated_size_scaled": 153597369400,
+              "op_da_footprint_gas": 61438800,
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": 245755791041535973,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 245898243241535973
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "EVALUATED_PINNED_FASTLZ",
+              "fastlz_size_bytes": 183670,
+              "op_estimated_size_scaled": 153597369400,
+              "op_da_footprint_gas": 61438800,
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": 245755791055359736,
+              "operator_fee_wei": 0,
+              "total_fee_wei": 245898243255359736
+            }
+          ]
+        },
+        {
+          "network": "arbitrum-one",
+          "source_rules": {
+            "chain_id": 42161,
+            "active_release": "ArbOS 61 Elara / Nitro v3.11.3",
+            "ordinary_signed_tx_limit_bytes": 95000,
+            "per_tx_gas_limit": 32000000,
+            "block_gas_limit": 32000000,
+            "effective_final_transaction_block_allowance": 64000000,
+            "admission_rule": "sequencer default tx.Size() <= 95000; delayed Inbox DataTooLarge boundary 117964 is a distinct route",
+            "l1_fee_formula": "compressedBytes=BrotliLevel1(signedTx); units=16*compressedBytes; posterCostWei=PricePerUnit*units; posterGas=floor(posterCostWei/L2BaseFee)",
+            "execution_fee_formula": "L2BaseFee * (executionGas + posterGas); ordinary priority fee collection inactive on One at ArbOS61 activation",
+            "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+            "finality": "Sub-second sequencer-trusting soft finality; parent-chain data finality roughly 12-15 minutes",
+            "withdrawal": "45,818 L1-block BoLD dispute window, approximately 6.4 days, then claim",
+            "security_assumption": "At least one validator checks and challenges; force inclusion period is 5,760 L1 blocks/about 24 hours",
+            "evm_notes": "Solidity runtime remains 24 KiB and initcode 49,152 bytes; 96 KiB Stylus fragments are not an ordinary Solidity-verifier escape hatch"
+          },
+          "calldata_zero_bytes": 17105,
+          "calldata_nonzero_bytes": 173264,
+          "eip7623_tokens": 710161,
+          "regular_intrinsic_gas": 2861644,
+          "eip7623_floor_gas": 7122610,
+          "no_op_calldata_gas": 7122610,
+          "raw_transport_calldata_bytes": 190369,
+          "abi_calldata_bytes": null,
+          "signed_tx_bytes": 190488,
+          "signed_tx_sha256": "09fd8edfc64ae4ba6d528376dbe2ecbe372f84f8b49d56e31704df013fa8d1e2",
+          "nonce": 7,
+          "tx_gas_limit": 32000000,
+          "source_size_admissible": false,
+          "source_no_op_gas_fits": true,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "actual_data_fee_wei": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_NITRO_BROTLI_LEVEL_1_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            }
+          ]
+        },
+        {
+          "network": "scroll-mainnet",
+          "source_rules": {
+            "chain_id": 534352,
+            "active_release": "Feynman; Galileo inactive (GalileoTime=nil)",
+            "ordinary_signed_tx_limit_bytes": 116736,
+            "pinned_genesis_gas_limit": 10000000,
+            "current_gas_limit_status": "EXTERNAL_LIVE_VALUE_NOT_QUERIED; experiments use explicit 10,000,000 scenario",
+            "max_regular_transactions_per_block": 100,
+            "aggregate_regular_payload_limit_bytes": 122880,
+            "admission_rule": "IsValidBlockSizeForMining(tx.Size()) applies 1/0.95 against 120 KiB, giving signed tx <= 116736; gas must fit header",
+            "l1_fee_formula": "feePerByte=execScalar*l1BaseFee+blobScalar*l1BlobBaseFee; ratio=max(1e9,len(tx.data)*1e9/len(codecV8Zstd(tx.data))); penalty=1e9 if ratio>=threshold else penaltyFactor; fee=floor(feePerByte*len(signedTx)*penalty/1e18)",
+            "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+            "finality": "Confirmed is sequencer inclusion; Committed is L1-finalized batch commit; Finalized is L1-finalized validity proof",
+            "withdrawal": "Executable with Merkle proof after validity finalization; no fixed seven-day fraud window; latency is external",
+            "security_assumption": "Validity proof plus L1; Euclid enforced inclusion/emergency submission; upgrades controlled by 9-of-12 Security Council",
+            "evm_notes": "24,576-byte runtime and 49,152-byte initcode limits; RIPEMD-160 and BLAKE2F disabled, MODEXP components limited to 32 bytes, no blob opcodes/EIP-4788"
+          },
+          "calldata_zero_bytes": 17105,
+          "calldata_nonzero_bytes": 173264,
+          "eip7623_tokens": 710161,
+          "regular_intrinsic_gas": 2861644,
+          "eip7623_floor_gas": 7122610,
+          "no_op_calldata_gas": 7122610,
+          "raw_transport_calldata_bytes": 190369,
+          "abi_calldata_bytes": null,
+          "signed_tx_bytes": 190488,
+          "signed_tx_sha256": "84de3de1a851a5e075f1e7f4471a19f52320e0fc561a9dde7e6640b972e2db82",
+          "nonce": 7,
+          "tx_gas_limit": 10000000,
+          "source_size_admissible": false,
+          "source_no_op_gas_fits": true,
+          "configured_node_admission": null,
+          "authorized_receipt": null,
+          "exact_l2_verifier_gas": null,
+          "actual_data_fee_wei": null,
+          "fee_scenarios": [
+            {
+              "scenario_id": "l1-1gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-1gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-10gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-30gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-1wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-10wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            },
+            {
+              "scenario_id": "l1-100gwei-blob-100wei",
+              "measurement_status": "UNCALIBRATED_PROJECTION",
+              "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call",
+              "estimator_status": "NOT_EVALUATED_MISSING_PINNED_SCROLL_DA_CODEC_V8_ZSTD_EXECUTABLE",
+              "execution_fee_wei": 142452200000000,
+              "l1_data_fee_wei": null,
+              "operator_fee_wei": null,
+              "total_fee_wei": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

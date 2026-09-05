@@ -1,9 +1,9 @@
 {
   "schema": "pqtc.r2.resume-status.v1",
-  "checkpoint": "R2-RESUME-bc71758",
-  "status": "RESEARCH_IN_PROGRESS",
-  "recorded_utc": "2026-09-05T01:46:06.976901+00:00",
-  "reason": "User authorized continuation of the existing R2 plan from bc71758; R2-05 remains explicitly deferred.",
+  "checkpoint": "R2-RESUMED-RETURN",
+  "status": "RESEARCH_RETURN_WITH_DISPOSITIONS",
+  "recorded_utc": "2026-09-05T02:31:42.675147+00:00",
+  "reason": "Authorized independent experiments executed; remaining acceptance criteria explicitly dispositioned, not silently accepted.",
   "goal": "research/r2/goal.json",
   "normative_plan": "pqtc-independent-review/FOLLOW_UP_RESEARCH_PLAN.md",
   "resume_entrypoint": "research/r2/RESUME.md",
@@ -11,108 +11,103 @@
   "resumed_from_commit": "bc7175895ebef241914bb15f2902a55683d5485b",
   "retained_halt_snapshot": "research/r2/governance/halt-bc71758",
   "final_decision": null,
-  "next_domain": "R2-06",
-  "next_experiment": "Finish measured AIR anchor grid and EVM fitting after the completed first C0 anchor and ten-configuration C0 grid.",
+  "next_domain": "R2-08",
+  "next_experiment": "Resume the explicitly interrupted operational domain only from its retained incomplete record; R2-05 remains user-deferred.",
   "global_quota": null,
-  "running_jobs": 1,
+  "running_jobs": 0,
   "services": [
     {
       "name": "pqtc-r2-osaka",
-      "state": "RUNNING_FRESH_DISPOSABLE_STATE",
-      "exit_code": null,
-      "endpoint": "http://127.0.0.1:18545"
+      "state": "STOPPED",
+      "exit_code": 0
     },
     {
       "name": "pqtc-r2-prague-diagnostic",
-      "state": "RUNNING_FRESH_DISPOSABLE_STATE",
-      "exit_code": null,
-      "endpoint": "http://127.0.0.1:18546"
+      "state": "STOPPED",
+      "exit_code": 0
     }
   ],
-  "chain_state": "Disposable node state was not persisted. Receipts, signed transactions, calldata and compressed traces are retained. Restarting a node does not restore deployed addresses or checkpoints; replay the selected runner.",
+  "chain_state": "All disposable nodes stopped; chain state not persisted. Multiple exit137 interruptions and fresh untraced restarts are retained; cause not established.",
   "packages": [
     {
       "id": "R2-00",
-      "status": "MEASURED_BASELINE_CHECKPOINT",
-      "completed": "Five clean-checkout metadata checks passed; clean Rust/Foundry builds; one retained plus ten fresh native/codec/Foundry proof checks; exact parser and ABI ledgers; capped signed CREATE and retained withdrawal attempt, with separate high-gas controls; source epochs and cleanup exclusion recorded.",
-      "remaining": "Additional capped fresh-proof distribution and final cross-candidate calibration, not another claim that metadata checks prove feasibility.",
-      "evidence": "research/r2/baseline/outputs/r2-main/results.json"
+      "status": "MEASURED_WITH_SCOPED_GAPS",
+      "completed": "Retained clean baseline and 11 ledger/Foundry controls; 30 fixed plus 30 varied fresh C0 proofs with verified postcard export; historical samples remain separate.",
+      "remaining": "New C0 distribution canonical sub-section instrumentation and fresh full operational distribution are not claimed; retained detailed canonical ledgers remain authoritative.",
+      "evidence": "research/r2/air/outputs/resume-causal-distributions-01/summary.json"
     },
     {
       "id": "R2-01",
-      "status": "MEASURED_CANDIDATE_ANALYSIS_THEOREMS_OPEN",
-      "completed": "Three-calculator C0/C1/C2/C3 execution:83304 term rows,72 pinned rows; numeric commitment-ID adapter repaired after retained failure; observed matrix inventory matched.",
-      "remaining": "Theorem applicability and external review remain unresolved and separately deferred; no security qualification.",
+      "status": "EXECUTED_CONDITIONAL_ANALYSIS",
+      "completed": "83304 term rows, 72 pinned rows, all four candidate inventories and three calculators executed; numeric commitment-ID repair checked.",
+      "remaining": "Theorem batching-object interpretation, QROM/lifetime/MMCS and hiding composition are unresolved; reviews deferred independently.",
       "evidence": "research/r2/security/outputs/resume-shapes-02/results.json"
     },
     {
       "id": "R2-02",
-      "status": "MEASURED_PARTIAL_HASH_RETRY_RUNNING",
-      "completed": "Constants comparison and five-tier Solidity builds/deployments ran after Yul shadowing repair; capped constructor/deposit measurements retained. Diagnostic full trace disconnected; bounded trace retry and independent full parity now running.",
-      "remaining": "Complete10000-plus parity/misuse and matched costs; retain any incomplete trace attribution.",
-      "evidence": "research/r2/hash/outputs/resume-full-02/results.json"
+      "status": "MEASURED_WITH_ATTRIBUTION_GAP",
+      "completed": "23322 shared full-role vectors, 51 actual misuse cases, constants comparison, five deployed tiers, 50 benchmark rows and constructor/deposit receipts. Source-matched parity reused after verified source hashes.",
+      "remaining": "Complete diagnostic opcode attribution was interrupted; traces remain partial. No H6 comparator entered: optional branch not required for completed H5 comparison.",
+      "evidence": "research/r2/hash/outputs/resume-costs-06/results.json"
     },
     {
       "id": "R2-03",
-      "status": "MEASURED_THREE_GEOMETRIES_AND_MUTATIONS",
-      "completed": "All three C1 geometries proved/verified. Three invalid-trace proofs and64 public-value mutations plus configuration substitution rejected.",
-      "remaining": "Fixed/varied30-sample distributions and EVM arithmetic pending;100-bit normalization unreachable in declared sweep.",
+      "status": "MEASURED_NATIVE_AND_ARITHMETIC",
+      "completed": "Three H0 geometries proved; invalid-trace proofs, public/config mutations and fresh verification executed; primary 30 fixed/30 varied distribution; all evaluator tapes verified in Solidity diagnostics.",
+      "remaining": "Unreachable normalized H0 vertical settings remain unavailable in declared sweep, not fixed controls relabeled secure. Arithmetic tape is not a complete verifier.",
       "evidence": "research/r2/air/outputs/resume-C1-mutations/results.json"
     },
     {
       "id": "R2-04",
-      "status": "MEASURED_CAUSAL_CONTROLS_AND_MUTATIONS",
-      "completed": "C2 and all three C3 geometries proved/verified on frozen case0; actual mutation campaigns/public-context executed; C0 same-codec export verified.",
-      "remaining": "Fixed/varied distributions, arithmetic EVM costs and full-role hash parity ongoing.",
-      "evidence": "research/r2/air/runs/resume-native-suite-01/results.json"
+      "status": "MEASURED_NATIVE_AND_ARITHMETIC",
+      "completed": "Complete H5 horizontal and vertical relations, public-context study, native mutations, matched fixed/varied distributions and seven Solidity evaluator parity experiments executed.",
+      "remaining": "Complete new-candidate EVM codec/verifier gas remains unknown; taped evaluator cap failures do not prove an optimized verifier impossible.",
+      "evidence": "research/r2/air/outputs/resume-causal-distributions-01/summary.json"
     },
     {
       "id": "R2-05",
       "status": "INCOMPLETE_DEFERRED_BY_USER",
-      "completed": "q32/q48 transcript and continuation source implemented; q32 native build passed.",
-      "remaining": "Complete changed-transcript proof, cross-language parity, lifecycle and signed local transaction experiments. User explicitly requested moving past this interrupted domain before later halting all research.",
+      "completed": "Retained typed epoch/full-width binding sources and previous compiled q32 state only; no changed-transcript execution resumed.",
+      "remaining": "All changed-transcript state machine, full codec/verifier integration and dependent lifecycle experiments explicitly deferred by user.",
       "evidence": "research/r2/transcript/INCOMPLETE.json"
     },
     {
       "id": "R2-06",
-      "status": "MEASURED_76_ANCHOR_PROOFS",
-      "completed": "20 C0 and56 C1/C2/C3 fresh verified proofs across declared parameter grid; zero typed-codec byte residuals. One earlier AIR proof succeeded but old byte model rejected; historical attempt retained.",
-      "remaining": "Held-out actual EVM component fitting and assumption-separated synthesis pending; no full-EVM model claimed.",
-      "evidence": "research/r2/models/outputs/resume-air-grid-02/samples.json"
+      "status": "MEASURED_MODELS_WITH_DOMAIN_LIMITS",
+      "completed": "76 verified anchors, exact typed codecs, separated native frontiers, measured opening/hash gas with predeclared held-out q48 and rank diagnostics; field gate executed.",
+      "remaining": "Complete EVM gas stays unknown; component models prioritize only within domain. Field continuation not entered: no nonoverlapping complete narrow-verifier arithmetic inventory.",
+      "evidence": "research/r2/models/outputs/resume-component-gas-02/fits.json"
     },
     {
       "id": "R2-07",
-      "status": "MEASURED_NONHIDING_CONTROL_AND_HIDING_BARRIER",
-      "completed": "32 native exact H0 non-hiding proof verified after bounded univariate-vs-multilinear degree-hint repair;34290 bytes. Two hiding trace openings verified but exposed requested8 synthetic secret limbs.128 zero-PoW derivation failures retained.",
-      "remaining": "Standalone Solidity harness repair pending; full hiding outer zerocheck/prescribed-point adapter remains missing.",
+      "status": "BOUNDED_BARRIERS_REPRODUCED",
+      "completed": "Both exact PCS trait barriers, serialized non-hiding H0 proof after degree repair, two opening-only controls, and 128-bit zero-PoW derivation errors executed. Standalone upstream verifier reached actual 31856-byte code-size barrier.",
+      "remaining": "Complete hiding outer zerocheck/prescribed-point adapter is absent; opening-only proof reveals requested synthetic limbs and is not a private withdrawal. No full hiding EVM claim; licenses unresolved.",
       "evidence": "research/r2/backend/outputs/resume-h0-degree-32/results.json"
     },
     {
       "id": "R2-08",
-      "status": "INTERRUPTED_SOURCE_PREPARATION_UNEXECUTED",
-      "completed": "Same-codec C0 export verified; historical baseline/containment/deposit history intact. Worker interrupted by provider cyber_policy error during source preparation.",
-      "remaining": "New local constructor/deposit/payout/100-proof operational campaign incomplete and unexecuted; new transcript splits/lifecycle separately user-deferred.",
+      "status": "INCOMPLETE_INTERRUPTED",
+      "completed": "Retained containment/history evidence; new operational source preparation ended with provider cyber_policy interruption, recorded without gas/security inference.",
+      "remaining": "No new constructor/payout/checkpoint/100-proof operational campaign; source preparation incomplete. Dependent new full local pipeline remains unknown.",
       "evidence": "research/r2/operations/RESUME_INCOMPLETE.json"
     },
     {
       "id": "R2-09",
-      "status": "PARTIAL_CONDITIONAL_DIAGNOSTICS",
-      "completed": "Exact retained A/B L2 envelope diagnostics;64-commit local Flock configuration search; hardware capability inventory.",
-      "remaining": "Conditional gate evaluation/check command and supported repair execution; native portable profile; recursion/aggregation/STIR/Circle entry assessments against completed evidence. No x86 host/emulator was available.",
-      "evidence": "research/r2/conditional/commands.json"
+      "status": "EXECUTED_ELIGIBLE_BRANCHES",
+      "completed": "Pinned conditional gates and exact five-native-payload transport executed; portable generic ARM build and 64 verified process-cold/warm proofs at requested thread settings 1/4.",
+      "remaining": "Commodity x86 host/executable unavailable. Flock supported M21 preset absent in bounded search; STIR/Circle hiding and recursion/aggregation exact outer paths absent. Transport is not L2 execution or actual fees.",
+      "evidence": "research/r2/conditional/outputs/resume-portable-summary.json"
     },
     {
       "id": "R2-10",
-      "status": "PAUSE_HANDOFF_NOT_FINAL_RESEARCH_RETURN",
-      "completed": "Paused report, ledgers, findings tracking, manifests and resume instructions prepared at user request.",
-      "remaining": "Finish research after authorization to resume, then produce the final comparative decision and independent review checkpoints. No current final architectural or production-readiness decision.",
+      "status": "RETURN_WITH_EXPLICIT_INCOMPLETE_DISPOSITIONS",
+      "completed": "Final report, matrices, all original finding identities, complete plan-text disposition ledger, provenance and retained-record validation.",
+      "remaining": "Review checkpoints remain deferred; no final decision category is asserted without its required evidence. Full engineering specification not warranted by this return.",
       "evidence": "research/r2/final/TARGETED_RESEARCH_REPORT.md"
     }
   ],
   "review_state": "Two internal agent reviews were received before the deferral: initial corpus freeze required corrections; C0 security arithmetic found no actionable defect within its conditional scope. Canonical mapping and deposit-backed corpus corrections were executed afterward; no independent re-review claimed. No external cryptographic acceptance.",
   "historical_records": "Original pre-R2 evidence remains unchanged. Worker handoff status files record what workers themselves executed, not current Main execution; this checkpoint and actual run artifacts are authoritative for resume status.",
-  "active_output_roots": [
-    "research/r2/hash/runs/resume-full-03",
-    "research/r2/hash/outputs/resume-full-03"
-  ]
+  "active_output_roots": []
 }

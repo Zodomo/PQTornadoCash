@@ -1,0 +1,64 @@
+{
+  "classification": "STANDALONE_PLAIN_WHIR_NOT_SPARTAN_NOT_H0_NOT_HIDING",
+  "specification_status": "UPSTREAM_STANDALONE_CONTROL",
+  "correctness_evidence": "EXECUTION_BLOCKED_INSPECT_RAW_LOGS_NOT_A_GAS_FAILURE",
+  "privacy_evidence": "NON_HIDING_CONTROL",
+  "security_status": "SECURITY_NOT_QUALIFIED",
+  "performance_evidence": "NOT_EVALUATED_NO_TRANSACTION_RECEIPTS",
+  "implementation_stage": "BOUNDED_HARNESS_REPAIR",
+  "promotion_status": "NOT_READY_FOR_BUILD_SELECTION",
+  "rpc_url": "http://127.0.0.1:18545",
+  "repair": "Direct argv omits empty --tc list, replacing bash3 nounset array expansion; upstream sources unchanged",
+  "original_failure": "research/candidates/C50-spartan-whir/outputs/solidity-gas/stderr.log",
+  "limits": "No code-size, initcode, transaction-gas or block-gas relaxation requested",
+  "license_status": "UNRESOLVED_DECLARATIONS_NOT_A_LEGAL_CONCLUSION",
+  "dependency_pins": {
+    "pin_source": {
+      "repository": "https://github.com/privacy-ethereum/sol-whir",
+      "commit": "b719b97b5961ac1c1679383b31e55439a26682f9",
+      "gitlinks": {
+        "lib/forge-std": "035de35f5e366c8d6ed142aec4ccb57fe2dd87d4",
+        "lib/solady": "513f581675374706dbe947284d6b12d19ce35a2a"
+      }
+    },
+    "upstream_root_submodules": [],
+    "dependencies": {
+      "forge_std": {
+        "repository": "https://github.com/foundry-rs/forge-std",
+        "commit": "035de35f5e366c8d6ed142aec4ccb57fe2dd87d4",
+        "verified_files": [
+          {
+            "path": "src/Test.sol",
+            "sha256": "242f2494d264bf00515b7bfcb5a3e6cbc3e737d03795105cbf19f68d8b640dd9"
+          },
+          {
+            "path": "src/Script.sol",
+            "sha256": "c4de2ae936fa7bb4f4250a3908c6bce7acdc84034156cb252fdc2d9a1c020012"
+          },
+          {
+            "path": "src/StdJson.sol",
+            "sha256": "0211b47e93dbeb6a7de6112470a77137038ed73b79b015847f013e49fcd7511f"
+          }
+        ],
+        "recursive_submodules": []
+      },
+      "solady": {
+        "repository": "https://github.com/Vectorized/solady",
+        "commit": "513f581675374706dbe947284d6b12d19ce35a2a",
+        "verified_files": [
+          {
+            "path": "src/utils/LibSort.sol",
+            "sha256": "ff6fa9e5021aeab6c1491e6f9ae123bf4cc20e4813e9f661640741ef6296e446"
+          }
+        ],
+        "recursive_submodules": []
+      }
+    }
+  },
+  "license_files": [
+    "lib/solady/LICENSE.txt"
+  ],
+  "dotenv_isolation": "Temporary project outside repository; .env* excluded; ancestors checked without reading contents",
+  "exit_code": 1,
+  "broadcasts": []
+}

@@ -1,0 +1,58 @@
+{
+  "architecture": "arm64",
+  "command": [
+    "python3",
+    "research/r2/air/resume-distributions.py",
+    "--manifest",
+    "research/r2/models/resume-causal-distribution-manifest.json",
+    "--output",
+    "research/r2/air/outputs/resume-causal-distributions-01",
+    "--samples",
+    "30",
+    "--warmup",
+    "2"
+  ],
+  "cwd": "/Users/zodomo/code/PQTornado",
+  "environment": {
+    "HOME": "/Users/zodomo",
+    "LC_ALL": "C",
+    "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+    "RAYON_NUM_THREADS": "1",
+    "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+    "TZ": "UTC"
+  },
+  "logs": {
+    "stderr.log": {
+      "bytes": 777,
+      "sha256": "beb0cfc32de32f567b4487ef61014f37c736d1cb4b85bb7907c735e32820ce58"
+    },
+    "stdout.log": {
+      "bytes": 13720,
+      "sha256": "1fe6f09841c58273493848cc80f67d660b4d48c4c061339e7893120bb69513ba"
+    }
+  },
+  "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+  "returncode": 0,
+  "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+  "rss_unit": "bytes",
+  "schema": "pqtc.r2.command-run.v1",
+  "scope": "local non-custodial research command; success is execution, not artifact qualification",
+  "started_utc": "2026-09-05T01:50:54.926425+00:00",
+  "timed_out": false,
+  "timeout_seconds": 7200,
+  "timing_command": [
+    "/usr/bin/time",
+    "-l",
+    "python3",
+    "research/r2/air/resume-distributions.py",
+    "--manifest",
+    "research/r2/models/resume-causal-distribution-manifest.json",
+    "--output",
+    "research/r2/air/outputs/resume-causal-distributions-01",
+    "--samples",
+    "30",
+    "--warmup",
+    "2"
+  ],
+  "wall_seconds": 354.75160837499425
+}

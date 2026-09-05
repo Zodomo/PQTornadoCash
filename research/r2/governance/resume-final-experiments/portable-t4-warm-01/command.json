@@ -1,0 +1,83 @@
+{
+  "architecture": "arm64",
+  "command": [
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "-B",
+    "/Users/zodomo/code/PQTornado/research/r2/air/run.py",
+    "--binary",
+    "/Users/zodomo/code/PQTornado/research/r2/conditional/resume-build/portable/release/pqtc-r2-air",
+    "--",
+    "--candidate",
+    "C1",
+    "--profile",
+    "fixed",
+    "--queries",
+    "32",
+    "--log-blowup",
+    "4",
+    "--geometry",
+    "decomposed",
+    "--statement",
+    "/Users/zodomo/code/PQTornado/research/r2/corpus/h0/fixed/statement.json",
+    "--witness",
+    "/Users/zodomo/code/PQTornado/research/r2/corpus/h0/fixed/witness.json",
+    "--output",
+    "/Users/zodomo/code/PQTornado/research/r2/conditional/outputs/resume-portable-C1-t4/warm-01"
+  ],
+  "cwd": "/Users/zodomo/code/PQTornado",
+  "environment": {
+    "HOME": "/Users/zodomo",
+    "LC_ALL": "C",
+    "OMP_NUM_THREADS": "4",
+    "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+    "RAYON_NUM_THREADS": "4",
+    "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+    "TZ": "UTC"
+  },
+  "logs": {
+    "stderr.log": {
+      "bytes": 777,
+      "sha256": "e78146c7f487ce180295068994f4d20adeda5c22b81303f90fba7febc4c7225e"
+    },
+    "stdout.log": {
+      "bytes": 2069,
+      "sha256": "bdfeddc5c8e6b082f4c1943cb3558b2da40b3d24c456fffcc5edb4a0a36c03a0"
+    }
+  },
+  "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+  "returncode": 0,
+  "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+  "rss_unit": "bytes",
+  "schema": "pqtc.r2.command-run.v1",
+  "scope": "local non-custodial research command; success is execution, not artifact qualification",
+  "started_utc": "2026-09-05T02:27:03.642096+00:00",
+  "timed_out": false,
+  "timeout_seconds": 7200,
+  "timing_command": [
+    "/usr/bin/time",
+    "-l",
+    "/opt/homebrew/opt/python@3.14/bin/python3.14",
+    "-B",
+    "/Users/zodomo/code/PQTornado/research/r2/air/run.py",
+    "--binary",
+    "/Users/zodomo/code/PQTornado/research/r2/conditional/resume-build/portable/release/pqtc-r2-air",
+    "--",
+    "--candidate",
+    "C1",
+    "--profile",
+    "fixed",
+    "--queries",
+    "32",
+    "--log-blowup",
+    "4",
+    "--geometry",
+    "decomposed",
+    "--statement",
+    "/Users/zodomo/code/PQTornado/research/r2/corpus/h0/fixed/statement.json",
+    "--witness",
+    "/Users/zodomo/code/PQTornado/research/r2/corpus/h0/fixed/witness.json",
+    "--output",
+    "/Users/zodomo/code/PQTornado/research/r2/conditional/outputs/resume-portable-C1-t4/warm-01"
+  ],
+  "wall_seconds": 2.604750874976162
+}

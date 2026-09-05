@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Validate retained research records only; never execute proofs or contact RPC."""
 import csv
+import gzip
 import hashlib
 import json
 from collections import defaultdict
@@ -28,6 +29,16 @@ def byte_sum(node):
 def main():
     manifest = load(HERE / 'EVIDENCE_MANIFEST.json')
     paths = [row['path'] for row in manifest['files']]
+    compression = load(ROOT / 'research/r2/governance/resume-lossless-compression-02.json')
+    for row in compression['files']:
+        restored_hash = hashlib.sha256()
+        restored_bytes = 0
+        with gzip.open(ROOT / row['compressed_path'], 'rb') as stream:
+            while chunk := stream.read(1024 * 1024):
+                restored_hash.update(chunk)
+                restored_bytes += len(chunk)
+        assert restored_hash.hexdigest() == row['original_sha256']
+        assert restored_bytes == row['original_bytes']
     assert len(paths) == len(set(paths))
     for row in manifest['files']:
         path = ROOT / row['path']
@@ -85,6 +96,17 @@ def main():
         path = ROOT / relative
         if path.name == 'samples.json' and '/models/outputs/resume-' in relative:
             samples = load(path)
+            if samples and samples[0]['metric_scope'].startswith('component_'):
+                for row in samples:
+                    assert row['complete_transaction_gas'] is None
+                    assert row['proof_sha256'] in proof_hashes
+                    for observation in row['observations']:
+                        assert observation['kernel_gas'] == sum(c['kernel_gas'] for c in observation['chunks'])
+                        for chunk in observation['chunks']:
+                            assert chunk['correct'] and chunk['evm_output'] == chunk['independent_expected']
+                            assert int(chunk['receipt']['status'], 16) == 1
+                            assert chunk['harness_receipt_gas'] == int(chunk['receipt']['gasUsed'], 16)
+                continue
             assert len({r['proof_sha256'] for r in samples}) == len(samples)
             for row in samples:
                 assert row['complete_native_verified'] is True
@@ -99,6 +121,41 @@ def main():
                 assert proof.stat().st_size == row['raw_proof_bytes']
                 assert byte_sum(load(path.parent / row['byte_ledger_path'])) == row['raw_proof_bytes']
                 resumed_air_proofs.add(digest(proof))
+
+    distribution = ROOT / 'research/r2/air/outputs/resume-causal-distributions-01/samples.jsonl'
+    causal = [json.loads(line) for line in distribution.read_text().splitlines()]
+    assert len(causal) == len({r['proof']['sha256'] for r in causal}) == 256
+    strata = defaultdict(int)
+    for row in causal:
+        assert row['exit_status'] == 0 and row['results']['native_verified'] is True
+        assert row['results']['raw_proof_bytes'] == proof_hashes[row['proof']['sha256']]
+        if row['phase'] == 'measured':
+            strata[row['configuration'], row['mode']] += 1
+    assert len(strata) == 8 and set(strata.values()) == {30}
+
+    portable_hashes = set()
+    for threads in (1, 4):
+        folder = ROOT / f'research/r2/conditional/outputs/resume-portable-C1-t{threads}'
+        results = list(folder.glob('*/results.json'))
+        assert len(results) == 32
+        for path in results:
+            row = load(path)
+            command = load(path.parent / 'command.json')
+            assert row['native_verified'] is True and command['exit_status'] == 0
+            assert command['environment']['RAYON_NUM_THREADS'] == str(threads)
+            proof = path.parent / row['proof_path']
+            assert proof.stat().st_size == row['raw_proof_bytes']
+            assert byte_sum(load(path.parent / row['byte_ledger_path'])) == row['raw_proof_bytes']
+            portable_hashes.add(digest(proof))
+    assert len(portable_hashes) == 64
+    dispositions = load(HERE / 'ACCEPTANCE_DISPOSITIONS.json')
+    assert digest(ROOT / dispositions['normative_plan']) == dispositions['plan_sha256']
+    plan_lines = (ROOT / dispositions['normative_plan']).read_text().splitlines()
+    sections = dispositions['sections']
+    for index, section in enumerate(sections):
+        end = sections[index + 1]['line'] - 1 if index + 1 < len(sections) else len(plan_lines)
+        assert section['requirements'] == plan_lines[section['line']:end]
+        assert section['evidence'] in paths
 
     totals = defaultdict(int)
     receipts = {}
@@ -119,6 +176,8 @@ def main():
               'evidence_files': len(paths), 'original_findings': len(findings),
               'baseline_proof_records': len(records), 'air_proof_records': 3,
               'resumed_anchor_proofs': len(anchor_proofs), 'resumed_air_proofs': len(resumed_air_proofs),
+              'causal_measured_proofs': sum(strata.values()), 'causal_warmups': len(causal) - sum(strata.values()),
+              'portable_verified_proofs': len(portable_hashes), 'normative_sections_retained': len(sections),
               'reconciled_receipts': len(receipts), 'manifest_sha256': digest(HERE / 'EVIDENCE_MANIFEST.json')}
     (HERE / 'checkpoint-validation.json').write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result, sort_keys=True))

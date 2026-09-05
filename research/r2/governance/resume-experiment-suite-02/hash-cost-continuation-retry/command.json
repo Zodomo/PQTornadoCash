@@ -1,0 +1,69 @@
+{
+  "architecture": "arm64",
+  "command": [
+    "python3",
+    "research/r2/hash/run.py",
+    "--output",
+    "research/r2/hash/outputs/resume-costs-05",
+    "--build",
+    "--rpc-url",
+    "http://127.0.0.1:18545",
+    "--diagnostic-rpc-url",
+    "http://127.0.0.1:18546",
+    "--native-repetitions",
+    "30",
+    "--plonky3",
+    "/Users/zodomo/.cargo/git/checkouts/plonky3-7d8a3b21a665a86f/3152b14",
+    "--reuse-parity",
+    "research/r2/hash/outputs/resume-full-03"
+  ],
+  "cwd": "/Users/zodomo/code/PQTornado",
+  "environment": {
+    "CARGO_BUILD_JOBS": "4",
+    "HOME": "/Users/zodomo",
+    "LC_ALL": "C",
+    "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+    "RAYON_NUM_THREADS": "1",
+    "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+    "TZ": "UTC"
+  },
+  "logs": {
+    "stderr.log": {
+      "bytes": 4002,
+      "sha256": "cfcb493970fedd92a76f477793bc1fec1863797f1482e96869e2bfb7f223d334"
+    },
+    "stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+  "returncode": 1,
+  "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+  "rss_unit": "bytes",
+  "schema": "pqtc.r2.command-run.v1",
+  "scope": "local non-custodial research command; success is execution, not artifact qualification",
+  "started_utc": "2026-09-05T02:23:14.108238+00:00",
+  "timed_out": false,
+  "timeout_seconds": 7200,
+  "timing_command": [
+    "/usr/bin/time",
+    "-l",
+    "python3",
+    "research/r2/hash/run.py",
+    "--output",
+    "research/r2/hash/outputs/resume-costs-05",
+    "--build",
+    "--rpc-url",
+    "http://127.0.0.1:18545",
+    "--diagnostic-rpc-url",
+    "http://127.0.0.1:18546",
+    "--native-repetitions",
+    "30",
+    "--plonky3",
+    "/Users/zodomo/.cargo/git/checkouts/plonky3-7d8a3b21a665a86f/3152b14",
+    "--reuse-parity",
+    "research/r2/hash/outputs/resume-full-03"
+  ],
+  "wall_seconds": 37.38200791698182
+}

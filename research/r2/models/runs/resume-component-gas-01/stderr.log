@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "/Users/zodomo/code/PQTornado/research/r2/models/gas_fit.py", line 314, in <module>
+    main()
+    ~~~~^^
+  File "/Users/zodomo/code/PQTornado/research/r2/models/gas_fit.py", line 186, in main
+    samples, pins = inputs()
+                    ~~~~~~^^
+  File "/Users/zodomo/code/PQTornado/research/r2/models/gas_fit.py", line 84, in inputs
+    records = {r["slot"]["id"]: Path(r["command_record"]).parent for r in load(folder / "records.json")}
+                                     ~^^^^^^^^^^^^^^^^^^
+KeyError: 'command_record'
+        0.07 real         0.05 user         0.01 sys
+            31113216  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+                3057  page reclaims
+                  44  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                  19  voluntary context switches
+                  69  involuntary context switches
+           781681553  instructions retired
+           264892920  cycles elapsed
+            23216728  peak memory footprint

@@ -1,0 +1,273 @@
+{
+  "commands": [
+    {
+      "id": "hash-cost-continuation-retry",
+      "argv": [
+        "python3",
+        "research/r2/hash/run.py",
+        "--output",
+        "research/r2/hash/outputs/resume-costs-05",
+        "--build",
+        "--rpc-url",
+        "http://127.0.0.1:18545",
+        "--diagnostic-rpc-url",
+        "http://127.0.0.1:18546",
+        "--native-repetitions",
+        "30",
+        "--plonky3",
+        "/Users/zodomo/.cargo/git/checkouts/plonky3-7d8a3b21a665a86f/3152b14",
+        "--reuse-parity",
+        "research/r2/hash/outputs/resume-full-03"
+      ],
+      "env": {
+        "CARGO_BUILD_JOBS": "4"
+      }
+    },
+    {
+      "id": "C1-decomposed-arithmetic-diagnostic-retry",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C1-decomposed",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic2-cost-C1-decomposed",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C1-whole-round-arithmetic-diagnostic-retry",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C1-whole-round",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic2-cost-C1-whole-round",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C1-lanes4-arithmetic-diagnostic-retry",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C1-lanes4",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic2-cost-C1-lanes4",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C2-horizontal-arithmetic-diagnostic-retry",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C2-horizontal",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic2-cost-C2-horizontal",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C3-decomposed-arithmetic-diagnostic-retry",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C3-decomposed",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic2-cost-C3-decomposed",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C3-whole-round-arithmetic-diagnostic-retry",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C3-whole-round",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic2-cost-C3-whole-round",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C3-lanes4-arithmetic-diagnostic-retry",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C3-lanes4",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic2-cost-C3-lanes4",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "gates",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-gates-01",
+        "--",
+        "python3",
+        "-B",
+        "research/r2/conditional/gates.py",
+        "--evidence",
+        "research/r2/conditional/resume-gate-evidence.json",
+        "--output",
+        "research/r2/conditional/outputs/resume-gates-01.json"
+      ]
+    },
+    {
+      "id": "native-l2",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-native-l2-01",
+        "--",
+        "python3",
+        "-B",
+        "research/r2/conditional/l2_payload.py",
+        "--payloads",
+        "research/r2/conditional/resume-payloads.json",
+        "--output",
+        "research/r2/conditional/outputs/resume-native-l2-01.json"
+      ]
+    },
+    {
+      "id": "hardware-t1",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-hardware-t1-01",
+        "--",
+        "python3",
+        "-B",
+        "research/r2/conditional/hardware.py",
+        "--candidate",
+        "C1",
+        "--geometry",
+        "decomposed",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--threads",
+        "1",
+        "--samples",
+        "30",
+        "--toolchain",
+        "1.97.0",
+        "--build-root",
+        "research/r2/conditional/resume-build/portable",
+        "--run-root",
+        "research/r2/conditional/outputs/resume-portable-C1-t1",
+        "--output",
+        "research/r2/conditional/outputs/resume-hardware-t1-01.json"
+      ]
+    },
+    {
+      "id": "hardware-t4",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-hardware-t4-01",
+        "--",
+        "python3",
+        "-B",
+        "research/r2/conditional/hardware.py",
+        "--candidate",
+        "C1",
+        "--geometry",
+        "decomposed",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--threads",
+        "4",
+        "--samples",
+        "30",
+        "--toolchain",
+        "1.97.0",
+        "--build-root",
+        "research/r2/conditional/resume-build/portable",
+        "--run-root",
+        "research/r2/conditional/outputs/resume-portable-C1-t4",
+        "--output",
+        "research/r2/conditional/outputs/resume-hardware-t4-01.json"
+      ]
+    },
+    {
+      "id": "portable-build",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-portable-build-01",
+        "--env",
+        "RUSTFLAGS=-C target-cpu=generic",
+        "--env",
+        "CARGO_BUILD_JOBS=4",
+        "--",
+        "cargo",
+        "+1.97.0",
+        "build",
+        "--locked",
+        "--offline",
+        "--release",
+        "--manifest-path",
+        "research/r2/air/rust/Cargo.toml",
+        "--target-dir",
+        "research/r2/conditional/resume-build/portable"
+      ]
+    },
+    {
+      "id": "compiler",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-compiler-01",
+        "--",
+        "rustc",
+        "+1.97.0",
+        "-vV"
+      ]
+    }
+  ],
+  "diagnostic_node": "Prague restarted without --steps-tracing after second exit137; no trace attribution claimed for these new runs."
+}

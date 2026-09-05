@@ -81,7 +81,8 @@ def inputs():
         folder = HERE / "outputs" / source
         for name in ("samples.json", "records.json"):
             pins[str(folder / name)] = sha((folder / name).read_bytes())
-        records = {r["slot"]["id"]: Path(r["command_record"]).parent for r in load(folder / "records.json")}
+        records = {r["slot"]["id"]: Path(r["command_record"]).parent
+                   for r in load(folder / "records.json") if r["measurement_status"] == "MEASURED"}
         for sample in load(folder / "samples.json"):
             # Normalized security regimes are never pooled into a fixed-regime cost fit.
             if sample["regime"] != "fixed_unqualified":

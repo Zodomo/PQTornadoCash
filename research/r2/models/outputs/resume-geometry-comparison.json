@@ -1,0 +1,77 @@
+{
+  "rows": [
+    {
+      "name": "C1-decomposed",
+      "native_verified": true,
+      "bytes": 322131,
+      "prove_ms": 2584.797042,
+      "verify_ms": 5.989792,
+      "width": 82,
+      "rows": 8192,
+      "quotients": 8
+    },
+    {
+      "name": "C1-whole-round",
+      "native_verified": true,
+      "bytes": 331773,
+      "prove_ms": 3216.2304160000003,
+      "verify_ms": 3.84075,
+      "width": 50,
+      "rows": 8192,
+      "quotients": 16
+    },
+    {
+      "name": "C1-lanes4",
+      "native_verified": true,
+      "bytes": 373415,
+      "prove_ms": 5990.969333,
+      "verify_ms": 5.126875,
+      "width": 50,
+      "rows": 16384,
+      "quotients": 16
+    },
+    {
+      "name": "C2-horizontal",
+      "native_verified": true,
+      "bytes": 177444,
+      "prove_ms": 351.502292,
+      "verify_ms": 28.458625,
+      "width": 332,
+      "rows": 64,
+      "quotients": 16
+    },
+    {
+      "name": "C3-decomposed",
+      "native_verified": true,
+      "bytes": 284455,
+      "prove_ms": 1505.357083,
+      "verify_ms": 3.871917,
+      "width": 142,
+      "rows": 4096,
+      "quotients": 8
+    },
+    {
+      "name": "C3-whole-round",
+      "native_verified": true,
+      "bytes": 302271,
+      "prove_ms": 2249.93775,
+      "verify_ms": 4.052041999999999,
+      "width": 78,
+      "rows": 4096,
+      "quotients": 16
+    },
+    {
+      "name": "C3-lanes4",
+      "native_verified": true,
+      "bytes": 342341,
+      "prove_ms": 3524.8718329999997,
+      "verify_ms": 4.005333,
+      "width": 78,
+      "rows": 8192,
+      "quotients": 16
+    }
+  ],
+  "selection": "decomposed C1/C3 for fixed-parameter distributions: smallest observed bytes and prove time among bounded vertical geometries; single observations, not statistical qualification",
+  "codec": "postcard1.1.3",
+  "security": "SECURITY_NOT_QUALIFIED"
+}

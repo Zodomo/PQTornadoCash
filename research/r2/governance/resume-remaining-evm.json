@@ -1,0 +1,139 @@
+{
+  "commands": [
+    {
+      "id": "hash-cost-continuation",
+      "argv": [
+        "python3",
+        "research/r2/hash/run.py",
+        "--output",
+        "research/r2/hash/outputs/resume-costs-04",
+        "--build",
+        "--rpc-url",
+        "http://127.0.0.1:18545",
+        "--diagnostic-rpc-url",
+        "http://127.0.0.1:18546",
+        "--native-repetitions",
+        "30",
+        "--plonky3",
+        "/Users/zodomo/.cargo/git/checkouts/plonky3-7d8a3b21a665a86f/3152b14",
+        "--reuse-parity",
+        "research/r2/hash/outputs/resume-full-03"
+      ],
+      "env": {
+        "CARGO_BUILD_JOBS": "4"
+      }
+    },
+    {
+      "id": "C1-decomposed-arithmetic-diagnostic",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C1-decomposed",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic-cost-C1-decomposed",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C1-whole-round-arithmetic-diagnostic",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C1-whole-round",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic-cost-C1-whole-round",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C1-lanes4-arithmetic-diagnostic",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C1-lanes4",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic-cost-C1-lanes4",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C2-horizontal-arithmetic-diagnostic",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C2-horizontal",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic-cost-C2-horizontal",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C3-decomposed-arithmetic-diagnostic",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C3-decomposed",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic-cost-C3-decomposed",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C3-whole-round-arithmetic-diagnostic",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C3-whole-round",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic-cost-C3-whole-round",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "C3-lanes4-arithmetic-diagnostic",
+      "argv": [
+        "python3",
+        "research/r2/air/cost.py",
+        "--input",
+        "research/r2/air/outputs/resume-C3-lanes4",
+        "--output",
+        "research/r2/air/outputs/resume-diagnostic-cost-C3-lanes4",
+        "--rpc-url",
+        "http://127.0.0.1:18546",
+        "--diagnostic"
+      ]
+    },
+    {
+      "id": "backend-solidity",
+      "argv": [
+        "python3",
+        "research/r2/backend/gas_control.py",
+        "--rpc-url",
+        "http://127.0.0.1:18545",
+        "--workspace",
+        "research/r2/backend/resume-gas-work-01",
+        "--output",
+        "research/r2/backend/outputs/resume-standalone-solidity-01"
+      ]
+    }
+  ],
+  "trace_disposition": "Full hash tracing was attempted twice; partial trace repair and provider node exit137 retained. Cost continuation preserves that source-matched parity and measures remaining costs without asserting missing full traces."
+}
