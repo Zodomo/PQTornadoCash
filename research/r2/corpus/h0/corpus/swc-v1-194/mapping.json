@@ -1,0 +1,1663 @@
+{
+  "algorithm": "Keccak-256(PQTC.C00.MAP.V1 || target || 0x00 || sourceBytes || uint64be(drawIndex)); take first big-endian u32 and reject values >= modulus",
+  "byte_order": "big-endian u32",
+  "draws_total": 667,
+  "modulus": 2013265921,
+  "rejected_draws": [
+    {
+      "candidate": 2154818636,
+      "draw_index": 0,
+      "target": "nullifier-secret"
+    },
+    {
+      "candidate": 3605027492,
+      "draw_index": 2,
+      "target": "nullifier-secret"
+    },
+    {
+      "candidate": 3424350705,
+      "draw_index": 3,
+      "target": "nullifier-secret"
+    },
+    {
+      "candidate": 3235071831,
+      "draw_index": 5,
+      "target": "nullifier-secret"
+    },
+    {
+      "candidate": 2522995664,
+      "draw_index": 6,
+      "target": "nullifier-secret"
+    },
+    {
+      "candidate": 2731018176,
+      "draw_index": 7,
+      "target": "nullifier-secret"
+    },
+    {
+      "candidate": 4183840087,
+      "draw_index": 8,
+      "target": "nullifier-secret"
+    },
+    {
+      "candidate": 4023999851,
+      "draw_index": 13,
+      "target": "nullifier-secret"
+    },
+    {
+      "candidate": 2264381692,
+      "draw_index": 1,
+      "target": "trapdoor"
+    },
+    {
+      "candidate": 4209380323,
+      "draw_index": 2,
+      "target": "trapdoor"
+    },
+    {
+      "candidate": 2997248759,
+      "draw_index": 3,
+      "target": "trapdoor"
+    },
+    {
+      "candidate": 3601554398,
+      "draw_index": 4,
+      "target": "trapdoor"
+    },
+    {
+      "candidate": 3383670160,
+      "draw_index": 6,
+      "target": "trapdoor"
+    },
+    {
+      "candidate": 2844637555,
+      "draw_index": 7,
+      "target": "trapdoor"
+    },
+    {
+      "candidate": 3009232676,
+      "draw_index": 9,
+      "target": "trapdoor"
+    },
+    {
+      "candidate": 3482529312,
+      "draw_index": 10,
+      "target": "trapdoor"
+    },
+    {
+      "candidate": 3395280074,
+      "draw_index": 11,
+      "target": "trapdoor"
+    },
+    {
+      "candidate": 2117997049,
+      "draw_index": 12,
+      "target": "trapdoor"
+    },
+    {
+      "candidate": 2729606191,
+      "draw_index": 16,
+      "target": "trapdoor"
+    },
+    {
+      "candidate": 2079425040,
+      "draw_index": 18,
+      "target": "trapdoor"
+    },
+    {
+      "candidate": 2863298833,
+      "draw_index": 1,
+      "target": "sibling-0"
+    },
+    {
+      "candidate": 3337396315,
+      "draw_index": 8,
+      "target": "sibling-0"
+    },
+    {
+      "candidate": 4061412625,
+      "draw_index": 10,
+      "target": "sibling-0"
+    },
+    {
+      "candidate": 4087877023,
+      "draw_index": 14,
+      "target": "sibling-0"
+    },
+    {
+      "candidate": 2560992184,
+      "draw_index": 15,
+      "target": "sibling-0"
+    },
+    {
+      "candidate": 2496500682,
+      "draw_index": 16,
+      "target": "sibling-0"
+    },
+    {
+      "candidate": 2081959755,
+      "draw_index": 18,
+      "target": "sibling-0"
+    },
+    {
+      "candidate": 3045181455,
+      "draw_index": 20,
+      "target": "sibling-0"
+    },
+    {
+      "candidate": 3845950620,
+      "draw_index": 0,
+      "target": "sibling-1"
+    },
+    {
+      "candidate": 3738592430,
+      "draw_index": 2,
+      "target": "sibling-1"
+    },
+    {
+      "candidate": 3576302907,
+      "draw_index": 9,
+      "target": "sibling-1"
+    },
+    {
+      "candidate": 2146131621,
+      "draw_index": 12,
+      "target": "sibling-1"
+    },
+    {
+      "candidate": 2113135115,
+      "draw_index": 14,
+      "target": "sibling-1"
+    },
+    {
+      "candidate": 2476722235,
+      "draw_index": 16,
+      "target": "sibling-1"
+    },
+    {
+      "candidate": 3710789613,
+      "draw_index": 18,
+      "target": "sibling-1"
+    },
+    {
+      "candidate": 3073921528,
+      "draw_index": 0,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 2847683765,
+      "draw_index": 1,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 3406683746,
+      "draw_index": 2,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 3604752529,
+      "draw_index": 4,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 3291064087,
+      "draw_index": 5,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 4103765524,
+      "draw_index": 10,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 2087864865,
+      "draw_index": 13,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 2550724170,
+      "draw_index": 14,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 3133823537,
+      "draw_index": 15,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 4106165534,
+      "draw_index": 17,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 3418444847,
+      "draw_index": 19,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 3761651541,
+      "draw_index": 24,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 2218786284,
+      "draw_index": 25,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 2634147074,
+      "draw_index": 26,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 2130769291,
+      "draw_index": 28,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 2904201545,
+      "draw_index": 29,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 2878359484,
+      "draw_index": 30,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 4191384387,
+      "draw_index": 31,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 4080984993,
+      "draw_index": 32,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 4161793095,
+      "draw_index": 33,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 3600419877,
+      "draw_index": 34,
+      "target": "sibling-2"
+    },
+    {
+      "candidate": 2314032776,
+      "draw_index": 0,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 2637951105,
+      "draw_index": 2,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 3590570529,
+      "draw_index": 5,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 4284585521,
+      "draw_index": 6,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 3135778812,
+      "draw_index": 11,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 3651062596,
+      "draw_index": 12,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 3027933027,
+      "draw_index": 14,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 2766928898,
+      "draw_index": 15,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 2877894910,
+      "draw_index": 16,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 3013497377,
+      "draw_index": 19,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 3571636336,
+      "draw_index": 20,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 3108528751,
+      "draw_index": 21,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 4279881209,
+      "draw_index": 22,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 3074591372,
+      "draw_index": 23,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 2679554502,
+      "draw_index": 27,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 2266717048,
+      "draw_index": 28,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 3893206602,
+      "draw_index": 29,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 3139447432,
+      "draw_index": 30,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 3192556163,
+      "draw_index": 32,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 2409180308,
+      "draw_index": 33,
+      "target": "sibling-3"
+    },
+    {
+      "candidate": 2807740949,
+      "draw_index": 1,
+      "target": "sibling-4"
+    },
+    {
+      "candidate": 2898786776,
+      "draw_index": 2,
+      "target": "sibling-4"
+    },
+    {
+      "candidate": 3165909081,
+      "draw_index": 4,
+      "target": "sibling-4"
+    },
+    {
+      "candidate": 4111959815,
+      "draw_index": 9,
+      "target": "sibling-4"
+    },
+    {
+      "candidate": 3692987512,
+      "draw_index": 10,
+      "target": "sibling-4"
+    },
+    {
+      "candidate": 2087788525,
+      "draw_index": 14,
+      "target": "sibling-4"
+    },
+    {
+      "candidate": 3066625423,
+      "draw_index": 16,
+      "target": "sibling-4"
+    },
+    {
+      "candidate": 4011564992,
+      "draw_index": 17,
+      "target": "sibling-4"
+    },
+    {
+      "candidate": 4277791675,
+      "draw_index": 19,
+      "target": "sibling-4"
+    },
+    {
+      "candidate": 3510375446,
+      "draw_index": 20,
+      "target": "sibling-4"
+    },
+    {
+      "candidate": 2705826099,
+      "draw_index": 22,
+      "target": "sibling-4"
+    },
+    {
+      "candidate": 3292444522,
+      "draw_index": 24,
+      "target": "sibling-4"
+    },
+    {
+      "candidate": 3094929005,
+      "draw_index": 25,
+      "target": "sibling-4"
+    },
+    {
+      "candidate": 3549989586,
+      "draw_index": 2,
+      "target": "sibling-5"
+    },
+    {
+      "candidate": 2555172699,
+      "draw_index": 3,
+      "target": "sibling-5"
+    },
+    {
+      "candidate": 2956965299,
+      "draw_index": 4,
+      "target": "sibling-5"
+    },
+    {
+      "candidate": 3522930561,
+      "draw_index": 6,
+      "target": "sibling-5"
+    },
+    {
+      "candidate": 2745628793,
+      "draw_index": 8,
+      "target": "sibling-5"
+    },
+    {
+      "candidate": 4077278955,
+      "draw_index": 9,
+      "target": "sibling-5"
+    },
+    {
+      "candidate": 4061684311,
+      "draw_index": 10,
+      "target": "sibling-5"
+    },
+    {
+      "candidate": 2054569474,
+      "draw_index": 11,
+      "target": "sibling-5"
+    },
+    {
+      "candidate": 3620446547,
+      "draw_index": 16,
+      "target": "sibling-5"
+    },
+    {
+      "candidate": 3714350756,
+      "draw_index": 20,
+      "target": "sibling-5"
+    },
+    {
+      "candidate": 2105407787,
+      "draw_index": 24,
+      "target": "sibling-5"
+    },
+    {
+      "candidate": 2564277866,
+      "draw_index": 25,
+      "target": "sibling-5"
+    },
+    {
+      "candidate": 2270558989,
+      "draw_index": 27,
+      "target": "sibling-5"
+    },
+    {
+      "candidate": 2158124298,
+      "draw_index": 28,
+      "target": "sibling-5"
+    },
+    {
+      "candidate": 3575379979,
+      "draw_index": 0,
+      "target": "sibling-6"
+    },
+    {
+      "candidate": 2661173139,
+      "draw_index": 4,
+      "target": "sibling-6"
+    },
+    {
+      "candidate": 3697387061,
+      "draw_index": 5,
+      "target": "sibling-6"
+    },
+    {
+      "candidate": 3112109009,
+      "draw_index": 6,
+      "target": "sibling-6"
+    },
+    {
+      "candidate": 3085401540,
+      "draw_index": 9,
+      "target": "sibling-6"
+    },
+    {
+      "candidate": 4097502081,
+      "draw_index": 11,
+      "target": "sibling-6"
+    },
+    {
+      "candidate": 3851916082,
+      "draw_index": 15,
+      "target": "sibling-6"
+    },
+    {
+      "candidate": 2150973591,
+      "draw_index": 16,
+      "target": "sibling-6"
+    },
+    {
+      "candidate": 2297921684,
+      "draw_index": 18,
+      "target": "sibling-6"
+    },
+    {
+      "candidate": 3413272034,
+      "draw_index": 19,
+      "target": "sibling-6"
+    },
+    {
+      "candidate": 2949062385,
+      "draw_index": 20,
+      "target": "sibling-6"
+    },
+    {
+      "candidate": 2128090678,
+      "draw_index": 24,
+      "target": "sibling-6"
+    },
+    {
+      "candidate": 3060926493,
+      "draw_index": 25,
+      "target": "sibling-6"
+    },
+    {
+      "candidate": 3959777938,
+      "draw_index": 27,
+      "target": "sibling-6"
+    },
+    {
+      "candidate": 2078018633,
+      "draw_index": 28,
+      "target": "sibling-6"
+    },
+    {
+      "candidate": 2017844256,
+      "draw_index": 30,
+      "target": "sibling-6"
+    },
+    {
+      "candidate": 3587482094,
+      "draw_index": 31,
+      "target": "sibling-6"
+    },
+    {
+      "candidate": 4139679434,
+      "draw_index": 0,
+      "target": "sibling-7"
+    },
+    {
+      "candidate": 3722242809,
+      "draw_index": 1,
+      "target": "sibling-7"
+    },
+    {
+      "candidate": 3202832724,
+      "draw_index": 4,
+      "target": "sibling-7"
+    },
+    {
+      "candidate": 3104301235,
+      "draw_index": 5,
+      "target": "sibling-7"
+    },
+    {
+      "candidate": 2322585885,
+      "draw_index": 7,
+      "target": "sibling-7"
+    },
+    {
+      "candidate": 3868640313,
+      "draw_index": 11,
+      "target": "sibling-7"
+    },
+    {
+      "candidate": 2819407603,
+      "draw_index": 12,
+      "target": "sibling-7"
+    },
+    {
+      "candidate": 2583866911,
+      "draw_index": 13,
+      "target": "sibling-7"
+    },
+    {
+      "candidate": 2652588079,
+      "draw_index": 19,
+      "target": "sibling-7"
+    },
+    {
+      "candidate": 3784602582,
+      "draw_index": 20,
+      "target": "sibling-7"
+    },
+    {
+      "candidate": 2142031847,
+      "draw_index": 22,
+      "target": "sibling-7"
+    },
+    {
+      "candidate": 3699528136,
+      "draw_index": 24,
+      "target": "sibling-7"
+    },
+    {
+      "candidate": 2059448970,
+      "draw_index": 27,
+      "target": "sibling-7"
+    },
+    {
+      "candidate": 3130307076,
+      "draw_index": 1,
+      "target": "sibling-8"
+    },
+    {
+      "candidate": 2771446505,
+      "draw_index": 3,
+      "target": "sibling-8"
+    },
+    {
+      "candidate": 2196199113,
+      "draw_index": 4,
+      "target": "sibling-8"
+    },
+    {
+      "candidate": 3569537994,
+      "draw_index": 6,
+      "target": "sibling-8"
+    },
+    {
+      "candidate": 2154080137,
+      "draw_index": 7,
+      "target": "sibling-8"
+    },
+    {
+      "candidate": 3007837908,
+      "draw_index": 8,
+      "target": "sibling-8"
+    },
+    {
+      "candidate": 2841479979,
+      "draw_index": 9,
+      "target": "sibling-8"
+    },
+    {
+      "candidate": 3564444234,
+      "draw_index": 12,
+      "target": "sibling-8"
+    },
+    {
+      "candidate": 4108139566,
+      "draw_index": 16,
+      "target": "sibling-8"
+    },
+    {
+      "candidate": 3360701664,
+      "draw_index": 19,
+      "target": "sibling-8"
+    },
+    {
+      "candidate": 3297157955,
+      "draw_index": 24,
+      "target": "sibling-8"
+    },
+    {
+      "candidate": 2867669197,
+      "draw_index": 26,
+      "target": "sibling-8"
+    },
+    {
+      "candidate": 3337758462,
+      "draw_index": 27,
+      "target": "sibling-8"
+    },
+    {
+      "candidate": 3218583210,
+      "draw_index": 2,
+      "target": "sibling-9"
+    },
+    {
+      "candidate": 3930293964,
+      "draw_index": 5,
+      "target": "sibling-9"
+    },
+    {
+      "candidate": 3135873094,
+      "draw_index": 6,
+      "target": "sibling-9"
+    },
+    {
+      "candidate": 2223953548,
+      "draw_index": 9,
+      "target": "sibling-9"
+    },
+    {
+      "candidate": 2458295022,
+      "draw_index": 10,
+      "target": "sibling-9"
+    },
+    {
+      "candidate": 2769687027,
+      "draw_index": 11,
+      "target": "sibling-9"
+    },
+    {
+      "candidate": 2497621053,
+      "draw_index": 14,
+      "target": "sibling-9"
+    },
+    {
+      "candidate": 4011058498,
+      "draw_index": 17,
+      "target": "sibling-9"
+    },
+    {
+      "candidate": 3174979362,
+      "draw_index": 21,
+      "target": "sibling-9"
+    },
+    {
+      "candidate": 3251702025,
+      "draw_index": 0,
+      "target": "sibling-10"
+    },
+    {
+      "candidate": 3502951330,
+      "draw_index": 1,
+      "target": "sibling-10"
+    },
+    {
+      "candidate": 2476940810,
+      "draw_index": 2,
+      "target": "sibling-10"
+    },
+    {
+      "candidate": 2770649431,
+      "draw_index": 8,
+      "target": "sibling-10"
+    },
+    {
+      "candidate": 2425584777,
+      "draw_index": 12,
+      "target": "sibling-10"
+    },
+    {
+      "candidate": 3878650103,
+      "draw_index": 13,
+      "target": "sibling-10"
+    },
+    {
+      "candidate": 3025072781,
+      "draw_index": 18,
+      "target": "sibling-10"
+    },
+    {
+      "candidate": 3338429818,
+      "draw_index": 19,
+      "target": "sibling-10"
+    },
+    {
+      "candidate": 3629751201,
+      "draw_index": 21,
+      "target": "sibling-10"
+    },
+    {
+      "candidate": 2591263253,
+      "draw_index": 22,
+      "target": "sibling-10"
+    },
+    {
+      "candidate": 3886202676,
+      "draw_index": 23,
+      "target": "sibling-10"
+    },
+    {
+      "candidate": 4135757441,
+      "draw_index": 24,
+      "target": "sibling-10"
+    },
+    {
+      "candidate": 3398303120,
+      "draw_index": 25,
+      "target": "sibling-10"
+    },
+    {
+      "candidate": 3456150362,
+      "draw_index": 26,
+      "target": "sibling-10"
+    },
+    {
+      "candidate": 4143109688,
+      "draw_index": 28,
+      "target": "sibling-10"
+    },
+    {
+      "candidate": 3543730625,
+      "draw_index": 1,
+      "target": "sibling-11"
+    },
+    {
+      "candidate": 2819742582,
+      "draw_index": 2,
+      "target": "sibling-11"
+    },
+    {
+      "candidate": 3258612782,
+      "draw_index": 5,
+      "target": "sibling-11"
+    },
+    {
+      "candidate": 3084240435,
+      "draw_index": 7,
+      "target": "sibling-11"
+    },
+    {
+      "candidate": 2720670671,
+      "draw_index": 11,
+      "target": "sibling-11"
+    },
+    {
+      "candidate": 3268076875,
+      "draw_index": 12,
+      "target": "sibling-11"
+    },
+    {
+      "candidate": 3482605510,
+      "draw_index": 17,
+      "target": "sibling-11"
+    },
+    {
+      "candidate": 2692899055,
+      "draw_index": 19,
+      "target": "sibling-11"
+    },
+    {
+      "candidate": 2083209019,
+      "draw_index": 22,
+      "target": "sibling-11"
+    },
+    {
+      "candidate": 2153339966,
+      "draw_index": 24,
+      "target": "sibling-11"
+    },
+    {
+      "candidate": 2747266222,
+      "draw_index": 25,
+      "target": "sibling-11"
+    },
+    {
+      "candidate": 2972956459,
+      "draw_index": 0,
+      "target": "sibling-12"
+    },
+    {
+      "candidate": 2402056912,
+      "draw_index": 2,
+      "target": "sibling-12"
+    },
+    {
+      "candidate": 3144814541,
+      "draw_index": 5,
+      "target": "sibling-12"
+    },
+    {
+      "candidate": 3479239536,
+      "draw_index": 6,
+      "target": "sibling-12"
+    },
+    {
+      "candidate": 2757995568,
+      "draw_index": 9,
+      "target": "sibling-12"
+    },
+    {
+      "candidate": 2572317295,
+      "draw_index": 10,
+      "target": "sibling-12"
+    },
+    {
+      "candidate": 2928530857,
+      "draw_index": 11,
+      "target": "sibling-12"
+    },
+    {
+      "candidate": 3223921659,
+      "draw_index": 12,
+      "target": "sibling-12"
+    },
+    {
+      "candidate": 3939409127,
+      "draw_index": 13,
+      "target": "sibling-12"
+    },
+    {
+      "candidate": 3684514807,
+      "draw_index": 18,
+      "target": "sibling-12"
+    },
+    {
+      "candidate": 2826043112,
+      "draw_index": 21,
+      "target": "sibling-12"
+    },
+    {
+      "candidate": 4010403353,
+      "draw_index": 25,
+      "target": "sibling-12"
+    },
+    {
+      "candidate": 2579692124,
+      "draw_index": 26,
+      "target": "sibling-12"
+    },
+    {
+      "candidate": 3020563436,
+      "draw_index": 28,
+      "target": "sibling-12"
+    },
+    {
+      "candidate": 2745479693,
+      "draw_index": 29,
+      "target": "sibling-12"
+    },
+    {
+      "candidate": 4253414038,
+      "draw_index": 1,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 3101424954,
+      "draw_index": 3,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 2874912961,
+      "draw_index": 4,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 3932516072,
+      "draw_index": 6,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 2104776131,
+      "draw_index": 7,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 3140577608,
+      "draw_index": 8,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 2558010473,
+      "draw_index": 9,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 3658848539,
+      "draw_index": 11,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 2039438283,
+      "draw_index": 13,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 2621918533,
+      "draw_index": 15,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 4114868779,
+      "draw_index": 18,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 2424357597,
+      "draw_index": 21,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 2599746432,
+      "draw_index": 22,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 2641813183,
+      "draw_index": 24,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 3053808667,
+      "draw_index": 25,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 2758104278,
+      "draw_index": 26,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 3957772325,
+      "draw_index": 27,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 2472294325,
+      "draw_index": 28,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 3543225941,
+      "draw_index": 29,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 4236234306,
+      "draw_index": 32,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 3344054366,
+      "draw_index": 33,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 2434456919,
+      "draw_index": 35,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 2897177539,
+      "draw_index": 36,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 3543611128,
+      "draw_index": 37,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 2101906170,
+      "draw_index": 38,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 3911716130,
+      "draw_index": 39,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 2260839431,
+      "draw_index": 40,
+      "target": "sibling-13"
+    },
+    {
+      "candidate": 3755623323,
+      "draw_index": 0,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 3423623232,
+      "draw_index": 3,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 3740412173,
+      "draw_index": 4,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 2101117712,
+      "draw_index": 5,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 3439301886,
+      "draw_index": 6,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 3125065045,
+      "draw_index": 7,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 3035743312,
+      "draw_index": 8,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 3079608221,
+      "draw_index": 9,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 2487076757,
+      "draw_index": 11,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 3188650940,
+      "draw_index": 12,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 2246914737,
+      "draw_index": 13,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 3306448879,
+      "draw_index": 14,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 4115050750,
+      "draw_index": 15,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 3237671743,
+      "draw_index": 18,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 4042523038,
+      "draw_index": 19,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 3325404669,
+      "draw_index": 21,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 3901373047,
+      "draw_index": 22,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 2543195920,
+      "draw_index": 23,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 3568011300,
+      "draw_index": 25,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 3689642505,
+      "draw_index": 26,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 3141991569,
+      "draw_index": 27,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 2263633188,
+      "draw_index": 32,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 2684073789,
+      "draw_index": 34,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 4181405265,
+      "draw_index": 37,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 3828020569,
+      "draw_index": 38,
+      "target": "sibling-14"
+    },
+    {
+      "candidate": 4157236962,
+      "draw_index": 0,
+      "target": "sibling-15"
+    },
+    {
+      "candidate": 2363262767,
+      "draw_index": 3,
+      "target": "sibling-15"
+    },
+    {
+      "candidate": 3089915650,
+      "draw_index": 6,
+      "target": "sibling-15"
+    },
+    {
+      "candidate": 3493328457,
+      "draw_index": 8,
+      "target": "sibling-15"
+    },
+    {
+      "candidate": 4186239101,
+      "draw_index": 11,
+      "target": "sibling-15"
+    },
+    {
+      "candidate": 2024036057,
+      "draw_index": 12,
+      "target": "sibling-15"
+    },
+    {
+      "candidate": 2885140733,
+      "draw_index": 13,
+      "target": "sibling-15"
+    },
+    {
+      "candidate": 3715189253,
+      "draw_index": 15,
+      "target": "sibling-15"
+    },
+    {
+      "candidate": 4091009041,
+      "draw_index": 16,
+      "target": "sibling-15"
+    },
+    {
+      "candidate": 2203820070,
+      "draw_index": 17,
+      "target": "sibling-15"
+    },
+    {
+      "candidate": 3999827814,
+      "draw_index": 18,
+      "target": "sibling-15"
+    },
+    {
+      "candidate": 4259979187,
+      "draw_index": 19,
+      "target": "sibling-15"
+    },
+    {
+      "candidate": 4265729655,
+      "draw_index": 25,
+      "target": "sibling-15"
+    },
+    {
+      "candidate": 2311278240,
+      "draw_index": 26,
+      "target": "sibling-15"
+    },
+    {
+      "candidate": 4117872413,
+      "draw_index": 29,
+      "target": "sibling-15"
+    },
+    {
+      "candidate": 2156894759,
+      "draw_index": 1,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3130458922,
+      "draw_index": 2,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3138455020,
+      "draw_index": 3,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 2076543777,
+      "draw_index": 4,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3893530694,
+      "draw_index": 6,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3962135024,
+      "draw_index": 7,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3823745235,
+      "draw_index": 8,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3597924016,
+      "draw_index": 11,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 2295798165,
+      "draw_index": 12,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 4233337034,
+      "draw_index": 13,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3539631347,
+      "draw_index": 15,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 2227591469,
+      "draw_index": 17,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 2705850015,
+      "draw_index": 19,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3054504310,
+      "draw_index": 20,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3307361653,
+      "draw_index": 21,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 2959194600,
+      "draw_index": 22,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 4228756274,
+      "draw_index": 23,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3004577089,
+      "draw_index": 26,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3851975792,
+      "draw_index": 27,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3990889517,
+      "draw_index": 28,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3317834363,
+      "draw_index": 29,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 2665880728,
+      "draw_index": 30,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 2631735653,
+      "draw_index": 31,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3773191215,
+      "draw_index": 32,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 2623087701,
+      "draw_index": 36,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3678789268,
+      "draw_index": 38,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 2377012558,
+      "draw_index": 40,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 2502477066,
+      "draw_index": 42,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3729832490,
+      "draw_index": 43,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 2957233699,
+      "draw_index": 44,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3874546010,
+      "draw_index": 45,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 2078735046,
+      "draw_index": 46,
+      "target": "sibling-16"
+    },
+    {
+      "candidate": 3788848881,
+      "draw_index": 0,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 2563296049,
+      "draw_index": 1,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 3332675192,
+      "draw_index": 2,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 3984206318,
+      "draw_index": 4,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 2673192889,
+      "draw_index": 6,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 3642651908,
+      "draw_index": 7,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 3135860335,
+      "draw_index": 8,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 3772293170,
+      "draw_index": 10,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 4159801572,
+      "draw_index": 11,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 4158576140,
+      "draw_index": 13,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 2490432565,
+      "draw_index": 15,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 2951620721,
+      "draw_index": 16,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 3525385244,
+      "draw_index": 17,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 2529636533,
+      "draw_index": 21,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 3289592362,
+      "draw_index": 23,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 2703443537,
+      "draw_index": 25,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 3394136580,
+      "draw_index": 26,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 2758592783,
+      "draw_index": 28,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 3646133967,
+      "draw_index": 29,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 2677705186,
+      "draw_index": 30,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 3698823687,
+      "draw_index": 33,
+      "target": "sibling-17"
+    },
+    {
+      "candidate": 2573925555,
+      "draw_index": 3,
+      "target": "sibling-18"
+    },
+    {
+      "candidate": 4011734788,
+      "draw_index": 5,
+      "target": "sibling-18"
+    },
+    {
+      "candidate": 3212627060,
+      "draw_index": 7,
+      "target": "sibling-18"
+    },
+    {
+      "candidate": 4234401541,
+      "draw_index": 8,
+      "target": "sibling-18"
+    },
+    {
+      "candidate": 2473484440,
+      "draw_index": 12,
+      "target": "sibling-18"
+    },
+    {
+      "candidate": 3765158972,
+      "draw_index": 13,
+      "target": "sibling-18"
+    },
+    {
+      "candidate": 3181353153,
+      "draw_index": 16,
+      "target": "sibling-18"
+    },
+    {
+      "candidate": 2335161392,
+      "draw_index": 20,
+      "target": "sibling-18"
+    },
+    {
+      "candidate": 3569913428,
+      "draw_index": 22,
+      "target": "sibling-18"
+    },
+    {
+      "candidate": 3384318393,
+      "draw_index": 23,
+      "target": "sibling-18"
+    },
+    {
+      "candidate": 2217444327,
+      "draw_index": 0,
+      "target": "sibling-19"
+    },
+    {
+      "candidate": 3042583351,
+      "draw_index": 4,
+      "target": "sibling-19"
+    },
+    {
+      "candidate": 2800111913,
+      "draw_index": 5,
+      "target": "sibling-19"
+    },
+    {
+      "candidate": 2483812512,
+      "draw_index": 6,
+      "target": "sibling-19"
+    },
+    {
+      "candidate": 3955541833,
+      "draw_index": 17,
+      "target": "sibling-19"
+    }
+  ]
+}

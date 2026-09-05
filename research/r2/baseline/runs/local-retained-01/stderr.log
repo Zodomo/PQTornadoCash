@@ -1,0 +1,33 @@
+Traceback (most recent call last):
+  File "/Users/zodomo/code/PQTornado/research/r2/baseline/run.py", line 392, in <module>
+    main()
+    ~~~~^^
+  File "/Users/zodomo/code/PQTornado/research/r2/baseline/run.py", line 377, in main
+    runner.local(args.rpc_url,args.fixture,args.diagnostic_rpc_url)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zodomo/code/PQTornado/research/r2/baseline/run.py", line 263, in local
+    result = send_signed(rpc,self.run,tx_out,"create-"+contract,code)
+  File "/Users/zodomo/code/PQTornado/research/r2/baseline/evm.py", line 60, in send_signed
+    signed = run(label+"-sign", argv).stdout.decode().strip()
+             ~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zodomo/code/PQTornado/research/r2/baseline/run.py", line 78, in run
+    raise RuntimeError(f"{label}: exit {result.returncode}; see {prefix}.stderr")
+RuntimeError: create-PQTCAirStageVerifier-sign: exit 2; see /Users/zodomo/code/PQTornado/research/r2/baseline/outputs/r2-main/logs/0105-create-PQTCAirStageVerifier-sign.stderr
+        4.05 real         3.24 user         0.80 sys
+           468221952  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               81475  page reclaims
+                 202  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                  16  messages sent
+                   8  messages received
+                   3  signals received
+                  57  voluntary context switches
+                4154  involuntary context switches
+         36794772910  instructions retired
+         14786700893  cycles elapsed
+           343999256  peak memory footprint

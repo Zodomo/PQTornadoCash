@@ -1,0 +1,25 @@
+# Open research at the halt checkpoint
+
+Research is paused by user request. Owners below are work packages, not running agents. Further independent/security review is deferred; no review response is required to run authorized local experiments. The complete acceptance criteria remain in `pqtc-independent-review/FOLLOW_UP_RESEARCH_PLAN.md`.
+
+| Owner | Open question and smallest next experiment | Dependency | Decision affected |
+|---|---|---|---|
+| R2-06 | Run the first declared C0 anchor using the explicit binary path in `../RESUME.md`; then collect real codec anchors and held-out EVM observations. | Rebuild excluded binaries if absent. | Measured byte/gas frontier; do not fit native time to EVM gas. |
+| R2-01 | Run the current repeated-shape adapter against retained C1/C2/C3 inventories in a new output directory; distinguish theorem functions, base columns and point-specific reductions. | Actual shape files already exist. | Conditional normalization; no theorem acceptance inferred. |
+| R2-02 | Execute constants comparison, 10000-vector three-language role parity, misuse cases and matched implementation tiers. | Isolated Foundry workspaces and disposable local nodes. | Whether H5 is implemented consistently and reduces actual hash/deposit cost. |
+| R2-03 | Run the remaining bounded H0 geometries, actual mutation proofs and repeated fixed/varied witness timings. | Existing geometry runner. | Whether vertical scheduling improves the frozen relation. |
+| R2-04 | Execute the verified C0 postcard exporter, matched-input controls, H5 public-context study and repeated C2/C3 measurements. | Exporter compiled; C2/C3 proof artifacts exist. | Same-codec, same-input causal comparison rather than a codec or public-work difference. |
+| R2-03/R2-04 | Execute the exported AIR arithmetic on EVM and reconcile arithmetic versus program/calldata overhead. | Existing generated program and real verifier evaluation vector. | Actual verifier cost; arithmetic-only results are not full proof verification. |
+| R2-05 | Execute q32 and q48 transcript proofs, cross-language parity, phase errors, replay and checkpoint lifecycle. | Explicitly deferred by user; do not resume automatically. | Complete typed-epoch/full-width continuation correctness and cost. |
+| R2-07 | Execute the exact non-hiding H0 control and bounded hiding trace-opening repair at 32, then 128; retain demonstrated barriers. | Both binaries compiled; commands in `../backend/commands.json`. | Whether a complete hiding same-relation backend is reachable; a non-hiding control does not answer it. |
+| R2-07 | Execute the standalone Solidity harness repair and record license/provenance unknowns. | Native/backend entry conditions in the full plan. | EVM reachability and incorporation eligibility, separately. |
+| R2-08 | Exercise the scope-correct constructor generator with signed capped CREATE and deposit histories. | Generator and receiver source remain unexecuted. | Whether the original constructor limit can be removed without changing scope semantics. |
+| R2-08 | Complete at most two actual-verifier pipelines; measure one-call and declared split choices under real gas forwarding. | A complete selected proof/verifier path; no mock verifier. | Practical transaction feasibility and total withdrawal cost. |
+| R2-08 | Run malformed prefix, replay, expiry/replacement, payout rollback/reentrancy and checkpoint censorship cases. | New lifecycle pipeline, not only frozen positive controls. | State safety and bounded reservation behavior. |
+| R2-08 | Run the prescribed 100-proof workload and constrained-memory/worst-case controls. | Stable implementation and serial timing. | Operational distribution and resource ceilings. |
+| R2-09 | Evaluate recursion, proof-only aggregation and STIR/Circle entry conditions; execute only eligible bounded branches. | Exact inner-proof and hiding requirements from the plan. | Whether a conditional branch merits further work. |
+| R2-09 | Measure portable native proofs; commodity hardware remains unavailable unless a real machine is supplied. | Available local arm64 portable build; no configured remote host or x86 emulator found. | Portability and hardware sensitivity, not simulated commodity performance. |
+| R2-09 | Retest exact new proof payloads and pinned L2 rules after new candidate bytes exist. | Retained-envelope transport diagnostics already ran. | Transport eligibility and fees; not L2 verifier execution. |
+| R2-10 | Complete comparative matrices, dispositions and final return; revisit all 20 findings and independent checkpoints. | Remaining executable packages and user's review timing. | Final architecture decision and whether a full engineering specification is warranted. |
+
+The Flock search inspected 64 existing local commits without finding a supported M21 configuration. Revisit only with a concrete supported upstream candidate; do not invent a security preset. Missing results remain null/UNKNOWN, not failures. Source-only implementations remain unverified until exercised.

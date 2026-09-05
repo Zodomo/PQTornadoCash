@@ -1,0 +1,169 @@
+{
+  "package": "R2-05",
+  "finding": "F10",
+  "pipeline": "R2-C0",
+  "configuration": "T3-02-H0-q32-v4-full512",
+  "upstream_revision": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+  "relation": "Frozen pqtc-poseidon-air WithdrawalAir, height256, width190, same WithdrawalStatement/WithdrawalWitness and public predicate",
+  "hiding": "Frozen HidingFriPcs plus MerkleTreeHidingMmcs, four random codewords, eight salt fields; no deterministic production seed",
+  "qualification": {
+    "specification_status": "EXPERIMENTAL_EXACT_IMPLEMENTATION",
+    "correctness_evidence": "Produced only by runner execution, never inferred from compilation",
+    "privacy_evidence": "Inherited upstream construction, not externally qualified for this transcript",
+    "security_status": "UNQUALIFIED; q32 is a measurement control, not a system-security claim",
+    "performance_evidence": "Produced by serial runner; capped and diagnostic endpoints remain disjoint",
+    "implementation_stage": "SOURCE_IMPLEMENTED_PENDING_MAIN_EXECUTION",
+    "promotion_status": "NOT_READY_FOR_BUILD_SELECTION"
+  },
+  "initialization": "k512(0x42, ascii(PQTCT3-02) || parameter64 || u32be(64) || canonical_u32be_public_values)",
+  "parameter_default": "k512(0x47, ascii(PQTC.R2.T3-02.H0.Q32) || frozen_sepolia_v03_parameter64)",
+  "hash_definition": "k512(tag,payload) = keccak256(0x00||tag||payload) || keccak256(0x01||tag||payload)",
+  "frame": "ascii(PQTCT3-02) || u16be(epoch) || u32be(item_count) || u32be(item_bytes) || items",
+  "item": "u8(type) || u16be(slot) || u32be(payload_bytes) || payload; type1=canonical field32be, type2=one full64-byte MMCS cap root",
+  "absorb": "k512(0x46, state64 || frame); pending observations are flushed only at the required challenge boundary",
+  "squeeze": "k512(0x44,state64||u64be(counter)); consume big-endian words; field sample masks bit31 then rejects >=2013265921, extension coefficients in basis order c0,c1,c2,c3",
+  "epochs": [
+    {
+      "epoch": 0,
+      "observations": "field degree9, field base8, field preprocessed_width0, trace cap, 64 public fields",
+      "items": 68,
+      "challenge": "four field coefficients of AIR alpha"
+    },
+    {
+      "epoch": 1,
+      "observations": "quotient cap, random cap",
+      "items": 2,
+      "challenge": "four field coefficients of zeta"
+    },
+    {
+      "epoch": 2,
+      "observations": "random4+hidden4, trace_local190+hidden4, trace_next190+hidden4, sixteen(quotient4+hidden4), each extension four coefficients",
+      "items": 2096,
+      "challenge": "four field coefficients of FRI alpha"
+    },
+    {
+      "epochs": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "observations": "FRI round cap then canonical grinding witness",
+      "items_each": 2,
+      "challenges_each": "16-bit PoW check then four field coefficients beta; no observation between PoW and beta"
+    },
+    {
+      "epoch": 12,
+      "observations": "final polynomial four coefficients, nine arity fields1, query grinding witness",
+      "items": 14,
+      "challenge": "16-bit PoW check then exactly32 query samples of13 bits"
+    },
+    {
+      "epoch": 13,
+      "observations": "none",
+      "challenge": "none; final state only"
+    }
+  ],
+  "runtime_rejections": [
+    "early sampling",
+    "missing observations",
+    "wrong type",
+    "wrong payload length",
+    "noncanonical field",
+    "wrong epoch",
+    "wrong slot",
+    "duplicate slot",
+    "phase reset",
+    "sampling the wrong challenge kind",
+    "wrong bit width",
+    "extra final observations or samples"
+  ],
+  "codec": {
+    "version": 4,
+    "magic_a": "PQTCPA04",
+    "magic_b": "PQTCPB04",
+    "header_bytes": 340,
+    "split_u16_offset": 16,
+    "splits": [
+      [
+        12,
+        20
+      ],
+      [
+        14,
+        18
+      ],
+      [
+        16,
+        16
+      ]
+    ],
+    "global_bytes": 9208,
+    "authoritative_binding_bytes": 64,
+    "binding_hash": "k512(0x47,payload)",
+    "statement": "binding(abi.encode(bytes32(PQTC.R2.V4.STATEMENT),parameter.left,parameter.right,uint32[64]pv))",
+    "global": "binding(exact global bytes)",
+    "checkpoint": "binding(abi.encode(bytes32(PQTC.R2.V4.CHECKPOINT),statement512,binding(checkpoint_payload)))",
+    "core_proof": "binding(abi.encode(bytes32(PQTC.R2.V4.PROOF),statement512,binding(partA)))",
+    "index_only_session_key": "keccak256(abi.encode(bytes32(PQTC.R2.V4.VERIFICATION),core_proof512,msg.sender)); never substitutes for stored full commitments",
+    "query_paths": "same pruned full512-bit MMCS frontiers; independently deduplicated by actual split",
+    "bounds": "exact q32 counts, cap1, extension4, random4, rounds9; maximum4096 frontier digests; canonical field checks; exact end marker; no trailing bytes"
+  },
+  "registry_lifecycle": {
+    "custody": "none",
+    "consumer": "msg.sender; checked on completion and cancellation",
+    "expiry_blocks": 64,
+    "expiry_boundary": "block.number >= expiresAt rejects completion",
+    "idempotency": "identical live prefix accepted without extending expiry",
+    "cleanup": "permissionless cleanupExpired after expiry",
+    "replacement": "fresh begin replaces expired same key; other proof-derived keys independent",
+    "replay": "completed checkpoint deleted; partB alone cannot replay; registry intentionally does not enforce application nullifier replay (local pool owns that)"
+  },
+  "optimization_count": 1,
+  "selected_optimization": "typed challenge-epoch batching",
+  "not_selected": [
+    "inverse witnesses",
+    "fused parse/dot product",
+    "streamed alpha",
+    "new hash modes"
+  ],
+  "measurement_contract": "Isolated frozen/framed transcript runs use the same typed observation/sample schedule but different cryptographic states. Whole-path fresh frozen control and T3-02 proof runs include full512 and split overhead. Never sum isolated savings into integrated claims.",
+  "entrypoints": {
+    "native": "CARGO_TARGET_DIR=research/r2/transcript/target cargo run --release --manifest-path research/r2/transcript/rust/Cargo.toml -- --input research/r2/corpus/h0/fixed --out research/r2/transcript/outputs/native --compare-frozen",
+    "local_capped": "python3 research/r2/transcript/run.py --rpc-url http://127.0.0.1:18545 --input research/r2/corpus/h0/fixed --out research/r2/transcript/outputs/capped",
+    "local_diagnostic": "python3 research/r2/transcript/run.py --rpc-url http://127.0.0.1:18546 --diagnostic --native-dir research/r2/transcript/outputs/capped/native --out research/r2/transcript/outputs/diagnostic --skip-build",
+    "input_override": "Native accepts --statement PATH --witness PATH --consumer 0xPUBLIC_ADDRESS --parameter-id 0x64BYTES; --proof PATH reuses a real postcard proof and labels proving measurement as reused",
+    "node_policy": "No daemon startup. Only loopback Anvil31337 and public test account accepted. Foundry runs in /tmp allowlist source mirror without .env or dotenv ancestors. Subprocess environment is allowlisted.",
+    "local_q48_capped": "python3 research/r2/transcript/run.py --queries 48 --rpc-url http://127.0.0.1:18545 --input research/r2/corpus/h0/fixed --out research/r2/transcript/outputs/q48-capped",
+    "native_q48": "CARGO_TARGET_DIR=research/r2/transcript/target cargo run --release --features q48 --manifest-path research/r2/transcript/rust/Cargo.toml -- --input research/r2/corpus/h0/fixed --out research/r2/transcript/outputs/q48-native"
+  },
+  "q48_control": {
+    "native_feature": "q48",
+    "query_count": 48,
+    "splits": [
+      [
+        22,
+        26
+      ],
+      [
+        24,
+        24
+      ],
+      [
+        26,
+        22
+      ]
+    ],
+    "source_generator": "research/r2/transcript/q48.py",
+    "solidity_root": "research/r2/transcript/q48/solidity",
+    "parameter_default": "k512(0x47, ascii(PQTC.R2.T3-02.H0.Q48) || frozen_sepolia_v03_parameter64)",
+    "final_epoch_samples": "16-bit PoW then exactly48 13-bit query indices",
+    "balance_rule": "Choose measured successful split minimizing max(actual A receipt gas, actual B receipt gas); missing execution is not a projected winner",
+    "security": "Stronger relative query count, still unqualified; no bits-of-security claim"
+  }
+}

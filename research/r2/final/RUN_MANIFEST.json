@@ -1,0 +1,1984 @@
+{
+  "schema": "pqtc.r2.halt-runs.v1",
+  "status": "PAUSED_BY_USER",
+  "scope": "Retained command records; not all commands are experiments or successful proofs. Package result files retain scientific outcomes.",
+  "commands": [
+    {
+      "path": "research/r2/air/outputs/C1-decomposed/command.json",
+      "sha256": "7c3fba2748037cbb555ae73ac7ad1e07d2d4dd5c35430ad8fe15f57d8d265f4b",
+      "record": {
+        "argv": [
+          "/usr/bin/time",
+          "-l",
+          "/Users/zodomo/code/PQTornado/research/r2/air/target/release/pqtc-r2-air",
+          "--candidate",
+          "C1",
+          "--geometry",
+          "decomposed",
+          "--profile",
+          "fixed",
+          "--queries",
+          "32",
+          "--log-blowup",
+          "4",
+          "--output",
+          "research/r2/air/outputs/C1-decomposed"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "HOME": "/Users/zodomo",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "RAYON_NUM_THREADS": "1",
+          "NO_COLOR": "1",
+          "RUST_BACKTRACE": "1"
+        },
+        "exit_status": 0,
+        "finished_utc": "2026-09-04T23:48:55.310599+00:00",
+        "wall_seconds": 3.060237792029511,
+        "peak_rss_bytes": 468205568,
+        "measurement_class": "MEASURED",
+        "stdout_path": "stdout.log",
+        "stderr_path": "stderr.log",
+        "security": "SECURITY_NOT_QUALIFIED"
+      }
+    },
+    {
+      "path": "research/r2/air/outputs/C2-horizontal-02/command.json",
+      "sha256": "23d9c7cea1339b9728cab3f567fbf812e7cf0674f276bd2bca708dbb7eb639bf",
+      "record": {
+        "argv": [
+          "/usr/bin/time",
+          "-l",
+          "/Users/zodomo/code/PQTornado/research/r2/air/target/release/pqtc-r2-air",
+          "--candidate",
+          "C2",
+          "--profile",
+          "fixed",
+          "--queries",
+          "32",
+          "--log-blowup",
+          "4",
+          "--statement",
+          "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+          "--witness",
+          "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+          "--output",
+          "research/r2/air/outputs/C2-horizontal-02"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "HOME": "/Users/zodomo",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "RAYON_NUM_THREADS": "1",
+          "NO_COLOR": "1",
+          "RUST_BACKTRACE": "1"
+        },
+        "exit_status": 0,
+        "finished_utc": "2026-09-05T00:02:23.214125+00:00",
+        "wall_seconds": 0.48265183303738013,
+        "peak_rss_bytes": 20250624,
+        "measurement_class": "MEASURED",
+        "stdout_path": "stdout.log",
+        "stderr_path": "stderr.log",
+        "security": "SECURITY_NOT_QUALIFIED"
+      }
+    },
+    {
+      "path": "research/r2/air/outputs/C3-decomposed/command.json",
+      "sha256": "e31e8566b215d7d891d755dcc6d8f6bdaae1a277fb642f53cbafd8ae11acdf94",
+      "record": {
+        "argv": [
+          "/usr/bin/time",
+          "-l",
+          "/Users/zodomo/code/PQTornado/research/r2/air/target/release/pqtc-r2-air",
+          "--candidate",
+          "C3",
+          "--geometry",
+          "decomposed",
+          "--profile",
+          "fixed",
+          "--queries",
+          "32",
+          "--log-blowup",
+          "4",
+          "--statement",
+          "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+          "--witness",
+          "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+          "--h5-case",
+          "research/r2/air/outputs/C2-horizontal-02/h5-case.json",
+          "--output",
+          "research/r2/air/outputs/C3-decomposed"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "HOME": "/Users/zodomo",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "RAYON_NUM_THREADS": "1",
+          "NO_COLOR": "1",
+          "RUST_BACKTRACE": "1"
+        },
+        "exit_status": 0,
+        "finished_utc": "2026-09-05T00:03:08.520542+00:00",
+        "wall_seconds": 1.8317807919811457,
+        "peak_rss_bytes": 290848768,
+        "measurement_class": "MEASURED",
+        "stdout_path": "stdout.log",
+        "stderr_path": "stderr.log",
+        "security": "SECURITY_NOT_QUALIFIED"
+      }
+    },
+    {
+      "path": "research/r2/air/runs/build-native-01/command.json",
+      "sha256": "215d90bebc6fbee135207d3a4e740ab02385e06f9dbe5ada0ed86a58389efbeb",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "cargo",
+          "build",
+          "--release",
+          "--offline",
+          "--manifest-path",
+          "research/r2/air/rust/Cargo.toml"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "CARGO_BUILD_JOBS": "4",
+          "CARGO_TARGET_DIR": "research/r2/air/target",
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 7499,
+            "sha256": "a19e081762ef106b592da698ab750d6a6e9fd6d0262171fd0dfefce6f96f2f92"
+          },
+          "stdout.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 101,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:41:45.089590+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "cargo",
+          "build",
+          "--release",
+          "--offline",
+          "--manifest-path",
+          "research/r2/air/rust/Cargo.toml"
+        ],
+        "wall_seconds": 21.80090295901755
+      }
+    },
+    {
+      "path": "research/r2/air/runs/build-native-02/command.json",
+      "sha256": "a9d15d22905464287df1e3536a29c79afbb4a634e8218210ea0e3fac4df09c24",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "cargo",
+          "build",
+          "--release",
+          "--locked",
+          "--offline",
+          "--manifest-path",
+          "research/r2/air/rust/Cargo.toml"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "CARGO_BUILD_JOBS": "4",
+          "CARGO_TARGET_DIR": "research/r2/air/target",
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 1297,
+            "sha256": "a175af393ad0aad833edd1bb4f906a5fa665552f34cb6df87fa443f698975e87"
+          },
+          "stdout.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:47:45.636208+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "cargo",
+          "build",
+          "--release",
+          "--locked",
+          "--offline",
+          "--manifest-path",
+          "research/r2/air/rust/Cargo.toml"
+        ],
+        "wall_seconds": 19.54997795895906
+      }
+    },
+    {
+      "path": "research/r2/air/runs/build-native-03/command.json",
+      "sha256": "9f9eae4041026b98dfbd69552e8c16d930a6b19b76ad8f2c562a75f3790b9ab7",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "cargo",
+          "build",
+          "--release",
+          "--locked",
+          "--offline",
+          "--manifest-path",
+          "research/r2/air/rust/Cargo.toml"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "CARGO_BUILD_JOBS": "4",
+          "CARGO_TARGET_DIR": "research/r2/air/target",
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 1297,
+            "sha256": "6c403a1aed04d6c5473724427ae60ea1dd3d9af6241d6dd333054a0c09114541"
+          },
+          "stdout.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-05T00:00:28.397351+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "cargo",
+          "build",
+          "--release",
+          "--locked",
+          "--offline",
+          "--manifest-path",
+          "research/r2/air/rust/Cargo.toml"
+        ],
+        "wall_seconds": 19.359326083038468
+      }
+    },
+    {
+      "path": "research/r2/air/runs/c1-first-01/command.json",
+      "sha256": "cd578293a0839c03c4ca3fe679d30f88e3d029264e111245e3faca5be8d93624",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "research/r2/air/run.py",
+          "--",
+          "--candidate",
+          "C1",
+          "--geometry",
+          "decomposed",
+          "--profile",
+          "fixed",
+          "--queries",
+          "32",
+          "--log-blowup",
+          "4",
+          "--output",
+          "research/r2/air/outputs/C1-decomposed"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "RAYON_NUM_THREADS": "1",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "37284fd2480feb43aebb82df7f0223e4bc8ab20d8bae0911195d7ef2b64506b7"
+          },
+          "stdout.log": {
+            "bytes": 1334,
+            "sha256": "b9925183cb79f608675f97140ef4188867ce7f8204ab4145403449f16c4967e7"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:48:52.215339+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "research/r2/air/run.py",
+          "--",
+          "--candidate",
+          "C1",
+          "--geometry",
+          "decomposed",
+          "--profile",
+          "fixed",
+          "--queries",
+          "32",
+          "--log-blowup",
+          "4",
+          "--output",
+          "research/r2/air/outputs/C1-decomposed"
+        ],
+        "wall_seconds": 3.147509665985126
+      }
+    },
+    {
+      "path": "research/r2/air/runs/c2-first-02/command.json",
+      "sha256": "6b12702f91431241b2a6059067422e4bf15fcc7b4a17b1aff6e1b9e6257a8e91",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "research/r2/air/run.py",
+          "--",
+          "--candidate",
+          "C2",
+          "--profile",
+          "fixed",
+          "--queries",
+          "32",
+          "--log-blowup",
+          "4",
+          "--statement",
+          "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+          "--witness",
+          "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+          "--output",
+          "research/r2/air/outputs/C2-horizontal-02"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "RAYON_NUM_THREADS": "1",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "0babb709d9d18fbf9134659127b3dc8edda0ed1eb3d0d7e50faf6ef0b081bd04"
+          },
+          "stdout.log": {
+            "bytes": 1452,
+            "sha256": "4ae0387f2f1b12b3b912b3d1f00dd8f8d24f7f94bd2c90f433803f40d0b0b678"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-05T00:02:22.696564+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "research/r2/air/run.py",
+          "--",
+          "--candidate",
+          "C2",
+          "--profile",
+          "fixed",
+          "--queries",
+          "32",
+          "--log-blowup",
+          "4",
+          "--statement",
+          "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+          "--witness",
+          "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+          "--output",
+          "research/r2/air/outputs/C2-horizontal-02"
+        ],
+        "wall_seconds": 0.5542788750026375
+      }
+    },
+    {
+      "path": "research/r2/air/runs/c3-first-01/command.json",
+      "sha256": "61d2a18c4fb2486f18752c0da500b4dbddd9d3aa77964538abef053304162782",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "research/r2/air/run.py",
+          "--",
+          "--candidate",
+          "C3",
+          "--geometry",
+          "decomposed",
+          "--profile",
+          "fixed",
+          "--queries",
+          "32",
+          "--log-blowup",
+          "4",
+          "--statement",
+          "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+          "--witness",
+          "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+          "--h5-case",
+          "research/r2/air/outputs/C2-horizontal-02/h5-case.json",
+          "--output",
+          "research/r2/air/outputs/C3-decomposed"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "RAYON_NUM_THREADS": "1",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "493b7d8a802186982a3017d7165812b9b60bec733cddf91cdefecb2cf3439b5c"
+          },
+          "stdout.log": {
+            "bytes": 1547,
+            "sha256": "da19b81a0e23e122d97c919ad7d14a78c39b8f9dba77a7ad456ad719079e3b3f"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-05T00:03:06.645032+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "research/r2/air/run.py",
+          "--",
+          "--candidate",
+          "C3",
+          "--geometry",
+          "decomposed",
+          "--profile",
+          "fixed",
+          "--queries",
+          "32",
+          "--log-blowup",
+          "4",
+          "--statement",
+          "research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+          "--witness",
+          "research/r2/corpus/h0/corpus/swc-v1-000/witness.json",
+          "--h5-case",
+          "research/r2/air/outputs/C2-horizontal-02/h5-case.json",
+          "--output",
+          "research/r2/air/outputs/C3-decomposed"
+        ],
+        "wall_seconds": 1.934275957988575
+      }
+    },
+    {
+      "path": "research/r2/backend/runs/api-01/command.json",
+      "sha256": "0a876f530d336b9189dcc4e5cde12eefb63fa9ee851589a5362e8fbad8c05851",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "research/r2/backend/run.py",
+          "--stage",
+          "api",
+          "--output",
+          "research/r2/backend/outputs/api"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "CARGO_BUILD_JOBS": "4",
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "RAYON_NUM_THREADS": "1",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "62497139ba4ae0dfc4fe946d26139164ab637a2f67d3c1bf63e50172a46a3a18"
+          },
+          "stdout.log": {
+            "bytes": 74,
+            "sha256": "c626ba413c000059b7ef3507124cea37abfb416b0bd7c8042b6d32be089731fd"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:27:09.451972+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "research/r2/backend/run.py",
+          "--stage",
+          "api",
+          "--output",
+          "research/r2/backend/outputs/api"
+        ],
+        "wall_seconds": 16.293794874974992
+      }
+    },
+    {
+      "path": "research/r2/backend/runs/build-native-01/command.json",
+      "sha256": "ee3419025e449e773e7d8ee230cc2459237b6eaf75c91622b4841e28e3d9d5a7",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "cargo",
+          "build",
+          "--release",
+          "--locked",
+          "--offline",
+          "--manifest-path",
+          "research/r2/backend/rust/Cargo.toml",
+          "--bin",
+          "h0-control",
+          "--bin",
+          "hiding-repair"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "CARGO_BUILD_JOBS": "4",
+          "CARGO_TARGET_DIR": "research/r2/backend/target",
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 932,
+            "sha256": "23f05820c832f6b003861d6096fe68200565f05e0a7c647afdc6ac92a8feabfe"
+          },
+          "stdout.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:37:31.709056+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "cargo",
+          "build",
+          "--release",
+          "--locked",
+          "--offline",
+          "--manifest-path",
+          "research/r2/backend/rust/Cargo.toml",
+          "--bin",
+          "h0-control",
+          "--bin",
+          "hiding-repair"
+        ],
+        "wall_seconds": 10.304340166971087
+      }
+    },
+    {
+      "path": "research/r2/baseline/runs/local-retained-01/command.json",
+      "sha256": "1d1483da0fcbf8e69f5f722896d23e7815a43ac60671a75ccc6cb29195f6a6ad",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "research/r2/baseline/run.py",
+          "local",
+          "--run-id",
+          "r2-main",
+          "--rpc-url",
+          "http://127.0.0.1:18545",
+          "--diagnostic-rpc-url",
+          "http://127.0.0.1:18546",
+          "--fixture",
+          "retained-v03-fixed-01"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "RAYON_NUM_THREADS": "1",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 1832,
+            "sha256": "50064d30de26907d963c18fb45d2afd12a277c2e4a96c20107b3e1d4a4db3692"
+          },
+          "stdout.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 1,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-05T00:07:41.309144+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "research/r2/baseline/run.py",
+          "local",
+          "--run-id",
+          "r2-main",
+          "--rpc-url",
+          "http://127.0.0.1:18545",
+          "--diagnostic-rpc-url",
+          "http://127.0.0.1:18546",
+          "--fixture",
+          "retained-v03-fixed-01"
+        ],
+        "wall_seconds": 4.058223749976605
+      }
+    },
+    {
+      "path": "research/r2/baseline/runs/local-retained-02/command.json",
+      "sha256": "4cf3e7945a969bb561e368ee9afdc7ddba2a9f44d6a4ed8c7825b6ec2314a5c3",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "research/r2/baseline/run.py",
+          "local",
+          "--run-id",
+          "r2-main",
+          "--rpc-url",
+          "http://127.0.0.1:18545",
+          "--diagnostic-rpc-url",
+          "http://127.0.0.1:18546",
+          "--fixture",
+          "retained-v03-fixed-01",
+          "--local-id",
+          "retained-attempt-02"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "RAYON_NUM_THREADS": "1",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "09fbecd46f8f5382dbdca1720aaa75dd0e6c713934831a380d9c733009913e09"
+          },
+          "stdout.log": {
+            "bytes": 79,
+            "sha256": "7b83c237f6c54fa01f0a9bc279ddeecd8e0282426a5f1ab5f79ad68631180cc1"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-05T00:11:05.600020+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "research/r2/baseline/run.py",
+          "local",
+          "--run-id",
+          "r2-main",
+          "--rpc-url",
+          "http://127.0.0.1:18545",
+          "--diagnostic-rpc-url",
+          "http://127.0.0.1:18546",
+          "--fixture",
+          "retained-v03-fixed-01",
+          "--local-id",
+          "retained-attempt-02"
+        ],
+        "wall_seconds": 170.5215472090058
+      }
+    },
+    {
+      "path": "research/r2/baseline/runs/prepare-01/command.json",
+      "sha256": "b01543bcf4520eaa97afca94796a4544e686783412cef57e4f2bc17cd502d693",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "research/r2/baseline/run.py",
+          "prepare",
+          "--run-id",
+          "r2-main"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "CARGO_BUILD_JOBS": "4",
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "RAYON_NUM_THREADS": "1",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "5aec853788a69c8dbe6b6f18d8e953cd837de3dd172f3413cceceea096b05f40"
+          },
+          "stdout.log": {
+            "bytes": 79,
+            "sha256": "7b83c237f6c54fa01f0a9bc279ddeecd8e0282426a5f1ab5f79ad68631180cc1"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:35:39.137106+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "research/r2/baseline/run.py",
+          "prepare",
+          "--run-id",
+          "r2-main"
+        ],
+        "wall_seconds": 326.49982679099776
+      }
+    },
+    {
+      "path": "research/r2/baseline/runs/prepare-corpus-01/command.json",
+      "sha256": "f60e7d9eb995f5ac7603bc53de71e75f35e48c0916404d95513690b4d4329ba5",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "research/r2/baseline/run.py",
+          "prepare-corpus",
+          "--run-id",
+          "r2-main"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "RAYON_NUM_THREADS": "1",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "506c9ffca6336d8fcd03c6bf69990b20c6cf286b72b841674ff8c1e4f3ec202d"
+          },
+          "stdout.log": {
+            "bytes": 79,
+            "sha256": "7b83c237f6c54fa01f0a9bc279ddeecd8e0282426a5f1ab5f79ad68631180cc1"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:47:56.966891+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "research/r2/baseline/run.py",
+          "prepare-corpus",
+          "--run-id",
+          "r2-main"
+        ],
+        "wall_seconds": 1.5889929590048268
+      }
+    },
+    {
+      "path": "research/r2/baseline/runs/proofs-01/command.json",
+      "sha256": "3c879ef5ffe31a68bc6612fc823322c523298e20707e03f7bad01c8d849f27aa",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "research/r2/baseline/run.py",
+          "proofs",
+          "--run-id",
+          "r2-main"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "CARGO_BUILD_JOBS": "4",
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "RAYON_NUM_THREADS": "1",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "6b0b650ed1d4fdef28459686a017eba72f7583c22c4cf90d0b0a9b47c77eb9fc"
+          },
+          "stdout.log": {
+            "bytes": 79,
+            "sha256": "7b83c237f6c54fa01f0a9bc279ddeecd8e0282426a5f1ab5f79ad68631180cc1"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-05T00:03:39.682032+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "research/r2/baseline/run.py",
+          "proofs",
+          "--run-id",
+          "r2-main"
+        ],
+        "wall_seconds": 14.334162375016604
+      }
+    },
+    {
+      "path": "research/r2/conditional/runs/exact-l2-01/command.json",
+      "sha256": "abb33e3d5b90108c9fdd6d0949115ab05250707c29cd0d685b99cac1597106a0",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "-B",
+          "research/r2/conditional/l2_payload.py",
+          "--output",
+          "research/r2/conditional/outputs/l2.json"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "76a242e3efb1ba4edeba195a6a137cce8117e617a83e54dded4e991b6a68d3ba"
+          },
+          "stdout.log": {
+            "bytes": 69,
+            "sha256": "b57d9e8ac2fa1024737636a216f4d8e7d43dd41117794bfa13fc50aaadec1ca8"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:24:42.329245+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "-B",
+          "research/r2/conditional/l2_payload.py",
+          "--output",
+          "research/r2/conditional/outputs/l2.json"
+        ],
+        "wall_seconds": 3.3116103330394253
+      }
+    },
+    {
+      "path": "research/r2/conditional/runs/flock-search-01/command.json",
+      "sha256": "2347545726e586fc2429bbc773be355206a6c182f194b2a27a8d34c6b4cd6006",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "-B",
+          "research/r2/conditional/flock_search.py",
+          "--source",
+          "/tmp/pqtc-c70-work/sources/flock-c2d0",
+          "--max-commits",
+          "64",
+          "--output",
+          "research/r2/conditional/outputs/flock.json"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "5c4cbbf4f7a385435939c7a73475ad65f7b8bd1120545776c2f75af74b999eb2"
+          },
+          "stdout.log": {
+            "bytes": 72,
+            "sha256": "8a212f904be5931566264c4a1a976a8a009ab896ffe41d6872b0e5e180ea7665"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:24:51.047443+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "-B",
+          "research/r2/conditional/flock_search.py",
+          "--source",
+          "/tmp/pqtc-c70-work/sources/flock-c2d0",
+          "--max-commits",
+          "64",
+          "--output",
+          "research/r2/conditional/outputs/flock.json"
+        ],
+        "wall_seconds": 6.216595042031258
+      }
+    },
+    {
+      "path": "research/r2/conditional/runs/hardware-inventory-01/command.json",
+      "sha256": "d26ef46dcbb66737ed1014dc1031006c5f97a5c448ab600a8aadd90e3a459609",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "-B",
+          "research/r2/conditional/hardware.py",
+          "--threads",
+          "1",
+          "--output",
+          "research/r2/conditional/outputs/hardware.json"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "4e0dbcd0724c8da2e34a352506a0b86f2a5111dc5f993b58181763cfd6457046"
+          },
+          "stdout.log": {
+            "bytes": 75,
+            "sha256": "b7751ab3633f4dee6d22bd425dbb88141c8e2e04dc1625be59ab12f392225d7f"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:25:01.619969+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "-B",
+          "research/r2/conditional/hardware.py",
+          "--threads",
+          "1",
+          "--output",
+          "research/r2/conditional/outputs/hardware.json"
+        ],
+        "wall_seconds": 0.07232174999080598
+      }
+    },
+    {
+      "path": "research/r2/governance/corpus-freeze-01/command.json",
+      "sha256": "897a4c60016eb561f8f5a4840c1fc12ee588c6fd0ba20f47d46fe7049c5d578f",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "research/r2/corpus/check.py"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "5313350666542d494a9b4590fccddfc861a828d137c4d38edcfc0d852bde64a1"
+          },
+          "stdout.log": {
+            "bytes": 804,
+            "sha256": "fc2da9b827c09d72b2350a5bde3006e74d0cf4bcbf5f7e25625591db7e01f61b"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:56:17.199727+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "research/r2/corpus/check.py"
+        ],
+        "wall_seconds": 0.126795458025299
+      }
+    },
+    {
+      "path": "research/r2/governance/runner-smoke/command.json",
+      "sha256": "9b3e11ecb5f4ea83ac002fcbd928e2cb796fe493269ae391dcb8cff8bc6ddd00",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "--version"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "4681090ae4f43bd62b0882cdb1824532a4912fc51cc3d4465f97857b183577b2"
+          },
+          "stdout.log": {
+            "bytes": 14,
+            "sha256": "917601090ffb73a030e3eaa8b7a01c41400cad4b61366b4218d7756a5733b66c"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:20:14.642086+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "--version"
+        ],
+        "wall_seconds": 0.02177804202074185
+      }
+    },
+    {
+      "path": "research/r2/hash/runs/build-native-01/command.json",
+      "sha256": "94ad76bb75e3486c959601b75f09b91ae25729a047cb7119a41321ead8aa7f18",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "cargo",
+          "build",
+          "--release",
+          "--offline",
+          "--manifest-path",
+          "research/r2/hash/rust/Cargo.toml"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "CARGO_BUILD_JOBS": "4",
+          "CARGO_TARGET_DIR": "research/r2/hash/target",
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 4104,
+            "sha256": "ae100d535a2ab05876ae3aa960f275b67441cd56be9d52ec435202aa8e257e5a"
+          },
+          "stdout.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:41:45.024699+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "cargo",
+          "build",
+          "--release",
+          "--offline",
+          "--manifest-path",
+          "research/r2/hash/rust/Cargo.toml"
+        ],
+        "wall_seconds": 11.74253037496237
+      }
+    },
+    {
+      "path": "research/r2/models/runs/build-native-01/command.json",
+      "sha256": "f5ebce518ad9513062880adb9be3a1c277043aee01b1f9fd1000e1146e213fd4",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "cargo",
+          "build",
+          "--release",
+          "--locked",
+          "--offline",
+          "--manifest-path",
+          "research/r2/models/rust/Cargo.toml"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "CARGO_BUILD_JOBS": "4",
+          "CARGO_TARGET_DIR": "research/r2/models/target",
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 6040,
+            "sha256": "3cd77443830037c6512802918970c30fd227e24f425a033f2fee387e05c39f8a"
+          },
+          "stdout.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:41:45.046106+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "cargo",
+          "build",
+          "--release",
+          "--locked",
+          "--offline",
+          "--manifest-path",
+          "research/r2/models/rust/Cargo.toml"
+        ],
+        "wall_seconds": 21.169683999964036
+      }
+    },
+    {
+      "path": "research/r2/models/runs/check-01/command.json",
+      "sha256": "e78619ba0b731b2c0a55be7bbd7f6065528e38941fbc95a153841c4e8c3a0364",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "research/r2/models/model.py",
+          "--check"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "018747dd220a1844fa09240c96074ac07d5d8064d14c37bc889ad2d6e4ced597"
+          },
+          "stdout.log": {
+            "bytes": 66,
+            "sha256": "58e22679666ea765b48d9614d7bc9b2b2546e05ca2248bb2e563aaa5c28ff19c"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:36:42.039615+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "research/r2/models/model.py",
+          "--check"
+        ],
+        "wall_seconds": 0.07671729195863008
+      }
+    },
+    {
+      "path": "research/r2/models/runs/historical-calibration-01/command.json",
+      "sha256": "ee4026a77ddb83343157e46edd164612d2239cfad92eba2bda042257274e132d",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "research/r2/models/model.py",
+          "--historical",
+          "--output",
+          "research/r2/models/outputs/historical-calibration.json"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "b31c4b498a2d79b478ddc97f82e9a54c29e82972e174eaeb7b56e05ee9089a6e"
+          },
+          "stdout.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:36:47.181310+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "research/r2/models/model.py",
+          "--historical",
+          "--output",
+          "research/r2/models/outputs/historical-calibration.json"
+        ],
+        "wall_seconds": 0.04015979199903086
+      }
+    },
+    {
+      "path": "research/r2/operations/runs/build-01/command.json",
+      "sha256": "864bab3e51dc5ea62337ca29ab9de4a1be61f218bb41de7a6ddd89c490dd6a5f",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "cargo",
+          "build",
+          "--release",
+          "--offline",
+          "--manifest-path",
+          "research/r2/operations/rust/Cargo.toml"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "CARGO_BUILD_JOBS": "4",
+          "CARGO_TARGET_DIR": "research/r2/operations/target",
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 5874,
+            "sha256": "c5341dfa4f69d1be2820802358b0eca839ead7394815af128221aab8eab37ba2"
+          },
+          "stdout.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:28:20.054674+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "cargo",
+          "build",
+          "--release",
+          "--offline",
+          "--manifest-path",
+          "research/r2/operations/rust/Cargo.toml"
+        ],
+        "wall_seconds": 13.728981082967948
+      }
+    },
+    {
+      "path": "research/r2/operations/runs/build-02/command.json",
+      "sha256": "7bb674c439dc3dd386b7618f86f4580ab0cb2ea02ed634224ecd93f1b94a8ad3",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "cargo",
+          "build",
+          "--release",
+          "--locked",
+          "--offline",
+          "--manifest-path",
+          "research/r2/operations/rust/Cargo.toml"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "CARGO_BUILD_JOBS": "4",
+          "CARGO_TARGET_DIR": "research/r2/operations/target",
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 937,
+            "sha256": "ffa06b0d723a4b76870883edf7ae3b1ddf1f81f786f77bfd2a43e71badfaa0b8"
+          },
+          "stdout.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:50:49.603370+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "cargo",
+          "build",
+          "--release",
+          "--locked",
+          "--offline",
+          "--manifest-path",
+          "research/r2/operations/rust/Cargo.toml"
+        ],
+        "wall_seconds": 0.8241332919569686
+      }
+    },
+    {
+      "path": "research/r2/operations/runs/build-03/command.json",
+      "sha256": "942a630396f5f9490ad54d42eff9d0ab36470f43bb15be5406141ee511e898e0",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "cargo",
+          "build",
+          "--release",
+          "--offline",
+          "--manifest-path",
+          "research/r2/operations/rust/Cargo.toml"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "CARGO_BUILD_JOBS": "4",
+          "CARGO_TARGET_DIR": "research/r2/operations/target",
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 1650,
+            "sha256": "94b6b2101480cba0f08ab65bca339d91385b991f87946e59b6aa147928b909f6"
+          },
+          "stdout.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-05T00:11:18.349593+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "cargo",
+          "build",
+          "--release",
+          "--offline",
+          "--manifest-path",
+          "research/r2/operations/rust/Cargo.toml"
+        ],
+        "wall_seconds": 2.827972040977329
+      }
+    },
+    {
+      "path": "research/r2/operations/runs/containment-01/command.json",
+      "sha256": "2575bda4fd54b173904833a097c86666a72995c787f0859849a31a9ef5fa798f",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "research/r2/operations/containment.py",
+          "--output",
+          "research/r2/operations/outputs/containment-01"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "712f4cec8a5db2ed9b9254513d143981fc745aaa60a443480445b1162965369e"
+          },
+          "stdout.log": {
+            "bytes": 137,
+            "sha256": "391b13444b2cc8af52ba0982c3e9d25811b0eba7de7f467195f9adbb34969ac4"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:29:53.904454+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "research/r2/operations/containment.py",
+          "--output",
+          "research/r2/operations/outputs/containment-01"
+        ],
+        "wall_seconds": 0.6092534579802305
+      }
+    },
+    {
+      "path": "research/r2/operations/runs/history-4096-01/command.json",
+      "sha256": "025950e722a8ddc9042288739421451c15164de9c46612e7097f46cd40f367f3",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "research/r2/operations/target/release/pqtc-r2-operations",
+          "--pool",
+          "0x1111111111111111111111111111111111111111",
+          "--parameter",
+          "35adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62ab7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea07779",
+          "--recipient",
+          "0x2222222222222222222222222222222222222222",
+          "--relayer",
+          "0x3333333333333333333333333333333333333333",
+          "--notes",
+          "4096",
+          "--retain-every",
+          "16",
+          "--output",
+          "research/r2/corpus/deposit-h0"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "3f8158a5948b78a9ed9f83b08cf3a49741d55bcc113541d4ef999a4bf4cf2fe2"
+          },
+          "stdout.log": {
+            "bytes": 94,
+            "sha256": "12c321734fe62fb889c6f6292c76f74541577d6d553d77c51dd8023351b3fe00"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:54:08.498931+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "research/r2/operations/target/release/pqtc-r2-operations",
+          "--pool",
+          "0x1111111111111111111111111111111111111111",
+          "--parameter",
+          "35adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62ab7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea07779",
+          "--recipient",
+          "0x2222222222222222222222222222222222222222",
+          "--relayer",
+          "0x3333333333333333333333333333333333333333",
+          "--notes",
+          "4096",
+          "--retain-every",
+          "16",
+          "--output",
+          "research/r2/corpus/deposit-h0"
+        ],
+        "wall_seconds": 0.8806917500332929
+      }
+    },
+    {
+      "path": "research/r2/operations/runs/history-reference-01/command.json",
+      "sha256": "006b46dffd9a64b0775229086d705abaa04de16680dbd30b5a699d626ba29270",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "research/r2/operations/target/release/pqtc-r2-operations",
+          "--pool",
+          "0x1111111111111111111111111111111111111111",
+          "--parameter",
+          "35adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62ab7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea07779",
+          "--recipient",
+          "0x2222222222222222222222222222222222222222",
+          "--relayer",
+          "0x3333333333333333333333333333333333333333",
+          "--notes",
+          "8",
+          "--output",
+          "research/r2/operations/outputs/reference-history-01"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "ff142350399c1bdca59eb629c9ee44bcf0d895495bb427d0e60e982e26a836b6"
+          },
+          "stdout.log": {
+            "bytes": 113,
+            "sha256": "649eba9c25bc358c9a5cfff85eef9e782946b8228bebf2078d6b672943615004"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:38:09.725337+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "research/r2/operations/target/release/pqtc-r2-operations",
+          "--pool",
+          "0x1111111111111111111111111111111111111111",
+          "--parameter",
+          "35adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62ab7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea07779",
+          "--recipient",
+          "0x2222222222222222222222222222222222222222",
+          "--relayer",
+          "0x3333333333333333333333333333333333333333",
+          "--notes",
+          "8",
+          "--output",
+          "research/r2/operations/outputs/reference-history-01"
+        ],
+        "wall_seconds": 0.13021745899459347
+      }
+    },
+    {
+      "path": "research/r2/security/runs/analysis-c0-01/command.json",
+      "sha256": "b97087b5d8c50cca875437a625198a50ae48cec1551f4f899f209b63e268a3f4",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "python3",
+          "research/r2/security/run.py",
+          "--pinned-binary",
+          "research/r2/security/target/release/pqtc-r2-security-pinned",
+          "--output",
+          "research/r2/security/outputs/c0"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "RAYON_NUM_THREADS": "1",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 777,
+            "sha256": "f6c7de8c7f42690227fc1067516ff13ce2516ea8cbcec2f58a5560900eae01fb"
+          },
+          "stdout.log": {
+            "bytes": 3321,
+            "sha256": "c9c73a85a92e01f01c5c5b8838ee0953beb12a1198bcb8aa5ce2a33a391e06c2"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:32:44.060757+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "python3",
+          "research/r2/security/run.py",
+          "--pinned-binary",
+          "research/r2/security/target/release/pqtc-r2-security-pinned",
+          "--output",
+          "research/r2/security/outputs/c0"
+        ],
+        "wall_seconds": 1.1438016669708304
+      }
+    },
+    {
+      "path": "research/r2/security/runs/build-01/command.json",
+      "sha256": "2c89b6072ac2547d401f3fdab7ec44522f9f9c87f78b86856d963245e91bc301",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "cargo",
+          "build",
+          "--release",
+          "--offline",
+          "--manifest-path",
+          "research/r2/security/rust/Cargo.toml"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "CARGO_BUILD_JOBS": "4",
+          "CARGO_TARGET_DIR": "research/r2/security/target",
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 1017,
+            "sha256": "45a4f7580d96e8935617c9fadc31fb4753247fca2c89f9d09d1de63156c9c85a"
+          },
+          "stdout.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 101,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:30:52.296707+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "cargo",
+          "build",
+          "--release",
+          "--offline",
+          "--manifest-path",
+          "research/r2/security/rust/Cargo.toml"
+        ],
+        "wall_seconds": 0.1288496669731103
+      }
+    },
+    {
+      "path": "research/r2/security/runs/build-02/command.json",
+      "sha256": "5aa47df91232fd5cb661572d93b337a53f88926afe0098976f46481fe09daeae",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "cargo",
+          "build",
+          "--release",
+          "--locked",
+          "--manifest-path",
+          "research/r2/security/rust/Cargo.toml"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "CARGO_BUILD_JOBS": "4",
+          "CARGO_TARGET_DIR": "research/r2/security/target",
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 3481,
+            "sha256": "4404025719bfa6ee40bb91a3f5beb223e607844eebf0b945917b3ee279176dc8"
+          },
+          "stdout.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:32:16.201977+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "cargo",
+          "build",
+          "--release",
+          "--locked",
+          "--manifest-path",
+          "research/r2/security/rust/Cargo.toml"
+        ],
+        "wall_seconds": 5.566530999960378
+      }
+    },
+    {
+      "path": "research/r2/transcript/runs/build-native-01/command.json",
+      "sha256": "84278b17313c2f192f62f16cb09223ab02a6f3b5227cd443c9d7c4bbb132b360",
+      "record": {
+        "architecture": "arm64",
+        "command": [
+          "cargo",
+          "build",
+          "--release",
+          "--offline",
+          "--manifest-path",
+          "research/r2/transcript/rust/Cargo.toml"
+        ],
+        "cwd": "/Users/zodomo/code/PQTornado",
+        "environment": {
+          "CARGO_BUILD_JOBS": "4",
+          "CARGO_TARGET_DIR": "research/r2/transcript/target",
+          "HOME": "/Users/zodomo",
+          "LC_ALL": "C",
+          "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+          "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+          "TZ": "UTC"
+        },
+        "logs": {
+          "stderr.log": {
+            "bytes": 8140,
+            "sha256": "e48467ea172c323b4a3fd852f6f848b53c351870c62cad048d0256e0b9f2d02f"
+          },
+          "stdout.log": {
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+        "returncode": 0,
+        "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+        "rss_unit": "bytes",
+        "schema": "pqtc.r2.command-run.v1",
+        "scope": "local non-custodial research command; success is execution, not artifact qualification",
+        "started_utc": "2026-09-04T23:41:45.063153+00:00",
+        "timed_out": false,
+        "timeout_seconds": 7200,
+        "timing_command": [
+          "/usr/bin/time",
+          "-l",
+          "cargo",
+          "build",
+          "--release",
+          "--offline",
+          "--manifest-path",
+          "research/r2/transcript/rust/Cargo.toml"
+        ],
+        "wall_seconds": 28.626792458002456
+      }
+    }
+  ]
+}

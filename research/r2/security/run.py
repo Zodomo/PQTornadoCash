@@ -145,7 +145,7 @@ def profiles(shapes, calculator):
     records = [dict(baseline, candidate_id='R2-C0')]
     for path in shapes:
         supplied = json.loads(path.read_text())
-        if isinstance(supplied, dict): supplied = supplied['shapes']
+        if isinstance(supplied, dict): supplied = supplied['shapes'] if 'shapes' in supplied else [supplied]
         for shape in supplied:
             required = ['candidate_id','logical_trace_height','proof_degree_bits','relation_width','num_constraints',
                         'max_constraint_degree','max_combo','quotient_chunks','hiding_random_functions','num_batched_functions']

@@ -1,0 +1,68 @@
+{
+  "architecture": "arm64",
+  "command": [
+    "python3",
+    "research/r2/air/run.py",
+    "--",
+    "--candidate",
+    "C1",
+    "--geometry",
+    "decomposed",
+    "--profile",
+    "fixed",
+    "--queries",
+    "32",
+    "--log-blowup",
+    "4",
+    "--output",
+    "research/r2/air/outputs/C1-decomposed"
+  ],
+  "cwd": "/Users/zodomo/code/PQTornado",
+  "environment": {
+    "HOME": "/Users/zodomo",
+    "LC_ALL": "C",
+    "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+    "RAYON_NUM_THREADS": "1",
+    "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+    "TZ": "UTC"
+  },
+  "logs": {
+    "stderr.log": {
+      "bytes": 777,
+      "sha256": "37284fd2480feb43aebb82df7f0223e4bc8ab20d8bae0911195d7ef2b64506b7"
+    },
+    "stdout.log": {
+      "bytes": 1334,
+      "sha256": "b9925183cb79f608675f97140ef4188867ce7f8204ab4145403449f16c4967e7"
+    }
+  },
+  "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+  "returncode": 0,
+  "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+  "rss_unit": "bytes",
+  "schema": "pqtc.r2.command-run.v1",
+  "scope": "local non-custodial research command; success is execution, not artifact qualification",
+  "started_utc": "2026-09-04T23:48:52.215339+00:00",
+  "timed_out": false,
+  "timeout_seconds": 7200,
+  "timing_command": [
+    "/usr/bin/time",
+    "-l",
+    "python3",
+    "research/r2/air/run.py",
+    "--",
+    "--candidate",
+    "C1",
+    "--geometry",
+    "decomposed",
+    "--profile",
+    "fixed",
+    "--queries",
+    "32",
+    "--log-blowup",
+    "4",
+    "--output",
+    "research/r2/air/outputs/C1-decomposed"
+  ],
+  "wall_seconds": 3.147509665985126
+}

@@ -1,0 +1,164 @@
+{
+  "query_count": 48,
+  "splits": [
+    [
+      22,
+      26
+    ],
+    [
+      24,
+      24
+    ],
+    [
+      26,
+      22
+    ]
+  ],
+  "source_changes": {
+    "libraries/Transcript512.sol": [
+      [
+        "s.epoch == 12 ? 33",
+        "s.epoch == 12 ? 49"
+      ]
+    ],
+    "libraries/PQTCProofCodec.sol": [
+      [
+        "QUERY_COUNT = 32",
+        "QUERY_COUNT = 48"
+      ],
+      [
+        "HALF_QUERY_COUNT = 16",
+        "HALF_QUERY_COUNT = 24"
+      ],
+      [
+        "common.firstQueries != 12 && common.firstQueries != 14 && common.firstQueries != 16",
+        "common.firstQueries != 22 && common.firstQueries != 24 && common.firstQueries != 26"
+      ]
+    ],
+    "verifier/PQTCQueryVerifier.sol": [
+      [
+        "count >= 12 && count <= 20",
+        "count >= 22 && count <= 26"
+      ],
+      [
+        "uint32[32] queryIndices",
+        "uint32[48] queryIndices"
+      ],
+      [
+        "uint16(32 - HALF)",
+        "uint16(48 - HALF)"
+      ]
+    ],
+    "PQTCVerificationRegistry.sol": [
+      [
+        "QUERY_COUNT = 32",
+        "QUERY_COUNT = 48"
+      ],
+      [
+        "uint32[32]",
+        "uint32[48]"
+      ],
+      [
+        "split != 12 && split != 14 && split != 16",
+        "split != 22 && split != 24 && split != 26"
+      ],
+      [
+        "!= 32 - split",
+        "!= 48 - split"
+      ]
+    ]
+  },
+  "hashes": {
+    "FrozenControl.sol": {
+      "q32_source_sha256": "39eda5db2232fdb1a40b29d29626b99089cdf54a044abf720b900cf8d57376f4",
+      "q48_source_sha256": "a2b7d775675381395ba7a45373e4de08515513cb0f6ce29dcb23a102cf6b4305"
+    },
+    "PQTCDomains.sol": {
+      "q32_source_sha256": "82575864ba97c7c4045b5a0d9ea5ab2c7a672b3ceb79550433a8e907c7697025",
+      "q48_source_sha256": "82575864ba97c7c4045b5a0d9ea5ab2c7a672b3ceb79550433a8e907c7697025"
+    },
+    "PQTCVerificationRegistry.sol": {
+      "q32_source_sha256": "5e6db65234a24dbe3437d2bf9742e58c998bafed6499601f3aaa0dd1e17f9ded",
+      "q48_source_sha256": "41dddca67de50106f85835e6b72c6990ab00074553b9777d202d8b490267a7fc"
+    },
+    "TranscriptOracle.sol": {
+      "q32_source_sha256": "56f12d49bf3706d84926735157c82a874cf35b003b53b2788b623f12e0518066",
+      "q48_source_sha256": "1f11c35e6d646ea2317fcfebcc8aab41c227228c9918290bf956c82e9b989e58"
+    },
+    "Deployment.sol": {
+      "q32_source_sha256": "6d940bd9a278ed2f4388aa33dc289483c7b9c525a3f22b861c903f214f1e1783",
+      "q48_source_sha256": "6d940bd9a278ed2f4388aa33dc289483c7b9c525a3f22b861c903f214f1e1783"
+    },
+    "libraries/P2BB512.sol": {
+      "q32_source_sha256": "eac664c088b7acacd0401dc1714afaa3a7e6459a71b93b330f6c321c70139534",
+      "q48_source_sha256": "eac664c088b7acacd0401dc1714afaa3a7e6459a71b93b330f6c321c70139534"
+    },
+    "libraries/PQTCApplicationHash.sol": {
+      "q32_source_sha256": "add9a5b6a21f32216b9f87a64abd24c49710405d7a3f59f5d918824e2713fe5d",
+      "q48_source_sha256": "add9a5b6a21f32216b9f87a64abd24c49710405d7a3f59f5d918824e2713fe5d"
+    },
+    "libraries/KeccakPair512.sol": {
+      "q32_source_sha256": "2f526fcf9c2fd2ef889938260df6585392d90f6217c0abbcae38cd257090a7d8",
+      "q48_source_sha256": "2f526fcf9c2fd2ef889938260df6585392d90f6217c0abbcae38cd257090a7d8"
+    },
+    "libraries/Binding512.sol": {
+      "q32_source_sha256": "7bfd51b5b318757ea63b4627d6f4180e4f1ee0b6ea9620056835b9dddd71fdb6",
+      "q48_source_sha256": "7bfd51b5b318757ea63b4627d6f4180e4f1ee0b6ea9620056835b9dddd71fdb6"
+    },
+    "libraries/PQTCProofCodec.sol": {
+      "q32_source_sha256": "39f8c0981c78814538c5c426495908eb511af6be426d8e10dcd2f5d638250df5",
+      "q48_source_sha256": "0f3a59eb91ae5d9acf4f6d7477bfa01e1f845aa35a7f56cec5ed776a738f87c7"
+    },
+    "libraries/Transcript512.sol": {
+      "q32_source_sha256": "b954389c6c979dd2879c58fe3ac40afc38f3fd7145143d064c5c89d501789698",
+      "q48_source_sha256": "ffbed5acc8f97c2e35843f2715312951cd8a9cd6c4c0471370dab20880667a22"
+    },
+    "libraries/BabyBearExt4Packed.sol": {
+      "q32_source_sha256": "84440d8861592ac49c70600ea99ad3978a92e2cae55dfadc5720850bf3b0d874",
+      "q48_source_sha256": "84440d8861592ac49c70600ea99ad3978a92e2cae55dfadc5720850bf3b0d874"
+    },
+    "libraries/BabyBear.sol": {
+      "q32_source_sha256": "0b260468dfdd98e9a837165dbd61a2f908f15bed31e8e7fb285b0c6242ed5d63",
+      "q48_source_sha256": "0b260468dfdd98e9a837165dbd61a2f908f15bed31e8e7fb285b0c6242ed5d63"
+    },
+    "libraries/BabyBearExt4.sol": {
+      "q32_source_sha256": "fa3063d15f60b4fde8570b23228a9d05fd90221fb40d3ba5b0eb153412da0e3f",
+      "q48_source_sha256": "fa3063d15f60b4fde8570b23228a9d05fd90221fb40d3ba5b0eb153412da0e3f"
+    },
+    "libraries/CanonicalCodec.sol": {
+      "q32_source_sha256": "d5b52d20c25e1e88079016993877e588c15c020a3c19f7c9f7437ea938926929",
+      "q48_source_sha256": "d5b52d20c25e1e88079016993877e588c15c020a3c19f7c9f7437ea938926929"
+    },
+    "libraries/Digest512.sol": {
+      "q32_source_sha256": "be41fb4d1d6ba6c2cd44ca3fe9d0b8515c4ca6a156b05342b9678a3e97cc9f75",
+      "q48_source_sha256": "be41fb4d1d6ba6c2cd44ca3fe9d0b8515c4ca6a156b05342b9678a3e97cc9f75"
+    },
+    "verifier/PQTCQueryVerifier.sol": {
+      "q32_source_sha256": "a8a7f29f3bc5fb7c81c22f76473daa52f5673b36eac87499bfa31917c802a884",
+      "q48_source_sha256": "53b5e961fc10f9d0c1de5645e85c2f9c360cb89655373da59c6041ad66876c0a"
+    },
+    "verifier/AirEvaluatorPoseidon.sol": {
+      "q32_source_sha256": "eb34d91b6c94c53c010078b6a90d7222841dddb5808d7d4021be3538b741e09e",
+      "q48_source_sha256": "eb34d91b6c94c53c010078b6a90d7222841dddb5808d7d4021be3538b741e09e"
+    },
+    "verifier/MmcsVerifier.sol": {
+      "q32_source_sha256": "6bbdb968b662ddea676c07dd73d7da17fa2a158696fe270410a44433ed19246d",
+      "q48_source_sha256": "6bbdb968b662ddea676c07dd73d7da17fa2a158696fe270410a44433ed19246d"
+    },
+    "verifier/PQTCAirStageVerifier.sol": {
+      "q32_source_sha256": "4f810d9fe141236e5f19219c31dc225dba37e0f9657b20364bbb21ece7d16202",
+      "q48_source_sha256": "4f810d9fe141236e5f19219c31dc225dba37e0f9657b20364bbb21ece7d16202"
+    },
+    "verifier/FriVerifier.sol": {
+      "q32_source_sha256": "01f91143211fd02db8b22ff8362196faba53aa131943a5b46ab2744462c2330b",
+      "q48_source_sha256": "01f91143211fd02db8b22ff8362196faba53aa131943a5b46ab2744462c2330b"
+    },
+    "verifier/StarkOodVerifier.sol": {
+      "q32_source_sha256": "9f44097ddc797d3bf0841584d68983696952aecaeaac79e15021115ed2251828",
+      "q48_source_sha256": "9f44097ddc797d3bf0841584d68983696952aecaeaac79e15021115ed2251828"
+    }
+  },
+  "relation": "unchanged H0",
+  "security": "stronger relative query-count control, unqualified",
+  "balance": "choose lowest measured max(A,B) over declared splits; no query-linear projection"
+}

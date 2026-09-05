@@ -1,0 +1,34 @@
+[package]
+name = "pqtc-r2-air"
+version = "0.1.0"
+edition = "2024"
+
+[workspace]
+
+[dependencies]
+anyhow = "1.0.100"
+clap = { version = "4.5.48", features = ["derive"] }
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.145"
+postcard = { version = "1.1.3", features = ["alloc"] }
+sha3 = "0.10.8"
+hex = "0.4.3"
+rand = "0.10.0"
+pqtc-spec = { path = "../../../../crates/pqtc-spec" }
+pqtc-hash = { path = "../../../../crates/pqtc-hash" }
+pqtc-poseidon-air = { path = "../../../../crates/pqtc-poseidon-air" }
+pqtc-stark = { path = "../../../../crates/pqtc-stark" }
+pqtc-r2-hash = { path = "../../hash/rust" }
+p3-air = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3152b14a89067c83775a8076cc262ffc48a1fd7c" }
+p3-baby-bear = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3152b14a89067c83775a8076cc262ffc48a1fd7c" }
+p3-field = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3152b14a89067c83775a8076cc262ffc48a1fd7c" }
+p3-fri = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3152b14a89067c83775a8076cc262ffc48a1fd7c" }
+p3-matrix = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3152b14a89067c83775a8076cc262ffc48a1fd7c" }
+p3-poseidon2 = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3152b14a89067c83775a8076cc262ffc48a1fd7c" }
+p3-poseidon2-air = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3152b14a89067c83775a8076cc262ffc48a1fd7c" }
+p3-uni-stark = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3152b14a89067c83775a8076cc262ffc48a1fd7c" }
+p3-symmetric = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3152b14a89067c83775a8076cc262ffc48a1fd7c" }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1

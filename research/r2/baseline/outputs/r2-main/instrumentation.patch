@@ -1,0 +1,260 @@
+--- crates/pqtc-stark/src/codec.rs
++++ crates/pqtc-stark/src/codec.rs
+@@ -243,6 +243,7 @@
+     let shape = ProofShape::for_profile(profile);
+     let mut a = Reader::new(part_a);
+     a.header(PROOF_PART_A_MAGIC, profile, shape, parameter_id, statement)?;
++    a.section = "global_digest".into();
+     let a_digest = a.take::<32>()?;
+     let (global_a, raw_a) = a.global(shape, profile)?;
+     if keccak256(raw_a) != a_digest {
+@@ -254,6 +255,7 @@
+         return Err(StarkCodecError::GlobalDigest);
+     }
+     let half_a = a.half(shape, 0)?;
++    a.section = "terminator".into();
+     if a.u32()? != PART_A_END {
+         return Err(StarkCodecError::EndMarker);
+     }
+@@ -262,9 +264,11 @@
+ 
+     let mut b = Reader::new(part_b);
+     b.header(PROOF_PART_B_MAGIC, profile, shape, parameter_id, statement)?;
++    b.section = "proof_identifier".into();
+     if b.take::<32>()? != proof_id {
+         return Err(StarkCodecError::CrossPartBinding);
+     }
++    b.section = "global_digest".into();
+     let b_digest = b.take::<32>()?;
+     let (_global_b, raw_b) = b.global(shape, profile)?;
+     if b_digest != a_digest || raw_b != raw_a || keccak256(raw_b) != b_digest {
+@@ -275,6 +279,7 @@
+         return Err(StarkCodecError::CrossPartBinding);
+     }
+     let half_b = b.half(shape, shape.query_count / 2)?;
++    b.section = "terminator".into();
+     if b.u32()? != PART_B_END {
+         return Err(StarkCodecError::EndMarker);
+     }
+@@ -740,10 +745,12 @@
+ struct Reader<'a> {
+     bytes: &'a [u8],
+     cursor: usize,
++    section: String,
++    spans: Vec<(String, usize, usize)>,
+ }
+ impl<'a> Reader<'a> {
+-    const fn new(bytes: &'a [u8]) -> Self {
+-        Self { bytes, cursor: 0 }
++    fn new(bytes: &'a [u8]) -> Self {
++        Self { bytes, cursor: 0, section: "common_header".into(), spans: Vec::new() }
+     }
+     fn take<const N: usize>(&mut self) -> Result<[u8; N], StarkCodecError> {
+         let end = self
+@@ -754,6 +761,15 @@
+             .bytes
+             .get(self.cursor..end)
+             .ok_or(StarkCodecError::Truncated)?;
++        if let Some((label, _, previous_end)) = self.spans.last_mut() {
++            if label == &self.section && *previous_end == self.cursor {
++                *previous_end = end;
++            } else {
++                self.spans.push((self.section.clone(), self.cursor, end));
++            }
++        } else {
++            self.spans.push((self.section.clone(), self.cursor, end));
++        }
+         self.cursor = end;
+         Ok(v.try_into().expect("length"))
+     }
+@@ -815,12 +831,15 @@
+         {
+             return Err(StarkCodecError::Shape("header"));
+         }
++        self.section = "parameter_identifier".into();
+         if Digest512::from_bytes(self.take()?) != parameter {
+             return Err(StarkCodecError::ParameterId);
+         }
++        self.section = "public_header_length".into();
+         if self.u16()? as usize != PUBLIC_VALUES_COUNT {
+             return Err(StarkCodecError::PublicValues);
+         }
++        self.section = "public_statement_fields".into();
+         let mut pv = [0; PUBLIC_VALUES_COUNT];
+         for x in &mut pv {
+             *x = self.u32()?;
+@@ -840,18 +859,19 @@
+     ) -> Result<(GlobalData, &'a [u8]), StarkCodecError> {
+         let start = self.cursor;
+         let commitments = Commitments {
+-            trace: self.cap()?,
+-            quotient_chunks: self.cap()?,
+-            random: Some(self.cap()?),
++            trace: { self.section = "commitment_trace".into(); self.cap()? },
++            quotient_chunks: { self.section = "commitment_quotient".into(); self.cap()? },
++            random: { self.section = "commitment_random".into(); Some(self.cap()?) },
+         };
+         let opened = OpenedValues {
+-            trace_local: self.exts(NUM_WITHDRAWAL_COLS)?,
+-            trace_next: Some(self.exts(NUM_WITHDRAWAL_COLS)?),
++            trace_local: { self.section = "ood_trace_local".into(); self.exts(NUM_WITHDRAWAL_COLS)? },
++            trace_next: { self.section = "ood_trace_next".into(); Some(self.exts(NUM_WITHDRAWAL_COLS)?) },
+             preprocessed_local: None,
+             preprocessed_next: None,
+-            quotient_chunks: (0..16).map(|_| self.exts(4)).collect::<Result<_, _>>()?,
+-            random: Some(self.exts(4)?),
++            quotient_chunks: { self.section = "ood_quotient".into(); (0..16).map(|_| self.exts(4)).collect::<Result<_, _>>()? },
++            random: { self.section = "ood_random".into(); Some(self.exts(4)?) },
+         };
++        self.section = "hiding_mask_openings".into();
+         let points = [vec![1], vec![2], vec![1; 16]];
+         let mut hiding = Vec::new();
+         for ps in points {
+@@ -865,13 +885,17 @@
+             }
+             hiding.push(r);
+         }
++        self.section = "fri_commitments".into();
+         let commits = (0..s.fri_rounds())
+             .map(|_| self.cap())
+             .collect::<Result<_, _>>()?;
++        self.section = "fri_grinding".into();
+         let pow = (0..s.fri_rounds())
+             .map(|_| self.val())
+             .collect::<Result<_, _>>()?;
++        self.section = "final_polynomial".into();
+         let final_poly = self.exts(1 << profile.fri().1)?;
++        self.section = "query_grinding".into();
+         let query_pow = self.val()?;
+         if self.cursor - start != global_data_bytes(s.random_codewords) {
+             return Err(StarkCodecError::Shape("global data bytes"));
+@@ -890,13 +914,17 @@
+         ))
+     }
+     fn checkpoint(&mut self, s: ProofShape) -> Result<TranscriptCheckpoint, StarkCodecError> {
++        self.section = "checkpoint_identifiers".into();
+         let digest = self.take()?;
+         let global_digest = self.take()?;
++        self.section = "checkpoint_transcript_state".into();
+         let state = Digest512::from_bytes(self.take()?);
++        self.section = "checkpoint_challenges".into();
+         let air_alpha = self.ext()?;
+         let zeta = self.ext()?;
+         let fri_alpha = self.ext()?;
+         let fri_betas = self.exts(s.fri_rounds())?;
++        self.section = "checkpoint_query_indices".into();
+         if self.u16()? as usize != s.query_count {
+             return Err(StarkCodecError::QueryOrder);
+         }
+@@ -929,22 +957,33 @@
+         m: usize,
+         w: usize,
+     ) -> Result<Vec<Vec<Vec<Val>>>, StarkCodecError> {
++        let label = self.section.clone();
++        let masks = label.ends_with("_rows");
+         (0..q)
+             .map(|_| {
+                 (0..m)
+-                    .map(|_| (0..w).map(|_| self.val()).collect())
++                    .map(|_| (0..w).map(|column| {
++                        self.section = if masks && column >= w - 4 {
++                            label.replace("_rows", "_row_masks")
++                        } else { label.clone() };
++                        self.val()
++                    }).collect())
+                     .collect()
+             })
+             .collect()
+     }
+     fn hashes(&mut self) -> Result<Vec<[u64; 8]>, StarkCodecError> {
++        let label = self.section.clone();
++        self.section = format!("{label}_count");
+         let n = self.u32()? as usize;
++        self.section = label;
+         if n > MAX_PATH_HASHES {
+             return Err(StarkCodecError::Length);
+         }
+         (0..n).map(|_| self.digest()).collect()
+     }
+     fn half(&mut self, s: ProofShape, expected_start: usize) -> Result<QueryHalf, StarkCodecError> {
++        self.section = "half_query_indices".into();
+         let start = self.u16()? as usize;
+         let q = self.u16()? as usize;
+         if start != expected_start || q != s.query_count / 2 {
+@@ -953,23 +992,25 @@
+         let indices = (0..q).map(|_| self.u32()).collect::<Result<Vec<_>, _>>()?;
+         let mut inputs = Vec::new();
+         for batch in 0..3 {
++            self.section = format!("initial_batch_{batch}_rows");
+             inputs.push(HalfInput {
+                 opened_values: self.rows(
+                     q,
+                     s.input_matrix_count(batch),
+                     s.input_matrix_width(batch),
+                 )?,
+-                salts: self.rows(q, s.input_matrix_count(batch), MMCS_SALT_ELEMENTS)?,
+-                sibling_hashes: self.hashes()?,
++                salts: { self.section = format!("initial_batch_{batch}_salts"); self.rows(q, s.input_matrix_count(batch), MMCS_SALT_ELEMENTS)? },
++                sibling_hashes: { self.section = format!("initial_batch_{batch}_frontier"); self.hashes()? },
+             });
+         }
+         let mut fri_rounds = Vec::new();
+-        for _ in 0..s.fri_rounds() {
++        for round in 0..s.fri_rounds() {
++            self.section = format!("fri_round_{round}_values");
+             let sibling_values = (0..q).map(|_| self.exts(1)).collect::<Result<_, _>>()?;
+             fri_rounds.push(HalfFriRound {
+                 sibling_values,
+-                salts: self.rows(q, 1, 8)?,
+-                sibling_hashes: self.hashes()?,
++                salts: { self.section = format!("fri_round_{round}_salts"); self.rows(q, 1, 8)? },
++                sibling_hashes: { self.section = format!("fri_round_{round}_frontier"); self.hashes()? },
+             });
+         }
+         Ok(QueryHalf {
+@@ -981,6 +1022,12 @@
+     }
+     fn finish(self) -> Result<(), StarkCodecError> {
+         if self.cursor == self.bytes.len() {
++            if let Some(path) = std::env::var_os("R2_CODEC_LEDGER") {
++                use std::io::Write;
++                let mut file = std::fs::OpenOptions::new().create(true).append(true).open(path).expect("ledger output");
++                let spans = self.spans.iter().map(|(label, start, end)| format!("[\"{}\",{},{}]", label, start, end)).collect::<Vec<_>>().join(",");
++                writeln!(file, "{{\"bytes\":{},\"spans\":[{}]}}", self.bytes.len(), spans).expect("ledger write");
++            }
+             Ok(())
+         } else {
+             Err(StarkCodecError::TrailingBytes)
+--- research/candidates/v03-baseline/native/src/main.rs
++++ research/candidates/v03-baseline/native/src/main.rs
+@@ -94,7 +94,7 @@
+ }
+ 
+ fn prepare(corpus_path: &Path, out: &Path) -> Result<()> {
+-    if out.exists() { fs::remove_dir_all(out).context("remove previous prepared inputs")?; }
++    ensure!(!out.exists(), "R2 never overwrites prepared inputs");
+     fs::create_dir_all(out)?;
+     let parameter_id = parameter_id()?;
+ 
+@@ -127,7 +127,7 @@
+     let corpus: Corpus = serde_json::from_slice(&fs::read(corpus_path)?)?;
+     ensure!(corpus.cases.len() >= 30, "semantic corpus has fewer than 30 cases");
+     let mut selected = Vec::new();
+-    for case in corpus.cases.into_iter().filter(|case| case.tree_depth == TREE_DEPTH).take(30) {
++    for case in corpus.cases.into_iter().filter(|case| case.tree_depth == TREE_DEPTH) {
+         ensure!(case.path_bits.len() == TREE_DEPTH as usize && case.sibling_seeds.len() == TREE_DEPTH as usize, "{} is not a depth-20 case", case.case_id);
+         ensure!(case.path_bits.iter().enumerate().all(|(level, bit)| *bit == ((case.leaf_index >> level) & 1) as u8), "{} path bits do not encode leaf index", case.case_id);
+         let mut mapper = Mapper { draws: 0, rejected: Vec::new() };
+@@ -169,10 +169,10 @@
+         write_input(&case_dir, &statement, &witness, &derived, &serde_json::to_value(mapping)?, denomination, recipient, relayer, fee, FIXED_POOL)?;
+         selected.push(case_dir.file_name().unwrap().to_string_lossy().into_owned());
+     }
+-    ensure!(selected.len() == 30, "fewer than 30 supported depth-20 corpus cases");
++    ensure!(!selected.is_empty(), "no supported depth-20 corpus cases");
+     let jobs: Vec<Value> = (0..30).map(|i| json!({"run_id":format!("v03-fixed-{:02}", i+1),"input":"fixed","kind":"fixed-baseline"}))
+         .chain(selected.iter().enumerate().map(|(i,id)| json!({"run_id":format!("v03-corpus-{:02}", i+1),"input":format!("corpus/{id}"),"kind":"semantic-corpus","case_id":id}))).collect();
+-    write_json(&out.join("jobs.json"), &json!({"candidate_id":CANDIDATE_ID,"count":60,"fixed_proofs":30,"distinct_corpus_witnesses":30,"entropy_policy":"fresh operating-system entropy is acquired inside each independent prove process","jobs":jobs}))?;
++    write_json(&out.join("jobs.json"), &json!({"candidate_id":CANDIDATE_ID,"count":30+selected.len(),"fixed_proofs":30,"distinct_corpus_witnesses":selected.len(),"entropy_policy":"fresh operating-system entropy is acquired inside each independent prove process","jobs":jobs}))?;
+     Ok(())
+ }
+ 

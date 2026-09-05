@@ -1,0 +1,69 @@
+No files changed, compilation skipped
+
+Ran 1 test for test/DeploymentProfile.t.sol:DeploymentProfileTest
+[PASS] testDeploymentInitcodeRuntimeAndCodeDepositGas() (gas: 27845876)
+Logs:
+  V03_DEPLOY_CONTRACT: PQTCAirStageVerifier
+  V03_DEPLOY_INITCODE_BYTES: 17853
+  V03_DEPLOY_RUNTIME_BYTES: 17827
+  V03_DEPLOY_CODE_DEPOSIT_GAS: 3565400
+  V03_DEPLOY_OBSERVED_NEW_EXPRESSION_GAS: 3606627
+  V03_DEPLOY_CONSTRUCTOR_EXECUTION_GAS_NOT_SEPARATELY_OBSERVABLE: 0
+  V03_DEPLOY_CONTRACT: PQTCQueryVerifier
+  V03_DEPLOY_INITCODE_BYTES: 13015
+  V03_DEPLOY_RUNTIME_BYTES: 12989
+  V03_DEPLOY_CODE_DEPOSIT_GAS: 2597800
+  V03_DEPLOY_OBSERVED_NEW_EXPRESSION_GAS: 2637194
+  V03_DEPLOY_CONSTRUCTOR_EXECUTION_GAS_NOT_SEPARATELY_OBSERVABLE: 0
+  V03_DEPLOY_CONTRACT: PQTCVerificationRegistry
+  V03_DEPLOY_INITCODE_BYTES: 13644
+  V03_DEPLOY_RUNTIME_BYTES: 13122
+  V03_DEPLOY_CODE_DEPOSIT_GAS: 2624400
+  V03_DEPLOY_OBSERVED_NEW_EXPRESSION_GAS: 2665881
+  V03_DEPLOY_CONSTRUCTOR_EXECUTION_GAS_NOT_SEPARATELY_OBSERVABLE: 0
+  V03_DEPLOY_CONTRACT: PQTCClassicPool
+  V03_DEPLOY_INITCODE_BYTES: 12867
+  V03_DEPLOY_RUNTIME_BYTES: 7494
+  V03_DEPLOY_CODE_DEPOSIT_GAS: 1498800
+  V03_DEPLOY_OBSERVED_NEW_EXPRESSION_GAS: 18873630
+  V03_DEPLOY_CONSTRUCTOR_EXECUTION_GAS_NOT_SEPARATELY_OBSERVABLE: 0
+
+Traces:
+  [27845876] DeploymentProfileTest::testDeploymentInitcodeRuntimeAndCodeDepositGas()
+    ├─ [3569421] → new PQTCAirStageVerifier@0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    │   └─ ← [Return] 17827 bytes of code
+    ├─ emit log_named_string(key: "V03_DEPLOY_CONTRACT", val: "PQTCAirStageVerifier")
+    ├─ emit log_named_uint(key: "V03_DEPLOY_INITCODE_BYTES", val: 17853 [1.785e4])
+    ├─ emit log_named_uint(key: "V03_DEPLOY_RUNTIME_BYTES", val: 17827 [1.782e4])
+    ├─ emit log_named_uint(key: "V03_DEPLOY_CODE_DEPOSIT_GAS", val: 3565400 [3.565e6])
+    ├─ emit log_named_uint(key: "V03_DEPLOY_OBSERVED_NEW_EXPRESSION_GAS", val: 3606627 [3.606e6])
+    ├─ emit log_named_uint(key: "V03_DEPLOY_CONSTRUCTOR_EXECUTION_GAS_NOT_SEPARATELY_OBSERVABLE", val: 0)
+    ├─ [2600621] → new PQTCQueryVerifier@0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    │   └─ ← [Return] 12989 bytes of code
+    ├─ emit log_named_string(key: "V03_DEPLOY_CONTRACT", val: "PQTCQueryVerifier")
+    ├─ emit log_named_uint(key: "V03_DEPLOY_INITCODE_BYTES", val: 13015 [1.301e4])
+    ├─ emit log_named_uint(key: "V03_DEPLOY_RUNTIME_BYTES", val: 12989 [1.298e4])
+    ├─ emit log_named_uint(key: "V03_DEPLOY_CODE_DEPOSIT_GAS", val: 2597800 [2.597e6])
+    ├─ emit log_named_uint(key: "V03_DEPLOY_OBSERVED_NEW_EXPRESSION_GAS", val: 2637194 [2.637e6])
+    ├─ emit log_named_uint(key: "V03_DEPLOY_CONSTRUCTOR_EXECUTION_GAS_NOT_SEPARATELY_OBSERVABLE", val: 0)
+    ├─ [2628066] → new PQTCVerificationRegistry@0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+    │   └─ ← [Return] 13122 bytes of code
+    ├─ emit log_named_string(key: "V03_DEPLOY_CONTRACT", val: "PQTCVerificationRegistry")
+    ├─ emit log_named_uint(key: "V03_DEPLOY_INITCODE_BYTES", val: 13644 [1.364e4])
+    ├─ emit log_named_uint(key: "V03_DEPLOY_RUNTIME_BYTES", val: 13122 [1.312e4])
+    ├─ emit log_named_uint(key: "V03_DEPLOY_CODE_DEPOSIT_GAS", val: 2624400 [2.624e6])
+    ├─ emit log_named_uint(key: "V03_DEPLOY_OBSERVED_NEW_EXPRESSION_GAS", val: 2665881 [2.665e6])
+    ├─ emit log_named_uint(key: "V03_DEPLOY_CONSTRUCTOR_EXECUTION_GAS_NOT_SEPARATELY_OBSERVABLE", val: 0)
+    ├─ [18835472] → new PQTCClassicPool@0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9
+    │   └─ ← [Return] 7494 bytes of code
+    ├─ emit log_named_string(key: "V03_DEPLOY_CONTRACT", val: "PQTCClassicPool")
+    ├─ emit log_named_uint(key: "V03_DEPLOY_INITCODE_BYTES", val: 12867 [1.286e4])
+    ├─ emit log_named_uint(key: "V03_DEPLOY_RUNTIME_BYTES", val: 7494)
+    ├─ emit log_named_uint(key: "V03_DEPLOY_CODE_DEPOSIT_GAS", val: 1498800 [1.498e6])
+    ├─ emit log_named_uint(key: "V03_DEPLOY_OBSERVED_NEW_EXPRESSION_GAS", val: 18873630 [1.887e7])
+    ├─ emit log_named_uint(key: "V03_DEPLOY_CONSTRUCTOR_EXECUTION_GAS_NOT_SEPARATELY_OBSERVABLE", val: 0)
+    └─ ← [Stop]
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 31.35ms (30.91ms CPU time)
+
+Ran 1 test suite in 32.00ms (31.35ms CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)

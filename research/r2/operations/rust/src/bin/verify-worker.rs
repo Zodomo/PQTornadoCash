@@ -13,6 +13,7 @@ struct Args {
     #[arg(long)] part_b: PathBuf,
     #[arg(long, default_value = "none")] mutation: String,
     #[arg(long)] uncontained: bool,
+    #[arg(long)] export_dir: Option<PathBuf>,
 }
 fn bounded_read(path: &Path, limit: u64) -> Result<Vec<u8>> {
     let mut bytes = Vec::new();
@@ -39,6 +40,8 @@ fn mutate(proof: &mut StarkProof, mutation: &str) -> Result<()> {
 }
 fn main() -> Result<()> {
     let args = Args::parse();
+    ensure!(args.export_dir.is_none() || args.mutation == "none", "only valid controls can be exported");
+    ensure!(args.export_dir.as_ref().is_none_or(|path| !path.exists()), "refusing to overwrite exported proof");
     let parameter = Digest512::from_bytes(hex::decode(args.parameter.trim_start_matches("0x"))?.try_into().map_err(|_| anyhow::anyhow!("parameter requires 64 bytes"))?);
     let statement: WithdrawalStatement = serde_json::from_slice(&bounded_read(&args.statement, 16384)?)?;
     let part_a = bounded_read(&args.part_a, 524288)?;
@@ -47,7 +50,17 @@ fn main() -> Result<()> {
     let operation = || -> Result<bool> {
         let mut proof = decode_proof_parts(&part_a, &part_b, SecurityProfile::SepoliaV03, parameter, statement)?;
         mutate(&mut proof, &args.mutation)?;
-        Ok(verify_withdrawal(&config, statement, &proof))
+        let accepted = verify_withdrawal(&config, statement, &proof);
+        if accepted && let Some(directory) = &args.export_dir {
+            fs::create_dir_all(directory)?;
+            let bytes = postcard::to_allocvec(&proof)?;
+            let decoded: StarkProof = postcard::from_bytes(&bytes)?;
+            ensure!(verify_withdrawal(&config, statement, &decoded), "postcard roundtrip rejected");
+            fs::write(directory.join("proof.postcard"), &bytes)?;
+            fs::write(directory.join("proof.json"), serde_json::to_vec_pretty(&proof)?)?;
+            fs::write(directory.join("export.json"), serde_json::to_vec_pretty(&json!({"candidate_id":"R2-C0","codec":"postcard-1.1.3-full-native-proof","native_verified":true,"roundtrip_verified":true,"raw_proof_bytes":bytes.len(),"canonical_part_a_bytes":part_a.len(),"canonical_part_b_bytes":part_b.len(),"statement":args.statement,"part_a":args.part_a,"part_b":args.part_b,"scope":"Exact frozen native proof reserialized for same-codec geometry comparison; no EVM ABI claim"}))?)?;
+        }
+        Ok(accepted)
     };
     let started = Instant::now();
     let result = if args.uncontained { Ok(operation()) } else { catch_unwind(AssertUnwindSafe(operation)) };

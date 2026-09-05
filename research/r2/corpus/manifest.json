@@ -1,5 +1,8 @@
 {
-  "canonical_secret_bits": "8 * log2(2013265921) \u2248 247.255, canonical limbs by rejection sampling, not arbitrary256-bit reduction",
+  "canonical_secret_domain_log2": 247.2551247706009,
+  "fixture_secret_entropy_bits": 0,
+  "secret_distribution_scope": "The semantic JSON contains public deterministic raw byte seeds, not canonical secrets. Uniform sampling in Fp^8 has this domain size; the public fixtures have no secrecy entropy.",
+  "canonical_h0_mapping": "h0/corpus/<case_id>/mapping.json retains the fixed Keccak rejection algorithm and rejected draws; witness.json retains accepted limbs, statement.json retains exact H0 public outputs. C0 and C1 consume these same files.",
   "case_count": 256,
   "case_index": [
     {

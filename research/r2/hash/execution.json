@@ -1,0 +1,48 @@
+{
+  "work_package": "R2-02",
+  "implementation_status": "implemented; executable runs delegated to Main, not executed by hash owner",
+  "specification": "spec.json",
+  "correctness": "unverified pending recorded commands",
+  "privacy": "synthetic unfunded inputs only; not a hiding proof system",
+  "security": "security-not-qualified",
+  "performance": "unmeasured pending recorded commands",
+  "stage": "implementation handoff",
+  "promotion": "not-promoted",
+  "commands_from_repository_root": [
+    "python3 research/r2/hash/generate.py",
+    "python3 research/r2/hash/run.py --build --rpc-url http://127.0.0.1:18545 --diagnostic-rpc-url http://127.0.0.1:18546 --vectors 10010 --chunk 2 --native-repetitions 30 --trace --plonky3 /Users/zodomo/.cargo/git/checkouts/plonky3-7d8a3b21a665a86f/3152b14"
+  ],
+  "individual_runners_after_build": {
+    "rust_jsonl_stdin": "research/r2/hash/target/release/pqtc-r2-hash",
+    "typescript_jsonl_stdin": "node --experimental-strip-types research/r2/hash/reference.ts",
+    "matrix_and_constant_extraction": "research/r2/hash/target/release/constants",
+    "constants_comparison": "python3 research/r2/hash/compare_constants.py --plonky3 /Users/zodomo/.cargo/git/checkouts/plonky3-7d8a3b21a665a86f/3152b14 --binary research/r2/hash/target/release/constants"
+  },
+  "wire_request": {"config":"R2-H5-complete-v1","role":4,"level":0,"payload":[0,1,2,3,4,5,6,7,8,9,10,11]},
+  "output_paths": [
+    "outputs/results.json",
+    "outputs/commands.json",
+    "outputs/source-hashes.json",
+    "outputs/artifact-ledger.json",
+    "outputs/constants/comparison.json",
+    "outputs/vectors.jsonl",
+    "outputs/parity.jsonl",
+    "outputs/mapping-ledger.jsonl",
+    "outputs/misuse.json",
+    "outputs/benchmarks.json",
+    "outputs/operation-counts.json",
+    "outputs/native-R2-H0-v03.json",
+    "outputs/native-R2-H5-complete-v1.json",
+    "outputs/capped-local-top-level-deployments.json",
+    "outputs/capped-local-top-level-deposit.json",
+    "outputs/diagnostic-unpromotable-deployments.json",
+    "outputs/diagnostic-unpromotable-deposit.json",
+    "outputs/bytecode/",
+    "outputs/initcode/",
+    "outputs/traces/"
+  ],
+  "full_role_corpus": "10010 deterministic random/edge role vectors, plus all complete scope/note/nullifier/empty/payout/node20/statement outputs for both configurations over Main's256 synthetic cases. Chunked Rust/TypeScript/five Solidity tier comparison. Every SHA256 rejection draw retained; no silent mod reduction.",
+  "local_policy": "Main owns Anvil daemons. Runner requires HTTP loopback, chain31337, Anvil client and public default account0. 18545 capped Osaka failures retained independently; 18546 Prague diagnostic unpromotable. No code/initcode/gas-limit overrides. Foundry build sources copied without any .env into fresh /tmp root; cast disassembly also uses isolated /tmp cwd. All child environments allowlisted; no wallet or secret reading.",
+  "benchmark_policy": "Run serially after concurrent source implementation has stopped. --trace is required for opcode attribution artifacts; traces can be large. Receipt gas, eth_estimateGas and native timings stay separate. Re-running overwrites only this new package's outputs, never frozen evidence.",
+  "optional_H6": "Not implemented: optional margin comparator deliberately deferred until H5 matched-tier measurements exist, as plan directs."
+}

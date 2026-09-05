@@ -1,0 +1,27 @@
+[package]
+name = "pqtc-r2-model-anchors"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[dependencies]
+anyhow = "1.0.100"
+clap = { version = "4.5.48", features = ["derive"] }
+p3-challenger = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3152b14a89067c83775a8076cc262ffc48a1fd7c" }
+hex = "0.4.3"
+libc = "0.2.177"
+p3-commit = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3152b14a89067c83775a8076cc262ffc48a1fd7c" }
+p3-field = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3152b14a89067c83775a8076cc262ffc48a1fd7c" }
+p3-fri = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3152b14a89067c83775a8076cc262ffc48a1fd7c" }
+p3-symmetric = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3152b14a89067c83775a8076cc262ffc48a1fd7c" }
+p3-uni-stark = { git = "https://github.com/Plonky3/Plonky3.git", rev = "3152b14a89067c83775a8076cc262ffc48a1fd7c" }
+pqtc-hash = { path = "../../../../crates/pqtc-hash" }
+pqtc-poseidon-air = { path = "../../../../crates/pqtc-poseidon-air" }
+pqtc-spec = { path = "../../../../crates/pqtc-spec" }
+pqtc-stark = { path = "../../../../crates/pqtc-stark" }
+rand = "0.10.0"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.145"
+sha2 = "0.10.9"

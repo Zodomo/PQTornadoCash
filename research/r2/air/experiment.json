@@ -1,0 +1,42 @@
+{
+  "packages": ["R2-03", "R2-04"],
+  "security": "SECURITY_NOT_QUALIFIED",
+  "promotion": "NOT_AUTHORIZED",
+  "execution_owner": "Main: no build, test, validation or benchmark was executed during concurrent implementation",
+  "candidate_mapping": {
+    "R2-C0": "frozen horizontal H0 owned by baseline",
+    "R2-C1": "exact frozen H0 predicate, new vertical AIR and separately transcript-bound experimental verifier ID",
+    "R2-C2": "complete H5 roles, pinned horizontal Poseidon2 AIR, common constrained controller",
+    "R2-C3": "exact same H5 statement/controller as C2, vertical permutation AIR"
+  },
+  "bounded_geometries": [
+    {"name": "whole-round", "description": "All active round S-boxes in one row, direct x^7. H0 main width50, period32, rows8192. H5 main width78, period64, rows4096. Actual degree includes periodic gates and is derived symbolically."},
+    {"name": "lanes4", "description": "Full rounds split into four-lane groups; external linear layer only after the final group, partial rounds retain lane0. Direct x^7. H0 period64, rows16384; H5 period128, rows8192. Same narrow main widths as whole-round. No wider search."},
+    {"name": "decomposed", "description": "a=x^2, b=a^2, y=x*a*b. Two witness columns per lane and unconditional intermediate constraints, including idle rows. H0 main width82, period32, rows8192. H5 width142, period64, rows4096. Cubic S-box identity plus periodic round gates is NOT claimed degree2 or ungated degree3. Pinned symbolic AIR machinery derives actual degree and quotient chunks."}
+  ],
+  "geometry_decision": "Decomposed is a runnable comparison default, not a measured winning geometry. Execute three C1 geometries, compare proof/opening/periodic evaluator cost, then select the geometry for the final C3 table. No geometry is promoted automatically.",
+  "schedule_binding": "Fixed public periodic columns encode every round constant, phase, absorb/squeeze step, level and terminal transition. The experimental configuration hashes exact periodic tables, controller expressions, source hashes, pinned dependencies and proof parameters before constructing frozen Transcript512. Periodic columns are not witness commitments; their OOD evaluation cost is separate and may be a negative performance result.",
+  "closure": ["same secret in note/nullifier", "all H0 absorb capacity and squeeze lanes", "domain and level controls", "boolean path bits and index shifts", "ordered child digest at every level", "workspace carry and digest chunk assembly", "all padding input/work/intermediate/state columns", "entire public statement in transcript", "H5 feedforward and fixed lanes", "H5 scope, payout and statement framed-chaining roles plus empty role"],
+  "H5_public_statement": "173 canonical BabyBear fields: scope12, root12, nullifier12, payout12, statement12, empty12, scope u16 payload65, payout u16 payload36. Public byte-range and odd-byte padding checks are native verifier preconditions. Scope/payout/statement are additionally recomputed inside the H5 AIR. C2/C3 share identical public values.",
+  "causal_caveat": "H0 has frozen public digest semantics; H5 integrates five scope, three payout, four statement and one empty permutation in addition to its22 private relation permutations. Report this extra public relation work separately instead of silently attributing every C0/C2 difference to private compression. Direct public u16 and conventional Keccak256 digest alternatives are native payout-kernel studies only, not integrated weaker forks.",
+  "corpus_mapping": "Use Main-generated frozen H0 canonical witness mapping. H5 reuses all eight canonical secret/trapdoor limbs and first12 canonical sibling limbs, never reduction of arbitrary bytes. Same leaf index/path directions and public payout/context semantic case; different hash commitments/roots. The source canonical-field representation has eight-field capacity8*log2(2013265921); retained synthetic fixtures are deterministic and not funded.",
+  "proof_artifacts": ["results.json", "configuration.json", "shape.json", "proof.postcard", "proof.json", "byte-ledger.json", "proof-inventory.json", "public-values.json", "controller-rules.json", "air-program.bin", "air-cost-vector.json", "stdout.log", "stderr.log", "command.json"],
+  "codec": "Full upstream native proof serialized by postcard1.1.3, with exact recursive ledger including length/option prefixes. This is not the frozen EVM codec. Raw ABI proof bytes remain null, not equal to postcard bytes.",
+  "EVM_cost_prototype": "Solidity AirCost executes every actual symbolically generated AIR constraint over BabyBear[X]/(X^4-11), with hash-bound arithmetic instruction tape and expected output derived independently from symbolic Rust expressions. It is NOT a mock verifier or a proof verifier. Caller-supplied periodic OOD values, instruction-tape calldata and hash overhead are explicitly separate. cost.py builds in a /tmp package containing only foundry.toml and AirCost.sol; it never searches repository .env or starts a chain.",
+  "build": "CARGO_TARGET_DIR=research/r2/air/target cargo build --release --manifest-path research/r2/air/rust/Cargo.toml",
+  "commands": [
+    "python3 research/r2/air/run.py -- --candidate C1 --geometry decomposed --profile fixed --queries 32 --log-blowup 4 --output research/r2/air/outputs/C1-decomposed",
+    "python3 research/r2/air/run.py -- --candidate C1 --geometry whole-round --profile fixed --output research/r2/air/outputs/C1-whole-round",
+    "python3 research/r2/air/run.py -- --candidate C1 --geometry lanes4 --profile fixed --output research/r2/air/outputs/C1-lanes4",
+    "python3 research/r2/air/run.py -- --candidate C2 --profile fixed --output research/r2/air/outputs/C2-horizontal",
+    "python3 research/r2/air/run.py -- --candidate C3 --geometry decomposed --profile fixed --h5-case research/r2/air/outputs/C2-horizontal/h5-case.json --output research/r2/air/outputs/C3-decomposed",
+    "python3 research/r2/air/run.py -- --candidate C1 --action mutations --mutation-proofs --output research/r2/air/outputs/C1-mutations",
+    "python3 research/r2/air/run.py -- --candidate C2 --action mutations --mutation-proofs --output research/r2/air/outputs/C2-mutations",
+    "python3 research/r2/air/run.py -- --candidate C3 --action mutations --mutation-proofs --output research/r2/air/outputs/C3-mutations",
+    "python3 research/r2/air/run.py -- --candidate C1 --action verify --output research/r2/air/outputs/C1-decomposed",
+    "python3 research/r2/air/run.py -- --candidate C2 --action public-context --output research/r2/air/outputs/public-context",
+    "python3 research/r2/air/cost.py --input research/r2/air/outputs/C1-decomposed --rpc-url http://127.0.0.1:18545"
+  ],
+  "normalization": "Re-run C1/C2/C3 with --profile normalized --queries <selected> --log-blowup <selected> --security-model <R2Security-model-and-target-ID>. Selection is owned by R2Security/Main; unsupported or unavailable normalized profiles are retained as execution barriers, never silently weakened. CLI also supports --log-final-poly, --max-log-arity, --cap-height, --commit-pow, --query-pow. All affect the verifier configuration ID.",
+  "regression_entrypoints": "--action mutations mutates every input/state/work/path/index/intermediate column before/at/after every permutation boundary and checks both affected rows using the real AIR. --mutation-proofs additionally generates three invalid-trace proofs around the note boundary, checks native rejection, mutates every public field, and rejects configuration substitution. Every normal run compares full permutation outputs with frozen H0 horizontal trace or H5 native reference before checking the full AIR."
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "pqtc.r2.models.status.v1",
+  "work_package": "R2-06",
+  "implementation_status": "RUNNABLE_PENDING_MAIN_VALIDATION",
+  "measurement_status": "NOT_EVALUATED",
+  "validation_executed_by_worker": false,
+  "qualification": "NOT_QUALIFIED",
+  "physical_feasibility": "UNKNOWN",
+  "complete_transaction_gas": null,
+  "owned_sources": ["model.py", "codec.py", "run.py", "rust/src/main.rs", "rust/Cargo.toml", "rust/Cargo.lock"],
+  "historical_sources_read_only": ["research/fri-pareto/run.py", "research/fri-pareto/outputs/score-table.json", "research/fri-pareto/outputs/anchors", "research/candidates/C10-fri/src/main.rs", "crates/pqtc-stark/src/codec.rs", "crates/pqtc-stark/src/query.rs"],
+  "sections": {
+    "12.1": "status-migration.json retains every original row and separates historical modeled gate from null/UNKNOWN physical execution.",
+    "12.2": "codec.py has an independent C10 wire-count formula, raw canonical research parser, real arity-dependent siblings, salts/masks/quotients/rotations/caps/frontiers/final polynomial/count prefixes; separate frozen canonical-v3 A/B formula and exact ABI alignment validated against explicit Baseline parser ledger. Unknown frontier lower bound omits only nonnegative digest terms.",
+    "12.3": "model.py evm_work counts query reductions, pruned binary Merkle hashes/depth, opened columns, arity-log-arity FRI work and fixed overhead. LDE rows are prover-only. State/payout and complete transaction remain null unless measured externally.",
+    "12.4": "anchor-plan.json predeclares 11 parameter profiles per relation, two fresh proof repetitions per profile; q32/q48, b3/b4/b5, final1, arity4, cap1 and two exact security-regime selections. One adaptive profile remains. The runner uses serial prebuilt binaries with an advisory lock, fresh OS entropy, retained raw proofs and SHA256 uniqueness; identical configurations are aliases rather than observations.",
+    "12.5": "Measured, calibrated projected and uncalibrated projected Pareto sets are separated, and each is further separated into fixed-unqualified, no-Johnson, conditional-Johnson and externally-reviewed regimes. Unknown required metrics exclude rows rather than becoming zero. Fit uses profile medians, entire held-out profiles and rank rejection; outputs residuals and only within-domain estimates. No model authorizes elimination.",
+    "12.6": "field_continuation consumes explicit real narrow-proof and nonoverlapping EVM arithmetic inventories. At most one field/extension branch is allowed; no branch is selected absent a quantified >=25% arithmetic bottleneck. Missing inventories yield quantified zero coverage, not a claim the current field is efficient. Existing F0-F5 scalar kernels are diagnostic only. Alternate complete proof and warmup dot/inverse/FRI-fold EVM/codec obligations remain explicit."
+  },
+  "commands_for_main": [
+    "python3 research/r2/models/model.py --check",
+    "python3 research/r2/models/model.py --historical --output research/r2/models/outputs/historical-calibration.json",
+    "python3 research/r2/models/model.py --migration research/fri-pareto/outputs/score-table.json --output research/r2/models/outputs/migration-regenerated.json",
+    "cargo build --release --locked --manifest-path research/r2/models/rust/Cargo.toml",
+    "python3 research/r2/models/run.py --plan research/r2/models/anchor-plan.json --relations C0 --anchor fixed-b4-q32 --input research/r2/corpus/h0/fixed --output research/r2/models/outputs/c0-first-anchor",
+    "python3 research/r2/models/run.py --plan research/r2/models/anchor-plan.json --relations C0 --input research/r2/corpus/h0/fixed --normalized-selections research/r2/security/outputs/normalized-profiles.json --output research/r2/models/outputs/c0-grid"
+  ],
+  "explicit_input_interfaces": {
+    "baseline": "model.py --baseline-ledger PATH --output PATH; accepts R2Baseline instrument.py byte-ledger.json",
+    "air": "run.py --air-binary PATH --relations C1,C2,C3; consumes results.json, its explicit shape_path/byte_ledger_path/proof_path; preserves postcard codec separately",
+    "security": "--normalized-selections PATH accepts R2Security normalized-profiles.json; smallest q meeting target then smallest blowup. Model/target/achieved bits retained; target-unreachable is not normalized.",
+    "fit": "model.py --fit PATH --features fixed,merkle_hashes,opened_base_elements,fold_units --target evm_execution_gas --output PATH; rows require unique proof_sha256, MEASURED numeric target, relation, codec, regime, implementation_id, metric_scope, profile_id, split=train|held_out, features. Do not feed native timings as EVM gas.",
+    "field": "model.py --field-inventory PATH --output PATH; JSON array rows with id, complete_native_verified, narrow_relation, nonoverlapping_evm_arithmetic_gas, evm_execution_gas. Missing fields remain unknown."
+  },
+  "provenance_note": "No build, formatter, linter, test, proof, or benchmark validation was executed by this worker. Main owns serial execution and may only promote actual command records."
+}

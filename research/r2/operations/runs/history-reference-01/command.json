@@ -1,0 +1,63 @@
+{
+  "architecture": "arm64",
+  "command": [
+    "research/r2/operations/target/release/pqtc-r2-operations",
+    "--pool",
+    "0x1111111111111111111111111111111111111111",
+    "--parameter",
+    "35adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62ab7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea07779",
+    "--recipient",
+    "0x2222222222222222222222222222222222222222",
+    "--relayer",
+    "0x3333333333333333333333333333333333333333",
+    "--notes",
+    "8",
+    "--output",
+    "research/r2/operations/outputs/reference-history-01"
+  ],
+  "cwd": "/Users/zodomo/code/PQTornado",
+  "environment": {
+    "HOME": "/Users/zodomo",
+    "LC_ALL": "C",
+    "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+    "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+    "TZ": "UTC"
+  },
+  "logs": {
+    "stderr.log": {
+      "bytes": 777,
+      "sha256": "ff142350399c1bdca59eb629c9ee44bcf0d895495bb427d0e60e982e26a836b6"
+    },
+    "stdout.log": {
+      "bytes": 113,
+      "sha256": "649eba9c25bc358c9a5cfff85eef9e782946b8228bebf2078d6b672943615004"
+    }
+  },
+  "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+  "returncode": 0,
+  "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+  "rss_unit": "bytes",
+  "schema": "pqtc.r2.command-run.v1",
+  "scope": "local non-custodial research command; success is execution, not artifact qualification",
+  "started_utc": "2026-09-04T23:38:09.725337+00:00",
+  "timed_out": false,
+  "timeout_seconds": 7200,
+  "timing_command": [
+    "/usr/bin/time",
+    "-l",
+    "research/r2/operations/target/release/pqtc-r2-operations",
+    "--pool",
+    "0x1111111111111111111111111111111111111111",
+    "--parameter",
+    "35adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62ab7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea07779",
+    "--recipient",
+    "0x2222222222222222222222222222222222222222",
+    "--relayer",
+    "0x3333333333333333333333333333333333333333",
+    "--notes",
+    "8",
+    "--output",
+    "research/r2/operations/outputs/reference-history-01"
+  ],
+  "wall_seconds": 0.13021745899459347
+}
