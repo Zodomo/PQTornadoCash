@@ -1,0 +1,113 @@
+{
+  "adaptive_budget_remaining": 1,
+  "execution": "Serial prebuilt binaries; fresh OS entropy; raw proof SHA256 uniqueness; fixed and normalized distinct assumptions; duplicate configurations retained as aliases, not samples",
+  "held_out_rule": "Entire fixed-b4-q48 profile withheld; no repetition leakage",
+  "max_profiles_per_relation": 12,
+  "normalization_selection_rule": "Smallest q reaching target in explicit Security output, tie smallest blowup; unreachable slots remain blocked",
+  "profiles_per_relation": 11,
+  "relations": [
+    "C0",
+    "C1",
+    "C2",
+    "C3"
+  ],
+  "repetitions_per_profile": 2,
+  "schema": "pqtc.r2.models.anchor-plan.v1",
+  "slots": [
+    {
+      "id": "fixed-b3-q32",
+      "log_blowup": 3,
+      "profile": "fixed",
+      "queries": 32,
+      "regime": "fixed_unqualified",
+      "split": "train"
+    },
+    {
+      "id": "fixed-b3-q48",
+      "log_blowup": 3,
+      "profile": "fixed",
+      "queries": 48,
+      "regime": "fixed_unqualified",
+      "split": "train"
+    },
+    {
+      "id": "fixed-b4-q32",
+      "log_blowup": 4,
+      "profile": "fixed",
+      "queries": 32,
+      "regime": "fixed_unqualified",
+      "split": "train"
+    },
+    {
+      "id": "fixed-b4-q48",
+      "log_blowup": 4,
+      "profile": "fixed",
+      "queries": 48,
+      "regime": "fixed_unqualified",
+      "split": "held_out"
+    },
+    {
+      "id": "fixed-b5-q32",
+      "log_blowup": 5,
+      "profile": "fixed",
+      "queries": 32,
+      "regime": "fixed_unqualified",
+      "split": "train"
+    },
+    {
+      "id": "fixed-b5-q48",
+      "log_blowup": 5,
+      "profile": "fixed",
+      "queries": 48,
+      "regime": "fixed_unqualified",
+      "split": "train"
+    },
+    {
+      "id": "fixed-final1",
+      "log_blowup": 4,
+      "log_final_poly": 1,
+      "profile": "fixed",
+      "queries": 32,
+      "regime": "fixed_unqualified",
+      "split": "train"
+    },
+    {
+      "id": "fixed-arity4",
+      "log_blowup": 4,
+      "max_log_arity": 2,
+      "profile": "fixed",
+      "queries": 32,
+      "regime": "fixed_unqualified",
+      "split": "train"
+    },
+    {
+      "cap_height": 1,
+      "id": "fixed-cap1",
+      "log_blowup": 4,
+      "profile": "fixed",
+      "queries": 32,
+      "regime": "fixed_unqualified",
+      "split": "train"
+    },
+    {
+      "id": "normalized-no_johnson_condition",
+      "log_blowup": null,
+      "profile": "normalized",
+      "queries": null,
+      "regime": "no_johnson_condition",
+      "selection_required": true,
+      "split": "train"
+    },
+    {
+      "id": "normalized-conditional_johnson",
+      "log_blowup": null,
+      "profile": "normalized",
+      "queries": null,
+      "regime": "conditional_johnson",
+      "selection_required": true,
+      "split": "train"
+    }
+  ],
+  "status": "PREDECLARED_NOT_EXECUTED",
+  "variant_note": "Final1, arity4, cap1 are actual implemented native parameters, not production codec or EVM support claims"
+}

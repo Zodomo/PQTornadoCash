@@ -1,6 +1,7 @@
 //! Exact H0 relation through upstream multilinear AIR zerocheck + plain WHIR.
 //! NON-HIDING CONTROL: never eligible as a private withdrawal candidate.
 use std::{fs, time::Instant};
+use p3_air::{Air, AirBuilder, BaseAir};
 use p3_challenger::DuplexChallenger;
 use p3_field::PrimeCharacteristicRing;
 use p3_multi_stark::{config::MultiStarkConfig, MultiStarkProof, ProverInstance, ProverInstances, VerifierInstance, VerifierInstances, prove, setup, verify};
@@ -9,6 +10,19 @@ use p3_whir::{DomainSeparator, FoldingFactor, ProtocolParameters, SecurityAssump
 use pqtc_poseidon_air::WithdrawalAir;
 use pqtc_r2_backend::*;
 use serde_json::json;
+
+// H0's univariate degree hint counts is_transition as degree zero. Multilinear
+// zerocheck counts it as one (poly_degree(2, &[])), making H0 degree eight, not
+// seven. Omit that hint so pinned upstream derives its own degree, as in its
+// Fibonacci test. Constraint evaluation and all trace/public metadata stay H0.
+struct MultilinearWithdrawalAir(WithdrawalAir);
+impl BaseAir<F> for MultilinearWithdrawalAir {
+    fn width(&self) -> usize { self.0.width() }
+    fn num_public_values(&self) -> usize { self.0.num_public_values() }
+}
+impl<AB: AirBuilder<F = F>> Air<AB> for MultilinearWithdrawalAir {
+    fn eval(&self, builder: &mut AB) { self.0.eval(builder); }
+}
 
 type L = PrefixProver<F, EF>;
 type Pcs = WhirProver<EF, F, Dft, Mmcs, Challenger, L>;
@@ -52,7 +66,7 @@ fn main() {
     };
     fs::write(input.output.join("derived-parameters.txt"), format!("{derived:#?}")).unwrap();
     let config = Config { pcs: Pcs::new(derived, Dft::default(), mmcs()), security: input.security };
-    let air = WithdrawalAir::default();
+    let air = MultilinearWithdrawalAir(WithdrawalAir::default());
     let (pk, vk) = setup(&config, &[&air], &mut challenger(&config));
     let started = Instant::now();
     let proof = prove(&config, ProverInstances::new(vec![ProverInstance::new(
@@ -72,8 +86,24 @@ fn main() {
     // Read the serialized artifact, not the in-memory prover object.
     let mut decoded: MultiStarkProof<Config> = postcard::from_bytes(&proof_bytes).unwrap();
     let started = Instant::now();
-    verify_proof(&decoded, &input.public).expect("exact H0 native WHIR verification");
+    let verification = verify_proof(&decoded, &input.public);
     let verifier_ns = started.elapsed().as_nanos();
+    if let Err(error) = verification {
+        json_file(&input.output.join("result.json"), &json!({
+            "pipeline_id": "R2-C4", "configuration": "H0-MULTILINEAR-PLAIN-WHIR-CONTROL",
+            "status": "NATIVE_VERIFICATION_FAILURE", "error": format!("{error:?}"),
+            "specification_status": "EXACT_FROZEN_H0", "correctness_evidence": "SERIALIZED_NATIVE_PROOF_REJECTED",
+            "privacy_evidence": "NON_HIDING_CONTROL_NOT_PRIVATE_WITHDRAWAL", "security_status": "SECURITY_NOT_QUALIFIED",
+            "performance_evidence": "MEASURED_FAILED_NATIVE_EXECUTION_NOT_VALID_PROOF_BENCHMARK",
+            "implementation_stage": "SAME_RELATION_NATIVE_NON_HIDING_CONTROL",
+            "promotion_status": "NOT_READY_FOR_BUILD_SELECTION", "source_pin": PIN,
+            "requested_security_bits": input.security, "verified": false,
+            "proof_bytes": proof_bytes.len(), "prover_time_ns": prover_ns, "verifier_time_ns": verifier_ns,
+            "proof_ledger": {"full_native_postcard": proof_bytes.len(), "commitment": commitment_bytes, "zerocheck": sumcheck_bytes, "main_opening": opening_bytes, "preprocessed_option": preprocessed_bytes, "evm_abi_bytes": null},
+            "evm_status": "NOT_EVALUATED_NATIVE_HIDING_GATE_NOT_PASSED"
+        }));
+        std::process::exit(3);
+    }
     let mut mutations = Vec::new();
     for (name, offset) in [("scope", 0), ("root", 16), ("nullifier", 32), ("payout_binding", 48)] {
         let mut public = input.public;
@@ -93,6 +123,7 @@ fn main() {
     assert!(truncated_rejected);
     json_file(&input.output.join("result.json"), &json!({
         "pipeline_id": "R2-C4", "configuration": "H0-MULTILINEAR-PLAIN-WHIR-CONTROL",
+        "status": "NATIVE_VERIFICATION_SUCCESS", "verified": true,
         "specification_status": "EXACT_FROZEN_H0", "correctness_evidence": "SERIALIZED_NATIVE_PROOF_VERIFIED",
         "privacy_evidence": "NON_HIDING_CONTROL_NOT_PRIVATE_WITHDRAWAL", "security_status": "SECURITY_NOT_QUALIFIED",
         "performance_evidence": "MEASURED_SINGLE_EXECUTION_NOT_DISTRIBUTION", "implementation_stage": "SAME_RELATION_NATIVE_NON_HIDING_CONTROL",

@@ -232,12 +232,11 @@ def validate_baseline_ledger(ledger: dict) -> dict:
             "signed_envelope_bytes": None}
 
 
-def postcard_model(raw: bytes, ledger: dict) -> dict:
-    """Pinned AIR postcard proof uses unsigned scalars, Vec lengths and 0/1 Option tags.
+def postcard_model(raw: bytes, ledger: dict, proof: dict) -> dict:
+    """Re-encode the pinned proof schema independently of the native byte ledger.
 
-    Unlike canonical-v3, u32/u64 values have value-dependent ULEB128 widths.
-    Count actual wire widths, not assumed four-byte fields or 64-byte digests.
-    Native serialization sections are hierarchical totals, not claimed byte offsets.
+    MontyField31 binary serde is four little-endian bytes, NOT a postcard varint.
+    Digest u64s, vector lengths and usize use ULEB128; extension arrays are fixed.
     """
     def leaves(node, prefix=""):
         name = prefix + "/" + node["name"]
@@ -250,28 +249,85 @@ def postcard_model(raw: bytes, ledger: dict) -> dict:
     sections = leaves(ledger)
     if ledger["bytes"] != len(raw) or sum(s["bytes"] for s in sections) != len(raw):
         raise ValueError("native postcard ledger length mismatch")
+    encoded = bytearray()
     histogram = dict.fromkeys(range(1, 11), 0)
-    pos = 0
-    while pos < len(raw):
-        start = pos
-        while True:
-            if pos >= len(raw) or pos-start >= 10:
-                raise ValueError("truncated or oversized postcard unsigned scalar")
-            byte = raw[pos]
-            pos += 1
-            if not byte & 128:
-                break
-        width = pos-start
-        if (width > 1 and byte == 0) or (width == 10 and byte > 1):
-            raise ValueError("noncanonical unsigned scalar")
-        histogram[width] += 1
-    exact = sum(width*count for width, count in histogram.items())
+    fixed_field_bytes = 0
+    def uint(value):
+        if not isinstance(value, int) or not 0 <= value < 1 << 64:
+            raise ValueError("unsigned postcard scalar outside u64")
+        start = len(encoded)
+        while value >= 128:
+            encoded.append((value & 127) | 128)
+            value >>= 7
+        encoded.append(value)
+        histogram[len(encoded)-start] += 1
+    def field(value):
+        nonlocal fixed_field_bytes
+        if not isinstance(value, int) or not 0 <= value < 2013265921:
+            raise ValueError("noncanonical Montgomery field representation")
+        encoded.extend(value.to_bytes(4, "little"))
+        fixed_field_bytes += 4
+    def extension(value):
+        if len(value["value"]) != 4:
+            raise ValueError("quartic extension required")
+        for coefficient in value["value"]:
+            field(coefficient)
+    def vector(values, item):
+        uint(len(values))
+        for value in values:
+            item(value)
+    def nested(values, depth, item):
+        vector(values, item if depth == 1 else lambda v: nested(v, depth-1, item))
+    def option(value, item):
+        encoded.append(int(value is not None))
+        histogram[1] += 1
+        if value is not None:
+            item(value)
+    def digest(value):
+        if len(value) != 8:
+            raise ValueError("eight u64 digest words required")
+        for word in value:
+            uint(word)
+    def cap(value):
+        vector(value["cap"], digest)
+    def opening(value):
+        nested(value[0], 3, field)
+        vector(value[1]["sibling_hashes"], digest)
+    commitments = proof["commitments"]
+    cap(commitments["trace"])
+    cap(commitments["quotient_chunks"])
+    option(commitments["random"], cap)
+    opened = proof["opened_values"]
+    vector(opened["trace_local"], extension)
+    for key in ("trace_next", "preprocessed_local", "preprocessed_next"):
+        option(opened[key], lambda v: vector(v, extension))
+    nested(opened["quotient_chunks"], 2, extension)
+    option(opened["random"], lambda v: vector(v, extension))
+    masks, fri = proof["opening_proof"]
+    nested(masks, 4, extension)
+    vector(fri["commit_phase_commits"], cap)
+    vector(fri["commit_pow_witnesses"], field)
+    def input_batch(value):
+        nested(value["opened_values"], 3, field)
+        opening(value["opening_proof"])
+    vector(fri["input_openings"], input_batch)
+    def fri_round(value):
+        uint(value["log_arity"])
+        nested(value["sibling_values"], 2, extension)
+        opening(value["opening_proof"])
+    vector(fri["commit_phase_openings"], fri_round)
+    vector(fri["final_poly"], extension)
+    field(fri["query_pow_witness"])
+    uint(proof["degree_bits"])
+    if encoded != raw:
+        raise ValueError(f"independent typed postcard encoding differs: expected {len(encoded)} bytes, observed {len(raw)}")
+    exact = len(encoded)
     return {"schema": "pqtc.r2.models.postcard.v1", "measurement_status": "MEASURED",
             "kind": "exact_value_dependent_wire_length", "total_bytes": exact,
-            "scalar_width_histogram": histogram, "native_sections": sections,
+            "scalar_width_histogram": histogram, "fixed_field_bytes": fixed_field_bytes, "native_sections": sections,
             "lower_bound": {"measurement_status": "EXACT_ANALYTICAL_BOUND",
-                            "bytes": sum(histogram.values()),
-                            "assumption": "same scalar/count/tag inventory, each unsigned encoding occupies at least one byte"},
+                            "bytes": fixed_field_bytes + sum(histogram.values()),
+                            "assumption": "same typed inventory; Montgomery fields occupy four bytes, variable scalars/counts and option tags at least one"},
             "structural_bytes_residual": len(raw)-exact, "abi_bytes": None,
             "frontier_policy": "Native ledger retains actual shared frontier; no q*capHeight subtraction",
             "signed_envelope_bytes": None}

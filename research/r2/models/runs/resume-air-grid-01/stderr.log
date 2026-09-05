@@ -1,0 +1,33 @@
+Traceback (most recent call last):
+  File "/Users/zodomo/code/PQTornado/research/r2/models/run.py", line 242, in <module>
+    main()
+    ~~~~^^
+  File "/Users/zodomo/code/PQTornado/research/r2/models/run.py", line 238, in main
+    execute(args)
+    ~~~~~~~^^^^^^
+  File "/Users/zodomo/code/PQTornado/research/r2/models/run.py", line 201, in execute
+    fresh = c0_rows(out, relation, slot) if relation == "C0" else air_rows(out, relation, slot, rep)
+                                                                  ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zodomo/code/PQTornado/research/r2/models/run.py", line 135, in air_rows
+    structural = postcard_model(raw, ledger)
+  File "/Users/zodomo/code/PQTornado/research/r2/models/codec.py", line 266, in postcard_model
+    raise ValueError("noncanonical unsigned scalar")
+ValueError: noncanonical unsigned scalar
+        2.12 real         1.89 user         0.06 sys
+           281182208  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               21756  page reclaims
+                  44  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                   1  voluntary context switches
+                1999  involuntary context switches
+           416462652  instructions retired
+           168430256  cycles elapsed
+            16089544  peak memory footprint

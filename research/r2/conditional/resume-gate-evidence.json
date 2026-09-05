@@ -1,0 +1,159 @@
+{
+  "flock_veil": {
+    "upstream_supported_m21_config": {
+      "satisfied": false,
+      "artifact": "research/r2/conditional/outputs/flock.json",
+      "sha256": "43a8bd08fc04f9f087fb1ef13a41d3579aced7d9073690de7fdf6b28b4f5b0fd",
+      "scope": "No supported same-commit M21 fast configuration among the 64 inspected local commits; not a claim about all upstream history.",
+      "reopen_condition": "Supply exact upstream-supported config+registry+Keccak commit, or a reviewed parameter derivation; never infer a preset."
+    },
+    "exact_keccak44_control_verified": {
+      "satisfied": false,
+      "artifact": "research/r2/conditional/outputs/flock.json",
+      "sha256": "43a8bd08fc04f9f087fb1ef13a41d3579aced7d9073690de7fdf6b28b4f5b0fd",
+      "scope": "Retained exact historical control failed at missing M21_FAST_SECURITY_CONFIG before producing proof; 44 logical, 48 capacity, 4 dummy permutations.",
+      "reopen_condition": "Successful native proof and verification after supported configuration repair."
+    },
+    "exact_glue_relation": {
+      "satisfied": null,
+      "artifact": "research/r2/conditional/outputs/flock.json",
+      "sha256": "43a8bd08fc04f9f087fb1ef13a41d3579aced7d9073690de7fdf6b28b4f5b0fd",
+      "scope": "No exact withdrawal glue relation measurement in source-availability evidence.",
+      "reopen_condition": "Implement and measure exact glue after Keccak control passes; no cross-user witness pooling."
+    },
+    "complete_hiding_construction": {
+      "satisfied": null,
+      "artifact": "research/r2/conditional/outputs/flock.json",
+      "sha256": "43a8bd08fc04f9f087fb1ef13a41d3579aced7d9073690de7fdf6b28b4f5b0fd",
+      "scope": "No measured complete Flock hiding withdrawal; VEIL KoalaBear degree4 is not a binary-field Ligerito adapter.",
+      "reopen_condition": "Specify compatible complete hiding construction and measure overhead on exact relation."
+    }
+  },
+  "stir": {
+    "concrete_hiding_construction_or_zk_inner_composition": {
+      "satisfied": false,
+      "artifact": "research/candidates/C30-stir/manifest.json",
+      "sha256": "597ff2e50f3f5b73d3c5d91225efebda5c485e021e5a9f435be8bc5e1aae3d74",
+      "scope": "Pinned TwoAdicStirPcs exposes compiled ZK=false; retained commit/open/verify smoke is non-hiding. No claim that STIR cannot hide.",
+      "reopen_condition": "Concrete hiding construction for this pin or justified wrapper over an already-ZK exact inner proof."
+    },
+    "compatible_application_relation": {
+      "satisfied": null,
+      "artifact": "research/candidates/C30-stir/manifest.json",
+      "sha256": "597ff2e50f3f5b73d3c5d91225efebda5c485e021e5a9f435be8bc5e1aae3d74",
+      "scope": "No complete withdrawal adapter or application mapping implemented by retained polynomial smoke.",
+      "reopen_condition": "Exact native application relation with public statement and transcript binding."
+    }
+  },
+  "circle": {
+    "concrete_hiding_construction_or_zk_inner_composition": {
+      "satisfied": false,
+      "artifact": "research/candidates/C40-circle/manifest.json",
+      "sha256": "e0569e088a2ae409f7f04e0223b16589e5de41f52b290c9c84d5ed72758e8ea8",
+      "scope": "Pinned CirclePcs sourceZkCheck=false and hiding not exposed by retained API.",
+      "reopen_condition": "Concrete hiding PCS construction or justified already-ZK-inner wrapper."
+    },
+    "compatible_application_relation_and_field": {
+      "satisfied": false,
+      "artifact": "research/candidates/C40-circle/manifest.json",
+      "sha256": "e0569e088a2ae409f7f04e0223b16589e5de41f52b290c9c84d5ed72758e8ea8",
+      "scope": "Pinned ComplexExtendable geometry is incompatible with frozen BabyBear H0 without an explicit relation translation; no global Circle rejection.",
+      "reopen_condition": "Exact accepted relation/field translation or compatible exact verifier wrapper."
+    }
+  },
+  "recursion": {
+    "complete_exact_inner_hiding_proof": {
+      "satisfied": true,
+      "artifact": "research/r2/air/outputs/C1-decomposed/results.json",
+      "sha256": "0e00b405b751ef6921c43a238af76ec2e7c8f1165ad6a32023deb0fed24f183f",
+      "scope": "Complete exact H0 C1 native proof generated and verified with configured hiding and fresh OS entropy; security and hiding composition remain unqualified. Result is not an adequate-inner-soundness or outer-path claim."
+    },
+    "adequate_exact_inner_soundness": {
+      "satisfied": null,
+      "artifact": "research/r2/air/outputs/C1-decomposed/results.json",
+      "sha256": "0e00b405b751ef6921c43a238af76ec2e7c8f1165ad6a32023deb0fed24f183f",
+      "scope": "Fixed b4/q32 proof has security_model=null and SECURITY_NOT_QUALIFIED; native success does not establish target soundness.",
+      "reopen_condition": "Bind exact proof configuration to explicit target/error budget, accepted assumptions and losses; review deferral is not itself a permission gate."
+    },
+    "direct_verification_measured_bottleneck": {
+      "satisfied": null,
+      "artifact": "research/r2/air/outputs/C1-decomposed/results.json",
+      "sha256": "0e00b405b751ef6921c43a238af76ec2e7c8f1165ad6a32023deb0fed24f183f",
+      "scope": "3.743166 ms retained C1 native verify is measured; raw_ABI_bytes=null and no complete exact-C1 EVM path demonstrates direct verification as end-to-end bottleneck.",
+      "reopen_condition": "Complete exact candidate direct-verification measurements showing bottleneck, not baseline-gas substitution or an AIR-only cost kernel."
+    },
+    "compatible_verifier_of_exact_inner_not_fibonacci": {
+      "satisfied": false,
+      "artifact": "research/candidates/C60-recursion/manifest.json",
+      "sha256": "722e0a842b155457110f7a93e9cc60f5b8f3bdfece7c76845e6e5732fb965f4f",
+      "scope": "Retained executable verifies Fibonacci, not exact PQTC proof; P3 recursion 0.7 versus exact inner 0.6.",
+      "reopen_condition": "Compatible verifier of exact inner codec, field, commitments and transcript; no Fibonacci or trivial proxy."
+    },
+    "both_layer_error_and_transcript_accounting": {
+      "satisfied": null,
+      "artifact": "research/candidates/C60-recursion/manifest.json",
+      "sha256": "722e0a842b155457110f7a93e9cc60f5b8f3bdfece7c76845e6e5732fb965f4f",
+      "scope": "No two-layer exact-instance error/transcript accounting exists in architecture smoke.",
+      "reopen_condition": "Specify both errors and all transcript/commitment assumptions for concrete outer implementation."
+    },
+    "proof_only_outer_witness_inventory": {
+      "satisfied": null,
+      "artifact": "research/candidates/C60-recursion/manifest.json",
+      "sha256": "722e0a842b155457110f7a93e9cc60f5b8f3bdfece7c76845e6e5732fb965f4f",
+      "scope": "No exact-inner outer witness inventory supplied by Fibonacci smoke.",
+      "reopen_condition": "Enumerate only already-hiding proofs and public verification data, excluding notes and unmasked application traces."
+    },
+    "outer_privacy_composition_argument": {
+      "satisfied": null,
+      "artifact": "research/candidates/C60-recursion/manifest.json",
+      "sha256": "722e0a842b155457110f7a93e9cc60f5b8f3bdfece7c76845e6e5732fb965f4f",
+      "scope": "No exact-inner outer privacy composition established by retained architecture control.",
+      "reopen_condition": "Written argument for information exposed by concrete outer proof, including if it is non-hiding."
+    }
+  },
+  "aggregation": {
+    "complete_individual_hiding_proof": {
+      "satisfied": true,
+      "artifact": "research/r2/air/outputs/C1-decomposed/results.json",
+      "sha256": "0e00b405b751ef6921c43a238af76ec2e7c8f1165ad6a32023deb0fed24f183f",
+      "scope": "Complete exact H0 C1 native proof generated and verified with configured hiding and fresh OS entropy; security and hiding composition remain unqualified. Result is not an adequate-inner-soundness or outer-path claim."
+    },
+    "plausible_outer_proof_path": {
+      "satisfied": null,
+      "artifact": "research/aggregation/manifest.json",
+      "sha256": "389daf1fa9e526521fd3f038845a09382a183db26ad38db98676fab03ac47a16",
+      "scope": "Manifest lists design options but no compatible exact-proof outer implementation; policy is not a path.",
+      "reopen_condition": "Concrete compatible outer path for exact inner proof; then execute N=2,4,8."
+    },
+    "proofs_and_public_statements_only": {
+      "satisfied": null,
+      "artifact": "research/aggregation/manifest.json",
+      "sha256": "389daf1fa9e526521fd3f038845a09382a183db26ad38db98676fab03ac47a16",
+      "scope": "Manifest privacy boundary is a policy, not a measured or implemented aggregator witness inventory.",
+      "reopen_condition": "Concrete aggregator inputs restricted to proofs/public statements, no notes."
+    },
+    "all_payouts_nullifiers_and_failure_handling": {
+      "satisfied": null,
+      "artifact": "research/aggregation/manifest.json",
+      "sha256": "389daf1fa9e526521fd3f038845a09382a183db26ad38db98676fab03ac47a16",
+      "scope": "Atomic settlement/pull-claim policy exists, but no complete cryptographic aggregate settlement measurements.",
+      "reopen_condition": "Bind every payout/nullifier and measure invalid proof, duplicate nullifier and payout failure handling at N=2,4,8."
+    }
+  },
+  "l2_exact_candidate": {
+    "exact_candidate_payload": {
+      "satisfied": true,
+      "artifact": "research/r2/conditional/resume-payloads.json",
+      "sha256": "880b9d78fd655a9e2172e44a245bdf8db1ee82f884c90932853d2833aba5f2ce",
+      "scope": "Five hash-bound native proof artifacts exist: retained C1/C2/C3 postcard and both fresh C0 raw proofs. Eligible only for exact byte transport diagnostics; EVM ABI and actual L2 fees remain missing."
+    }
+  },
+  "hardware_expansion": {
+    "complete_native_candidate_proof": {
+      "satisfied": true,
+      "artifact": "research/r2/air/outputs/C1-decomposed/results.json",
+      "sha256": "0e00b405b751ef6921c43a238af76ec2e7c8f1165ad6a32023deb0fed24f183f",
+      "scope": "Complete exact H0 C1 native proof generated and verified with configured hiding and fresh OS entropy; security and hiding composition remain unqualified. Result is not an adequate-inner-soundness or outer-path claim. Local portable native run is eligible; no external review approval required for isolated experiment."
+    }
+  }
+}

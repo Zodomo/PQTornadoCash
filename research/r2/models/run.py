@@ -85,7 +85,9 @@ def command_for(args, relation, slot, out):
                "--queries", str(slot["queries"]), "--log-blowup", str(slot["log_blowup"]),
                "--log-final-poly", str(slot["log_final_poly"]), "--max-log-arity", str(slot["max_log_arity"]),
                "--cap-height", str(slot["cap_height"]), "--commit-pow", str(slot["commit_pow"]),
-               "--query-pow", str(slot["query_pow"]), "--output", str(out)]
+               "--query-pow", str(slot["query_pow"]), "--output", str(out),
+               "--statement", str(args.input.resolve()/"statement.json"),
+               "--witness", str(args.input.resolve()/"witness.json")]
     if slot["profile"] == "normalized":
         command += ["--security-model", slot["security_model"]]
     return command
@@ -130,7 +132,7 @@ def air_rows(out, relation, slot, repetition):
         raise ValueError("AIR proof length mismatch")
     shape = load(out/result["shape_path"])
     ledger = load(out/result["byte_ledger_path"])
-    structural = postcard_model(raw, ledger)
+    structural = postcard_model(raw, ledger, load(out/"proof.json"))
     dump(out/"structural-byte-model.json", structural)
     return [{"id": f"{relation}-{slot['id']}-{repetition}", "proof_sha256": digest,
              "proof_bytes": len(raw), "prove_ms": result["prove_ms"], "native_verify_ms": result["verify_ms"],
@@ -154,6 +156,13 @@ def execute(args):
     dump(output/"normalized-selections.json", selections)
     rows, records, identities = [], [], set()
     environment = safe_environment()
+    binaries = [p for p in (args.c0_binary, args.air_binary) if p and p.is_file()]
+    binary_hashes = {str(p.resolve()): hashlib.sha256(p.read_bytes()).hexdigest() for p in binaries}
+    dump(output/"source-epoch.json", {
+        "binaries": binary_hashes,
+        "sources": {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
+                    for p in [Path(__file__).resolve(), Path(__file__).with_name("codec.py"), Path(__file__).with_name("model.py")]},
+        "input": {name: hashlib.sha256((args.input/name).read_bytes()).hexdigest() for name in ("statement.json", "witness.json")}})
     # A single advisory lock shared by every invocation of this package enforces serial process timing.
     with (Path(__file__).parent/".anchor.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -181,6 +190,7 @@ def execute(args):
                     try:
                         proc = subprocess.run(command, cwd=ROOT, env=environment, text=True, capture_output=True, timeout=args.timeout)
                         record = {"command": command, "cwd": str(ROOT), "exit_status": proc.returncode,
+                                  "binary_sha256": binary_hashes[command[0]],
                                   "stdout": proc.stdout, "stderr": proc.stderr,
                                   "serial_process_wall_ms": (time.perf_counter()-started)*1000,
                                   "environment": environment, "timing_scope": "whole prebuilt process, not native proof-only interval"}

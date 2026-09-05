@@ -1,0 +1,59 @@
+{
+  "architecture": "arm64",
+  "command": [
+    "research/r2/operations/target/release/verify-worker",
+    "--statement",
+    "research/r2/baseline/outputs/r2-main/proofs/fresh-06/statement.json",
+    "--parameter",
+    "35adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62ab7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea07779",
+    "--part-a",
+    "research/r2/baseline/outputs/r2-main/proofs/fresh-06/part-a.pqtc",
+    "--part-b",
+    "research/r2/baseline/outputs/r2-main/proofs/fresh-06/part-b.pqtc",
+    "--export-dir",
+    "research/r2/operations/outputs/resume-c0-postcard"
+  ],
+  "cwd": "/Users/zodomo/code/PQTornado",
+  "environment": {
+    "HOME": "/Users/zodomo",
+    "LC_ALL": "C",
+    "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+    "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+    "TZ": "UTC"
+  },
+  "logs": {
+    "stderr.log": {
+      "bytes": 777,
+      "sha256": "8866d198ba28df08e0bb7617ff8cfda76264e35e406362d3422ecd82d02de01d"
+    },
+    "stdout.log": {
+      "bytes": 410,
+      "sha256": "87f321ac25d8ad6610d4dfc2d162b6e0afcc17fd7124c8c3784dbf98fd286ed4"
+    }
+  },
+  "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+  "returncode": 0,
+  "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+  "rss_unit": "bytes",
+  "schema": "pqtc.r2.command-run.v1",
+  "scope": "local non-custodial research command; success is execution, not artifact qualification",
+  "started_utc": "2026-09-05T01:29:00.971242+00:00",
+  "timed_out": false,
+  "timeout_seconds": 7200,
+  "timing_command": [
+    "/usr/bin/time",
+    "-l",
+    "research/r2/operations/target/release/verify-worker",
+    "--statement",
+    "research/r2/baseline/outputs/r2-main/proofs/fresh-06/statement.json",
+    "--parameter",
+    "35adfcc070249bb0393c2fd45f0bbd48ef03cbfc08070d03335eaf952975e62ab7bc82ead4f8c1f1c39b3372be85195853134dfc9d24f43b97a5e0454ea07779",
+    "--part-a",
+    "research/r2/baseline/outputs/r2-main/proofs/fresh-06/part-a.pqtc",
+    "--part-b",
+    "research/r2/baseline/outputs/r2-main/proofs/fresh-06/part-b.pqtc",
+    "--export-dir",
+    "research/r2/operations/outputs/resume-c0-postcard"
+  ],
+  "wall_seconds": 0.18633870797930285
+}

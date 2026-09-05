@@ -1,0 +1,115 @@
+{
+  "all_term_rows": 83304,
+  "argv": [
+    "research/r2/security/run.py",
+    "--shapes",
+    "research/r2/air/outputs/C1-decomposed/shape.json",
+    "--shapes",
+    "research/r2/air/outputs/C2-horizontal-02/shape.json",
+    "--shapes",
+    "research/r2/air/outputs/C3-decomposed/shape.json",
+    "--pinned-binary",
+    "research/r2/security/target/release/pqtc-r2-security-pinned",
+    "--output",
+    "research/r2/security/outputs/resume-shapes-02"
+  ],
+  "classification": "ARITHMETIC_AND_REDUCED_ROUND_EXPERIMENT",
+  "command": [
+    "/Users/zodomo/code/PQTornado/research/r2/security/target/release/pqtc-r2-security-pinned",
+    "/Users/zodomo/code/PQTornado/research/r2/security/outputs/resume-shapes-02/profiles.json",
+    "/Users/zodomo/code/PQTornado/research/r2/security/outputs/resume-shapes-02/pinned-upstream.json"
+  ],
+  "conditions": [
+    "Johnson mutual correlated agreement at the same radius for all terms",
+    "Theorem parameter must match actual PCS batching objects",
+    "No complete Fiat-Shamir/QROM, MMCS structural or hiding composition proof",
+    "Probability-sum and full-epsilon columns are arithmetic sensitivities, not replacement theorems"
+  ],
+  "correctness": "arithmetic-regressions-passed",
+  "human_acceptance": false,
+  "inputs": [
+    {
+      "path": "research/security-model/calculator/security_calculator.py",
+      "sha256": "8a126a3f527266482044fe05e80c7834bcab2c2c29c8c09c16d7cf47981503ea"
+    },
+    {
+      "path": "pqtc-independent-review/evidence/ldr_objective_sensitivity.py",
+      "sha256": "a4e69da72812217246855f749e4541faec3ddd8dd395c5bb107d136e1739596e"
+    },
+    {
+      "path": "crates/pqtc-stark/src/lib.rs",
+      "sha256": "eb0166dccf6fe1e8cdcd59f8a94dcfda058dbc4fd73bf5f7925b160c66d6b967"
+    },
+    {
+      "path": "crates/pqtc-stark/src/query.rs",
+      "sha256": "feb1b778459660babee3a199cab968f6403874df0a97d1a524baee5f3c8640a2"
+    },
+    {
+      "path": "contracts/src/verifier/PQTCQueryVerifier.sol",
+      "sha256": "8c6316f1132875dc647cba0d51c4779c8b14d97cf904acea67f01577efffa92f"
+    },
+    {
+      "path": "research/r2/air/outputs/C1-decomposed/shape.json",
+      "sha256": "b408b2aae3a842a4df7439e57947a3d7bc7d46228918d46dc72f7a940c76713f"
+    },
+    {
+      "path": "research/r2/air/outputs/C2-horizontal-02/shape.json",
+      "sha256": "c824be3e790b31af2a4213559c9dd684ab60882c1c6d2df2c2e64aec92a76bfa"
+    },
+    {
+      "path": "research/r2/air/outputs/C3-decomposed/shape.json",
+      "sha256": "d8995889f0c7025e6b08a5b2b89639c57677198c15fa2c8bacebc47bf2e46417"
+    },
+    {
+      "path": "research/r2/security/run.py",
+      "sha256": "f46af375a7727083dd1c76e684d2f847e1bbffae7eb152990dbb3af56800a4cf"
+    },
+    {
+      "path": "research/r2/security/packet.py",
+      "sha256": "179a209f554841ddb46a7a4031e7f18afd68fd93de360cc43b13bd22c38807d6"
+    },
+    {
+      "path": "research/r2/security/reduced_instance.py",
+      "sha256": "a11b62b125980136680a4eeffb5bab47c9b34d3003e71819d215907949989bd7"
+    },
+    {
+      "path": "research/r2/security/threat-games.json",
+      "sha256": "d6576b55a5b0ca7f64f34c437602c9f7ec33b491c8bc813c4fb44a6497b8a282"
+    },
+    {
+      "path": "research/r2/security/rust/src/main.rs",
+      "sha256": "d846a2b0bd74ca4cad89ed34c434a5e9975fd92f6a456035ac8e1d70d7dfe06e"
+    },
+    {
+      "path": "research/r2/hash/spec.json",
+      "sha256": "8de98db133236fceab0e242446cd47e55919eba30a208ee9dc233549a1f468b4"
+    },
+    {
+      "path": "research/candidates/hash-compression-common/constants/pinned.json",
+      "sha256": "73f92f5dd3076550927953dc13dcf97aba2ad544c7a9bb828acf89379ed72ad2"
+    },
+    {
+      "path": "research/r2/security/sources/index.json",
+      "sha256": "34010dba86c236fec6273cd576c715a9d6f88f731cd73191156021efc4505538"
+    },
+    {
+      "path": "research/r2/security/sources/native-index.json",
+      "sha256": "25af74bb1b375400e4c9977c63fcb808e2afc12f38aee4b90f39d4d6303765cc"
+    }
+  ],
+  "m_is_runtime_parameter": false,
+  "performance": "analytical-not-runtime",
+  "pinned_rows": 72,
+  "privacy": "not-established",
+  "promotion": "NOT_PROMOTED",
+  "security": "SECURITY_NOT_QUALIFIED",
+  "source_pin": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+  "specification": "explicit-formulas-and-source-derived-matrix-inventory",
+  "stage": "three-calculator-execution",
+  "unchanged_runtime_sources": [
+    "crates/pqtc-stark/src/lib.rs",
+    "crates/pqtc-stark/src/query.rs",
+    "contracts/src/verifier/PQTCQueryVerifier.sol"
+  ],
+  "work_package": "R2-01"
+}

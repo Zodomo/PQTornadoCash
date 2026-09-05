@@ -1,0 +1,95 @@
+Error: Compiler run failed:
+Warning (2519): This declaration shadows an existing declaration.
+  --> src/Roles.sol:37:48:
+   |
+37 |  ... for(uint256 b;b<(count+16)/16;++b){uint256[] memory x=new uint256[](32);for(uint256 i;i< ...
+   |                                         ^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+  --> src/Roles.sol:39:9:
+   |
+39 |         uint256[] memory x=new uint256[](32);for(uint256 i;i< ...
+   |         ^^^^^^^^^^^^^^^^^^
+
+Error (6578): Cannot access local Solidity variables from inside an inline assembly function.
+  --> src/H5Permutation.sol:14:34:
+   |
+14 |                     let p := add(s,j) let a := mload(p) let b := mload(add(p,32)) let c := mload(add(p,64)) let d := mload(add(p,96))
+   |                                  ^
+
+Error (6578): Cannot access local Solidity variables from inside an inline assembly function.
+  --> src/H5Permutation.sol:22:96:
+   |
+22 |                     for {let j := lane} lt(j,1024) {j := add(j,128)} {sum := add(sum,mload(add(s,j)))}
+   |                                                                                                ^
+
+Error (6578): Cannot access local Solidity variables from inside an inline assembly function.
+  --> src/H5Permutation.sol:23:84:
+   |
+23 |                     for {let j := lane} lt(j,1024) {j := add(j,128)} {let p := add(s,j) mstore(p,mod(add(mload(p),sum),q))}
+   |                                                                                    ^
+
+Error (6578): Cannot access local Solidity variables from inside an inline assembly function.
+  --> src/H5Permutation.sol:27:61:
+   |
+27 |                 let q := 2013265921 mstore(s,pow7(add(mload(s),c))) let sum := 0
+   |                                                             ^
+
+Error (6578): Cannot access local Solidity variables from inside an inline assembly function.
+  --> src/H5Permutation.sol:27:44:
+   |
+27 |                 let q := 2013265921 mstore(s,pow7(add(mload(s),c))) let sum := 0
+   |                                            ^
+
+Error (6578): Cannot access local Solidity variables from inside an inline assembly function.
+  --> src/H5Permutation.sol:28:88:
+   |
+28 |                 for {let j := 0} lt(j,1024) {j := add(j,32)} {sum := add(sum,mload(add(s,j)))}
+   |                                                                                        ^
+
+Error (6578): Cannot access local Solidity variables from inside an inline assembly function.
+  --> src/H5Permutation.sol:29:73:
+   |
+29 |  ... ,32) {i := add(i,1)} {let p := add(s,mul(i,32)) let d := shr(224,mload( ...
+   |                                         ^
+
+Error (6578): Cannot access local Solidity variables from inside an inline assembly function.
+  --> src/H5Permutation.sol:49:34:
+   |
+49 |                     let p := add(s,j) let a := mload(p) let b := mload(add(p,32)) let c := mload(add(p,64)) let d := mload(add(p,96))
+   |                                  ^
+
+Error (6578): Cannot access local Solidity variables from inside an inline assembly function.
+  --> src/H5Permutation.sol:57:96:
+   |
+57 |                     for {let j := lane} lt(j,1024) {j := add(j,128)} {sum := add(sum,mload(add(s,j)))}
+   |                                                                                                ^
+
+Error (6578): Cannot access local Solidity variables from inside an inline assembly function.
+  --> src/H5Permutation.sol:58:84:
+   |
+58 |                     for {let j := lane} lt(j,1024) {j := add(j,128)} {let p := add(s,j) mstore(p,mod(add(mload(p),sum),q))}
+   |                                                                                    ^
+
+Error (6578): Cannot access local Solidity variables from inside an inline assembly function.
+  --> src/H5Permutation.sol:62:61:
+   |
+62 |                 let q := 2013265921 mstore(s,pow7(add(mload(s),c))) let sum := 0
+   |                                                             ^
+
+Error (6578): Cannot access local Solidity variables from inside an inline assembly function.
+  --> src/H5Permutation.sol:62:44:
+   |
+62 |                 let q := 2013265921 mstore(s,pow7(add(mload(s),c))) let sum := 0
+   |                                            ^
+
+Error (6578): Cannot access local Solidity variables from inside an inline assembly function.
+  --> src/H5Permutation.sol:63:88:
+   |
+63 |                 for {let j := 0} lt(j,1024) {j := add(j,32)} {sum := add(sum,mload(add(s,j)))}
+   |                                                                                        ^
+
+Error (6578): Cannot access local Solidity variables from inside an inline assembly function.
+  --> src/H5Permutation.sol:64:73:
+   |
+64 |  ... ,32) {i := add(i,1)} {let p := add(s,mul(i,32)) let d := shr(224,mload( ...
+   |                                         ^

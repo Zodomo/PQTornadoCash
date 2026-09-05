@@ -1,0 +1,68 @@
+{
+  "schema": "pqtc.r2.resume-handoff.v1",
+  "owner": "HashResume",
+  "work_package": "R2-02",
+  "checkpoint": "bc71758",
+  "state": "source-prepared-not-executed",
+  "verification": "No build, test, formatter, lint, validation, benchmark, RPC request, or experiment executed in this assignment, as required. Main must exercise the command below; this handoff makes no new parity or performance claim.",
+  "changes": [
+    {"path":"research/r2/hash/run.py","change":"Required fresh --output under hash with resume-* basename; existing paths rejected before any build/output write. Builds use fresh /tmp Cargo and Foundry roots with locked/offline dependencies; only final binaries and Solidity artifacts are retained beneath the new output. Source hashes and a source snapshot are captured before building; historical target/out/output directories are not overwritten. Artifact hashing streams files rather than loading complete trace files into memory."},
+    {"path":"research/r2/hash/run.py","change":"Retain attempted initcode and metadata before submission, including RPC-rejected deployment envelopes. Trace failed constructor receipts before continuing and incrementally retain every deposit record. Add implementation-deployment, second-deposit, and twenty-level traces. Native benchmark error responses now fail the run instead of being silently recorded as successful timings."},
+    {"path":"research/r2/hash/compare_constants.py","change":"Required fresh --output inside a resume-* tree replaces historical fixed outputs/constants. Retain upstream generator and matrix-source snapshots beside comparison evidence. Preserve CARGO_BUILD_JOBS in child environment allowlist."},
+    {"path":"research/r2/hash/execution.json","change":"Migrate runnable commands/output paths; remove unnecessary historical-source regeneration; document isolation, source identity, measurement classes and optional H6 entry."}
+  ],
+  "unchanged_relation_sources": [
+    "research/r2/hash/generate.py",
+    "research/r2/hash/constants.json",
+    "research/r2/hash/rust/src/",
+    "research/r2/hash/reference.ts",
+    "research/r2/hash/solidity/src/",
+    "research/r2/hash/spec.json"
+  ],
+  "prerequisites": [
+    "Main waits until all concurrent source preparation ends and serializes this command against all prover timings, builds and EVM workloads.",
+    "Main owns fresh disposable loopback Anvil nodes at 18545 and 18546. Both use chain31337 and public default account0 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266; no wallet/private environment files or public RPC.",
+    "18545 uses Osaka and 16777216 block gas limit; 18546 uses Prague and 1000000000 block gas limit and remains diagnostic-unpromotable. Do not disable code-size or initcode-size limits, add block-gas-limit bypasses, or classify diagnostic success as capped deployability.",
+    "Python3.11+, Node supporting --experimental-strip-types, Rust/Cargo, forge and cast are available. Cached dependencies are required; the retained build-native-01 command.json records a successful offline native build, not validation of this resume edit.",
+    "Pinned Plonky3 checkout /Users/zodomo/.cargo/git/checkouts/plonky3-7d8a3b21a665a86f/3152b14 is present. Local svm 0.8.30 directory was found under /Users/zodomo/Library/Application Support/svm/0.8.30; forge build is offline and will not fetch a missing compiler.",
+    "Both requested resume-full-01 output directories must be absent. On any retry use a new numbered name in BOTH wrapper --output and runner --output; do not delete or reuse failed output trees."
+  ],
+  "main_owned_node_commands": [
+    {"argv":["anvil","--host","127.0.0.1","--port","18545","--chain-id","31337","--hardfork","osaka","--gas-limit","16777216"],"cwd":"a fresh isolated /tmp directory without dotenv files","execute_by":"Main via supervised process tool only"},
+    {"argv":["anvil","--host","127.0.0.1","--port","18546","--chain-id","31337","--hardfork","prague","--gas-limit","1000000000"],"cwd":"a different fresh isolated /tmp directory without dotenv files","execute_by":"Main via supervised process tool only"}
+  ],
+  "serial_commands_from_repository_root": [
+    {
+      "id":"full-r2-02",
+      "command":"python3 -B research/r2/execute.py --output research/r2/hash/runs/resume-full-01 --timeout 86400 --env CARGO_BUILD_JOBS=4 --env RAYON_NUM_THREADS=1 -- python3 -B research/r2/hash/run.py --output research/r2/hash/outputs/resume-full-01 --build --rpc-url http://127.0.0.1:18545 --diagnostic-rpc-url http://127.0.0.1:18546 --vectors 10010 --chunk 2 --native-repetitions 30 --trace --plonky3 /Users/zodomo/.cargo/git/checkouts/plonky3-7d8a3b21a665a86f/3152b14",
+      "internal_order":"Snapshot inputs; offline native build; isolated offline Foundry build; upstream constants/matrix comparison; deploy five tiers on both nodes; capped and diagnostic constructors/deposits; streamed three-language full-role corpus; actual misuse suite; per-role native timing and five-tier EVM operation estimates/receipts/traces; final evidence ledger.",
+      "output":"research/r2/hash/outputs/resume-full-01",
+      "limits":"One finite 86400-second command. Existing --chunk 2 bounds shared EVM batches. Trace RPC timeout is600 seconds. Gas ceilings remain explicit and are not bypassed. Raw opcode traces may be large; failures are evidence rather than permission to omit required measurements."
+    }
+  ],
+  "optional_standalone_constants_command_after_build":"python3 -B research/r2/hash/compare_constants.py --plonky3 /Users/zodomo/.cargo/git/checkouts/plonky3-7d8a3b21a665a86f/3152b14 --binary research/r2/hash/outputs/resume-full-01/native/constants --output research/r2/hash/outputs/resume-constants-02",
+  "criteria_mapping": [
+    {"plan":"8.1-8.2","implementation":"Unchanged R2-H0-v03 exact frozen framing control and R2-H5-complete-v1 width32/d12 relation; spec.json lists input lanes, public framing, extraction, operation schedules and injectivity argument. No proof-system reuse and no selector11-as-H6 claim.","evidence":"source-hashes.json, source-epoch/, spec.json plus execution evidence below","state":"semantics retained; correctness and relation eligibility await execution"},
+    {"plan":"8.3.1-8.3.3","implementation":"Independent pinned upstream Grain generation for widths16/32; compare every initial/internal/final constant to retained literals and compiled pinned Rust. Compare every internal/external matrix entry by all-basis-vector evaluation of actual pinned Rust layers; production MDSMat4 is not replaced by generator-default matrix.","evidence":"constants/comparison.json, constants/command-*.stdout/.stderr, constants/source-epoch/ and recorded hashes","acceptance":"Both widths equal; exact pinned commit; generated outputs and source hashes retained","state":"unknown until run"},
+    {"plan":"8.3.4-8.3.7","implementation":"Simple u64 Rust reference, optimized Rust and independent TypeScript; all requests checked against each selected Solidity tier. 10010 deterministic random/edge full-role requests plus 256 frozen semantic cases ×2 configurations ×27 complete-role/path outputs =23834 requests. Stream JSONL in bounded chunks; retain every rejection-mapping draw.","evidence":"vectors.jsonl, parity.jsonl, mapping-ledger.jsonl, results.json.parity.coverage","acceptance":"At least10000 shared full-role requests; all seven roles covered for both configurations; two H0 and three H5 Solidity tiers physically deployed and agree with Rust/TypeScript","state":"unknown until run"},
+    {"plan":"8.4","implementation":"Actual implementation rejection/digest-change checks cover domain, context, payload counts, level, child order, note/nullifier reinterpretation, malformed native wire/Solidity ABI, modulus bounds, secret/trapdoor widths, endian, fixed/control lanes, wrong feed-forward/truncation diagnostic kernels, empty/node confusion and omitted scope in every directly scope-bound role.","evidence":"misuse.json contains implementation answers and before/after digests","acceptance":"passed=true and every named relevant misuse retained; no host expected-label oracle","state":"unknown until run"},
+    {"plan":"8.5","implementation":"H0Reference and existing H0Optimized use the same Roles/Deposit harness. H5Reference, H5Packed and H5Straight share role and storage/ABI semantics; latter two provide packed/indexed and generated literal constant access.","evidence":"both deployment ledgers, bytecode/*.disassembly, source snapshots, benchmark receipts and traces","acceptance":"Five physical runtime deployments in diagnostic environment; disassembly plus opcode attribution before any causal cost-access claim","state":"unknown until run"},
+    {"plan":"8.6","implementation":"Permutation/compression and all seven application roles; twenty-level path hashing; complete zero-tree constructor and first/second deposits with root checks. Identical two-word digest storage accounting and dynamic field ABI. Native reference/optimized per-role samples include30 repetitions and warmup; binary size is whole executable, not independent per-tier text size.","evidence":"benchmarks.json, native-*.json, operation-counts.json, deployment/deposit ledgers, initcode/, traces/ and bytecode/","acceptance":"Keep native latency, gas estimates, receipt gas, init/runtime size and overlapping opcode categories distinct. Report capped failures independently of diagnostic success. Compare measured complete deposits to4M target; do not extrapolate20×primitive gas.","state":"unknown until run"},
+    {"plan":"8 Gate","implementation":"Research-relation eligibility requires complete semantics, constants, full-role/reference parity and misuse. Cost success requires measured complete operations. External security review is deferred, not an execution gate.","evidence":"Main reconciles results.json with all component ledgers; a successful process or research_relation_eligible flag alone is not cost success","state":"not yet eligible or promoted by this handoff"}
+  ],
+  "remaining_unknowns": [
+    "Actual constants/matrix parity, complete-role three-language parity and all misuse outcomes remain unknown; source inspection is not execution proof.",
+    "All five tier deployability, per-operation gas, H0 calibration delta, H5 constant strategy costs, constructor/deposit costs and the preferred4M target remain unknown until the actual local runs finish. A failed transaction must remain a failed measurement, not a populated expected result.",
+    "The constructor is an unfunded deposit-only experiment: zero denomination, no withdrawal registry/dependency checks, dynamic canonical-field calldata and external hash calls. No frozen production-pool identity, custody, withdrawal, hiding, security qualification or production readiness follows.",
+    "Cryptanalytic-model validity and independent exact-instance/security judgments remain deferred/unknown. The typed encoding argument is not a collision-resistance proof, and spec.json explicitly leaves cross-role input overlap for review.",
+    "Native latency artifacts cover permutation/compression and role calls; whole executable byte size combines reference and optimized code and cannot support a per-tier machine-code size claim. EVM full-operation cost is directly measured rather than inferred from native timings.",
+    "If either offline build, trace, deployment, vector or misuse path fails, retain wrapper logs and the partial fresh output tree, make a bounded concrete repair, and rerun in a new resume-* source/output epoch. No component is administratively dropped."
+  ],
+  "optional_H6": {
+    "entry":"Only after H5 complete semantics, constants and full-role/reference parity, actual misuse and matched-tier complete-operation measurements exist; enter only for a specific bounded security-margin comparison, not to reopen the hash-family sweep.",
+    "budget":"At most one width32/d14 comparator after the primary H5 comparison, per plan8.1/8.5/Gate.",
+    "state":"not entered; no necessity invented; no H6 implementation or execution in this assignment",
+    "warning":"Existing H5 selector11 intentionally injects wrong truncation and is not complete H6 semantics."
+  },
+  "deferred_non_goals":["R2-05 changed-transcript/local-EVM work","security reviews","production readiness/security qualification"]
+}

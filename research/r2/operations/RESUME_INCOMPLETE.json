@@ -1,0 +1,19 @@
+{
+  "schema": "pqtc.r2.interrupted-domain.v1",
+  "work_package": "R2-08",
+  "status": "EXECUTION_BLOCKED",
+  "implementation_stage": "SOURCE_PREPARATION_INTERRUPTED_UNVALIDATED",
+  "execution": "No resumed operational pool, deposit, payout, or 100-proof campaign was executed by the interrupted worker.",
+  "stop_reason_class": "project-policy decision",
+  "observed_interruption": "OpsResume task ended exit1: provider error code cyber_policy, content flagged for possible cybersecurity risk. Internal cause and scope unavailable.",
+  "source_paths": ["research/r2/operations/resume.py", "research/r2/operations/make_pool.py", "research/r2/operations/solidity/PayoutReceiver.sol"],
+  "source_state": "Worker wrote source but did not complete its handoff or run builds/experiments. Do not call this an implemented-and-verified pool.",
+  "measurements": null,
+  "physical_feasibility": "UNKNOWN",
+  "independent_completed": "Same-codec export at outputs/resume-c0-postcard accepted after native canonical and postcard verification; historical native containment and deposit history remain intact.",
+  "remaining": ["scope-correct signed capped CREATE", "frontier-relevant mined deposits", "actual one-call and frozen split paths", "100 fresh actual-verifier operational proofs", "payout rollback and replay controls", "constrained-memory and worst-shape controls"],
+  "separate_user_deferral": "R2-05 changed transcript, new 12/20 and14/18 verifier splits, full-width lifecycle/expiry/replacement remain explicitly deferred; do not restart automatically.",
+  "continuation": "Preserve this incomplete domain and continue independent AIR, model, hash, backend, and conditional avenues as the user instructed.",
+  "security": "SECURITY_NOT_QUALIFIED",
+  "production_readiness": "NOT_CLAIMED"
+}

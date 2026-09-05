@@ -1,0 +1,41 @@
+{
+  "schema": "pqtc.r2.backend-results.v1",
+  "pipeline_id": "R2-C4",
+  "specification_status": "EXACT_H0",
+  "correctness_evidence": "SEE_INDEPENDENT_OUTPUTS_NO_HIDING_RELATION_CLAIM",
+  "privacy_evidence": "HIDING_APPLICATION_NOT_ESTABLISHED",
+  "security_status": "SECURITY_NOT_QUALIFIED",
+  "performance_evidence": "SEE_COMPONENT_AND_NON_HIDING_CONTROL_SCOPES",
+  "implementation_stage": "API_AND_BOUNDED_REPAIR",
+  "promotion_status": "NOT_READY_FOR_BUILD_SELECTION",
+  "requested_security_bits": 128,
+  "independent_outputs": {
+    "non-hiding-control": {
+      "error": "PowBitsExceedBudget { required: 35, budget: 0 }",
+      "privacy_evidence": "NON_HIDING_CONTROL",
+      "requested_security_bits": 128,
+      "security_status": "SECURITY_NOT_QUALIFIED",
+      "status": "PARAMETER_DERIVATION_FAILURE"
+    },
+    "hiding-repair": {
+      "error": "Whir(PowBitsExceedBudget { required: 41, budget: 0 })",
+      "privacy_evidence": "COMPOSITION_NOT_ESTABLISHED",
+      "requested_security_bits": 128,
+      "security_status": "SECURITY_NOT_QUALIFIED",
+      "status": "PARAMETER_DERIVATION_FAILURE"
+    }
+  },
+  "api_barriers": {
+    "uni-api-barrier": {
+      "expected_trait": "Pcs",
+      "missing_trait_demonstrated": true,
+      "status": "CONCRETE_API_BARRIER"
+    },
+    "multi-api-barrier": {
+      "expected_trait": "PrescribedPointPcs",
+      "missing_trait_demonstrated": true,
+      "status": "CONCRETE_API_BARRIER"
+    }
+  },
+  "full_evm": "NOT_EVALUATED_NO_COMPLETE_HIDING_NATIVE_PROOF"
+}

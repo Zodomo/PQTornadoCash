@@ -1,0 +1,81 @@
+ZkWhirConfig {
+    inner: WhirConfig {
+        num_variables: 16,
+        params: ProtocolParameters {
+            starting_log_inv_rate: 2,
+            round_log_inv_rates: [],
+            folding_factor: Constant(
+                4,
+            ),
+            soundness_type: CapacityBound,
+            security_level: 32,
+            pow_bits: 0,
+        },
+        round_parameters: [
+            RoundConfig {
+                pow_bits: 0,
+                folding_pow_bits: 0,
+                num_queries: 17,
+                ood_samples: 1,
+                num_variables: 12,
+                folding_factor: 4,
+                log_inv_rate: 5,
+                domain_size: 262144,
+                folded_domain_gen: 1657000625,
+            },
+            RoundConfig {
+                pow_bits: 0,
+                folding_pow_bits: 0,
+                num_queries: 7,
+                ood_samples: 1,
+                num_variables: 8,
+                folding_factor: 4,
+                log_inv_rate: 8,
+                domain_size: 131072,
+                folded_domain_gen: 298008106,
+            },
+        ],
+        folding_schedule: [
+            4,
+            4,
+            4,
+        ],
+        commitment_ood_samples: 1,
+        starting_folding_pow_bits: 0,
+        final_queries: 5,
+        final_pow_bits: 0,
+        final_sumcheck_rounds: 4,
+        final_folding_pow_bits: 0,
+        _extension_field: PhantomData<p3_field::extension::ExtField<p3_monty_31::monty_31::MontyField31<p3_baby_bear::baby_bear::BabyBearParameters>, 4, p3_field::extension::Binomial<p3_monty_31::monty_31::MontyField31<p3_baby_bear::baby_bear::BabyBearParameters>>>>,
+        _challenger: PhantomData<p3_challenger::duplex_challenger::DuplexChallenger<p3_monty_31::monty_31::MontyField31<p3_baby_bear::baby_bear::BabyBearParameters>, p3_poseidon2::Poseidon2<p3_monty_31::monty_31::MontyField31<p3_baby_bear::baby_bear::BabyBearParameters>, p3_monty_31::aarch64_neon::poseidon2::Poseidon2ExternalLayerMonty31<p3_baby_bear::baby_bear::BabyBearParameters, 16>, p3_monty_31::aarch64_neon::poseidon2::Poseidon2InternalLayerMonty31<p3_baby_bear::baby_bear::BabyBearParameters, 16, p3_baby_bear::poseidon2::BabyBearInternalLayerParameters>, 16, 7>, 16, 8>>,
+    },
+    zk: ZkParameters {
+        ell_zk: 4,
+        mask_log_inv_rate: 1,
+    },
+    final_queries: 5,
+    final_pow_bits: 0,
+    oracle_randomness: [
+        17,
+        7,
+        5,
+    ],
+    sumcheck_mask: MaskCodeShape {
+        message_len: 4,
+        randomness_len: 38,
+        domain_size: 128,
+    },
+    switch_masks: [
+        MaskCodeShape {
+            message_len: 18,
+            randomness_len: 38,
+            domain_size: 128,
+        },
+        MaskCodeShape {
+            message_len: 8,
+            randomness_len: 38,
+            domain_size: 128,
+        },
+    ],
+    mask_queries: 38,
+}

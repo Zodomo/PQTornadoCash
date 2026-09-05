@@ -122,7 +122,8 @@ def inventory(p):
     base_count = sum(row['base_width'] for row in rows)
     observed=p.get('observed_input_matrices')
     if observed is not None:
-        expected=[(r['commitment'],r['matrix'],r['base_width'],r['lde_height']) for r in rows]
+        commitment_order = ['random', 'trace', 'quotient']
+        expected=[(commitment_order.index(r['commitment']),r['matrix'],r['base_width'],r['lde_height']) for r in rows]
         actual=[(r['commitment'],r['matrix'],r['base_width'],r['lde_height']) for r in observed]
         if actual != expected:
             raise ValueError(f'actual committed matrices differ from hiding PCS inventory: {actual} != {expected}')

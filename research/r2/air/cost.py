@@ -3,6 +3,7 @@
 Not a proof verifier; no custody path; the instruction tape is constructor-bound.
 """
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -20,15 +21,20 @@ SAFE_ENV.update({"NO_COLOR": "1", "FOUNDRY_DISABLE_NIGHTLY_WARNING": "1"})
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--input", required=True, type=Path)
+    ap.add_argument("--output", required=True, type=Path)
     ap.add_argument("--rpc-url", required=True)
     ap.add_argument("--diagnostic", action="store_true")
     args = ap.parse_args()
     parsed = urlparse(args.rpc_url)
     if parsed.hostname not in {"localhost", "127.0.0.1", "::1"} or parsed.scheme != "http" or parsed.username or parsed.password:
         raise ValueError("disposable local HTTP RPC only")
-    out = args.input.resolve()
-    vector = json.loads((out / "air-cost-vector.json").read_text())
-    program = (out / "air-program.bin").read_bytes()
+    source = args.input.resolve()
+    out = args.output.resolve()
+    if not any(part.startswith("resume-") for part in out.parts):
+        raise ValueError("new outputs must be under resume-*")
+    out.mkdir(parents=True, exist_ok=False)
+    vector = json.loads((source / "air-cost-vector.json").read_text())
+    program = (source / "air-program.bin").read_bytes()
     requests = []
     def rpc(method, params):
         payload = {"jsonrpc": "2.0", "id": len(requests)+1, "method": method, "params": params}
@@ -50,6 +56,12 @@ def main():
               "security": "SECURITY_NOT_QUALIFIED", "promotion": "NOT_AUTHORIZED", "diagnostic": args.diagnostic,
               "scope": "All compiled AIR constraints in BabyBear^4; caller-supplied periodic polynomial evaluations; no FRI, transcript, quotient identity, custody, or proof verification",
               "program_bytes": len(program), "opcode_inventory": vector["operations"], "rpc_url": args.rpc_url}
+    result.update({"input_path": str(source), "program_sha256": hashlib.sha256(program).hexdigest(),
+                   "vector_sha256": hashlib.sha256((source / "air-cost-vector.json").read_bytes()).hexdigest(),
+                   "program_keccak256": vector["program_keccak256"],
+                   "configuration": json.loads((source / "configuration.json").read_text()),
+                   "tape_keccak_opcode_gas": 30+6*((len(program)+31)//32),
+                   "tape_keccak_cost_scope": "KECCAK256 opcode only; memory and tape calldata separately charged"})
     isolated = tempfile.TemporaryDirectory(prefix="pqtc-r2-air-", dir="/tmp")
     work = Path(isolated.name)
     (work / "src").mkdir()
@@ -83,6 +95,22 @@ def main():
         expected = b"".join(word(v) for v in vector["expected"])
         if returned != expected:
             raise AssertionError("Solidity AIR result differs from independent symbolic Rust evaluation")
+        controls = []
+        changed_program = bytearray(calldata)
+        changed_program[4+192+32] ^= 1
+        changed_input = bytearray(calldata)
+        input_start = 4+192+len(byte_tail)+32
+        changed_input[input_start:input_start+32] = word(2013265921)
+        for name, changed in (("changed-bound-tape", changed_program), ("noncanonical-input", changed_input)):
+            rejected = False
+            try:
+                rpc("eth_call", [{**call, "data": "0x"+changed.hex()}, "latest"])
+            except RuntimeError as exc:
+                rejected = "revert" in str(exc).lower()
+            if not rejected:
+                raise AssertionError(f"arithmetic control not rejected: {name}")
+            controls.append({"control": name, "rejected": True, "scope": "arithmetic evaluator, not proof verification"})
+        result["negative_controls"] = controls
         evaluation = receipt(rpc("eth_sendTransaction", [call]))
         if int(evaluation["status"], 16) != 1:
             raise RuntimeError("AIR evaluation transaction failed")

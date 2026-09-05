@@ -1,0 +1,254 @@
+{
+  "end_to_end_security": "NOT_ESTABLISHED",
+  "report": {
+    "assumption": "CapacityBound",
+    "field_order_log2_estimate": 123.62756238530045,
+    "field_order_log2_floor": 123,
+    "gamma_round": {
+      "combined": {
+        "bits": 0.0,
+        "classification": "Conditional",
+        "vacuous": true
+      },
+      "mca_sum": {
+        "bits": 92.6779178168865,
+        "classification": "Conditional",
+        "vacuous": false
+      },
+      "product_list": {
+        "classification": "Conditional",
+        "log2_size": 326.8864229850538
+      },
+      "product_list_over_field": {
+        "bits": 0.0,
+        "classification": "Conditional",
+        "vacuous": true
+      }
+    },
+    "mask_groups": [
+      {
+        "analysis_log_inv_rate": 1,
+        "analysis_radius": 0.475,
+        "domain_size": 128,
+        "dyadic_dimension": 64,
+        "effective_queries": 38,
+        "mca": {
+          "bits": 107.67807190511263,
+          "classification": "Conditional",
+          "vacuous": false
+        },
+        "message_len": 4,
+        "paired_list": {
+          "classification": "Conditional",
+          "log2_size": 76.98495147190988
+        },
+        "query_miss": {
+          "bits": 35.32520554012688,
+          "classification": "Proven",
+          "vacuous": false
+        },
+        "randomized_dimension": 42,
+        "randomized_rate": 0.328125,
+        "randomness_len": 38,
+        "requested_queries": 38,
+        "role": {
+          "SumcheckMask": {
+            "round": 0
+          }
+        },
+        "width": 4
+      },
+      {
+        "analysis_log_inv_rate": 1,
+        "analysis_radius": 0.475,
+        "domain_size": 128,
+        "dyadic_dimension": 64,
+        "effective_queries": 38,
+        "mca": {
+          "bits": 109.67807190511263,
+          "classification": "Conditional",
+          "vacuous": false
+        },
+        "message_len": 18,
+        "paired_list": {
+          "classification": "Conditional",
+          "log2_size": 24.643856189774723
+        },
+        "query_miss": {
+          "bits": 35.32520554012688,
+          "classification": "Proven",
+          "vacuous": false
+        },
+        "randomized_dimension": 56,
+        "randomized_rate": 0.4375,
+        "randomness_len": 38,
+        "requested_queries": 38,
+        "role": {
+          "CodeSwitchMask": {
+            "round": 0
+          }
+        },
+        "width": 1
+      },
+      {
+        "analysis_log_inv_rate": 1,
+        "analysis_radius": 0.475,
+        "domain_size": 128,
+        "dyadic_dimension": 64,
+        "effective_queries": 38,
+        "mca": {
+          "bits": 107.67807190511263,
+          "classification": "Conditional",
+          "vacuous": false
+        },
+        "message_len": 4,
+        "paired_list": {
+          "classification": "Conditional",
+          "log2_size": 76.98495147190988
+        },
+        "query_miss": {
+          "bits": 35.32520554012688,
+          "classification": "Proven",
+          "vacuous": false
+        },
+        "randomized_dimension": 42,
+        "randomized_rate": 0.328125,
+        "randomness_len": 38,
+        "requested_queries": 38,
+        "role": {
+          "SumcheckMask": {
+            "round": 1
+          }
+        },
+        "width": 4
+      },
+      {
+        "analysis_log_inv_rate": 1,
+        "analysis_radius": 0.475,
+        "domain_size": 128,
+        "dyadic_dimension": 64,
+        "effective_queries": 38,
+        "mca": {
+          "bits": 109.67807190511263,
+          "classification": "Conditional",
+          "vacuous": false
+        },
+        "message_len": 8,
+        "paired_list": {
+          "classification": "Conditional",
+          "log2_size": 24.643856189774723
+        },
+        "query_miss": {
+          "bits": 35.32520554012688,
+          "classification": "Proven",
+          "vacuous": false
+        },
+        "randomized_dimension": 46,
+        "randomized_rate": 0.359375,
+        "randomness_len": 38,
+        "requested_queries": 38,
+        "role": {
+          "CodeSwitchMask": {
+            "round": 1
+          }
+        },
+        "width": 1
+      },
+      {
+        "analysis_log_inv_rate": 1,
+        "analysis_radius": 0.475,
+        "domain_size": 128,
+        "dyadic_dimension": 64,
+        "effective_queries": 38,
+        "mca": {
+          "bits": 107.67807190511263,
+          "classification": "Conditional",
+          "vacuous": false
+        },
+        "message_len": 4,
+        "paired_list": {
+          "classification": "Conditional",
+          "log2_size": 76.98495147190988
+        },
+        "query_miss": {
+          "bits": 35.32520554012688,
+          "classification": "Proven",
+          "vacuous": false
+        },
+        "randomized_dimension": 42,
+        "randomized_rate": 0.328125,
+        "randomness_len": 38,
+        "requested_queries": 38,
+        "role": {
+          "SumcheckMask": {
+            "round": 2
+          }
+        },
+        "width": 4
+      }
+    ],
+    "query_round": {
+      "before_pow": {
+        "bits": 34.64805336054301,
+        "classification": "Proven",
+        "vacuous": false
+      },
+      "masks_before_pow_bits": [
+        35.32520554012688,
+        35.32520554012688,
+        35.32520554012688,
+        35.32520554012688,
+        35.32520554012688
+      ],
+      "shared_pow_bits": 0,
+      "source_before_pow_bits": 34.64805336054301,
+      "source_with_pow": {
+        "bits": 34.64805336054301,
+        "classification": "Proven",
+        "vacuous": false
+      },
+      "weakest_before_pow_bits": 34.64805336054301,
+      "with_pow": {
+        "bits": 34.64805336054301,
+        "classification": "Proven",
+        "vacuous": false
+      }
+    },
+    "round_by_round": {
+      "bits": 0.0,
+      "classification": "Conditional",
+      "vacuous": true
+    },
+    "source": {
+      "analysis_log_inv_rate": 7,
+      "analysis_radius": 0.991796875,
+      "domain_size": 4096,
+      "dyadic_dimension": 32,
+      "effective_queries": 5,
+      "mca": {
+        "bits": 92.67807190511263,
+        "classification": "Conditional",
+        "vacuous": false
+      },
+      "message_len": 16,
+      "paired_list": {
+        "classification": "Conditional",
+        "log2_size": 46.64385618977472
+      },
+      "query_miss": {
+        "bits": 34.64805336054301,
+        "classification": "Proven",
+        "vacuous": false
+      },
+      "randomized_dimension": 21,
+      "randomized_rate": 0.005126953125,
+      "randomness_len": 5,
+      "requested_queries": 5,
+      "role": "Source",
+      "width": 1
+    },
+    "target_bits": 32
+  },
+  "requested_security_bits": 32,
+  "scope": "UPSTREAM_HIDING_BASE_CASE_IDEAL_IOP_RBR_DIAGNOSTIC_ONLY"
+}

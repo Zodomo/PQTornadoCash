@@ -258,16 +258,18 @@ def checks():
         raise AssertionError("rank-deficient gas fit accepted")
     rows = [{"id": "unknown", "regime": "fixed_unqualified", "measurement_status": "MEASURED", "gas": None}]
     assert pareto(rows, ["gas"])["sets"][0]["frontier_ids"] == []
-    scalar_ledger = {"name": "unsigned-scalars", "bytes": 4, "children": []}
-    pc = postcard_model(b"\x00\x7f\x80\x01", scalar_ledger)
-    assert pc["scalar_width_histogram"][1] == 2 and pc["scalar_width_histogram"][2] == 1
-    assert pc["lower_bound"]["bytes"] == 3
+    fixture = ROOT/"research/r2/air/outputs/C1-decomposed"
+    raw = (fixture/"proof.postcard").read_bytes()
+    ledger = load(fixture/"byte-ledger.json")
+    proof = load(fixture/"proof.json")
+    assert postcard_model(raw, ledger, proof)["structural_bytes_residual"] == 0
+    changed = bytes([raw[0] ^ 1]) + raw[1:]
     try:
-        postcard_model(b"\x80\x00", {"name": "bad-varint", "bytes": 2, "children": []})
+        postcard_model(changed, ledger, proof)
     except ValueError:
         pass
     else:
-        raise AssertionError("noncanonical postcard varint accepted")
+        raise AssertionError("changed postcard wire accepted against typed proof")
     print("R2-06 structural, frontier, rank, and unknown-value checks passed")
 
 

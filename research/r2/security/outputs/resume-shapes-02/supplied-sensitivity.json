@@ -1,0 +1,201 @@
+{
+  "classification": "INDEPENDENT_ARITHMETIC_SENSITIVITY_NOT_SECURITY_QUALIFICATION",
+  "does_not_change": [
+    "actual proof",
+    "query count",
+    "gas",
+    "unconditional UDR estimate"
+  ],
+  "model": {
+    "analysis_m_range": [
+      3,
+      257
+    ],
+    "batches": 210,
+    "commit_and_query_quantum_grinding_credit_each": 8,
+    "constraints": 1186,
+    "degree": 7,
+    "field_budget_bits": 120,
+    "fold_log": 1,
+    "log_blowup": 4,
+    "proof_degree_bits": 9,
+    "rotations": 2
+  },
+  "not_established": [
+    "theorem applicability",
+    "knowledge extraction",
+    "quantum ROM composition",
+    "hash structural security",
+    "zero knowledge",
+    "implementation correctness",
+    "a 100-bit system-security claim"
+  ],
+  "note": "The epsilon-inclusive batch row and probability sum are arithmetic sensitivity checks, not proposed replacement theorems.",
+  "reviewed_commit": "e51a5c5ccc4f50e0beb07cdf04d7f8dd258c7997",
+  "rows": [
+    {
+      "fri_only_objective": {
+        "arithmetic_probability_sum_bits": 56.201171930538735,
+        "binding_terms": [
+          "batched_openings"
+        ],
+        "m": 185,
+        "minimum_modeled_bits": 56.20122648553626,
+        "terms": {
+          "air_rlc": 100.2528363288332,
+          "batched_openings": 56.20122648553626,
+          "challenge_cap": 120.0,
+          "deep_ali": 98.46261284689935,
+          "fri_commit": 71.90858561753154,
+          "fri_query": 71.87539468465629,
+          "supplied_mmcs_cap": 128.0
+        }
+      },
+      "full_modeled_objective": {
+        "arithmetic_probability_sum_bits": 70.05506236692649,
+        "binding_terms": [
+          "fri_query"
+        ],
+        "m": 23,
+        "minimum_modeled_bits": 71.00713934014001,
+        "terms": {
+          "air_rlc": 103.23352285377636,
+          "batched_openings": 71.10465911025209,
+          "challenge_cap": 120.0,
+          "deep_ali": 101.44329937184251,
+          "fri_commit": 86.81201791207883,
+          "fri_query": 71.00713934014001,
+          "supplied_mmcs_cap": 128.0
+        }
+      },
+      "queries": 32,
+      "same_m_with_full_epsilon_in_batch_sensitivity": {
+        "arithmetic_probability_sum_bits": 70.05506220737966,
+        "binding_terms": [
+          "fri_query"
+        ],
+        "m": 23,
+        "minimum_modeled_bits": 71.00713934014001,
+        "terms": {
+          "air_rlc": 103.23352285377636,
+          "batched_openings": 71.10465877999795,
+          "challenge_cap": 120.0,
+          "deep_ali": 101.44329937184251,
+          "fri_commit": 86.81201791207883,
+          "fri_query": 71.00713934014001,
+          "supplied_mmcs_cap": 128.0
+        }
+      }
+    },
+    {
+      "fri_only_objective": {
+        "arithmetic_probability_sum_bits": 81.5803929039617,
+        "binding_terms": [
+          "batched_openings"
+        ],
+        "m": 5,
+        "minimum_modeled_bits": 81.58044527545378,
+        "terms": {
+          "air_rlc": 105.3286800868167,
+          "batched_openings": 81.58044527545378,
+          "challenge_cap": 120.0,
+          "deep_ali": 103.53845660488285,
+          "fri_commit": 97.28769723338418,
+          "fri_query": 97.3998308600031,
+          "supplied_mmcs_cap": 128.0
+        }
+      },
+      "full_modeled_objective": {
+        "arithmetic_probability_sum_bits": 84.83677627109813,
+        "binding_terms": [
+          "batched_openings"
+        ],
+        "m": 3,
+        "minimum_modeled_bits": 84.84082875835226,
+        "terms": {
+          "air_rlc": 105.9807567833964,
+          "batched_openings": 84.84082875835226,
+          "challenge_cap": 120.0,
+          "deep_ali": 104.19053330146255,
+          "fri_commit": 100.54754949457097,
+          "fri_query": 93.32516377585048,
+          "supplied_mmcs_cap": 128.0
+        }
+      },
+      "queries": 48,
+      "same_m_with_full_epsilon_in_batch_sensitivity": {
+        "arithmetic_probability_sum_bits": 84.83613966555963,
+        "binding_terms": [
+          "batched_openings"
+        ],
+        "m": 3,
+        "minimum_modeled_bits": 84.84019036249009,
+        "terms": {
+          "air_rlc": 105.9807567833964,
+          "batched_openings": 84.84019036249009,
+          "challenge_cap": 120.0,
+          "deep_ali": 104.19053330146255,
+          "fri_commit": 100.54754949457097,
+          "fri_query": 93.32516377585048,
+          "supplied_mmcs_cap": 128.0
+        }
+      }
+    },
+    {
+      "fri_only_objective": {
+        "arithmetic_probability_sum_bits": 84.84079899868841,
+        "binding_terms": [
+          "batched_openings"
+        ],
+        "m": 3,
+        "minimum_modeled_bits": 84.84082875835226,
+        "terms": {
+          "air_rlc": 105.9807567833964,
+          "batched_openings": 84.84082875835226,
+          "challenge_cap": 120.0,
+          "deep_ali": 104.19053330146255,
+          "fri_commit": 100.54754949457097,
+          "fri_query": 121.76688503446732,
+          "supplied_mmcs_cap": 128.0
+        }
+      },
+      "full_modeled_objective": {
+        "arithmetic_probability_sum_bits": 84.84079899868841,
+        "binding_terms": [
+          "batched_openings"
+        ],
+        "m": 3,
+        "minimum_modeled_bits": 84.84082875835226,
+        "terms": {
+          "air_rlc": 105.9807567833964,
+          "batched_openings": 84.84082875835226,
+          "challenge_cap": 120.0,
+          "deep_ali": 104.19053330146255,
+          "fri_commit": 100.54754949457097,
+          "fri_query": 121.76688503446732,
+          "supplied_mmcs_cap": 128.0
+        }
+      },
+      "queries": 64,
+      "same_m_with_full_epsilon_in_batch_sensitivity": {
+        "arithmetic_probability_sum_bits": 84.8401606159919,
+        "binding_terms": [
+          "batched_openings"
+        ],
+        "m": 3,
+        "minimum_modeled_bits": 84.84019036249009,
+        "terms": {
+          "air_rlc": 105.9807567833964,
+          "batched_openings": 84.84019036249009,
+          "challenge_cap": 120.0,
+          "deep_ali": 104.19053330146255,
+          "fri_commit": 100.54754949457097,
+          "fri_query": 121.76688503446732,
+          "supplied_mmcs_cap": 128.0
+        }
+      }
+    }
+  ],
+  "source": "https://github.com/Zodomo/PQTornadoCash/blob/e51a5c5ccc4f50e0beb07cdf04d7f8dd258c7997/research/security-model/calculator/security_calculator.py",
+  "source_scope": "_common_terms, _ldr_candidate, _batch_ldr, _ldr"
+}

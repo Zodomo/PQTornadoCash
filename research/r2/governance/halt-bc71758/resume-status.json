@@ -1,0 +1,36 @@
+{
+  "schema": "pqtc.r2.resume-status.v1",
+  "checkpoint": "R2-HALT-2026-09-05",
+  "status": "PAUSED_BY_USER",
+  "recorded_utc": "2026-09-05T00:35:52Z",
+  "reason": "User requested halting research and preserving plans, documentation and records for later resumption.",
+  "goal": "research/r2/goal.json",
+  "normative_plan": "pqtc-independent-review/FOLLOW_UP_RESEARCH_PLAN.md",
+  "resume_entrypoint": "research/r2/RESUME.md",
+  "last_published_progress_commit_before_halt": "3242e02",
+  "final_decision": null,
+  "next_domain": "R2-06",
+  "next_experiment": "Run the already-built C0 fixed-b4-q32 anchor using research/r2/models/run.py; it was not run before the halt.",
+  "global_quota": null,
+  "running_jobs": 0,
+  "services": [
+    {"name": "pqtc-r2-osaka", "state": "STOPPED", "exit_code": 0, "endpoint": "http://127.0.0.1:18545"},
+    {"name": "pqtc-r2-prague-diagnostic", "state": "STOPPED", "exit_code": 0, "endpoint": "http://127.0.0.1:18546"}
+  ],
+  "chain_state": "Disposable node state was not persisted. Receipts, signed transactions, calldata and compressed traces are retained. Restarting a node does not restore deployed addresses or checkpoints; replay the selected runner.",
+  "packages": [
+    {"id":"R2-00","status":"MEASURED_BASELINE_CHECKPOINT","completed":"Five clean-checkout metadata checks passed; clean Rust/Foundry builds; one retained plus ten fresh native/codec/Foundry proof checks; exact parser and ABI ledgers; capped signed CREATE and retained withdrawal attempt, with separate high-gas controls; source epochs and cleanup exclusion recorded.","remaining":"Additional capped fresh-proof distribution and final cross-candidate calibration, not another claim that metadata checks prove feasibility.","evidence":"research/r2/baseline/outputs/r2-main/results.json"},
+    {"id":"R2-01","status":"MEASURED_C0_ANALYSIS_PARTIAL","completed":"Pinned native, translated and independent arithmetic;9180 term rows,18 native rows; full-m objectives,210/330/524 inventory, eight games and reduced-round experiment.","remaining":"Run the current shape adapter against C1/C2/C3 observations; resolve theorem applicability separately. Security reviews deferred by user, not an execution gate.","evidence":"research/r2/security/outputs/c0/results.json"},
+    {"id":"R2-02","status":"IMPLEMENTED_AND_RUST_BUILT_NOT_MEASURED","completed":"Complete H5 role source, independent Rust/TypeScript and five Solidity tiers implemented; Rust package built.","remaining":"Constants regeneration/parity;10000-plus shared three-language vectors; misuse suite; matched tier, constant-access, constructor and deposit measurements.","evidence":"research/r2/hash/runs/build-native-01/command.json"},
+    {"id":"R2-03","status":"MEASURED_SINGLE_C1_CONTROL","completed":"One C1 decomposed full native hiding proof verified; shape, byte ledger, raw proof and AIR arithmetic tape retained.","remaining":"Whole-round and lanes4 controls; mutation proofs; fixed/varied repeat distributions; normalized profiles; actual EVM arithmetic cost.","evidence":"research/r2/air/outputs/C1-decomposed/results.json"},
+    {"id":"R2-04","status":"MEASURED_SINGLE_C2_C3_CONTROLS","completed":"Complete H5 horizontal C2 and decomposed vertical C3 native hiding proofs verified for the same H5 case. Symbolic DAG exporter stall repaired.","remaining":"Full parity/misuse and mutations; same-codec C0 export; repeat distributions; other geometries; public-context study; normalized comparisons and Solidity cost prototype execution.","evidence":"research/r2/air/outputs/C2-horizontal-02/results.json"},
+    {"id":"R2-05","status":"INCOMPLETE_DEFERRED_BY_USER","completed":"q32/q48 transcript and continuation source implemented; q32 native build passed.","remaining":"Complete changed-transcript proof, cross-language parity, lifecycle and signed local transaction experiments. User explicitly requested moving past this interrupted domain before later halting all research.","evidence":"research/r2/transcript/INCOMPLETE.json"},
+    {"id":"R2-06","status":"NEXT_DOMAIN_PARTIAL","completed":"Model invariant check passed; historical native byte formulas matched six retained observations with zero residual. No EVM fit claimed. Actual anchor binary built.","remaining":"Execute first new anchor and bounded grid; integrate actual C1/C2/C3 ledgers; fit identifiable held-out EVM model; assumption-separated frontiers; at most one justified field/extension experiment.","evidence":"research/r2/models/outputs/historical-calibration.json"},
+    {"id":"R2-07","status":"MEASURED_API_BARRIERS_NATIVE_CONTROLS_UNEXECUTED","completed":"Both missing hiding PCS traits demonstrated by exact compiler diagnostics. Exact H0 non-hiding control and actual-trace hiding repair binaries built.","remaining":"Run H0 control and bounded hiding repair at requested32/128 profiles, including malformed/privacy observations; attempt standalone Solidity harness repair. Neither complete hiding backend nor its impossibility has been demonstrated.","evidence":"research/r2/backend/outputs/api/results.json"},
+    {"id":"R2-08","status":"PARTIAL_BASELINE_AND_NATIVE_AVAILABILITY","completed":"Frozen local baseline transactions and constructor measured; native containment run checked two valid controls, seven wire mutations and ten constructed mutations; all rejected as expected, no natural panic observed.4096-deposit native history and279 withdrawal cases generated.","remaining":"New operational pool generator and payout receiver unexecuted; same-codec export binary built but export not run; changed-transcript integration, splits,100-proof workload, prefix lifecycle, replay and payout rollback experiments pending.","evidence":"research/r2/operations/outputs/containment-01/results.json"},
+    {"id":"R2-09","status":"PARTIAL_CONDITIONAL_DIAGNOSTICS","completed":"Exact retained A/B L2 envelope diagnostics;64-commit local Flock configuration search; hardware capability inventory.","remaining":"Conditional gate evaluation/check command and supported repair execution; native portable profile; recursion/aggregation/STIR/Circle entry assessments against completed evidence. No x86 host/emulator was available.","evidence":"research/r2/conditional/commands.json"},
+    {"id":"R2-10","status":"PAUSE_HANDOFF_NOT_FINAL_RESEARCH_RETURN","completed":"Paused report, ledgers, findings tracking, manifests and resume instructions prepared at user request.","remaining":"Finish research after authorization to resume, then produce the final comparative decision and independent review checkpoints. No current final architectural or production-readiness decision.","evidence":"research/r2/final/TARGETED_RESEARCH_REPORT.md"}
+  ],
+  "review_state": "Two internal agent reviews were received before the deferral: initial corpus freeze required corrections; C0 security arithmetic found no actionable defect within its conditional scope. Canonical mapping and deposit-backed corpus corrections were executed afterward; no independent re-review claimed. No external cryptographic acceptance.",
+  "historical_records": "Original pre-R2 evidence remains unchanged. Worker handoff status files record what workers themselves executed, not current Main execution; this checkpoint and actual run artifacts are authoritative for resume status."
+}

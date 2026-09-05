@@ -1,0 +1,358 @@
+{
+  "abi_bytes": null,
+  "fixed_field_bytes": 55948,
+  "frontier_policy": "Native ledger retains actual shared frontier; no q*capHeight subtraction",
+  "kind": "exact_value_dependent_wire_length",
+  "lower_bound": {
+    "assumption": "same typed inventory; Montgomery fields occupy four bytes, variable scalars/counts and option tags at least one",
+    "bytes": 85846,
+    "measurement_status": "EXACT_ANALYTICAL_BOUND"
+  },
+  "measurement_status": "MEASURED",
+  "native_sections": [
+    {
+      "bytes": 152,
+      "section": "/proof.postcard/commitments/trace"
+    },
+    {
+      "bytes": 155,
+      "section": "/proof.postcard/commitments/quotient"
+    },
+    {
+      "bytes": 155,
+      "section": "/proof.postcard/commitments/random"
+    },
+    {
+      "bytes": 1313,
+      "section": "/proof.postcard/out-of-domain-openings/trace-local"
+    },
+    {
+      "bytes": 1314,
+      "section": "/proof.postcard/out-of-domain-openings/trace-next"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/out-of-domain-openings/preprocessed-local"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/out-of-domain-openings/preprocessed-next"
+    },
+    {
+      "bytes": 521,
+      "section": "/proof.postcard/out-of-domain-openings/quotient-chunks"
+    },
+    {
+      "bytes": 66,
+      "section": "/proof.postcard/out-of-domain-openings/random"
+    },
+    {
+      "bytes": 729,
+      "section": "/proof.postcard/PCS/hiding-random-codewords"
+    },
+    {
+      "bytes": 2143,
+      "section": "/proof.postcard/PCS/FRI/commitments"
+    },
+    {
+      "bytes": 57,
+      "section": "/proof.postcard/PCS/FRI/commit-PoW"
+    },
+    {
+      "bytes": 1089,
+      "section": "/proof.postcard/PCS/FRI/input-openings/batch-0/row-openings"
+    },
+    {
+      "bytes": 1089,
+      "section": "/proof.postcard/PCS/FRI/input-openings/batch-0/hiding-salts"
+    },
+    {
+      "bytes": 29683,
+      "section": "/proof.postcard/PCS/FRI/input-openings/batch-0/shared-pruned-frontier"
+    },
+    {
+      "bytes": 11073,
+      "section": "/proof.postcard/PCS/FRI/input-openings/batch-1/row-openings"
+    },
+    {
+      "bytes": 1089,
+      "section": "/proof.postcard/PCS/FRI/input-openings/batch-1/hiding-salts"
+    },
+    {
+      "bytes": 29736,
+      "section": "/proof.postcard/PCS/FRI/input-openings/batch-1/shared-pruned-frontier"
+    },
+    {
+      "bytes": 8481,
+      "section": "/proof.postcard/PCS/FRI/input-openings/batch-2/row-openings"
+    },
+    {
+      "bytes": 8481,
+      "section": "/proof.postcard/PCS/FRI/input-openings/batch-2/hiding-salts"
+    },
+    {
+      "bytes": 29751,
+      "section": "/proof.postcard/PCS/FRI/input-openings/batch-2/shared-pruned-frontier"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/PCS/FRI/input-openings/length/option-prefix"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-0/log-arity"
+    },
+    {
+      "bytes": 545,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-0/sibling-values"
+    },
+    {
+      "bytes": 1089,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-0/hiding-salts"
+    },
+    {
+      "bytes": 27274,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-0/shared-pruned-frontier"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-1/log-arity"
+    },
+    {
+      "bytes": 545,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-1/sibling-values"
+    },
+    {
+      "bytes": 1089,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-1/hiding-salts"
+    },
+    {
+      "bytes": 24837,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-1/shared-pruned-frontier"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-2/log-arity"
+    },
+    {
+      "bytes": 545,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-2/sibling-values"
+    },
+    {
+      "bytes": 1089,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-2/hiding-salts"
+    },
+    {
+      "bytes": 22364,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-2/shared-pruned-frontier"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-3/log-arity"
+    },
+    {
+      "bytes": 545,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-3/sibling-values"
+    },
+    {
+      "bytes": 1089,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-3/hiding-salts"
+    },
+    {
+      "bytes": 19981,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-3/shared-pruned-frontier"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-4/log-arity"
+    },
+    {
+      "bytes": 545,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-4/sibling-values"
+    },
+    {
+      "bytes": 1089,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-4/hiding-salts"
+    },
+    {
+      "bytes": 17516,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-4/shared-pruned-frontier"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-5/log-arity"
+    },
+    {
+      "bytes": 545,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-5/sibling-values"
+    },
+    {
+      "bytes": 1089,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-5/hiding-salts"
+    },
+    {
+      "bytes": 15151,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-5/shared-pruned-frontier"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-6/log-arity"
+    },
+    {
+      "bytes": 545,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-6/sibling-values"
+    },
+    {
+      "bytes": 1089,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-6/hiding-salts"
+    },
+    {
+      "bytes": 12698,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-6/shared-pruned-frontier"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-7/log-arity"
+    },
+    {
+      "bytes": 545,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-7/sibling-values"
+    },
+    {
+      "bytes": 1089,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-7/hiding-salts"
+    },
+    {
+      "bytes": 10259,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-7/shared-pruned-frontier"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-8/log-arity"
+    },
+    {
+      "bytes": 545,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-8/sibling-values"
+    },
+    {
+      "bytes": 1089,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-8/hiding-salts"
+    },
+    {
+      "bytes": 7992,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-8/shared-pruned-frontier"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-9/log-arity"
+    },
+    {
+      "bytes": 545,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-9/sibling-values"
+    },
+    {
+      "bytes": 1089,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-9/hiding-salts"
+    },
+    {
+      "bytes": 5783,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-9/shared-pruned-frontier"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-10/log-arity"
+    },
+    {
+      "bytes": 545,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-10/sibling-values"
+    },
+    {
+      "bytes": 1089,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-10/hiding-salts"
+    },
+    {
+      "bytes": 3664,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-10/shared-pruned-frontier"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-11/log-arity"
+    },
+    {
+      "bytes": 545,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-11/sibling-values"
+    },
+    {
+      "bytes": 1089,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-11/hiding-salts"
+    },
+    {
+      "bytes": 2063,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-11/shared-pruned-frontier"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-12/log-arity"
+    },
+    {
+      "bytes": 545,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-12/sibling-values"
+    },
+    {
+      "bytes": 1089,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-12/hiding-salts"
+    },
+    {
+      "bytes": 602,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-12/shared-pruned-frontier"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-13/log-arity"
+    },
+    {
+      "bytes": 545,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-13/sibling-values"
+    },
+    {
+      "bytes": 1089,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-13/hiding-salts"
+    },
+    {
+      "bytes": 155,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/round-13/shared-pruned-frontier"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/PCS/FRI/FRI-round-openings/length/option-prefix"
+    },
+    {
+      "bytes": 17,
+      "section": "/proof.postcard/PCS/FRI/final-polynomial"
+    },
+    {
+      "bytes": 4,
+      "section": "/proof.postcard/PCS/FRI/query-PoW"
+    },
+    {
+      "bytes": 1,
+      "section": "/proof.postcard/degree-bits"
+    }
+  ],
+  "scalar_width_histogram": {
+    "1": 2295,
+    "2": 11,
+    "3": 0,
+    "4": 0,
+    "5": 0,
+    "6": 0,
+    "7": 2,
+    "8": 105,
+    "9": 13637,
+    "10": 13848
+  },
+  "schema": "pqtc.r2.models.postcard.v1",
+  "signed_envelope_bytes": null,
+  "structural_bytes_residual": 0,
+  "total_bytes": 320332
+}

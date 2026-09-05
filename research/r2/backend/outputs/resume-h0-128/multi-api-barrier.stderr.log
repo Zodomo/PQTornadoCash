@@ -1,0 +1,29 @@
+    Checking pqtc-r2-backend v0.1.0 (/Users/zodomo/code/PQTornado/research/r2/backend/rust)
+error[E0277]: the trait bound `HidingWhirPcs<..., ..., ..., ..., ..., ...>: PrescribedPointPcs<..., ...>` is not satisfied
+   --> src/multi_api_barrier.rs:6:43
+    |
+  6 | fn main() { required_by_multilinear_air::<HidingPcs>(); }
+    |                                           ^^^^^^^^^ unsatisfied trait bound
+    |
+    = help: the trait `PrescribedPointPcs<p3_field::extension::ExtField<p3_monty_31::monty_31::MontyField31<p3_baby_bear::baby_bear::BabyBearParameters>, 4, p3_field::extension::Binomial<p3_monty_31::monty_31::MontyField31<p3_baby_bear::baby_bear::BabyBearParameters>>>, p3_challenger::duplex_challenger::DuplexChallenger<p3_monty_31::monty_31::MontyField31<p3_baby_bear::baby_bear::BabyBearParameters>, p3_poseidon2::Poseidon2<p3_monty_31::monty_31::MontyField31<p3_baby_bear::baby_bear::BabyBearParameters>, p3_monty_31::aarch64_neon::poseidon2::Poseidon2ExternalLayerMonty31<p3_baby_bear::baby_bear::BabyBearParameters, 16>, p3_monty_31::aarch64_neon::poseidon2::Poseidon2InternalLayerMonty31<p3_baby_bear::baby_bear::BabyBearParameters, 16, p3_baby_bear::poseidon2::BabyBearInternalLayerParameters>, 16, 7>, 16, 8>>` is not implemented for `HidingWhirPcs<ExtField<..., 4, ...>, ..., ..., ..., ..., ...>`
+help: the trait `PrescribedPointPcs<EF, Challenger>` is implemented for `p3_whir::pcs::prover::WhirProver<EF, F, Dft, MT, Challenger, L>`
+   --> /Users/zodomo/.cargo/git/checkouts/plonky3-7d8a3b21a665a86f/3152b14/whir/src/pcs/adapter.rs:200:1
+    |
+200 | / impl<EF, F, Dft, MT, Challenger, L> PrescribedPointPcs<EF, Challenger>
+201 | |     for WhirProver<EF, F, Dft, MT, Challenger, L>
+202 | | where
+203 | |     F: TwoAdicField + Ord,
+...   |
+210 | |         + CanObserve<MT::Commitment>,
+211 | |     L: Layout<F, EF>,
+    | |_____________________^
+note: required by a bound in `required_by_multilinear_air`
+   --> src/multi_api_barrier.rs:5:35
+    |
+  5 | ...P: p3_sumcheck::PrescribedPointPcs<EF, Challenger, Val = F, Commitment = <HidingPcs as p3_commit::MultilinearPcs<EF, Challenger>>::Commitment>>() {}
+    |       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ required by this bound in `required_by_multilinear_air`
+    = note: the full name for the type has been written to '/Users/zodomo/code/PQTornado/research/r2/backend/target/debug/deps/multi_api_barrier-bfaef59ce9c25890.long-type-17087919496674558794.txt'
+    = note: consider using `--verbose` to print the full type name to the console
+
+For more information about this error, try `rustc --explain E0277`.
+error: could not compile `pqtc-r2-backend` (bin "multi-api-barrier") due to 1 previous error

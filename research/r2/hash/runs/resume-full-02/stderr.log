@@ -1,0 +1,58 @@
+Traceback (most recent call last):
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 355, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 310, in main
+    if diagnostic is not primary:result['diagnostic_deposit']=deposit_measurements(diagnostic,addresses,native,a.trace)
+                                                              ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 208, in deposit_measurements
+    if do_trace:record['constructor_attribution']=trace(rpc,receipt,rpc.label+'-'+tier+'-constructor')
+                                                  ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 174, in trace
+    result=rpc.call('debug_traceTransaction',[receipt['transactionHash'],{'disableStorage':True,'disableMemory':True,'disableStack':True}]);dump(OUT/'traces'/(label+'.json'),result)
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 46, in call
+    with urllib.request.urlopen(urllib.request.Request(self.url,data,{'Content-Type':'application/json'}),timeout=600)as response:result=json.load(response)
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 187, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 487, in open
+    response = self._open(req, data)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 504, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 464, in _call_chain
+    result = func(*args)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 1350, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py", line 1325, in do_open
+    r = h.getresponse()
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py", line 1459, in getresponse
+    response.begin()
+    ~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py", line 305, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+                             " response")
+http.client.RemoteDisconnected: Remote end closed connection without response
+      141.37 real        56.66 user         6.04 sys
+          4013293568  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+             2535822  page reclaims
+                3144  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                 434  messages sent
+               10003  messages received
+                  85  signals received
+                1948  voluntary context switches
+               57168  involuntary context switches
+        761475442769  instructions retired
+        130404178250  cycles elapsed
+          2857209360  peak memory footprint

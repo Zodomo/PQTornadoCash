@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate retained halt records only; never execute research or contact RPC."""
+"""Validate retained research records only; never execute proofs or contact RPC."""
 import csv
 import hashlib
 import json
@@ -34,8 +34,14 @@ def main():
         assert path.resolve().is_relative_to(ROOT), row['path']
         assert path.stat().st_size == row['bytes'], row['path']
         assert digest(path) == row['sha256'], row['path']
-    assert load(ROOT / 'research/r2/goal.json')['status'] == 'paused_by_user'
-    assert load(ROOT / 'research/r2/governance/resume-status.json')['status'] == 'PAUSED_BY_USER'
+    goal = load(ROOT / 'research/r2/goal.json')
+    status = load(ROOT / 'research/r2/governance/resume-status.json')
+    states = {'paused_by_user': 'PAUSED_BY_USER', 'research_in_progress': 'RESEARCH_IN_PROGRESS',
+              'research_return_with_dispositions': 'RESEARCH_RETURN_WITH_DISPOSITIONS'}
+    assert states[goal['status']] == status['status'] == manifest['status']
+    assert goal['security_qualification'] == 'SECURITY_NOT_QUALIFIED'
+    assert status['packages'][5]['id'] == 'R2-05'
+    assert status['packages'][5]['status'] == 'INCOMPLETE_DEFERRED_BY_USER'
 
     originals = load(ROOT / 'pqtc-independent-review/FINDINGS.json')['findings']
     findings = load(HERE / 'FINDINGS.json')['findings']
@@ -71,6 +77,29 @@ def main():
         assert byte_sum(load(directory / 'byte-ledger.json')) == result['raw_proof_bytes']
         assert (directory / 'proof.postcard').stat().st_size == result['raw_proof_bytes']
 
+    proof_hashes = {row['sha256']: row['bytes'] for row in manifest['files']
+                    if row['path'].endswith(('.postcard', '.bin', '.pqtc'))}
+    anchor_proofs = set()
+    resumed_air_proofs = set()
+    for relative in paths:
+        path = ROOT / relative
+        if path.name == 'samples.json' and '/models/outputs/resume-' in relative:
+            samples = load(path)
+            assert len({r['proof_sha256'] for r in samples}) == len(samples)
+            for row in samples:
+                assert row['complete_native_verified'] is True
+                assert row['proof_bytes'] == proof_hashes[row['proof_sha256']]
+                assert row['structural_bytes_residual'] == 0
+                assert row['complete_transaction_gas'] is None and row['physical_feasibility'] == 'UNKNOWN'
+                anchor_proofs.add(row['proof_sha256'])
+        if path.name == 'results.json' and ('/air/outputs/resume-' in relative or '/models/outputs/resume-' in relative):
+            row = load(path)
+            if isinstance(row, dict) and row.get('native_verified') is True and row.get('proof_path') and row.get('byte_ledger_path'):
+                proof = path.parent / row['proof_path']
+                assert proof.stat().st_size == row['raw_proof_bytes']
+                assert byte_sum(load(path.parent / row['byte_ledger_path'])) == row['raw_proof_bytes']
+                resumed_air_proofs.add(digest(proof))
+
     totals = defaultdict(int)
     receipts = {}
     with (HERE / 'GAS_LEDGER.csv').open(newline='') as stream:
@@ -89,6 +118,7 @@ def main():
     result = {'status': 'PASS', 'scope': 'Offline retained-record integrity only; no experiments rerun',
               'evidence_files': len(paths), 'original_findings': len(findings),
               'baseline_proof_records': len(records), 'air_proof_records': 3,
+              'resumed_anchor_proofs': len(anchor_proofs), 'resumed_air_proofs': len(resumed_air_proofs),
               'reconciled_receipts': len(receipts), 'manifest_sha256': digest(HERE / 'EVIDENCE_MANIFEST.json')}
     (HERE / 'checkpoint-validation.json').write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result, sort_keys=True))

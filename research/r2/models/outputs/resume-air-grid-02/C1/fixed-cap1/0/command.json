@@ -1,0 +1,43 @@
+{
+  "binary_sha256": "0d961dd4a1e9eef6aaedcf3463585b579c1b284f23ac3dbe87ddc5e5bab6fec8",
+  "command": [
+    "/Users/zodomo/code/PQTornado/research/r2/air/target/release/pqtc-r2-air",
+    "--candidate",
+    "C1",
+    "--profile",
+    "fixed",
+    "--queries",
+    "32",
+    "--log-blowup",
+    "4",
+    "--log-final-poly",
+    "0",
+    "--max-log-arity",
+    "1",
+    "--cap-height",
+    "1",
+    "--commit-pow",
+    "16",
+    "--query-pow",
+    "16",
+    "--output",
+    "/Users/zodomo/code/PQTornado/research/r2/models/outputs/resume-air-grid-02/C1/fixed-cap1/0",
+    "--statement",
+    "/Users/zodomo/code/PQTornado/research/r2/corpus/h0/corpus/swc-v1-000/statement.json",
+    "--witness",
+    "/Users/zodomo/code/PQTornado/research/r2/corpus/h0/corpus/swc-v1-000/witness.json"
+  ],
+  "cwd": "/Users/zodomo/code/PQTornado",
+  "environment": {
+    "LC_ALL": "C",
+    "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+    "RAYON_NUM_THREADS": "1",
+    "RUST_BACKTRACE": "1",
+    "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/"
+  },
+  "exit_status": 0,
+  "serial_process_wall_ms": 2252.580291009508,
+  "stderr": "",
+  "stdout": "{\"arguments\":{\"action\":\"prove\",\"candidate\":\"C1\",\"cap_height\":1,\"case_index\":0,\"commit_pow\":16,\"corpus\":\"research/r2/corpus/semantic-cases.json\",\"geometry\":\"decomposed\",\"h5_case\":null,\"log_blowup\":4,\"log_final_poly\":0,\"max_log_arity\":1,\"mutation_proofs\":false,\"output\":\"/Users/zodomo/code/PQTornado/research/r2/models/outputs/resume-air-grid-02/C1/fixed-cap1/0\",\"profile\":\"fixed\",\"proof_input\":null,\"queries\":32,\"query_pow\":16,\"security_model\":null,\"statement\":\"/Users/zodomo/code/PQTornado/research/r2/corpus/h0/corpus/swc-v1-000/statement.json\",\"witness\":\"/Users/zodomo/code/PQTornado/research/r2/corpus/h0/corpus/swc-v1-000/witness.json\"},\"byte_ledger_path\":\"byte-ledger.json\",\"candidate_id\":\"R2-C1\",\"correctness\":\"integrated-tested\",\"implementation_stage\":\"native proof\",\"measurement_class\":\"MEASURED\",\"native_verified\":true,\"negative_proofs\":[],\"peak_rss_bytes\":null,\"peak_rss_status\":\"NOT_EVALUATED; capture process RSS externally\",\"performance\":\"measured\",\"permutations\":{\"empty\":0,\"padded_total\":256,\"payout\":4,\"private_relation\":240,\"scope\":0,\"statement\":0},\"privacy\":\"configured hiding; composition not reviewed\",\"profile\":\"fixed\",\"promotion\":\"NOT_AUTHORIZED\",\"proof_inventory_path\":\"proof-inventory.json\",\"proof_keccak256\":\"827838d069d95c83db2100fb7d11d105862ba9a8c7f09a6b90123c99e70c2abb\",\"proof_path\":\"proof.postcard\",\"prove_ms\":2180.118709,\"randomness\":\"fresh OS entropy through rand::rng -> independent StdRng MMCS and PCS streams; no deterministic proof seed\",\"raw_ABI_bytes\":null,\"raw_proof_bytes\":315927,\"security\":\"SECURITY_NOT_QUALIFIED\",\"security_model\":null,\"shape_path\":\"shape.json\",\"specification\":\"exact\",\"synthetic_unfunded\":true,\"verify_ms\":3.858459}\n",
+  "timing_scope": "whole prebuilt process, not native proof-only interval"
+}

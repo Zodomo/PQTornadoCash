@@ -1,0 +1,536 @@
+{
+  "classification": "RESEARCH_REVIEW_NOT_SECURITY_AUDIT",
+  "findings": [
+    {
+      "category": "RESEARCH_PROCESS",
+      "evidence_status": "SUPPORTED",
+      "finding": "Qualification dependencies prevented central AIR and relation experiments",
+      "id": "F01",
+      "priority": "HIGH",
+      "requested_resolution": "Separate local research eligibility from build/deployment approval; implement H0 vertical control",
+      "sources": [
+        "S02",
+        "S08"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/governance/research-first-steering.json",
+          "research/r2/air/outputs/C1-decomposed/results.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-03",
+        "resolution": "Research permission is independent of qualification; actual C1 H0 vertical hiding proof generated and verified. Wider geometry/distribution work remains.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Separate local research eligibility from build/deployment approval; implement H0 vertical control",
+        "status": "ADDRESSED_WITH_SCOPED_EVIDENCE"
+      },
+      "work_package": "R2-03"
+    },
+    {
+      "category": "MEASUREMENT_METHOD",
+      "evidence_status": "SUPPORTED",
+      "finding": "Generic hash harness and optimized baseline are not equivalent implementation tiers",
+      "id": "F02",
+      "priority": "HIGH",
+      "requested_resolution": "Calibrate H0 and optimize selected compressors under matched envelopes",
+      "sources": [
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/hash/execution.json",
+          "research/r2/hash/runs/build-native-01/command.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-02",
+        "resolution": "Matched generic/optimized H0 and H5 tiers implemented; only Rust build executed. Cross-language and EVM tier calibration remains.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Calibrate H0 and optimize selected compressors under matched envelopes",
+        "status": "PARTIALLY_ADDRESSED"
+      },
+      "work_package": "R2-02"
+    },
+    {
+      "category": "RELATION_COMPLETENESS",
+      "evidence_status": "SUPPORTED",
+      "finding": "New compression note/nullifier roles do not yet implement the actual scope and secret layouts",
+      "id": "F03",
+      "priority": "HIGH",
+      "requested_resolution": "Finish exact lane schemas, constants, cross-language parity and misuse tests",
+      "sources": [
+        "S10",
+        "S11",
+        "S18"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/hash/spec.json",
+          "research/r2/air/outputs/C2-horizontal-02/h5-case.json",
+          "research/r2/air/outputs/C2-horizontal-02/results.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-02",
+        "resolution": "Exact complete H5 roles implemented and proved in C2/C3; 10000-vector Rust/TypeScript/Solidity parity and misuse campaign remain unexecuted.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Finish exact lane schemas, constants, cross-language parity and misuse tests",
+        "status": "PARTIALLY_ADDRESSED"
+      },
+      "work_package": "R2-02"
+    },
+    {
+      "category": "SECURITY_ANALYSIS",
+      "evidence_status": "INDEPENDENT_SENSITIVITY",
+      "finding": "FRI-only choice of m is not the optimum of the complete modeled conditional bound",
+      "id": "F04",
+      "priority": "HIGH",
+      "requested_resolution": "Review and reproduce full-objective m sensitivity without claiming new system security",
+      "sources": [
+        "S12",
+        "S13",
+        "S14"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/security/outputs/c0/summary.csv",
+          "research/r2/security/outputs/c0/results.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-01",
+        "resolution": "Executed FRI-only m185 versus full-min m23 sensitivity and probability-sum distinction. No Fiat-Shamir/QROM/composition or theorem-object security acceptance.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Review and reproduce full-objective m sensitivity without claiming new system security",
+        "status": "ARITHMETIC_CORRECTED_THEOREM_OPEN"
+      },
+      "work_package": "R2-01"
+    },
+    {
+      "category": "RESULT_CLASSIFICATION",
+      "evidence_status": "SUPPORTED",
+      "finding": "Unmeasured complete transaction is forced to TWO_TX_FAIL",
+      "id": "F05",
+      "priority": "HIGH",
+      "requested_resolution": "Separate measurement status, model result, physical feasibility and qualification",
+      "sources": [
+        "S21"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/models/status-migration.json",
+          "research/r2/models/outputs/historical-calibration.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-06",
+        "resolution": "All historical rows retained; unmeasured complete gas stays null/UNKNOWN in R2 migration, independently of modeled gate and qualification.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Separate measurement status, model result, physical feasibility and qualification",
+        "status": "CORRECTED_IN_R2"
+      },
+      "work_package": "R2-06"
+    },
+    {
+      "category": "COST_MODEL",
+      "evidence_status": "SUPPORTED_SOURCE_CONCERN",
+      "finding": "Exponential LDE factor and simplified folding/cap terms are not justified verifier bounds",
+      "id": "F06",
+      "priority": "HIGH",
+      "requested_resolution": "Build codec-derived models and calibrate on actual anchors",
+      "sources": [
+        "S21",
+        "S22"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/models/runs/check-01/command.json",
+          "research/r2/models/outputs/historical-calibration.json",
+          "research/r2/models/anchor-plan.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-06",
+        "resolution": "Structural invariant checks and six historical byte residuals passed. New anchor binary compiled but no fresh anchor or EVM fit executed.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Build codec-derived models and calibrate on actual anchors",
+        "status": "PARTIALLY_ADDRESSED"
+      },
+      "work_package": "R2-06"
+    },
+    {
+      "category": "BASELINE_FEASIBILITY",
+      "evidence_status": "RETAINED_MEASUREMENT",
+      "finding": "Nine of sixty Part A modeled transactions exceed the cap",
+      "id": "F07",
+      "priority": "HIGH",
+      "requested_resolution": "Reject robust baseline claim; retain distribution and derive valid worst-case envelope",
+      "sources": [
+        "S02"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/baseline/outputs/r2-main/local/retained-attempt-02/transaction-results.json",
+          "research/r2/baseline/outputs/r2-main/local/retained-attempt-02/part-a-capped/call-trace.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-00",
+        "resolution": "Old distribution remains historical; actual retained capped A failed with inner out-of-gas. No robustness claim or replacement worst-case distribution.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Reject robust baseline claim; retain distribution and derive valid worst-case envelope",
+        "status": "PARTIALLY_ADDRESSED"
+      },
+      "work_package": "R2-00"
+    },
+    {
+      "category": "DEPLOYMENT",
+      "evidence_status": "RETAINED_MEASUREMENT",
+      "finding": "Internal pool CREATE costs 18.87363M gas; top-level deployment remains unmeasured",
+      "id": "F08",
+      "priority": "HIGH",
+      "requested_resolution": "Measure capped top-level CREATE and decompose initialization",
+      "sources": [
+        "S02",
+        "S27"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/baseline/outputs/r2-main/local/retained-attempt-02/deployment-results.json",
+          "research/r2/baseline/outputs/r2-main/local/retained-attempt-02/constructor-diagnostic.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-00",
+        "resolution": "Signed top-level original-pool CREATE failed at16777216gas. Separate diagnostic initialization/code-deposit ledger retained; optimized generator unexecuted.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Measure capped top-level CREATE and decompose initialization",
+        "status": "MEASURED_CAPPED_FAILURE"
+      },
+      "work_package": "R2-00"
+    },
+    {
+      "category": "SECURITY_PARAMETER_MAPPING",
+      "evidence_status": "OPEN_QUESTION",
+      "finding": "Nominal 210 functions must be mapped to actual committed matrices, masks and 524 reduction terms",
+      "id": "F09",
+      "priority": "HIGH",
+      "requested_resolution": "Derive theorem-specific count; do not substitute a raw code-array count",
+      "sources": [
+        "S13",
+        "S16"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/security/outputs/c0/results.json",
+          "research/r2/air/outputs/C1-decomposed/proof-inventory.json",
+          "research/r2/air/outputs/C3-decomposed/proof-inventory.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-01",
+        "resolution": "C0 source-derived inventory distinguishes210 functions,330 base columns and524 reductions. New proof inventories exist; theorem-specific applicability and candidate normalization remain.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Derive theorem-specific count; do not substitute a raw code-array count",
+        "status": "PARTIALLY_ADDRESSED"
+      },
+      "work_package": "R2-01"
+    },
+    {
+      "category": "TRANSCRIPT_INTEGRATION",
+      "evidence_status": "SUPPORTED_REPORT",
+      "finding": "Typed framing and full-width continuation are not yet a complete enforced path",
+      "id": "F10",
+      "priority": "HIGH",
+      "requested_resolution": "Implement phase state machine and actual cross-language proof verification",
+      "sources": [
+        "S10",
+        "S23"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/transcript/INCOMPLETE.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-05",
+        "resolution": "Typed epoch/full-width continuation sources and q32 native build retained. Complete changed-transcript proof and cross-language/local pipeline were not executed.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Implement phase state machine and actual cross-language proof verification",
+        "status": "DEFERRED_BY_USER"
+      },
+      "work_package": "R2-05"
+    },
+    {
+      "category": "CRYPTANALYSIS_CLASSIFICATION",
+      "evidence_status": "SUPPORTED",
+      "finding": "Attack applicability is sometimes labeled failure without a concrete below-target cost",
+      "id": "F11",
+      "priority": "MEDIUM",
+      "requested_resolution": "Retain exact-instance applicability and attack-cost statuses separately",
+      "sources": [
+        "S10",
+        "S17",
+        "S29"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/security/threat-games.json",
+          "research/r2/security/outputs/c0/results.json",
+          "research/r2/hash/spec.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-01",
+        "resolution": "Exact role/threat-game inventory and scoped reduced-round mechanism retained. Applicability with unknown full-mode cost is not a measured break.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Retain exact-instance applicability and attack-cost statuses separately",
+        "status": "PARTIALLY_ADDRESSED"
+      },
+      "work_package": "R2-01"
+    },
+    {
+      "category": "REPRODUCIBILITY",
+      "evidence_status": "SUPPORTED",
+      "finding": "all-safe validates evidence consistency rather than executing proofs or EVM verification",
+      "id": "F12",
+      "priority": "MEDIUM",
+      "requested_resolution": "Publish distinct check/build/fresh-proof/full-EVM records",
+      "sources": [
+        "S07",
+        "S09"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/baseline/outputs/r2-main/results.json",
+          "research/r2/baseline/outputs/r2-main/local/retained-attempt-02/transaction-results.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-00",
+        "resolution": "Five check results remain metadata-only; clean builds, retained+10 fresh proofs and signed local actual-verifier transactions are separate records.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Publish distinct check/build/fresh-proof/full-EVM records",
+        "status": "ADDRESSED_WITH_SCOPED_EVIDENCE"
+      },
+      "work_package": "R2-00"
+    },
+    {
+      "category": "EVIDENCE_COMPLETENESS",
+      "evidence_status": "SUPPORTED_REPORT",
+      "finding": "Baseline byte and gas section ledgers remain incomplete",
+      "id": "F13",
+      "priority": "MEDIUM",
+      "requested_resolution": "Instrument existing parser and verifier; require exact ledger sums",
+      "sources": [
+        "S02",
+        "S16"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/final/BYTE_LEDGER.csv",
+          "research/r2/final/GAS_LEDGER.csv",
+          "research/r2/baseline/outputs/r2-main/proofs/fresh-06/byte-ledger.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-00",
+        "resolution": "Exact parser spans reconcile every retained/fresh raw and ABI byte ledger. Nonoverlapping opcode/source categories plus explicit residual reconcile measured receipts. No fit or candidate gas inferred.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Instrument existing parser and verifier; require exact ledger sums",
+        "status": "ADDRESSED_WITH_SCOPED_EVIDENCE"
+      },
+      "work_package": "R2-00"
+    },
+    {
+      "category": "CANDIDATE_IDENTITY",
+      "evidence_status": "SUPPORTED_REPORT",
+      "finding": "Candidate IDs are reused across minimum-plan and backend-smoke namespaces",
+      "id": "F14",
+      "priority": "MEDIUM",
+      "requested_resolution": "Use stable pipeline/configuration/run identities and an opportunity matrix",
+      "sources": [
+        "S02",
+        "S03"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/air/outputs/C1-decomposed/configuration.json",
+          "research/r2/air/outputs/C2-horizontal-02/configuration.json",
+          "research/r2/final/CANDIDATE_MATRIX.csv"
+        ],
+        "dependencies": [],
+        "owner": "R2-10",
+        "resolution": "R2 pipeline/configuration IDs and source hashes are separate from historical candidate IDs. Partial measured candidate matrix published; final opportunity/frontier synthesis remains.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Use stable pipeline/configuration/run identities and an opportunity matrix",
+        "status": "PARTIALLY_ADDRESSED"
+      },
+      "work_package": "R2-10"
+    },
+    {
+      "category": "NATIVE_AVAILABILITY",
+      "evidence_status": "SUPPORTED_SOURCE_CHECK",
+      "finding": "Missing native panic boundary is an availability finding, not a demonstrated Solidity bypass",
+      "id": "F15",
+      "priority": "MEDIUM",
+      "requested_resolution": "Test actual malformed objects and containment; do not rely solely on a grep",
+      "sources": [
+        "S25"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/operations/outputs/containment-01/results.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-08",
+        "resolution": "Two valid controls accepted, seven serialized and ten constructed mutations rejected, recovery checked; no natural panic observed. Containment diagnosis is not a Solidity bypass or global panic-freedom claim.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Test actual malformed objects and containment; do not rely solely on a grep",
+        "status": "ADDRESSED_WITH_SCOPED_EVIDENCE"
+      },
+      "work_package": "R2-08"
+    },
+    {
+      "category": "BACKEND_COVERAGE",
+      "evidence_status": "SUPPORTED_REPORT",
+      "finding": "Hiding WHIR has a synthetic smoke but no same-relation proof",
+      "id": "F16",
+      "priority": "MEDIUM",
+      "requested_resolution": "Implement exact adapter/lowering and complete hiding relation",
+      "sources": [
+        "S02"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/backend/outputs/api/results.json",
+          "research/r2/backend/adapter.json",
+          "research/r2/backend/runs/build-native-01/command.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-07",
+        "resolution": "Both real PCS trait barriers reproduced. Exact non-hiding H0 and bounded hiding trace controls compiled, but no execution or complete hiding same-relation proof.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Implement exact adapter/lowering and complete hiding relation",
+        "status": "PARTIALLY_ADDRESSED"
+      },
+      "work_package": "R2-07"
+    },
+    {
+      "category": "L2_INTERPRETATION",
+      "evidence_status": "SUPPORTED_REPORT_INFERENCE",
+      "finding": "A rejected combined 210KiB envelope does not rule out split or smaller payloads",
+      "id": "F17",
+      "priority": "MEDIUM",
+      "requested_resolution": "Test exact candidate envelope and source-pinned rules separately",
+      "sources": [
+        "S02"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/conditional/outputs/l2.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-09",
+        "resolution": "Exact retained A/B and concatenated transport envelopes evaluated with pinned L2 source rules. Concatenation is not a combined verifier; no L2 execution or smaller new proof measured.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Test exact candidate envelope and source-pinned rules separately",
+        "status": "PARTIALLY_ADDRESSED"
+      },
+      "work_package": "R2-09"
+    },
+    {
+      "category": "FLOCK_DISPOSITION",
+      "evidence_status": "SUPPORTED",
+      "finding": "Historical batch attempt failed due to missing M21_FAST_SECURITY_CONFIG",
+      "id": "F18",
+      "priority": "MEDIUM",
+      "requested_resolution": "Use a bounded upstream/configuration repair, not a guessed security preset",
+      "sources": [
+        "S24"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/conditional/outputs/flock.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-09",
+        "resolution": "Searched64 existing local commits, preserving exact pins; no supported same-commit M21 preset found. No guessed preset or architecture-level failure claim.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Use a bounded upstream/configuration repair, not a guessed security preset",
+        "status": "BOUNDED_SEARCH_NO_SUPPORTED_CANDIDATE"
+      },
+      "work_package": "R2-09"
+    },
+    {
+      "category": "STATE_MACHINE",
+      "evidence_status": "REVIEW_REQUIREMENT",
+      "finding": "An accepted Part A prefix is not a full ownership proof",
+      "id": "F19",
+      "priority": "MEDIUM",
+      "requested_resolution": "Prevent indefinite reservation/censorship under per-nullifier checkpoint bounds",
+      "sources": [
+        "S16",
+        "S23"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/transcript/INCOMPLETE.json",
+          "research/r2/transcript/run.py"
+        ],
+        "dependencies": [],
+        "owner": "R2-08",
+        "resolution": "Bounded lifecycle/full-width key code exists only in deferred transcript domain. New malicious-prefix, expiry/replacement and cancellation transactions not executed.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Prevent indefinite reservation/censorship under per-nullifier checkpoint bounds",
+        "status": "DEFERRED_BY_USER"
+      },
+      "work_package": "R2-08"
+    },
+    {
+      "category": "PROVENANCE",
+      "evidence_status": "CHECKED_NO_DEFECT_FOUND",
+      "finding": "Latest cleanup removes excluded historical files while governing plan remains",
+      "id": "F20",
+      "priority": "LOW",
+      "requested_resolution": "Publish commit/evidence mapping; do not assert cleanup broke reproduction without running checks",
+      "sources": [
+        "S01",
+        "S08",
+        "S09"
+      ],
+      "tracking": {
+        "can_proceed_independently": "Non-custodial correctness and performance measurements do not require external security qualification.",
+        "correction_evidence": [
+          "research/r2/baseline/outputs/r2-main/results.json"
+        ],
+        "dependencies": [],
+        "owner": "R2-00",
+        "resolution": "Clean pinned checkout and excluded-cleanup before/after records reproduced; five checks passed. Source/report/artifact epochs retained without rewriting historical evidence.",
+        "reviewer": "Further independent/security review deferred by user; no external acceptance",
+        "smallest_decisive_experiment": "Publish commit/evidence mapping; do not assert cleanup broke reproduction without running checks",
+        "status": "ADDRESSED_WITH_SCOPED_EVIDENCE"
+      },
+      "work_package": "R2-00"
+    }
+  ],
+  "original_findings_sha256": "42d303d5cedd59fdc76ad5bb4486e5f38c8dd2205ee932972f9dba09f32c230d",
+  "review_commit": "e51a5c5ccc4f50e0beb07cdf04d7f8dd258c7997",
+  "round": "R2.0",
+  "severity_meaning": "Priority for evidence and next-build decisions; not a CVSS rating or assertion of an exploitable vulnerability.",
+  "checkpoint": {
+    "id": "R2-HALT-2026-09-05",
+    "status": "PAUSED_BY_USER",
+    "all_original_findings_preserved": true,
+    "closure_scope": "Scoped engineering/evidence corrections only; no global research completion or cryptographic approval."
+  }
+}

@@ -40,9 +40,9 @@ def evaluate(document):
             if fact is None:
                 facts[key] = {"satisfied": None, "evidence": None}
                 continue
-            if not isinstance(fact, dict) or fact.get("satisfied") not in (True, False, None):
+            if not isinstance(fact, dict) or (fact.get("satisfied") is not None and type(fact["satisfied"]) is not bool):
                 raise ValueError(f"invalid evidence fact: {branch}.{key}")
-            if fact.get("satisfied") is not None:
+            if fact.get("satisfied") is not None or fact.get("artifact") is not None:
                 artifact = fact.get("artifact")
                 if not artifact or not isinstance(fact.get("sha256"), str) or not fact.get("scope"):
                     raise ValueError(f"non-null claims need artifact, sha256 and scope: {branch}.{key}")
@@ -57,6 +57,8 @@ def evaluate(document):
                      "measurement_status": "NOT_EVALUATED", "decision_status": "CONTINUE_EXPERIMENT" if entered else "NOT_READY_FOR_BUILD_SELECTION",
                      "architecture_failed": None, "prerequisites": facts,
                      "unmet_or_unknown": [k for k in required if facts[k].get("satisfied") is not True],
+                     "known_unsatisfied": [k for k in required if facts[k].get("satisfied") is False],
+                     "unknown": [k for k in required if facts[k].get("satisfied") is None],
                      "historical_anchor": HISTORICAL.get(branch), "performance": None})
     rows.append({"branch": "l2_retained_baseline_diagnostic", "gate_status": "ENTERABLE_NOT_EXECUTED",
                  "measurement_status": "NOT_EVALUATED", "decision_status": "CONTINUE_EXPERIMENT",
@@ -84,6 +86,8 @@ def main():
     output = args.output.resolve()
     if not output.is_relative_to(HERE):
         parser.error("output must remain under research/r2/conditional")
+    if output.exists():
+        parser.error("output already exists; choose a fresh resume-* path")
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(result, indent=2) + "\n")
     print(output)

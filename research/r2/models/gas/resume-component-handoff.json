@@ -1,0 +1,28 @@
+{
+  "schema": "pqtc.r2.gas-component-handoff.v1",
+  "status": "SOURCE_PREPARED_EXECUTION_ASSIGNED_TO_MAIN_NOT_MEASURED",
+  "source_files": ["research/r2/models/gas_fit.py", "research/r2/models/gasComponents.sol"],
+  "serial_execution": {
+    "prerequisites": ["Main-owned 18545 Osaka capped and 18546 Prague diagnostic Anvil are ready.", "Local solc 0.8.30 executable; pass its absolute path through --solc, never permit downloads.", "Run outside concurrent native/EVM timing windows."],
+    "command_argv": ["python3", "-B", "research/r2/models/gas_fit.py", "--solc", "/Users/zodomo/Library/Application Support/svm/0.8.30/solc-0.8.30", "--node-provenance", "research/r2/governance/resume-node-provenance.json", "--rpc-url", "http://127.0.0.1:18545", "--diagnostic-rpc-url", "http://127.0.0.1:18546", "--output", "research/r2/models/outputs/resume-component-gas-01"],
+    "runner_actions": ["Reparse both C0 resume anchors, require proof SHA256 and native verification, independently derive query/frontier/opening ledgers.", "Build only the new component harness and copied frozen libraries in a fresh /tmp Foundry root, minimal environment, offline explicit solc, no dotenv ancestry.", "Deploy to capped chain31337 and require runtime bytecode parity.", "Execute real BabyBear opening reductions and KeccakPair512 node-compression replay plus parse/copy controls, using pinned real proof data.", "Compare every EVM output to independent Python arithmetic/Keccak before submitting measured transactions; retain each successful receipt.", "Fit separate component/kernel and parse-control models with model.calibration; keep rank-deficient full-feature diagnostics and all held-out residuals."]
+  },
+  "acceptance": [
+    "Process exits zero; declaration failures is empty; no source-only claim is accepted as execution evidence.",
+    "18 fixed-regime proof samples become 36 component rows; the two normalized-regime proofs are intentionally not pooled.",
+    "Entire fixed-b4-q48 withheld in both components and every repetition; no held-out profile occurs in training.",
+    "Every chunks[].correct is true with matching independently computed values; every receipt status is 0x1.",
+    "Four two-feature fits have coefficients and held-out residuals: opening and node kernels and their separate scan/copy controls.",
+    "Full-feature rank diagnostics are retained without fabricated coefficients when queries/opened fields are collinear.",
+    "Source/compiler/creation/runtime hashes, source sample/proof pins, exact build settings, node versions/hardfork/launch records, calldata legacy intrinsic and EIP7623 floors remain separate.",
+    "All complete_transaction_gas and full_evm_verifier_gas fields remain null; no native timing or LDE factor is used as gas."
+  ],
+  "scope_limits": [
+    "Component gas, never a complete C10 verifier or cryptographic acceptance. Opening kernel is actual base-field Horner over all input opened fields at benchmark alpha=7, not extension DEEP/FRI verification.",
+    "Node replay executes real domain0x41 hash primitives on real frontier-digest pairs, repeated to exact pruned internal-node count; it is not connected MMCS reconstruction or root authentication.",
+    "At most 1024 nodes per transaction avoids the calldata floor cap. Target is sum of internally timed kernel gas, not sum of transaction gas; chunk overhead is retained and can appear in residuals.",
+    "Scan/copy controls include checksum arithmetic and are not subtracted as though pure parsing.",
+    "Diagnostic node is inspected for provenance only, not pooled with capped measurements."
+  ],
+  "not_run_by_agent": ["build", "tests", "validation", "experiments", "formatters", "linters"]
+}

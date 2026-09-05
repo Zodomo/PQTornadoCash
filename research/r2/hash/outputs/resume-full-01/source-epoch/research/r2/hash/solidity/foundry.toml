@@ -1,0 +1,12 @@
+[profile.default]
+src = "src"
+out = "out"
+cache_path = "cache"
+solc_version = "0.8.30"
+evm_version = "prague"
+optimizer = true
+optimizer_runs = 200
+via_ir = true
+bytecode_hash = "none"
+remappings = ["frozen/=../../../../contracts/src/", "frozen-generic/=../../../candidates/hash-compression-common/solidity/src/"]
+allow_paths = ["../../../../contracts", "../../../candidates/hash-compression-common/solidity"]

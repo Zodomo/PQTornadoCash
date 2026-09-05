@@ -1,11 +1,11 @@
-# Open research at the halt checkpoint
+# Open research during resumed execution
 
-Research is paused by user request. Owners below are work packages, not running agents. Further independent/security review is deferred; no review response is required to run authorized local experiments. The complete acceptance criteria remain in `pqtc-independent-review/FOLLOW_UP_RESEARCH_PLAN.md`.
+Research resumed from `bc71758`; original halt questions are archived under `../governance/halt-bc71758/`. Further independent/security review remains deferred, not an execution gate. R2-05 remains explicitly deferred. The complete acceptance criteria remain in `pqtc-independent-review/FOLLOW_UP_RESEARCH_PLAN.md`.
 
 | Owner | Open question and smallest next experiment | Dependency | Decision affected |
 |---|---|---|---|
-| R2-06 | Run the first declared C0 anchor using the explicit binary path in `../RESUME.md`; then collect real codec anchors and held-out EVM observations. | Rebuild excluded binaries if absent. | Measured byte/gas frontier; do not fit native time to EVM gas. |
-| R2-01 | Run the current repeated-shape adapter against retained C1/C2/C3 inventories in a new output directory; distinguish theorem functions, base columns and point-specific reductions. | Actual shape files already exist. | Conditional normalization; no theorem acceptance inferred. |
+| R2-06 | C0 grid completed:20 verified proofs,10 configurations,zero byte residual. Continue AIR anchors and held-out EVM fitting. | AIR rebuild after source repairs; new output directories. | Measured byte/gas frontier; do not fit native time to EVM gas. |
+| R2-01 | Candidate adapter executed:83304 term rows and72 native rows. Theorem-specific batching interpretation and composition remain open. | External review deferred separately. | Conditional normalization; no theorem acceptance inferred. |
 | R2-02 | Execute constants comparison, 10000-vector three-language role parity, misuse cases and matched implementation tiers. | Isolated Foundry workspaces and disposable local nodes. | Whether H5 is implemented consistently and reduces actual hash/deposit cost. |
 | R2-03 | Run the remaining bounded H0 geometries, actual mutation proofs and repeated fixed/varied witness timings. | Existing geometry runner. | Whether vertical scheduling improves the frozen relation. |
 | R2-04 | Execute the verified C0 postcard exporter, matched-input controls, H5 public-context study and repeated C2/C3 measurements. | Exporter compiled; C2/C3 proof artifacts exist. | Same-codec, same-input causal comparison rather than a codec or public-work difference. |

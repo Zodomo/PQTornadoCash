@@ -4,6 +4,7 @@ Main serializes invocations; this entrypoint never builds, starts services or lo
 """
 import argparse
 import datetime
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -24,10 +25,19 @@ def main():
     argv = args.arguments
     if argv[:1] == ["--"]:
         argv = argv[1:]
-    if "--output" not in argv:
-        parser.error("pass explicit --output after -- for isolated run provenance")
+    for flag in ("--output", "--statement", "--witness"):
+        if argv.count(flag) != 1 or argv.index(flag)+1 == len(argv):
+            parser.error(f"pass one explicit {flag} and value after --")
     out = (ROOT / argv[argv.index("--output")+1]).resolve()
-    out.mkdir(parents=True, exist_ok=True)
+    if not any(part.startswith("resume-") for part in out.parts):
+        parser.error("new outputs must be under resume-*")
+    out.mkdir(parents=True, exist_ok=False)
+    inputs = {}
+    for flag in ("--statement", "--witness", "--corpus", "--h5-case"):
+        if flag in argv:
+            path = (ROOT / argv[argv.index(flag)+1]).resolve()
+            inputs[flag] = {"path": str(path), "sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
+    binary_sha256 = hashlib.sha256(args.binary.resolve().read_bytes()).hexdigest()
     env = {k: v for k, v in os.environ.items() if k in ALLOWED}
     env.update({"NO_COLOR": "1", "RUST_BACKTRACE": "1"})
     command = ["/usr/bin/time", "-l" if platform.system() == "Darwin" else "-v", str(args.binary.resolve()), *argv]
@@ -43,6 +53,7 @@ def main():
                   "finished_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(), "wall_seconds": elapsed,
                   "peak_rss_bytes": rss, "measurement_class": "MEASURED" if process.returncode == 0 else "EXECUTION_BLOCKED",
                   "stdout_path": "stdout.log", "stderr_path": "stderr.log", "security": "SECURITY_NOT_QUALIFIED"}
+    provenance.update({"input_identities": inputs, "binary_sha256": binary_sha256})
     (out / "command.json").write_text(json.dumps(provenance, indent=2)+"\n")
     results = out / "results.json"
     if process.returncode == 0 and results.exists():

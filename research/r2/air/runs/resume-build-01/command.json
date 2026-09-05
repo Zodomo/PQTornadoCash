@@ -1,0 +1,51 @@
+{
+  "architecture": "arm64",
+  "command": [
+    "cargo",
+    "build",
+    "--release",
+    "--locked",
+    "--manifest-path",
+    "research/r2/air/rust/Cargo.toml"
+  ],
+  "cwd": "/Users/zodomo/code/PQTornado",
+  "environment": {
+    "CARGO_BUILD_JOBS": "4",
+    "CARGO_TARGET_DIR": "research/r2/air/target",
+    "HOME": "/Users/zodomo",
+    "LC_ALL": "C",
+    "PATH": "/Users/zodomo/.bun/bin:/Users/zodomo/Library/pnpm/bin:/Users/zodomo/.local/bin:/Users/zodomo/.nvm/versions/node/v24.19.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/usr/local/MacGPG2/bin:/Users/zodomo/.cargo/bin:/Applications/Ghostty.app/Contents/MacOS:/Users/zodomo/.foundry/bin",
+    "TMPDIR": "/var/folders/7f/mf28qbts38l9m_l8ry91wlhm0000gn/T/",
+    "TZ": "UTC"
+  },
+  "logs": {
+    "stderr.log": {
+      "bytes": 1297,
+      "sha256": "69e9c62408ed50ef79a5c0f3484c6cced3558f2f14d320daccd22116efd2bf8c"
+    },
+    "stdout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "platform": "macOS-15.7.9-arm64-arm-64bit-Mach-O",
+  "returncode": 0,
+  "rss_source": "external /usr/bin/time in stderr.log; do not confuse process-tree command time with prover-only timing",
+  "rss_unit": "bytes",
+  "schema": "pqtc.r2.command-run.v1",
+  "scope": "local non-custodial research command; success is execution, not artifact qualification",
+  "started_utc": "2026-09-05T01:33:26.921411+00:00",
+  "timed_out": false,
+  "timeout_seconds": 7200,
+  "timing_command": [
+    "/usr/bin/time",
+    "-l",
+    "cargo",
+    "build",
+    "--release",
+    "--locked",
+    "--manifest-path",
+    "research/r2/air/rust/Cargo.toml"
+  ],
+  "wall_seconds": 20.1827565410058
+}

@@ -16,7 +16,7 @@ ALLOW_ENV = {"PATH", "HOME", "TMPDIR", "TMP", "TEMP", "RUSTUP_HOME", "CARGO_HOME
 
 def clean_env():
     result = {k: v for k, v in os.environ.items() if k in ALLOW_ENV}
-    result.update(CARGO_TARGET_DIR=str(PACKAGE / "target"), CARGO_TERM_COLOR="never", PYTHONDONTWRITEBYTECODE="1")
+    result.update(CARGO_TARGET_DIR=str(PACKAGE / "target"), CARGO_TERM_COLOR="never", CARGO_NET_OFFLINE="true", PYTHONDONTWRITEBYTECODE="1")
     return result
 
 

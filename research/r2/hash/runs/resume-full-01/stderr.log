@@ -1,0 +1,32 @@
+Traceback (most recent call last):
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 355, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 299, in main
+    (work/'foundry.toml').write_text(config);command(['forge','build','--offline','--root',work],'forge-build',cwd=work);ARTIFACTS=OUT/'solidity-out';shutil.copytree(work/'out',ARTIFACTS)
+                                             ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zodomo/code/PQTornado/research/r2/hash/run.py", line 278, in command
+    start=time.monotonic_ns();r=subprocess.run(list(map(str,argv)),input=input,text=True,capture_output=True,env=environment,cwd=cwd);(OUT/(label+'.stdout')).write_text(r.stdout);(OUT/(label+'.stderr')).write_text(r.stderr);commands.append({'argv':list(map(str,argv)),'cwd':str(cwd),'exit':r.returncode,'elapsed_ns':time.monotonic_ns()-start,'stdout':label+'.stdout','stderr':label+'.stderr'});dump(OUT/'commands.json',commands);r.check_returncode();return r.stdout
+                                                                                                                                                                                                                                                                                                                                                                                                                                             ~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 509, in check_returncode
+    raise CalledProcessError(self.returncode, self.args, self.stdout,
+                             self.stderr)
+subprocess.CalledProcessError: Command '['forge', 'build', '--offline', '--root', '/tmp/pqtc-r2-hash-forge-5pwkm91n']' returned non-zero exit status 1.
+        8.87 real        21.71 user         3.07 sys
+           359628800  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+             1010206  page reclaims
+               16053  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                  80  signals received
+                1837  voluntary context switches
+               40173  involuntary context switches
+          1229389818  instructions retired
+           425797967  cycles elapsed
+            22528696  peak memory footprint

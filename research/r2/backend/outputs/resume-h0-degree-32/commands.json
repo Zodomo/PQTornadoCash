@@ -1,0 +1,104 @@
+[
+  {
+    "label": "build",
+    "argv": [
+      "cargo",
+      "build",
+      "--release",
+      "--manifest-path",
+      "/Users/zodomo/code/PQTornado/research/r2/backend/rust/Cargo.toml",
+      "--lib"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado",
+    "environment_keys": [
+      "CARGO_NET_OFFLINE",
+      "CARGO_TARGET_DIR",
+      "CARGO_TERM_COLOR",
+      "HOME",
+      "PATH",
+      "PYTHONDONTWRITEBYTECODE",
+      "RAYON_NUM_THREADS",
+      "TMPDIR"
+    ],
+    "exit_code": 0,
+    "elapsed_wall_ns": 1149155000,
+    "measurement_class": "EXECUTION_LOG_NOT_BENCHMARK"
+  },
+  {
+    "label": "dependency-graph",
+    "argv": [
+      "cargo",
+      "metadata",
+      "--locked",
+      "--format-version",
+      "1",
+      "--manifest-path",
+      "/Users/zodomo/code/PQTornado/research/r2/backend/rust/Cargo.toml"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado",
+    "environment_keys": [
+      "CARGO_NET_OFFLINE",
+      "CARGO_TARGET_DIR",
+      "CARGO_TERM_COLOR",
+      "HOME",
+      "PATH",
+      "PYTHONDONTWRITEBYTECODE",
+      "RAYON_NUM_THREADS",
+      "TMPDIR"
+    ],
+    "exit_code": 0,
+    "elapsed_wall_ns": 77672000,
+    "measurement_class": "EXECUTION_LOG_NOT_BENCHMARK"
+  },
+  {
+    "label": "build-h0-control",
+    "argv": [
+      "cargo",
+      "build",
+      "--release",
+      "--locked",
+      "--manifest-path",
+      "/Users/zodomo/code/PQTornado/research/r2/backend/rust/Cargo.toml",
+      "--bin",
+      "h0-control"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado",
+    "environment_keys": [
+      "CARGO_NET_OFFLINE",
+      "CARGO_TARGET_DIR",
+      "CARGO_TERM_COLOR",
+      "HOME",
+      "PATH",
+      "PYTHONDONTWRITEBYTECODE",
+      "RAYON_NUM_THREADS",
+      "TMPDIR"
+    ],
+    "exit_code": 0,
+    "elapsed_wall_ns": 4279027000,
+    "measurement_class": "EXECUTION_LOG_NOT_BENCHMARK"
+  },
+  {
+    "label": "non-hiding-control",
+    "argv": [
+      "/Users/zodomo/code/PQTornado/research/r2/backend/target/release/h0-control",
+      "/Users/zodomo/code/PQTornado/research/r2/corpus/h0/fixed/statement.json",
+      "/Users/zodomo/code/PQTornado/research/r2/corpus/h0/fixed/witness.json",
+      "/Users/zodomo/code/PQTornado/research/r2/backend/outputs/resume-h0-degree-32/non-hiding-control",
+      "32"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado",
+    "environment_keys": [
+      "CARGO_NET_OFFLINE",
+      "CARGO_TARGET_DIR",
+      "CARGO_TERM_COLOR",
+      "HOME",
+      "PATH",
+      "PYTHONDONTWRITEBYTECODE",
+      "RAYON_NUM_THREADS",
+      "TMPDIR"
+    ],
+    "exit_code": 0,
+    "elapsed_wall_ns": 284026000,
+    "measurement_class": "EXECUTION_LOG_NOT_BENCHMARK"
+  }
+]

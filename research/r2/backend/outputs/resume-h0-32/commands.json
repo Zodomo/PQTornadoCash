@@ -1,0 +1,203 @@
+[
+  {
+    "label": "build",
+    "argv": [
+      "cargo",
+      "build",
+      "--release",
+      "--manifest-path",
+      "/Users/zodomo/code/PQTornado/research/r2/backend/rust/Cargo.toml",
+      "--lib"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado",
+    "environment_keys": [
+      "CARGO_TARGET_DIR",
+      "CARGO_TERM_COLOR",
+      "HOME",
+      "PATH",
+      "PYTHONDONTWRITEBYTECODE",
+      "RAYON_NUM_THREADS",
+      "TMPDIR"
+    ],
+    "exit_code": 0,
+    "elapsed_wall_ns": 233454000,
+    "measurement_class": "EXECUTION_LOG_NOT_BENCHMARK"
+  },
+  {
+    "label": "dependency-graph",
+    "argv": [
+      "cargo",
+      "metadata",
+      "--locked",
+      "--format-version",
+      "1",
+      "--manifest-path",
+      "/Users/zodomo/code/PQTornado/research/r2/backend/rust/Cargo.toml"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado",
+    "environment_keys": [
+      "CARGO_TARGET_DIR",
+      "CARGO_TERM_COLOR",
+      "HOME",
+      "PATH",
+      "PYTHONDONTWRITEBYTECODE",
+      "RAYON_NUM_THREADS",
+      "TMPDIR"
+    ],
+    "exit_code": 0,
+    "elapsed_wall_ns": 74750000,
+    "measurement_class": "EXECUTION_LOG_NOT_BENCHMARK"
+  },
+  {
+    "label": "uni-api-barrier",
+    "argv": [
+      "cargo",
+      "check",
+      "--locked",
+      "--manifest-path",
+      "/Users/zodomo/code/PQTornado/research/r2/backend/rust/Cargo.toml",
+      "--features",
+      "uni-api-barrier",
+      "--bin",
+      "uni-api-barrier"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado",
+    "environment_keys": [
+      "CARGO_TARGET_DIR",
+      "CARGO_TERM_COLOR",
+      "HOME",
+      "PATH",
+      "PYTHONDONTWRITEBYTECODE",
+      "RAYON_NUM_THREADS",
+      "TMPDIR"
+    ],
+    "exit_code": 101,
+    "elapsed_wall_ns": 458346000,
+    "measurement_class": "EXECUTION_LOG_NOT_BENCHMARK"
+  },
+  {
+    "label": "multi-api-barrier",
+    "argv": [
+      "cargo",
+      "check",
+      "--locked",
+      "--manifest-path",
+      "/Users/zodomo/code/PQTornado/research/r2/backend/rust/Cargo.toml",
+      "--features",
+      "multi-api-barrier",
+      "--bin",
+      "multi-api-barrier"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado",
+    "environment_keys": [
+      "CARGO_TARGET_DIR",
+      "CARGO_TERM_COLOR",
+      "HOME",
+      "PATH",
+      "PYTHONDONTWRITEBYTECODE",
+      "RAYON_NUM_THREADS",
+      "TMPDIR"
+    ],
+    "exit_code": 101,
+    "elapsed_wall_ns": 131981000,
+    "measurement_class": "EXECUTION_LOG_NOT_BENCHMARK"
+  },
+  {
+    "label": "build-h0-control",
+    "argv": [
+      "cargo",
+      "build",
+      "--release",
+      "--locked",
+      "--manifest-path",
+      "/Users/zodomo/code/PQTornado/research/r2/backend/rust/Cargo.toml",
+      "--bin",
+      "h0-control"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado",
+    "environment_keys": [
+      "CARGO_TARGET_DIR",
+      "CARGO_TERM_COLOR",
+      "HOME",
+      "PATH",
+      "PYTHONDONTWRITEBYTECODE",
+      "RAYON_NUM_THREADS",
+      "TMPDIR"
+    ],
+    "exit_code": 0,
+    "elapsed_wall_ns": 71383000,
+    "measurement_class": "EXECUTION_LOG_NOT_BENCHMARK"
+  },
+  {
+    "label": "non-hiding-control",
+    "argv": [
+      "/Users/zodomo/code/PQTornado/research/r2/backend/target/release/h0-control",
+      "/Users/zodomo/code/PQTornado/research/r2/corpus/h0/fixed/statement.json",
+      "/Users/zodomo/code/PQTornado/research/r2/corpus/h0/fixed/witness.json",
+      "/Users/zodomo/code/PQTornado/research/r2/backend/outputs/resume-h0-32/non-hiding-control",
+      "32"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado",
+    "environment_keys": [
+      "CARGO_TARGET_DIR",
+      "CARGO_TERM_COLOR",
+      "HOME",
+      "PATH",
+      "PYTHONDONTWRITEBYTECODE",
+      "RAYON_NUM_THREADS",
+      "TMPDIR"
+    ],
+    "exit_code": 101,
+    "elapsed_wall_ns": 233135000,
+    "measurement_class": "EXECUTION_LOG_NOT_BENCHMARK"
+  },
+  {
+    "label": "build-hiding-repair",
+    "argv": [
+      "cargo",
+      "build",
+      "--release",
+      "--locked",
+      "--manifest-path",
+      "/Users/zodomo/code/PQTornado/research/r2/backend/rust/Cargo.toml",
+      "--bin",
+      "hiding-repair"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado",
+    "environment_keys": [
+      "CARGO_TARGET_DIR",
+      "CARGO_TERM_COLOR",
+      "HOME",
+      "PATH",
+      "PYTHONDONTWRITEBYTECODE",
+      "RAYON_NUM_THREADS",
+      "TMPDIR"
+    ],
+    "exit_code": 0,
+    "elapsed_wall_ns": 70230000,
+    "measurement_class": "EXECUTION_LOG_NOT_BENCHMARK"
+  },
+  {
+    "label": "hiding-repair",
+    "argv": [
+      "/Users/zodomo/code/PQTornado/research/r2/backend/target/release/hiding-repair",
+      "/Users/zodomo/code/PQTornado/research/r2/corpus/h0/fixed/statement.json",
+      "/Users/zodomo/code/PQTornado/research/r2/corpus/h0/fixed/witness.json",
+      "/Users/zodomo/code/PQTornado/research/r2/backend/outputs/resume-h0-32/hiding-repair",
+      "32"
+    ],
+    "cwd": "/Users/zodomo/code/PQTornado",
+    "environment_keys": [
+      "CARGO_TARGET_DIR",
+      "CARGO_TERM_COLOR",
+      "HOME",
+      "PATH",
+      "PYTHONDONTWRITEBYTECODE",
+      "RAYON_NUM_THREADS",
+      "TMPDIR"
+    ],
+    "exit_code": 0,
+    "elapsed_wall_ns": 236921000,
+    "measurement_class": "EXECUTION_LOG_NOT_BENCHMARK"
+  }
+]

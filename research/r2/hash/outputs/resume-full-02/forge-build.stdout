@@ -1,0 +1,14 @@
+Compiling 10 files with Solc 0.8.30
+Solc 0.8.30 finished in 3.77s
+Compiler run successful with warnings:
+Warning (2519): This declaration shadows an existing declaration.
+  --> src/Roles.sol:37:48:
+   |
+37 |  ... for(uint256 b;b<(count+16)/16;++b){uint256[] memory x=new uint256[](32);for(uint256 i;i< ...
+   |                                         ^^^^^^^^^^^^^^^^^^
+Note: The shadowed declaration is here:
+  --> src/Roles.sol:39:9:
+   |
+39 |         uint256[] memory x=new uint256[](32);for(uint256 i;i< ...
+   |         ^^^^^^^^^^^^^^^^^^
+

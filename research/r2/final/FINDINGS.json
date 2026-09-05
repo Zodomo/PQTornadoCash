@@ -150,11 +150,14 @@
         "correction_evidence": [
           "research/r2/models/runs/check-01/command.json",
           "research/r2/models/outputs/historical-calibration.json",
-          "research/r2/models/anchor-plan.json"
+          "research/r2/models/anchor-plan.json",
+          "research/r2/models/outputs/resume-c0-first-anchor/samples.json",
+          "research/r2/models/outputs/resume-c0-grid-01/samples.json",
+          "research/r2/models/outputs/resume-air-grid-02/samples.json"
         ],
         "dependencies": [],
         "owner": "R2-06",
-        "resolution": "Structural invariant checks and six historical byte residuals passed. New anchor binary compiled but no fresh anchor or EVM fit executed.",
+        "resolution": "Executed76 fresh verified parameter-anchor proofs across C0/C1/C2/C3, all typed structural byte residuals zero. Corrected field serialization model after actual AIR proof disproved all-varint assumption. Held-out EVM fitting remains pending.",
         "reviewer": "Further independent/security review deferred by user; no external acceptance",
         "smallest_decisive_experiment": "Build codec-derived models and calibrate on actual anchors",
         "status": "PARTIALLY_ADDRESSED"
@@ -228,11 +231,13 @@
         "correction_evidence": [
           "research/r2/security/outputs/c0/results.json",
           "research/r2/air/outputs/C1-decomposed/proof-inventory.json",
-          "research/r2/air/outputs/C3-decomposed/proof-inventory.json"
+          "research/r2/air/outputs/C3-decomposed/proof-inventory.json",
+          "research/r2/security/outputs/resume-shapes-02/results.json",
+          "research/r2/security/runs/resume-inventory-check-01/command.json"
         ],
         "dependencies": [],
         "owner": "R2-01",
-        "resolution": "C0 source-derived inventory distinguishes210 functions,330 base columns and524 reductions. New proof inventories exist; theorem-specific applicability and candidate normalization remain.",
+        "resolution": "C0/C1/C2/C3 observed matrix inventory and three-calculator analysis executed after correcting numeric commitment-ID comparison. Theorem-specific batching object remains unresolved.",
         "reviewer": "Further independent/security review deferred by user; no external acceptance",
         "smallest_decisive_experiment": "Derive theorem-specific count; do not substitute a raw code-array count",
         "status": "PARTIALLY_ADDRESSED"
@@ -411,14 +416,17 @@
         "correction_evidence": [
           "research/r2/backend/outputs/api/results.json",
           "research/r2/backend/adapter.json",
-          "research/r2/backend/runs/build-native-01/command.json"
+          "research/r2/backend/runs/build-native-01/command.json",
+          "research/r2/backend/outputs/resume-h0-32/results.json",
+          "research/r2/backend/outputs/resume-h0-128/results.json",
+          "research/r2/backend/outputs/resume-h0-degree-32/results.json"
         ],
         "dependencies": [],
         "owner": "R2-07",
-        "resolution": "Both real PCS trait barriers reproduced. Exact non-hiding H0 and bounded hiding trace controls compiled, but no execution or complete hiding same-relation proof.",
+        "resolution": "Exact H0 non-hiding WHIR control now verifies after bounded degree-hint compatibility repair;34290 postcard bytes. Full hiding relation remains blocked by outer zerocheck masking/prescribed-point interface, demonstrated by exact trait failures and executed exposed-claim repair.128 zero-PoW derivations failed exactly at required35/41bits, not a global128-bit impossibility.",
         "reviewer": "Further independent/security review deferred by user; no external acceptance",
         "smallest_decisive_experiment": "Implement exact adapter/lowering and complete hiding relation",
-        "status": "PARTIALLY_ADDRESSED"
+        "status": "MEASURED_BOUNDED_REPAIR_HIDING_GAP"
       },
       "work_package": "R2-07"
     },
@@ -528,8 +536,8 @@
   "round": "R2.0",
   "severity_meaning": "Priority for evidence and next-build decisions; not a CVSS rating or assertion of an exploitable vulnerability.",
   "checkpoint": {
-    "id": "R2-HALT-2026-09-05",
-    "status": "PAUSED_BY_USER",
+    "id": "R2-RESUME-bc71758",
+    "status": "RESEARCH_IN_PROGRESS",
     "all_original_findings_preserved": true,
     "closure_scope": "Scoped engineering/evidence corrections only; no global research completion or cryptographic approval."
   }

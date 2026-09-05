@@ -24,18 +24,13 @@
   "codec": "Full upstream native proof serialized by postcard1.1.3, with exact recursive ledger including length/option prefixes. This is not the frozen EVM codec. Raw ABI proof bytes remain null, not equal to postcard bytes.",
   "EVM_cost_prototype": "Solidity AirCost executes every actual symbolically generated AIR constraint over BabyBear[X]/(X^4-11), with hash-bound arithmetic instruction tape and expected output derived independently from symbolic Rust expressions. It is NOT a mock verifier or a proof verifier. Caller-supplied periodic OOD values, instruction-tape calldata and hash overhead are explicitly separate. cost.py builds in a /tmp package containing only foundry.toml and AirCost.sol; it never searches repository .env or starts a chain.",
   "build": "CARGO_TARGET_DIR=research/r2/air/target cargo build --release --manifest-path research/r2/air/rust/Cargo.toml",
+  "serial_command_manifest": "research/r2/air/resume-handoff.json",
   "commands": [
-    "python3 research/r2/air/run.py -- --candidate C1 --geometry decomposed --profile fixed --queries 32 --log-blowup 4 --output research/r2/air/outputs/C1-decomposed",
-    "python3 research/r2/air/run.py -- --candidate C1 --geometry whole-round --profile fixed --output research/r2/air/outputs/C1-whole-round",
-    "python3 research/r2/air/run.py -- --candidate C1 --geometry lanes4 --profile fixed --output research/r2/air/outputs/C1-lanes4",
-    "python3 research/r2/air/run.py -- --candidate C2 --profile fixed --output research/r2/air/outputs/C2-horizontal",
-    "python3 research/r2/air/run.py -- --candidate C3 --geometry decomposed --profile fixed --h5-case research/r2/air/outputs/C2-horizontal/h5-case.json --output research/r2/air/outputs/C3-decomposed",
-    "python3 research/r2/air/run.py -- --candidate C1 --action mutations --mutation-proofs --output research/r2/air/outputs/C1-mutations",
-    "python3 research/r2/air/run.py -- --candidate C2 --action mutations --mutation-proofs --output research/r2/air/outputs/C2-mutations",
-    "python3 research/r2/air/run.py -- --candidate C3 --action mutations --mutation-proofs --output research/r2/air/outputs/C3-mutations",
-    "python3 research/r2/air/run.py -- --candidate C1 --action verify --output research/r2/air/outputs/C1-decomposed",
-    "python3 research/r2/air/run.py -- --candidate C2 --action public-context --output research/r2/air/outputs/public-context",
-    "python3 research/r2/air/cost.py --input research/r2/air/outputs/C1-decomposed --rpc-url http://127.0.0.1:18545"
+    "python3 research/r2/air/run.py -- --candidate C1 --geometry whole-round --profile fixed --queries 32 --log-blowup 4 --statement research/r2/corpus/h0/corpus/swc-v1-000/statement.json --witness research/r2/corpus/h0/corpus/swc-v1-000/witness.json --corpus research/r2/corpus/semantic-cases.json --case-index 0 --output research/r2/air/outputs/resume-C1-whole-round",
+    "python3 research/r2/air/run.py -- --candidate C1 --geometry lanes4 --profile fixed --queries 32 --log-blowup 4 --statement research/r2/corpus/h0/corpus/swc-v1-000/statement.json --witness research/r2/corpus/h0/corpus/swc-v1-000/witness.json --corpus research/r2/corpus/semantic-cases.json --case-index 0 --output research/r2/air/outputs/resume-C1-lanes4",
+    "python3 research/r2/air/run.py -- --candidate C1 --action mutations --mutation-proofs --statement research/r2/corpus/h0/corpus/swc-v1-000/statement.json --witness research/r2/corpus/h0/corpus/swc-v1-000/witness.json --output research/r2/air/outputs/resume-C1-mutations",
+    "python3 research/r2/air/resume-distributions.py --manifest research/r2/air/resume-distribution-manifest.json --samples 30 --warmup 2 --output research/r2/air/outputs/resume-distributions-fixed-01",
+    "python3 research/r2/air/cost.py --input research/r2/air/outputs/resume-C1-decomposed --output research/r2/air/outputs/resume-cost-C1-decomposed --rpc-url http://127.0.0.1:18545"
   ],
   "normalization": "Re-run C1/C2/C3 with --profile normalized --queries <selected> --log-blowup <selected> --security-model <R2Security-model-and-target-ID>. Selection is owned by R2Security/Main; unsupported or unavailable normalized profiles are retained as execution barriers, never silently weakened. CLI also supports --log-final-poly, --max-log-arity, --cap-height, --commit-pow, --query-pow. All affect the verifier configuration ID.",
   "regression_entrypoints": "--action mutations mutates every input/state/work/path/index/intermediate column before/at/after every permutation boundary and checks both affected rows using the real AIR. --mutation-proofs additionally generates three invalid-trace proofs around the note boundary, checks native rejection, mutates every public field, and rejects configuration substitution. Every normal run compares full permutation outputs with frozen H0 horizontal trace or H5 native reference before checking the full AIR."

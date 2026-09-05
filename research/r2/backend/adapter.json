@@ -11,11 +11,12 @@
   "relation": {
     "source": "crates/pqtc-poseidon-air/src/air.rs",
     "reference": "crates/pqtc-poseidon-air/src/lib.rs::check_witness",
-    "representation": "Unmodified WithdrawalAir instantiated against p3-multi-stark symbolic/prover/verifier AIR builders; no relation reimplementation or synthetic AIR",
-    "geometry": {"rows": 256, "columns": 190, "constraints_per_row": 1186, "maximum_degree": 7, "stacked_mle_variables": 16},
+    "representation": "Unmodified WithdrawalAir::eval instantiated against p3-multi-stark symbolic/prover/verifier builders through a backend-local wrapper that omits the incompatible univariate degree hint; no relation reimplementation or synthetic AIR",
+    "geometry": {"rows": 256, "columns": 190, "constraints_per_row": 1186, "maximum_degree": 7, "maximum_degree_convention": "FROZEN_UNIVARIATE_DEGREE_MULTIPLE", "multilinear_constraint_degree": 8, "multilinear_degree_derivation": "Pinned upstream poly_degree(2, &[]) with no hint; transition selector contributes one", "stacked_mle_variables": 16},
     "public_values": "64 BabyBear values: scope, root, nullifier_hash, payout_digest, sixteen values each; payout_digest is the frozen recipient/relayer/fee binding, not raw addresses",
     "canonical_inputs": "Deserialize existing WithdrawalStatement/WithdrawalWitness; check_witness before trace generation. No modulo remapping of corpus inputs.",
-    "constraint_closure": "Plain control uses upstream AIR metadata, beta-batched degree-generic zerocheck, repeat-last successor column opening, prescribed-point WHIR verification, and verifier evaluation of the identical AIR. No sparse matrices, unverified lookup claims, or client-supplied constraint evaluations. Frozen transitions are disabled at the last row, so the successor convention does not change H0."
+    "constraint_closure": "Plain control uses upstream AIR metadata, beta-batched degree-generic zerocheck, repeat-last successor column opening, prescribed-point WHIR verification, and verifier evaluation of the identical AIR. No sparse matrices, unverified lookup claims, or client-supplied constraint evaluations. Frozen transitions are disabled at the last row, so the successor convention does not change H0.",
+    "native_compatibility_repair": "Historical resume-h0-32 proof failed Zerocheck(FinalSumMismatch). WithdrawalAir hints degree7 under degree_multiple(), where is_transition costs zero; pinned multi-stark air_degree trusts this hint in release but otherwise uses poly_degree(2, &[]), where is_transition costs one. H0 Merkle transitions reach degree8. The local wrapper preserves H0 evaluation and lets upstream derive the multilinear degree. Runtime acceptance is pending a fresh resume-* execution; historical evidence remains unchanged."
   },
   "api_fit": [
     {"stage": "frozen uni-stark", "required": "p3_commit::Pcs<EF, Challenger>", "available": "HidingWhirPcs implements MultilinearPcs only", "reproducer": "rust/src/uni_api_barrier.rs", "expected_result": "E0277 missing Pcs implementation"},
@@ -45,7 +46,9 @@
     "mask_union": "mask_queries = assumption.queries(security_level + ceil(log2(2*n_rounds+2)), mask_log_inv_rate)",
     "terminal_budget": "Upstream least fixed point accounts for message_len + final_queries randomized occupancy, with derived PoW gap.",
     "security_terms": "Retain complete hiding_base_case_security_report, requested target and derived configuration. The report is explicitly diagnostic ideal-IOP RBR base-case scope, not end-to-end certification. Quartic BabyBear field and CapacityBound conditions remain visible; 128 input is not 128 established security.",
-    "comparison_limit": "32-bit runs are historical-profile controls only. 128-bit derivation requests do not establish security normalization. Do not rank either against a stronger qualified backend."
+    "comparison_limit": "32-bit runs are historical-profile controls only. 128-bit derivation requests do not establish security normalization. Do not rank either against a stronger qualified backend.",
+    "observed_128_zero_pow_barrier": "resume-h0-128 retained PowBitsExceedBudget(required35,budget0) for native and required41,budget0 for hiding repair. Those are exact requested-profile derivation failures, not unknown results and not a proof that all 128-bit parameterizations fail.",
+    "separate_parameters": "Changing the zero-PoW request, field, rate, folding schedule or security assumption creates a separate configuration requiring an independently justified derivation and end-to-end scope. Required35/41 are not successful security presets; no such replacement is selected or executed here."
   },
   "spartan_branch": {
     "source_pin": "f525cddea38bb605304d3a8e6394dda10ac64b4a",

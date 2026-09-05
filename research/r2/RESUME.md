@@ -1,7 +1,8 @@
 # R2 research resume checkpoint
 
-**Status: paused by user on 2026-09-05. Do not restart experiments without a request to resume.**
-This is a halt checkpoint, not a completed research return or a production-readiness decision.
+**Status: research resumed by user from `bc71758`. R2-05 remains explicitly deferred.**
+The original halt files and validated manifest are preserved under `governance/halt-bc71758/`; the sections below retain the historical handoff until the next progress return.
+First C0 anchor and remaining C0 grid executed:20 verified proofs,10 configurations,zero structural byte residuals. Candidate shape normalization executed at `security/outputs/resume-shapes-02/`; its first failed attempt is retained.
 
 ## Read first
 

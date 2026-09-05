@@ -1,0 +1,278 @@
+{
+  "schema": "pqtc.r2.resume-handoff.v1",
+  "owner": "ConditionalResume",
+  "checkpoint": "bc71758",
+  "status": "SOURCE_PREPARED_MAIN_EXECUTION_REQUIRED",
+  "no_execution_claim": "No builds, tests, validation, formatters, benchmarks, proof generation, hardware inventory commands, L2 diagnostics or gate evaluation executed by this worker. Only source/evidence reads, hashes for input binding, and source/input writes.",
+  "changes": [
+    {
+      "path": "research/r2/conditional/gates.py",
+      "change": "Strict JSON bool/null semantics (numeric 0/1 rejected), verify supplied evidence hashes even for unknown facts, emit known_unsatisfied versus unknown, refuse existing output."
+    },
+    {
+      "path": "research/r2/conditional/l2_payload.py",
+      "change": "Optional --payloads hash-bound manifest for exact full native postcard/research-raw proof transport on all three pinned L2s, using existing offline signer/fee code. Native transport never claims EVM ABI or verifier validity. Existing retained A/B ABI diagnostic remains available unchanged; output overwrite refused."
+    },
+    {
+      "path": "research/r2/conditional/hardware.py",
+      "change": "Explicit Rust 1.97.0 release generic-CPU offline build; explicit frozen H0 inputs and fixed b4/q32; configurable threads, sample count, geometry/security model and fresh resume build/run roots. One cold process, one excluded warmup, 30 warm samples by default; AIR wrapper records RSS/native verification. ARM CPU options and public macOS power config included. Remote absence is null, not false."
+    },
+    {
+      "path": "research/r2/conditional/commands.json",
+      "change": "Exact fresh-output Main-owned commands for gates, five exact L2 payloads, t1/t4 hardware inventory, compiler capture and one shared portable build; generated hardware records supply every proof command."
+    }
+  ],
+  "new_inputs": [
+    {
+      "artifact": "research/r2/conditional/resume-gate-evidence.json",
+      "sha256": "6518c02669dd428a725518d8cc6a558284fd64f9c099ab861a69a08911c44f8b"
+    },
+    {
+      "artifact": "research/r2/conditional/resume-payloads.json",
+      "sha256": "880b9d78fd655a9e2172e44a245bdf8db1ee82f884c90932853d2833aba5f2ce"
+    }
+  ],
+  "preserved_source_epoch": "research/r2/conditional/resume-source-epoch-bc71758 (original bytes of gates.py, hardware.py, l2_payload.py, commands.json; archive, not a relocatable runnable package)",
+  "commands": {
+    "schema": "pqtc.r2.conditional-commands.v2",
+    "execution_owner": "Main; source preparation only in ConditionalResume handoff; nothing in this resume schedule has been executed by worker",
+    "working_directory": "repository root",
+    "source_epoch": "research/r2/conditional/resume-source-epoch-bc71758",
+    "serial_local_diagnostics": [
+      {
+        "id": "gates",
+        "argv": [
+          "python3",
+          "-B",
+          "research/r2/execute.py",
+          "--output",
+          "research/r2/conditional/runs/resume-gates-01",
+          "--",
+          "python3",
+          "-B",
+          "research/r2/conditional/gates.py",
+          "--evidence",
+          "research/r2/conditional/resume-gate-evidence.json",
+          "--output",
+          "research/r2/conditional/outputs/resume-gates-01.json"
+        ]
+      },
+      {
+        "id": "native-l2",
+        "argv": [
+          "python3",
+          "-B",
+          "research/r2/execute.py",
+          "--output",
+          "research/r2/conditional/runs/resume-native-l2-01",
+          "--",
+          "python3",
+          "-B",
+          "research/r2/conditional/l2_payload.py",
+          "--payloads",
+          "research/r2/conditional/resume-payloads.json",
+          "--output",
+          "research/r2/conditional/outputs/resume-native-l2-01.json"
+        ]
+      },
+      {
+        "id": "hardware-t1",
+        "argv": [
+          "python3",
+          "-B",
+          "research/r2/execute.py",
+          "--output",
+          "research/r2/conditional/runs/resume-hardware-t1-01",
+          "--",
+          "python3",
+          "-B",
+          "research/r2/conditional/hardware.py",
+          "--candidate",
+          "C1",
+          "--geometry",
+          "decomposed",
+          "--profile",
+          "fixed",
+          "--queries",
+          "32",
+          "--log-blowup",
+          "4",
+          "--threads",
+          "1",
+          "--samples",
+          "30",
+          "--toolchain",
+          "1.97.0",
+          "--build-root",
+          "research/r2/conditional/resume-build/portable",
+          "--run-root",
+          "research/r2/conditional/outputs/resume-portable-C1-t1",
+          "--output",
+          "research/r2/conditional/outputs/resume-hardware-t1-01.json"
+        ]
+      },
+      {
+        "id": "hardware-t4",
+        "argv": [
+          "python3",
+          "-B",
+          "research/r2/execute.py",
+          "--output",
+          "research/r2/conditional/runs/resume-hardware-t4-01",
+          "--",
+          "python3",
+          "-B",
+          "research/r2/conditional/hardware.py",
+          "--candidate",
+          "C1",
+          "--geometry",
+          "decomposed",
+          "--profile",
+          "fixed",
+          "--queries",
+          "32",
+          "--log-blowup",
+          "4",
+          "--threads",
+          "4",
+          "--samples",
+          "30",
+          "--toolchain",
+          "1.97.0",
+          "--build-root",
+          "research/r2/conditional/resume-build/portable",
+          "--run-root",
+          "research/r2/conditional/outputs/resume-portable-C1-t4",
+          "--output",
+          "research/r2/conditional/outputs/resume-hardware-t4-01.json"
+        ]
+      }
+    ],
+    "portable_build": {
+      "id": "portable-build",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-portable-build-01",
+        "--env",
+        "RUSTFLAGS=-C target-cpu=generic",
+        "--env",
+        "CARGO_BUILD_JOBS=4",
+        "--",
+        "cargo",
+        "+1.97.0",
+        "build",
+        "--locked",
+        "--offline",
+        "--release",
+        "--manifest-path",
+        "research/r2/air/rust/Cargo.toml",
+        "--target-dir",
+        "research/r2/conditional/resume-build/portable"
+      ]
+    },
+    "compiler_inventory": {
+      "id": "compiler",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-compiler-01",
+        "--",
+        "rustc",
+        "+1.97.0",
+        "-vV"
+      ]
+    },
+    "portable_proofs": {
+      "command_files": [
+        "research/r2/conditional/outputs/resume-hardware-t1-01.json",
+        "research/r2/conditional/outputs/resume-hardware-t4-01.json"
+      ],
+      "command_pointer": "portable_h1_command.run_commands",
+      "execution": "After one successful portable build, Main executes every emitted argv with its env, serially. Both inventory files share one build. Each list has one process-cold proof, one excluded warmup, and 30 independent warm proof processes. Do not interleave builds/EVM or another timed prover. Retain returncodes and stop the affected branch on real command failure; do not copy samples.",
+      "provenance": "AIR wrapper retains command/stdout/stderr/RSS and results with native verification and proof hashes in each fresh output. Preserve emitted arguments: explicit frozen H0 statement/witness, fixed b4/q32, C1 decomposed. A source epoch changing before build requires a fresh source-bound build record.",
+      "classification": "Generic CPU target on existing H1, not new commodity hardware or certified scalar implementation. First process is not hardware-cold. Fixed witness only, not varied-witness promotion distribution.",
+      "after_execution": "Report cold separately; exclude warmup; summarize 30 actual warm prove/verify times and RSS per thread count with order statistics/uncertainty, native_verified=true and fresh actual proof hashes. No strong p99 inference."
+    },
+    "gate_input": {
+      "path": "research/r2/conditional/resume-gate-evidence.json",
+      "semantics": "Hash-bound true/false/null scoped facts; evaluator preserves unknown separately from known-unsatisfied. Native proof completion is not adequate exact soundness or a usable outer path."
+    },
+    "l2_scope": "--payloads accepts exact hash-bound native artifacts, never synthesizes ABI. Five retained/fresh candidate payloads use no-code raw transport alternatives on three pinned chains. Raw native proof bytes, byte gas, signed envelope sizes are measurements; source admission and fees are projections. ABI, node admission, actual data fees and verifier receipts remain null. Omit --payloads only for historical retained A/B ABI diagnostic; historical output is preserved and need not rerun.",
+    "flock_repair": "The retained 64-local-commit search and historical exact control already establish the scoped missing M21_FAST_SECURITY_CONFIG. No unchanged search/control rerun is scheduled. Reopen on exact supported upstream M21 config+registry+Keccak commit or reviewed derivation; do not guess presets. Then prepare in fresh resume-* source path and execute exact 44 logical/48 capacity/4 dummy control before glue/hiding work. Existing flock_search.py --prepare writes work/, so Main must use a resume-only staging change before reopening; no prepared candidate currently exists.",
+    "nonentered_branches": "Recursion: adequate exact inner errors, measured exact direct bottleneck, compatible verifier, both-layer accounting, witness inventory/composition absent. Aggregation: exact outer path/inventory/settlement absent; if reopened N=2,4,8. STIR/Circle: pinned non-hiding controls cannot enter complete private candidates; explicit hiding route and compatible relation/field required.",
+    "hardware_external_prerequisite": "Retained local inventory found arm64 H1, no configured x86 host or qemu user/guest. No private SSH config discovery. Supply a real public/local x86 machine with pinned toolchain/build and same corpus; emulator measurements must be labeled emulated, never commodity results.",
+    "approval_boundary": "No .env reads, private keys, public network, trivial recursion proxy, guessed Flock preset, raw note aggregation, or R2-05 changed-transcript/local-EVM work. Security reviews deferred, not permission gates; no production qualification."
+  },
+  "prerequisites": {
+    "gate_evaluation": "All explicitly hash-bound research files already retained; no missing executable prerequisite.",
+    "l2_transport": "Five existing exact native proof artifacts already pinned. No new ABI encoder needed or claimed for transport-only diagnostics.",
+    "portable_native": "Complete C1 configured-hiding native proof is retained. Repository rust-toolchain.toml pins 1.97.0 and that local rustup toolchain directory exists; actual compiler capture/build remains Main-owned. Existing locked dependencies and supported source need one fresh portable build after concurrent edits settle.",
+    "commodity_x86": "A real compatible x86 laptop/desktop or explicitly provisioned local machine is required. Retained hardware output found no x86 executable/emulator/guest; no private config inspected. Commodity measurements remain external, not inferred from portable arm64 or qemu-system presence."
+  },
+  "criteria_mapping": [
+    {
+      "criterion": "15.1 recursion",
+      "gate_input": "research/r2/conditional/resume-gate-evidence.json#/recursion",
+      "disposition": "NOT_ENTERED: complete exact inner native configured-hiding proof exists, but adequate exact-inner security/error accounting and measured direct candidate bottleneck are unknown; retained Fibonacci/P3-0.7 wrapper is known not an exact-inner verifier. Outer witness/composition absent. No trivial proxy executed.",
+      "reopen": "All seven exact recursion prerequisites evidenced for the same proof/configuration. Deferred review is not itself an execution permission gate."
+    },
+    {
+      "criterion": "15.2 Flock/VEIL",
+      "gate_input": "research/r2/conditional/resume-gate-evidence.json#/flock_veil",
+      "disposition": "NOT_ENTERED: retained exact Keccak control failed missing supported M21 fast configuration; bounded 64-local-commit search found none. No proof/performance measurement exists.",
+      "reopen": "Exact upstream-supported config+registry+Keccak commit or reviewed derivation, then successful 44 logical/48 capacity/4 dummy control, exact glue and hiding overhead; no guessed presets or witness pooling."
+    },
+    {
+      "criterion": "15.3 STIR",
+      "gate_input": "research/r2/conditional/resume-gate-evidence.json#/stir",
+      "disposition": "Retain pinned non-hiding commit/open/verify control; no compatible complete private withdrawal relation measured.",
+      "reopen": "Concrete hiding construction or justified already-ZK exact-inner wrapper, plus compatible application relation."
+    },
+    {
+      "criterion": "15.3 Circle",
+      "gate_input": "research/r2/conditional/resume-gate-evidence.json#/circle",
+      "disposition": "Retain pinned non-hiding source watch and exact frozen-H0 field incompatibility; not a general architectural rejection.",
+      "reopen": "Concrete hiding route plus exact compatible field/relation translation or compatible verifier wrapper."
+    },
+    {
+      "criterion": "15.4 aggregation",
+      "gate_input": "research/r2/conditional/resume-gate-evidence.json#/aggregation",
+      "disposition": "NOT_ENTERED: individual configured-hiding proof exists; manifest design/policy does not establish compatible outer path, actual input inventory or all settlement failure handling.",
+      "reopen": "Concrete exact-proof outer path and proof/public-statement-only witness inventory; implement and measure N=2,4,8 with all payouts/nullifiers and failure handling, never notes."
+    },
+    {
+      "criterion": "15.5 exact L2 transport",
+      "gate_input": "research/r2/conditional/resume-gate-evidence.json#/l2_exact_candidate",
+      "disposition": "ENTERABLE_NOT_EXECUTED: run scheduled native-l2 command, not metadata-only completion. Retained A/B ABI envelope already measured separately.",
+      "execution_acceptance": "Five hash-identical native payloads x three networks; report exact raw bytes/byte gas/signed envelope sizes and source size/gas projections. New native ABI bytes, configured admission, verifier gas, actual fee and receipts remain null.",
+      "remaining": "Actual exact EVM ABI/decoder and verifier path for C1/C2/C3/C0 variant; source-configured local client for node behavior; exact Nitro BrotliLevel1 and Scroll DA codec-v8 Zstd executables for respective fee calculations; calibrated local OP fee inputs/implementation comparison. No generic compression substitutions, no public network. These are concrete missing prerequisites, not purported completed criteria."
+    },
+    {
+      "criterion": "15.6 portable hardware",
+      "gate_input": "research/r2/conditional/resume-gate-evidence.json#/hardware_expansion",
+      "disposition": "ENTERABLE_NOT_EXECUTED: execute compiler capture, one portable build, then generated t1/t4 native proof schedules serially.",
+      "execution_acceptance": "Each thread profile has 1 process-cold control +1 excluded warmup +30 independent warm native proofs, actual hashes/native verification and measured timing/RSS, CPU features/memory/thread/power inventory. Fresh OS entropy, not seeded proof duplicates.",
+      "remaining": "One commodity x86 host and matching cold/warm proof measurements remain external. Generic arm64 target is portable-build sensitivity, not x86 or proof of scalar execution. Varied-witness promoted distribution remains R2-06/Main scope, not silently inferred from this fixed-witness schedule."
+    }
+  ],
+  "main_verification": {
+    "first": "Execute gates and native-l2 diagnostic commands from commands.json, inspect actual output before recording gates/transport measured.",
+    "gate_expectations": "l2_exact_candidate and hardware_expansion enterable; all others not entered, architecture_failed=null. Unknown facts remain null and separately listed; known historical incompatibilities/failure remain scoped false.",
+    "payload_expectations": "Native output schema pqtc.r2.conditional-native-l2.v1, exactly five declared payloads, all three networks per payload; ABI/node/receipt/verifier/actual data fee fields null, exact artifact SHA values retained. Wrong payload hash must raise ValueError before producing an output. Existing output paths must be refused.",
+    "proof_expectations": "Run all eligible commands; require successful returncodes and native_verified=true for every sample. Collect actual independent proof identities, exclude warmup from 30-sample distributions and retain process-cold separately. Do not use successful inventory as proof execution.",
+    "validation_owner": "Main exclusively; worker intentionally did not execute checks during concurrent source work."
+  },
+  "intentionally_unchanged": [
+    "All historical outputs/proofs/logs",
+    "Flock source/config presets and historical control",
+    "STIR/Circle/recursion/aggregation source controls outside conditional ownership",
+    "R2-05 changed-transcript/local-EVM code and execution",
+    "Production/security qualification status",
+    "Shared models/security/governance/final files"
+  ]
+}

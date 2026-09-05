@@ -1,0 +1,52 @@
+{
+  "schema": "pqtc.r2.resume-handoff.v1",
+  "owner": "BackendRepair",
+  "status": "SOURCE_PREPARED_EXECUTION_RESERVED_FOR_MAIN",
+  "source_pin": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+  "changed_files": [
+    "research/r2/backend/rust/src/main.rs",
+    "research/r2/backend/rust/Cargo.toml",
+    "research/r2/backend/rust/Cargo.lock",
+    "research/r2/backend/adapter.json",
+    "research/r2/backend/run.py"
+  ],
+  "bounded_repair": {
+    "root_cause": "The frozen WithdrawalAir supplies a univariate degree_multiple hint of 7. Pinned multilinear zerocheck instead needs poly_degree(2, &[]), but trusts a supplied hint in release. The transition selector contributes 0 under degree_multiple and 1 under poly_degree(2, &[]). H0 has transitions with one transition selector, one Merkle selector, four step-bit factors, one path/last-level factor and one linear equality: multilinear degree 8. The old hint therefore undersizes zerocheck round polynomials.",
+    "implementation": "Backend-local MultilinearWithdrawalAir delegates the unchanged H0 eval, width and public count, retaining all other identical BaseAir defaults except omitting max_constraint_degree. Upstream derives its own multilinear degree, as its no-hint Fibonacci AIR does. No H0 constraints, trace, witness, public values, commitment geometry, transcript or security parameters changed.",
+    "failure_reporting": "After postcard decode, failed verify now writes result.json with NATIVE_VERIFICATION_FAILURE, SERIALIZED_NATIVE_PROOF_REJECTED, exact Debug error, verified=false, elapsed prover/verifier times, serialized proof bytes and component ledger, then exits 3. Existing run.py already consumes result.json even on nonzero exit. A rejected proof is measured correctness failure, not UNKNOWN or valid-proof performance evidence.",
+    "runtime_claim": "Not validated or executed by this agent; the fresh serial command is the acceptance check. The source analysis identifies a concrete incompatibility, not an assertion that no other incompatibility exists."
+  },
+  "source_evidence": [
+    {"path": "crates/pqtc-poseidon-air/src/air.rs", "lines": "97-107, 262-273, 348-357, 427-437", "fact": "Frozen hint7 and explicit degree8 multilinear transitions; no modifications to this file."},
+    {"upstream_path": "air/src/symbolic/expression.rs", "lines": "44-60", "fact": "Transition selector is degree_multiple0 but poly_degree1."},
+    {"upstream_path": "multi-stark/src/zerocheck.rs", "lines": "128-192", "fact": "Uses hint verbatim in release, otherwise symbolic poly_degree(2, &[]); sumcheck adds one for eq weight."},
+    {"upstream_path": "multi-stark/tests/whir_fibonacci.rs", "lines": "54-80, 119-144, 169-197, 232-264", "fact": "Matched layout/transposition, folding/rate recurrence, domain separation and prove/verify convention; Fibonacci omits the degree hint."},
+    {"upstream_path": "whir/src/parameters/whir.rs", "lines": "514-523", "fact": "The requested PoW cap is enforced against max_pow_bits, not silently increased."},
+    {"upstream_path": "sumcheck/src/prescribed_pcs.rs", "lines": "18-35, 44-95", "fact": "Table and repeat-last successor batches at externally prescribed points; verifier must not reabsorb commitment."},
+    {"upstream_path": "whir/src/pcs/zk/adapter.rs", "lines": "92-112, 128-164", "fact": "Hiding PCS uses Poly and public point/value claims and reabsorbs commitment in its base verifier; not the required prescribed-point table interface."}
+  ],
+  "serial_commands": [
+    {
+      "cwd": ".",
+      "argv": ["python3", "research/r2/backend/run.py", "--stage", "native", "--security-level", "32", "--output", "research/r2/backend/outputs/resume-h0-degree-32", "--timeout", "1800"],
+      "environment": {"CARGO_NET_OFFLINE": "true"},
+      "note": "run.py performs the locked native binary build and records build/runtime commands. Its clean_env now forces CARGO_NET_OFFLINE=true, using the already pinned local dependencies. No wallets, networks or EVM are required.",
+      "acceptance": [
+        "Fresh output directory only; historical resume-h0-32/resume-h0-128 remain untouched.",
+        "Non-hiding-control result reports NATIVE_VERIFICATION_SUCCESS, verified=true and SERIALIZED_NATIVE_PROOF_VERIFIED.",
+        "The serialized native proof verifies; all scope/root/nullifier/payout-binding mutations are rejected; altered opening and truncated serialized proof are rejected.",
+        "Proof component sizes sum to the measured serialized proof bytes; timings remain a single native non-hiding execution, not a benchmark distribution or privacy claim.",
+        "If verification still fails, retain result.json with NATIVE_VERIFICATION_FAILURE, exact error, verified=false, measured times and byte ledger; do not promote it or label it UNKNOWN. This bounded repair is then insufficient and the exact remaining failure is the next concrete barrier."
+      ]
+    }
+  ],
+  "historical_results_unchanged": {
+    "32_native": "Proof generated; Zerocheck(FinalSumMismatch), panic at old main.rs:75. Historical runner classified EXECUTION_BLOCKED; no relabeling or write to historical artifacts.",
+    "32_hiding_component": "Two verified exact-trace PCS openings, all eight synthetic secret limbs intentionally exposed as requested claims. Not a PCS hiding break and not an outer H0 relation proof.",
+    "128_native": "PowBitsExceedBudget { required: 35, budget: 0 }",
+    "128_hiding_component": "Whir(PowBitsExceedBudget { required: 41, budget: 0 })"
+  },
+  "128_disposition": "Original request is exactly 128 target with zero PoW under the existing field, geometry, rates, folding and CapacityBound profiles. Both derivations reject that request. No rerun solely to confirm reported failures and no guessed alternate preset. A separately justified parameterization must explicitly change and label its assumptions/profile, derive upstream costs and security terms, and still cannot claim end-to-end qualification merely because construction succeeds. Raising budget to the displayed required value is not established here as a valid or practical replacement.",
+  "indispensable_hiding_barrier": "A complete hiding outer AIR zerocheck that masks round messages and requested current/successor evaluations, with a composition argument and an actual prescribed-point table/successor adapter preserving commitment absorption. The local Poly packing repair alone does not supply this. No giant lowering, no complete hiding native proof, no full EVM candidate and no production/security qualification.",
+  "validation_performed": "None: builds, tests, lint, formatters and experiments explicitly reserved for Main."
+}

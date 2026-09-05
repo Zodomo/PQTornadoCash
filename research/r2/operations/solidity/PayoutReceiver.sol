@@ -22,7 +22,7 @@ contract PayoutReceiver {
             (bool accepted, bytes memory result) = pool.call(
                 abi.encodeWithSignature("deposit((bytes32,bytes32))", bytes32(0), bytes32(0))
             );
-            require(!accepted && result.length >= 4, "reentry guard did not reject");
+            require(!accepted && result.length >= 4 && bytes4(result) == bytes4(keccak256("ReentrantCall()")), "reentry guard did not reject");
             reentryError = bytes4(result);
         }
         payments++;

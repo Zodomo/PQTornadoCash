@@ -1,18 +1,175 @@
 {
-  "schema": "pqtc.r2.conditional-commands.v1",
-  "execution_owner": "Main; all commands below are unexecuted at implementation handoff",
+  "schema": "pqtc.r2.conditional-commands.v2",
+  "execution_owner": "Main; source preparation only in ConditionalResume handoff; nothing in this resume schedule has been executed by worker",
   "working_directory": "repository root",
+  "source_epoch": "research/r2/conditional/resume-source-epoch-bc71758",
   "serial_local_diagnostics": [
-    ["python3", "-B", "research/r2/conditional/gates.py", "--output", "research/r2/conditional/outputs/gates.json"],
-    ["python3", "-B", "research/r2/conditional/l2_payload.py", "--output", "research/r2/conditional/outputs/l2.json"],
-    ["python3", "-B", "research/r2/conditional/hardware.py", "--threads", "1", "--output", "research/r2/conditional/outputs/hardware.json"],
-    ["python3", "-B", "research/r2/conditional/flock_search.py", "--source", "/tmp/pqtc-c70-work/sources/flock-c2d0", "--max-commits", "64", "--output", "research/r2/conditional/outputs/flock.json"],
-    ["python3", "-B", "research/r2/conditional/check.py"]
+    {
+      "id": "gates",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-gates-01",
+        "--",
+        "python3",
+        "-B",
+        "research/r2/conditional/gates.py",
+        "--evidence",
+        "research/r2/conditional/resume-gate-evidence.json",
+        "--output",
+        "research/r2/conditional/outputs/resume-gates-01.json"
+      ]
+    },
+    {
+      "id": "native-l2",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-native-l2-01",
+        "--",
+        "python3",
+        "-B",
+        "research/r2/conditional/l2_payload.py",
+        "--payloads",
+        "research/r2/conditional/resume-payloads.json",
+        "--output",
+        "research/r2/conditional/outputs/resume-native-l2-01.json"
+      ]
+    },
+    {
+      "id": "hardware-t1",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-hardware-t1-01",
+        "--",
+        "python3",
+        "-B",
+        "research/r2/conditional/hardware.py",
+        "--candidate",
+        "C1",
+        "--geometry",
+        "decomposed",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--threads",
+        "1",
+        "--samples",
+        "30",
+        "--toolchain",
+        "1.97.0",
+        "--build-root",
+        "research/r2/conditional/resume-build/portable",
+        "--run-root",
+        "research/r2/conditional/outputs/resume-portable-C1-t1",
+        "--output",
+        "research/r2/conditional/outputs/resume-hardware-t1-01.json"
+      ]
+    },
+    {
+      "id": "hardware-t4",
+      "argv": [
+        "python3",
+        "-B",
+        "research/r2/execute.py",
+        "--output",
+        "research/r2/conditional/runs/resume-hardware-t4-01",
+        "--",
+        "python3",
+        "-B",
+        "research/r2/conditional/hardware.py",
+        "--candidate",
+        "C1",
+        "--geometry",
+        "decomposed",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--threads",
+        "4",
+        "--samples",
+        "30",
+        "--toolchain",
+        "1.97.0",
+        "--build-root",
+        "research/r2/conditional/resume-build/portable",
+        "--run-root",
+        "research/r2/conditional/outputs/resume-portable-C1-t4",
+        "--output",
+        "research/r2/conditional/outputs/resume-hardware-t4-01.json"
+      ]
+    }
   ],
-  "optional_exact_historical_barrier_staging": ["python3", "-B", "research/r2/conditional/flock_search.py", "--source", "/tmp/pqtc-c70-work/sources/flock-c2d0", "--max-commits", "64", "--prepare", "c2d0c2485a54f7b7694e19f4f59730ffde3405cf", "--output", "research/r2/conditional/outputs/flock-staged.json"],
-  "bounded_repair": "flock_search accepts at most four explicit --tip FULL_COMMIT inputs already present locally, inspects at most 128 commits, and --prepare FULL_COMMIT only stages source-supported same-commit config+registry+Keccak candidates (or the exact historical failure control). Prepared source remains under research/r2/conditional/work; it emits but never executes the control command. No network fetch or derivation of unreviewed m21 presets.",
-  "explicit_gate_input": "gates.py --evidence PATH accepts {branch: {prerequisite: {satisfied: true|false|null, artifact: repository-relative research file, sha256: exact file digest, scope: nonempty claim scope}}}. Names are emitted in the default matrix. Missing facts are null and never an architecture failure.",
-  "hardware_execution": "hardware.py emits portable generic-CPU build plus process-cold/warm commands for the real local machine. --x86-binary accepts an existing public executable; x86 commands exist only for compatible native execution or Linux static ELF plus qemu-x86_64, with emulation explicitly labeled. A qemu-system executable without a guest is not an available machine. No SSH hosts/private config discovery.",
-  "l2_scope": "Exact frozen v03-fixed-01 proof A/B and ABI bytes, pinned existing public-key signer and fee functions. Nonces 7 and 8, zero value, fixed public sink. Signatures are computed locally only and only hashes/sizes retained. No RPC or broadcast interface. Concatenated A/B is a transport-only control, never a combined ABI verifier path.",
-  "approval_boundary": "No production/testnet/network signing, no notes in outer witness, no fake complete verifier, no architecture rejection from a missing measurement. Final benchmark and local-node execution remains Main-owned."
+  "portable_build": {
+    "id": "portable-build",
+    "argv": [
+      "python3",
+      "-B",
+      "research/r2/execute.py",
+      "--output",
+      "research/r2/conditional/runs/resume-portable-build-01",
+      "--env",
+      "RUSTFLAGS=-C target-cpu=generic",
+      "--env",
+      "CARGO_BUILD_JOBS=4",
+      "--",
+      "cargo",
+      "+1.97.0",
+      "build",
+      "--locked",
+      "--offline",
+      "--release",
+      "--manifest-path",
+      "research/r2/air/rust/Cargo.toml",
+      "--target-dir",
+      "research/r2/conditional/resume-build/portable"
+    ]
+  },
+  "compiler_inventory": {
+    "id": "compiler",
+    "argv": [
+      "python3",
+      "-B",
+      "research/r2/execute.py",
+      "--output",
+      "research/r2/conditional/runs/resume-compiler-01",
+      "--",
+      "rustc",
+      "+1.97.0",
+      "-vV"
+    ]
+  },
+  "portable_proofs": {
+    "command_files": [
+      "research/r2/conditional/outputs/resume-hardware-t1-01.json",
+      "research/r2/conditional/outputs/resume-hardware-t4-01.json"
+    ],
+    "command_pointer": "portable_h1_command.run_commands",
+    "execution": "After one successful portable build, Main executes every emitted argv with its env, serially. Both inventory files share one build. Each list has one process-cold proof, one excluded warmup, and 30 independent warm proof processes. Do not interleave builds/EVM or another timed prover. Retain returncodes and stop the affected branch on real command failure; do not copy samples.",
+    "provenance": "AIR wrapper retains command/stdout/stderr/RSS and results with native verification and proof hashes in each fresh output. Preserve emitted arguments: explicit frozen H0 statement/witness, fixed b4/q32, C1 decomposed. A source epoch changing before build requires a fresh source-bound build record.",
+    "classification": "Generic CPU target on existing H1, not new commodity hardware or certified scalar implementation. First process is not hardware-cold. Fixed witness only, not varied-witness promotion distribution.",
+    "after_execution": "Report cold separately; exclude warmup; summarize 30 actual warm prove/verify times and RSS per thread count with order statistics/uncertainty, native_verified=true and fresh actual proof hashes. No strong p99 inference."
+  },
+  "gate_input": {
+    "path": "research/r2/conditional/resume-gate-evidence.json",
+    "semantics": "Hash-bound true/false/null scoped facts; evaluator preserves unknown separately from known-unsatisfied. Native proof completion is not adequate exact soundness or a usable outer path."
+  },
+  "l2_scope": "--payloads accepts exact hash-bound native artifacts, never synthesizes ABI. Five retained/fresh candidate payloads use no-code raw transport alternatives on three pinned chains. Raw native proof bytes, byte gas, signed envelope sizes are measurements; source admission and fees are projections. ABI, node admission, actual data fees and verifier receipts remain null. Omit --payloads only for historical retained A/B ABI diagnostic; historical output is preserved and need not rerun.",
+  "flock_repair": "The retained 64-local-commit search and historical exact control already establish the scoped missing M21_FAST_SECURITY_CONFIG. No unchanged search/control rerun is scheduled. Reopen on exact supported upstream M21 config+registry+Keccak commit or reviewed derivation; do not guess presets. Then prepare in fresh resume-* source path and execute exact 44 logical/48 capacity/4 dummy control before glue/hiding work. Existing flock_search.py --prepare writes work/, so Main must use a resume-only staging change before reopening; no prepared candidate currently exists.",
+  "nonentered_branches": "Recursion: adequate exact inner errors, measured exact direct bottleneck, compatible verifier, both-layer accounting, witness inventory/composition absent. Aggregation: exact outer path/inventory/settlement absent; if reopened N=2,4,8. STIR/Circle: pinned non-hiding controls cannot enter complete private candidates; explicit hiding route and compatible relation/field required.",
+  "hardware_external_prerequisite": "Retained local inventory found arm64 H1, no configured x86 host or qemu user/guest. No private SSH config discovery. Supply a real public/local x86 machine with pinned toolchain/build and same corpus; emulator measurements must be labeled emulated, never commodity results.",
+  "approval_boundary": "No .env reads, private keys, public network, trivial recursion proxy, guessed Flock preset, raw note aggregation, or R2-05 changed-transcript/local-EVM work. Security reviews deferred, not permission gates; no production qualification."
 }

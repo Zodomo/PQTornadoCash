@@ -1,0 +1,69 @@
+{
+  "schema": "pqtc.r2.backend-results.v1",
+  "pipeline_id": "R2-C4",
+  "specification_status": "EXACT_H0",
+  "correctness_evidence": "SEE_INDEPENDENT_OUTPUTS_NO_HIDING_RELATION_CLAIM",
+  "privacy_evidence": "HIDING_APPLICATION_NOT_ESTABLISHED",
+  "security_status": "SECURITY_NOT_QUALIFIED",
+  "performance_evidence": "SEE_COMPONENT_AND_NON_HIDING_CONTROL_SCOPES",
+  "implementation_stage": "API_AND_BOUNDED_REPAIR",
+  "promotion_status": "NOT_READY_FOR_BUILD_SELECTION",
+  "requested_security_bits": 32,
+  "independent_outputs": {
+    "non-hiding-control": {
+      "status": "EXECUTION_BLOCKED",
+      "exit_code": 101
+    },
+    "hiding-repair": {
+      "claim": "PCS correctly reveals requested evaluations; this is NOT an attack on its stated hiding guarantee",
+      "complete_relation_proof": false,
+      "configuration": "H0-HIDING-WHIR-EXACT-TRACE-OPENING-REPAIR",
+      "correctness_evidence": "EXACT_REFERENCE_AND_AIR_CHECKED_LOCALLY_PCS_OPENINGS_VERIFIED",
+      "fresh_mask_proofs_differ": true,
+      "implementation_stage": "BOUNDED_POLY_ADAPTER_EXECUTED_NO_HIDING_OUTER_PIOP",
+      "opened_private_value": "row0 WORK[0..8] = nullifier_secret.limbs()",
+      "performance_evidence": "MEASURED_COMPONENT_NOT_COMPLETE_RELATION",
+      "pipeline_id": "R2-C4",
+      "privacy_evidence": "CONSTRUCTED_LEAKAGE_OF_EIGHT_NULLIFIER_SECRET_LIMBS",
+      "promotion_status": "NOT_READY_FOR_BUILD_SELECTION",
+      "remaining_barrier": "PrescribedPointPcs/table and successor layout adapter plus a hiding outer zerocheck with masked opening claims; merely wrapping the PCS cannot hide exposed AIR evaluations",
+      "requested_security_bits": 32,
+      "runs": [
+        {
+          "altered_claim_rejected": true,
+          "proof_bytes": 59027,
+          "prover_time_ns": 41586083,
+          "repeat": 0,
+          "truncated_proof_rejected": true,
+          "verified": true,
+          "verifier_time_ns": 2000083
+        },
+        {
+          "altered_claim_rejected": true,
+          "proof_bytes": 58291,
+          "prover_time_ns": 33157958,
+          "repeat": 1,
+          "truncated_proof_rejected": true,
+          "verified": true,
+          "verifier_time_ns": 1679458
+        }
+      ],
+      "security_status": "SECURITY_NOT_QUALIFIED",
+      "source_pin": "3152b14a89067c83775a8076cc262ffc48a1fd7c",
+      "specification_status": "EXACT_FROZEN_H0_TRACE_PCS_ONLY"
+    }
+  },
+  "api_barriers": {
+    "uni-api-barrier": {
+      "expected_trait": "Pcs",
+      "missing_trait_demonstrated": true,
+      "status": "CONCRETE_API_BARRIER"
+    },
+    "multi-api-barrier": {
+      "expected_trait": "PrescribedPointPcs",
+      "missing_trait_demonstrated": true,
+      "status": "CONCRETE_API_BARRIER"
+    }
+  },
+  "full_evm": "NOT_EVALUATED_NO_COMPLETE_HIDING_NATIVE_PROOF"
+}

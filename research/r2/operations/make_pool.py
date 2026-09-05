@@ -42,9 +42,6 @@ def main():
     for library in ("Digest512", "P2BB512", "PQTCApplicationHash"):
         relative = os.path.relpath(ROOT / f"contracts/src/libraries/{library}.sol", output.parent).replace(os.sep, "/")
         text = text.replace(f'"./libraries/{library}.sol"', f'"{relative}"')
-    interface_end = "    ) external returns (bool);\n}"
-    assert text.count(interface_end) == 1
-    text = text.replace(interface_end, "    ) external returns (bool);\n    function verifyOneCall(Digest512 calldata parameterId, uint32[64] calldata publicValues, bytes calldata partA, bytes calldata partB) external returns (bool);\n}")
     start = text.index("        zeros[0] = PQTCApplicationHash.emptyLeaf(scope);")
     end = text.index("        Digest512 memory initialRoot = zeros[TREE_DEPTH];", start)
     scope = manifest["scope"]
@@ -64,7 +61,8 @@ def main():
         external nonReentrant
     {
         uint32[64] memory values = _validatedPublicValues(withdrawal);
-        if (!verificationRegistry.verifyOneCall(parameterId, values, partA, partB)) revert InvalidProof();
+        bytes32 verificationId = verificationRegistry.beginVerification(parameterId, values, partA);
+        if (!verificationRegistry.completeVerification(verificationId, parameterId, values, partB)) revert InvalidProof();
         _completeWithdrawal(withdrawal);
     }
 

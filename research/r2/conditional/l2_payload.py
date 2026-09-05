@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Offline exact retained A/B transport diagnostic. Never sends a transaction."""
+"""Offline exact proof transport diagnostics. Never sends a transaction."""
 import argparse
 import csv
 import hashlib
@@ -16,7 +16,7 @@ def digest(data):
     return hashlib.sha256(data).hexdigest()
 
 
-def diagnose():
+def diagnose(payloads=None):
     pins = json.loads((HERE / "inputs.json").read_text())
     for name, expected in pins["files"].items():
         if digest((ROOT / name).read_bytes()) != expected:
@@ -26,6 +26,8 @@ def diagnose():
     source = ROOT / "research/l2-economics"
     rules = json.loads((source / "matrix.json").read_text())
     scenarios = json.loads((source / "scenarios.json").read_text())
+    if payloads is not None:
+        return diagnose_native_payloads(payloads, model, rules, scenarios, pins, source)
     folder = ROOT / "research/candidates/v03-baseline/proofs" / pins["run_id"]
     metadata = json.loads((folder / "proof-metadata.json").read_text())
     with (ROOT / "research/summaries/v03-distribution.csv").open() as f:
@@ -110,14 +112,72 @@ def diagnose():
                     "Size admission alone does not establish affordable/private/sound withdrawals."], "networks": rows}
 
 
+def diagnose_native_payloads(manifest, model, rules, scenarios, pins, source):
+    entries = manifest["payloads"]
+    if not entries:
+        raise ValueError("at least one exact native payload is required")
+    payloads = []
+    for entry in entries:
+        path = (ROOT / entry["artifact"]).resolve()
+        if not path.is_relative_to(ROOT / "research") or not path.is_file():
+            raise ValueError("payload must be an explicit research artifact")
+        if entry["codec"] not in ("postcard-1.1.3-full-native-proof", "research-canonical-raw"):
+            raise ValueError("only declared native transport codecs are supported; this is not an ABI adapter")
+        data = path.read_bytes()
+        if not data or digest(data) != entry["sha256"]:
+            raise ValueError(f"empty or changed exact payload: {entry['artifact']}")
+        networks = []
+        for network, config in model.NETWORKS.items():
+            # Independent single-payload alternatives, not a split transaction sequence.
+            model.NONCE = 7
+            tx = model.signed_eip1559(config["chain_id"], config["tx_gas_limit"], data)
+            gas = model.byte_gas(data)
+            fees = []
+            for item in scenarios["scenarios"]:
+                scenario = {**scenarios["shared_synthetic_parameters"], **item}
+                projected = (model.op_projection(tx, gas["no_op_calldata_gas"], scenario)
+                             if network == "op-mainnet" else model.unavailable_projection(network, gas["no_op_calldata_gas"], scenario))
+                fees.append({"scenario_id": item["id"], "measurement_status": "UNCALIBRATED_PROJECTION",
+                             "scope": "native proof as raw calldata to no-code sink, NOT an EVM verifier call", **projected})
+            networks.append({"network": network, "source_rules": rules["networks"][network], **gas,
+                "raw_transport_calldata_bytes": len(data), "abi_calldata_bytes": None,
+                "signed_tx_bytes": len(tx), "signed_tx_sha256": digest(tx), "nonce": 7,
+                "tx_gas_limit": config["tx_gas_limit"],
+                "source_size_admissible": len(tx) <= config["signed_size_limit"],
+                "source_no_op_gas_fits": gas["no_op_calldata_gas"] <= config["tx_gas_limit"],
+                "configured_node_admission": None, "authorized_receipt": None,
+                "exact_l2_verifier_gas": None, "actual_data_fee_wei": None, "fee_scenarios": fees})
+        payloads.append({**entry, "raw_proof_bytes": len(data), "raw_proof_keccak256": model.keccak256(data).hex(),
+                         "classification": "EXACT_NATIVE_PROOF_TRANSPORT_NOT_EVM_ABI", "networks": networks})
+    return {"schema": "pqtc.r2.conditional-native-l2.v1", "measurement_status": "MEASURED",
+        "measurement_scope": "exact bytes, byte gas and local deterministic signed-envelope sizes only",
+        "payload_manifest": manifest, "source_inputs": pins,
+        "chain_source_pins": json.loads((source / "sources.json").read_text()),
+        "synthetic_fee_inputs": scenarios,
+        "signer": {"address": model.research_address(), "key": "universally public Anvil account 0, never funded",
+                   "destination": model.RESEARCH_TO.hex(), "value_wei": 0, "network_calls": 0},
+        "abi_status": "NOT_IMPLEMENTED_FOR_THESE_NATIVE_CODECS",
+        "reopen_condition": "Exact EVM proof codec and verifier ABI adapter, then source-pinned local node admission and actual data-fee implementation; no public network authorization is implied.",
+        "caveats": ["No ABI selector, public-statement encoding or verifier decoder is supplied.",
+                    "Postcard/research raw bytes are transport controls, not valid EVM verifier calls.",
+                    "Source size and no-code gas fit are projections, not node admission or receipt evidence.",
+                    "OP fee numbers are uncalibrated synthetic projections; unsupported Nitro/Scroll fees stay null.",
+                    "Signed transaction bytes are not persisted; no RPC or broadcast interface exists."],
+        "payloads": payloads}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--payloads", type=Path, help="hash-bound native payload manifest; omitted runs retained A/B ABI diagnostic")
     args = parser.parse_args()
-    result = diagnose()
+    payloads = json.loads(args.payloads.read_text()) if args.payloads else None
     output = args.output.resolve()
     if not output.is_relative_to(HERE):
         parser.error("output must remain under research/r2/conditional")
+    if output.exists():
+        parser.error("output already exists; choose a fresh resume-* path")
+    result = diagnose(payloads)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(result, indent=2) + "\n")
     print(output)

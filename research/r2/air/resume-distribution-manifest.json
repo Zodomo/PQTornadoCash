@@ -1,0 +1,119 @@
+{
+  "selection_status": "Runnable fixed-parameter controls only. Main selects promoted geometry and normalized configurations from measured grid/security results before primary distributions. No automatic promotion.",
+  "configurations": [
+    {
+      "name": "C1-fixed-b4-q32",
+      "command": [
+        "python3",
+        "research/r2/air/run.py",
+        "--",
+        "--candidate",
+        "C1",
+        "--geometry",
+        "decomposed",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--statement",
+        "{statement}",
+        "--witness",
+        "{witness}",
+        "--corpus",
+        "research/r2/corpus/semantic-cases.json",
+        "--case-index",
+        "{case_index}",
+        "--output",
+        "{output}"
+      ],
+      "source_files": [
+        "research/r2/air/target/release/pqtc-r2-air",
+        "research/r2/air/rust/Cargo.lock",
+        "research/r2/air/rust/src/lib.rs",
+        "research/r2/air/rust/src/runner.rs",
+        "research/r2/air/rust/src/h0.rs",
+        "research/r2/air/rust/src/h5.rs",
+        "research/r2/air/rust/src/solidity.rs",
+        "research/r2/hash/rust/src/lib.rs"
+      ]
+    },
+    {
+      "name": "C2-fixed-b4-q32",
+      "command": [
+        "python3",
+        "research/r2/air/run.py",
+        "--",
+        "--candidate",
+        "C2",
+        "--geometry",
+        "decomposed",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--statement",
+        "{statement}",
+        "--witness",
+        "{witness}",
+        "--corpus",
+        "research/r2/corpus/semantic-cases.json",
+        "--case-index",
+        "{case_index}",
+        "--output",
+        "{output}"
+      ],
+      "source_files": [
+        "research/r2/air/target/release/pqtc-r2-air",
+        "research/r2/air/rust/Cargo.lock",
+        "research/r2/air/rust/src/lib.rs",
+        "research/r2/air/rust/src/runner.rs",
+        "research/r2/air/rust/src/h0.rs",
+        "research/r2/air/rust/src/h5.rs",
+        "research/r2/air/rust/src/solidity.rs",
+        "research/r2/hash/rust/src/lib.rs"
+      ]
+    },
+    {
+      "name": "C3-fixed-b4-q32",
+      "command": [
+        "python3",
+        "research/r2/air/run.py",
+        "--",
+        "--candidate",
+        "C3",
+        "--geometry",
+        "decomposed",
+        "--profile",
+        "fixed",
+        "--queries",
+        "32",
+        "--log-blowup",
+        "4",
+        "--statement",
+        "{statement}",
+        "--witness",
+        "{witness}",
+        "--corpus",
+        "research/r2/corpus/semantic-cases.json",
+        "--case-index",
+        "{case_index}",
+        "--output",
+        "{output}"
+      ],
+      "source_files": [
+        "research/r2/air/target/release/pqtc-r2-air",
+        "research/r2/air/rust/Cargo.lock",
+        "research/r2/air/rust/src/lib.rs",
+        "research/r2/air/rust/src/runner.rs",
+        "research/r2/air/rust/src/h0.rs",
+        "research/r2/air/rust/src/h5.rs",
+        "research/r2/air/rust/src/solidity.rs",
+        "research/r2/hash/rust/src/lib.rs"
+      ]
+    }
+  ]
+}
